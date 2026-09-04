@@ -47,6 +47,21 @@ const garmentExamples = [
 const MAX_IMAGE_HEIGHT = 2000;
 const JPEG_QUALITY = 0.95;
 
+/**
+ * pica 인스턴스 (지연 생성).
+ *
+ * 기본 features 는 `['js', 'wasm', 'ww']` 인데, `ww`(Web Worker) 는 pica 가 함수를
+ * 문자열로 만들어 blob worker 로 띄우는 방식이다. Turbopack 이 그 함수 소스에
+ * `__turbopack_context__` 참조를 주입하는데 worker 안에는 그 심볼이 없어
+ * `ReferenceError: __turbopack_context__ is not defined` 로 매번 실패한다.
+ *
+ * 그래서 `ww` 를 빼고 메인 스레드에서 돌린다. wasm 이 남아 있어 Lanczos 품질은
+ * 그대로고, 리사이즈 대상이 최대 2000px 라 체감 지연도 크지 않다.
+ * (`cib` 는 pica 문서상 Chrome 에서 버그가 있어 넣지 않는다.)
+ */
+let picaInstance: ReturnType<typeof pica> | null = null;
+const getPica = () => (picaInstance ??= pica({ features: ['js', 'wasm'] }));
+
 
 
 export default function Home() {
@@ -369,11 +384,11 @@ export default function Home() {
     targetCanvas.height = newHeight;
 
     // Use pica for high-quality downscale (Lanczos)
-    const picaInstance = pica();
-    await picaInstance.resize(sourceCanvas, targetCanvas);
+    const resizer = getPica();
+    await resizer.resize(sourceCanvas, targetCanvas);
 
     // Convert to Blob, then to File
-    const outputBlob = await picaInstance.toBlob(targetCanvas, file.type || 'image/png', JPEG_QUALITY);
+    const outputBlob = await resizer.toBlob(targetCanvas, file.type || 'image/png', JPEG_QUALITY);
     const resizedFile = new File([outputBlob], file.name, { type: outputBlob.type });
 
     URL.revokeObjectURL(objectUrl);
