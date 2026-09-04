@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import Fashn from 'fashn';
+import { authenticate, unauthorized } from '@/lib/supabase/route';
 
 // 폴링이 최대 3분까지 이어질 수 있으므로 Node 런타임에서 실행한다.
 export const runtime = 'nodejs';
@@ -12,6 +13,10 @@ const FASHN_API_KEY = process.env.FASHN_API_KEY;
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export async function POST(request: Request) {
+  // Bearer 토큰 검증 — 인증 없이 FASHN 크레딧을 쓰지 못하게 한다.
+  const auth = await authenticate(request);
+  if (!auth) return unauthorized();
+
   try {
     const body = await request.json();
     const {

@@ -9,6 +9,7 @@ Next.js 16 (App Router) + Supabase 기반 가상 피팅 플랫폼.
 | 경로 | 설명 |
 | --- | --- |
 | `/` | **VTON 스튜디오** — 배경 + 실사 캐릭터 + 다중 가먼트 레이어를 조합하는 한글 UI. 레이어 순서대로 FASHN try-on 을 연쇄 호출한다. |
+| `/login` | **로그인** — Supabase Auth 이메일/비밀번호 폼(본문 중앙 정렬). 유일한 공개 라우트. |
 | `/tryon` | **FASHN Try-On 데모** — 원본 `tryon-nextjs-app` 을 그대로 이식한 단일 가먼트 데모(모델/가먼트 업로드, 파라미터 컨트롤, 결과 갤러리, 모델 버전 비교 슬라이더). |
 
 | API | 설명 |
@@ -25,6 +26,17 @@ npm install
 npm run dev    # http://localhost:8920
 ```
 
+### DB 스키마
+
+스튜디오의 세션 저장·렌더 잡 기록은 `vton_projects` / `vton_garments` /
+`vton_render_jobs` 테이블을 사용한다. Supabase 대시보드 → SQL Editor 에서
+[`supabase/migrations/0001_vton_schema.sql`](supabase/migrations/0001_vton_schema.sql)
+을 한 번 실행한다. Storage 버킷(`vton-assets`, `vton-results`)은 업로드/렌더 시
+없으면 자동 생성된다.
+
+테이블이 없어도 렌더 자체는 동작한다(잡 기록만 건너뛴다). 반면 `세션 저장`과
+`세션 목록`은 테이블이 있어야 한다.
+
 ### 환경 변수
 
 `.env.example` 을 `.env.local` 로 복사한 뒤 채운다.
@@ -36,6 +48,57 @@ npm run dev    # http://localhost:8920
 - `SUPABASE_SERVICE_ROLE_KEY` — 업로드/결과 보관/세션 저장에 필요.
   없으면 anon 키로 폴백하며 RLS 때문에 Storage·DB 쓰기가 실패한다
   (렌더는 계속 동작하고 FASHN CDN URL 을 그대로 반환한다).
+
+## 인증
+
+브라우저는 **Supabase SDK 를 직접 호출하지 않는다.** 모든 Supabase 접근은 API 를
+거치고, API 호출은 `Authorization: Bearer <access_token>` 으로 인증한다.
+
+```
+로그인   브라우저 → POST /api/auth/login  → (서버) signInWithPassword
+                                         ← 세션 쿠키 + accessToken
+API 호출 브라우저 → authFetch()           → Authorization: Bearer <accessToken>
+                                            → 라우트가 authenticate() 로 검증
+토큰갱신 401 응답 → GET /api/auth/session → 쿠키 세션에서 새 accessToken
+로그아웃 브라우저 → POST /api/auth/logout → 세션 쿠키 정리
+```
+
+| 엔드포인트 | 설명 |
+| --- | --- |
+| `POST /api/auth/login` | 이메일/비밀번호 로그인. 세션 쿠키를 굽고 `accessToken` 을 반환. |
+| `GET /api/auth/session` | 쿠키 세션에서 현재 사용자와 **최신** access token 을 반환(필요 시 갱신). |
+| `POST /api/auth/logout` | 세션 쿠키 정리. |
+
+- **토큰 보관** — access token 은 XSS 노출 면을 줄이기 위해 `lib/auth-client.ts` 의
+  **메모리에만** 둔다(`localStorage`/`sessionStorage` 미사용). 새로고침 후에는 쿠키
+  세션을 근거로 `/api/auth/session` 에서 다시 받는다.
+- **자동 재시도** — `authFetch()` 는 세션 401 을 받으면 토큰을 한 번 갱신해 재시도하고,
+  그래도 실패하면 `/login?next=…` 로 보낸다.
+- **401 구분** — 401 이 모두 세션 문제는 아니다. `/api/tryon` 은 FASHN API 키가 없거나
+  잘못됐을 때도 401(`requiresApiKey`)을 돌려준다. 그래서 세션 인증 실패에만
+  `WWW-Authenticate: Bearer` 를 붙이고, `authFetch()` 는 그 헤더가 있을 때만 토큰을
+  갱신하고 로그인 페이지로 보낸다. 그렇지 않으면 FASHN 키 오류가 조용한 로그아웃처럼
+  보인다.
+- **검증 방식** — 라우트는 anon 키 클라이언트의 `getUser(token)` 으로 Auth 서버에
+  토큰을 검증시킨다. 검증에 통과한 뒤에야 service role 클라이언트로 작업한다.
+- 보호 대상: `/api/tryon`, `/api/vton/render`, `/api/vton/upload`,
+  `/api/vton/projects`(GET·POST), `/api/vton/projects/[id]`(GET·DELETE).
+  `/api/auth/*` 만 공개.
+
+### 페이지 가드
+
+[`proxy.ts`](proxy.ts) 가 `/login` 을 제외한 **모든 페이지**를 가로채 유효한 세션이
+없으면 `/login` 으로 리다이렉트한다. 이미 로그인한 사용자가 `/login` 에 오면 `/` 로
+되돌린다.
+
+- 세션 검증은 `getUser()`. `getSession()` 은 쿠키를 그대로 신뢰하므로 가드에 쓰지 않는다.
+- 원래 가려던 경로는 `?next=` 로 넘겨 로그인 후 복귀한다.
+  같은 오리진 경로만 허용해 오픈 리다이렉트를 막는다.
+- Supabase 환경 변수가 없으면 통과시키지 않고(fail closed) `/login?error=config` 로 보낸다.
+- 로그아웃은 스튜디오 헤더 우측 버튼.
+- Next 16 에서 `middleware.ts` 는 deprecated 이므로 `proxy.ts` 규약을 쓴다.
+- `/api/*` 는 프록시 매처에서 제외한다 — API 에 리다이렉트를 돌려주면 fetch 가 HTML 을
+  따라가 깨지므로, 각 라우트가 위의 Bearer 검증으로 401 을 반환한다.
 
 ## 스튜디오 ↔ FASHN 매핑
 

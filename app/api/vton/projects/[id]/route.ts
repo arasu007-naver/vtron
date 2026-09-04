@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminSupabase } from "@/lib/supabase/server";
+import { authenticate, unauthorized } from "@/lib/supabase/route";
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const auth = await authenticate(req);
+  if (!auth) return unauthorized();
+
   try {
     const { id } = await params;
     const supabase = getAdminSupabase();
@@ -29,9 +33,12 @@ export async function GET(
 }
 
 export async function DELETE(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const auth = await authenticate(req);
+  if (!auth) return unauthorized();
+
   try {
     const { id } = await params;
     const supabase = getAdminSupabase();

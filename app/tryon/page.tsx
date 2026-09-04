@@ -18,6 +18,7 @@ import Slider from '@/components/tryon/ui/slider';
 import { Dropdown } from '@/components/tryon/ui/dropdown';
 import { cn } from '@/lib/utils';
 import { useIsClient } from '@/lib/use-is-client';
+import { authFetch } from '@/lib/auth-client';
 import pica from 'pica';
 
 // Map display names to API values
@@ -437,12 +438,12 @@ export default function Home() {
       if (comparison) {
         // Run both selected models in parallel for comparison
         const [model1Response, model2Response] = await Promise.all([
-          fetch('/api/tryon', {
+          authFetch('/api/tryon', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...basePayload, model_name: comparisonModel1 }),
           }),
-          fetch('/api/tryon', {
+          authFetch('/api/tryon', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...basePayload, model_name: comparisonModel2 }),
@@ -474,7 +475,7 @@ export default function Home() {
         // Single API call
         const payload = { ...basePayload, model_name: modelVersion };
 
-        const response = await fetch('/api/tryon', {
+        const response = await authFetch('/api/tryon', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),

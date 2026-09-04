@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminSupabase } from "@/lib/supabase/server";
+import { authenticate, unauthorized } from "@/lib/supabase/route";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const auth = await authenticate(req);
+  if (!auth) return unauthorized();
+
   try {
     const supabase = getAdminSupabase();
     const { data: projects, error } = await supabase
@@ -25,6 +29,9 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  const auth = await authenticate(req);
+  if (!auth) return unauthorized();
+
   try {
     const body = await req.json();
     const {

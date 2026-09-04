@@ -7,6 +7,7 @@ import {
   type FashnMode,
 } from "@/lib/fashn/tryon";
 import type { LogEntry } from "@/types/vton";
+import { authenticate, unauthorized } from "@/lib/supabase/route";
 
 // 가먼트를 순차로 입히며 폴링하므로 시간이 오래 걸릴 수 있다.
 export const runtime = "nodejs";
@@ -84,6 +85,10 @@ export async function POST(req: NextRequest) {
 
   const supabase = getAdminSupabase();
   let jobId: string | undefined;
+
+  // Bearer 토큰 검증 — 인증 없이 FASHN 크레딧을 쓰지 못하게 한다.
+  const auth = await authenticate(req);
+  if (!auth) return unauthorized();
 
   try {
     const body = await req.json();

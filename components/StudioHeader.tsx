@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { Sparkles, FolderOpen, Save, RefreshCw, Shirt } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Sparkles, FolderOpen, Save, RefreshCw, Shirt, LogOut } from "lucide-react";
+import { logout } from "@/lib/auth-client";
 
 interface StudioHeaderProps {
   onOpenHistory?: () => void;
@@ -17,6 +19,21 @@ export default function StudioHeader({
   onReset,
   isSaving,
 }: StudioHeaderProps) {
+  const router = useRouter();
+  const [isSigningOut, setIsSigningOut] = useState(false);
+
+  // 세션을 끊으면 프록시 가드가 /login 으로 돌려보낸다.
+  const handleSignOut = async () => {
+    setIsSigningOut(true);
+    try {
+      await logout();
+      router.replace("/login");
+      router.refresh();
+    } finally {
+      setIsSigningOut(false);
+    }
+  };
+
   return (
     <header className="p-5 pb-4 border-b border-[var(--color-divider)] bg-[var(--color-panel)] flex flex-col gap-2">
       <div className="flex items-center justify-between">
@@ -48,6 +65,16 @@ export default function StudioHeader({
               <span>{isSaving ? "저장 중..." : "저장"}</span>
             </button>
           )}
+          <button
+            type="button"
+            onClick={handleSignOut}
+            disabled={isSigningOut}
+            title="로그아웃"
+            aria-label="로그아웃"
+            className="px-2 py-1 text-[11.5px] rounded-full btn btn-secondary flex items-center gap-1 disabled:opacity-60"
+          >
+            <LogOut className="w-3 h-3 text-[var(--color-accent-700)]" />
+          </button>
         </div>
       </div>
       <h1 className="font-[family-name:var(--font-heading)] font-normal text-[30px] leading-tight tracking-[-0.015em] m-0 text-[#201f1d]">

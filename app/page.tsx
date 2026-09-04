@@ -18,6 +18,7 @@ import {
   VtonProject,
 } from "@/types/vton";
 import { Sparkles, Play, RefreshCw } from "lucide-react";
+import { authFetch } from "@/lib/auth-client";
 
 export default function VtonStudioPage() {
   // 1. Canvas & Sizing
@@ -122,7 +123,7 @@ export default function VtonStudioPage() {
       formData.append("file", file);
       formData.append("folder", "backgrounds");
 
-      const res = await fetch("/api/vton/upload", {
+      const res = await authFetch("/api/vton/upload", {
         method: "POST",
         body: formData,
       });
@@ -148,7 +149,7 @@ export default function VtonStudioPage() {
       formData.append("file", file);
       formData.append("folder", "characters");
 
-      const res = await fetch("/api/vton/upload", {
+      const res = await authFetch("/api/vton/upload", {
         method: "POST",
         body: formData,
       });
@@ -202,7 +203,7 @@ export default function VtonStudioPage() {
       formData.append("file", file);
       formData.append("folder", "garments");
 
-      const res = await fetch("/api/vton/upload", {
+      const res = await authFetch("/api/vton/upload", {
         method: "POST",
         body: formData,
       });
@@ -230,7 +231,7 @@ export default function VtonStudioPage() {
     addLog("info", `착장 생성 시작 — ${sizePreset.label} · seed ${seed}.`);
 
     try {
-      const res = await fetch("/api/vton/render", {
+      const res = await authFetch("/api/vton/render", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -318,7 +319,7 @@ export default function VtonStudioPage() {
     setIsSaving(true);
     addLog("info", "현재 세션을 Supabase DB에 저장 중...");
     try {
-      const res = await fetch("/api/vton/projects", {
+      const res = await authFetch("/api/vton/projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -352,7 +353,7 @@ export default function VtonStudioPage() {
     setHistoryModalOpen(true);
     setLoadingProjects(true);
     try {
-      const res = await fetch("/api/vton/projects");
+      const res = await authFetch("/api/vton/projects");
       if (res.ok) {
         const data = await res.json();
         setProjectsList(data.projects || []);
@@ -411,7 +412,7 @@ export default function VtonStudioPage() {
   // 세션 삭제
   const handleDeleteProject = async (id: string) => {
     try {
-      const res = await fetch(`/api/vton/projects/${id}`, { method: "DELETE" });
+      const res = await authFetch(`/api/vton/projects/${id}`, { method: "DELETE" });
       if (res.ok) {
         setProjectsList((prev) => prev.filter((p) => p.id !== id));
         addLog("warn", "세션을 삭제했습니다.");

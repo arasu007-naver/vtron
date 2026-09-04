@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminSupabase } from "@/lib/supabase/server";
 import { v4 as uuidv4 } from "uuid";
+import { authenticate, unauthorized } from "@/lib/supabase/route";
 
 export async function POST(req: NextRequest) {
   try {
+    // Bearer 토큰 검증 — 브라우저는 authFetch() 로 access token 을 실어 보낸다.
+    const auth = await authenticate(req);
+    if (!auth) return unauthorized();
+
     const formData = await req.formData();
     const file = formData.get("file") as File | null;
     const bucket = (formData.get("bucket") as string) || "vton-assets";
