@@ -53,6 +53,9 @@ export default function VtonStudioPage() {
 
   // 5. Engine & Render State
   const [seed, setSeed] = useState(4821);
+  const [renderMode, setRenderMode] = useState<"performance" | "balanced" | "quality">(
+    "balanced"
+  );
   const [progress, setProgress] = useState(100);
   const [isRendering, setIsRendering] = useState(false);
   const [resultImageUrl, setResultImageUrl] = useState<string | null>(null);
@@ -237,19 +240,34 @@ export default function VtonStudioPage() {
           garments,
           bgSetting,
           characterSetting: character,
+          // FASHN try-on 파라미터
+          mode: renderMode,
+          segmentationFree: character.autoRemoveBg,
+          modelName: "tryon-v1.6",
         }),
       });
 
-      if (!res.ok) throw new Error("렌더링 실패");
       const data = await res.json();
+
+      // 서버가 단계별 로그를 돌려주므로 성공/실패 여부와 무관하게 먼저 반영한다.
+      if (Array.isArray(data.logs)) {
+        data.logs.forEach((l: LogEntry) => addLog(l.level, l.text));
+      }
+
+      if (!res.ok) {
+        throw new Error(data.error || "렌더링 실패");
+      }
 
       setProgress(100);
       setResultImageUrl(data.resultImageUrl);
-      if (data.logs && Array.isArray(data.logs)) {
-        data.logs.forEach((l: LogEntry) => addLog(l.level, l.text));
-      }
-      addLog("info", `가상 피팅 완료 — 결과물이 캔버스에 표시됩니다.`);
+      addLog(
+        "info",
+        data.simulated
+          ? "데모 미리보기를 표시했습니다 (실제 FASHN 인퍼런스 아님)."
+          : "FASHN 가상 피팅 완료 — 결과물이 캔버스에 표시됩니다."
+      );
     } catch (err: any) {
+      setProgress(0);
       addLog("error", `착장 생성 중 오류 발생: ${err.message}`);
     } finally {
       setIsRendering(false);
@@ -266,7 +284,7 @@ export default function VtonStudioPage() {
     if (head === "help") {
       addLog(
         "info",
-        "명령어 안내: help · seed <n> · fit <0-100> · scale <n> · render · clear"
+        "명령어 안내: help · seed <n> · fit <0-100> · scale <n> · mode <performance|balanced|quality> · render · clear"
       );
     } else if (head === "seed" && arg) {
       setSeed(Number(arg));
@@ -279,6 +297,13 @@ export default function VtonStudioPage() {
       const s = Number(arg);
       setCharacter((prev) => ({ ...prev, scale: s }));
       addLog("info", `인물 크기 ${s}% 적용.`);
+    } else if (head === "mode" && arg) {
+      if (arg === "performance" || arg === "balanced" || arg === "quality") {
+        setRenderMode(arg);
+        addLog("info", `FASHN 렌더 모드 «${arg}» 적용.`);
+      } else {
+        addLog("error", `알 수 없는 모드: ${arg} (performance | balanced | quality)`);
+      }
     } else if (head === "render") {
       handleRender();
     } else if (head === "clear") {

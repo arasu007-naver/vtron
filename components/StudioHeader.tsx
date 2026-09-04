@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Sparkles, FolderOpen, Save, RefreshCw } from "lucide-react";
+import Link from "next/link";
+import { Sparkles, FolderOpen, Save, RefreshCw, Shirt } from "lucide-react";
 
 interface StudioHeaderProps {
   onOpenHistory?: () => void;
@@ -53,8 +54,16 @@ export default function StudioHeader({
         Virtual Try-On
       </h1>
       <p className="m-0 text-[12.5px] text-[rgba(32,31,29,0.6)]">
-        배경 + 실사 캐릭터 + 가먼트(Garments) → Supabase AI 가상 피팅
+        배경 + 실사 캐릭터 + 가먼트(Garments) → FASHN AI 가상 피팅
       </p>
+      <Link
+        href="/tryon"
+        className="mt-1 self-start px-2.5 py-1 text-[11.5px] rounded-full btn btn-secondary flex items-center gap-1"
+        title="FASHN 단일 가먼트 try-on 데모 열기"
+      >
+        <Shirt className="w-3 h-3 text-[var(--color-accent-700)]" />
+        <span>FASHN Try-On 데모</span>
+      </Link>
     </header>
   );
 }
