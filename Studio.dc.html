@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/classical-875c2bbe-79bb-4b53-b2a2-adb68a482e77/styles.css">
+<script src="_ds/classical-875c2bbe-79bb-4b53-b2a2-adb68a482e77/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  html, body { margin: 0; height: 100%; background: #f3f2f2; }
+  a { color: var(--color-accent-700); text-underline-offset: 3px; }
+  a:hover { color: var(--color-accent-600); }
+  .vt-scroll::-webkit-scrollbar { width: 9px; }
+  .vt-scroll::-webkit-scrollbar-track { background: transparent; }
+  .vt-scroll::-webkit-scrollbar-thumb { background: rgba(32,31,29,0.22); border-radius: 6px; }
+  input[type=range] { accent-color: #b68235; }
+</style>
+</helmet>
+
+<div style="display:grid;grid-template-columns:344px minmax(0,1fr);height:100vh;min-height:660px;background:#f3f2f2;color:#201f1d;font-family:var(--font-body);overflow:hidden">
+
+  <aside class="vt-scroll" style="display:flex;flex-direction:column;border-right:1px solid rgba(32,31,29,0.16);background:#f8f4f4;overflow-y:auto">
+    <header style="padding:24px 22px 16px;border-bottom:1px solid rgba(32,31,29,0.16)">
+      <div style="font-family:var(--font-heading);font-weight:600;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#7d5411">Vtron</div>
+      <h1 style="font-family:var(--font-heading);font-weight:400;font-size:33px;line-height:1.04;letter-spacing:-0.015em;margin:6px 0 0">Virtual Try-On</h1>
+      <p style="margin:7px 0 0;font-size:12.5px;color:rgba(32,31,29,0.6)">배경 + 실사 캐릭터 + 가먼트 → 착장 이미지</p>
+    </header>
+
+    <div style="display:flex;flex-direction:column;gap:26px;padding:20px 22px 26px">
+
+      <button type="button" class="btn btn-primary" style="width:100%;padding:12px 14px;font-size:14.5px;border-radius:999px">✦ 가이드로 만들기</button>
+
+      <section style="display:flex;flex-direction:column;gap:11px">
+        <h6 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(32,31,29,0.55)">1 · 배경 크기</h6>
+        <div style="display:flex;align-items:baseline;gap:10px;padding:12px 14px;border:1px solid rgba(32,31,29,0.2);border-radius:4px">
+          <span style="font-family:var(--font-heading);font-size:23px;font-feature-settings:'tnum'">{{ sizeLabel }}</span>
+          <span style="font-size:10.5px;letter-spacing:0.1em;color:#7d5411;border:1px solid rgba(182,130,53,0.55);border-radius:2px;padding:1px 5px;font-feature-settings:'tnum'">{{ ratioLabel }}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="6">
+            <button type="button" onClick="{{ s.pick }}" style="padding:9px 6px;border:1px solid {{ s.border }};border-radius:999px;background:transparent;color:{{ s.color }};font-family:var(--font-body);font-size:12.5px;font-feature-settings:'tnum';cursor:pointer" style-hover="background:rgba(32,31,29,0.05)">{{ s.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(32,31,29,0.55)">W
+            <input class="input" value="{{ w }}" onChange="{{ noop }}" style="width:100%;box-sizing:border-box;font-feature-settings:'tnum'">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(32,31,29,0.55)">H
+            <input class="input" value="{{ h }}" onChange="{{ noop }}" style="width:100%;box-sizing:border-box;font-feature-settings:'tnum'">
+          </label>
+        </div>
+        <p style="margin:0;font-size:11.5px;color:rgba(32,31,29,0.5);font-feature-settings:'tnum'">내보내기 {{ exportLabel }} · 미리보기 48%</p>
+      </section>
+
+      <div class="hr" style="margin:0"></div>
+
+      <section style="display:flex;flex-direction:column;gap:11px">
+        <h6 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(32,31,29,0.55)">2 · 배경 이미지 <span style="color:#7d5411;letter-spacing:0.08em">선택 사항</span></h6>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:9px;align-items:start">
+          <div style="min-width:0;border:1px solid rgba(32,31,29,0.2);border-radius:4px;overflow:hidden">
+            <button type="button" onClick="{{ toggleBgList }}" style="display:flex;align-items:center;gap:8px;width:100%;padding:9px 11px;border:0;background:transparent;color:#201f1d;font-family:var(--font-body);font-size:12.5px;cursor:pointer;text-align:left" style-hover="background:rgba(32,31,29,0.05)">
+              <span style="display:flex;align-items:center;justify-content:center;width:20px;height:20px;flex:none;border:1px solid rgba(32,31,29,0.18);border-radius:50%;font-size:10px;color:rgba(32,31,29,0.6)">{{ bgChevron }}</span>
+              <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CSS 배경 · {{ cssBgLabel }}</span>
+            </button>
+            <div style="display:{{ bgListDisplay }};flex-direction:column;gap:8px;padding:0 11px 11px;border-top:1px solid rgba(32,31,29,0.12)">
+              <div class="vt-scroll" style="max-height:196px;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px;padding-top:10px">
+                <sc-for list="{{ cssBackgrounds }}" as="b" hint-placeholder-count="12">
+                  <button type="button" onClick="{{ b.pick }}" style="padding:8px 9px;border:1px solid {{ b.border }};border-radius:999px;background:transparent;color:{{ b.color }};font-family:var(--font-body);font-size:12px;cursor:pointer;text-align:left" style-hover="background:rgba(32,31,29,0.05)">{{ b.label }}</button>
+                </sc-for>
+              </div>
+              <button type="button" onClick="{{ clearCssBg }}" style="width:100%;padding:7px;border:1px solid rgba(32,31,29,0.18);border-radius:999px;background:transparent;color:rgba(32,31,29,0.6);font-family:var(--font-body);font-size:11.5px;cursor:pointer" style-hover="background:rgba(32,31,29,0.05)">✕ CSS 배경 없음</button>
+            </div>
+          </div>
+          <button type="button" style="flex:none;padding:9px 16px;border:1px dashed rgba(32,31,29,0.3);border-radius:999px;background:transparent;color:rgba(32,31,29,0.72);font-family:var(--font-heading);font-weight:600;font-size:12.5px;white-space:nowrap;cursor:pointer" style-hover="background:rgba(32,31,29,0.05)">이미지 선택</button>
+        </div>
+        <p style="margin:0;font-size:11.5px;line-height:1.5;color:rgba(32,31,29,0.5)">이미지를 올리면 CSS 배경 위에 덮입니다. 둘 다 비우면 단색 스튜디오 배경으로 합성합니다.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <sc-for list="{{ bgFits }}" as="f" hint-placeholder-count="3">
+            <button type="button" onClick="{{ f.pick }}" style="padding:8px 4px;border:1px solid {{ f.border }};border-radius:999px;background:transparent;color:{{ f.color }};font-family:var(--font-body);font-size:12px;cursor:pointer">{{ f.label }}</button>
+          </sc-for>
+        </div>
+      </section>
+
+      <div class="hr" style="margin:0"></div>
+
+      <section style="display:flex;flex-direction:column;gap:11px">
+        <h6 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(32,31,29,0.55)">3 · 실사 캐릭터 <span style="color:#8a3a2a;letter-spacing:0.08em">필수</span></h6>
+        <div style="display:flex;gap:12px">
+          <div style="width:78px;height:104px;flex:none;border:6px solid #f3f2f2;outline:1px solid rgba(32,31,29,0.16);background:repeating-conic-gradient(rgba(32,31,29,0.06) 0% 25%, transparent 0% 50%) 50% / 14px 14px"></div>
+          <div style="display:flex;flex-direction:column;gap:8px;min-width:0;flex:1">
+            <button type="button" class="btn btn-secondary" style="width:100%;border-radius:999px">이미지 선택</button>
+            <div style="font-size:11.5px;color:rgba(32,31,29,0.5);line-height:1.45">전신 정면, 1024px 이상 권장. 포즈와 얼굴은 유지됩니다.</div>
+          </div>
+        </div>
+        <label style="display:flex;gap:9px;align-items:center;font-size:12.5px;color:rgba(32,31,29,0.78);cursor:pointer"><input type="checkbox" checked="{{ true }}" onChange="{{ noop }}" style="accent-color:#b68235">배경 자동 제거 후 합성</label>
+        <label style="display:flex;gap:9px;align-items:center;font-size:12.5px;color:rgba(32,31,29,0.78);cursor:pointer"><input type="checkbox" checked="{{ true }}" onChange="{{ noop }}" style="accent-color:#b68235">얼굴·손 보존 강화</label>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:rgba(32,31,29,0.65)"><span>인물 크기</span><span style="color:#7d5411;font-feature-settings:'tnum'">{{ scale }}%</span></div>
+          <input type="range" min="40" max="140" value="{{ scale }}" onChange="{{ setScale }}" style="width:100%">
+        </div>
+      </section>
+
+      <div class="hr" style="margin:0"></div>
+
+      <section style="display:flex;flex-direction:column;gap:11px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+          <h6 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(32,31,29,0.55)">4 · Garments</h6>
+          <span style="font-size:11.5px;color:rgba(32,31,29,0.5);font-feature-settings:'tnum'">{{ garmentCount }}점 · 다중 착장</span>
+        </div>
+        <sc-for list="{{ garments }}" as="g" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:9px;padding:11px 12px;border:1px solid rgba(32,31,29,0.18);border-radius:4px;background:#f3f2f2">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="width:34px;height:44px;flex:none;border:1px solid rgba(32,31,29,0.16);background:repeating-conic-gradient(rgba(32,31,29,0.07) 0% 25%, transparent 0% 50%) 50% / 11px 11px"></span>
+              <div style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1">
+                <span style="font-family:var(--font-heading);font-weight:600;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ g.name }}</span>
+                <span style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#7d5411">{{ g.slot }} · 레이어 {{ g.layer }}</span>
+              </div>
+              <button type="button" onClick="{{ g.remove }}" style="flex:none;display:flex;align-items:center;justify-content:center;width:26px;height:26px;padding:0;border:1px solid rgba(32,31,29,0.18);border-radius:50%;background:transparent;color:#8a3a2a;font-size:12px;line-height:1;cursor:pointer" style-hover="background:rgba(138,58,42,0.08)">✕</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:11.5px;color:rgba(32,31,29,0.55);white-space:nowrap">반영도</span>
+              <input type="range" min="0" max="100" value="{{ g.fit }}" onChange="{{ g.setFit }}" style="flex:1;min-width:0">
+              <span style="font-size:11.5px;color:#7d5411;font-feature-settings:'tnum';width:34px;text-align:right">{{ g.fit }}%</span>
+            </div>
+          </div>
+        </sc-for>
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px">
+          <sc-for list="{{ addSlots }}" as="a" hint-placeholder-count="12">
+            <button type="button" onClick="{{ a.add }}" style="padding:8px 3px;border:1px dashed rgba(32,31,29,0.3);border-radius:999px;background:transparent;color:rgba(32,31,29,0.7);font-family:var(--font-body);font-size:11.5px;cursor:pointer" style-hover="background:rgba(32,31,29,0.05)">+ {{ a.label }}</button>
+          </sc-for>
+        </div>
+        <p style="margin:0;font-size:11.5px;line-height:1.5;color:rgba(32,31,29,0.5)">의류는 레이어 순서대로 겹쳐 입히고, 액세서리(시계·목걸이·반지 등)는 해당 신체 부위에 맞춰 배치합니다.</p>
+      </section>
+    </div>
+
+    <footer style="margin-top:auto;position:sticky;bottom:0;display:flex;flex-direction:column;gap:9px;padding:14px 22px 18px;background:#f8f4f4;border-top:1px solid rgba(32,31,29,0.16)">
+      <div style="display:flex;gap:7px">
+        <sc-for list="{{ fileActions }}" as="a" hint-placeholder-count="4">
+          <button type="button" class="btn btn-secondary" style="flex:1;padding:8px 4px;font-size:12px;border-radius:999px">{{ a }}</button>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <button type="button" class="btn btn-secondary" onClick="{{ preview }}" style="padding:11px;border-radius:999px">미리보기</button>
+        <button type="button" class="btn btn-primary" onClick="{{ render }}" style="padding:11px;border-radius:999px">착장 생성</button>
+      </div>
+      <p style="margin:0;font-size:11px;color:rgba(32,31,29,0.45);font-style:italic">이전 설정을 불러왔습니다.</p>
+    </footer>
+  </aside>
+
+  <main style="display:grid;grid-template-columns:minmax(300px,1fr) clamp(272px,29%,400px);grid-template-rows:minmax(0,1fr) max-content;min-width:0;background:#eae9e9">
+    <div style="grid-column:1;grid-row:1;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;padding:26px 8px 26px 34px">
+      <div style="position:relative;flex:0 1 auto;min-width:0;max-width:100%;max-height:100%;aspect-ratio:{{ canvasRatio }};width:{{ canvasWidth }};box-sizing:border-box;border:6px solid #f3f2f2;outline:1px solid rgba(32,31,29,0.16);background:#dedbd8;box-shadow:0 10px 30px rgba(32,31,29,0.10)">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:repeating-conic-gradient(rgba(32,31,29,0.055) 0% 25%, transparent 0% 50%) 50% / 22px 22px">
+          <span style="font-family:var(--font-heading);font-style:italic;font-size:15px;color:rgba(32,31,29,0.42);padding:0 12px;text-align:center">착장 결과가 여기 표시됩니다</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="grid-column:1;grid-row:2;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;padding:0 34px 18px;font-size:12px;color:rgba(32,31,29,0.5);font-feature-settings:'tnum'">
+      <span>{{ sizeLabel }}px</span>
+      <span style="width:1px;height:12px;background:rgba(32,31,29,0.2)"></span>
+      <span>캐릭터 1 · 가먼트 {{ garmentCount }}점</span>
+      <span style="width:1px;height:12px;background:rgba(32,31,29,0.2)"></span>
+      <span>시드 {{ seed }}</span>
+    </div>
+
+    <section style="grid-column:2;grid-row:1;align-self:start;justify-self:stretch;min-width:0;min-height:0;margin:22px 24px 0 12px;max-height:calc(100% - 22px);overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(32,31,29,0.2);border-radius:4px;background:rgba(248,244,244,0.82);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(32,31,29,0.12)">
+      <header style="display:flex;align-items:center;gap:12px;padding:0 13px;height:38px;border-bottom:1px solid rgba(32,31,29,0.14)">
+        <button type="button" onClick="{{ toggleConsole }}" style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;flex:none;padding:0;border:1px solid rgba(32,31,29,0.18);border-radius:50%;background:transparent;color:rgba(32,31,29,0.6);font-size:11px;font-family:var(--font-body);cursor:pointer">{{ consoleChevron }}</button>
+        <span style="font-family:var(--font-heading);font-weight:600;font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase">콘솔</span>
+        <span style="width:1px;height:15px;background:rgba(32,31,29,0.16)"></span>
+        <span style="font-size:11.5px;color:rgba(32,31,29,0.5);font-feature-settings:'tnum'">{{ logCount }}줄</span>
+        <span style="flex:1"></span>
+        <button type="button" onClick="{{ clearLogs }}" style="padding:3px 9px;border:1px solid rgba(32,31,29,0.18);border-radius:999px;background:transparent;color:rgba(32,31,29,0.65);font-size:11.5px;font-family:var(--font-body);cursor:pointer" style-hover="background:rgba(32,31,29,0.05)">비우기</button>
+      </header>
+
+      <div style="display:{{ consoleDisplay }};flex-direction:column;min-height:0">
+        <div style="padding:10px 13px;border-bottom:1px solid rgba(32,31,29,0.12);display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(32,31,29,0.5)"><span>내보내기 진행률</span><span style="color:#7d5411;font-feature-settings:'tnum'">{{ progress }}%</span></div>
+          <div style="height:3px;background:rgba(32,31,29,0.14)">
+            <div style="height:3px;width:{{ progress }}%;background:#b68235"></div>
+          </div>
+        </div>
+
+        <div style="padding:9px 13px;border-bottom:1px solid rgba(32,31,29,0.12);display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 14px;font-size:11.5px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace">
+          <span style="color:rgba(32,31,29,0.45)">selection</span><span style="overflow:hidden;text-overflow:ellipsis">{{ selName }}</span>
+          <span style="color:rgba(32,31,29,0.45)">bounds</span><span>{{ selBounds }}</span>
+          <span style="color:rgba(32,31,29,0.45)">fit</span><span>{{ selFit }}</span>
+        </div>
+
+        <div class="vt-scroll" style="flex:1;min-height:120px;max-height:300px;overflow-y:auto;padding:9px 13px;display:flex;flex-direction:column;gap:3px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:1.6">
+          <sc-for list="{{ logs }}" as="l" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:56px 46px minmax(0,1fr);gap:10px;color:{{ l.color }}">
+              <span style="color:rgba(32,31,29,0.38)">{{ l.time }}</span>
+              <span style="font-size:10px;letter-spacing:0.06em;text-transform:uppercase;padding-top:1px">{{ l.level }}</span>
+              <span>{{ l.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <form onSubmit="{{ submitCmd }}" style="display:flex;align-items:center;gap:8px;padding:9px 13px;border-top:1px solid rgba(32,31,29,0.14)">
+          <span style="color:#b68235;font-family:ui-monospace,monospace;font-size:12px">›</span>
+          <input value="{{ cmd }}" onChange="{{ setCmd }}" placeholder="help · seed 4821 · fit 80 · render" style="flex:1;min-width:0;border:0;background:transparent;color:#201f1d;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;outline:none">
+          <button type="submit" class="btn btn-primary" style="padding:3px 9px;font-size:11.5px;border-radius:999px">실행</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const ACCENT = '#7d5411', DIM = 'rgba(32,31,29,0.75)', LINE = 'rgba(32,31,29,0.2)';
+
+class Component extends DCLogic {
+  state = {
+    size: '1080 × 1350',
+    bgFit: 'Cover',
+    cssBg: '보케',
+    bgListOpen: false,
+    scale: 100,
+    seed: 4821,
+    progress: 100,
+    cmd: '',
+    consoleOpen: true,
+    garments: [
+      { id: 1, name: 'linen-shirt-ecru.png', slot: '상의', fit: 82 },
+      { id: 2, name: 'wool-trousers-charcoal.png', slot: '하의', fit: 74 },
+      { id: 3, name: 'trench-coat-camel.png', slot: '아웃터', fit: 66 },
+      { id: 4, name: 'watch-steel-38mm.png', slot: '시계', fit: 90 },
+      { id: 5, name: 'necklace-gold-chain.png', slot: '목걸이', fit: 88 }
+    ],
+    logs: [
+      { time: '00:00.12', level: 'info', text: '이전 설정을 불러왔습니다 (1080×1350).' },
+      { time: '00:00.55', level: 'info', text: '캐릭터 세그멘테이션 완료 · 키포인트 17개.' },
+      { time: '00:01.20', level: 'warn', text: '배경 이미지 없음 — 단색 스튜디오 배경으로 합성합니다.' },
+      { time: '00:02.44', level: 'info', text: '가먼트 워핑: 상의 → 하의 → 아웃터 (3점).' },
+      { time: '00:04.61', level: 'error', text: '아웃터 소매 폐색 추정 실패 — 반영도 66%로 완화.' },
+      { time: '00:05.38', level: 'info', text: '착장 합성 완료 · vtron-try-0412.png (3.1MB).' }
+    ]
+  };
+
+  log(level, text) {
+    const t = new Date();
+    const time = String(t.getMinutes() % 100).padStart(2, '0') + ':' + String(t.getSeconds()).padStart(2, '0') + '.' + String(Math.floor(t.getMilliseconds() / 10)).padStart(2, '0');
+    this.setState(s => ({ logs: s.logs.concat([{ time, level, text }]), consoleOpen: true }));
+  }
+
+  pickList(items, current, key, msg) {
+    return items.map(label => ({
+      label,
+      border: label === current ? '#b68235' : LINE,
+      color: label === current ? ACCENT : DIM,
+      pick: () => { this.setState({ [key]: label }); this.log('info', msg(label)); }
+    }));
+  }
+
+  runCmd(raw) {
+    const cmd = raw.trim();
+    if (!cmd) return;
+    this.log('info', '› ' + cmd);
+    const [head, arg] = cmd.split(/\s+/);
+    if (head === 'help') this.log('info', '명령: help · seed <n> · fit <0-100> · scale <n> · render · clear');
+    else if (head === 'seed' && arg) { this.setState({ seed: +arg }); this.log('info', `시드 ${+arg} 적용.`); }
+    else if (head === 'fit' && arg) {
+      const v = Math.max(0, Math.min(100, +arg));
+      this.setState(s => ({ garments: s.garments.map(g => ({ ...g, fit: v })) }));
+      this.log('info', `전체 가먼트 반영도 ${v}%.`);
+    } else if (head === 'scale' && arg) { this.setState({ scale: +arg }); this.log('info', `인물 크기 ${+arg}%.`); }
+    else if (head === 'render') this.log('info', '착장 렌더 큐에 추가 — 대기 1건.');
+    else if (head === 'clear') this.setState({ logs: [] });
+    else this.log('error', `알 수 없는 명령: ${head}`);
+    this.setState({ cmd: '' });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const [w, h] = s.size.split(' × ').map(Number);
+    const g = (a, b) => b ? g(b, a % b) : a, d = g(w, h);
+    const levelColor = { info: 'rgba(32,31,29,0.82)', warn: '#7d5411', error: '#8a3a2a' };
+    const top = s.garments[s.garments.length - 1];
+
+    return {
+      sizeLabel: s.size,
+      ratioLabel: (w / d) + ':' + (h / d),
+      exportLabel: s.size.replace(/ /g, '') + 'px',
+      canvasRatio: w + ' / ' + h,
+      canvasWidth: `min(100%, calc((100vh - 132px) * ${(w / h).toFixed(4)}))`,
+      w, h,
+      sizes: this.pickList(['720 × 1280', '1080 × 1920', '1080 × 1350', '1080 × 1080', '1280 × 720', '1920 × 1080'], s.size, 'size', v => `배경 크기 ${v}px 적용.`),
+      bgFits: this.pickList(['Cover', 'Contain', '반복'], s.bgFit, 'bgFit', v => `배경 맞춤: ${v}.`),
+      cssBackgrounds: this.pickList(['오로라', '선셋 글로우', '컬러 메시', '보케', '네온 그리드', '웨이브', '스포트라이트', '컬러 블롭', '더스크', '스타필드', '대각 스트라이프', '하프톤 도트', '라이트 빔', '필름 그레인'], s.cssBg, 'cssBg', v => `CSS 배경 «${v}» 적용.`),
+      cssBgLabel: s.cssBg || '없음',
+      clearCssBg: () => { this.setState({ cssBg: null }); this.log('warn', 'CSS 배경을 제거했습니다.'); },
+      toggleBgList: () => this.setState(p => ({ bgListOpen: !p.bgListOpen })),
+      bgChevron: s.bgListOpen ? '▾' : '▸',
+      bgListDisplay: s.bgListOpen ? 'flex' : 'none',
+      scale: s.scale,
+      setScale: e => this.setState({ scale: +e.target.value }),
+      garments: s.garments.map((it, i) => ({
+        ...it,
+        layer: i + 1,
+        setFit: e => {
+          const v = +e.target.value;
+          this.setState(p => ({ garments: p.garments.map(x => x.id === it.id ? { ...x, fit: v } : x) }));
+        },
+        remove: () => {
+          this.setState(p => ({ garments: p.garments.filter(x => x.id !== it.id) }));
+          this.log('warn', `가먼트 제거: ${it.name}`);
+        }
+      })),
+      garmentCount: s.garments.length,
+      addSlots: ['상의', '하의', '아웃터', '신발', '시계', '목걸이', '팔찌', '반지', '발찌', '안경', '가방', '모자'].map(label => ({
+        label,
+        add: () => {
+          const id = Date.now();
+          this.setState(p => ({ garments: p.garments.concat([{ id, name: `${label}-untitled-${p.garments.length + 1}.png`, slot: label, fit: 70 }]) }));
+          this.log('info', `가먼트 추가: ${label} 슬롯 · 레이어 ${s.garments.length + 1}.`);
+        }
+      })),
+      fileActions: ['내보내기', '가져오기', '초기화', 'Grid'],
+      seed: s.seed,
+      progress: s.progress,
+      selName: top ? top.name : 'character / layer.base',
+      selBounds: `x 0 · y 0 · ${w}×${h}`,
+      selFit: top ? `${top.slot} · ${top.fit}%` : '—',
+      preview: () => this.log('info', `미리보기 갱신 — 가먼트 ${s.garments.length}점 · 인물 ${s.scale}%.`),
+      render: () => { this.setState({ progress: 0 }); this.log('info', `착장 생성 시작 — ${s.size}px · seed ${s.seed}.`); },
+      noop: () => {},
+      cmd: s.cmd,
+      setCmd: e => this.setState({ cmd: e.target.value }),
+      submitCmd: e => { e.preventDefault(); this.runCmd(s.cmd); },
+      logs: s.logs.map(l => ({ ...l, color: levelColor[l.level] || DIM })),
+      logCount: s.logs.length,
+      clearLogs: () => this.setState({ logs: [] }),
+      toggleConsole: () => this.setState(p => ({ consoleOpen: !p.consoleOpen })),
+      consoleChevron: s.consoleOpen ? '▾' : '▸',
+      consoleDisplay: s.consoleOpen ? 'flex' : 'none'
+    };
+  }
+}
+</script>
+</body>
+</html>
