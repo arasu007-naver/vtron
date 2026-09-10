@@ -521,7 +521,7 @@ export default function Home() {
 
   return (
     <div 
-      className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 py-8 px-4 sm:px-6 lg:px-8"
+      className="min-h-full bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 py-8 px-4 sm:px-6 lg:px-8"
     >
       <div className="w-full max-w-7xl mx-auto space-y-8">
         <Banner />
@@ -534,7 +534,7 @@ export default function Home() {
         >
           <div className="flex items-center gap-2 flex-1 min-w-0">
             <Lightbulb className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 flex-shrink-0" />
-            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 leading-tight">
+            <h2 className="text-[32.4px] sm:text-[36px] font-semibold text-black dark:text-gray-100 leading-tight">
               Tips for successful try-on generations
             </h2>
           </div>
@@ -623,7 +623,7 @@ export default function Home() {
                       <div className="absolute top-3 left-3 right-3 z-10">
                         <div className="inline-flex items-center gap-2 bg-black/70 backdrop-blur-sm text-white px-3 py-2 rounded-full">
                           <UserRound className="h-4 w-4" />
-                          <p className="text-xs font-medium">Select a model image</p>
+                          <p className="text-[21.6px] font-medium">Select a model image</p>
                         </div>
                       </div>
                       
@@ -662,7 +662,7 @@ export default function Home() {
                             
                             {/* Swipe hint overlay */}
                             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <div className="bg-black/80 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-lg backdrop-blur-sm">
+                              <div className="bg-black/80 text-white px-4 py-2 rounded-full text-[21.6px] font-semibold shadow-lg backdrop-blur-sm">
                                 Tap to use • Swipe to browse
                               </div>
                             </div>
@@ -715,7 +715,7 @@ export default function Home() {
                       ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center">
                           <UserRound className="h-12 w-12 text-gray-400 mb-3" />
-                          <p className="text-gray-500 dark:text-gray-400 text-sm">
+                          <p className="text-black dark:text-gray-400 text-[25.2px]">
                             No examples available
                           </p>
                         </div>
@@ -794,7 +794,7 @@ export default function Home() {
                       <div className="absolute top-3 left-3 right-3 z-10">
                         <div className="inline-flex items-center gap-2 bg-black/70 backdrop-blur-sm text-white px-3 py-2 rounded-full">
                           <Shirt className="h-4 w-4" />
-                          <p className="text-xs font-medium">Select a garment image</p>
+                          <p className="text-[21.6px] font-medium">Select a garment image</p>
                         </div>
                       </div>
                       
@@ -833,7 +833,7 @@ export default function Home() {
                             
                             {/* Swipe hint overlay */}
                             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <div className="bg-black/80 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-lg backdrop-blur-sm">
+                              <div className="bg-black/80 text-white px-4 py-2 rounded-full text-[21.6px] font-semibold shadow-lg backdrop-blur-sm">
                                 Tap to use • Swipe to browse
                               </div>
                             </div>
@@ -886,7 +886,7 @@ export default function Home() {
                       ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center">
                           <Shirt className="h-12 w-12 text-gray-400 mb-3" />
-                          <p className="text-gray-500 dark:text-gray-400 text-sm">
+                          <p className="text-black dark:text-gray-400 text-[25.2px]">
                             No examples available
                           </p>
                         </div>
@@ -991,7 +991,7 @@ export default function Home() {
                   />
                   
                   <div className="relative">
-                    <label htmlFor="seed" className="block text-sm font-medium mb-1">
+                    <label htmlFor="seed" className="block text-[25.2px] font-medium mb-1">
                       Seed
                     </label>
                     <div className="flex gap-2">
@@ -1008,7 +1008,7 @@ export default function Home() {
                         whileTap={{ scale: 0.95 }}
                         type="button"
                         onClick={() => setSeed(Math.floor(Math.random() * 1000000))}
-                        className="px-3 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-md text-sm font-medium transition-colors cursor-pointer"
+                        className="px-3 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-md text-[25.2px] font-medium transition-colors cursor-pointer"
                         title="Generate random seed"
                       >
                         🎲
@@ -1039,18 +1039,18 @@ export default function Home() {
                   
                   {comparison && (
                     <div className="space-y-3 mt-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-600">
-                      <div className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <div className="text-[25.2px] font-medium text-black dark:text-gray-300 mb-2">
                         Select models to compare:
                       </div>
                       <div className="grid grid-cols-2 gap-3">
                         <div>
-                          <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">
+                          <label className="block text-[21.6px] font-medium text-black dark:text-gray-400 mb-1">
                             Model 1
                           </label>
                           <select
                             value={comparisonModel1}
                             onChange={(e) => setComparisonModel1(e.target.value)}
-                            className="w-full px-2 py-1 text-sm bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded focus:outline-none focus:ring-1 focus:ring-gray-500"
+                            className="w-full px-2 py-1 text-[25.2px] bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded focus:outline-none focus:ring-1 focus:ring-gray-500"
                           >
                             <option value="tryon-v1.5">v1.5 (Stable)</option>
                             <option value="tryon-v1.6">v1.6 (Latest)</option>
@@ -1058,13 +1058,13 @@ export default function Home() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">
+                          <label className="block text-[21.6px] font-medium text-black dark:text-gray-400 mb-1">
                             Model 2
                           </label>
                           <select
                             value={comparisonModel2}
                             onChange={(e) => setComparisonModel2(e.target.value)}
-                            className="w-full px-2 py-1 text-sm bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded focus:outline-none focus:ring-1 focus:ring-gray-500"
+                            className="w-full px-2 py-1 text-[25.2px] bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded focus:outline-none focus:ring-1 focus:ring-gray-500"
                           >
                             <option value="tryon-v1.5">v1.5</option>
                             <option value="tryon-v1.6">v1.6 (Latest)</option>
@@ -1081,7 +1081,7 @@ export default function Home() {
                   type="button"
                   variant="ghost"
                   onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
-                  className="w-full text-sm flex justify-center items-center gap-1"
+                  className="w-full text-[25.2px] flex justify-center items-center gap-1"
                 >
                   <Settings className="h-4 w-4" />
                   {showAdvancedSettings ? 'Hide' : 'Show'} Advanced Settings
@@ -1092,7 +1092,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="p-3 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm rounded-md border border-gray-300 dark:border-gray-600"
+                    className="p-3 bg-gray-100 dark:bg-gray-800 text-black dark:text-gray-100 text-[25.2px] rounded-md border border-gray-300 dark:border-gray-600"
                   >
                     <div className="flex items-start gap-2">
                       <X className="h-5 w-5 flex-shrink-0 mt-0.5" />
@@ -1125,7 +1125,7 @@ export default function Home() {
                     {resultGallery.length > 1 && !isLoading && (
                       <div className="flex items-center gap-2">
                         {isComparisonMode && (
-                          <span className="text-sm text-gray-500 dark:text-gray-400">
+                          <span className="text-[25.2px] text-black dark:text-gray-400">
                             Select 2 results to compare ({selectedResults.length}/2)
                           </span>
                         )}
@@ -1165,7 +1165,7 @@ export default function Home() {
                           <div className="h-16 w-16 rounded-full border-4 border-gray-200 dark:border-gray-700 border-t-gray-900 dark:border-t-gray-100 animate-spin" />
                           <Sparkles className="h-6 w-6 text-gray-600 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                         </div>
-                        <p className="text-gray-500 dark:text-gray-400 text-sm animate-pulse">
+                        <p className="text-black dark:text-gray-400 text-[25.2px] animate-pulse">
                           Generating your virtual try-on...
                         </p>
                       </motion.div>
@@ -1221,8 +1221,8 @@ export default function Home() {
                               {isComparisonMode && (
                                 <div className="absolute top-2 left-2 z-10">
                                   <div className={cn(
-                                    "w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold",
-                                    isSelected ? "bg-blue-500 border-blue-500 text-white" : "bg-white/90 border-gray-400 text-gray-600"
+                                    "w-6 h-6 rounded-full border-2 flex items-center justify-center text-[21.6px] font-bold",
+                                    isSelected ? "bg-blue-500 border-blue-500 text-white" : "bg-white/90 border-gray-400 text-black"
                                   )}>
                                     {isSelected ? selectedResults.indexOf(index) + 1 : ""}
                                   </div>
@@ -1232,7 +1232,7 @@ export default function Home() {
                               {/* Hover overlay */}
                               {!isComparisonMode && (
                                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                  <div className="bg-black/70 text-white py-2 px-4 rounded-full text-sm flex items-center gap-2">
+                                  <div className="bg-black/70 text-white py-2 px-4 rounded-full text-[25.2px] flex items-center gap-2">
                                     <Zap className="h-4 w-4" />
                                     Click to view full size
                                   </div>
@@ -1242,7 +1242,7 @@ export default function Home() {
                               {/* Comparison mode overlay */}
                               {isComparisonMode && canSelect && (
                                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                  <div className="bg-blue-500/90 text-white py-2 px-4 rounded-full text-sm flex items-center gap-2">
+                                  <div className="bg-blue-500/90 text-white py-2 px-4 rounded-full text-[25.2px] flex items-center gap-2">
                                     ⚖️
                                     {isSelected ? 'Deselect' : 'Select for comparison'}
                                   </div>
@@ -1292,11 +1292,11 @@ export default function Home() {
                 </motion.button>
 
                 {/* Image counter */}
-                <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm">
+                <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-4 py-2 rounded-full text-[25.2px] backdrop-blur-sm">
                   <div className="flex items-center gap-2">
                     <span>{currentResultIndex + 1} of {resultGallery.length}</span>
                     {resultGallery.length > 1 && (
-                      <span className="text-xs opacity-75">• Use ← → keys</span>
+                      <span className="text-[21.6px] opacity-75">• Use ← → keys</span>
                     )}
                   </div>
                 </div>
@@ -1363,7 +1363,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="absolute bottom-4 right-4 z-10 bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-full text-sm flex items-center gap-2 backdrop-blur-sm transition-colors cursor-pointer"
+                  className="absolute bottom-4 right-4 z-10 bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-full text-[25.2px] flex items-center gap-2 backdrop-blur-sm transition-colors cursor-pointer"
                   onClick={(e) => e.stopPropagation()}
                   style={{ marginRight: '1rem' }}
                 >
@@ -1426,12 +1426,12 @@ export default function Home() {
                 </motion.button>
 
                 {/* Title and Status Info */}
-                <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm">
+                <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-4 py-2 rounded-full text-[25.2px] backdrop-blur-sm">
                   <div className="flex items-center gap-3">
                     <span>⚖️ Compare Results</span>
-                    <span className="text-xs opacity-75">• Drag to reveal or use auto</span>
+                    <span className="text-[21.6px] opacity-75">• Drag to reveal or use auto</span>
                     {isAnimating && (
-                      <div className="text-xs opacity-75 flex items-center gap-1">
+                      <div className="text-[21.6px] opacity-75 flex items-center gap-1">
                         <span>Moving:</span>
                         <motion.span
                           animate={{ opacity: [0.5, 1, 0.5] }}
@@ -1439,7 +1439,7 @@ export default function Home() {
                         >
                           {animationDirection === 'right' ? '→' : '←'}
                         </motion.span>
-                        <span className="text-yellow-300">
+                        <span className="text-black">
                           {Math.round(sliderPosition)}%
                         </span>
                       </div>
@@ -1449,7 +1449,7 @@ export default function Home() {
 
                 {/* Animation Control Buttons */}
                 <div 
-                  className="absolute bottom-4 left-4 z-10 bg-black/70 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm"
+                  className="absolute bottom-4 left-4 z-10 bg-black/70 text-white px-4 py-2 rounded-full text-[25.2px] backdrop-blur-sm"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="flex items-center gap-2">
@@ -1464,7 +1464,7 @@ export default function Home() {
                           startSliderAnimation();
                         }
                       }}
-                      className={`px-3 py-1 rounded text-xs transition-colors cursor-pointer ${
+                      className={`px-3 py-1 rounded text-[21.6px] transition-colors cursor-pointer ${
                         isAnimating 
                           ? 'bg-red-500/80 hover:bg-red-500' 
                           : 'bg-green-500/80 hover:bg-green-500'
@@ -1479,7 +1479,7 @@ export default function Home() {
                         e.stopPropagation();
                         resetSliderPosition();
                       }}
-                      className="px-3 py-1 bg-blue-500/80 hover:bg-blue-500 rounded text-xs transition-colors cursor-pointer"
+                      className="px-3 py-1 bg-blue-500/80 hover:bg-blue-500 rounded text-[21.6px] transition-colors cursor-pointer"
                     >
                       🔄 Center
                     </motion.button>
@@ -1523,10 +1523,10 @@ export default function Home() {
                      />
                      
                      {/* Model Labels */}
-                     <div className="absolute top-1/2 left-3 -translate-y-1/2 z-20 bg-black/80 text-white px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
+                     <div className="absolute top-1/2 left-3 -translate-y-1/2 z-20 bg-black/80 text-white px-3 py-1 rounded-full text-[21.6px] font-semibold backdrop-blur-sm">
                        {comparisonModel1.replace('tryon-', '')}
                      </div>
-                     <div className="absolute top-1/2 right-3 -translate-y-1/2 z-20 bg-black/80 text-white px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
+                     <div className="absolute top-1/2 right-3 -translate-y-1/2 z-20 bg-black/80 text-white px-3 py-1 rounded-full text-[21.6px] font-semibold backdrop-blur-sm">
                        {comparisonModel2.replace('tryon-', '')}
                      </div>
                    </div>

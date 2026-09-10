@@ -78,10 +78,10 @@ export default function Slider({
     <div className={cn('space-y-2', className)}>
       {label && (
         <div className="flex justify-between">
-          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label className="text-[25.2px] font-medium text-black dark:text-gray-300">
             {label}
           </label>
-          <span className="text-sm text-gray-500 dark:text-gray-400">
+          <span className="text-[25.2px] text-black dark:text-gray-400">
             {value}
           </span>
         </div>

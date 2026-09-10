@@ -53,10 +53,10 @@ export default function GarmentSection({
   return (
     <section className="flex flex-col gap-3">
       <div className="flex items-baseline justify-between gap-2">
-        <h6 className="m-0 font-[family-name:var(--font-heading)] font-semibold text-[11px] tracking-[0.14em] uppercase text-[rgba(32,31,29,0.55)]">
+        <h6 className="m-0 font-[family-name:var(--font-heading)] font-semibold text-[19.8px] tracking-[0.14em] uppercase text-black">
           4 · Garments & Accessories
         </h6>
-        <span className="text-[11.5px] text-[rgba(32,31,29,0.6)] [font-feature-settings:'tnum'] font-medium">
+        <span className="text-[20.7px] text-black [font-feature-settings:'tnum'] font-medium">
           {garments.length}점 등록됨 · 다중 착장
         </span>
       </div>
@@ -72,7 +72,7 @@ export default function GarmentSection({
       {/* 등록된 가먼트 카드 리스트 */}
       <div className="flex flex-col gap-2.5">
         {garments.length === 0 ? (
-          <div className="p-4 border border-dashed border-[rgba(32,31,29,0.2)] rounded text-center text-[12px] text-[rgba(32,31,29,0.5)] bg-white">
+          <div className="p-4 border border-dashed border-[rgba(32,31,29,0.2)] rounded text-center text-[21.6px] text-black bg-white">
             아래 버튼을 눌러 착장할 의류 또는 액세서리를 추가하세요.
           </div>
         ) : (
@@ -103,13 +103,13 @@ export default function GarmentSection({
 
                 {/* 가먼트 메타 정보 */}
                 <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                  <span className="font-[family-name:var(--font-heading)] font-semibold text-[13.5px] truncate text-[#201f1d]">
+                  <span className="font-[family-name:var(--font-heading)] font-semibold text-[24.3px] truncate text-black">
                     {g.name}
                   </span>
-                  <div className="flex items-center gap-1.5 text-[11px] tracking-[0.05em] uppercase text-[var(--color-accent-700)]">
+                  <div className="flex items-center gap-1.5 text-[19.8px] tracking-[0.05em] uppercase text-black">
                     <span className="font-medium">{g.slot}</span>
-                    <span className="text-[rgba(32,31,29,0.25)]">·</span>
-                    <span className="text-[rgba(32,31,29,0.55)]">
+                    <span className="text-black">·</span>
+                    <span className="text-black">
                       레이어 {idx + 1}
                     </span>
                   </div>
@@ -138,7 +138,7 @@ export default function GarmentSection({
 
               {/* 반영도 (Fit) 조절 슬라이더 */}
               <div className="flex items-center gap-2 pt-1 border-t border-[rgba(32,31,29,0.08)]">
-                <span className="text-[11.5px] text-[rgba(32,31,29,0.6)] whitespace-nowrap">
+                <span className="text-[20.7px] text-black whitespace-nowrap">
                   반영도
                 </span>
                 <input
@@ -149,7 +149,7 @@ export default function GarmentSection({
                   onChange={(e) => onUpdateFit(g.id, Number(e.target.value))}
                   className="flex-1 min-w-0 h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                 />
-                <span className="text-[11.5px] text-[var(--color-accent-700)] font-semibold [font-feature-settings:'tnum'] w-8 text-right">
+                <span className="text-[20.7px] text-black font-semibold [font-feature-settings:'tnum'] w-8 text-right">
                   {g.fit}%
                 </span>
               </div>
@@ -165,7 +165,7 @@ export default function GarmentSection({
             key={slot}
             type="button"
             onClick={() => onAddGarment(slot)}
-            className="py-1.5 px-1 border border-dashed border-[rgba(32,31,29,0.3)] rounded-full bg-white text-[rgba(32,31,29,0.75)] font-[family-name:var(--font-body)] text-[11.5px] hover:bg-[rgba(32,31,29,0.05)] hover:border-[#b68235] hover:text-[var(--color-accent-700)] transition-all cursor-pointer flex items-center justify-center gap-0.5 truncate"
+            className="py-1.5 px-1 border border-dashed border-[rgba(32,31,29,0.3)] rounded-full bg-white text-black font-[family-name:var(--font-body)] text-[20.7px] hover:bg-[rgba(32,31,29,0.05)] hover:border-[#b68235] hover:text-black transition-all cursor-pointer flex items-center justify-center gap-0.5 truncate"
           >
             <Plus className="w-2.5 h-2.5" />
             <span>{slot}</span>
@@ -173,7 +173,7 @@ export default function GarmentSection({
         ))}
       </div>
 
-      <p className="m-0 text-[11.5px] leading-relaxed text-[rgba(32,31,29,0.5)]">
+      <p className="m-0 text-[20.7px] leading-relaxed text-black">
         의류는 레이어 순서대로 겹쳐 입히고, 액세서리(시계·목걸이·반지 등)는 신체 부위에 맞춰 정밀 배치합니다.
       </p>
     </section>

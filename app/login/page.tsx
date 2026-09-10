@@ -54,14 +54,14 @@ function LoginForm() {
     <section className="rounded-2xl border border-[var(--color-divider)] bg-[var(--color-panel)] shadow-[0_10px_36px_rgba(32,31,29,0.08)] p-8">
       {/* 브랜드 헤더 */}
       <header className="flex flex-col gap-2 text-center">
-        <div className="font-[family-name:var(--font-heading)] font-semibold text-[11px] tracking-[0.18em] uppercase text-[var(--color-accent-700)] flex items-center justify-center gap-1.5">
+        <div className="font-[family-name:var(--font-heading)] font-semibold text-[19.8px] tracking-[0.18em] uppercase text-black flex items-center justify-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent)]" />
           <span>VTON STUDIO</span>
         </div>
-        <h1 className="font-[family-name:var(--font-heading)] font-normal text-[32px] leading-tight tracking-[-0.015em] m-0 text-[#201f1d]">
+        <h1 className="font-[family-name:var(--font-heading)] font-normal text-[57.6px] leading-tight tracking-[-0.015em] m-0 text-black">
           로그인
         </h1>
-        <p className="m-0 text-[12.5px] text-[rgba(32,31,29,0.6)]">
+        <p className="m-0 text-[22.5px] text-black">
           가상 피팅 스튜디오를 이용하려면 계정으로 로그인하세요.
         </p>
       </header>
@@ -69,17 +69,17 @@ function LoginForm() {
       {isConfigError ? (
         <p
           role="alert"
-          className="mt-7 m-0 flex items-start gap-1.5 rounded-md border border-[rgba(138,58,42,0.28)] bg-[rgba(138,58,42,0.07)] px-3 py-2.5 text-[12px] leading-relaxed text-[var(--color-danger)]"
+          className="mt-7 m-0 flex items-start gap-1.5 rounded-md border border-[rgba(138,58,42,0.28)] bg-[rgba(138,58,42,0.07)] px-3 py-2.5 text-[21.6px] leading-relaxed text-black"
         >
           <AlertCircle className="w-3.5 h-3.5 mt-[2px] flex-none" />
           <span>
             Supabase 환경 변수가 설정되지 않아 로그인할 수 없습니다.
             <br />
-            <code className="font-[family-name:var(--font-mono)] text-[11px]">
+            <code className="font-[family-name:var(--font-mono)] text-[19.8px]">
               NEXT_PUBLIC_SUPABASE_URL
             </code>
             {" 과 "}
-            <code className="font-[family-name:var(--font-mono)] text-[11px]">
+            <code className="font-[family-name:var(--font-mono)] text-[19.8px]">
               NEXT_PUBLIC_SUPABASE_ANON_KEY
             </code>
             {" 를 .env.local 에 지정한 뒤 서버를 다시 시작하세요."}
@@ -91,7 +91,7 @@ function LoginForm() {
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="email"
-              className="text-[11.5px] font-semibold tracking-[0.06em] uppercase text-[rgba(32,31,29,0.62)]"
+              className="text-[20.7px] font-semibold tracking-[0.06em] uppercase text-black"
             >
               이메일
             </label>
@@ -106,7 +106,7 @@ function LoginForm() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               disabled={isSubmitting}
-              className="input w-full py-2.5 text-[13.5px] disabled:opacity-60"
+              className="input w-full py-2.5 text-[24.3px] disabled:opacity-60"
             />
           </div>
 
@@ -114,7 +114,7 @@ function LoginForm() {
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="password"
-              className="text-[11.5px] font-semibold tracking-[0.06em] uppercase text-[rgba(32,31,29,0.62)]"
+              className="text-[20.7px] font-semibold tracking-[0.06em] uppercase text-black"
             >
               비밀번호
             </label>
@@ -129,13 +129,13 @@ function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 disabled={isSubmitting}
-                className="input w-full py-2.5 pr-10 text-[13.5px] disabled:opacity-60"
+                className="input w-full py-2.5 pr-10 text-[24.3px] disabled:opacity-60"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword((v) => !v)}
                 aria-label={showPassword ? "비밀번호 숨기기" : "비밀번호 표시"}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 rounded text-[rgba(32,31,29,0.45)] hover:text-[var(--color-accent-700)] transition-colors"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 rounded text-black hover:text-black transition-colors"
               >
                 {showPassword ? (
                   <EyeOff className="w-4 h-4" />
@@ -150,7 +150,7 @@ function LoginForm() {
           {error && (
             <p
               role="alert"
-              className="m-0 flex items-start gap-1.5 rounded-md border border-[rgba(138,58,42,0.28)] bg-[rgba(138,58,42,0.07)] px-3 py-2 text-[12px] text-[var(--color-danger)]"
+              className="m-0 flex items-start gap-1.5 rounded-md border border-[rgba(138,58,42,0.28)] bg-[rgba(138,58,42,0.07)] px-3 py-2 text-[21.6px] text-black"
             >
               <AlertCircle className="w-3.5 h-3.5 mt-[1px] flex-none" />
               <span>{error}</span>
@@ -160,7 +160,7 @@ function LoginForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="btn btn-primary w-full py-3 text-[14px] rounded-full shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="btn btn-primary w-full py-3 text-[25.2px] rounded-full shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             <LogIn className="w-4 h-4" />
             <span>{isSubmitting ? "로그인 중..." : "로그인"}</span>
@@ -184,7 +184,7 @@ export default function LoginPage() {
           <LoginForm />
         </Suspense>
 
-        <p className="mt-4 m-0 text-center text-[11px] italic text-[rgba(32,31,29,0.45)]">
+        <p className="mt-4 m-0 text-center text-[19.8px] italic text-black">
           Supabase Auth 로 보호되는 세션
         </p>
       </main>

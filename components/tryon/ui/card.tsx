@@ -51,7 +51,7 @@ interface CardTitleProps {
 
 export function CardTitle({ children, className }: CardTitleProps) {
   return (
-    <h3 className={cn('text-xl font-semibold leading-none tracking-tight', className)}>
+    <h3 className={cn('text-[36px] font-semibold leading-none tracking-tight', className)}>
       {children}
     </h3>
   );
@@ -64,7 +64,7 @@ interface CardDescriptionProps {
 
 export function CardDescription({ children, className }: CardDescriptionProps) {
   return (
-    <p className={cn('text-sm text-gray-500 dark:text-gray-400', className)}>
+    <p className={cn('text-[25.2px] text-gray-500 dark:text-gray-400', className)}>
       {children}
     </p>
   );

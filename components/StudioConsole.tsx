@@ -43,12 +43,12 @@ export default function StudioConsole({
   const getLevelColor = (level: LogEntry["level"]) => {
     switch (level) {
       case "warn":
-        return "text-[var(--color-accent-700)]";
+        return "text-black";
       case "error":
-        return "text-[var(--color-danger)]";
+        return "text-black";
       case "info":
       default:
-        return "text-[rgba(32,31,29,0.85)]";
+        return "text-black";
     }
   };
 
@@ -63,12 +63,12 @@ export default function StudioConsole({
         >
           {isOpen ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
         </button>
-        <span className="font-[family-name:var(--font-heading)] font-semibold text-[12px] tracking-[0.12em] uppercase text-[#201f1d] flex items-center gap-1">
+        <span className="font-[family-name:var(--font-heading)] font-semibold text-[21.6px] tracking-[0.12em] uppercase text-black flex items-center gap-1">
           <Terminal className="w-3.5 h-3.5 text-[var(--color-accent-700)]" />
           <span>콘솔 로그</span>
         </span>
         <span className="w-[1px] h-3.5 bg-[rgba(32,31,29,0.16)]" />
-        <span className="text-[11px] text-[rgba(32,31,29,0.5)] [font-feature-settings:'tnum']">
+        <span className="text-[19.8px] text-black [font-feature-settings:'tnum']">
           {logs.length}줄
         </span>
         <span className="flex-1" />
@@ -76,7 +76,7 @@ export default function StudioConsole({
           type="button"
           onClick={onClearLogs}
           title="로그 비우기"
-          className="p-1 px-2 border border-[rgba(32,31,29,0.18)] rounded-full text-[11px] text-[rgba(32,31,29,0.65)] hover:bg-black/5 flex items-center gap-1 cursor-pointer"
+          className="p-1 px-2 border border-[rgba(32,31,29,0.18)] rounded-full text-[19.8px] text-black hover:bg-black/5 flex items-center gap-1 cursor-pointer"
         >
           <Trash2 className="w-2.5 h-2.5" />
           <span>비우기</span>
@@ -87,9 +87,9 @@ export default function StudioConsole({
         <div className="flex flex-col min-h-0">
           {/* 진행률 바 */}
           <div className="p-2.5 px-3 border-b border-[rgba(32,31,29,0.12)] flex flex-col gap-1 bg-white/40">
-            <div className="flex justify-between text-[10.5px] tracking-[0.1em] uppercase text-[rgba(32,31,29,0.5)]">
+            <div className="flex justify-between text-[18.9px] tracking-[0.1em] uppercase text-black">
               <span>진행률</span>
-              <span className="text-[var(--color-accent-700)] font-semibold [font-feature-settings:'tnum']">
+              <span className="text-black font-semibold [font-feature-settings:'tnum']">
                 {progress}%
               </span>
             </div>
@@ -102,22 +102,22 @@ export default function StudioConsole({
           </div>
 
           {/* 선택 영역 상태 */}
-          <div className="p-2 px-3 border-b border-[rgba(32,31,29,0.12)] grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-0.5 text-[11px] font-mono bg-white/30">
-            <span className="text-[rgba(32,31,29,0.45)]">target</span>
-            <span className="truncate text-[#201f1d]">{selName}</span>
-            <span className="text-[rgba(32,31,29,0.45)]">bounds</span>
-            <span className="text-[#201f1d]">{selBounds}</span>
-            <span className="text-[rgba(32,31,29,0.45)]">fit</span>
-            <span className="text-[#201f1d]">{selFit}</span>
+          <div className="p-2 px-3 border-b border-[rgba(32,31,29,0.12)] grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-0.5 text-[19.8px] font-mono bg-white/30">
+            <span className="text-black">target</span>
+            <span className="truncate text-black">{selName}</span>
+            <span className="text-black">bounds</span>
+            <span className="text-black">{selBounds}</span>
+            <span className="text-black">fit</span>
+            <span className="text-black">{selFit}</span>
           </div>
 
           {/* 로그 리스트 */}
           <div
             ref={logContainerRef}
-            className="vt-scroll min-h-[120px] max-h-[220px] overflow-y-auto p-2.5 px-3 flex flex-col gap-1 font-mono text-[11px] leading-relaxed bg-[#f8f4f4]"
+            className="vt-scroll min-h-[120px] max-h-[220px] overflow-y-auto p-2.5 px-3 flex flex-col gap-1 font-mono text-[19.8px] leading-relaxed bg-[#f8f4f4]"
           >
             {logs.length === 0 ? (
-              <span className="text-[rgba(32,31,29,0.35)] italic">
+              <span className="text-black italic">
                 기록된 콘솔 로그가 없습니다.
               </span>
             ) : (
@@ -128,8 +128,8 @@ export default function StudioConsole({
                     l.level
                   )}`}
                 >
-                  <span className="text-[rgba(32,31,29,0.38)]">{l.time}</span>
-                  <span className="text-[9.5px] uppercase font-bold tracking-wider pt-0.5">
+                  <span className="text-black">{l.time}</span>
+                  <span className="text-[17.1px] uppercase font-bold tracking-wider pt-0.5">
                     {l.level}
                   </span>
                   <span className="break-all">{l.text}</span>
@@ -143,7 +143,7 @@ export default function StudioConsole({
             onSubmit={handleSubmit}
             className="flex items-center gap-1.5 p-2 px-2.5 border-t border-[rgba(32,31,29,0.14)] bg-white"
           >
-            <span className="text-[var(--color-accent)] font-mono text-[12px] font-bold">
+            <span className="text-black font-mono text-[21.6px] font-bold">
               ›
             </span>
             <input
@@ -151,11 +151,11 @@ export default function StudioConsole({
               value={cmd}
               onChange={(e) => setCmd(e.target.value)}
               placeholder="help · seed 4821 · fit 80 · render"
-              className="flex-1 min-w-0 border-0 bg-transparent text-[#201f1d] font-mono text-[11px] outline-none"
+              className="flex-1 min-w-0 border-0 bg-transparent text-black font-mono text-[19.8px] outline-none"
             />
             <button
               type="submit"
-              className="btn btn-primary p-1 px-2.5 text-[10.5px] rounded-full flex items-center gap-1"
+              className="btn btn-primary p-1 px-2.5 text-[18.9px] rounded-full flex items-center gap-1"
             >
               <Send className="w-2.5 h-2.5" />
               <span>실행</span>

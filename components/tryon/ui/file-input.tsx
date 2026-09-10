@@ -81,8 +81,8 @@ export default function FileInput({
       <div className="flex flex-col items-center gap-1 text-center">
         <Upload className="h-6 w-6 text-gray-400" />
         <div className="flex flex-col items-center gap-0.5">
-          <span className="text-xs font-medium">{label}</span>
-          <span className="text-xs text-gray-500">
+          <span className="text-[21.6px] font-medium">{label}</span>
+          <span className="text-[21.6px] text-black">
             Drag and drop here or click to browse
           </span>
         </div>

@@ -75,7 +75,7 @@ export default function Banner() {
           </motion.div>
           <div className="text-center sm:text-left">
             <motion.h1 
-              className="text-4xl text-white m-0 font-sans font-bold"
+              className="text-[64.8px] text-white m-0 font-sans font-bold"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -83,7 +83,7 @@ export default function Banner() {
               FASHN AI
             </motion.h1>
             <motion.span 
-              className="text-lg text-gray-300"
+              className="text-[32.4px] text-black"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -107,10 +107,10 @@ export default function Banner() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-white">Virtual Try-On Demo</h2>
+                <h2 className="text-[36px] sm:text-[43.2px] font-bold text-white">Virtual Try-On Demo</h2>
               </div>
-              <p className="text-sm sm:text-base text-white/80 leading-relaxed">
-                Experience <span className="text-gray-300 font-semibold">FASHN AI&apos;s</span> virtual try-on technology. 
+              <p className="text-[25.2px] sm:text-[28.8px] text-white/80 leading-relaxed">
+                Experience <span className="text-black font-semibold">FASHN AI&apos;s</span> virtual try-on technology. 
                 Upload your model and garment images to see stunning, realistic results in seconds.
               </p>
             </div>
@@ -131,7 +131,7 @@ export default function Banner() {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "flex items-center gap-1.5 rounded-md px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2",
+                "flex items-center gap-1.5 rounded-md px-2 sm:px-3 py-1.5 sm:py-2 text-[21.6px] sm:text-[25.2px] font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2",
                 link.color
               )}
               variants={FADE_IN_ANIMATION_VARIANTS}

@@ -29,10 +29,10 @@ export default function ProjectHistoryModal({
         {/* 헤더 */}
         <header className="flex items-center justify-between p-4 px-5 border-b border-[var(--color-divider)] bg-[var(--color-panel)]">
           <div className="flex flex-col">
-            <h3 className="font-[family-name:var(--font-heading)] font-semibold text-[18px] m-0 text-[#201f1d]">
+            <h3 className="font-[family-name:var(--font-heading)] font-semibold text-[32.4px] m-0 text-black">
               저장된 VTON 세션 목록
             </h3>
-            <span className="text-[12px] text-[rgba(32,31,29,0.5)]">
+            <span className="text-[21.6px] text-black">
               Supabase DB에 기록된 작업 세션입니다.
             </span>
           </div>
@@ -48,12 +48,12 @@ export default function ProjectHistoryModal({
         {/* 바디 리스트 */}
         <div className="vt-scroll flex-1 overflow-y-auto p-4 flex flex-col gap-2.5">
           {loading ? (
-            <div className="py-12 flex flex-col items-center justify-center gap-2 text-[rgba(32,31,29,0.5)]">
+            <div className="py-12 flex flex-col items-center justify-center gap-2 text-black">
               <div className="w-6 h-6 border-2 border-amber-600 border-t-transparent rounded-full animate-spin" />
-              <span className="text-[12px]">세션 불러오는 중...</span>
+              <span className="text-[21.6px]">세션 불러오는 중...</span>
             </div>
           ) : projects.length === 0 ? (
-            <div className="py-12 text-center text-[rgba(32,31,29,0.45)] text-[13px]">
+            <div className="py-12 text-center text-black text-[23.4px]">
               저장된 이전 세션이 없습니다.
             </div>
           ) : (
@@ -64,14 +64,14 @@ export default function ProjectHistoryModal({
               >
                 <div className="flex flex-col gap-1 min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold text-[14px] text-[#201f1d] truncate">
+                    <span className="font-semibold text-[25.2px] text-black truncate">
                       {p.title || "Untitled Session"}
                     </span>
-                    <span className="text-[10.5px] px-2 py-0.5 rounded-full bg-amber-100 text-[var(--color-accent-800)] font-medium">
+                    <span className="text-[18.9px] px-2 py-0.5 rounded-full bg-amber-100 text-black font-medium">
                       {p.size_label}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 text-[11.5px] text-[rgba(32,31,29,0.5)]">
+                  <div className="flex items-center gap-3 text-[20.7px] text-black">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
                       <span>{p.created_at?.slice(0, 10) || "최근"}</span>
@@ -87,7 +87,7 @@ export default function ProjectHistoryModal({
                   <button
                     type="button"
                     onClick={() => onSelectProject(p)}
-                    className="btn btn-primary py-1 px-3 text-[12px] rounded-full flex items-center gap-1"
+                    className="btn btn-primary py-1 px-3 text-[21.6px] rounded-full flex items-center gap-1"
                   >
                     <span>열기</span>
                     <ArrowRight className="w-3 h-3" />

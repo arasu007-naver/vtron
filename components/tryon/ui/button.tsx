@@ -22,15 +22,15 @@ export default function Button({
   
   const variantStyles = {
     primary: "bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200 border border-transparent",
-    secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 border border-transparent",
+    secondary: "bg-gray-100 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 border border-transparent",
     outline: "bg-transparent border border-gray-300 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800",
     ghost: "bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 border border-transparent",
   };
   
   const sizeStyles = {
-    sm: "text-xs px-3 py-1.5 h-8",
-    md: "text-sm px-4 py-2 h-10",
-    lg: "text-base px-6 py-3 h-12",
+    sm: "text-[21.6px] px-3 py-1.5",
+    md: "text-[25.2px] px-4 py-2",
+    lg: "text-[28.8px] px-6 py-3",
   };
 
   return (

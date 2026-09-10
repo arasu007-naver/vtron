@@ -52,7 +52,7 @@ export default function RadioGroup({
   return (
     <div className={cn('space-y-2', className)}>
       {label && (
-        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label className="text-[25.2px] font-medium text-black dark:text-gray-300">
           {label}
         </label>
       )}
@@ -100,7 +100,7 @@ export default function RadioGroup({
                   )}
                 </motion.div>
               </div>
-              <span className="text-sm">{option.label}</span>
+              <span className="text-[25.2px]">{option.label}</span>
             </motion.label>
           ) : (
             <motion.div
@@ -146,9 +146,9 @@ export default function RadioGroup({
                   </motion.div>
                 </div>
                 <div className="grid gap-1">
-                  <div className="text-sm font-medium">{option.label}</div>
+                  <div className="text-[25.2px] font-medium">{option.label}</div>
                   {option.description && (
-                    <div className="text-xs text-gray-500 dark:text-gray-400">{option.description}</div>
+                    <div className="text-[21.6px] text-black dark:text-gray-400">{option.description}</div>
                   )}
                 </div>
               </div>

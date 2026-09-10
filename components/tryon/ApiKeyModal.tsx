@@ -59,7 +59,7 @@ export default function ApiKeyModal({ isOpen, onClose, onSave }: ApiKeyModalProp
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Key className="h-5 w-5 text-gray-600" />
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                <h2 className="text-[36px] font-semibold text-black dark:text-gray-100">
                   Enter FASHN API Key
                 </h2>
               </div>
@@ -67,19 +67,19 @@ export default function ApiKeyModal({ isOpen, onClose, onSave }: ApiKeyModalProp
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={handleCancel}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                className="text-black hover:text-black dark:hover:text-gray-300"
               >
                 <X className="h-5 w-5" />
               </motion.button>
             </div>
 
             <div className="space-y-4">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-[25.2px] text-black dark:text-gray-400">
                 To use the virtual try-on feature, you need a FASHN API key. Your key will be stored locally in your browser.
               </p>
 
               <div>
-                <label htmlFor="apiKey" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="apiKey" className="block text-[25.2px] font-medium text-black dark:text-gray-300 mb-2">
                   API Key
                 </label>
                 <input
@@ -91,18 +91,18 @@ export default function ApiKeyModal({ isOpen, onClose, onSave }: ApiKeyModalProp
                     setError('');
                   }}
                   placeholder="fa-xxxxxxxxxxxxxxxxxxxxxxxx"
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 bg-white dark:bg-gray-700 text-black dark:text-gray-100"
                   autoFocus
                 />
                 {error && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                  <p className="mt-1 text-[25.2px] text-black dark:text-red-400">
                     {error}
                   </p>
                 )}
               </div>
 
               <div className="bg-gray-50 dark:bg-gray-700 rounded-md p-3">
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
+                <p className="text-[21.6px] text-black dark:text-gray-400 mb-2">
                   Don&apos;t have an API key yet?
                 </p>
                 <motion.a
@@ -111,7 +111,7 @@ export default function ApiKeyModal({ isOpen, onClose, onSave }: ApiKeyModalProp
                   href="https://docs.fashn.ai/?utm_source=nextjs-tryon-app&utm_medium=modal&utm_campaign=api-key"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 font-medium"
+                  className="inline-flex items-center gap-1 text-[25.2px] text-black dark:text-gray-100 hover:text-black dark:hover:text-gray-300 font-medium"
                 >
                   Get your API key from FASHN
                   <ExternalLink className="h-3 w-3" />
@@ -119,7 +119,7 @@ export default function ApiKeyModal({ isOpen, onClose, onSave }: ApiKeyModalProp
               </div>
 
               <div className="bg-blue-50 dark:bg-blue-900/20 rounded-md p-3">
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
+                <p className="text-[21.6px] text-black dark:text-gray-400 mb-2">
                   Want to run this yourself?
                 </p>
                 <motion.a
@@ -128,7 +128,7 @@ export default function ApiKeyModal({ isOpen, onClose, onSave }: ApiKeyModalProp
                   href="https://github.com/fashn-AI/tryon-nextjs-app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 font-medium"
+                  className="inline-flex items-center gap-1 text-[25.2px] text-black dark:text-gray-100 hover:text-black dark:hover:text-gray-300 font-medium"
                 >
                   View source code on GitHub
                   <Github className="h-3 w-3" />

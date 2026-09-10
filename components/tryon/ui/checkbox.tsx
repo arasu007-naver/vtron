@@ -63,13 +63,13 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             {label && (
               <label
                 htmlFor={props.id || id}
-                className="cursor-pointer text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className="cursor-pointer text-[25.2px] font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 {label}
               </label>
             )}
             {description && (
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-[21.6px] text-black dark:text-gray-400">
                 {description}
               </p>
             )}

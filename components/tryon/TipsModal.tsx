@@ -63,7 +63,7 @@ export default function TipsModal({ isOpen, onClose }: TipsModalProps) {
     >
       <div className="flex items-center gap-2 justify-center mb-6">
         <Lightbulb className="h-6 w-6 text-gray-600" />
-        <h2 className="text-xl font-semibold text-center">Tips for successful try-on generations</h2>
+        <h2 className="text-[36px] font-semibold text-center">Tips for successful try-on generations</h2>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -80,7 +80,7 @@ export default function TipsModal({ isOpen, onClose }: TipsModalProps) {
               <h3 className="font-medium">{tip.title}</h3>
             </div>
             
-            <p className="text-sm opacity-90 z-10 relative">
+            <p className="text-[25.2px] opacity-90 z-10 relative">
               {tip.description}
             </p>
             

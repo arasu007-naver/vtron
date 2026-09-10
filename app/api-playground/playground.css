@@ -1,0 +1,179 @@
+/* ------------------------------------------------------------------ */
+/* API 플레이그라운드 (/api-playground) 전용 스코프                       */
+/* 스튜디오의 세리프 타이포그래피 대신 콘솔에 맞는 산세리프/모노를 쓴다.    */
+/* 색 토큰은 globals.css 의 것을 그대로 재사용한다.                       */
+/* ------------------------------------------------------------------ */
+
+.pg-app {
+  --pg-line: rgba(32, 31, 29, 0.14);
+  --pg-line-strong: rgba(32, 31, 29, 0.26);
+  --pg-muted: #000000;
+  --pg-faint: #000000;
+  --pg-code-bg: #fbfaf9;
+  /* 응답 영역 고정 높이. 요청 편집기의 탭(파라미터/바디/변수…)마다 높이가 달라서
+     남은 공간을 나눠 쓰면 아래가 계속 들썩인다. 그래서 응답은 형제 높이와 무관하게
+     고정한다. 뷰포트 비율로 두어 작은 화면에서도 넘치지 않게 했다. */
+  --pg-response-h: 48vh;
+
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.pg-app code,
+.pg-app pre,
+.pg-app .pg-mono {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+/* 입력 — globals 의 .input 을 모노/컴팩트 버전으로 */
+.pg-app .pg-input {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--pg-line);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-family: var(--font-mono);
+  font-size: 21.6px;
+  line-height: 1.5;
+  color: var(--color-text);
+  outline: none;
+}
+.pg-app .pg-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(182, 130, 53, 0.18);
+}
+/* 입력값과 구분되어야 하므로 placeholder 만 반투명 검정으로 둔다. */
+.pg-app .pg-input::placeholder {
+  color: rgba(0, 0, 0, 0.42);
+}
+.pg-app textarea.pg-input {
+  resize: vertical;
+  tab-size: 2;
+}
+
+/* 셀렉트 */
+.pg-app .pg-select {
+  background: #ffffff;
+  border: 1px solid var(--pg-line);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 21.6px;
+  color: var(--color-text);
+  outline: none;
+  cursor: pointer;
+}
+.pg-app .pg-select:focus {
+  border-color: var(--color-accent);
+}
+
+/* 탭 */
+.pg-app .pg-tab {
+  padding: 5px 10px;
+  font-size: 21.6px;
+  border-radius: 999px;
+  color: var(--pg-muted);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.12s ease-out;
+  white-space: nowrap;
+}
+.pg-app .pg-tab:hover {
+  color: var(--color-text);
+  background: rgba(32, 31, 29, 0.04);
+}
+.pg-app .pg-tab[data-active="true"] {
+  background: #ffffff;
+  border-color: var(--pg-line);
+  color: #000000;
+  font-weight: 600;
+}
+
+/* HTTP 메서드 배지 */
+.pg-app .pg-method {
+  font-family: var(--font-mono);
+  font-size: 18.9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 5px;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+  line-height: 1.3;
+}
+.pg-method-GET { color: #2f6f43; }
+.pg-method-POST { color: #8a5a15; }
+.pg-method-PUT { color: #2a5b8a; }
+.pg-method-PATCH { color: #6b4a8a; }
+.pg-method-DELETE { color: #8a3a2a; }
+.pg-method-HEAD,
+.pg-method-OPTIONS { color: rgba(32, 31, 29, 0.5); }
+
+/* 상태 코드 pill */
+.pg-app .pg-status {
+  font-family: var(--font-mono);
+  font-size: 21.6px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #ffffff;
+}
+.pg-status-2 { background: #2f6f43; }
+.pg-status-3 { background: #2a5b8a; }
+.pg-status-4 { background: #a06a1a; }
+.pg-status-5 { background: #8a3a2a; }
+.pg-status-x { background: rgba(32, 31, 29, 0.5); }
+
+/* JSON 트리 */
+.pg-app .pg-json {
+  font-family: var(--font-mono);
+  font-size: 21.6px;
+  line-height: 1.65;
+}
+.pg-json-key { color: #6b4a8a; }
+.pg-json-string { color: #2f6f43; }
+.pg-json-number { color: #2a5b8a; }
+.pg-json-boolean { color: #8a5a15; }
+.pg-json-null { color: rgba(32, 31, 29, 0.45); }
+.pg-json-punct { color: rgba(32, 31, 29, 0.4); }
+.pg-json-hit { background: rgba(182, 130, 53, 0.28); border-radius: 2px; }
+
+.pg-app .pg-toggle {
+  width: 14px;
+  text-align: center;
+  color: #000000;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+}
+.pg-app .pg-toggle:hover {
+  color: #000000;
+}
+
+/* 프리셋 상태 점 */
+.pg-app .pg-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pg-dot-ok { background: #2f6f43; }
+.pg-dot-params { background: #a06a1a; }
+.pg-dot-scope { background: #8a3a2a; }
+.pg-dot-data { background: #2a5b8a; }
+.pg-dot-unknown { background: rgba(32, 31, 29, 0.28); }
+
+/* 코드 블록 */
+.pg-app .pg-code {
+  background: var(--pg-code-bg);
+  border: 1px solid var(--pg-line);
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 20.7px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+}

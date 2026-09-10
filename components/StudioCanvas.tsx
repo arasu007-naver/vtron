@@ -64,10 +64,10 @@ export default function StudioCanvas({
           <button
             type="button"
             onClick={() => setShowResultOnly(!showResultOnly)}
-            className={`px-3 py-1.5 rounded-full text-[12px] font-medium shadow-md transition-all flex items-center gap-1.5 backdrop-blur-md cursor-pointer ${
+            className={`px-3 py-1.5 rounded-full text-[21.6px] font-medium shadow-md transition-all flex items-center gap-1.5 backdrop-blur-md cursor-pointer ${
               showResultOnly
                 ? "bg-[var(--color-accent)] text-white"
-                : "bg-white/90 text-[#201f1d] hover:bg-white"
+                : "bg-white/90 text-black hover:bg-white"
             }`}
           >
             <Eye className="w-3.5 h-3.5" />
@@ -126,19 +126,19 @@ export default function StudioCanvas({
 
                   {/* 등록된 가먼트 뱃지 오버레이 */}
                   {garments.length > 0 && (
-                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[10.5px] whitespace-nowrap shadow-lg">
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[18.9px] whitespace-nowrap shadow-lg">
                       <Layers className="w-3 h-3 text-[var(--color-accent)]" />
                       <span>{garments.length}개 가먼트 정렬됨</span>
                     </div>
                   )}
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center p-6 text-center text-[rgba(32,31,29,0.45)]">
+                <div className="flex flex-col items-center justify-center p-6 text-center text-black">
                   <Sparkles className="w-8 h-8 mb-2 stroke-[1.2] text-[var(--color-accent)] opacity-60" />
-                  <span className="font-[family-name:var(--font-heading)] italic text-[16px] text-[#201f1d]/60">
+                  <span className="font-[family-name:var(--font-heading)] italic text-[28.8px] text-black/60">
                     실사 캐릭터와 의류를 등록하여 가상 피팅을 시작하세요
                   </span>
-                  <span className="text-[11.5px] mt-1 text-[rgba(32,31,29,0.4)]">
+                  <span className="text-[20.7px] mt-1 text-black">
                     좌측 패널에서 설정 후 [착장 생성]을 누르면 AI 피팅이 수행됩니다
                   </span>
                 </div>
@@ -150,7 +150,7 @@ export default function StudioCanvas({
           {isRendering && (
             <div className="absolute inset-0 z-20 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center text-white gap-3 animate-fade-in">
               <div className="w-10 h-10 border-3 border-amber-400 border-t-transparent rounded-full animate-spin" />
-              <span className="font-[family-name:var(--font-heading)] text-[16px] tracking-wide text-amber-200">
+              <span className="font-[family-name:var(--font-heading)] text-[28.8px] tracking-wide text-black">
                 AI 가상 피팅 렌더링 진행 중...
               </span>
             </div>
@@ -159,8 +159,8 @@ export default function StudioCanvas({
       </div>
 
       {/* 하단 캔버스 메타 정보 바 */}
-      <div className="flex flex-wrap items-center justify-center gap-3.5 py-2.5 px-6 text-[12px] text-[rgba(32,31,29,0.55)] [font-feature-settings:'tnum'] bg-[#dedbd8]/60 border-t border-[rgba(32,31,29,0.1)]">
-        <span className="font-medium text-[#201f1d]">
+      <div className="flex flex-wrap items-center justify-center gap-3.5 py-2.5 px-6 text-[21.6px] text-black [font-feature-settings:'tnum'] bg-[#dedbd8]/60 border-t border-[rgba(32,31,29,0.1)]">
+        <span className="font-medium text-black">
           {sizeLabel} ({ratioLabel})
         </span>
         <span className="w-[1px] h-3 bg-[rgba(32,31,29,0.2)]" />
@@ -176,7 +176,7 @@ export default function StudioCanvas({
               href={resultImageUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-[var(--color-accent-700)] hover:underline flex items-center gap-1 font-semibold"
+              className="text-black hover:underline flex items-center gap-1 font-semibold"
             >
               <Download className="w-3 h-3" />
               <span>결과 다운로드</span>

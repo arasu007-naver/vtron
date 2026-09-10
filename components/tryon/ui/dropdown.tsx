@@ -28,7 +28,7 @@ export function Dropdown({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'w-full px-3 py-2 text-left text-sm font-medium rounded-md transition-colors flex items-center justify-between',
+          'w-full px-3 py-2 text-left text-[25.2px] font-medium rounded-md transition-colors flex items-center justify-between',
           colorStyles[colorScheme]
         )}
         whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}

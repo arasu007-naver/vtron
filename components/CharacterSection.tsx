@@ -26,9 +26,9 @@ export default function CharacterSection({
 
   return (
     <section className="flex flex-col gap-3">
-      <h6 className="m-0 font-[family-name:var(--font-heading)] font-semibold text-[11px] tracking-[0.14em] uppercase text-[rgba(32,31,29,0.55)]">
+      <h6 className="m-0 font-[family-name:var(--font-heading)] font-semibold text-[19.8px] tracking-[0.14em] uppercase text-black">
         3 · 실사 캐릭터{" "}
-        <span className="text-[var(--color-danger)] tracking-[0.08em] font-normal">
+        <span className="text-black tracking-[0.08em] font-normal">
           필수
         </span>
       </h6>
@@ -44,9 +44,9 @@ export default function CharacterSection({
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="flex flex-col items-center justify-center text-[rgba(32,31,29,0.3)]">
+            <div className="flex flex-col items-center justify-center text-black">
               <User className="w-6 h-6 stroke-[1.5]" />
-              <span className="text-[9px] mt-1">미선택</span>
+              <span className="text-[16.2px] mt-1">미선택</span>
             </div>
           )}
         </div>
@@ -63,12 +63,12 @@ export default function CharacterSection({
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="btn btn-secondary w-full py-2 text-[12.5px] rounded-full flex items-center justify-center gap-1.5 shadow-sm"
+            className="btn btn-secondary w-full py-2 text-[22.5px] rounded-full flex items-center justify-center gap-1.5 shadow-sm"
           >
             <Upload className="w-3.5 h-3.5 text-[var(--color-accent-700)]" />
             <span>{character.imageUrl ? "인물 사진 교체" : "인물 사진 업로드"}</span>
           </button>
-          <div className="text-[11.5px] text-[rgba(32,31,29,0.5)] leading-relaxed">
+          <div className="text-[20.7px] text-black leading-relaxed">
             전신 정면, 1024px 이상 권장. 포즈와 얼굴은 자연스럽게 유지됩니다.
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function CharacterSection({
 
       {/* 옵션 체크박스 */}
       <div className="flex flex-col gap-2 pt-1">
-        <label className="flex gap-2 items-center text-[12.5px] text-[rgba(32,31,29,0.85)] cursor-pointer select-none">
+        <label className="flex gap-2 items-center text-[22.5px] text-black cursor-pointer select-none">
           <input
             type="checkbox"
             checked={character.autoRemoveBg}
@@ -86,7 +86,7 @@ export default function CharacterSection({
           <span>배경 자동 제거 후 합성</span>
         </label>
 
-        <label className="flex gap-2 items-center text-[12.5px] text-[rgba(32,31,29,0.85)] cursor-pointer select-none">
+        <label className="flex gap-2 items-center text-[22.5px] text-black cursor-pointer select-none">
           <input
             type="checkbox"
             checked={character.preserveFaceHands}
@@ -99,9 +99,9 @@ export default function CharacterSection({
 
       {/* 인물 크기 스케일 조절 */}
       <div className="flex flex-col gap-1.5 pt-1">
-        <div className="flex justify-between text-[12px] text-[rgba(32,31,29,0.65)]">
+        <div className="flex justify-between text-[21.6px] text-black">
           <span>인물 크기</span>
-          <span className="text-[var(--color-accent-700)] font-semibold [font-feature-settings:'tnum']">
+          <span className="text-black font-semibold [font-feature-settings:'tnum']">
             {character.scale}%
           </span>
         </div>

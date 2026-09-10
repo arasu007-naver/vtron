@@ -5,7 +5,7 @@
     --color-bg: #f3f2f2;
     --color-surface: #eae9e9;
     --color-panel: #f8f4f4;
-    --color-text: #201f1d;
+    --color-text: #000000;
     --color-accent: #b68235;
     --color-accent-2: #ac803e;
     --color-accent-700: #7d5411;
@@ -25,6 +25,9 @@
     background: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-body);
+    /* Tailwind 의 이름있는 text 크기(text-sm 등)를 px 값으로 바꾸면서
+       딸려오던 line-height 가 사라졌다. 비율로 기본값을 깔아 보충한다. */
+    line-height: 1.5;
   }
 
   *, *::before, *::after {
@@ -74,7 +77,7 @@
 }
 .btn-secondary {
   background: rgba(32, 31, 29, 0.05);
-  color: #201f1d;
+  color: #000000;
   border-color: rgba(32, 31, 29, 0.16);
 }
 .btn-secondary:hover {
@@ -88,8 +91,8 @@
   border-radius: 4px;
   padding: 6px 10px;
   font-family: var(--font-body);
-  font-size: 13px;
-  color: #201f1d;
+  font-size: 23.4px;
+  color: #000000;
   outline: none;
 }
 .input:focus {
@@ -188,7 +191,7 @@ input[type="range"] {
 .fashn-app {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, sans-serif;
-  color: #1a1a1a;
+  color: #000000;
 }
 .fashn-app .font-sans {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,

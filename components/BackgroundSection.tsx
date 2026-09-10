@@ -74,14 +74,14 @@ export default function BackgroundSection({
     <div className="flex flex-col gap-6">
       {/* 1. 배경 크기 섹션 */}
       <section className="flex flex-col gap-2.5">
-        <h6 className="m-0 font-[family-name:var(--font-heading)] font-semibold text-[11px] tracking-[0.14em] uppercase text-[rgba(32,31,29,0.55)]">
+        <h6 className="m-0 font-[family-name:var(--font-heading)] font-semibold text-[19.8px] tracking-[0.14em] uppercase text-black">
           1 · 배경 크기
         </h6>
         <div className="flex items-baseline gap-2.5 p-3 px-3.5 border border-[rgba(32,31,29,0.2)] rounded bg-white">
-          <span className="font-[family-name:var(--font-heading)] text-[22px] font-medium [font-feature-settings:'tnum'] text-[#201f1d]">
+          <span className="font-[family-name:var(--font-heading)] text-[39.6px] font-medium [font-feature-settings:'tnum'] text-black">
             {currentSize}
           </span>
-          <span className="text-[10.5px] tracking-[0.1em] text-[var(--color-accent-700)] border border-[rgba(182,130,53,0.55)] rounded px-1.5 py-0.5 [font-feature-settings:'tnum']">
+          <span className="text-[18.9px] tracking-[0.1em] text-black border border-[rgba(182,130,53,0.55)] rounded px-1.5 py-0.5 [font-feature-settings:'tnum']">
             {ratioLabel}
           </span>
         </div>
@@ -94,10 +94,10 @@ export default function BackgroundSection({
                 key={p.label}
                 type="button"
                 onClick={() => onSelectSize(p)}
-                className={`py-2 px-1.5 border rounded-full text-[12px] [font-feature-settings:'tnum'] cursor-pointer transition-all ${
+                className={`py-2 px-1.5 border rounded-full text-[21.6px] [font-feature-settings:'tnum'] cursor-pointer transition-all ${
                   isSelected
-                    ? "border-[#b68235] bg-[rgba(182,130,53,0.08)] text-[var(--color-accent-700)] font-semibold"
-                    : "border-[rgba(32,31,29,0.2)] bg-transparent text-[rgba(32,31,29,0.75)] hover:bg-[rgba(32,31,29,0.05)]"
+                    ? "border-[#b68235] bg-[rgba(182,130,53,0.08)] text-black font-semibold"
+                    : "border-[rgba(32,31,29,0.2)] bg-transparent text-black hover:bg-[rgba(32,31,29,0.05)]"
                 }`}
               >
                 {p.label}
@@ -107,7 +107,7 @@ export default function BackgroundSection({
         </div>
 
         <div className="grid grid-cols-2 gap-2.5">
-          <label className="flex flex-col gap-1 text-[11px] tracking-[0.1em] uppercase text-[rgba(32,31,29,0.55)]">
+          <label className="flex flex-col gap-1 text-[19.8px] tracking-[0.1em] uppercase text-black">
             W (px)
             <input
               type="number"
@@ -116,7 +116,7 @@ export default function BackgroundSection({
               onChange={(e) => onCustomSizeChange(Number(e.target.value) || 100, h)}
             />
           </label>
-          <label className="flex flex-col gap-1 text-[11px] tracking-[0.1em] uppercase text-[rgba(32,31,29,0.55)]">
+          <label className="flex flex-col gap-1 text-[19.8px] tracking-[0.1em] uppercase text-black">
             H (px)
             <input
               type="number"
@@ -133,9 +133,9 @@ export default function BackgroundSection({
       {/* 2. 배경 이미지 & CSS 배경 섹션 */}
       <section className="flex flex-col gap-2.5">
         <div className="flex items-center justify-between">
-          <h6 className="m-0 font-[family-name:var(--font-heading)] font-semibold text-[11px] tracking-[0.14em] uppercase text-[rgba(32,31,29,0.55)]">
+          <h6 className="m-0 font-[family-name:var(--font-heading)] font-semibold text-[19.8px] tracking-[0.14em] uppercase text-black">
             2 · 배경 스타일{" "}
-            <span className="text-[var(--color-accent-700)] tracking-[0.08em] font-normal">
+            <span className="text-black tracking-[0.08em] font-normal">
               선택 사항
             </span>
           </h6>
@@ -146,9 +146,9 @@ export default function BackgroundSection({
             <button
               type="button"
               onClick={onToggleBgList}
-              className="flex items-center gap-2 w-full p-2.5 text-left text-[12.5px] text-[#201f1d] hover:bg-[rgba(32,31,29,0.05)] cursor-pointer"
+              className="flex items-center gap-2 w-full p-2.5 text-left text-[22.5px] text-black hover:bg-[rgba(32,31,29,0.05)] cursor-pointer"
             >
-              <span className="flex items-center justify-center w-5 h-5 flex-none border border-[rgba(32,31,29,0.18)] rounded-full text-[10px] text-[rgba(32,31,29,0.6)]">
+              <span className="flex items-center justify-center w-5 h-5 flex-none border border-[rgba(32,31,29,0.18)] rounded-full text-[18px] text-[rgba(32,31,29,0.6)]">
                 {bgListOpen ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
               </span>
               <span className="flex-1 truncate">
@@ -166,10 +166,10 @@ export default function BackgroundSection({
                         key={b.id}
                         type="button"
                         onClick={() => onSelectCssBg(b.id)}
-                        className={`p-2 px-2.5 border rounded-full text-[11.5px] text-left transition-all ${
+                        className={`p-2 px-2.5 border rounded-full text-[20.7px] text-left transition-all ${
                           isSelected
-                            ? "border-[#b68235] bg-[rgba(182,130,53,0.12)] text-[var(--color-accent-700)] font-semibold"
-                            : "border-[rgba(32,31,29,0.16)] bg-white text-[rgba(32,31,29,0.8)] hover:bg-[rgba(32,31,29,0.05)]"
+                            ? "border-[#b68235] bg-[rgba(182,130,53,0.12)] text-black font-semibold"
+                            : "border-[rgba(32,31,29,0.16)] bg-white text-black hover:bg-[rgba(32,31,29,0.05)]"
                         }`}
                       >
                         {b.label}
@@ -180,7 +180,7 @@ export default function BackgroundSection({
                 <button
                   type="button"
                   onClick={onClearCssBg}
-                  className="w-full py-1.5 border border-[rgba(32,31,29,0.18)] rounded-full bg-white text-[rgba(32,31,29,0.6)] text-[11.5px] hover:bg-red-50 hover:text-red-700 hover:border-red-200 transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                  className="w-full py-1.5 border border-[rgba(32,31,29,0.18)] rounded-full bg-white text-black text-[20.7px] hover:bg-red-50 hover:text-black hover:border-red-200 transition-colors flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <X className="w-3 h-3" />
                   <span>CSS 배경 제거</span>
@@ -199,7 +199,7 @@ export default function BackgroundSection({
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="flex-none py-2.5 px-3.5 border border-dashed border-[rgba(32,31,29,0.3)] rounded-full bg-white text-[rgba(32,31,29,0.72)] font-[family-name:var(--font-heading)] font-semibold text-[12px] whitespace-nowrap hover:bg-[rgba(32,31,29,0.05)] cursor-pointer flex items-center gap-1.5"
+            className="flex-none py-2.5 px-3.5 border border-dashed border-[rgba(32,31,29,0.3)] rounded-full bg-white text-black font-[family-name:var(--font-heading)] font-semibold text-[21.6px] whitespace-nowrap hover:bg-[rgba(32,31,29,0.05)] cursor-pointer flex items-center gap-1.5"
           >
             <ImageIcon className="w-3.5 h-3.5 text-[var(--color-accent-700)]" />
             <span>{bgSetting.customImageUrl ? "배경 교체" : "이미지 선택"}</span>
@@ -207,21 +207,21 @@ export default function BackgroundSection({
         </div>
 
         {bgSetting.customImageUrl && (
-          <div className="flex items-center justify-between p-2 border border-amber-200 bg-amber-50/50 rounded text-[11.5px]">
-            <span className="truncate max-w-[200px] text-amber-900">
+          <div className="flex items-center justify-between p-2 border border-amber-200 bg-amber-50/50 rounded text-[20.7px]">
+            <span className="truncate max-w-[200px] text-black">
               🖼 커스텀 배경 이미지 적용됨
             </span>
             <button
               type="button"
               onClick={() => onUploadCustomBg(null as any)}
-              className="text-red-600 hover:underline text-[11px]"
+              className="text-black hover:underline text-[19.8px]"
             >
               제거
             </button>
           </div>
         )}
 
-        <p className="m-0 text-[11.5px] leading-relaxed text-[rgba(32,31,29,0.5)]">
+        <p className="m-0 text-[20.7px] leading-relaxed text-black">
           이미지를 올리면 CSS 배경 위에 덮입니다. 둘 다 비우면 단색 스튜디오 배경으로 합성합니다.
         </p>
 
@@ -233,10 +233,10 @@ export default function BackgroundSection({
                 key={fit}
                 type="button"
                 onClick={() => onSelectBgFit(fit)}
-                className={`py-1.5 px-1 border rounded-full text-[12px] cursor-pointer transition-all ${
+                className={`py-1.5 px-1 border rounded-full text-[21.6px] cursor-pointer transition-all ${
                   isSelected
-                    ? "border-[#b68235] bg-[rgba(182,130,53,0.1)] text-[var(--color-accent-700)] font-semibold"
-                    : "border-[rgba(32,31,29,0.18)] bg-white text-[rgba(32,31,29,0.7)] hover:bg-[rgba(32,31,29,0.05)]"
+                    ? "border-[#b68235] bg-[rgba(182,130,53,0.1)] text-black font-semibold"
+                    : "border-[rgba(32,31,29,0.18)] bg-white text-black hover:bg-[rgba(32,31,29,0.05)]"
                 }`}
               >
                 {fit}

@@ -116,7 +116,7 @@ export default function Footer() {
             className="flex justify-center items-center mb-4 sm:mb-6"
             variants={FADE_IN_ANIMATION_VARIANTS}
           >
-            <h2 className="text-xl sm:text-2xl font-bold text-white">Additional Resources</h2>
+            <h2 className="text-[36px] sm:text-[43.2px] font-bold text-white">Additional Resources</h2>
           </motion.div>
           
           <motion.div 
@@ -141,14 +141,14 @@ export default function Footer() {
                   )}>
                     {resource.icon}
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-gray-300 transition-colors">
+                  <h3 className="text-[32.4px] sm:text-[36px] font-semibold text-white group-hover:text-black transition-colors">
                     {resource.title}
                   </h3>
                 </div>
-                <p className="text-gray-300/80 text-xs sm:text-sm mb-2">
+                <p className="text-black/80 text-[21.6px] sm:text-[25.2px] mb-2">
                   {resource.description}
                 </p>
-                <div className="mt-auto flex items-center text-gray-400 text-sm gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-auto flex items-center text-black text-[25.2px] gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   <span>Learn more</span>
                   <ExternalLink className="h-3 w-3" />
                 </div>
@@ -176,7 +176,7 @@ export default function Footer() {
           </motion.div>
           
           <motion.div
-            className="mt-10 text-center text-gray-400 text-sm"
+            className="mt-10 text-center text-black text-[25.2px]"
             variants={FADE_IN_ANIMATION_VARIANTS}
           >
             <p className="flex items-center justify-center gap-1">

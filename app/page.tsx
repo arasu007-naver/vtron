@@ -425,7 +425,7 @@ export default function VtonStudioPage() {
   const topGarment = garments[garments.length - 1];
 
   return (
-    <div className="flex h-screen min-h-[660px] bg-[var(--color-bg)] text-[#201f1d] overflow-hidden">
+    <div className="flex h-full min-h-[660px] bg-[var(--color-bg)] text-black overflow-hidden">
       {/* 1. 좌측 컨트롤 사이드바 */}
       <aside className="w-[360px] flex-none flex flex-col border-r border-[var(--color-divider)] bg-[var(--color-panel)] overflow-hidden shadow-sm">
         <StudioHeader
@@ -440,7 +440,7 @@ export default function VtonStudioPage() {
             type="button"
             onClick={handleRender}
             disabled={isRendering}
-            className="btn btn-primary w-full py-3 text-[14px] rounded-full shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+            className="btn btn-primary w-full py-3 text-[25.2px] rounded-full shadow-md hover:shadow-lg flex items-center justify-center gap-2"
           >
             <Sparkles className="w-4 h-4 text-amber-200" />
             <span>{isRendering ? "착장 렌더링 중..." : "✦ AI 가상 착장 생성"}</span>
@@ -502,7 +502,7 @@ export default function VtonStudioPage() {
                 setResultImageUrl(null);
                 addLog("info", "미리보기 레이어를 새로고침했습니다.");
               }}
-              className="btn btn-secondary py-2.5 text-[12.5px] rounded-full"
+              className="btn btn-secondary py-2.5 text-[22.5px] rounded-full"
             >
               미리보기 리셋
             </button>
@@ -510,13 +510,13 @@ export default function VtonStudioPage() {
               type="button"
               onClick={handleRender}
               disabled={isRendering}
-              className="btn btn-primary py-2.5 text-[12.5px] rounded-full flex items-center justify-center gap-1.5"
+              className="btn btn-primary py-2.5 text-[22.5px] rounded-full flex items-center justify-center gap-1.5"
             >
               <Play className="w-3.5 h-3.5 fill-current" />
               <span>착장 생성</span>
             </button>
           </div>
-          <span className="text-[11px] text-[rgba(32,31,29,0.45)] italic text-center">
+          <span className="text-[19.8px] text-black italic text-center">
             Supabase Storage & DB 동기화 지원
           </span>
         </footer>
