@@ -11,6 +11,7 @@ Next.js 16 (App Router) + Supabase 기반 가상 피팅 플랫폼.
 | `/` | **VTON 스튜디오** — 배경 + 실사 캐릭터 + 다중 가먼트 레이어를 조합하는 한글 UI. 레이어 순서대로 FASHN try-on 을 연쇄 호출한다. |
 | `/login` | **로그인** — Supabase Auth 이메일/비밀번호 폼(본문 중앙 정렬). 유일한 공개 라우트. |
 | `/tryon` | **FASHN Try-On 데모** — 원본 `tryon-nextjs-app` 을 그대로 이식한 단일 가먼트 데모(모델/가먼트 업로드, 파라미터 컨트롤, 결과 갤러리, 모델 버전 비교 슬라이더). |
+| `/mov` | **Portrait Studio** — 배경 애니메이션 24종 위에 배경 제거된 캐릭터를 등장시켜 세로 영상(webm)을 만든다. `style-ID-movie-studio` 이식. → [docs/portrait-studio.md](docs/portrait-studio.md) |
 
 | API | 설명 |
 | --- | --- |
@@ -121,7 +122,41 @@ FASHN try-on 모델은 한 번에 한 벌만 처리하므로, 스튜디오는 �
 help · seed <n> · fit <0-100> · scale <n> · mode <performance|balanced|quality> · render · clear
 ```
 
-## 이식하면서 바뀐 부분
+## Portrait Studio (`/mov`) 이식
+
+`~/stmx/style-ID-movie-studio` (단독 HTML + `styles.css` + `app.js`) 를 `/mov` 로 옮겼다.
+동작은 원본과 같고, 옮긴 방식은 이렇다.
+
+| 원본 | 이식 위치 | 무엇이 바뀌었나 |
+| --- | --- | --- |
+| `canvas-portrait-studio/index.html` | [`app/mov/page.tsx`](app/mov/page.tsx) | 마크업을 JSX 로. `value`→`defaultValue`, SVG 속성 camelCase 외에 구조는 그대로 |
+| `canvas-portrait-studio/styles.css` | [`app/mov/mov.css`](app/mov/mov.css) | 모든 규칙을 `.mov-app` 아래로 스코프. `html`/`body`/`:root` 는 페이지 루트 div 로 접고, keyframes 는 `mov-` 접두 |
+| `canvas-portrait-studio/app.js` | [`lib/mov/portrait-studio.js`](lib/mov/portrait-studio.js) | 최상위 스크립트 → `initPortraitStudio(root)` 모듈. 로직·렌더 파이프라인은 손대지 않음 |
+| `test/run.mjs` | [`test/mov/run.mjs`](test/mov/README.md) | 대상이 `file://` 단일 HTML → 실행 중인 서버의 `/mov` |
+
+**상태를 React 로 옮기지 않았다.** 이 도구의 핵심 불변식은 *미리보기와 내보내기가
+같은 페인터를 공유해 보이는 그대로 저장된다*는 것이고(검증 스위트의 `same` 그룹이
+픽셀 차이 0 을 확인한다), 캔버스 렌더 루프와 포인터 조작을 React 상태로 쪼개면 그
+보장이 깨진다. 그래서 마크업만 JSX 로 옮기고 나머지는 원본대로 DOM 을 직접 다룬다.
+
+이식 때문에 실제로 손댄 곳은 네 군데다.
+
+- `$(id)` 가 `document.getElementById` 대신 `root.querySelector` — 다른 페이지와 id 가 섞이지 않게.
+- `--stage-w` / `--stage-h` 를 `document.documentElement` 대신 루트 div 에 심는다
+  (스코프된 CSS 가 `.mov-app` 에 기본값을 정의하므로, documentElement 에 두면 덮인다).
+- 언마운트 정리 — rAF 루프 · 자동저장 타이머 · `beforeunload` 를 회수한다. 같은 DOM 에
+  다시 마운트돼도(StrictMode) 컨트롤이 중복 생성되지 않도록 컨테이너를 먼저 비운다.
+- 검증 스위트가 페이지 스코프에서 `state.bg = …` 처럼 내부를 직접 만지므로, 모듈 끝에서
+  `state` · `paintBg` 등을 `window` 에 노출한다(정리할 때 되돌린다).
+
+원본에 있던 `build.sh`(분리 버전 → 단일 HTML 인라인)는 이식하지 않았다. 대신 검증
+스위트의 `build` 그룹을 `markup` 그룹으로 바꿔, 모듈이 찾는 108개 id 가 JSX 에 다
+있는지 확인한다.
+
+> 알려진 실패: `bg` 그룹의 `디지털 레인` 한 항목(이음매 1.33). 원본에서도 **같은 수치로
+> 실패**하는 기존 문제이며 이식 때문이 아니다. 나머지 92개는 통과.
+
+## FASHN 데모 이식하면서 바뀐 부분
 
 원본 저장소는 `src/app/**` 구조에 Next 15 기준이라, 이 프로젝트 규약(`@/*` → 루트)에
 맞춰 옮기고 다음을 조정했다.

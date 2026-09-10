@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Sparkles, FolderOpen, Save, RefreshCw, Shirt, LogOut } from "lucide-react";
+import { Sparkles, FolderOpen, Save, RefreshCw, Shirt, Film, LogOut } from "lucide-react";
 import { logout } from "@/lib/auth-client";
 
 interface StudioHeaderProps {
@@ -83,14 +83,24 @@ export default function StudioHeader({
       <p className="m-0 text-[12.5px] text-[rgba(32,31,29,0.6)]">
         배경 + 실사 캐릭터 + 가먼트(Garments) → FASHN AI 가상 피팅
       </p>
-      <Link
-        href="/tryon"
-        className="mt-1 self-start px-2.5 py-1 text-[11.5px] rounded-full btn btn-secondary flex items-center gap-1"
-        title="FASHN 단일 가먼트 try-on 데모 열기"
-      >
-        <Shirt className="w-3 h-3 text-[var(--color-accent-700)]" />
-        <span>FASHN Try-On 데모</span>
-      </Link>
+      <div className="mt-1 flex items-center gap-1.5">
+        <Link
+          href="/tryon"
+          className="px-2.5 py-1 text-[11.5px] rounded-full btn btn-secondary flex items-center gap-1"
+          title="FASHN 단일 가먼트 try-on 데모 열기"
+        >
+          <Shirt className="w-3 h-3 text-[var(--color-accent-700)]" />
+          <span>FASHN Try-On 데모</span>
+        </Link>
+        <Link
+          href="/mov"
+          className="px-2.5 py-1 text-[11.5px] rounded-full btn btn-secondary flex items-center gap-1"
+          title="배경 애니메이션 + 캐릭터 등장 영상 만들기"
+        >
+          <Film className="w-3 h-3 text-[var(--color-accent-700)]" />
+          <span>Portrait Studio</span>
+        </Link>
+      </div>
     </header>
   );
 }

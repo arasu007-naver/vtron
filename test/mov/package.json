@@ -1,0 +1,12 @@
+{
+  "name": "mov-test",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node run.mjs",
+    "test:headed": "node run.mjs --headed"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}

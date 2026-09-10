@@ -1,0 +1,1024 @@
+/* Portrait Studio (/mov) 스타일 —
+   style-ID-movie-studio/canvas-portrait-studio/styles.css 를 옮긴 것.
+
+   원본은 단독 페이지라 body/:root/button 같은 전역 셀렉터를 그대로 썼다.
+   vtron 은 Tailwind 전역 스타일을 쓰므로 모든 규칙을 .mov-app 아래로 스코프하고
+   body/html/:root 는 페이지 루트 div(.mov-app) 자신으로 접었다.
+   --stage-w / --stage-h 는 여기 기본값을 두고 JS 가 루트 인라인 스타일로 덮어쓴다. */
+
+.mov-app {
+  --bg: #0b0c10;
+  --panel: #14161c;
+  --line: #2a2e38;
+  --text: #e8eaf0;
+  --muted: #9aa3b5;
+  --accent: #7c5cff;
+  --accent-2: #3ee0c5;
+  --stage-w: 360px;
+  --stage-h: 640px;
+}
+
+.mov-app * {
+  box-sizing: border-box;
+}
+
+.mov-app {
+  margin: 0; height: 100%;
+}
+
+.mov-app {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+}
+
+.mov-app .panel {
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+  padding: 20px 18px 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 패널이 길어서 항상 손이 닿아야 하는 조작은 아래에 고정한다 */
+.mov-app .dock {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  padding: 12px 0 14px;
+  background: var(--panel);          /* 불투명 — 아래 내용이 비쳐 보이면 안 된다 */
+  border-top: 1px solid var(--line);
+}
+
+.mov-app .dock::before {
+  /* 위쪽으로만 살짝 페이드 */
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 100%;
+  height: 20px;
+  background: linear-gradient(180deg, rgba(20, 22, 28, 0), var(--panel));
+  pointer-events: none;
+}
+
+.mov-app .dock .toolbar {
+  margin-bottom: 8px;
+}
+
+/* 섹션 접기 */
+.mov-app section > h2 {
+  cursor: pointer; user-select: none; display: flex; align-items: center; gap: 6px;
+}
+
+.mov-app section > h2 .caret {
+  color: var(--muted); font-size: 9px; width: 9px; display: inline-block; transition: transform .15s;
+}
+
+.mov-app section.collapsed > h2 .caret {
+  transform: rotate(-90deg);
+}
+
+.mov-app section.collapsed > *:not(h2) {
+  display: none;
+}
+
+.mov-app section.collapsed {
+  margin-bottom: 12px;
+}
+
+.mov-app .brand h1 {
+  margin: 0; font-size: 20px; letter-spacing: -0.03em;
+}
+
+.mov-app .brand p {
+  margin: 4px 0 18px; color: var(--muted); font-size: 12px;
+}
+
+.mov-app section {
+  margin-bottom: 22px;
+}
+
+.mov-app h2 {
+  margin: 0 0 10px; font-size: 12px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+.mov-app .hint {
+  margin: 0 0 8px; color: var(--muted); font-size: 12px;
+}
+
+.mov-app .hint.warn {
+  color: #ffb454;
+}
+
+.mov-app .cap {
+  float: right; color: var(--accent-2); font-size: 11px;
+}
+
+.mov-app #srcNote {
+  margin-top: 8px;
+}
+
+.mov-app input[type="range"]:disabled {
+  opacity: .4;
+}
+
+.mov-app .dim-badge {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #1b1e27;
+}
+
+.mov-app .dim-badge strong {
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.mov-app .dim-badge span {
+  font-size: 11px;
+  color: var(--accent-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 1px 7px;
+}
+
+.mov-app .chip-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+}
+
+.mov-app .chip {
+  border: 1px solid var(--line);
+  background: #1b1e27;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 8px 10px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.mov-app .chip.on {
+  border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.mov-app .file {
+  display: block;
+  border: 1px dashed #3a4050;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.mov-app .file input {
+  display: none;
+}
+
+.mov-app .row {
+  margin: 8px 0;
+}
+
+.mov-app .row label,
+.mov-app .xy label {
+  display: block; font-size: 12px; color: var(--muted);
+}
+
+.mov-app input[type="range"] {
+  width: 100%;
+}
+
+.mov-app .checks {
+  display: flex; flex-direction: column; gap: 4px;
+}
+
+.mov-app .checks label {
+  color: var(--text);
+}
+
+.mov-app .xy {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+
+.mov-app .xy input {
+  width: 100%; margin-top: 4px; background: #1b1e27; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font-variant-numeric: tabular-nums;
+}
+
+.mov-app .xy input[readonly] {
+  color: var(--muted); background: #15171f; cursor: default;
+}
+
+.mov-app .xy label.chk {
+  display: flex; align-items: center; gap: 6px; color: var(--text); align-self: end; padding-bottom: 7px;
+}
+
+.mov-app .xy label.chk input {
+  width: auto; margin: 0;
+}
+
+.mov-app #cutPreview {
+  display: block; margin-top: 10px; width: 160px; height: 160px; background: repeating-conic-gradient(#222 0% 25%, #333 0% 50%) 50% / 16px 16px; border-radius: 12px;
+}
+
+.mov-app .toolbar {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 8px;
+}
+
+.mov-app .toolbar .spacer {
+  flex: 1 1 auto;
+}
+
+.mov-app button.tool {
+  flex: 0 0 auto;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #1b1e27;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.mov-app button.tool[aria-pressed="true"] {
+  background: rgba(124, 92, 255, .22);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.mov-app .actions {
+  display: flex; gap: 8px;
+}
+
+.mov-app button {
+  flex: 1;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #2a2f3c;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.mov-app button.primary {
+  background: linear-gradient(135deg, var(--accent), #4f7dff);
+}
+
+.mov-app button.primary.stop {
+  background: linear-gradient(135deg, #e0433f, #b8262d);
+  animation: mov-recPulse 1.5s ease-in-out infinite;
+}
+
+.mov-app button.primary.stop:disabled {
+  animation: none;
+}
+
+@keyframes mov-recPulse { 50% { box-shadow: 0 0 0 4px rgba(224, 67, 63, .22); }
+}
+
+.mov-app button:disabled {
+  opacity: .55; cursor: progress;
+}
+
+.mov-app .status {
+  word-break: break-all;
+}
+
+.mov-app .status {
+  min-height: 1.4em; color: var(--accent-2); font-size: 12px;
+}
+
+.mov-app .stage-wrap {
+  display: grid;
+  place-items: center;
+  background:
+  radial-gradient(800px 400px at 70% 20%, #1a1530 0%, transparent 50%),
+  var(--bg);
+}
+
+.mov-app .phone {
+  padding: 12px;
+  border-radius: 28px;
+  background: #000;
+  box-shadow: 0 30px 80px rgba(0,0,0,.45);
+}
+
+.mov-app .stage-box {
+  position: relative;
+  width: var(--stage-w);
+  height: var(--stage-h);
+  transition: width .18s ease, height .18s ease;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.mov-app .stage-box:focus {
+  outline: none;
+}
+
+.mov-app .stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  isolation: isolate;          /* 색조 레이어의 blend 가 스테이지 밖으로 새지 않게 */
+}
+
+.mov-app #fx,
+.mov-app .target {
+  position: absolute; inset: 0;
+}
+
+.mov-app .chip.chip-full {
+  grid-column: 1 / -1; text-align: center;
+}
+
+.mov-app .bgimg-row {
+  display: flex; align-items: center; gap: 8px;
+}
+
+.mov-app .file.file-sm {
+  flex: 1 1 auto; margin: 0; padding: 9px 10px; font-size: 12px;
+}
+
+.mov-app #bgThumb {
+  flex: 0 0 auto;
+  width: 54px; height: 54px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: repeating-conic-gradient(#222 0% 25%, #333 0% 50%) 50% / 12px 12px;
+}
+
+.mov-app #bgThumb[hidden],
+.mov-app #bgImgClear[hidden] {
+  display: none;
+}
+
+.mov-app #bgImgClear {
+  flex: 0 0 auto; padding: 8px 11px;
+}
+
+.mov-app #animMixRow[hidden] {
+  display: none;
+}
+
+.mov-app .tint-row {
+  display: flex; align-items: center; gap: 8px;
+}
+
+.mov-app .tint-row input[type="color"] {
+  flex: 0 0 auto;
+  width: 44px; height: 30px;
+  padding: 2px;
+  background: #1b1e27;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.mov-app .tint-row input[type="range"] {
+  flex: 1 1 auto;
+}
+
+.mov-app .tint-row button.tool {
+  padding: 6px 10px;
+}
+
+.mov-app .swatches {
+  display: flex; gap: 5px; margin-top: 7px;
+}
+
+.mov-app .modes {
+  display: flex; gap: 4px; margin-top: 7px;
+}
+
+.mov-app .modes button {
+  flex: 1 1 0;
+  padding: 6px 0;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 7px;
+  background: #1b1e27;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.mov-app .modes button.on {
+  background: rgba(124,92,255,.22); border-color: var(--accent); color: var(--text);
+}
+
+.mov-app .swatches button {
+  flex: 1 1 0;
+  height: 18px;
+  padding: 0;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,.14);
+  cursor: pointer;
+}
+
+.mov-app #fx {
+  width: 100%; height: 100%; pointer-events: none;
+}
+
+/* ----- selection / direct manipulation ----- */
+.mov-app .sel {
+  position: absolute;
+  inset: auto;
+  border: 1px solid var(--accent-2);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .45);
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+.mov-app .sel[hidden] {
+  display: none;
+}
+
+.mov-app .sel .h {
+  position: absolute;
+  width: 13px; height: 13px;
+  margin: -7px 0 0 -7px;
+  background: #fff;
+  border: 1px solid var(--accent-2);
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+  pointer-events: auto;
+}
+
+.mov-app .sel .rot {
+  position: absolute;
+  left: 50%; top: 0;
+  width: 15px; height: 15px;
+  margin: -36px 0 0 -8px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--accent-2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.mov-app .sel .rot::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 100%;
+  width: 1px; height: 22px;
+  margin-left: -0.5px;
+  background: var(--accent-2);
+}
+
+.mov-app .sel .h[data-h="nw"] {
+  left: 0;    top: 0;    cursor: nwse-resize;
+}
+
+.mov-app .sel .h[data-h="ne"] {
+  left: 100%; top: 0;    cursor: nesw-resize;
+}
+
+.mov-app .sel .h[data-h="sw"] {
+  left: 0;    top: 100%; cursor: nesw-resize;
+}
+
+.mov-app .sel .h[data-h="se"] {
+  left: 100%; top: 100%; cursor: nwse-resize;
+}
+
+/* ----- rotation dial ----- */
+.mov-app .dial-row {
+  display: grid; grid-template-columns: 108px 1fr; gap: 12px; align-items: center; margin-top: 6px;
+}
+
+.mov-app .dial {
+  width: 108px; height: 108px; touch-action: none; cursor: grab; display: block;
+}
+
+.mov-app .dial.grabbing {
+  cursor: grabbing;
+}
+
+.mov-app .dial-track {
+  fill: none; stroke: #232735; stroke-width: 13;
+}
+
+.mov-app .dial-arc {
+  fill: none; stroke: var(--accent); stroke-width: 13; stroke-linecap: round;
+}
+
+.mov-app .dial-knob {
+  fill: #fff; stroke: var(--accent); stroke-width: 2;
+}
+
+.mov-app .dial-num {
+  fill: var(--text); font: 700 22px/1 "Pretendard", system-ui, sans-serif; text-anchor: middle; font-variant-numeric: tabular-nums;
+}
+
+.mov-app .dial-sub {
+  fill: var(--muted); font: 600 9px/1 system-ui, sans-serif; text-anchor: middle; letter-spacing: .14em;
+}
+
+.mov-app .dial-side .hint {
+  margin: 0 0 8px;
+}
+
+.mov-app .snap {
+  display: flex; gap: 4px;
+}
+
+.mov-app .snap button {
+  flex: 1; padding: 5px 0; font-size: 11px; font-weight: 600; border-radius: 7px; background: #1b1e27; border: 1px solid var(--line);
+}
+
+/* ----- 효과 목록: 왼쪽 토글 | 오른쪽 세기 ----- */
+.mov-app .fx-list {
+  display: flex; flex-direction: column; gap: 5px;
+}
+
+.mov-app .fx-row {
+  display: grid; grid-template-columns: 1fr 78px; gap: 6px;
+}
+
+.mov-app .fx-row > button {
+  border: 1px solid var(--line);
+  background: #1b1e27;
+  color: var(--text);
+  border-radius: 9px;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.mov-app .fx-row > button.on {
+  border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.mov-app .fx-row > button.sel {
+  border-color: var(--accent-2); box-shadow: 0 0 0 1px var(--accent-2) inset;
+}
+
+.mov-app .fx-row input {
+  width: 100%;
+  background: #1b1e27;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 6px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.mov-app .fx-row input:disabled {
+  opacity: .4;
+}
+
+/* ----- 40x40 격자점 ----- */
+.mov-app .snap-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255,180,84,.55) 1px, transparent 1.4px);
+  background-size: 2.5% 2.5%;
+  background-position: -1px -1px;
+}
+
+.mov-app .snap-grid[hidden] {
+  display: none;
+}
+
+/* ================= 대화식 가이드 ================= */
+.mov-app .guide-start {
+  width: 100%;
+  margin: 0 0 18px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #2a1400;
+  background: linear-gradient(90deg, #ff8a3d, #ffd36e, #ff5d8f, #ff8a3d);
+  background-size: 220% auto;
+  animation: mov-guideFlow 4s linear infinite;
+  cursor: pointer;
+}
+
+.mov-app .guide-start.on {
+  filter: grayscale(.5) brightness(.8);
+}
+
+.mov-app .guide {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 7;
+  width: min(430px, calc(100% - 40px));
+  padding: 14px 16px 15px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 180, 84, .45);
+  background: rgba(16, 18, 25, .93);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, .6);
+}
+
+.mov-app .guide[hidden] {
+  display: none;
+}
+
+.mov-app .guide header {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+
+.mov-app .guide header strong {
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #ffb454;
+}
+
+.mov-app .guide header span {
+  flex: 1; font-size: 11px; color: var(--muted);
+}
+
+.mov-app .guide header button {
+  flex: 0 0 auto; border: 0; background: transparent; color: var(--muted);
+  cursor: pointer; font-size: 14px; padding: 2px 6px; border-radius: 6px;
+}
+
+.mov-app .guide header button:hover {
+  background: rgba(255,255,255,.1); color: var(--text);
+}
+
+.mov-app .guide .q {
+  margin: 0 0 6px; font-size: 15px; font-weight: 700; letter-spacing: -.01em;
+}
+
+.mov-app .guide .hint {
+  margin: 0 0 11px;
+}
+
+.mov-app .guide .hint:empty {
+  display: none;
+}
+
+.mov-app .guide-choices {
+  display: flex; flex-wrap: wrap; gap: 7px;
+}
+
+.mov-app .guide-choices button {
+  flex: 1 1 auto;
+  padding: 9px 14px;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: #1e222c;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.mov-app .guide-choices button:hover {
+  border-color: #ffb454; background: #262a36;
+}
+
+.mov-app .guide-choices button.go {
+  background: linear-gradient(135deg, #ff8a3d, #ff5d8f); border: 0; color: #2a1400;
+}
+
+.mov-app .guide .waiting {
+  margin: 4px 0 0; font-size: 12px; color: #ffb454;
+}
+
+.mov-app .guide .waiting[hidden] {
+  display: none;
+}
+
+/* 지금 눌러야 할 컨트롤: 흐르는 주황 그라디언트 테두리 + 통통 튀는 움직임 */
+@keyframes mov-guideFlow { to { background-position: 220% center; }
+}
+
+@keyframes mov-guideBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  28%      { transform: translateY(-4px) scale(1.025); }
+  52%      { transform: translateY(0) scale(1); }
+  66%      { transform: translateY(-2px) scale(1.012); }
+  80%      { transform: translateY(0) scale(1); }
+}
+
+.mov-app .guide-hot {
+  position: relative;
+  z-index: 4;
+  animation: mov-guideBounce 1.25s cubic-bezier(.28,.84,.42,1) infinite;
+}
+
+.mov-app .guide-hot::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 14px;
+  padding: 3px;
+  background: linear-gradient(90deg, #ff8a3d, #ffd36e, #ff5d8f, #ffd36e, #ff8a3d);
+  background-size: 220% auto;
+  animation: mov-guideFlow 1.5s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.mov-app .guide-hot::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 14px;
+  box-shadow: 0 0 22px 4px rgba(255, 140, 60, .38);
+  pointer-events: none;
+}
+
+/* ----- 지점 목록 오버레이 ----- */
+.mov-app .stage-wrap {
+  position: relative;
+}
+
+.mov-app .spot-panel {
+  position: absolute;
+  left: 16px; top: 16px;
+  z-index: 5;
+  width: 300px;
+  max-height: 46%;
+  overflow: auto;
+  padding: 10px 11px 11px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(16, 18, 25, .72);
+  backdrop-filter: blur(9px);
+  box-shadow: 0 12px 34px rgba(0,0,0,.5);
+  font-size: 11px;
+}
+
+.mov-app .spot-panel[hidden] {
+  display: none;
+}
+
+.mov-app .spot-panel header {
+  display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; cursor: pointer; user-select: none;
+}
+
+.mov-app .spot-panel.collapsed {
+  width: auto;
+}
+
+.mov-app .spot-panel.collapsed header {
+  margin-bottom: 0;
+}
+
+.mov-app .spot-panel.collapsed table,
+.mov-app .spot-panel.collapsed .empty {
+  display: none;
+}
+
+.mov-app #spotCaret {
+  display: inline-block; width: 10px; color: var(--muted);
+}
+
+.mov-app .spot-panel header strong {
+  font-size: 12px; letter-spacing: -.01em;
+}
+
+.mov-app .spot-panel header span {
+  color: var(--muted);
+}
+
+.mov-app .spot-panel table {
+  width: 100%; border-collapse: collapse;
+}
+
+.mov-app .spot-panel th {
+  text-align: left; font-weight: 600; color: var(--muted);
+  font-size: 10px; padding: 3px 5px; border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.mov-app .spot-panel td {
+  padding: 4px 5px; border-bottom: 1px solid rgba(255,255,255,.06); font-variant-numeric: tabular-nums;
+}
+
+.mov-app .spot-panel tr.on td {
+  background: rgba(255,180,84,.16);
+}
+
+.mov-app .spot-panel tbody tr {
+  cursor: pointer;
+}
+
+.mov-app .spot-panel tbody tr:hover td {
+  background: rgba(255,255,255,.07);
+}
+
+.mov-app .spot-panel .del {
+  border: 0; background: transparent; color: #ff8a8a;
+  cursor: pointer; padding: 1px 5px; border-radius: 5px; font-size: 13px; line-height: 1;
+}
+
+.mov-app .spot-panel .del:hover {
+  background: rgba(255,90,90,.2);
+}
+
+.mov-app .spot-panel .empty {
+  margin: 8px 2px 2px; color: var(--muted); line-height: 1.5;
+}
+
+.mov-app .spot-panel .empty[hidden] {
+  display: none;
+}
+
+/* ----- 화면 효과 영역 ----- */
+.mov-app .fx-region {
+  position: absolute;
+  inset: auto;
+  border: 1px dashed #ffb454;
+  background: rgba(255, 180, 84, .07);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .4);
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+.mov-app .fx-region.ellipse {
+  border-radius: 50%;
+}
+
+.mov-app .fx-region[hidden] {
+  display: none;
+}
+
+.mov-app .fx-region .h {
+  position: absolute;
+  width: 13px; height: 13px;
+  margin: -7px 0 0 -7px;
+  background: #ffb454;
+  border: 1px solid #6b4406;
+  border-radius: 3px;
+  pointer-events: auto;
+}
+
+/* ----- 지점 중심 표시 ----- */
+.mov-app .fx-region .cross {
+  position: absolute; left: 50%; top: 50%; pointer-events: none;
+}
+
+.mov-app .fx-region .cross::before,
+.mov-app .fx-region .cross::after {
+  content: "";
+  position: absolute;
+  background: #ffb454;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .6);
+}
+
+.mov-app .fx-region .cross::before {
+  left: -13px; top: 0;    width: 26px; height: 1px;
+}
+
+.mov-app .fx-region .cross::after {
+  top: -13px;  left: 0;   height: 26px; width: 1px;
+}
+
+.mov-app .fx-region .cdot {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 7px; height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid #ffb454;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .55);
+  pointer-events: none;
+}
+
+.mov-app .fx-region .clabel {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(11px, 5px);
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, .6);
+  color: #ffd9a8;
+  font: 600 10px/1.1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* 중심을 지나 스테이지를 가로지르는 정렬 가이드 */
+.mov-app .fx-cross {
+  position: absolute; inset: 0; pointer-events: none;
+}
+
+.mov-app .fx-cross[hidden] {
+  display: none;
+}
+
+.mov-app .fx-cross .vx,
+.mov-app .fx-cross .hz {
+  position: absolute; background: rgba(255, 180, 84, .45);
+}
+
+.mov-app .fx-cross .vx {
+  top: 0; bottom: 0; width: 1px;
+}
+
+.mov-app .fx-cross .hz {
+  left: 0; right: 0; height: 1px;
+}
+
+.mov-app .fx-region .h[data-r="nw"] {
+  left: 0;    top: 0;    cursor: nwse-resize;
+}
+
+.mov-app .fx-region .h[data-r="ne"] {
+  left: 100%; top: 0;    cursor: nesw-resize;
+}
+
+.mov-app .fx-region .h[data-r="sw"] {
+  left: 0;    top: 100%; cursor: nesw-resize;
+}
+
+.mov-app .fx-region .h[data-r="se"] {
+  left: 100%; top: 100%; cursor: nwse-resize;
+}
+
+.mov-app button.tool.wide {
+  width: 100%;
+}
+
+.mov-app #fxRegionBox[hidden] {
+  display: none;
+}
+
+.mov-app .stage-box.over-card {
+  cursor: move;
+}
+
+.mov-app .stage-box.dragging {
+  cursor: grabbing;
+}
+
+.mov-app .stage-box.resizing {
+  cursor: nwse-resize;
+}
+
+.mov-app .stage-box.rotating {
+  cursor: grabbing;
+}
+
+.mov-app kbd {
+  background: #1b1e27; border: 1px solid var(--line); border-radius: 4px;
+  padding: 0 4px; font-size: 11px; font-family: inherit; color: var(--text);
+}
+
+.mov-app .grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+  linear-gradient(to right, rgba(255, 255, 255, .17) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(255, 255, 255, .17) 1px, transparent 1px);
+  background-size: 10% 10%;
+}
+
+.mov-app .grid::after {
+  /* 50% 중앙선 */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+  linear-gradient(to right, rgba(62, 224, 197, .55) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(62, 224, 197, .55) 1px, transparent 1px);
+  background-size: 50% 50%;
+}
+
+.mov-app .grid[hidden] {
+  display: none;
+}
+
+.mov-app .target {
+  width: 14px; height: 14px; inset: auto;
+  margin: -7px 0 0 -7px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.4);
+  pointer-events: none;
+}
+
+.mov-app .caption {
+  text-align: center; color: var(--muted); font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .mov-app {
+    grid-template-columns: 1fr;
+  }
+
+  .mov-app .stage-wrap {
+    padding: 16px 0 40px;
+  }
+}
