@@ -440,7 +440,14 @@ URL·파라미터·헤더·바디에 쓸 수 있다. 브라우저가 채우는 �
 NAVER_COMMERCE_CLIENT_ID=8ncJa3jBeuC08bE28wBf2
 NAVER_COMMERCE_CLIENT_SECRET=\$2a\$04\$xxxxxxxxxxxxxxxxxxxxxx
 NAVER_COMMERCE_BASE_URL=            # 기본값 https://api.commerce.naver.com/external
+NAVER_SEARCH_CLIENT_ID=             # 네이버 검색 오픈 API (상품링크 '열기' 의 이미지·제목)
+NAVER_SEARCH_CLIENT_SECRET=
 ```
+
+> 상품링크 모달의 **열기**는 카드 아래에 상품 이미지·제목 표를 펼친다. 커머스 API 모델에는
+> 이미지가 없고 카탈로그 페이지는 서버 fetch 가 418 로 막혀서, 이미지는 네이버 검색 오픈 API
+> (`/v1/search/shop.json`)로 받는다. 커머스 API 와 **별개의 애플리케이션**이므로
+> developers.naver.com 에서 '검색' API 를 쓰는 애플리케이션을 따로 등록해 키를 넣는다.
 
 > **`$` 를 반드시 백슬래시로 이스케이프한다.** Next 는 `.env` 를 dotenv-expand 로 읽어서
 > `$2a$04$…` 를 변수 참조로 확장해 버린다(작은따옴표로 감싸도 마찬가지). 이스케이프하지
