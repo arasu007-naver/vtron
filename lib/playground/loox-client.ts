@@ -74,6 +74,52 @@ export interface AttachOutcome {
   warnings: string[];
 }
 
+/** 등록할 때 사람이 입력한 가격(원). 할인율은 stmx-web DB 가 계산한다. */
+export interface ProductPrice {
+  salePrice: number;
+  /** 정가. 할인이 없거나 모르면 null. 판매가보다 작을 수 없다. */
+  originalPrice: number | null;
+}
+
+export interface RegisterOutcome {
+  error?: string;
+  productId?: string;
+  /** 새로 만들었다(false 면 같은 카탈로그의 기존 상품을 갱신했다). */
+  created?: boolean;
+}
+
+/**
+ * 링크의 카탈로그 상품을 상품 마스터(stmx-web products)에 등록한다. Loox 와는 잇지 않는다.
+ * `imageUrl` 을 안 주면 기존 이미지를 둔다.
+ */
+export async function registerProduct(
+  model: CatalogModel,
+  price: ProductPrice,
+  imageUrl?: string | null
+): Promise<RegisterOutcome> {
+  try {
+    const res = await authFetch("/api/playground/stmx/products", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: {
+          id: model.id,
+          name: model.name,
+          brandName: model.brandName,
+          manufacturerName: model.manufacturerName,
+        },
+        price,
+        imageUrl,
+      }),
+    });
+    const data = await res.json().catch(() => null);
+    if (!res.ok) return { error: data?.error ?? `HTTP ${res.status}` };
+    return { productId: data?.productId, created: Boolean(data?.created) };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
 /** 카탈로그 모델을 stmx-web 게시물에 건다 — '착장 확인하기' 목록에 나온다. */
 export async function attachToLoox(postId: string, model: CatalogModel): Promise<AttachOutcome> {
   try {

@@ -23,6 +23,7 @@ import {
  *
  * 커머스 API 모델에는 이미지 · 가격이 없다. 네이버 쇼핑 검색으로 같은 카탈로그를 찾아
  * 채우고, 못 찾으면 이미지 없이 0원으로 건 뒤 경고를 돌려준다.
+ * 사람이 입력한 가격 · 이미지로 상품 마스터를 올리는 것은 `/api/playground/stmx/products` 다.
  */
 
 export const runtime = "nodejs";

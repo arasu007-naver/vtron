@@ -515,3 +515,81 @@ export async function detachProduct(
     .eq("product_id", productId);
   if (error) throw failed("연결 해제 실패", error);
 }
+
+export interface RegisterProductInput {
+  /** 카탈로그 모델 id — products.naver_product_id(UNIQUE). */
+  naverProductId: string;
+  naverUrl: string;
+  brandName: string;
+  name: string;
+  /** 판매가(원). 사람이 판매 페이지를 보고 입력한 값. */
+  salePrice: number;
+  /** 정가(원). 할인이 없거나 모르면 null. 할인율은 DB 가 계산한다(generated column). */
+  originalPrice: number | null;
+  /** 주면 이미지도 이 값으로 둔다(product-crop 의 save-product-image 결과). 안 주면 기존 이미지를 둔다. */
+  imageUrl?: string | null;
+}
+
+export interface RegisterProductResult {
+  productId: string;
+  /** 새로 만들었다(false 면 같은 카탈로그의 기존 행을 갱신했다). */
+  created: boolean;
+}
+
+/**
+ * 상품 마스터 등록 — /products-2-link 링크 목록의 '등록'. Loox(post_products)와는 잇지 않는다.
+ *
+ * 같은 카탈로그(naver_product_id)가 있으면 가격(과 준 경우 이미지)만 바꾸고 이름 · 품절 등은 둔다.
+ * 없으면 새로 만든다. 판매가 · 정가는 한 문장으로 같이 바꿔 `sale_price <= original_price` 제약이
+ * 중간 상태에 걸리지 않게 한다.
+ */
+export async function registerProduct(
+  creds: StmxWebCredentials,
+  input: RegisterProductInput
+): Promise<RegisterProductResult> {
+  const client = connect(creds);
+  const changes = {
+    sale_price: input.salePrice,
+    original_price: input.originalPrice,
+    ...(input.imageUrl !== undefined ? { image_url: input.imageUrl } : {}),
+  };
+
+  const findProduct = () =>
+    client
+      .from("products")
+      .select("id")
+      .eq("naver_product_id", input.naverProductId)
+      .maybeSingle();
+
+  const update = async (productId: string): Promise<RegisterProductResult> => {
+    const updated = await client.from("products").update(changes).eq("id", productId);
+    if (updated.error) throw failed("상품 갱신 실패", updated.error);
+    return { productId, created: false };
+  };
+
+  const found = await findProduct();
+  if (found.error) throw failed("상품 확인 실패", found.error);
+  if (found.data) return update(found.data.id as string);
+
+  const created = await client
+    .from("products")
+    .insert({
+      brand_name: input.brandName,
+      name: input.name,
+      naver_url: input.naverUrl,
+      naver_product_id: input.naverProductId,
+      image_url: null,
+      ...changes,
+    })
+    .select("id")
+    .single();
+
+  if (created.error?.code === "23505") {
+    // 동시에 누가 같은 카탈로그를 먼저 넣었다 — 그 행을 갱신한다.
+    const again = await findProduct();
+    if (again.error || !again.data) throw failed("상품 등록 실패", created.error);
+    return update(again.data.id as string);
+  }
+  if (created.error) throw failed("상품 등록 실패", created.error);
+  return { productId: created.data.id as string, created: true };
+}

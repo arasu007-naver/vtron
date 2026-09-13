@@ -6,9 +6,11 @@ import {
   ChevronDown,
   ChevronUp,
   Copy,
+  PackagePlus,
   Paperclip,
   RefreshCw,
   Search,
+  X,
 } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
 import { sendDraft } from "@/lib/playground/client";
@@ -20,7 +22,7 @@ import {
   type ClothingBrand,
   type ClothingKind,
 } from "@/lib/playground/clothing";
-import { attachToLoox } from "@/lib/playground/loox-client";
+import { attachToLoox, registerProduct } from "@/lib/playground/loox-client";
 import type { ShopItem } from "@/lib/playground/naver-search";
 import type { LooxPost } from "@/lib/playground/stmx-loox";
 import {
@@ -40,6 +42,12 @@ import type { NaverTokenResult, RequestDraft } from "@/types/playground";
  *   3. 브랜드 · 카테고리  — 옷 브랜드를 초성으로 찾아 고르고, 아래 줄의 상의 · 하의 · 기타를 누르면
  *                           그 브랜드 × 분류의 카탈로그 모델을 조회한다
  *   4. 토글 버튼 그룹     — 세부 카테고리로 걸러 확정
+ *
+ * 링크 목록의 버튼 두 가지는 하는 일이 다르다.
+ *   - 등록         : 판매 페이지를 새 탭으로 열고, 버튼 아래에 판매가 입력 툴팁(입력칸 · '적용')을
+ *                    띄운다. '적용' 하면 입력한 가격으로 상품 마스터(stmx-web products)에 올린다.
+ *                    이미지는 mvps/product-crop 의 save-product-image 로 등록한다. Loox 와는 잇지 않는다.
+ *   - Loox에 붙이기 : 고른 Loox 에 상품을 잇기만 한다(post_products).
  *
  * 브랜드는 brands 테이블(scripts/sync-brands.mjs 가 네이버 브랜드 조회로 채움)에서 옷 브랜드만 온다.
  * 모델 조회는 브랜드 id · 카테고리 id 를 받지 않는다(무시된다). 그래서 "브랜드명 + 옷 키워드" 로
@@ -182,6 +190,16 @@ export default function ProductLinkSteps({
   /** 붙이는 중인 모델 id. */
   const [attaching, setAttaching] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  /** 모델 id → 입력 중인 판매가. 툴팁을 닫았다 열어도 입력값은 남는다. */
+  const [priceDrafts, setPriceDrafts] = useState<Record<string, string>>({});
+  /** 가격 입력 툴팁을 연 모델 id(한 번에 하나). */
+  const [pricingId, setPricingId] = useState<string | null>(null);
+  /** 입력 줄의 결과 · 오류 문구(모델 id 별). */
+  const [priceMessages, setPriceMessages] = useState<
+    Record<string, { tone: "ok" | "error"; text: string }>
+  >({});
+  /** 등록 중인 모델 id. */
+  const [registering, setRegistering] = useState<string | null>(null);
 
   // 브랜드 목록은 토큰이 없어도 된다(우리 DB). 한 번 받아 둔다.
   useEffect(() => {
@@ -207,6 +225,7 @@ export default function ProductLinkSteps({
   const kindLabel = CLOTHING_KINDS.find((def) => def.key === kind)?.label;
   const attachedIds = new Set(post?.products.map((p) => p.naverProductId) ?? []);
 
+  /** Loox에 붙이기 — 고른 Loox 에 상품을 잇기만 한다. */
   const attach = async (model: CatalogModel) => {
     if (!post) {
       setError(pickPostHint);
@@ -231,6 +250,52 @@ export default function ProductLinkSteps({
     );
     // 가장 최근 것이 아니라 붙인 그 게시물을 다시 읽는다 — 그 사이 새 글이 올라와도 어긋나지 않게.
     await onPostChanged(post.id);
+  };
+
+  const setPriceMessage = (key: string, message: { tone: "ok" | "error"; text: string } | null) =>
+    setPriceMessages((prev) => {
+      const next = { ...prev };
+      if (message) next[key] = message;
+      else delete next[key];
+      return next;
+    });
+
+  /** '등록' — 판매 페이지는 버튼에서 새 탭으로 열고, 여기서는 그 버튼의 가격 입력 툴팁을 연다. */
+  const openPricePopover = (model: CatalogModel) => {
+    const key = String(model.id);
+    setPriceDrafts((prev) => (key in prev ? prev : { ...prev, [key]: "" }));
+    setPriceMessage(key, null);
+    setPricingId(key);
+  };
+
+  /**
+   * '적용' — 입력한 판매가로 상품 마스터(stmx-web products)에 올린다. Loox 와는 잇지 않는다.
+   * 결과 · 오류는 그 입력 줄에 보인다.
+   * TODO: 이미지는 mvps/product-crop 의 save-product-image 로 등록한다 — 위치 · 요청 형식을 받으면 연결.
+   */
+  const register = async (model: CatalogModel) => {
+    const key = String(model.id);
+    const digits = (priceDrafts[key] ?? "").replace(/[^\d]/g, "");
+    if (!digits) {
+      setPriceMessage(key, { tone: "error", text: "판매가를 입력하세요." });
+      return;
+    }
+    const salePrice = Number(digits);
+
+    setRegistering(key);
+    setPriceMessage(key, null);
+    const outcome = await registerProduct(model, { salePrice, originalPrice: null });
+    setRegistering(null);
+    if (outcome.error) {
+      setPriceMessage(key, { tone: "error", text: outcome.error });
+      return;
+    }
+    setPriceMessage(key, {
+      tone: "ok",
+      text: `판매가 ${salePrice.toLocaleString("ko-KR")}원으로 상품 ${outcome.created ? "등록" : "갱신"}했습니다.`,
+    });
+    // 고른 Loox 에 이미 붙은 상품이면 그 게시물의 상품 정보도 새로 읽는다.
+    if (post && attachedIds.has(key)) await onPostChanged(post.id);
   };
 
   /** 브랜드 · 분류가 바뀌면 이전 조회 결과는 더 이상 맞지 않는다. */
@@ -534,13 +599,44 @@ export default function ProductLinkSteps({
                         )}
                         {copiedId === String(model.id) ? "복사됨" : "복사"}
                       </button>
+                      <span className="relative inline-flex">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            // 새 탭은 클릭 처리 안에서 바로 열어야 팝업 차단에 걸리지 않는다.
+                            window.open(buildCatalogLink(model.id), "_blank", "noopener,noreferrer");
+                            openPricePopover(model);
+                          }}
+                          aria-expanded={pricingId === String(model.id)}
+                          aria-haspopup="dialog"
+                          title="판매 페이지를 새 탭으로 열고, 가격 입력 툴팁을 띄운다(Loox 와는 잇지 않는다)"
+                          className="px-2 py-0.5 text-[18.9px] rounded btn btn-secondary flex items-center gap-1 disabled:opacity-60"
+                        >
+                          <PackagePlus className="w-3.5 h-3.5" />
+                          {registering === String(model.id) ? "등록 중…" : "등록"}
+                        </button>
+                        {pricingId === String(model.id) && (
+                          <PricePopover
+                            model={model}
+                            value={priceDrafts[String(model.id)] ?? ""}
+                            onChange={(value) =>
+                              setPriceDrafts((prev) => ({ ...prev, [String(model.id)]: value }))
+                            }
+                            busy={registering === String(model.id)}
+                            disabled={registering !== null}
+                            message={priceMessages[String(model.id)] ?? null}
+                            onApply={() => void register(model)}
+                            onClose={() => setPricingId(null)}
+                          />
+                        )}
+                      </span>
                       <button
                         type="button"
                         onClick={() => void attach(model)}
                         disabled={!post || attaching !== null || attachedIds.has(String(model.id))}
                         title={
                           post
-                            ? "고른 Loox 에 이 상품을 건다 — stmx-web '착장 확인하기'에 나온다"
+                            ? "고른 Loox 에 이 상품을 잇는다 — stmx-web '착장 확인하기'에 나온다"
                             : pickPostHint
                         }
                         className="px-2 py-0.5 text-[18.9px] rounded btn btn-secondary flex items-center gap-1 disabled:opacity-60"
@@ -598,6 +694,155 @@ export default function ProductLinkSteps({
         )}
       </div>
     </>
+  );
+}
+
+/**
+ * '등록' 버튼의 가격 입력 툴팁 — 판매가 입력칸과 '적용'. 새 탭의 판매 페이지에서 본 가격을 옮겨 적는다.
+ *
+ * 버튼 바로 아래(오른쪽 끝 맞춤)에 뜬다. 바깥을 누르거나 Esc 로 닫히고, 새 탭에 다녀와도 그대로 남는다.
+ * 쉼표 · '원' 이 섞여도 숫자만 읽는다. Enter 로도 적용된다.
+ * 위치 · 크기 · 겹침은 인라인 스타일 — dev 서버의 Tailwind 가 새 임의값 클래스를 늦게 반영한 적이 있다.
+ */
+function PricePopover({
+  model,
+  value,
+  onChange,
+  busy,
+  disabled,
+  message,
+  onApply,
+  onClose,
+}: {
+  model: CatalogModel;
+  value: string;
+  onChange: (value: string) => void;
+  /** 이 상품이 등록 중이다. */
+  busy: boolean;
+  /** 다른 상품이 등록 중이라 적용을 막는다. */
+  disabled: boolean;
+  message: { tone: "ok" | "error"; text: string } | null;
+  onApply: () => void;
+  onClose: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // 버튼과 툴팁을 감싼 span 바깥을 누르면 닫는다(버튼을 다시 눌러도 닫히지 않게).
+    const onPointerDown = (e: PointerEvent) => {
+      const wrapper = ref.current?.parentElement;
+      if (!busy && wrapper && !wrapper.contains(e.target as Node)) onClose();
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && !busy) onClose();
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [busy, onClose]);
+
+  const digits = value.replace(/[^\d]/g, "");
+
+  return (
+    <div
+      ref={ref}
+      role="dialog"
+      aria-label={`${model.name} 판매가 입력`}
+      style={{
+        position: "absolute",
+        top: "calc(100% + 8px)",
+        right: 0,
+        zIndex: 40,
+        width: 340,
+        background: "#ffffff",
+        border: "1px solid var(--pg-line-strong)",
+        borderRadius: 8,
+        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.18)",
+        padding: 12,
+      }}
+      className="flex flex-col gap-2 text-left"
+    >
+      {/* 말꼬리 — 버튼을 가리킨다 */}
+      <span
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: -6,
+          right: 22,
+          width: 10,
+          height: 10,
+          background: "#ffffff",
+          borderLeft: "1px solid var(--pg-line-strong)",
+          borderTop: "1px solid var(--pg-line-strong)",
+          transform: "rotate(45deg)",
+        }}
+      />
+      <div className="flex items-center gap-2">
+        <span className="text-[19.8px] font-semibold text-black">판매가 입력</span>
+        <button
+          type="button"
+          onClick={onClose}
+          disabled={busy}
+          aria-label="닫기"
+          title="닫기 (Esc)"
+          className="ml-auto w-7 h-7 rounded-full hover:bg-black/10 flex items-center justify-center disabled:opacity-40"
+        >
+          <X className="w-3.5 h-3.5 text-black" />
+        </button>
+      </div>
+
+      <form
+        className="flex items-center gap-2"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onApply();
+        }}
+      >
+        <input
+          autoFocus
+          inputMode="numeric"
+          className="pg-input"
+          style={{ flex: 1, minWidth: 0 }}
+          placeholder="판매 페이지의 가격(원)"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          disabled={busy}
+        />
+        <button
+          type="submit"
+          disabled={disabled}
+          className="px-2.5 py-1 text-[18.9px] rounded btn btn-primary whitespace-nowrap disabled:opacity-60"
+        >
+          {busy ? "적용 중…" : "적용"}
+        </button>
+      </form>
+
+      <span className="text-[18px] text-black/60">
+        {digits
+          ? `${Number(digits).toLocaleString("ko-KR")}원`
+          : "새 탭의 판매 페이지에서 확인한 가격을 입력하세요."}
+      </span>
+      <a
+        href={buildCatalogLink(model.id)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="self-start text-[18px] underline"
+        style={{ color: "var(--color-accent-700)" }}
+      >
+        판매 페이지 다시 열기
+      </a>
+      {message && (
+        <span
+          className="text-[18.9px] whitespace-pre-wrap"
+          style={{ color: message.tone === "error" ? "#b42318" : "#2f6f43" }}
+        >
+          {message.text}
+        </span>
+      )}
+    </div>
   );
 }
 
