@@ -69,6 +69,20 @@ export interface LooxProduct {
   naverProductId: string | null;
 }
 
+/**
+ * 게시물 상세(COM-002) 액션 줄 버튼을 누른 횟수 — stmx-web `12_post_action_clicks.sql` 의
+ * post_visit_stats. 좋아요 · 관심을 눌렀다 풀어도 두 번으로 센다.
+ */
+export interface LooxVisitStats {
+  likeClicks: number;
+  commentClicks: number;
+  shareClicks: number;
+  bookmarkClicks: number;
+  /** 네 버튼 클릭의 합 — 방문자수. */
+  visitCount: number;
+  lastClickedAt: string | null;
+}
+
 export interface LooxPost {
   id: string;
   styleNote: string | null;
@@ -77,6 +91,8 @@ export interface LooxPost {
   publishedAt: string | null;
   images: LooxImage[];
   products: LooxProduct[];
+  /** 읽지 못했으면 null(secret 키 없음 · 12 단계 전 DB). [[fetchVisitStats]] 로 채운다. */
+  visits: LooxVisitStats | null;
 }
 
 interface ProductRow {
@@ -110,6 +126,20 @@ const POST_SELECT = `
   post_products(position, product:products(id, brand_name, name, image_url, sale_price, naver_url, naver_product_id))
 `;
 
+type StmxClient = ReturnType<typeof connect>;
+
+/** 공개(발행 · 전체 공개) 게시물 쿼리의 시작. */
+const publicPosts = (
+  client: StmxClient,
+  columns: string,
+  options?: { count?: "exact"; head?: boolean }
+) =>
+  client
+    .from("posts")
+    .select(columns, options)
+    .eq("status", "published")
+    .eq("visibility", "public");
+
 /**
  * 공개 게시물을 최근 발행 순으로 `limit` 건. `postId` 를 주면 그 한 건만.
  * 이미지 · 착장 상품은 position 순.
@@ -120,11 +150,7 @@ export async function fetchLoox(
 ): Promise<LooxPost[]> {
   const client = connect(creds);
 
-  let query = client
-    .from("posts")
-    .select(POST_SELECT)
-    .eq("status", "published")
-    .eq("visibility", "public");
+  let query = publicPosts(client, POST_SELECT);
   if (postId) query = query.eq("id", postId);
 
   const { data, error } = await query
@@ -132,14 +158,18 @@ export async function fetchLoox(
     .limit(limit);
 
   if (error) throw new Error(`stmx-web 게시물 조회 실패: ${error.message}`);
+  return ((data ?? []) as unknown as PostRow[]).map((row) => toPost(client, row));
+}
 
+/** 행 → LooxPost. 방문자수는 비워 두고 [[fetchVisitStats]] 로 채운다. */
+function toPost(client: StmxClient, row: PostRow): LooxPost {
   // stmx-web 의 resolveLooxImageUrl 과 같은 규칙 — 이미 절대 URL 이면 그대로 쓴다.
   const toUrl = (path: string) =>
     /^https?:\/\//.test(path)
       ? path
       : client.storage.from("loox").getPublicUrl(path).data.publicUrl;
 
-  return ((data ?? []) as unknown as PostRow[]).map((row) => ({
+  return {
     id: row.id,
     styleNote: row.style_note,
     location: row.location,
@@ -172,7 +202,197 @@ export async function fetchLoox(
             ]
           : []
       ),
-  }));
+    visits: null,
+  };
+}
+
+/** 목록 정렬 — recent: 최근 발행 순 · visits: 최근 7일 방문자수(액션 버튼 클릭) 큰 순. */
+export type LooxSort = "recent" | "visits";
+
+export interface LooxPageResult {
+  posts: LooxPost[];
+  /** 공개 게시물 전체 수. */
+  total: number;
+}
+
+/** PostgREST 가 한 번에 돌려주는 최대 행 수(기본 max-rows). 넘으면 range 로 나눠 읽는다. */
+const READ_BATCH = 1000;
+/** PostgREST — offset 이 전체 수를 넘었다(Requested range not satisfiable). */
+const RANGE_NOT_SATISFIABLE = "PGRST103";
+/** PostgREST — 테이블이 없다(stmx-web 에 12_post_action_clicks.sql 을 아직 안 돌렸다). */
+const TABLE_NOT_FOUND = "PGRST205";
+/** 주간 클릭 로그를 이만큼까지만 읽어 센다. 넘으면 DB 쪽 집계(RPC)로 옮길 때다. */
+const MAX_WEEKLY_CLICKS = 200_000;
+
+/**
+ * 공개 게시물 한 페이지(page 는 1부터), 최근 발행 순.
+ * 같은 시각이면 id 순으로 고정해 페이지를 넘길 때 겹치거나 빠지지 않게 한다.
+ */
+export async function fetchLooxPage(
+  creds: StmxWebCredentials,
+  { page, pageSize }: { page: number; pageSize: number }
+): Promise<LooxPageResult> {
+  const client = connect(creds);
+  const from = (page - 1) * pageSize;
+
+  const { data, error, count } = await publicPosts(client, POST_SELECT, { count: "exact" })
+    .order("published_at", { ascending: false, nullsFirst: false })
+    .order("id", { ascending: true })
+    .range(from, from + pageSize - 1);
+
+  if (error?.code === RANGE_NOT_SATISFIABLE) {
+    // 마지막 페이지 너머 — 빈 페이지와 실제 전체 수를 돌려 화면이 페이지 수를 바로잡게 한다.
+    const head = await publicPosts(client, "id", { count: "exact", head: true });
+    return { posts: [], total: head.count ?? 0 };
+  }
+  if (error) throw new Error(`stmx-web 게시물 조회 실패: ${error.message}`);
+
+  return {
+    posts: ((data ?? []) as unknown as PostRow[]).map((row) => toPost(client, row)),
+    total: count ?? 0,
+  };
+}
+
+/**
+ * `since` 이후 게시물별 액션 버튼 클릭 수 — 12_post_action_clicks.sql 의 클릭 로그를 센다.
+ * 누적 집계(post_visit_stats)에는 시각이 없어 '일주일간' 을 알 수 없다. secret 키로만 읽힌다.
+ * 한 번도 눌리지 않은 게시물은 맵에 없다(= 0).
+ */
+export async function fetchWeeklyVisitCounts(
+  creds: StmxWebCredentials,
+  since: Date
+): Promise<Map<string, number>> {
+  const client = connect(creds);
+  const counts = new Map<string, number>();
+
+  for (let from = 0; ; from += READ_BATCH) {
+    if (from >= MAX_WEEKLY_CLICKS) {
+      throw new Error(
+        `최근 클릭 로그가 ${MAX_WEEKLY_CLICKS.toLocaleString("ko-KR")}건을 넘습니다 — stmx-web 에 기간 집계 RPC 를 두고 그것을 읽어야 합니다.`
+      );
+    }
+    const { data, error } = await client
+      .from("post_action_clicks")
+      .select("post_id")
+      .gte("created_at", since.toISOString())
+      .order("id", { ascending: true })
+      .range(from, from + READ_BATCH - 1);
+
+    if (error?.code === TABLE_NOT_FOUND) {
+      throw new Error(
+        "stmx-web DB 에 클릭 로그(post_action_clicks)가 없습니다. stmx-web 의 sqls/phase2/12_post_action_clicks.sql 을 먼저 실행하세요."
+      );
+    }
+    if (error) throw new Error(`stmx-web 클릭 로그 조회 실패: ${error.message}`);
+
+    const rows = (data ?? []) as { post_id: string }[];
+    for (const row of rows) counts.set(row.post_id, (counts.get(row.post_id) ?? 0) + 1);
+    if (rows.length < READ_BATCH) return counts;
+  }
+}
+
+/**
+ * 공개 게시물 한 페이지, 최근 7일 방문자수 큰 순. 같으면 최근 발행 순, 그다음 id 순.
+ *
+ * 클릭은 로그에서 세고(`admin` — secret 키) 게시물은 공개 읽기(`creds`)로 id · 발행일만 훑어
+ * 정렬한 뒤, 그 페이지의 게시물만 이미지 · 착장 상품까지 읽는다.
+ * `weeklyVisits` 는 이 페이지 게시물의 기간 내 클릭 수.
+ */
+export async function fetchLooxPageByWeeklyVisits(
+  creds: StmxWebCredentials,
+  admin: StmxWebCredentials,
+  { page, pageSize, since }: { page: number; pageSize: number; since: Date }
+): Promise<LooxPageResult & { weeklyVisits: Record<string, number> }> {
+  const weekly = await fetchWeeklyVisitCounts(admin, since);
+  const client = connect(creds);
+
+  const all: { id: string; published_at: string | null }[] = [];
+  for (let from = 0; ; from += READ_BATCH) {
+    const { data, error } = await publicPosts(client, "id, published_at")
+      .order("id", { ascending: true })
+      .range(from, from + READ_BATCH - 1);
+    if (error?.code === RANGE_NOT_SATISFIABLE) break;
+    if (error) throw new Error(`stmx-web 게시물 조회 실패: ${error.message}`);
+    const rows = (data ?? []) as unknown as { id: string; published_at: string | null }[];
+    all.push(...rows);
+    if (rows.length < READ_BATCH) break;
+  }
+
+  const publishedAt = (value: string | null) => (value ? Date.parse(value) : 0);
+  all.sort(
+    (a, b) =>
+      (weekly.get(b.id) ?? 0) - (weekly.get(a.id) ?? 0) ||
+      publishedAt(b.published_at) - publishedAt(a.published_at) ||
+      a.id.localeCompare(b.id)
+  );
+
+  const from = (page - 1) * pageSize;
+  const ids = all.slice(from, from + pageSize).map((post) => post.id);
+
+  let posts: LooxPost[] = [];
+  if (ids.length > 0) {
+    const { data, error } = await publicPosts(client, POST_SELECT).in("id", ids);
+    if (error) throw new Error(`stmx-web 게시물 조회 실패: ${error.message}`);
+    const byId = new Map(
+      ((data ?? []) as unknown as PostRow[]).map((row) => [row.id, toPost(client, row)])
+    );
+    // 정렬한 순서대로. 그 사이 비공개로 바뀐 게시물은 빠진다.
+    posts = ids.flatMap((id) => byId.get(id) ?? []);
+  }
+
+  return {
+    posts,
+    total: all.length,
+    weeklyVisits: Object.fromEntries(ids.map((id) => [id, weekly.get(id) ?? 0])),
+  };
+}
+
+interface VisitStatsRow {
+  post_id: string;
+  like_clicks: number;
+  comment_clicks: number;
+  share_clicks: number;
+  bookmark_clicks: number;
+  visit_count: number | string;
+  last_clicked_at: string | null;
+}
+
+/**
+ * 게시물별 방문자수(액션 버튼 클릭 합계). `postIds` 전부를 키로 돌려준다.
+ *
+ * secret 키로만 읽힌다 — `12_post_action_clicks.sql` 이 post_visit_stats 에 사용자 읽기
+ * 정책을 주지 않았다(관리자 · 서비스 롤만). 한 번도 눌리지 않은 게시물은 행이 없어 0 이다.
+ */
+export async function fetchVisitStats(
+  creds: StmxWebCredentials,
+  postIds: string[]
+): Promise<Map<string, LooxVisitStats>> {
+  const stats = new Map<string, LooxVisitStats>(
+    postIds.map((id) => [
+      id,
+      { likeClicks: 0, commentClicks: 0, shareClicks: 0, bookmarkClicks: 0, visitCount: 0, lastClickedAt: null },
+    ])
+  );
+  if (postIds.length === 0) return stats;
+
+  const { data, error } = await connect(creds)
+    .from("post_visit_stats")
+    .select("post_id, like_clicks, comment_clicks, share_clicks, bookmark_clicks, visit_count, last_clicked_at")
+    .in("post_id", postIds);
+  if (error) throw new Error(`stmx-web 방문자수 조회 실패: ${error.message}`);
+
+  for (const row of (data ?? []) as VisitStatsRow[]) {
+    stats.set(row.post_id, {
+      likeClicks: row.like_clicks,
+      commentClicks: row.comment_clicks,
+      shareClicks: row.share_clicks,
+      bookmarkClicks: row.bookmark_clicks,
+      // bigint 열이다. PostgREST 가 숫자로 주지만 문자열로 와도 받는다.
+      visitCount: Number(row.visit_count),
+      lastClickedAt: row.last_clicked_at,
+    });
+  }
+  return stats;
 }
 
 export class StmxWebWriteError extends Error {

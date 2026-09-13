@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import {
   Film,
   LayoutDashboard,
+  Link2,
   LogOut,
   Shirt,
   Sparkles,
@@ -48,6 +49,12 @@ const LINKS = [
     icon: TerminalSquare,
     title: "네이버 커머스 등 REST API 호출 테스트",
   },
+  {
+    href: "/products-2-link",
+    label: "상품링크",
+    icon: Link2,
+    title: "Loox 목록에서 게시물을 고르고 옷 브랜드 × 분류의 카탈로그 상품을 붙인다",
+  },
 ] as const;
 
 const isActive = (pathname: string, href: string) =>
@@ -84,7 +91,7 @@ export default function NavBar() {
       >
         <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent)]" />
         <span className="font-[family-name:var(--font-heading)] font-semibold text-[19.8px] tracking-[0.18em] uppercase text-black">
-          VTON
+          STMX Studio
         </span>
       </Link>
 
@@ -97,16 +104,14 @@ export default function NavBar() {
               href={href}
               title={title}
               aria-current={active ? "page" : undefined}
-              className={`px-2.5 py-1 text-[20.7px] rounded-full flex items-center gap-1 whitespace-nowrap transition-colors ${
-                active
+              className={`px-2.5 py-1 text-[20.7px] rounded-full flex items-center gap-1 whitespace-nowrap transition-colors ${active
                   ? "bg-[rgba(182,130,53,0.16)] text-black font-semibold"
                   : "text-black hover:bg-[rgba(32,31,29,0.06)] hover:text-black"
-              }`}
+                }`}
             >
               <Icon
-                className={`w-3 h-3 flex-none ${
-                  active ? "text-[var(--color-accent-700)]" : ""
-                }`}
+                className={`w-3 h-3 flex-none ${active ? "text-[var(--color-accent-700)]" : ""
+                  }`}
               />
               <span className="hidden sm:inline">{label}</span>
             </Link>

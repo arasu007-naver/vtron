@@ -243,20 +243,29 @@ URL·파라미터·헤더·바디에 쓸 수 있다. 브라우저가 채우는 �
 전체를 훑는 입구는 **카탈로그(모델) 마스터**다.
 
 ```
-인증 ─┬─ 갈래 A  카테고리 목록 ──┐
-      └─ 갈래 B  브랜드·제조사 ──┴─→ 카탈로그 모델 목록 → 선택 → 링크
+인증 → 브랜드 조회 → 카탈로그 모델 목록(name=브랜드명 · brandCode 필터) → (카테고리로 거르기) → 선택 → 링크
 ```
+
+**카탈로그보다 브랜드를 먼저 조회한다.** 브랜드 조회로 정규 이름과 id 를 얻고, 이름은
+모델 조회의 `name` 에, id 는 응답의 `brandCode` 필터에 쓴다. 상품링크 창도 이 순서다.
+
+상품링크 창은 **의류(상의 · 하의 · 기타)로 제한**한다. 브랜드는 `npm run sync:brands` 가 미리 매칭해 둔
+`brands` 테이블에서 옷 브랜드 묶음만 받아(`GET /api/playground/brands`) **초성으로 찾는다**(`ㄴㅇㅋ` → 나이키).
+브랜드를 고르면 아래 줄에 **상의 · 하의 · 기타** 버튼이 나오고, 누르면 `name=<브랜드명 + 옷 키워드>` 로
+키워드마다 모델을 조회해 `brandCode` 와 `categoryId` 로 거른 링크 목록을 보여준다. 분류별 키워드와
+카테고리 id 는 [`res/clothing-categories.json`](res/clothing-categories.json) 한 곳에 있다
+(스키마: `supabase/migrations/0004_clothing_etc.sql`).
 
 | # | 단계 | 얻는 것 | 다음으로 |
 | --- | --- | --- | --- |
 | 1 | `POST /v1/oauth2/token` | access_token | 모든 호출의 Bearer |
-| 2 | **갈래 A** `GET /v1/categories` | 카테고리 5,820건 | 리프 **이름** → 4번의 `name` |
-| 3 | **갈래 B** `GET /v1/product-brands` · `/v1/product-manufacturers` | `[{id,name}]` | 정규 브랜드 **이름** → 4번의 `name` |
-| 4 | `GET /v1/product-models?name=` | 모델 목록 | 모델 id |
+| 2 | `GET /v1/product-brands?name=` | `[{id,name}]` | 정규 브랜드 **이름** → 3번의 `name` · **id** → 3번 결과의 `brandCode` 필터 |
+| 3 | `GET /v1/product-models?name=` | 모델 목록 | 모델 id |
+| 4 | `GET /v1/categories` *(선택)* | 카테고리 5,820건 | 전체 경로 → 3번 결과의 `wholeCategoryName` 필터 |
 | 5 | `GET /v1/product-models/{id}` *(선택)* | 모델 단건 | 확정한 id |
 | 6 | **링크 조립** | 상품(카탈로그) URL | — |
 
-**좁히는 값은 id 가 아니라 이름으로 넘어간다.** 4번의 `name` 이 모델명뿐 아니라
+**좁히는 값은 id 가 아니라 이름으로 넘어간다.** 3번의 `name` 이 모델명뿐 아니라
 **브랜드명 · 제조사명 · 카테고리명까지 함께 훑기** 때문이다. 카테고리 id·브랜드 id 를
 파라미터로 얹는 건 무시되지만(위 실험), 거기서 얻은 *이름* 을 넣으면 통한다.
 

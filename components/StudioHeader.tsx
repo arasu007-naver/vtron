@@ -25,10 +25,6 @@ export default function StudioHeader({
   return (
     <header className="p-5 pb-4 border-b border-[var(--color-divider)] bg-[var(--color-panel)] flex flex-col gap-2">
       <div className="flex items-center justify-between">
-        <div className="font-[family-name:var(--font-heading)] font-semibold text-[19.8px] tracking-[0.18em] uppercase text-black flex items-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent)]" />
-          <span>VTRON STUDIO · SUPABASE</span>
-        </div>
         <div className="flex items-center gap-1.5">
           {onOpenHistory && (
             <button
@@ -55,12 +51,6 @@ export default function StudioHeader({
           )}
         </div>
       </div>
-      <h1 className="font-[family-name:var(--font-heading)] font-normal text-[54px] leading-tight tracking-[-0.015em] m-0 text-black">
-        Virtual Try-On
-      </h1>
-      <p className="m-0 text-[22.5px] text-black">
-        배경 + 실사 캐릭터 + 가먼트(Garments) → FASHN AI 가상 피팅
-      </p>
     </header>
   );
 }

@@ -6,6 +6,7 @@ import {
   ChevronsDownUp,
   ChevronsUpDown,
   Copy,
+  Download,
   FileJson,
   Search,
   Upload,
@@ -52,6 +53,14 @@ const parseJson = (text: string): unknown => {
   } catch {
     return undefined;
   }
+};
+
+const formatYYMMDD = (d: Date = new Date()): string => {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const yy = String(d.getFullYear()).slice(-2);
+  const mm = pad(d.getMonth() + 1);
+  const dd = pad(d.getDate());
+  return `${yy}-${mm}-${dd}`;
 };
 
 export default function CategoryTreeModal({
@@ -134,6 +143,26 @@ export default function CategoryTreeModal({
 
   const leafTotal = visible ? countLeafNodes(visible) : 0;
 
+  const handleSaveCategories = () => {
+    const dataToSave =
+      active.value !== undefined
+        ? JSON.stringify(active.value, null, 2)
+        : (responseBody ?? "");
+    if (!dataToSave) return;
+
+    const blob = new Blob([dataToSave], {
+      type: "application/json;charset=utf-8",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `naver-categories-${formatYYMMDD()}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
@@ -183,6 +212,17 @@ export default function CategoryTreeModal({
                 ? "마지막 응답"
                 : "표시할 데이터가 없습니다"}
           </span>
+          {active.source.kind === "response" && (responseBody || active.value !== undefined) && (
+            <button
+              type="button"
+              onClick={handleSaveCategories}
+              className="px-2.5 py-1 text-[20.7px] rounded btn btn-secondary flex items-center gap-1"
+              title="마지막 응답을 JSON 파일로 저장합니다"
+            >
+              <Download className="w-3.5 h-3.5 text-[var(--color-accent-700)]" />
+              저장
+            </button>
+          )}
           {fileData && (
             <button
               type="button"

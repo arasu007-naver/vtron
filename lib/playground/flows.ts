@@ -56,7 +56,7 @@ export const PRODUCT_LINK_FLOW: CallFlow = {
   name: "상품 링크 추출",
   goal: "네이버쇼핑 상품(카탈로그) 링크",
   summary:
-    "인증 → (카테고리 또는 브랜드/제조사로 검색어 확보) → 카탈로그 모델 목록 → 선택 → 링크. 좁히는 값은 id 가 아니라 이름으로 넘어간다 — 모델 조회의 name 이 모델명·브랜드명·제조사명·카테고리명을 함께 훑기 때문이다.",
+    "인증 → 브랜드 조회(정규 이름·id) → 카탈로그 모델 목록(name=브랜드명, brandCode 로 필터) → (카테고리로 거르기) → 선택 → 링크. 모델 조회는 브랜드 id 를 받지 않는다 — name 이 브랜드명까지 훑으므로 이름으로 넘기고, 섞여 든 다른 브랜드는 brandCode 로 거른다.",
   steps: [
     {
       id: "token",
@@ -71,40 +71,25 @@ export const PRODUCT_LINK_FLOW: CallFlow = {
       note: "상단 토큰 바의 [토큰 발급] 이 같은 호출을 한다. bcrypt 서명은 서버가 만든다.",
     },
     {
-      id: "category",
-      kind: "call",
-      title: "갈래 A · 카테고리 목록 조회",
-      presetId: "categories",
-      method: "GET",
-      path: "/v1/categories",
-      produces: "카테고리 5,820건 (리프 5,002) — 경로와 id",
-      feeds: "리프 카테고리 **이름** → 4번의 name · 전체 경로 → 4번 결과 필터",
-      status: "ok",
-      optional: true,
-      sample: '"패션의류>여성의류>니트>풀오버" → name=풀오버',
-      note:
-        "평평한 배열이라 그대로는 못 읽는다. 왼쪽 아래 [Treeview] 로 패션 계열만 걸러(353건) 고른다. " +
-        "카테고리 **id 는 4번에 넘길 수 없지만**(무시된다) **이름은 통한다** — name=풀오버 · 롱부츠 · 카디건 " +
-        "각각 표본 50건 전부가 해당 카테고리였다. 동명이 리프가 있으므로(여성/남성 카디건 등) " +
-        "정확히 하려면 응답의 wholeCategoryName 을 고른 경로와 비교해 거른다.",
-    },
-    {
       id: "brand",
       kind: "call",
-      title: "갈래 B · 브랜드 · 제조사 조회",
+      title: "브랜드 조회",
       presetId: "product-brands",
       method: "GET",
-      path: "/v1/product-brands?name= · /v1/product-manufacturers?name=",
-      produces: "[{ id, name }] 마스터 — 그게 전부다. 링크도 상품도 없다.",
-      feeds: "정규 브랜드 **이름** → 4번의 name · 브랜드 id → 4번 결과의 brandCode 필터",
+      path: "/v1/product-brands?name=",
+      produces: "[{ id, name }] 브랜드 마스터 — 그게 전부다. 링크도 상품도 없다.",
+      feeds: "고른 브랜드의 정규 **이름** → 모델 목록의 name · 브랜드 **id** → 모델 목록 결과의 brandCode 필터",
       status: "ok",
-      optional: true,
       sample: '{"id":1269,"name":"나이키"} → name=나이키 (75,054건)',
       note:
-        "브랜드 id 를 4번에 넘기는 경로는 없다 — brandCode · brandId · brandName · manufacturerCode 를 " +
-        "얹어도 totalElements 가 기준선과 한 건도 다르지 않다(무시되는 파라미터). 이름으로 넘기면 통한다. " +
+        "카탈로그보다 먼저 부른다. name 은 필수다. 브랜드 id 를 모델 조회에 넘기는 경로는 없다 — " +
+        "brandCode · brandId · brandName · manufacturerCode 를 얹어도 totalElements 가 기준선과 한 건도 " +
+        "다르지 않다(무시되는 파라미터). 그래서 이름은 name 으로, id 는 결과 필터로 쓴다. " +
         "브랜드는 갈래진다 — name=nike 는 나이키 · 나이키키즈 · 나이키골프 · 나이키스윔 · 나이키스트렝스 · " +
-        "NIKEN 을 각각 다른 id 로 돌려준다. 어떤 id 를 묶을지는 운영자 몫이다.",
+        "NIKEN 을 각각 다른 id 로 돌려준다. 어떤 id 를 묶을지는 운영자 몫이다. " +
+        "제조사(/v1/product-manufacturers?name=)도 같은 모양이다. " +
+        "상품링크 창은 이 조회를 매번 부르지 않고, npm run sync:brands 가 미리 매칭해 둔 brands 테이블에서 " +
+        "옷 브랜드만 받아 초성으로 고른다.",
     },
     {
       id: "models",
@@ -112,18 +97,38 @@ export const PRODUCT_LINK_FLOW: CallFlow = {
       title: "카탈로그 모델 목록",
       presetId: "product-catalog",
       method: "GET",
-      path: "/v1/product-models?name=<검색어>&page=&size=",
+      path: "/v1/product-models?name=<브랜드명>&page=&size=",
       produces:
         "모델 목록 — id · name · brandCode/brandName · manufacturerCode/manufacturerName · categoryId · wholeCategoryName",
-      feeds: "고른 모델의 id → 링크",
+      feeds: "brandCode 가 고른 브랜드 id 인 모델의 id → 링크",
       status: "ok",
       sample:
         'id: 61171550082 · name: "워셔블 울혼방 딥 브이넥 니트" · brandName: "더엣지" · wholeCategoryName: "패션의류>여성의류>니트>풀오버"',
       note:
         "이 플로우의 본체다. name 은 필수이고(빼면 400) **모델명·브랜드명·제조사명·카테고리명을 함께 훑는다.** " +
-        "그래서 2번이든 3번이든 거기서 얻은 이름을 그대로 넣으면 된다. 정확 일치는 아니다 — 토큰 분해 매칭이라 " +
-        "name=에어맥스 가 '에어 맥스' 표기도 잡고, name=더엣지 표본 50건 중 1건은 세 필드 어디에도 검색어가 없었다. " +
-        "**size 상한은 100** 이다(500·1000 은 400). 페이지네이션은 page 로 넘긴다.",
+        "그래서 브랜드 조회에서 고른 이름을 그대로 넣으면 사실상 브랜드별 모델 목록이 된다. 정확 일치는 아니다 — " +
+        "토큰 분해 매칭이라 name=더엣지 표본 50건 중 1건은 세 필드 어디에도 검색어가 없었다. " +
+        "그래서 응답의 brandCode 를 고른 브랜드 id 와 비교해 거른다. " +
+        "**size 상한은 100** 이다(500·1000 은 400). 페이지네이션은 page 로 넘긴다. " +
+        "브랜드명만으로 찾으면 주력 상품(나이키 → 신발)만 잡히므로, 상품링크 창은 상의 · 하의 · 기타를 누르면 " +
+        "name=<브랜드명 + 옷 키워드>(res/clothing-categories.json)로 키워드마다 부르고 brandCode · categoryId 로 거른다.",
+    },
+    {
+      id: "category",
+      kind: "call",
+      title: "카테고리로 거르기 · 카테고리 목록 조회",
+      presetId: "categories",
+      method: "GET",
+      path: "/v1/categories",
+      produces: "카테고리 5,820건 (리프 5,002) — 경로와 id",
+      feeds: "전체 경로 → 모델 목록 결과의 wholeCategoryName 필터",
+      status: "ok",
+      optional: true,
+      sample: '"패션의류>여성의류>니트>풀오버" → wholeCategoryName 이 같은 모델만 남긴다',
+      note:
+        "평평한 배열이라 그대로는 못 읽는다. 왼쪽 아래 [Treeview] 로 패션 계열만 걸러(353건) 고른다. " +
+        "카테고리 id 는 모델 조회에 넘길 수 없다(무시된다). 동명이 리프가 있으므로(여성/남성 카디건 등) " +
+        "응답의 wholeCategoryName 을 고른 경로 전체와 비교해 거른다.",
     },
     {
       id: "select",

@@ -1,9 +1,31 @@
 'use client';
 
-import React, { useState, ChangeEvent, FormEvent, useEffect, useCallback } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, RefreshCw, Sparkles, Settings, Zap, UserRound, Shirt, Lightbulb } from 'lucide-react';
+import {
+  X,
+  RefreshCw,
+  Sparkles,
+  Settings,
+  Zap,
+  UserRound,
+  Shirt,
+  Lightbulb,
+  Upload,
+  Search,
+  Check,
+  Tag,
+  ShoppingBag,
+  SlidersHorizontal,
+  ChevronRight,
+  Layers,
+  Sparkle,
+  Watch,
+  Glasses,
+  Footprints,
+  Plus
+} from 'lucide-react';
 import { ReactCompareSlider, ReactCompareSliderImage, useReactCompareSliderRef } from 'react-compare-slider';
 import Banner from '@/components/tryon/Banner';
 import TipsModal from '@/components/tryon/TipsModal';
@@ -32,49 +54,181 @@ const CATEGORY_API_MAPPING: { [key: string]: string } = {
 // Sample images for examples
 const modelExamples = [
   '/models/model-example.png',
-  'https://mjc1kvq4a1.ufs.sh/f/7ZFSVc14Zv0C8dvOAdbI21g63JATVpzHqifdbOhcmUeZFvPl',
-  'https://mjc1kvq4a1.ufs.sh/f/7ZFSVc14Zv0Csg1xV5QSBjvaUSEcZtbnN695WHDuFpOqyYmi',
-  'https://mjc1kvq4a1.ufs.sh/f/7ZFSVc14Zv0CHZRDgQFXB9Y7ge5vh286IQ1uZocGnkCqxSOa',
-  'https://mjc1kvq4a1.ufs.sh/f/7ZFSVc14Zv0CAOAqzwJROP5XLHFwxVJrYC3gjzd9SsckvIKo'
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=80'
 ];
 
-const garmentExamples = [
-  '/garments/garment-example.jpg',
-  '/garments/women-dress.png',
-  '/garments/man-shirt.png',
+const topExamples = [
+  { name: 'Classic Poplin Shirt', url: '/garments/man-shirt.png', category: 'Top' },
+  { name: 'Studio Knit Sweater', url: '/garments/garment-example.jpg', category: 'Top' },
+  { name: 'Minimal Relaxed Tee', url: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80', category: 'Top' },
+  { name: 'Denim Overshirt', url: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=500&auto=format&fit=crop&q=80', category: 'Top' },
 ];
+
+const bottomExamples = [
+  { name: 'Raw Denim Jeans', url: 'https://images.unsplash.com/photo-1542272604-780c96856592?w=500&auto=format&fit=crop&q=80', category: 'Bottom' },
+  { name: 'Tailored Wool Trousers', url: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&auto=format&fit=crop&q=80', category: 'Bottom' },
+  { name: 'Pleated Midi Skirt', url: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500&auto=format&fit=crop&q=80', category: 'Bottom' },
+  { name: 'Wide Fit Cargo Pants', url: 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=500&auto=format&fit=crop&q=80', category: 'Bottom' },
+];
+
+const accessorySlots = [
+  { id: 'outer', name: '아웃터', icon: Layers },
+  { id: 'shoes', name: '신발', icon: Footprints },
+  { id: 'bag', name: '가방', icon: ShoppingBag },
+  { id: 'watch', name: '시계', icon: Watch },
+  { id: 'glasses', name: '안경', icon: Glasses },
+  { id: 'hat', name: '모자', icon: Tag },
+];
+
+const accessoryExamples = [
+  { slot: 'outer', name: 'Tailored Blazer', url: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&auto=format&fit=crop&q=80' },
+  { slot: 'shoes', name: 'Leather Loafers', url: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&auto=format&fit=crop&q=80' },
+  { slot: 'bag', name: 'Structured Tote Bag', url: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&auto=format&fit=crop&q=80' },
+  { slot: 'watch', name: 'Minimalist Chronograph', url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=80' },
+  { slot: 'glasses', name: 'Acetate Frame Sunglasses', url: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&auto=format&fit=crop&q=80' },
+];
+
+const brandDirectory = [
+  {
+    id: 'chanel',
+    name: 'CHANEL',
+    category: 'Luxury',
+    origin: 'Paris',
+    tag: 'Haute Couture',
+    badgeColor: 'bg-stone-900 text-stone-100',
+    description: 'Iconic luxury tweed jackets & timeless accessories',
+    defaultTop: '/garments/garment-example.jpg',
+    defaultBottom: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'prada',
+    name: 'PRADA',
+    category: 'Luxury',
+    origin: 'Milano',
+    tag: 'Modern Avant-Garde',
+    badgeColor: 'bg-black text-white',
+    description: 'Re-nylon outerwear, conceptual tailoring & leather goods',
+    defaultTop: '/garments/man-shirt.png',
+    defaultBottom: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'miumiu',
+    name: 'MIU MIU',
+    category: 'Luxury',
+    origin: 'Milano',
+    tag: 'Chic Girlish',
+    badgeColor: 'bg-rose-900 text-rose-100',
+    description: 'Micro mini-skirts, cropped knits & ballet flats',
+    defaultTop: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80',
+    defaultBottom: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'acne',
+    name: 'ACNE STUDIOS',
+    category: 'Contemporary',
+    origin: 'Stockholm',
+    tag: 'Nordic Minimal',
+    badgeColor: 'bg-pink-800 text-pink-100',
+    description: 'Relaxed denim, oversized scarves & modern outerwear',
+    defaultTop: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=500&auto=format&fit=crop&q=80',
+    defaultBottom: 'https://images.unsplash.com/photo-1542272604-780c96856592?w=500&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'jacquemus',
+    name: 'JACQUEMUS',
+    category: 'Contemporary',
+    origin: 'Paris',
+    tag: 'Mediterranean Glam',
+    badgeColor: 'bg-amber-800 text-amber-100',
+    description: 'Sensual linen shirts, Le Chiquito bags & knitwear',
+    defaultTop: '/garments/man-shirt.png',
+    defaultBottom: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'stussy',
+    name: 'STÜSSY',
+    category: 'Streetwear',
+    origin: 'California',
+    tag: 'Original Street',
+    badgeColor: 'bg-zinc-800 text-zinc-100',
+    description: 'Graphic tees, fleece jackets, hoodies & bucket hats',
+    defaultTop: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80',
+    defaultBottom: 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=500&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'matinkim',
+    name: 'MATIN KIM',
+    category: 'K-Fashion',
+    origin: 'Seoul',
+    tag: 'Trendy Daily',
+    badgeColor: 'bg-slate-800 text-slate-100',
+    description: 'Signature metal logo wallets, crop knits & baggy denim',
+    defaultTop: '/garments/garment-example.jpg',
+    defaultBottom: 'https://images.unsplash.com/photo-1542272604-780c96856592?w=500&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'adererror',
+    name: 'ADER ERROR',
+    category: 'K-Fashion',
+    origin: 'Seoul',
+    tag: 'Deconstructed',
+    badgeColor: 'bg-blue-900 text-blue-100',
+    description: 'Oversized silhouettes, blue label details & asymmetric tailoring',
+    defaultTop: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=500&auto=format&fit=crop&q=80',
+    defaultBottom: 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=500&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'gentlemonster',
+    name: 'GENTLE MONSTER',
+    category: 'Eyewear',
+    origin: 'Seoul',
+    tag: 'Experimental',
+    badgeColor: 'bg-neutral-900 text-neutral-100',
+    description: 'Futuristic sunglasses, bold silhouettes & designer collabs',
+    defaultTop: '/garments/man-shirt.png',
+    defaultBottom: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&auto=format&fit=crop&q=80',
+  },
+];
+
+const BRAND_CATEGORIES = ['All', 'Luxury', 'Contemporary', 'Streetwear', 'K-Fashion', 'Eyewear'];
 
 const MAX_IMAGE_HEIGHT = 2000;
 const JPEG_QUALITY = 0.95;
 
-/**
- * pica 인스턴스 (지연 생성).
- *
- * 기본 features 는 `['js', 'wasm', 'ww']` 인데, `ww`(Web Worker) 는 pica 가 함수를
- * 문자열로 만들어 blob worker 로 띄우는 방식이다. Turbopack 이 그 함수 소스에
- * `__turbopack_context__` 참조를 주입하는데 worker 안에는 그 심볼이 없어
- * `ReferenceError: __turbopack_context__ is not defined` 로 매번 실패한다.
- *
- * 그래서 `ww` 를 빼고 메인 스레드에서 돌린다. wasm 이 남아 있어 Lanczos 품질은
- * 그대로고, 리사이즈 대상이 최대 2000px 라 체감 지연도 크지 않다.
- * (`cib` 는 pica 문서상 Chrome 에서 버그가 있어 넣지 않는다.)
- */
 let picaInstance: ReturnType<typeof pica> | null = null;
 const getPica = () => (picaInstance ??= pica({ features: ['js', 'wasm'] }));
 
-
-
 export default function Home() {
-  // Input states
+  // Input states - Model
   const [modelImageFile, setModelImageFile] = useState<File | null>(null);
   const [modelImagePreview, setModelImagePreview] = useState<string | null>(null);
-  const [garmentImageFile, setGarmentImageFile] = useState<File | null>(null);
-  const [garmentImagePreview, setGarmentImagePreview] = useState<string | null>(null);
+
+  // Input states - 3-split Garments
+  const [topImageFile, setTopImageFile] = useState<File | null>(null);
+  const [topImagePreview, setTopImagePreview] = useState<string | null>(null);
+
+  const [bottomImageFile, setBottomImageFile] = useState<File | null>(null);
+  const [bottomImagePreview, setBottomImagePreview] = useState<string | null>(null);
+
+  const [selectedAccessorySlot, setSelectedAccessorySlot] = useState<string>('outer');
+  const [accessoryImageFile, setAccessoryImageFile] = useState<File | null>(null);
+  const [accessoryImagePreview, setAccessoryImagePreview] = useState<string | null>(null);
+
+  // Active garment selection for Try-On engine
+  const [activeGarmentType, setActiveGarmentType] = useState<'top' | 'bottom' | 'accessory'>('top');
+
+  // Brand directory state
+  const [selectedBrandCategory, setSelectedBrandCategory] = useState<string>('All');
+  const [brandSearchQuery, setBrandSearchQuery] = useState<string>('');
+  const [selectedBrandId, setSelectedBrandId] = useState<string | null>(null);
 
   // API parameter states
   const [segmentationFree, setSegmentationFree] = useState(true);
   const [garmentPhotoType, setGarmentPhotoType] = useState('Auto');
-  const [category, setCategory] = useState('Auto');
+  const [category, setCategory] = useState('Top');
   const [mode, setMode] = useState('Balanced');
   const [seed, setSeed] = useState<number>(() => Math.floor(Math.random() * 1000000));
   const [numSamples, setNumSamples] = useState<number>(1);
@@ -87,61 +241,65 @@ export default function Home() {
   const [resultGallery, setResultGallery] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
-  // Advanced settings toggle
+
+  // Advanced settings toggle & Tips modal state
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
-  
-  // Tips modal state
   const [isTipsModalOpen, setIsTipsModalOpen] = useState(false);
 
   // Example carousel states
   const [modelExampleIndex, setModelExampleIndex] = useState(0);
-  const [garmentExampleIndex, setGarmentExampleIndex] = useState(0);
 
-  // Results modal state
+  // Results modal & Comparison state
   const [isResultsModalOpen, setIsResultsModalOpen] = useState(false);
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
-  
-  // Comparison modal state
   const [isComparisonMode, setIsComparisonMode] = useState(false);
   const [selectedResults, setSelectedResults] = useState<number[]>([]);
   const [isComparisonModalOpen, setIsComparisonModalOpen] = useState(false);
-  
-  // Animation state for comparison slider
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationDirection, setAnimationDirection] = useState<'right' | 'left'>('right');
-  
-  // Ref for programmatic control of the comparison slider
   const compareSliderRef = useReactCompareSliderRef();
 
   // API key modal state
   const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState(false);
   const [savedApiKey, setSavedApiKey] = useState<string | null>(null);
 
-  // localStorage 는 클라이언트에서만 읽을 수 있다. 이펙트에서 setState 로
-  // 되돌리면 연쇄 렌더가 생기므로, 마운트 이후 파생값으로 계산한다.
   const isClient = useIsClient();
-  const apiKey =
-    savedApiKey ?? (isClient ? localStorage.getItem('fashn_api_key') ?? '' : '');
+  const apiKey = savedApiKey ?? (isClient ? localStorage.getItem('fashn_api_key') ?? '' : '');
 
-  // Handle navigating results in modal
-  const navigateResult = useCallback((direction: 'prev' | 'next') => {
-    setCurrentResultIndex(prevIndex => {
-      if (direction === 'prev' && prevIndex > 0) {
-        return prevIndex - 1;
-      }
-      if (direction === 'next' && prevIndex < resultGallery.length - 1) {
-        return prevIndex + 1;
-      }
-      return prevIndex;
+  // Filtered brands
+  const filteredBrands = useMemo(() => {
+    return brandDirectory.filter((brand) => {
+      const matchCat = selectedBrandCategory === 'All' || brand.category === selectedBrandCategory;
+      const matchQuery =
+        brand.name.toLowerCase().includes(brandSearchQuery.toLowerCase()) ||
+        brand.tag.toLowerCase().includes(brandSearchQuery.toLowerCase()) ||
+        brand.description.toLowerCase().includes(brandSearchQuery.toLowerCase());
+      return matchCat && matchQuery;
     });
-  }, [resultGallery.length]);
+  }, [selectedBrandCategory, brandSearchQuery]);
 
-  // Keyboard navigation for results modal
+  // Determine current active garment for tryon
+  const currentGarmentFile = useMemo(() => {
+    if (activeGarmentType === 'top') return topImageFile;
+    if (activeGarmentType === 'bottom') return bottomImageFile;
+    return accessoryImageFile;
+  }, [activeGarmentType, topImageFile, bottomImageFile, accessoryImageFile]);
+
+  // Navigation handlers
+  const navigateResult = useCallback(
+    (direction: 'prev' | 'next') => {
+      setCurrentResultIndex((prevIndex) => {
+        if (direction === 'prev' && prevIndex > 0) return prevIndex - 1;
+        if (direction === 'next' && prevIndex < resultGallery.length - 1) return prevIndex + 1;
+        return prevIndex;
+      });
+    },
+    [resultGallery.length]
+  );
+
   useEffect(() => {
     if (!isResultsModalOpen) return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
@@ -154,62 +312,43 @@ export default function Home() {
         setIsResultsModalOpen(false);
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isResultsModalOpen, navigateResult]);
 
-  // Handle saving API key
   const handleSaveApiKey = (newApiKey: string) => {
     localStorage.setItem('fashn_api_key', newApiKey);
     setSavedApiKey(newApiKey);
     setIsApiKeyModalOpen(false);
   };
 
-    // Automated comparison slider animation
+  // Automated comparison slider animation
   useEffect(() => {
     let animationActive = true;
-    
     if (isAnimating && compareSliderRef.current) {
       const animateSlider = async () => {
         let step = 0;
         while (animationActive && isAnimating) {
           const positions = [85, 25, 50];
           const directions: ('right' | 'left')[] = ['right', 'left', 'right'];
-          
           const currentPos = positions[step % positions.length];
           const currentDir = directions[step % directions.length];
-          
           if (compareSliderRef.current && animationActive) {
             compareSliderRef.current.setPosition(currentPos);
             setSliderPosition(currentPos);
             setAnimationDirection(currentDir);
-            await new Promise(resolve => setTimeout(resolve, 2500));
+            await new Promise((resolve) => setTimeout(resolve, 2500));
           }
-          
           step++;
         }
       };
-      
       animateSlider();
     }
-    
     return () => {
       animationActive = false;
     };
   }, [isAnimating, compareSliderRef]);
 
-  // Animation control functions
-  const startSliderAnimation = () => setIsAnimating(true);
-  const stopSliderAnimation = () => setIsAnimating(false);
-  const resetSliderPosition = () => {
-    setIsAnimating(false);
-    setSliderPosition(50);
-    setAnimationDirection('right');
-    compareSliderRef.current?.setPosition(50);
-  };
-
-  // Touch/swipe handlers for model examples
   const handleModelSwipe = (direction: 'left' | 'right') => {
     if (direction === 'left' && modelExampleIndex > 0) {
       setModelExampleIndex(modelExampleIndex - 1);
@@ -218,16 +357,6 @@ export default function Home() {
     }
   };
 
-  // Touch/swipe handlers for garment examples
-  const handleGarmentSwipe = (direction: 'left' | 'right') => {
-    if (direction === 'left' && garmentExampleIndex > 0) {
-      setGarmentExampleIndex(garmentExampleIndex - 1);
-    } else if (direction === 'right' && garmentExampleIndex < garmentExamples.length - 1) {
-      setGarmentExampleIndex(garmentExampleIndex + 1);
-    }
-  };
-
-  // File input change handler
   const handleImageChange = (
     e: ChangeEvent<HTMLInputElement>,
     setImageFile: (file: File | null) => void,
@@ -237,61 +366,13 @@ export default function Home() {
       const file = e.target.files[0];
       setImageFile(file);
       setPreview(URL.createObjectURL(file));
-      
-      // Clear validation errors when both images are available
-      if (setImageFile === setModelImageFile && garmentImageFile) {
-        setError(null);
-      } else if (setImageFile === setGarmentImageFile && modelImageFile) {
-        setError(null);
-      }
+      setError(null);
     } else {
       setImageFile(null);
       setPreview(null);
     }
   };
 
-  // Handle opening results modal
-  const openResultsModal = (index: number) => {
-    setCurrentResultIndex(index);
-    setIsResultsModalOpen(true);
-  };
-
-  // Handle comparison mode
-  const toggleComparisonMode = () => {
-    setIsComparisonMode(!isComparisonMode);
-    setSelectedResults([]);
-  };
-
-  const handleResultSelection = (index: number) => {
-    if (!isComparisonMode) {
-      openResultsModal(index);
-      return;
-    }
-
-    if (selectedResults.includes(index)) {
-      setSelectedResults(selectedResults.filter(i => i !== index));
-    } else if (selectedResults.length < 2) {
-      const newSelection = [...selectedResults, index];
-      setSelectedResults(newSelection);
-      
-      // Auto-open comparison modal when 2 results are selected
-      if (newSelection.length === 2) {
-        setIsComparisonModalOpen(true);
-      }
-    }
-  };
-
-  const closeComparisonModal = () => {
-    setIsComparisonModalOpen(false);
-    setSelectedResults([]);
-    setIsComparisonMode(false);
-    setIsAnimating(false);
-    setSliderPosition(50);
-    setAnimationDirection('right');
-    compareSliderRef.current?.setPosition(50);
-  };
-
-  // Load example images
   const loadExampleImage = async (
     imageUrl: string,
     setImageFile: (file: File | null) => void,
@@ -301,66 +382,73 @@ export default function Home() {
       const response = await fetch(imageUrl);
       const blob = await response.blob();
       const filename = imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
-      const file = new File([blob], filename, { type: blob.type });
+      const file = new File([blob], filename, { type: blob.type || 'image/jpeg' });
       setImageFile(file);
       setPreview(URL.createObjectURL(file));
-      
-      // Clear validation errors when both images are available
-      if (setImageFile === setModelImageFile && garmentImageFile) {
-        setError(null);
-      } else if (setImageFile === setGarmentImageFile && modelImageFile) {
-        setError(null);
-      }
+      setError(null);
     } catch (err) {
-      console.error("Failed to load example image:", err);
-      setError("Failed to load example image.");
+      console.error('Failed to load example image:', err);
+      setError('Failed to load example image.');
     }
   };
 
-  // Clear all form data
+  const applyBrandPreset = (brand: (typeof brandDirectory)[0]) => {
+    setSelectedBrandId(brand.id);
+    if (brand.defaultTop) {
+      loadExampleImage(brand.defaultTop, setTopImageFile, setTopImagePreview);
+    }
+    if (brand.defaultBottom) {
+      loadExampleImage(brand.defaultBottom, setBottomImageFile, setBottomImagePreview);
+    }
+  };
+
+  const loadRandomLook = () => {
+    const randomModel = modelExamples[Math.floor(Math.random() * modelExamples.length)];
+    const randomTop = topExamples[Math.floor(Math.random() * topExamples.length)];
+    const randomBottom = bottomExamples[Math.floor(Math.random() * bottomExamples.length)];
+
+    loadExampleImage(randomModel, setModelImageFile, setModelImagePreview);
+    loadExampleImage(randomTop.url, setTopImageFile, setTopImagePreview);
+    loadExampleImage(randomBottom.url, setBottomImageFile, setBottomImagePreview);
+  };
+
   const handleReset = () => {
     setModelImageFile(null);
     setModelImagePreview(null);
-    setGarmentImageFile(null);
-    setGarmentImagePreview(null);
+    setTopImageFile(null);
+    setTopImagePreview(null);
+    setBottomImageFile(null);
+    setBottomImagePreview(null);
+    setAccessoryImageFile(null);
+    setAccessoryImagePreview(null);
+    setSelectedBrandId(null);
     setResultGallery([]);
     setError(null);
     setSegmentationFree(true);
     setGarmentPhotoType('Auto');
-    setCategory('Auto');
+    setCategory('Top');
     setMode('Balanced');
     setSeed(Math.floor(Math.random() * 1000000));
     setNumSamples(1);
     setModelVersion('tryon-v1.6');
     setComparison(false);
-    setComparisonModel1('tryon-v1.5');
-    setComparisonModel2('tryon-v1.6');
     setIsComparisonMode(false);
     setSelectedResults([]);
     setIsComparisonModalOpen(false);
   };
 
-  /**
-   * Resize image using pica for high-quality downscaling
-   * - Uses Lanczos filtering for better quality
-   * - Maintains aspect ratio
-   * - Returns resized File object
-   */
   const resizeImagePica = async (file: File, maxDimension = MAX_IMAGE_HEIGHT): Promise<File> => {
     const objectUrl = URL.createObjectURL(file);
     const img = new window.Image();
     img.src = objectUrl;
-
     await img.decode();
     const { width, height } = img;
 
-    // If both dimensions are below the threshold, skip resizing
     if (width <= maxDimension && height <= maxDimension) {
       URL.revokeObjectURL(objectUrl);
       return file;
     }
 
-    // Calculate new dimensions (fit: inside)
     const aspect = width / height;
     let newWidth, newHeight;
     if (width > height) {
@@ -371,31 +459,25 @@ export default function Home() {
       newWidth = Math.round(maxDimension * aspect);
     }
 
-    // Source canvas
     const sourceCanvas = document.createElement('canvas');
     sourceCanvas.width = width;
     sourceCanvas.height = height;
     const ctx = sourceCanvas.getContext('2d');
     ctx?.drawImage(img, 0, 0);
 
-    // Target canvas
     const targetCanvas = document.createElement('canvas');
     targetCanvas.width = newWidth;
     targetCanvas.height = newHeight;
 
-    // Use pica for high-quality downscale (Lanczos)
     const resizer = getPica();
     await resizer.resize(sourceCanvas, targetCanvas);
 
-    // Convert to Blob, then to File
     const outputBlob = await resizer.toBlob(targetCanvas, file.type || 'image/png', JPEG_QUALITY);
     const resizedFile = new File([outputBlob], file.name, { type: outputBlob.type });
-
     URL.revokeObjectURL(objectUrl);
     return resizedFile;
   };
 
-  // Convert file to base64
   const fileToBase64 = async (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -405,15 +487,20 @@ export default function Home() {
     });
   };
 
-  // Handle form submission
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!modelImageFile || !garmentImageFile) {
-      setError("Please select both a model and a garment image.");
+  const handleSubmit = async (e?: FormEvent) => {
+    if (e) e.preventDefault();
+
+    const targetGarment = currentGarmentFile || topImageFile || bottomImageFile || accessoryImageFile;
+
+    if (!modelImageFile) {
+      setError('모델 이미지를 선택하거나 업로드해 주세요.');
+      return;
+    }
+    if (!targetGarment) {
+      setError('착장할 의류(상의, 하의, 악세사리 중 하나)를 선택해 주세요.');
       return;
     }
 
-    // Check if API key is available
     if (!apiKey) {
       setIsApiKeyModalOpen(true);
       return;
@@ -423,26 +510,30 @@ export default function Home() {
     setError(null);
 
     try {
-      // Preprocess images according to FASHN API best practices
-      // Base64 encoding is used for simplicity, though CDN-hosted images are recommended for production
       let modelImageBase64, garmentImageBase64;
-      
       try {
         const resizedModelFile = await resizeImagePica(modelImageFile);
-        const resizedGarmentFile = await resizeImagePica(garmentImageFile);
+        const resizedGarmentFile = await resizeImagePica(targetGarment);
         modelImageBase64 = await fileToBase64(resizedModelFile);
         garmentImageBase64 = await fileToBase64(resizedGarmentFile);
       } catch (preprocessError) {
-        console.warn('Image preprocessing failed, falling back to direct base64 conversion:', preprocessError);
+        console.warn('Image preprocessing failed, falling back:', preprocessError);
         modelImageBase64 = await fileToBase64(modelImageFile);
-        garmentImageBase64 = await fileToBase64(garmentImageFile);
+        garmentImageBase64 = await fileToBase64(targetGarment);
       }
+
+      const activeCategoryMapping =
+        activeGarmentType === 'top'
+          ? 'tops'
+          : activeGarmentType === 'bottom'
+            ? 'bottoms'
+            : CATEGORY_API_MAPPING[category] || 'auto';
 
       const basePayload = {
         model_image: modelImageBase64,
         garment_image: garmentImageBase64,
         garment_photo_type: garmentPhotoType.toLowerCase(),
-        category: CATEGORY_API_MAPPING[category],
+        category: activeCategoryMapping,
         mode: mode.toLowerCase(),
         segmentation_free: segmentationFree,
         seed: seed,
@@ -451,7 +542,6 @@ export default function Home() {
       };
 
       if (comparison) {
-        // Run both selected models in parallel for comparison
         const [model1Response, model2Response] = await Promise.all([
           authFetch('/api/tryon', {
             method: 'POST',
@@ -462,650 +552,928 @@ export default function Home() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...basePayload, model_name: comparisonModel2 }),
-          })
+          }),
         ]);
 
         const [model1Data, model2Data] = await Promise.all([
           model1Response.json(),
-          model2Response.json()
+          model2Response.json(),
         ]);
 
-        // Check for errors in either response
         if (!model1Response.ok) {
-          if (model1Data.requiresApiKey) {
-            setIsApiKeyModalOpen(true);
-          }
+          if (model1Data.requiresApiKey) setIsApiKeyModalOpen(true);
           throw new Error(`${comparisonModel1} API failed: ${model1Data.error || model1Response.statusText}`);
         }
         if (!model2Response.ok) {
           throw new Error(`${comparisonModel2} API failed: ${model2Data.error || model2Response.statusText}`);
         }
 
-        // Combine results from both APIs
         const model1Results = model1Data.output || [];
         const model2Results = model2Data.output || [];
         setResultGallery([...model1Results, ...model2Results]);
-
       } else {
-        // Single API call
         const payload = { ...basePayload, model_name: modelVersion };
-
         const response = await authFetch('/api/tryon', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
-
         const data = await response.json();
 
         if (!response.ok) {
-          // Check if API key is required/invalid
-          if (data.requiresApiKey) {
-            setIsApiKeyModalOpen(true);
-          }
+          if (data.requiresApiKey) setIsApiKeyModalOpen(true);
           throw new Error(data.error || `API request failed with status ${response.status}`);
         }
 
         setResultGallery(data.output || []);
       }
-
     } catch (err: unknown) {
-      console.error("Try-on error:", err);
-      const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred";
+      console.error('Try-on error:', err);
+      const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
       setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
   };
 
-
   return (
-    <div 
-      className="min-h-full bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 py-8 px-4 sm:px-6 lg:px-8"
+    <div
+      className="w-full min-h-full bg-gradient-to-b from-[#f8f9fa] to-[#edeef0] dark:from-gray-950 dark:to-gray-900 p-2.5 sm:p-4 lg:p-5 flex flex-col"
+      style={{ fontSize: '70%' }}
     >
-      <div className="w-full max-w-7xl mx-auto space-y-8">
-        <Banner />
-        
+      <div className="w-full space-y-3.5 flex-1 flex flex-col">
+
+        {/* ============================================================================== */}
+        {/* BODY TOP: Global Action Toolbar (View Tips & Show Advanced Settings Placement) */}
+        {/* ============================================================================== */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2, delay: 0.1 }}
-          className="p-4 sm:p-6 border border-gray-200 dark:border-gray-700 rounded-lg my-4 bg-gray-50 dark:bg-gray-800 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4"
+          className="p-2.5 px-4 bg-white dark:bg-gray-850 border border-gray-200/80 dark:border-gray-800 rounded-lg shadow-2xs flex flex-wrap items-center justify-between gap-2"
         >
-          <div className="flex items-center gap-2 flex-1 min-w-0">
-            <Lightbulb className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 flex-shrink-0" />
-            <h2 className="text-[32.4px] sm:text-[36px] font-semibold text-black dark:text-gray-100 leading-tight">
-              Tips for successful try-on generations
-            </h2>
+          {/* Left Action Buttons */}
+          <div className="flex items-center flex-wrap gap-1.5">
+            <div className="flex items-center gap-1.5 pr-2.5 border-r border-gray-200 dark:border-gray-700">
+              <Sparkle className="w-4 h-4 text-amber-600 fill-amber-500" />
+              <span className="font-semibold text-gray-900 dark:text-gray-100 text-[10.5px]">
+                STMX Studio
+              </span>
+              <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-medium">
+                v1.6 Ready
+              </span>
+            </div>
+
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={loadRandomLook}
+              className="flex items-center gap-1 text-[9px] h-7 px-2.5"
+            >
+              <Sparkles className="w-3 h-3 text-amber-600" />
+              <span>랜덤 착장 프리셋</span>
+            </Button>
+
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setIsApiKeyModalOpen(true)}
+              className="flex items-center gap-1 text-[9px] h-7 px-2.5"
+            >
+              <Zap className="w-3 h-3 text-blue-600" />
+              <span>{apiKey ? 'API Key 연동됨' : 'API Key 설정'}</span>
+            </Button>
           </div>
-          
-          <Button 
-            variant="secondary" 
-            size="sm" 
-            onClick={() => setIsTipsModalOpen(true)}
-            className="w-full sm:w-auto flex-shrink-0"
-          >
-            View Tips
-          </Button>
-          
-          <TipsModal 
-            isOpen={isTipsModalOpen} 
-            onClose={() => setIsTipsModalOpen(false)} 
-          />
+
+          {/* Right Action Buttons: [View Tips] on the LEFT of [Show Advanced Settings] */}
+          <div className="flex items-center gap-2">
+            <Button
+              type="button"
+              variant="secondary"
+              size="sm"
+              onClick={() => setIsTipsModalOpen(true)}
+              className="flex items-center gap-1 text-[9px] font-medium h-7 px-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300/60 dark:border-gray-700"
+            >
+              <Lightbulb className="w-3 h-3 text-amber-500" />
+              <span>View Tips</span>
+            </Button>
+
+            <Button
+              type="button"
+              variant={showAdvancedSettings ? 'primary' : 'outline'}
+              size="sm"
+              onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
+              className="flex items-center gap-1 text-[9px] font-medium h-7 px-2.5 transition-all"
+            >
+              <Settings className="w-3 h-3" />
+              <span>{showAdvancedSettings ? 'Hide' : 'Show'} Advanced Settings</span>
+            </Button>
+          </div>
+
+          <TipsModal isOpen={isTipsModalOpen} onClose={() => setIsTipsModalOpen(false)} />
         </motion.div>
 
-        <motion.form 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          onSubmit={handleSubmit} 
-          className="mt-10 space-y-10"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Column 1: Model Image */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <UserRound className="h-5 w-5 text-gray-600" />
-                  Model Image
+        {/* ============================================================================== */}
+        {/* BODY: 3-Column Layout (좌우 3단)                                              */}
+        {/* Column 1: Model Image + Bottom Controls                                       */}
+        {/* Column 2: 3-Split Garment Section (상의 / 하의 / 패션 악세사리)                 */}
+        {/* Column 3: Brand Directory (브랜드 목록)                                       */}
+        {/* ============================================================================== */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          {/* ---------------------------------------------------------------------------- */}
+          {/* COLUMN 1 (Left 4 cols): Model Image & Controls                                */}
+          {/* ---------------------------------------------------------------------------- */}
+          <div className="lg:col-span-4 flex flex-col gap-3.5">
+            <Card className="flex flex-col h-full shadow-2xs border-gray-200/90 dark:border-gray-800 bg-white dark:bg-gray-900">
+              <CardHeader className="pb-2.5 pt-3 px-3.5 border-b border-gray-100 dark:border-gray-800">
+                <CardTitle className="flex items-center justify-between text-[11px]">
+                  <div className="flex items-center gap-1.5 font-semibold">
+                    <UserRound className="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                    <span>모델 이미지 (Model)</span>
+                  </div>
+                  {modelImagePreview && (
+                    <span className="text-[8px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                      선택 완료
+                    </span>
+                  )}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <FileInput 
-                  onChange={(e) => handleImageChange(e, setModelImageFile, setModelImagePreview)}
-                  accept="image/*"
-                  label="Upload model image"
-                />
-                
-                <AnimatePresence mode="wait">
-                  {modelImagePreview ? (
-                    <motion.div 
-                      key="preview"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.2 }}
-                      className="relative"
+
+              <CardContent className="space-y-3 p-3 flex-1 flex flex-col justify-between">
+                {/* 1. 상단 한줄 버튼 그룹 영역 */}
+                <div className="flex items-center justify-between gap-1 p-1 bg-gray-100/80 dark:bg-gray-800/80 rounded-md border border-gray-200/60 dark:border-gray-700/60">
+                  <label className="flex-1 inline-flex items-center justify-center gap-1 py-1 px-1.5 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 rounded shadow-2xs text-[8.5px] font-medium text-gray-800 dark:text-gray-100 cursor-pointer transition-colors text-center truncate">
+                    <Upload className="w-3 h-3 text-gray-600" />
+                    <span>사진 업로드</span>
+                    <input
+                      type="file"
+                      onChange={(e) => handleImageChange(e, setModelImageFile, setModelImagePreview)}
+                      accept="image/*"
+                      className="hidden"
+                    />
+                  </label>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const nextIdx = (modelExampleIndex + 1) % modelExamples.length;
+                      setModelExampleIndex(nextIdx);
+                      loadExampleImage(modelExamples[nextIdx], setModelImageFile, setModelImagePreview);
+                    }}
+                    className="flex-1 inline-flex items-center justify-center gap-1 py-1 px-1.5 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 rounded shadow-2xs text-[8.5px] font-medium text-gray-800 dark:text-gray-100 cursor-pointer transition-colors text-center truncate"
+                  >
+                    <RefreshCw className="w-3 h-3 text-gray-600" />
+                    <span>샘플 모델 ({modelExampleIndex + 1}/{modelExamples.length})</span>
+                  </button>
+
+                  {modelImagePreview && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setModelImageFile(null);
+                        setModelImagePreview(null);
+                      }}
+                      className="p-1 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/50 rounded transition-colors cursor-pointer"
+                      title="모델 이미지 삭제"
                     >
-                      <div className="aspect-[2/2.5] max-w-[280px] max-h-[350px] mx-auto border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-gray-800">
-                        <Image 
-                          src={modelImagePreview} 
-                          alt="Model Preview" 
-                          className="max-w-full max-h-full object-contain p-2" 
-                          width={280}
-                          height={350}
-                          unoptimized
-                        />
-                      </div>
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        type="button"
-                        onClick={() => {
-                          setModelImageFile(null);
-                          setModelImagePreview(null);
-                        }}
-                        className="absolute -top-2 -right-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-full p-1 shadow-md cursor-pointer"
+                      <X className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
+
+                {/* 2. 중간 모델 미리보기 영역 */}
+                <div className="my-auto">
+                  <AnimatePresence mode="wait">
+                    {modelImagePreview ? (
+                      <motion.div
+                        key="preview"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        className="relative mx-auto"
                       >
-                        <X className="h-4 w-4" />
-                      </motion.button>
-                    </motion.div>
-                  ) : (
-                    <motion.div 
-                      key="empty"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="aspect-[2/2.5] max-w-[280px] max-h-[350px] mx-auto border border-dashed border-gray-200 dark:border-gray-700 rounded-lg relative overflow-hidden bg-gray-50 dark:bg-gray-800"
-                    >
-                      {/* Top overlay with text */}
-                      <div className="absolute top-3 left-3 right-3 z-10">
-                        <div className="inline-flex items-center gap-2 bg-black/70 backdrop-blur-sm text-white px-3 py-2 rounded-full">
-                          <UserRound className="h-4 w-4" />
-                          <p className="text-[21.6px] font-medium">Select a model image</p>
+                        <div className="aspect-[3/4] max-w-[280px] mx-auto border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xs flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-gray-800">
+                          <Image
+                            src={modelImagePreview}
+                            alt="Model Preview"
+                            className="max-w-full max-h-full object-contain p-1"
+                            width={300}
+                            height={400}
+                            unoptimized
+                          />
                         </div>
-                      </div>
-                      
-                      {/* Main example content taking most space */}
-                      {modelExamples.length > 0 ? (
-                        <div className="w-full h-full relative">
-                          <motion.button
-                            key={modelExampleIndex}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            drag="x"
-                            dragConstraints={{ left: 0, right: 0 }}
-                            dragElastic={0.2}
-                            onDragEnd={(e, info) => {
-                              if (info.offset.x > 50) {
-                                handleModelSwipe('left');
-                              } else if (info.offset.x < -50) {
-                                handleModelSwipe('right');
-                              }
-                            }}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              loadExampleImage(modelExamples[modelExampleIndex], setModelImageFile, setModelImagePreview);
-                            }}
-                            className="w-full h-full cursor-pointer group"
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="empty"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="aspect-[3/4] max-w-[280px] mx-auto border-2 border-dashed border-gray-300/80 dark:border-gray-700 rounded-lg relative overflow-hidden bg-gray-50/70 dark:bg-gray-800/50 group"
+                      >
+                        <div className="w-full h-full relative cursor-pointer">
+                          <Image
+                            src={modelExamples[modelExampleIndex]}
+                            alt={`Model Example ${modelExampleIndex + 1}`}
+                            width={280}
+                            height={350}
+                            className="w-full h-full object-contain pointer-events-none opacity-85 group-hover:scale-102 transition-transform duration-200 p-1.5"
+                          />
+                          <div
+                            onClick={() =>
+                              loadExampleImage(modelExamples[modelExampleIndex], setModelImageFile, setModelImagePreview)
+                            }
+                            className="absolute inset-0 bg-black/40 hover:bg-black/50 transition-colors flex flex-col items-center justify-center p-2 text-center"
                           >
-                            <Image 
-                              src={modelExamples[modelExampleIndex]} 
-                              alt={`Model Example ${modelExampleIndex + 1}`} 
-                              width={280} 
-                              height={350} 
-                              className="w-full h-full object-contain pointer-events-none transform scale-70" 
-                            />
-                            
-                            {/* Swipe hint overlay */}
-                            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <div className="bg-black/80 text-white px-4 py-2 rounded-full text-[21.6px] font-semibold shadow-lg backdrop-blur-sm">
-                                Tap to use • Swipe to browse
-                              </div>
+                            <div className="bg-white/95 dark:bg-gray-900/95 text-gray-900 dark:text-gray-100 px-2.5 py-1 rounded-full text-[8.5px] font-semibold shadow-md backdrop-blur-sm mb-1.5">
+                              클릭하여 이 모델 선택
                             </div>
-                          </motion.button>
-                          
-                          {/* Navigation controls at bottom */}
-                          <div className="absolute bottom-3 left-0 right-0 flex items-center justify-between px-4">
-                            <motion.button
-                              whileTap={{ scale: 0.9 }}
+                            <span className="text-[8px] text-white/90">
+                              또는 상단 [사진 업로드] 클릭
+                            </span>
+                          </div>
+
+                          {/* Navigation controls */}
+                          <div className="absolute bottom-2 left-0 right-0 flex items-center justify-between px-2.5 z-10">
+                            <button
+                              type="button"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleModelSwipe('left');
                               }}
                               disabled={modelExampleIndex === 0}
-                              className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer disabled:cursor-not-allowed"
+                              className="w-6 h-6 rounded-full bg-black/70 border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer text-[10px]"
                             >
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                              </svg>
-                            </motion.button>
-                            
-                            {/* Dots indicator */}
-                            <div className="flex gap-1.5">
+                              ‹
+                            </button>
+                            <div className="flex gap-1">
                               {modelExamples.map((_, idx) => (
-                                <motion.div 
-                                  key={idx} 
-                                  className={`w-2 h-2 rounded-full transition-all ${
-                                    idx === modelExampleIndex ? 'bg-white scale-125' : 'bg-white/50'
+                                <span
+                                  key={idx}
+                                  className={`w-1 h-1 rounded-full ${
+                                    idx === modelExampleIndex ? 'bg-white scale-125' : 'bg-white/40'
                                   }`}
-                                  whileHover={{ scale: 1.2 }}
                                 />
                               ))}
                             </div>
-                            
-                            <motion.button
-                              whileTap={{ scale: 0.9 }}
+                            <button
+                              type="button"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleModelSwipe('right');
                               }}
                               disabled={modelExampleIndex === modelExamples.length - 1}
-                              className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer disabled:cursor-not-allowed"
+                              className="w-6 h-6 rounded-full bg-black/70 border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer text-[10px]"
                             >
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </motion.button>
+                              ›
+                            </button>
                           </div>
                         </div>
-                      ) : (
-                        <div className="w-full h-full flex flex-col items-center justify-center">
-                          <UserRound className="h-12 w-12 text-gray-400 mb-3" />
-                          <p className="text-black dark:text-gray-400 text-[25.2px]">
-                            No examples available
-                          </p>
-                        </div>
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                
-                <Checkbox
-                  checked={segmentationFree}
-                  onChange={(e) => setSegmentationFree(e.target.checked)}
-                  label="Segmentation Free"
-                  description="Let the API handle segmentation automatically"
-                />
-              </CardContent>
-            </Card>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
 
-            {/* Column 2: Garment Image */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Shirt className="h-5 w-5 text-gray-600" />
-                  Garment Image
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <FileInput 
-                  onChange={(e) => handleImageChange(e, setGarmentImageFile, setGarmentImagePreview)}
-                  accept="image/*"
-                  label="Upload garment image"
-                />
-                
-                <AnimatePresence mode="wait">
-                  {garmentImagePreview ? (
-                    <motion.div 
-                      key="preview"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.2 }}
-                      className="relative"
-                    >
-                      <div className="aspect-[2/2.5] max-w-[280px] max-h-[350px] mx-auto border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-gray-800">
-                        <Image 
-                          src={garmentImagePreview} 
-                          alt="Garment Preview" 
-                          className="max-w-full max-h-full object-contain p-2" 
-                          width={280}
-                          height={350}
-                          unoptimized
-                        />
-                      </div>
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        type="button"
-                        onClick={() => {
-                          setGarmentImageFile(null);
-                          setGarmentImagePreview(null);
-                        }}
-                        className="absolute -top-2 -right-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-full p-1 shadow-md cursor-pointer"
-                      >
-                        <X className="h-4 w-4" />
-                      </motion.button>
-                    </motion.div>
-                  ) : (
-                    <motion.div 
-                      key="empty"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="aspect-[2/2.5] max-w-[280px] max-h-[350px] mx-auto border border-dashed border-gray-200 dark:border-gray-700 rounded-lg relative overflow-hidden bg-gray-50 dark:bg-gray-800"
-                    >
-                      {/* Top overlay with text */}
-                      <div className="absolute top-3 left-3 right-3 z-10">
-                        <div className="inline-flex items-center gap-2 bg-black/70 backdrop-blur-sm text-white px-3 py-2 rounded-full">
-                          <Shirt className="h-4 w-4" />
-                          <p className="text-[21.6px] font-medium">Select a garment image</p>
-                        </div>
-                      </div>
-                      
-                      {/* Main example content taking most space */}
-                      {garmentExamples.length > 0 ? (
-                        <div className="w-full h-full relative">
-                          <motion.button
-                            key={garmentExampleIndex}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            drag="x"
-                            dragConstraints={{ left: 0, right: 0 }}
-                            dragElastic={0.2}
-                            onDragEnd={(e, info) => {
-                              if (info.offset.x > 50) {
-                                handleGarmentSwipe('left');
-                              } else if (info.offset.x < -50) {
-                                handleGarmentSwipe('right');
-                              }
-                            }}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              loadExampleImage(garmentExamples[garmentExampleIndex], setGarmentImageFile, setGarmentImagePreview);
-                            }}
-                            className="w-full h-full cursor-pointer group"
-                          >
-                            <Image 
-                              src={garmentExamples[garmentExampleIndex]} 
-                              alt={`Garment Example ${garmentExampleIndex + 1}`} 
-                              width={280} 
-                              height={350} 
-                              className="w-full h-full object-contain pointer-events-none transform scale-70" 
-                            />
-                            
-                            {/* Swipe hint overlay */}
-                            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <div className="bg-black/80 text-white px-4 py-2 rounded-full text-[21.6px] font-semibold shadow-lg backdrop-blur-sm">
-                                Tap to use • Swipe to browse
-                              </div>
-                            </div>
-                          </motion.button>
-                          
-                          {/* Navigation controls at bottom */}
-                          <div className="absolute bottom-3 left-0 right-0 flex items-center justify-between px-4">
-                            <motion.button
-                              whileTap={{ scale: 0.9 }}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleGarmentSwipe('left');
-                              }}
-                              disabled={garmentExampleIndex === 0}
-                              className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer disabled:cursor-not-allowed"
-                            >
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                              </svg>
-                            </motion.button>
-                            
-                            {/* Dots indicator */}
-                            <div className="flex gap-1.5">
-                              {garmentExamples.map((_, idx) => (
-                                <motion.div 
-                                  key={idx} 
-                                  className={`w-2 h-2 rounded-full transition-all ${
-                                    idx === garmentExampleIndex ? 'bg-white scale-125' : 'bg-white/50'
-                                  }`}
-                                  whileHover={{ scale: 1.2 }}
-                                />
-                              ))}
-                            </div>
-                            
-                            <motion.button
-                              whileTap={{ scale: 0.9 }}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleGarmentSwipe('right');
-                              }}
-                              disabled={garmentExampleIndex === garmentExamples.length - 1}
-                              className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer disabled:cursor-not-allowed"
-                            >
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </motion.button>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="w-full h-full flex flex-col items-center justify-center">
-                          <Shirt className="h-12 w-12 text-gray-400 mb-3" />
-                          <p className="text-black dark:text-gray-400 text-[25.2px]">
-                            No examples available
-                          </p>
-                        </div>
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                
-                <Dropdown
-                  label="Garment Settings"
-                  className="mt-2"
-                >
-                  <div className="space-y-4">
-                    <RadioGroup
-                      label="Photo Type"
-                      name="garmentPhotoType"
-                      options={[
-                        { label: "Auto", value: "Auto", description: "Let the API determine the photo type" },
-                        { label: "Flat-Lay", value: "Flat-Lay", description: "Garment photographed flat without a model" },
-                        { label: "Model", value: "Model", description: "Garment worn by a model" }
-                      ]}
-                      value={garmentPhotoType}
-                      onChange={setGarmentPhotoType}
-                      variant="card"
-                      layout="vertical"
-                    />
-                    
-                    <RadioGroup
-                      label="Category"
-                      name="category"
-                      options={[
-                        { label: "Auto", value: "Auto", description: "Automatically detect garment category" },
-                        { label: "Top", value: "Top", description: "Upper body garments like shirts, tops, etc." },
-                        { label: "Bottom", value: "Bottom", description: "Lower body garments like pants, skirts, etc." },
-                        { label: "Full-body", value: "Full-body", description: "Full-body garments like dresses, jumpsuits, etc." }
-                      ]}
-                      value={category}
-                      onChange={setCategory}
-                    />
-                  </div>
-                </Dropdown>
-              </CardContent>
-            </Card>
-
-            {/* Column 3: Controls */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Settings className="h-5 w-5 text-gray-600" />
-                  Controls
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="flex gap-2">
+                {/* 3. 하단 한줄 Action button group */}
+                <div className="flex gap-1.5 pt-1.5 border-t border-gray-100 dark:border-gray-800">
                   <Button
-                    type="submit"
-                    disabled={isLoading || !modelImageFile || !garmentImageFile}
+                    type="button"
+                    onClick={() => handleSubmit()}
+                    disabled={isLoading || !modelImageFile}
                     loading={isLoading}
-                    className="flex-1"
+                    className="flex-1 h-8.5 text-[10.5px] font-semibold bg-gray-900 hover:bg-black text-white shadow-2xs"
                   >
-                    {isLoading ? 'Generating...' : 'Run Try-On'}
+                    <Zap className="w-3.5 h-3.5 mr-1 text-amber-400" />
+                    {isLoading ? '가상 피팅 생성 중...' : 'Run Try-On (가상 피팅)'}
                   </Button>
-                  
+
                   <Button
                     type="button"
                     variant="outline"
                     onClick={handleReset}
-                    className="px-3"
+                    className="h-8.5 px-2.5 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300"
+                    title="전체 초기화"
                   >
-                    <RefreshCw className="h-4 w-4" />
+                    <RefreshCw className="h-3 w-3" />
                   </Button>
                 </div>
-                
-                <RadioGroup
-                  label="Run Mode"
-                  name="mode"
-                  options={[
-                    { label: "Performance", value: "Performance", description: "Faster generation with good quality" },
-                    { label: "Balanced", value: "Balanced", description: "Good balance between speed and quality" },
-                    { label: "Quality", value: "Quality", description: "Highest quality but slower generation" }
-                  ]}
-                  value={mode}
-                  onChange={setMode}
-                  variant="card"
-                  layout="horizontal"
-                />
-                
-                <motion.div
-                  animate={{ height: showAdvancedSettings ? 'auto' : '0px', opacity: showAdvancedSettings ? 1 : 0 }}
-                  className={cn(
-                    "space-y-4 overflow-hidden px-2", 
-                    !showAdvancedSettings && "pointer-events-none"
-                  )}
-                >
-                  <Slider
-                    min={1}
-                    max={4}
-                    step={1}
-                    value={numSamples}
-                    onChange={setNumSamples}
-                    label="Number of Samples"
-                  />
-                  
-                  <div className="relative">
-                    <label htmlFor="seed" className="block text-[25.2px] font-medium mb-1">
-                      Seed
-                    </label>
-                    <div className="flex gap-2">
-                      <input
-                        type="number"
-                        id="seed"
-                        min={0}
-                        value={seed}
-                        onChange={(e) => setSeed(parseInt(e.target.value, 10) || 0)}
-                        className="flex-1 px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
-                      />
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+
+                {/* 4. Controls 영역 (맨왼쪽 하단 가로 컴팩트 배치) */}
+                <div className="p-2.5 bg-gray-50/90 dark:bg-gray-850/80 rounded-lg border border-gray-200/70 dark:border-gray-750 space-y-2">
+                  <div className="flex items-center justify-between text-[9px] font-semibold text-gray-800 dark:text-gray-200">
+                    <div className="flex items-center gap-1">
+                      <SlidersHorizontal className="w-3 h-3 text-gray-500" />
+                      <span>피팅 컨트롤 (Controls)</span>
+                    </div>
+                    <span className="text-[8px] font-normal text-gray-500">
+                      모드: {mode}
+                    </span>
+                  </div>
+
+                  {/* Horizontal Run Mode Selector */}
+                  <div className="grid grid-cols-3 gap-1 p-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700">
+                    {['Performance', 'Balanced', 'Quality'].map((m) => (
+                      <button
+                        key={m}
+                        type="button"
+                        onClick={() => setMode(m)}
+                        className={cn(
+                          'py-0.5 text-[8.5px] font-medium rounded transition-all text-center cursor-pointer',
+                          mode === m
+                            ? 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 shadow-2xs'
+                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900'
+                        )}
+                      >
+                        {m === 'Performance' ? '⚡ 고속' : m === 'Balanced' ? '⚖️ 균형' : '✨ 최고화질'}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Horizontal Switches & Status */}
+                  <div className="flex items-center justify-between gap-2 text-[8.5px]">
+                    <Checkbox
+                      checked={segmentationFree}
+                      onChange={(e) => setSegmentationFree(e.target.checked)}
+                      label="Auto Segmentation"
+                      description="인물/의류 자동 영역 분리"
+                    />
+
+                    <div className="text-[8px] text-gray-500 flex items-center gap-1 font-mono">
+                      <span>Seed:</span>
+                      <span className="font-semibold text-gray-700 dark:text-gray-300">{seed}</span>
+                      <button
                         type="button"
                         onClick={() => setSeed(Math.floor(Math.random() * 1000000))}
-                        className="px-3 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-md text-[25.2px] font-medium transition-colors cursor-pointer"
-                        title="Generate random seed"
+                        className="hover:scale-110 transition-transform cursor-pointer"
+                        title="새 Seed 발급"
                       >
                         🎲
-                      </motion.button>
+                      </button>
                     </div>
                   </div>
-                  
-                  <RadioGroup
-                    label="Model Version"
-                    name="modelVersion"
-                    options={[
-                      { label: "v1.6 (Latest)", value: "tryon-v1.6", description: "Recommended production model" },
-                      { label: "v1.5", value: "tryon-v1.5", description: "Original model for backwards compatibility" },
-                      { label: "Staging", value: "tryon-staging", description: "Experimental model, may be slow" }
-                    ]}
-                    value={modelVersion}
-                    onChange={setModelVersion}
-                    variant="card"
-                    layout="vertical"
-                  />
-                  
-                  <Checkbox
-                    checked={comparison}
-                    onChange={(e) => setComparison(e.target.checked)}
-                    label="⚖️ Model Comparison"
-                    description="Run two models in parallel to compare results side by side"
-                  />
-                  
-                  {comparison && (
-                    <div className="space-y-3 mt-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-600">
-                      <div className="text-[25.2px] font-medium text-black dark:text-gray-300 mb-2">
-                        Select models to compare:
-                      </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <label className="block text-[21.6px] font-medium text-black dark:text-gray-400 mb-1">
-                            Model 1
-                          </label>
-                          <select
-                            value={comparisonModel1}
-                            onChange={(e) => setComparisonModel1(e.target.value)}
-                            className="w-full px-2 py-1 text-[25.2px] bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded focus:outline-none focus:ring-1 focus:ring-gray-500"
-                          >
-                            <option value="tryon-v1.5">v1.5 (Stable)</option>
-                            <option value="tryon-v1.6">v1.6 (Latest)</option>
-                            <option value="tryon-staging">Staging</option>
-                          </select>
+
+                  {/* Expandable Advanced Controls when toggled from top */}
+                  <AnimatePresence>
+                    {showAdvancedSettings && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pt-1.5 border-t border-gray-200 dark:border-gray-700 space-y-2 overflow-hidden"
+                      >
+                        <div className="grid grid-cols-2 gap-1.5">
+                          <div>
+                            <label className="block text-[8px] font-medium text-gray-600 dark:text-gray-400 mb-0.5">
+                              Model Engine
+                            </label>
+                            <select
+                              value={modelVersion}
+                              onChange={(e) => setModelVersion(e.target.value)}
+                              className="w-full px-1.5 py-0.5 text-[8.5px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded"
+                            >
+                              <option value="tryon-v1.6">v1.6 (Latest)</option>
+                              <option value="tryon-v1.5">v1.5 (Stable)</option>
+                              <option value="tryon-staging">Staging (Beta)</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <label className="block text-[8px] font-medium text-gray-600 dark:text-gray-400 mb-0.5">
+                              생성 매수 (Samples)
+                            </label>
+                            <select
+                              value={numSamples}
+                              onChange={(e) => setNumSamples(Number(e.target.value))}
+                              className="w-full px-1.5 py-0.5 text-[8.5px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded"
+                            >
+                              <option value={1}>1장</option>
+                              <option value={2}>2장</option>
+                              <option value={4}>4장 (비교용)</option>
+                            </select>
+                          </div>
                         </div>
-                        <div>
-                          <label className="block text-[21.6px] font-medium text-black dark:text-gray-400 mb-1">
-                            Model 2
-                          </label>
-                          <select
-                            value={comparisonModel2}
-                            onChange={(e) => setComparisonModel2(e.target.value)}
-                            className="w-full px-2 py-1 text-[25.2px] bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded focus:outline-none focus:ring-1 focus:ring-gray-500"
-                          >
-                            <option value="tryon-v1.5">v1.5</option>
-                            <option value="tryon-v1.6">v1.6 (Latest)</option>
-                            <option value="tryon-staging">Staging</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  
-                </motion.div>
-                
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
-                  className="w-full text-[25.2px] flex justify-center items-center gap-1"
-                >
-                  <Settings className="h-4 w-4" />
-                  {showAdvancedSettings ? 'Hide' : 'Show'} Advanced Settings
-                </Button>
-                
-                {error && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="p-3 bg-gray-100 dark:bg-gray-800 text-black dark:text-gray-100 text-[25.2px] rounded-md border border-gray-300 dark:border-gray-600"
-                  >
-                    <div className="flex items-start gap-2">
-                      <X className="h-5 w-5 flex-shrink-0 mt-0.5" />
+
+                        <Checkbox
+                          checked={comparison}
+                          onChange={(e) => setComparison(e.target.checked)}
+                          label="⚖️ 듀얼 모델 비교 실행"
+                          description="v1.5와 v1.6 모델 결과를 나란히 비교합니다"
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {error && (
+                    <div className="p-2 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 text-[8.5px] rounded border border-red-200 dark:border-red-900/60 flex items-start gap-1">
+                      <X className="h-3 w-3 flex-shrink-0 mt-0.5" />
                       <p>{error}</p>
                     </div>
-                  </motion.div>
-                )}
+                  )}
+                </div>
               </CardContent>
             </Card>
           </div>
-        </motion.form>
 
-        {/* Try-On Results Section */}
+          {/* ---------------------------------------------------------------------------- */}
+          {/* COLUMN 2 (Middle 5 cols): 3-Split Garments & Accessories (상의 / 하의 / 악세사리) */}
+          {/* ---------------------------------------------------------------------------- */}
+          <div className="lg:col-span-5 flex flex-col gap-3.5">
+            <Card className="flex flex-col h-full shadow-2xs border-gray-200/90 dark:border-gray-800 bg-white dark:bg-gray-900">
+              <CardHeader className="pb-2.5 pt-3 px-3.5 border-b border-gray-100 dark:border-gray-800 flex flex-row items-center justify-between">
+                <CardTitle className="flex items-center gap-1.5 text-[11px] font-semibold">
+                  <Shirt className="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                  <span>의류 및 패션 악세사리 선택 (3-Split)</span>
+                </CardTitle>
+                <span className="text-[8.5px] text-gray-500 font-medium">
+                  피팅 타겟: <span className="font-semibold text-gray-900 dark:text-gray-100">{activeGarmentType === 'top' ? '상의' : activeGarmentType === 'bottom' ? '하의' : '악세사리'}</span>
+                </span>
+              </CardHeader>
+
+              <CardContent className="space-y-3 p-3 flex-1 flex flex-col justify-between">
+                {/* 1. 상의 (Top) 영역 */}
+                <div
+                  className={cn(
+                    'p-2.5 rounded-lg border transition-all',
+                    activeGarmentType === 'top'
+                      ? 'border-gray-900/80 dark:border-gray-300 bg-gray-50/70 dark:bg-gray-850/60 shadow-2xs'
+                      : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 hover:border-gray-300'
+                  )}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <button
+                      type="button"
+                      onClick={() => setActiveGarmentType('top')}
+                      className="flex items-center gap-1.5 cursor-pointer text-left"
+                    >
+                      <span className="w-4.5 h-4.5 rounded-full bg-gray-900 text-white text-[8px] font-bold flex items-center justify-center">
+                        1
+                      </span>
+                      <span className="font-semibold text-[10px] text-gray-900 dark:text-gray-100">
+                        상의 (Tops)
+                      </span>
+                      {topImagePreview && (
+                        <span className="text-[7px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded-full font-medium">
+                          등록됨
+                        </span>
+                      )}
+                    </button>
+
+                    <label className="text-[8px] font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white inline-flex items-center gap-1 cursor-pointer px-1.5 py-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 shadow-2xs">
+                      <Upload className="w-2.5 h-2.5" />
+                      <span>상의 업로드</span>
+                      <input
+                        type="file"
+                        onChange={(e) => {
+                          handleImageChange(e, setTopImageFile, setTopImagePreview);
+                          setActiveGarmentType('top');
+                        }}
+                        accept="image/*"
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    {/* Thumbnail / Upload Box */}
+                    <div className="w-14 h-17 border border-gray-200 dark:border-gray-700 rounded overflow-hidden bg-white dark:bg-gray-800 flex-shrink-0 flex items-center justify-center relative group">
+                      {topImagePreview ? (
+                        <>
+                          <Image
+                            src={topImagePreview}
+                            alt="Top Preview"
+                            width={56}
+                            height={68}
+                            className="w-full h-full object-contain p-0.5"
+                            unoptimized
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setTopImageFile(null);
+                              setTopImagePreview(null);
+                            }}
+                            className="absolute top-0.5 right-0.5 bg-black/70 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <X className="w-2.5 h-2.5" />
+                          </button>
+                        </>
+                      ) : (
+                        <Shirt className="w-4 h-4 text-gray-300 dark:text-gray-600" />
+                      )}
+                    </div>
+
+                    {/* Quick Example Selector */}
+                    <div className="flex-1 min-w-0">
+                      <span className="block text-[8px] font-medium text-gray-500 mb-1">
+                        추천 상의 샘플:
+                      </span>
+                      <div className="grid grid-cols-4 gap-1">
+                        {topExamples.map((item, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => {
+                              loadExampleImage(item.url, setTopImageFile, setTopImagePreview);
+                              setActiveGarmentType('top');
+                            }}
+                            className="border border-gray-200 dark:border-gray-700 hover:border-gray-900 rounded p-0.5 bg-white dark:bg-gray-800 flex flex-col items-center gap-0.5 cursor-pointer group transition-all"
+                          >
+                            <div className="w-5.5 h-5.5 relative">
+                              <Image
+                                src={item.url}
+                                alt={item.name}
+                                width={22}
+                                height={22}
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                            <span className="text-[6.5px] text-gray-600 dark:text-gray-400 truncate w-full text-center">
+                              {item.name.split(' ')[0]}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. 하의 (Bottom) 영역 */}
+                <div
+                  className={cn(
+                    'p-2.5 rounded-lg border transition-all',
+                    activeGarmentType === 'bottom'
+                      ? 'border-gray-900/80 dark:border-gray-300 bg-gray-50/70 dark:bg-gray-850/60 shadow-2xs'
+                      : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 hover:border-gray-300'
+                  )}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <button
+                      type="button"
+                      onClick={() => setActiveGarmentType('bottom')}
+                      className="flex items-center gap-1.5 cursor-pointer text-left"
+                    >
+                      <span className="w-4.5 h-4.5 rounded-full bg-gray-900 text-white text-[8px] font-bold flex items-center justify-center">
+                        2
+                      </span>
+                      <span className="font-semibold text-[10px] text-gray-900 dark:text-gray-100">
+                        하의 (Bottoms)
+                      </span>
+                      {bottomImagePreview && (
+                        <span className="text-[7px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded-full font-medium">
+                          등록됨
+                        </span>
+                      )}
+                    </button>
+
+                    <label className="text-[8px] font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white inline-flex items-center gap-1 cursor-pointer px-1.5 py-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 shadow-2xs">
+                      <Upload className="w-2.5 h-2.5" />
+                      <span>하의 업로드</span>
+                      <input
+                        type="file"
+                        onChange={(e) => {
+                          handleImageChange(e, setBottomImageFile, setBottomImagePreview);
+                          setActiveGarmentType('bottom');
+                        }}
+                        accept="image/*"
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    {/* Thumbnail / Upload Box */}
+                    <div className="w-14 h-17 border border-gray-200 dark:border-gray-700 rounded overflow-hidden bg-white dark:bg-gray-800 flex-shrink-0 flex items-center justify-center relative group">
+                      {bottomImagePreview ? (
+                        <>
+                          <Image
+                            src={bottomImagePreview}
+                            alt="Bottom Preview"
+                            width={56}
+                            height={68}
+                            className="w-full h-full object-contain p-0.5"
+                            unoptimized
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setBottomImageFile(null);
+                              setBottomImagePreview(null);
+                            }}
+                            className="absolute top-0.5 right-0.5 bg-black/70 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <X className="w-2.5 h-2.5" />
+                          </button>
+                        </>
+                      ) : (
+                        <Layers className="w-4 h-4 text-gray-300 dark:text-gray-600" />
+                      )}
+                    </div>
+
+                    {/* Quick Example Selector */}
+                    <div className="flex-1 min-w-0">
+                      <span className="block text-[8px] font-medium text-gray-500 mb-1">
+                        추천 하의 샘플:
+                      </span>
+                      <div className="grid grid-cols-4 gap-1">
+                        {bottomExamples.map((item, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => {
+                              loadExampleImage(item.url, setBottomImageFile, setBottomImagePreview);
+                              setActiveGarmentType('bottom');
+                            }}
+                            className="border border-gray-200 dark:border-gray-700 hover:border-gray-900 rounded p-0.5 bg-white dark:bg-gray-800 flex flex-col items-center gap-0.5 cursor-pointer group transition-all"
+                          >
+                            <div className="w-5.5 h-5.5 relative">
+                              <Image
+                                src={item.url}
+                                alt={item.name}
+                                width={22}
+                                height={22}
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                            <span className="text-[6.5px] text-gray-600 dark:text-gray-400 truncate w-full text-center">
+                              {item.name.split(' ')[0]}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. 패션 악세사리 (Accessories & Outerwear) 영역 */}
+                <div
+                  className={cn(
+                    'p-2.5 rounded-lg border transition-all',
+                    activeGarmentType === 'accessory'
+                      ? 'border-gray-900/80 dark:border-gray-300 bg-gray-50/70 dark:bg-gray-850/60 shadow-2xs'
+                      : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 hover:border-gray-300'
+                  )}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <button
+                      type="button"
+                      onClick={() => setActiveGarmentType('accessory')}
+                      className="flex items-center gap-1.5 cursor-pointer text-left"
+                    >
+                      <span className="w-4.5 h-4.5 rounded-full bg-gray-900 text-white text-[8px] font-bold flex items-center justify-center">
+                        3
+                      </span>
+                      <span className="font-semibold text-[10px] text-gray-900 dark:text-gray-100">
+                        패션 악세사리 (Accessories)
+                      </span>
+                      {accessoryImagePreview && (
+                        <span className="text-[7px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded-full font-medium">
+                          등록됨
+                        </span>
+                      )}
+                    </button>
+
+                    <label className="text-[8px] font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white inline-flex items-center gap-1 cursor-pointer px-1.5 py-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 shadow-2xs">
+                      <Upload className="w-2.5 h-2.5" />
+                      <span>악세사리 업로드</span>
+                      <input
+                        type="file"
+                        onChange={(e) => {
+                          handleImageChange(e, setAccessoryImageFile, setAccessoryImagePreview);
+                          setActiveGarmentType('accessory');
+                        }}
+                        accept="image/*"
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+
+                  {/* Accessory Category Chips */}
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    {accessorySlots.map((slot) => {
+                      const Icon = slot.icon;
+                      const isSelected = selectedAccessorySlot === slot.id;
+                      return (
+                        <button
+                          key={slot.id}
+                          type="button"
+                          onClick={() => {
+                            setSelectedAccessorySlot(slot.id);
+                            setActiveGarmentType('accessory');
+                            const sample = accessoryExamples.find((ex) => ex.slot === slot.id);
+                            if (sample) {
+                              loadExampleImage(sample.url, setAccessoryImageFile, setAccessoryImagePreview);
+                            }
+                          }}
+                          className={cn(
+                            'px-1.5 py-0.5 rounded-full text-[8px] font-medium inline-flex items-center gap-0.5 transition-all cursor-pointer border',
+                            isSelected
+                              ? 'bg-gray-900 text-white border-gray-900 dark:bg-gray-100 dark:text-gray-900'
+                              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-200'
+                          )}
+                        >
+                          <Icon className="w-2.5 h-2.5" />
+                          <span>{slot.name}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    {/* Thumbnail / Upload Box */}
+                    <div className="w-14 h-17 border border-gray-200 dark:border-gray-700 rounded overflow-hidden bg-white dark:bg-gray-800 flex-shrink-0 flex items-center justify-center relative group">
+                      {accessoryImagePreview ? (
+                        <>
+                          <Image
+                            src={accessoryImagePreview}
+                            alt="Accessory Preview"
+                            width={56}
+                            height={68}
+                            className="w-full h-full object-contain p-0.5"
+                            unoptimized
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setAccessoryImageFile(null);
+                              setAccessoryImagePreview(null);
+                            }}
+                            className="absolute top-0.5 right-0.5 bg-black/70 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <X className="w-2.5 h-2.5" />
+                          </button>
+                        </>
+                      ) : (
+                        <ShoppingBag className="w-4 h-4 text-gray-300 dark:text-gray-600" />
+                      )}
+                    </div>
+
+                    {/* Quick Example Selector */}
+                    <div className="flex-1 min-w-0">
+                      <span className="block text-[8px] font-medium text-gray-500 mb-1">
+                        추천 악세사리 샘플:
+                      </span>
+                      <div className="grid grid-cols-4 gap-1">
+                        {accessoryExamples.map((item, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => {
+                              loadExampleImage(item.url, setAccessoryImageFile, setAccessoryImagePreview);
+                              setSelectedAccessorySlot(item.slot);
+                              setActiveGarmentType('accessory');
+                            }}
+                            className="border border-gray-200 dark:border-gray-700 hover:border-gray-900 rounded p-0.5 bg-white dark:bg-gray-800 flex flex-col items-center gap-0.5 cursor-pointer group transition-all"
+                          >
+                            <div className="w-5.5 h-5.5 relative">
+                              <Image
+                                src={item.url}
+                                alt={item.name}
+                                width={22}
+                                height={22}
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                            <span className="text-[6.5px] text-gray-600 dark:text-gray-400 truncate w-full text-center">
+                              {item.name.split(' ')[0]}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* ---------------------------------------------------------------------------- */}
+          {/* COLUMN 3 (Right 3 cols): Brand Directory (브랜드 목록)                       */}
+          {/* ---------------------------------------------------------------------------- */}
+          <div className="lg:col-span-3 flex flex-col gap-3.5">
+            <Card className="flex flex-col h-full shadow-2xs border-gray-200/90 dark:border-gray-800 bg-white dark:bg-gray-900">
+              <CardHeader className="pb-2.5 pt-3 px-3.5 border-b border-gray-100 dark:border-gray-800">
+                <CardTitle className="flex items-center justify-between text-[11px]">
+                  <div className="flex items-center gap-1.5 font-semibold">
+                    <ShoppingBag className="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                    <span>브랜드 목록 (Brands)</span>
+                  </div>
+                  <span className="text-[8px] font-medium text-gray-500">
+                    {filteredBrands.length}개 브랜드
+                  </span>
+                </CardTitle>
+              </CardHeader>
+
+              <CardContent className="p-3 space-y-2 flex-1 flex flex-col">
+                {/* Brand Search Bar */}
+                <div className="relative">
+                  <Search className="w-3 h-3 text-gray-400 absolute left-2 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    placeholder="브랜드 검색 (Chanel, Prada...)"
+                    value={brandSearchQuery}
+                    onChange={(e) => setBrandSearchQuery(e.target.value)}
+                    className="w-full pl-6.5 pr-2.5 py-1 text-[8.5px] bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400"
+                  />
+                  {brandSearchQuery && (
+                    <button
+                      onClick={() => setBrandSearchQuery('')}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
+
+                {/* Category Filter Pills */}
+                <div className="flex items-center gap-1 overflow-x-auto pb-0.5 vt-scroll">
+                  {BRAND_CATEGORIES.map((cat) => (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setSelectedBrandCategory(cat)}
+                      className={cn(
+                        'px-1.5 py-0.5 rounded-full text-[8px] font-medium whitespace-nowrap transition-all cursor-pointer',
+                        selectedBrandCategory === cat
+                          ? 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900'
+                          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200'
+                      )}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Scrollable Brand List */}
+                <div className="flex-1 overflow-y-auto max-h-[580px] space-y-1.5 pr-1 vt-scroll">
+                  {filteredBrands.map((brand) => {
+                    const isSelected = selectedBrandId === brand.id;
+                    return (
+                      <div
+                        key={brand.id}
+                        className={cn(
+                          'p-2.5 rounded-lg border transition-all flex flex-col gap-1.5',
+                          isSelected
+                            ? 'border-gray-900 dark:border-gray-300 bg-gray-50/90 dark:bg-gray-800/90 shadow-2xs'
+                            : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-850 hover:border-gray-300 dark:hover:border-gray-700'
+                        )}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-[family-name:var(--font-heading)] font-bold text-[10.5px] tracking-wide text-gray-900 dark:text-gray-100">
+                              {brand.name}
+                            </span>
+                            <span className="text-[7px] text-gray-500 font-mono">
+                              {brand.origin}
+                            </span>
+                          </div>
+                          <span
+                            className={cn(
+                              'text-[7px] font-semibold px-1.5 py-0.5 rounded-full',
+                              brand.badgeColor
+                            )}
+                          >
+                            {brand.category}
+                          </span>
+                        </div>
+
+                        <p className="text-[8px] text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
+                          {brand.description}
+                        </p>
+
+                        <div className="flex items-center justify-between pt-1 border-t border-gray-100 dark:border-gray-750">
+                          <span className="text-[7px] text-gray-400 italic">
+                            #{brand.tag}
+                          </span>
+                          <Button
+                            type="button"
+                            variant="secondary"
+                            size="sm"
+                            onClick={() => applyBrandPreset(brand)}
+                            className="h-5 px-2 text-[8px] font-medium bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 text-gray-800 dark:text-gray-200 rounded"
+                          >
+                            <span>착장 세트 적용</span>
+                            <ChevronRight className="w-2.5 h-2.5 ml-0.5" />
+                          </Button>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  {filteredBrands.length === 0 && (
+                    <div className="py-6 text-center text-gray-400 text-[9px]">
+                      검색 조건에 맞는 브랜드가 없습니다.
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* ============================================================================== */}
+        {/* TRY-ON RESULTS SECTION                                                         */}
+        {/* ============================================================================== */}
         <AnimatePresence mode="wait">
           {(isLoading || resultGallery.length > 0) && (
             <motion.div
@@ -1113,37 +1481,39 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
-              className="mt-8"
+              className="mt-6"
             >
-              <Card>
-                <CardHeader>
+              <Card className="border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
+                <CardHeader className="py-2.5 px-3.5">
                   <CardTitle className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="h-5 w-5 text-gray-600" />
-                      Try-On Results
+                    <div className="flex items-center gap-1.5 text-[12px] font-semibold">
+                      <Sparkles className="h-4 w-4 text-amber-500" />
+                      <span>가상 피팅 결과 (Try-On Results)</span>
                     </div>
                     {resultGallery.length > 1 && !isLoading && (
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1.5">
                         {isComparisonMode && (
-                          <span className="text-[25.2px] text-black dark:text-gray-400">
-                            Select 2 results to compare ({selectedResults.length}/2)
+                          <span className="text-[9px] text-gray-600 dark:text-gray-400">
+                            비교할 2장의 이미지를 선택하세요 ({selectedResults.length}/2)
                           </span>
                         )}
                         <Button
-                          variant={isComparisonMode ? "primary" : "outline"}
+                          variant={isComparisonMode ? 'primary' : 'outline'}
                           size="sm"
-                          onClick={toggleComparisonMode}
-                          className="flex items-center gap-1"
+                          onClick={() => {
+                            setIsComparisonMode(!isComparisonMode);
+                            setSelectedResults([]);
+                          }}
+                          className="flex items-center gap-1 text-[9px] h-7 px-2"
                         >
                           {isComparisonMode ? (
                             <>
-                              <X className="h-4 w-4" />
-                              Cancel
+                              <X className="h-3 w-3" />
+                              <span>취소</span>
                             </>
                           ) : (
                             <>
-                              ⚖️
-                              Compare
+                              <span>⚖️ 비교 모드</span>
                             </>
                           )}
                         </Button>
@@ -1151,100 +1521,100 @@ export default function Home() {
                     )}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-3">
                   <AnimatePresence mode="wait">
                     {isLoading ? (
-                      <motion.div 
+                      <motion.div
                         key="loading"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="flex flex-col items-center justify-center py-12 text-center space-y-4"
+                        className="flex flex-col items-center justify-center py-12 text-center space-y-3"
                       >
                         <div className="relative">
-                          <div className="h-16 w-16 rounded-full border-4 border-gray-200 dark:border-gray-700 border-t-gray-900 dark:border-t-gray-100 animate-spin" />
-                          <Sparkles className="h-6 w-6 text-gray-600 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                          <div className="h-12 w-12 rounded-full border-3 border-gray-200 dark:border-gray-700 border-t-gray-900 dark:border-t-gray-100 animate-spin" />
+                          <Sparkles className="h-5 w-5 text-amber-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                         </div>
-                        <p className="text-black dark:text-gray-400 text-[25.2px] animate-pulse">
-                          Generating your virtual try-on...
+                        <p className="text-gray-800 dark:text-gray-200 text-[11px] font-medium animate-pulse">
+                          FASHN AI 가상 피팅 이미지를 생성하고 있습니다...
                         </p>
                       </motion.div>
                     ) : (
-                      <motion.div 
+                      <motion.div
                         key="results"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
                       >
                         {resultGallery.map((url, index) => {
                           const isSelected = selectedResults.includes(index);
                           const canSelect = isComparisonMode && (selectedResults.length < 2 || isSelected);
-                          
+
                           return (
-                            <motion.div 
+                            <motion.div
                               key={index}
                               initial={{ opacity: 0, scale: 0.9 }}
-                              animate={{ 
-                                opacity: 1, 
+                              animate={{
+                                opacity: 1,
                                 scale: 1,
-                                transition: { delay: index * 0.05, duration: 0.2 }
+                                transition: { delay: index * 0.05, duration: 0.2 },
                               }}
                               className={cn(
-                                "relative group cursor-pointer",
-                                isSelected && "ring-2 ring-blue-500 ring-offset-2",
-                                isComparisonMode && !canSelect && "opacity-50 cursor-not-allowed"
+                                'relative group cursor-pointer rounded-lg overflow-hidden',
+                                isSelected && 'ring-2 ring-blue-500 ring-offset-2',
+                                isComparisonMode && !canSelect && 'opacity-50 cursor-not-allowed'
                               )}
-                              onClick={() => handleResultSelection(index)}
-                              onKeyDown={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                  e.preventDefault();
-                                  handleResultSelection(index);
+                              onClick={() => {
+                                if (!isComparisonMode) {
+                                  setCurrentResultIndex(index);
+                                  setIsResultsModalOpen(true);
+                                  return;
+                                }
+                                if (selectedResults.includes(index)) {
+                                  setSelectedResults(selectedResults.filter((i) => i !== index));
+                                } else if (selectedResults.length < 2) {
+                                  const newSelection = [...selectedResults, index];
+                                  setSelectedResults(newSelection);
+                                  if (newSelection.length === 2) {
+                                    setIsComparisonModalOpen(true);
+                                  }
                                 }
                               }}
                               tabIndex={0}
                               role="button"
-                              aria-label={isComparisonMode ? `${isSelected ? 'Deselect' : 'Select'} result ${index + 1} for comparison` : `View result ${index + 1} in full screen`}
                             >
-                              <div className="aspect-[2/3] border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-gray-800">
-                                <Image 
-                                  src={url} 
-                                  alt={`Result ${index + 1}`} 
-                                  className="max-w-full max-h-full object-contain p-2" 
+                              <div className="aspect-[3/4] border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xs flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-gray-800">
+                                <Image
+                                  src={url}
+                                  alt={`Result ${index + 1}`}
+                                  className="max-w-full max-h-full object-contain p-1.5"
                                   width={300}
                                   height={400}
                                   unoptimized
                                 />
                               </div>
-                              
-                              {/* Selection indicator */}
+
                               {isComparisonMode && (
-                                <div className="absolute top-2 left-2 z-10">
-                                  <div className={cn(
-                                    "w-6 h-6 rounded-full border-2 flex items-center justify-center text-[21.6px] font-bold",
-                                    isSelected ? "bg-blue-500 border-blue-500 text-white" : "bg-white/90 border-gray-400 text-black"
-                                  )}>
-                                    {isSelected ? selectedResults.indexOf(index) + 1 : ""}
+                                <div className="absolute top-1.5 left-1.5 z-10">
+                                  <div
+                                    className={cn(
+                                      'w-5 h-5 rounded-full border-2 flex items-center justify-center text-[8.5px] font-bold',
+                                      isSelected
+                                        ? 'bg-blue-500 border-blue-500 text-white'
+                                        : 'bg-white/90 border-gray-400 text-black'
+                                    )}
+                                  >
+                                    {isSelected ? selectedResults.indexOf(index) + 1 : ''}
                                   </div>
                                 </div>
                               )}
-                              
-                              {/* Hover overlay */}
+
                               {!isComparisonMode && (
-                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                  <div className="bg-black/70 text-white py-2 px-4 rounded-full text-[25.2px] flex items-center gap-2">
-                                    <Zap className="h-4 w-4" />
-                                    Click to view full size
-                                  </div>
-                                </div>
-                              )}
-                              
-                              {/* Comparison mode overlay */}
-                              {isComparisonMode && canSelect && (
-                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                  <div className="bg-blue-500/90 text-white py-2 px-4 rounded-full text-[25.2px] flex items-center gap-2">
-                                    ⚖️
-                                    {isSelected ? 'Deselect' : 'Select for comparison'}
+                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+                                  <div className="bg-white/95 text-gray-900 py-1 px-2.5 rounded-full text-[9px] font-semibold flex items-center gap-1 shadow-md">
+                                    <Zap className="h-3 w-3 text-amber-500" />
+                                    <span>크게 보기</span>
                                   </div>
                                 </div>
                               )}
@@ -1269,126 +1639,84 @@ export default function Home() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
               className="fixed inset-0 w-screen h-screen bg-black/95 backdrop-blur-sm z-50 flex items-center justify-center"
-              style={{ 
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                width: '100vw',
-                height: '100vh'
-              }}
               onClick={() => setIsResultsModalOpen(false)}
             >
               <div className="relative w-full h-full flex items-center justify-center">
-                {/* Close button */}
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                <button
+                  type="button"
                   onClick={() => setIsResultsModalOpen(false)}
-                  className="absolute top-4 right-4 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-3 backdrop-blur-sm transition-colors cursor-pointer"
+                  className="absolute top-4 right-4 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2.5 backdrop-blur-sm transition-colors cursor-pointer"
                 >
-                  <X className="h-6 w-6" />
-                </motion.button>
+                  <X className="h-5 w-5" />
+                </button>
 
-                {/* Image counter */}
-                <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-4 py-2 rounded-full text-[25.2px] backdrop-blur-sm">
-                  <div className="flex items-center gap-2">
-                    <span>{currentResultIndex + 1} of {resultGallery.length}</span>
+                <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-3.5 py-1.5 rounded-full text-[10px] backdrop-blur-sm">
+                  <div className="flex items-center gap-1.5">
+                    <span>
+                      {currentResultIndex + 1} of {resultGallery.length}
+                    </span>
                     {resultGallery.length > 1 && (
-                      <span className="text-[21.6px] opacity-75">• Use ← → keys</span>
+                      <span className="text-[8.5px] opacity-75">• 키보드 ← → 방향키로 이동</span>
                     )}
                   </div>
                 </div>
 
-                {/* Previous button */}
                 {currentResultIndex > 0 && (
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                  <button
+                    type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       navigateResult('prev');
                     }}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-3 backdrop-blur-sm transition-colors cursor-pointer"
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2.5 backdrop-blur-sm transition-colors cursor-pointer text-[14px]"
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </motion.button>
+                    ‹
+                  </button>
                 )}
 
-                {/* Next button */}
                 {currentResultIndex < resultGallery.length - 1 && (
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                  <button
+                    type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       navigateResult('next');
                     }}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-3 backdrop-blur-sm transition-colors cursor-pointer"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2.5 backdrop-blur-sm transition-colors cursor-pointer text-[14px]"
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </motion.button>
+                    ›
+                  </button>
                 )}
 
-                {/* Main image */}
                 <motion.div
                   key={currentResultIndex}
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  transition={{ duration: 0.15, ease: 'easeOut' }}
                   className="w-full h-full flex items-center justify-center p-4"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <Image
                     src={resultGallery[currentResultIndex]}
                     alt={`Result ${currentResultIndex + 1}`}
-                    className="w-auto h-auto max-w-[min(400px,calc(100vw-2rem))] max-h-[min(533px,calc(100vh-2rem))] object-contain"
+                    className="w-auto h-auto max-w-[min(600px,calc(100vw-2rem))] max-h-[min(800px,calc(100vh-2rem))] object-contain"
                     width={1200}
                     height={1600}
                     unoptimized
                   />
                 </motion.div>
 
-                {/* Download button */}
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <a
                   href={resultGallery[currentResultIndex]}
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="absolute bottom-4 right-4 z-10 bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-full text-[25.2px] flex items-center gap-2 backdrop-blur-sm transition-colors cursor-pointer"
+                  className="absolute bottom-4 right-4 z-10 bg-white text-gray-900 font-semibold px-4 py-2 rounded-full text-[10px] flex items-center gap-1.5 backdrop-blur-sm transition-colors cursor-pointer shadow-lg"
                   onClick={(e) => e.stopPropagation()}
-                  style={{ marginRight: '1rem' }}
                 >
-                  <Zap className="h-4 w-4" />
-                  Download
-                </motion.a>
-
-                {/* Dots indicator for multiple results */}
-                {resultGallery.length > 1 && (
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex gap-2">
-                    {resultGallery.map((_, idx) => (
-                      <motion.button
-                        key={idx}
-                        whileHover={{ scale: 1.2 }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentResultIndex(idx);
-                        }}
-                        className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
-                          idx === currentResultIndex ? 'bg-white scale-125' : 'bg-white/50'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                )}
+                  <Zap className="h-3.5 w-3.5" />
+                  <span>다운로드</span>
+                </a>
               </div>
             </motion.div>
           )}
@@ -1403,134 +1731,52 @@ export default function Home() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
               className="fixed inset-0 w-screen h-screen bg-black/95 backdrop-blur-sm z-50 flex items-center justify-center"
-              style={{ 
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                width: '100vw',
-                height: '100vh'
+              onClick={() => {
+                setIsComparisonModalOpen(false);
+                setSelectedResults([]);
+                setIsComparisonMode(false);
               }}
-              onClick={closeComparisonModal}
             >
               <div className="relative w-full h-full flex items-center justify-center">
-                {/* Close button */}
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={closeComparisonModal}
-                  className="absolute top-4 right-4 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-3 backdrop-blur-sm transition-colors cursor-pointer"
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsComparisonModalOpen(false);
+                    setSelectedResults([]);
+                    setIsComparisonMode(false);
+                  }}
+                  className="absolute top-4 right-4 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2.5 backdrop-blur-sm transition-colors cursor-pointer"
                 >
-                  <X className="h-6 w-6" />
-                </motion.button>
+                  <X className="h-5 w-5" />
+                </button>
 
-                {/* Title and Status Info */}
-                <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-4 py-2 rounded-full text-[25.2px] backdrop-blur-sm">
-                  <div className="flex items-center gap-3">
-                    <span>⚖️ Compare Results</span>
-                    <span className="text-[21.6px] opacity-75">• Drag to reveal or use auto</span>
-                    {isAnimating && (
-                      <div className="text-[21.6px] opacity-75 flex items-center gap-1">
-                        <span>Moving:</span>
-                        <motion.span
-                          animate={{ opacity: [0.5, 1, 0.5] }}
-                          transition={{ duration: 1, repeat: Infinity }}
-                        >
-                          {animationDirection === 'right' ? '→' : '←'}
-                        </motion.span>
-                        <span className="text-black">
-                          {Math.round(sliderPosition)}%
-                        </span>
-                      </div>
-                    )}
-                  </div>
+                <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-3.5 py-1.5 rounded-full text-[10px] backdrop-blur-sm">
+                  <span>⚖️ 슬라이더로 두 피팅 결과 비교</span>
                 </div>
 
-                {/* Animation Control Buttons */}
-                <div 
-                  className="absolute bottom-4 left-4 z-10 bg-black/70 text-white px-4 py-2 rounded-full text-[25.2px] backdrop-blur-sm"
+                <div
+                  className="relative w-full max-w-2xl aspect-[3/4] overflow-hidden rounded-lg border border-gray-700"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="flex items-center gap-2">
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (isAnimating) {
-                          stopSliderAnimation();
-                        } else {
-                          startSliderAnimation();
-                        }
-                      }}
-                      className={`px-3 py-1 rounded text-[21.6px] transition-colors cursor-pointer ${
-                        isAnimating 
-                          ? 'bg-red-500/80 hover:bg-red-500' 
-                          : 'bg-green-500/80 hover:bg-green-500'
-                      }`}
-                    >
-                      {isAnimating ? '⏸️ Pause Auto' : '▶️ Start Auto'}
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        resetSliderPosition();
-                      }}
-                      className="px-3 py-1 bg-blue-500/80 hover:bg-blue-500 rounded text-[21.6px] transition-colors cursor-pointer"
-                    >
-                      🔄 Center
-                    </motion.button>
-                  </div>
+                  <ReactCompareSlider
+                    ref={compareSliderRef}
+                    itemOne={
+                      <ReactCompareSliderImage
+                        src={resultGallery[selectedResults[0]]}
+                        alt="Result 1"
+                      />
+                    }
+                    itemTwo={
+                      <ReactCompareSliderImage
+                        src={resultGallery[selectedResults[1]]}
+                        alt="Result 2"
+                      />
+                    }
+                    position={sliderPosition}
+                    onPositionChange={(pos) => setSliderPosition(pos)}
+                    style={{ width: '100%', height: '100%' }}
+                  />
                 </div>
-
-                                 {/* Comparison container */}
-                 <motion.div
-                   initial={{ opacity: 0, scale: 0.95 }}
-                   animate={{ opacity: 1, scale: 1 }}
-                   exit={{ opacity: 0, scale: 0.95 }}
-                   transition={{ duration: 0.15, ease: "easeOut" }}
-                   className="relative w-full h-full flex items-center justify-center p-4"
-                   onClick={(e) => e.stopPropagation()}
-                 >
-                   <div className="relative w-full max-w-2xl aspect-[2/3] overflow-hidden rounded-lg border border-gray-300 dark:border-gray-600">
-                     <ReactCompareSlider
-                       ref={compareSliderRef}
-                       itemOne={
-                         <ReactCompareSliderImage 
-                           src={resultGallery[selectedResults[0]]} 
-                           alt={`${comparisonModel1} result`}
-                         />
-                       }
-                       itemTwo={
-                         <ReactCompareSliderImage 
-                           src={resultGallery[selectedResults[1]]} 
-                           alt={`${comparisonModel2} result`}
-                         />
-                       }
-                       position={sliderPosition}
-                       onPositionChange={(position: number) => {
-                         if (!isAnimating) {
-                           setSliderPosition(position);
-                         }
-                       }}
-                       changePositionOnHover={false}
-                       disabled={isAnimating}
-                       transition="1.5s ease-in-out"
-                       style={{ width: '100%', height: '100%' }}
-                     />
-                     
-                     {/* Model Labels */}
-                     <div className="absolute top-1/2 left-3 -translate-y-1/2 z-20 bg-black/80 text-white px-3 py-1 rounded-full text-[21.6px] font-semibold backdrop-blur-sm">
-                       {comparisonModel1.replace('tryon-', '')}
-                     </div>
-                     <div className="absolute top-1/2 right-3 -translate-y-1/2 z-20 bg-black/80 text-white px-3 py-1 rounded-full text-[21.6px] font-semibold backdrop-blur-sm">
-                       {comparisonModel2.replace('tryon-', '')}
-                     </div>
-                   </div>
-                 </motion.div>
               </div>
             </motion.div>
           )}
@@ -1542,8 +1788,6 @@ export default function Home() {
           onClose={() => setIsApiKeyModalOpen(false)}
           onSave={handleSaveApiKey}
         />
-
-        <Footer />
       </div>
     </div>
   );

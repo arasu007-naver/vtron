@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Check,
   ChevronDown,
@@ -15,6 +15,14 @@ import {
 } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
 import { issueNaverToken, sendDraft } from "@/lib/playground/client";
+import {
+  CLOTHING_KINDS,
+  brandSearchNames,
+  pickClothingModels,
+  searchBrands,
+  type ClothingBrand,
+  type ClothingKind,
+} from "@/lib/playground/clothing";
 import type { ShopItem } from "@/lib/playground/naver-search";
 import type { LooxPost } from "@/lib/playground/stmx-loox";
 import {
@@ -28,17 +36,19 @@ import {
 import type { NaverTokenResult, RequestDraft } from "@/types/playground";
 
 /**
- * 상품링크 — 플로우를 한 화면에서 돌리는 도구.
+ * 상품링크 — 플로우를 한 화면에서 돌리는 도구. 의류(상의 · 하의 · 기타)로 제한한다.
  *
  * 네 영역이 곧 플로우의 네 고비다.
  *
  *   1. 액세스 토큰 발급   — 인증
  *   2. Loox 목록          — stmx-web 의 최근 게시물. 상품을 묶을 대상(COM-002-B01 착장 상품 목록)
- *   3. 검색어 + 조회      — 카탈로그 모델 목록 (name 이 모델명·브랜드명·제조사명·카테고리명을 함께 훑는다)
- *   4. 토글 버튼 그룹     — 카테고리·브랜드로 걸러 확정
+ *   3. 브랜드 · 카테고리  — 옷 브랜드를 초성으로 찾아 고르고, 아래 줄의 상의 · 하의 · 기타를 누르면
+ *                           그 브랜드 × 분류의 카탈로그 모델을 조회한다
+ *   4. 토글 버튼 그룹     — 세부 카테고리로 걸러 확정
  *
- * 4번이 필요한 이유는 name 검색이 정확 일치가 아니기 때문이다. 토큰 분해 매칭이라
- * 동명이 리프(여성/남성 카디건)나 무관한 항목이 섞여 들어온다. 받아온 뒤 걸러야 한다.
+ * 브랜드는 brands 테이블(scripts/sync-brands.mjs 가 네이버 브랜드 조회로 채움)에서 옷 브랜드만 온다.
+ * 모델 조회는 브랜드 id · 카테고리 id 를 받지 않는다(무시된다). 그래서 "브랜드명 + 옷 키워드" 로
+ * 키워드마다 한 번씩 부르고, 섞여 든 다른 브랜드 · 카테고리는 brandCode · categoryId 로 거른다.
  */
 
 interface ProductLinkModalProps {
@@ -51,6 +61,20 @@ interface ProductLinkModalProps {
 
 /** size 상한은 100 이다(500·1000 은 400). */
 const PAGE_SIZE = 100;
+/** 호출 사이 최소 간격. 이보다 촘촘하면 429 가 난다(sync-brands 와 같은 값). */
+const MIN_INTERVAL_MS = 550;
+const RETRIES_ON_429 = 3;
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/** 부를 때마다 직전 호출에서 MIN_INTERVAL_MS 가 지날 때까지 기다리는 함수를 만든다. */
+function createPacer() {
+  let lastCallAt = 0;
+  return async () => {
+    await sleep(Math.max(0, lastCallAt + MIN_INTERVAL_MS - Date.now()));
+    lastCallAt = Date.now();
+  };
+}
 
 const searchDraft = (term: string): RequestDraft => ({
   method: "GET",
@@ -65,6 +89,45 @@ const searchDraft = (term: string): RequestDraft => ({
   body: "",
   auth: { mode: "naver", token: "", username: "", password: "" },
 });
+
+/** 모델 한 페이지. 검색 결과가 없으면 404 라 빈 페이지로 돌린다. 429 는 물러났다 다시 부른다. */
+async function fetchModelPage(
+  term: string,
+  accessToken: string | null
+): Promise<{ value: ModelPage } | { error: string }> {
+  for (let attempt = 0; ; attempt++) {
+    const { result, error } = await sendDraft(searchDraft(term), accessToken);
+    if (error) return { error };
+    if (!result) return { error: "응답이 없습니다." };
+    if (result.status === 429 && attempt < RETRIES_ON_429) {
+      await sleep(1000 * 2 ** attempt);
+      continue;
+    }
+    if (result.status === 404) return { value: { contents: [], totalElements: 0 } };
+    if (!result.ok) return { error: `HTTP ${result.status} · ${result.body.slice(0, 300)}` };
+    const page = parseModelPage(result.body);
+    return page ? { value: page } : { error: "모델 목록 형식이 아닙니다. 응답 원문을 확인하세요." };
+  }
+}
+
+/** 3단계 — 옷 브랜드 목록. idle 이면 창이 열릴 때 불러온다. */
+type BrandsState =
+  | { state: "idle" }
+  | { state: "error"; error: string }
+  | { state: "done"; brands: ClothingBrand[] };
+
+async function fetchBrands(): Promise<Exclude<BrandsState, { state: "idle" }>> {
+  try {
+    const res = await authFetch("/api/playground/brands");
+    const data = await res.json().catch(() => null);
+    if (!res.ok || !Array.isArray(data?.brands)) {
+      return { state: "error", error: data?.error ?? `HTTP ${res.status}` };
+    }
+    return { state: "done", brands: data.brands as ClothingBrand[] };
+  } catch (e) {
+    return { state: "error", error: e instanceof Error ? e.message : String(e) };
+  }
+}
 
 /** 펼친 카드 아래에 보여줄 쇼핑 검색 결과. */
 type Preview =
@@ -97,7 +160,7 @@ type LooxState =
   | { state: "idle" }
   | { state: "loading" }
   | { state: "error"; error: string }
-  | { state: "done"; post: LooxPost | null };
+  | { state: "done"; post: LooxPost | null; visitsError: string | null };
 
 /** postId 가 없으면 가장 최근 공개 게시물. */
 async function fetchLoox(postId?: string): Promise<LooxState> {
@@ -108,7 +171,11 @@ async function fetchLoox(postId?: string): Promise<LooxState> {
     if (!res.ok || !Array.isArray(data?.posts)) {
       return { state: "error", error: data?.error ?? `HTTP ${res.status}` };
     }
-    return { state: "done", post: (data.posts[0] as LooxPost | undefined) ?? null };
+    return {
+      state: "done",
+      post: (data.posts[0] as LooxPost | undefined) ?? null,
+      visitsError: typeof data.visitsError === "string" ? data.visitsError : null,
+    };
   } catch (e) {
     return { state: "error", error: e instanceof Error ? e.message : String(e) };
   }
@@ -177,11 +244,18 @@ export default function ProductLinkModal({
 }: ProductLinkModalProps) {
   const [term, setTerm] = useState("");
   const [issuing, setIssuing] = useState(false);
-  const [searching, setSearching] = useState(false);
+  const [brandsState, setBrandsState] = useState<BrandsState>({ state: "idle" });
+  /** 고른 브랜드. */
+  const [picked, setPicked] = useState<ClothingBrand | null>(null);
+  /** 누른 분류(상의 · 하의 · 기타). */
+  const [kind, setKind] = useState<ClothingKind | null>(null);
+  /** 조회 중이면 진행 문구. */
+  const [progress, setProgress] = useState<string | null>(null);
+  /** 조회를 시작하거나 브랜드를 바꿀 때마다 늘린다 — 도중에 바뀌면 이전 조회의 결과를 버린다. */
+  const runRef = useRef(0);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState<ModelPage | null>(null);
   const [categories, setCategories] = useState<Set<string>>(new Set());
-  const [brands, setBrands] = useState<Set<string>>(new Set());
   const [copied, setCopied] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [now, setNow] = useState(() => Date.now());
@@ -207,17 +281,31 @@ export default function ProductLinkModal({
     return () => clearInterval(id);
   }, [token, open]);
 
+  // 브랜드 목록은 토큰이 없어도 된다(우리 DB). 창이 열리면 한 번 받아 둔다.
+  useEffect(() => {
+    if (!open || brandsState.state !== "idle") return;
+    let cancelled = false;
+    void fetchBrands().then((next) => {
+      if (!cancelled) setBrandsState(next);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [open, brandsState.state]);
+
+  const allBrands = brandsState.state === "done" ? brandsState.brands : null;
+  const brandMatches = useMemo(
+    () => (allBrands ? searchBrands(allBrands, term) : []),
+    [allBrands, term]
+  );
   const models: CatalogModel[] = useMemo(() => page?.contents ?? [], [page]);
   const categoryFacets = useMemo(() => facetsOf(models, "wholeCategoryName"), [models]);
-  const brandFacets = useMemo(() => facetsOf(models, "brandName"), [models]);
-  const visible = useMemo(
-    () => applyFacets(models, categories, brands),
-    [models, categories, brands]
-  );
+  const visible = useMemo(() => applyFacets(models, categories), [models, categories]);
 
   if (!open) return null;
 
   const expired = token ? token.issuedAt + token.expiresIn * 1000 <= now : false;
+  const kindLabel = CLOTHING_KINDS.find((def) => def.key === kind)?.label;
 
   const loadLoox = async () => {
     setLoox({ state: "loading" });
@@ -284,39 +372,59 @@ export default function ProductLinkModal({
     void loadLoox();
   };
 
-  const search = async () => {
-    const query = term.trim();
-    if (!query) {
-      setError("검색어를 입력하세요. name 은 필수라 비우면 400 이 돌아옵니다.");
-      return;
-    }
-    setSearching(true);
-    setError(null);
+  /** 브랜드 · 분류가 바뀌면 이전 조회 결과는 더 이상 맞지 않는다. */
+  const clearModels = () => {
     setPage(null);
     setCategories(new Set());
-    setBrands(new Set());
+  };
 
-    const { result, error: failure } = await sendDraft(
-      searchDraft(query),
-      token?.accessToken ?? null
-    );
-    setSearching(false);
+  /** 같은 브랜드를 다시 누르면 선택을 푼다. 진행 중인 조회는 버린다. */
+  const pickBrand = (brand: ClothingBrand) => {
+    runRef.current++;
+    setPicked(picked?.id === brand.id ? null : brand);
+    setKind(null);
+    setProgress(null);
+    setError(null);
+    clearModels();
+  };
 
-    if (failure) {
-      setError(failure);
-      return;
+  /**
+   * 브랜드 × 분류의 모델 — 분류의 키워드마다 `name=<브랜드명> <키워드>` 로 한 번씩, 차례로 부른다
+   * (한꺼번에 쏘면 429). 받는 대로 목록에 더한다. 브랜드 이름으로 하나도 안 걸리면 다음 이름
+   * (네이버 등록명 등)으로 다시 찾는다.
+   */
+  const loadKind = async (brand: ClothingBrand, next: ClothingKind) => {
+    const def = CLOTHING_KINDS.find((k) => k.key === next);
+    if (!def) return;
+    const run = ++runRef.current;
+    setKind(next);
+    setError(null);
+    setNotice(null);
+    clearModels();
+
+    const accessToken = token?.accessToken ?? null;
+    const pace = createPacer();
+    for (const name of brandSearchNames(brand)) {
+      const seen = new Set<string>();
+      const found: CatalogModel[] = [];
+      let total = 0;
+      for (const [index, keyword] of def.keywords.entries()) {
+        setProgress(`'${name} ${keyword}' 조회 중… ${index + 1}/${def.keywords.length}`);
+        await pace();
+        const outcome = await fetchModelPage(`${name} ${keyword}`, accessToken);
+        if (runRef.current !== run) return;
+        if ("error" in outcome) {
+          setProgress(null);
+          setError(`${name} ${keyword} · ${outcome.error}`);
+          return;
+        }
+        total += outcome.value.totalElements ?? 0;
+        found.push(...pickClothingModels(outcome.value.contents, brand.naverBrandId, def, seen));
+        setPage({ contents: [...found], totalElements: total });
+      }
+      if (found.length > 0) break;
     }
-    if (!result) return;
-    if (!result.ok) {
-      setError(`HTTP ${result.status} · ${result.body.slice(0, 300)}`);
-      return;
-    }
-    const parsed = parseModelPage(result.body);
-    if (!parsed) {
-      setError("모델 목록 형식이 아닙니다. 응답 원문을 확인하세요.");
-      return;
-    }
-    setPage(parsed);
+    setProgress(null);
   };
 
   const toggle = (set: Set<string>, setter: (next: Set<string>) => void, value: string) => {
@@ -364,7 +472,7 @@ export default function ProductLinkModal({
           <Link2 className="w-4 h-4 text-[var(--color-accent-700)]" />
           <h3 className="m-0 text-[25.2px] font-semibold text-black">상품링크</h3>
           <span className="text-[19.8px] text-black">
-            카탈로그 모델을 찾아 링크로 옮긴다
+            의류 브랜드 × 상의 · 하의 · 기타의 카탈로그 링크
           </span>
           <button
             type="button"
@@ -437,38 +545,119 @@ export default function ProductLinkModal({
           )}
         </section>
 
-        {/* 3 · 검색어 + 조회 */}
-        <section className="px-4 py-2.5 border-b border-[var(--pg-line)] flex items-center gap-2 flex-wrap">
-          <Step n={3} label="검색어" />
-          <div className="relative flex-1 min-w-[260px]">
-            <Search className="w-3.5 h-3.5 absolute left-2 top-1/2 -translate-y-1/2 text-black/40 pointer-events-none" />
-            <input
-              className="pg-input pl-8"
-              placeholder="카테고리명 · 브랜드명 · 모델명 (예: 풀오버 · 나이키 · 에어맥스)"
-              value={term}
-              onChange={(e) => setTerm(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && !e.ctrlKey && !e.metaKey) {
+        {/* 3 · 브랜드(초성 검색) → 카테고리(상의 · 하의 · 기타) */}
+        <section className="px-4 py-2.5 border-b border-[var(--pg-line)] flex flex-col gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
+            <Step n={3} label="브랜드" />
+            <div className="relative flex-1 min-w-[260px]">
+              <Search className="w-3.5 h-3.5 absolute left-2 top-1/2 -translate-y-1/2 text-black/40 pointer-events-none" />
+              <input
+                className="pg-input pl-8"
+                placeholder="브랜드명 · 초성 (예: ㄴㅇㅋ · 나이키 · nike)"
+                value={term}
+                onChange={(e) => setTerm(e.target.value)}
+                onKeyDown={(e) => {
+                  // Enter 는 맨 위 브랜드를 고른다. 한글 조합 중의 Enter 는 무시한다.
+                  if (e.key !== "Enter" || e.nativeEvent.isComposing) return;
                   e.preventDefault();
-                  void search();
-                }
-              }}
-              spellCheck={false}
-            />
+                  const first = brandMatches[0];
+                  if (first && picked?.id !== first.id) pickBrand(first);
+                }}
+                spellCheck={false}
+              />
+            </div>
+            {brandsState.state === "idle" && (
+              <span className="text-[19.8px] text-black/60 whitespace-nowrap">
+                브랜드 불러오는 중…
+              </span>
+            )}
+            {brandsState.state === "done" && (
+              <span className="text-[19.8px] text-black/60 whitespace-nowrap">
+                옷 브랜드 {brandMatches.length.toLocaleString()} /{" "}
+                {brandsState.brands.length.toLocaleString()}
+              </span>
+            )}
+            {brandsState.state === "error" && (
+              <button
+                type="button"
+                onClick={() => setBrandsState({ state: "idle" })}
+                className="px-2.5 py-1 text-[20.7px] rounded btn btn-secondary flex items-center gap-1"
+              >
+                <RefreshCw className="w-3.5 h-3.5" />
+                다시 불러오기
+              </button>
+            )}
           </div>
-          <button
-            type="button"
-            onClick={search}
-            disabled={searching}
-            className="px-3 py-1 text-[20.7px] rounded btn btn-primary disabled:opacity-60"
-          >
-            {searching ? "조회 중…" : "조회"}
-          </button>
-          {page && (
-            <span className="text-[19.8px] text-black/60 whitespace-nowrap">
-              전체 {page.totalElements?.toLocaleString() ?? "-"}건 중 {models.length}건
-              (size {PAGE_SIZE})
-            </span>
+
+          {brandsState.state === "error" && (
+            <p className="m-0 text-[18.9px] text-[#b42318] whitespace-pre-wrap">
+              {brandsState.error}
+            </p>
+          )}
+
+          {brandsState.state === "done" && (
+            <div className="flex items-start gap-2">
+              <span className="text-[19.8px] text-black/60 w-[72px] flex-none pt-1">고르기</span>
+              <div className="flex items-center gap-1 flex-wrap min-h-[30px] max-h-[132px] overflow-y-auto vt-scroll">
+                {brandMatches.length === 0 ? (
+                  <span className="text-[18.9px] text-black/40 pt-1">찾은 브랜드가 없습니다.</span>
+                ) : (
+                  brandMatches.map((brand) => (
+                    <button
+                      key={brand.id}
+                      type="button"
+                      className="pg-tab"
+                      data-active={picked?.id === brand.id}
+                      aria-pressed={picked?.id === brand.id}
+                      onClick={() => pickBrand(brand)}
+                      title={`네이버 브랜드 ${brand.naverBrandName ?? "-"} · id ${brand.naverBrandId}`}
+                    >
+                      {brand.displayName}
+                      {brand.naverBrandName && brand.naverBrandName !== brand.displayName && (
+                        <span className="ml-1 text-black/45">{brand.naverBrandName}</span>
+                      )}
+                    </button>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
+
+          {picked && (
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-[19.8px] text-black/60 w-[72px] flex-none">카테고리</span>
+              {CLOTHING_KINDS.map((def) => (
+                <button
+                  key={def.key}
+                  type="button"
+                  className="pg-tab disabled:opacity-60"
+                  data-active={kind === def.key}
+                  aria-pressed={kind === def.key}
+                  disabled={!token}
+                  onClick={() => void loadKind(picked, def.key)}
+                  title={
+                    token
+                      ? `${picked.displayName} ${def.label} — 검색어: ${def.keywords.join(" · ")}`
+                      : "토큰을 먼저 발급하세요"
+                  }
+                >
+                  {def.label}
+                  {picked.counts[def.key] > 0 && (
+                    <span className="ml-1 text-black/45" title="동기화 표본에서 센 모델 수">
+                      {picked.counts[def.key]}
+                    </span>
+                  )}
+                </button>
+              ))}
+              <span className="text-[19.8px] text-black/60">
+                {!token
+                  ? "토큰을 발급하면 조회할 수 있습니다."
+                  : (progress ??
+                    (page
+                      ? `검색 ${page.totalElements?.toLocaleString() ?? "-"}건 중 ${picked.displayName} · ${kindLabel} 일치 ${models.length}건 (키워드당 size ${PAGE_SIZE})`
+                      : "누르면 이 브랜드의 해당 분류 상품 링크를 조회합니다."))}
+              </span>
+            </div>
           )}
         </section>
 
@@ -477,15 +666,12 @@ export default function ProductLinkModal({
           <div className="flex items-center gap-2">
             <Step n={4} label="걸러내기" />
             <span className="text-[19.8px] text-black/60">
-              끈 것이 없으면 전체입니다. 이름 검색이 정확 일치가 아니라 무관한 항목이 섞입니다.
+              끈 것이 없으면 전체입니다. 분류 안의 세부 카테고리로 좁힙니다.
             </span>
-            {(categories.size > 0 || brands.size > 0) && (
+            {categories.size > 0 && (
               <button
                 type="button"
-                onClick={() => {
-                  setCategories(new Set());
-                  setBrands(new Set());
-                }}
+                onClick={() => setCategories(new Set())}
                 className="ml-auto px-2 py-0.5 text-[18.9px] rounded btn btn-secondary"
               >
                 초기화
@@ -498,12 +684,6 @@ export default function ProductLinkModal({
             facets={categoryFacets}
             selected={categories}
             onToggle={(v) => toggle(categories, setCategories, v)}
-          />
-          <FacetRow
-            label="브랜드"
-            facets={brandFacets}
-            selected={brands}
-            onToggle={(v) => toggle(brands, setBrands, v)}
           />
         </section>
 
@@ -518,7 +698,7 @@ export default function ProductLinkModal({
         <div className="flex-1 min-h-0 overflow-auto vt-scroll p-4">
           {!page && !error && (
             <p className="m-0 text-[22.5px] text-black/60">
-              토큰을 발급하고 검색어로 조회하세요.
+              {progress ?? "토큰을 발급하고 브랜드를 고른 뒤 상의 · 하의 · 기타 중 하나를 누르세요."}
             </p>
           )}
 
@@ -546,7 +726,11 @@ export default function ProductLinkModal({
 
               {visible.length === 0 ? (
                 <p className="m-0 text-[20.7px] text-black/60">
-                  걸러낸 결과가 없습니다. 위 토글을 확인하세요.
+                  {models.length > 0
+                    ? "걸러낸 결과가 없습니다. 위 토글을 확인하세요."
+                    : progress
+                      ? "찾는 중…"
+                      : "이 브랜드 · 분류에 맞는 상품이 없습니다."}
                 </p>
               ) : (
                 <ul className="list-none m-0 p-0 flex flex-col">
@@ -774,6 +958,32 @@ function LooxPreview({
           </p>
         )}
         <code className="text-[18px] text-black/45 break-all">post {post.id}</code>
+
+        {/* 방문자수 = stmx-web 게시물 상세의 좋아요 · 댓글 · 공유 · 관심 버튼 클릭 합 */}
+        {post.visits ? (
+          <span
+            className="flex items-center gap-2 flex-wrap text-[19.8px] text-black"
+            title={
+              post.visits.lastClickedAt
+                ? `마지막 클릭 ${new Date(post.visits.lastClickedAt).toLocaleString("ko-KR")}`
+                : "아직 눌린 적이 없습니다"
+            }
+          >
+            <span className="font-semibold">
+              방문자수 {post.visits.visitCount.toLocaleString("ko-KR")}
+            </span>
+            <span className="text-black/55">
+              좋아요 {post.visits.likeClicks.toLocaleString("ko-KR")} · 댓글{" "}
+              {post.visits.commentClicks.toLocaleString("ko-KR")} · 공유{" "}
+              {post.visits.shareClicks.toLocaleString("ko-KR")} · 관심{" "}
+              {post.visits.bookmarkClicks.toLocaleString("ko-KR")}
+            </span>
+          </span>
+        ) : (
+          <span className="text-[18.9px] text-black/55 whitespace-pre-wrap">
+            방문자수 — {loox.visitsError ?? "읽지 못했습니다."}
+          </span>
+        )}
 
         <div className="mt-1 flex flex-col gap-1">
           <span className="text-[19.8px] font-semibold text-black">

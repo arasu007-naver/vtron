@@ -86,24 +86,29 @@ export default function BackgroundSection({
           </span>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
-          {CANVAS_PRESETS.map((p) => {
-            const isSelected = p.label === currentSize;
-            return (
-              <button
-                key={p.label}
-                type="button"
-                onClick={() => onSelectSize(p)}
-                className={`py-2 px-1.5 border rounded-full text-[21.6px] [font-feature-settings:'tnum'] cursor-pointer transition-all ${
-                  isSelected
-                    ? "border-[#b68235] bg-[rgba(182,130,53,0.08)] text-black font-semibold"
-                    : "border-[rgba(32,31,29,0.2)] bg-transparent text-black hover:bg-[rgba(32,31,29,0.05)]"
-                }`}
-              >
-                {p.label}
-              </button>
-            );
-          })}
+        <div className="relative">
+          <select
+            value={CANVAS_PRESETS.some((p) => p.label === currentSize) ? currentSize : "custom"}
+            onChange={(e) => {
+              const selected = CANVAS_PRESETS.find((p) => p.label === e.target.value);
+              if (selected) {
+                onSelectSize(selected);
+              }
+            }}
+            className="input w-full appearance-none pr-10 py-2.5 px-3.5 text-[21.6px] [font-feature-settings:'tnum'] bg-white border border-[rgba(32,31,29,0.2)] rounded cursor-pointer text-black font-medium focus:border-[#b68235]"
+          >
+            {!CANVAS_PRESETS.some((p) => p.label === currentSize) && (
+              <option value="custom" disabled>
+                직접 지정 ({currentSize})
+              </option>
+            )}
+            {CANVAS_PRESETS.map((p) => (
+              <option key={p.label} value={p.label}>
+                {p.label} ({p.ratioLabel})
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[rgba(32,31,29,0.6)]" />
         </div>
 
         <div className="grid grid-cols-2 gap-2.5">

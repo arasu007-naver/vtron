@@ -71,17 +71,8 @@ export function facetsOf(
     .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
 }
 
-/** 켜진 값이 하나도 없으면 거르지 않는다(전체). */
-export function applyFacets(
-  models: CatalogModel[],
-  categories: Set<string>,
-  brands: Set<string>
-): CatalogModel[] {
-  return models.filter((model) => {
-    if (categories.size && !categories.has((model.wholeCategoryName ?? "").trim())) {
-      return false;
-    }
-    if (brands.size && !brands.has((model.brandName ?? "").trim())) return false;
-    return true;
-  });
+/** 켜진 카테고리가 하나도 없으면 거르지 않는다(전체). */
+export function applyFacets(models: CatalogModel[], categories: Set<string>): CatalogModel[] {
+  if (!categories.size) return models;
+  return models.filter((model) => categories.has((model.wholeCategoryName ?? "").trim()));
 }
