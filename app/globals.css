@@ -206,3 +206,18 @@ input[type="range"] {
     color: #fafafa;
   }
 }
+
+/* Selected Loox Card Floating/Bobbing Animation (위아래 움직임) */
+@keyframes looxSelectedBob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-loox-selected {
+  animation: looxSelectedBob 1.4s ease-in-out infinite;
+}
+

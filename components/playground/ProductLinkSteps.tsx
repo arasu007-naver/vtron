@@ -22,7 +22,11 @@ import {
   type ClothingBrand,
   type ClothingKind,
 } from "@/lib/playground/clothing";
-import { attachToLoox, registerProduct } from "@/lib/playground/loox-client";
+import {
+  attachToLoox,
+  registerProduct,
+  registerProductImage,
+} from "@/lib/playground/loox-client";
 import type { ShopItem } from "@/lib/playground/naver-search";
 import type { LooxPost } from "@/lib/playground/stmx-loox";
 import {
@@ -271,7 +275,8 @@ export default function ProductLinkSteps({
   /**
    * '적용' — 입력한 판매가로 상품 마스터(stmx-web products)에 올린다. Loox 와는 잇지 않는다.
    * 결과 · 오류는 그 입력 줄에 보인다.
-   * TODO: 이미지는 mvps/product-crop 의 save-product-image 로 등록한다 — 위치 · 요청 형식을 받으면 연결.
+   * 가격이 들어가면 이어서 이미지를 mvps/product-crop 의 save-product-image 로 등록한다
+   * (`/api/playground/stmx/loox/products/image`). 수 초 ~ 수십 초 걸려 툴팁은 잠그지 않는다.
    */
   const register = async (model: CatalogModel) => {
     const key = String(model.id);
@@ -286,16 +291,23 @@ export default function ProductLinkSteps({
     setPriceMessage(key, null);
     const outcome = await registerProduct(model, { salePrice, originalPrice: null });
     setRegistering(null);
-    if (outcome.error) {
-      setPriceMessage(key, { tone: "error", text: outcome.error });
+    if (outcome.error || !outcome.productId) {
+      setPriceMessage(key, { tone: "error", text: outcome.error ?? "상품 id 를 받지 못했습니다." });
       return;
     }
-    setPriceMessage(key, {
-      tone: "ok",
-      text: `판매가 ${salePrice.toLocaleString("ko-KR")}원으로 상품 ${outcome.created ? "등록" : "갱신"}했습니다.`,
-    });
+    const priced = `판매가 ${salePrice.toLocaleString("ko-KR")}원으로 상품 ${outcome.created ? "등록" : "갱신"}했습니다.`;
+    setPriceMessage(key, { tone: "ok", text: `${priced}\n이미지 등록 중…` });
     // 고른 Loox 에 이미 붙은 상품이면 그 게시물의 상품 정보도 새로 읽는다.
     if (post && attachedIds.has(key)) await onPostChanged(post.id);
+
+    const image = await registerProductImage(outcome.productId, buildCatalogLink(model.id));
+    setPriceMessage(
+      key,
+      image.error
+        ? { tone: "error", text: `${priced}\n이미지는 등록하지 못했습니다 — ${image.error}` }
+        : { tone: "ok", text: [`${priced}\n이미지도 등록했습니다.`, ...image.warnings].join("\n") }
+    );
+    if (!image.error && post && attachedIds.has(key)) await onPostChanged(post.id);
   };
 
   /** 브랜드 · 분류가 바뀌면 이전 조회 결과는 더 이상 맞지 않는다. */

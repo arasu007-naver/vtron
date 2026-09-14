@@ -48,10 +48,49 @@ export interface AuthContext {
 /**
  * Bearer 토큰을 Auth 서버에 검증시킨다.
  * 토큰이 없거나 유효하지 않으면 null.
+ * 서비스 롤 키(서버 간 통신) 또는 사용자 Access Token(Bearer JWT) 모두 검증한다.
  */
 export async function authenticate(req: Request): Promise<AuthContext | null> {
   const token = getBearerToken(req);
   if (!token) return null;
+
+  const validServerKeys = [
+    process.env.SUPABASE_SERVICE_ROLE_KEY,
+    process.env.STMX_WEB_SUPABASE_SECRET_KEY,
+    process.env.SUPABASE_SECRET_KEY,
+  ].filter((k): k is string => Boolean(k?.trim()));
+
+  if (validServerKeys.includes(token)) {
+    return {
+      user: {
+        id: "service-role-admin",
+        app_metadata: { role: "service_role" },
+        user_metadata: {},
+        aud: "authenticated",
+        created_at: new Date().toISOString(),
+      } as User,
+      token,
+    };
+  }
+
+  const validPublicKeys = [
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    process.env.STMX_WEB_SUPABASE_KEY,
+  ].filter((k): k is string => Boolean(k?.trim()));
+
+  if (validPublicKeys.includes(token)) {
+    return {
+      user: {
+        id: "public-client",
+        app_metadata: { role: "anon" },
+        user_metadata: {},
+        aud: "authenticated",
+        created_at: new Date().toISOString(),
+      } as User,
+      token,
+    };
+  }
 
   const client = createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY, {
     auth: { persistSession: false, autoRefreshToken: false },

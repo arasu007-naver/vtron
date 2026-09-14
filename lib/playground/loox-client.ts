@@ -147,6 +147,44 @@ export async function attachToLoox(postId: string, model: CatalogModel): Promise
   }
 }
 
+export interface ImageRegisterOutcome {
+  error?: string;
+  /** 등록한 상품 마스터 id. 이미지만 실패했어도 행을 만들었으면 온다. */
+  productId?: string;
+  /** 이번에 products 행을 새로 만들었다. */
+  createdProduct?: boolean;
+  /** 새 products.image_url(Storage 공개 URL). */
+  imageUrl?: string;
+  warnings: string[];
+}
+
+/** 이미지 등록 — image_url 을 채운다. product-crop 이 페이지를 열어 잘라 오느라 수 초 ~ 수십 초 걸린다. */
+async function postRegisterImage(body: object): Promise<ImageRegisterOutcome> {
+  try {
+    const res = await authFetch("/api/playground/stmx/loox/products/image", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => null);
+    const base = {
+      productId: typeof data?.productId === "string" ? (data.productId as string) : undefined,
+      createdProduct: Boolean(data?.createdProduct),
+      warnings: Array.isArray(data?.warnings) ? (data.warnings as string[]) : [],
+    };
+    if (!res.ok || typeof data?.imageUrl !== "string") {
+      return { ...base, error: data?.error ?? `HTTP ${res.status}` };
+    }
+    return { ...base, imageUrl: data.imageUrl as string };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : String(e), warnings: [] };
+  }
+}
+
+/** 이미 있는 상품 마스터 행의 이미지를 (다시) 채운다. */
+export const registerProductImage = (productId: string, naverUrl: string) =>
+  postRegisterImage({ productId, naverUrl });
+
 /** 게시물에서 상품을 뗀다. 실패하면 오류 문구, 성공하면 null. */
 export async function detachFromLoox(postId: string, productId: string): Promise<string | null> {
   const params = new URLSearchParams({ postId, productId });

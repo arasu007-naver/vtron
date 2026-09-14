@@ -11,6 +11,7 @@ import {
   Shirt,
   Sparkles,
   TerminalSquare,
+  UserCheck,
 } from "lucide-react";
 import { logout } from "@/lib/auth-client";
 
@@ -54,6 +55,12 @@ const LINKS = [
     label: "상품링크",
     icon: Link2,
     title: "Loox 목록에서 게시물을 고르고 옷 브랜드 × 분류의 카탈로그 상품을 붙인다",
+  },
+  {
+    href: "/creator-req",
+    label: "Creator 요청",
+    icon: UserCheck,
+    title: "Creator 역할 신청(user_biz_request) 및 선호 브랜드 목록 조회",
   },
 ] as const;
 

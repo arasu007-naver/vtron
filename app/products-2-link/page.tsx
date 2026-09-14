@@ -7,6 +7,7 @@ import {
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
+  ImagePlus,
   KeyRound,
   MousePointerClick,
   X,
@@ -19,10 +20,11 @@ import {
   detachFromLoox,
   fetchLoox,
   fetchLooxPage,
+  registerProductImage,
   type LooxPage,
   type LooxSort,
 } from "@/lib/playground/loox-client";
-import type { LooxPost } from "@/lib/playground/stmx-loox";
+import type { LooxPost, LooxProduct } from "@/lib/playground/stmx-loox";
 import type { NaverTokenResult } from "@/types/playground";
 
 /**
@@ -74,7 +76,10 @@ export default function ProductsToLinkPage() {
   const [selected, setSelected] = useState<LooxPost | null>(null);
   /** 떼는 중인 상품 id. */
   const [detaching, setDetaching] = useState<string | null>(null);
+  /** 이미지 등록 중인 상품 id. */
+  const [registering, setRegistering] = useState<string | null>(null);
   const [postError, setPostError] = useState<string | null>(null);
+  const [postNotice, setPostNotice] = useState<string | null>(null);
   /** 크게 보고 있는 게시물(이미지 모달). */
   const [viewing, setViewing] = useState<LooxPost | null>(null);
   /** 늦게 온 이전 요청이 새 목록을 덮지 않게. */
@@ -147,12 +152,29 @@ export default function ProductsToLinkPage() {
     if (!selected) return;
     setDetaching(productId);
     setPostError(null);
+    setPostNotice(null);
     const failure = await detachFromLoox(selected.id, productId);
     setDetaching(null);
     if (failure) {
       setPostError(failure);
       return;
     }
+    await refreshPost(selected.id);
+  };
+
+  /** 네이버 상품 페이지에서 이미지를 잘라 Storage 에 올리고 그 상품의 image_url 로 저장한다. */
+  const register = async (product: LooxProduct) => {
+    if (!selected) return;
+    setRegistering(product.id);
+    setPostError(null);
+    setPostNotice(null);
+    const outcome = await registerProductImage(product.id, product.naverUrl);
+    setRegistering(null);
+    if (outcome.error) {
+      setPostError(outcome.error);
+      return;
+    }
+    setPostNotice(`'${product.name}' 이미지를 등록했습니다.`);
     await refreshPost(selected.id);
   };
 
@@ -236,11 +258,10 @@ export default function ProductsToLinkPage() {
             )}
           </div>
 
-          {/* 목록 488px = 사진 480px + 위아래 여백 4px. 크기는 인라인 — 임의값 클래스는 dev 서버가
-              새로 스캔하기 전까지 CSS 에 없을 수 있다. */}
+          {/* 목록 496px = 사진 480px + 위아래 여백. 선택 시 상하 바운스 애니메이션이 잘리지 않도록 상단 여백 확보 */}
           <div
-            style={{ height: 488 }}
-            className="px-4 py-1 overflow-x-auto overflow-y-hidden vt-scroll"
+            style={{ height: 496 }}
+            className="px-4 pt-3 pb-1 overflow-x-auto overflow-y-hidden vt-scroll"
           >
             {list.state === "error" && (
               <p className="m-0 text-[18.9px] text-[#b42318] whitespace-pre-wrap">{list.error}</p>
@@ -259,6 +280,7 @@ export default function ProductsToLinkPage() {
                       onSelect={() => {
                         setSelected(post);
                         setPostError(null);
+                        setPostNotice(null);
                         setViewing(post);
                       }}
                     />
@@ -271,7 +293,15 @@ export default function ProductsToLinkPage() {
 
         {/* 아래 — 붙일 Loox · 상품링크 3단계부터 */}
         <div className="flex-1 min-h-0 overflow-y-auto vt-scroll flex flex-col">
-          <TargetPost post={selected} busy={detaching} error={postError} onDetach={detach} />
+          <TargetPost
+            post={selected}
+            detaching={detaching}
+            registering={registering}
+            error={postError}
+            notice={postNotice}
+            onDetach={detach}
+            onRegister={register}
+          />
           <ProductLinkSteps
             token={token}
             post={selected}
@@ -421,10 +451,13 @@ function LooxCard({
         width: 360,
         height: 480,
         boxShadow: selected
-          ? "0 0 0 3px var(--color-accent)"
+          ? "0 0 0 3px var(--color-accent), 0 8px 24px rgba(0,0,0,0.18)"
           : "0 0 0 1px var(--pg-line)",
+        animation: selected ? "looxSelectedBob 1.4s ease-in-out infinite" : undefined,
       }}
-      className="relative block flex-none rounded-md overflow-hidden bg-black/5 text-left"
+      className={`relative block flex-none rounded-md overflow-hidden bg-black/5 text-left transition-all ${
+        selected ? "animate-loox-selected z-10" : ""
+      }`}
     >
       {cover ? (
         // eslint-disable-next-line @next/next/no-img-element
@@ -469,18 +502,27 @@ function LooxCard({
   );
 }
 
-/** 붙일 대상 게시물과 거기 걸린 착장 상품. 떼기는 여기서 한다. */
+/** 붙일 대상 게시물과 거기 걸린 착장 상품. 이미지 등록 · 떼기는 여기서 한다. */
 function TargetPost({
   post,
-  busy,
+  detaching,
+  registering,
   error,
+  notice,
   onDetach,
+  onRegister,
 }: {
   post: LooxPost | null;
-  busy: string | null;
+  /** 떼는 중인 상품 id. */
+  detaching: string | null;
+  /** 이미지 등록 중인 상품 id. */
+  registering: string | null;
   error: string | null;
+  notice: string | null;
   onDetach: (productId: string) => void;
+  onRegister: (product: LooxProduct) => void;
 }) {
+  const busy = detaching !== null || registering !== null;
   return (
     <section className="px-4 py-2.5 border-b border-[var(--pg-line)] flex flex-col gap-1.5">
       <div className="flex items-center gap-2 flex-wrap">
@@ -503,27 +545,50 @@ function TargetPost({
           {post.products.map((product) => (
             <span
               key={product.id}
-              className="flex items-center gap-1.5 pl-2 pr-1 py-0.5 rounded-full border border-[var(--pg-line)] bg-white text-[18.9px]"
+              className="flex items-center gap-1.5 pl-1 pr-1 py-0.5 rounded-full border border-[var(--pg-line)] bg-white text-[18.9px]"
             >
+              {product.imageUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={product.imageUrl}
+                  alt=""
+                  referrerPolicy="no-referrer"
+                  style={{ width: 24, height: 24 }}
+                  className="rounded-full object-cover bg-black/5"
+                />
+              ) : (
+                <span style={{ width: 4 }} />
+              )}
               <span className="font-semibold text-black">{product.brandName}</span>
               <span className="text-black max-w-[260px] truncate" title={product.name}>
                 {product.name}
               </span>
               <button
                 type="button"
+                onClick={() => onRegister(product)}
+                disabled={busy}
+                title="네이버 상품 페이지에서 이미지를 잘라 Storage 에 올리고 이 상품의 image_url 로 저장한다"
+                className="px-2 py-0.5 text-[18px] rounded-full btn btn-secondary flex items-center gap-1 disabled:opacity-40"
+              >
+                <ImagePlus className="w-3 h-3" />
+                {registering === product.id ? "등록 중…" : product.imageUrl ? "다시 등록" : "등록"}
+              </button>
+              <button
+                type="button"
                 onClick={() => onDetach(product.id)}
-                disabled={busy !== null}
+                disabled={busy}
                 aria-label={`${product.name} 떼기`}
                 title="이 게시물에서 떼기 (상품 마스터는 남긴다)"
                 className="w-6 h-6 rounded-full hover:bg-black/10 flex items-center justify-center disabled:opacity-40"
               >
-                {busy === product.id ? "…" : <X className="w-3 h-3" />}
+                {detaching === product.id ? "…" : <X className="w-3 h-3" />}
               </button>
             </span>
           ))}
         </div>
       )}
       {error && <p className="m-0 text-[18.9px] text-[#b42318] whitespace-pre-wrap">{error}</p>}
+      {notice && !error && <p className="m-0 text-[18.9px] text-black/70">{notice}</p>}
     </section>
   );
 }

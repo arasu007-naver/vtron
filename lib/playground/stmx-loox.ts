@@ -89,6 +89,8 @@ export interface LooxPost {
   location: string | null;
   styleCode: string | null;
   publishedAt: string | null;
+  /** posts 의 비정규화 카운터(04_interactions.sql 트리거가 관리) — 실제 좋아요 · 댓글 · 공유 수. */
+  counts: { like: number; comment: number; share: number };
   images: LooxImage[];
   products: LooxProduct[];
   /** 읽지 못했으면 null(secret 키 없음 · 12 단계 전 DB). [[fetchVisitStats]] 로 채운다. */
@@ -111,6 +113,9 @@ interface PostRow {
   location: string | null;
   style_code: string | null;
   published_at: string | null;
+  like_count: number;
+  comment_count: number;
+  share_count: number;
   post_images: {
     storage_path: string;
     position: number;
@@ -121,7 +126,7 @@ interface PostRow {
 }
 
 const POST_SELECT = `
-  id, style_note, location, style_code, published_at,
+  id, style_note, location, style_code, published_at, like_count, comment_count, share_count,
   post_images(storage_path, position, width, height),
   post_products(position, product:products(id, brand_name, name, image_url, sale_price, naver_url, naver_product_id))
 `;
@@ -175,6 +180,11 @@ function toPost(client: StmxClient, row: PostRow): LooxPost {
     location: row.location,
     styleCode: row.style_code,
     publishedAt: row.published_at,
+    counts: {
+      like: row.like_count ?? 0,
+      comment: row.comment_count ?? 0,
+      share: row.share_count ?? 0,
+    },
     images: [...(row.post_images ?? [])]
       .sort((a, b) => a.position - b.position)
       .map((image) => ({
@@ -243,6 +253,40 @@ export async function fetchLooxPage(
   if (error?.code === RANGE_NOT_SATISFIABLE) {
     // 마지막 페이지 너머 — 빈 페이지와 실제 전체 수를 돌려 화면이 페이지 수를 바로잡게 한다.
     const head = await publicPosts(client, "id", { count: "exact", head: true });
+    return { posts: [], total: head.count ?? 0 };
+  }
+  if (error) throw new Error(`stmx-web 게시물 조회 실패: ${error.message}`);
+
+  return {
+    posts: ((data ?? []) as unknown as PostRow[]).map((row) => toPost(client, row)),
+    total: count ?? 0,
+  };
+}
+
+/**
+ * 한 작성자(`posts.author_id` = profiles.id)의 발행 게시물 한 페이지(page 는 1부터), 최근 발행 순.
+ * /creator-req 에서 신청자의 Loox 를 볼 때 쓴다. 팔로워 공개 게시물도 보이도록 secret 키로 읽는다.
+ */
+export async function fetchAuthorLooxPage(
+  admin: StmxWebCredentials,
+  { authorId, page, pageSize }: { authorId: string; page: number; pageSize: number }
+): Promise<LooxPageResult> {
+  const client = connect(admin);
+  const from = (page - 1) * pageSize;
+  const authorPosts = (columns: string, options?: { count?: "exact"; head?: boolean }) =>
+    client
+      .from("posts")
+      .select(columns, options)
+      .eq("author_id", authorId)
+      .eq("status", "published");
+
+  const { data, error, count } = await authorPosts(POST_SELECT, { count: "exact" })
+    .order("published_at", { ascending: false, nullsFirst: false })
+    .order("id", { ascending: true })
+    .range(from, from + pageSize - 1);
+
+  if (error?.code === RANGE_NOT_SATISFIABLE) {
+    const head = await authorPosts("id", { count: "exact", head: true });
     return { posts: [], total: head.count ?? 0 };
   }
   if (error) throw new Error(`stmx-web 게시물 조회 실패: ${error.message}`);
@@ -408,8 +452,8 @@ export class StmxWebWriteError extends Error {
 const failed = (step: string, error: { message: string }) =>
   new StmxWebWriteError(502, `${step}: ${error.message}`);
 
-export interface AttachProductInput {
-  postId: string;
+/** 상품 마스터(products) 한 행을 만들 때의 값. */
+export interface ProductMasterInput {
   /** 카탈로그 모델 id. products.naver_product_id(UNIQUE) 로 들어간다. */
   naverProductId: string;
   naverUrl: string;
@@ -417,6 +461,18 @@ export interface AttachProductInput {
   name: string;
   imageUrl: string | null;
   salePrice: number;
+}
+
+export interface AttachProductInput extends ProductMasterInput {
+  postId: string;
+}
+
+export interface EnsuredProduct {
+  productId: string;
+  /** 행에 저장된 naver_url — 이미 있던 행이면 그 값. */
+  naverUrl: string;
+  /** 상품 마스터에 같은 카탈로그가 있어 그 행을 썼다. */
+  reusedProduct: boolean;
 }
 
 export interface AttachProductResult {
@@ -428,10 +484,73 @@ export interface AttachProductResult {
 }
 
 /**
- * 게시물에 상품을 건다. 상품 마스터(products) → 연결(post_products) 순.
+ * 카탈로그의 상품 마스터 행을 찾고, 없으면 만든다.
  *
  * 같은 카탈로그는 상품 마스터 한 행을 여러 룩이 같이 쓴다(11_products.sql 설계 (1)).
- * 이미 있으면 덮어쓰지 않는다 — 운영이 손본 정가 · 품절 값을 지우지 않게.
+ * 이미 있으면 덮어쓰지 않는다 — 운영이 손본 정가 · 품절 · 이미지 값을 지우지 않게.
+ */
+async function ensureProductWith(
+  client: StmxClient,
+  input: ProductMasterInput
+): Promise<EnsuredProduct> {
+  const findProduct = () =>
+    client
+      .from("products")
+      .select("id, naver_url")
+      .eq("naver_product_id", input.naverProductId)
+      .maybeSingle();
+
+  const found = await findProduct();
+  if (found.error) throw failed("상품 확인 실패", found.error);
+  if (found.data) {
+    return {
+      productId: found.data.id as string,
+      naverUrl: found.data.naver_url as string,
+      reusedProduct: true,
+    };
+  }
+
+  const created = await client
+    .from("products")
+    .insert({
+      brand_name: input.brandName,
+      name: input.name,
+      image_url: input.imageUrl,
+      sale_price: input.salePrice,
+      naver_url: input.naverUrl,
+      naver_product_id: input.naverProductId,
+    })
+    .select("id, naver_url")
+    .single();
+
+  if (created.error?.code === "23505") {
+    // 동시에 누가 같은 카탈로그를 먼저 넣었다 — 그 행을 쓴다.
+    const again = await findProduct();
+    if (again.error || !again.data) throw failed("상품 등록 실패", created.error);
+    return {
+      productId: again.data.id as string,
+      naverUrl: again.data.naver_url as string,
+      reusedProduct: true,
+    };
+  }
+  if (created.error) throw failed("상품 등록 실패", created.error);
+  return {
+    productId: created.data.id as string,
+    naverUrl: created.data.naver_url as string,
+    reusedProduct: false,
+  };
+}
+
+/** Loox 에 붙이지 않고 상품 마스터만 — 찾거나 만든다. */
+export async function ensureProduct(
+  creds: StmxWebCredentials,
+  input: ProductMasterInput
+): Promise<EnsuredProduct> {
+  return ensureProductWith(connect(creds), input);
+}
+
+/**
+ * 게시물에 상품을 건다. 상품 마스터(products) → 연결(post_products) 순.
  * 새 카드는 목록 맨 아래(position 최댓값 + 1)에 붙는다.
  */
 export async function attachProduct(
@@ -444,43 +563,7 @@ export async function attachProduct(
   if (post.error) throw failed("게시물 확인 실패", post.error);
   if (!post.data) throw new StmxWebWriteError(404, "stmx-web 에 그 게시물이 없습니다.");
 
-  const findProduct = () =>
-    client
-      .from("products")
-      .select("id")
-      .eq("naver_product_id", input.naverProductId)
-      .maybeSingle();
-
-  const found = await findProduct();
-  if (found.error) throw failed("상품 확인 실패", found.error);
-  let productId = (found.data?.id as string | undefined) ?? null;
-  const reusedProduct = productId !== null;
-
-  if (!productId) {
-    const created = await client
-      .from("products")
-      .insert({
-        brand_name: input.brandName,
-        name: input.name,
-        image_url: input.imageUrl,
-        sale_price: input.salePrice,
-        naver_url: input.naverUrl,
-        naver_product_id: input.naverProductId,
-      })
-      .select("id")
-      .single();
-
-    if (created.error?.code === "23505") {
-      // 동시에 누가 같은 카탈로그를 먼저 넣었다 — 그 행을 쓴다.
-      const again = await findProduct();
-      if (again.error || !again.data) throw failed("상품 등록 실패", created.error);
-      productId = again.data.id as string;
-    } else if (created.error) {
-      throw failed("상품 등록 실패", created.error);
-    } else {
-      productId = created.data.id as string;
-    }
-  }
+  const { productId, reusedProduct } = await ensureProductWith(client, input);
 
   const linked = await client
     .from("post_products")
