@@ -95,10 +95,12 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
   /** 켠 최하위 카테고리(wholeCategoryName). 3단계 드릴다운과 4단계 토글이 같이 본다. */
   const [categories, setCategories] = useState<Set<string>>(new Set());
   /**
-   * 드릴다운에서 경로 뒤에 이어 적은 글 — 상품 목록을 훑는다.
-   * **보는 것만 좁힌다.** 내재화 대상(visible)은 4단계 걸러내기까지로 정해진다.
+   * 드릴다운 입력칸에서 태그 뒤에 치는 중인 글.
+   *
+   * 선택과 같이 부모가 든다 — 레벨을 물릴 때 글도 같이 비워야 하는데, 둘을 나눠 들면
+   * 4단계 토글처럼 드릴다운이 모르는 길로 선택이 바뀔 때 글만 남아 어긋난다.
    */
-  const [productTerm, setProductTerm] = useState("");
+  const [query, setQuery] = useState("");
   /** 등록 결과 문구. */
   const [notice, setNotice] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -134,6 +136,13 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
   const categoryFacets = useMemo(() => facetsOf(models, "wholeCategoryName"), [models]);
   /** 4단계에서 걸러 남은 것 — 이것이 그대로 내재화 대상이다. */
   const visible = useMemo(() => applyFacets(models, categories), [models, categories]);
+  /** 드릴다운이 보는 '고른 최하위 카테고리'. 여럿을 켠 상태면 없는 것으로 본다. */
+  const pickedCategory = categories.size === 1 ? [...categories][0] : null;
+  /**
+   * 최하위까지 고른 뒤의 글이 상품 검색어다.
+   * **보는 것만 좁힌다** — 내재화 대상(visible)은 4단계 걸러내기까지로 정해진다.
+   */
+  const productTerm = pickedCategory ? query.trim() : "";
   /** 거기서 상품명 검색까지 건 것 — 화면에 뿌리는 목록. 등록에는 쓰지 않는다. */
   const shown = useMemo(
     () =>
@@ -146,8 +155,6 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
   const kindDef = CLOTHING_KINDS.find((def) => def.key === kind) ?? null;
   const catalog = picked ? (summaries[picked.naverBrandId] ?? null) : null;
   const savedKind = catalog?.kinds.find((k) => k.kind === kind) ?? null;
-  /** 드릴다운이 보는 '고른 최하위 카테고리'. 여럿을 켠 상태면 없는 것으로 본다. */
-  const pickedCategory = categories.size === 1 ? [...categories][0] : null;
 
   /** 브랜드의 내재화 현황을 받아 둔다. `force` 면 이미 받았어도 다시 읽는다. */
   const loadSummaries = useCallback(async (list: ClothingBrand[], force = false) => {
@@ -181,11 +188,11 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
     setSource(null);
     setSearchName(null);
     setCategories(new Set());
-    setProductTerm("");
   };
 
   const pickBrand = (brand: ClothingBrand) => {
     runRef.current++;
+    setQuery("");
     setPicked(brand);
     setKind(null);
     setProgress(null);
@@ -197,6 +204,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
 
   const reset = () => {
     runRef.current++;
+    setQuery("");
     setPicked(null);
     setKind(null);
     setProgress(null);
@@ -207,6 +215,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
 
   const clearKind = () => {
     runRef.current++;
+    setQuery("");
     setKind(null);
     setProgress(null);
     clearModels();
@@ -240,6 +249,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
     const def = CLOTHING_KINDS.find((k) => k.key === next);
     if (!def) return;
     const run = ++runRef.current;
+    setQuery("");
     setKind(next);
     setError(null);
     setNotice(null);
@@ -282,12 +292,13 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
     await loadFromNaver(picked, kindDef, run);
   };
 
+  /** 4단계 토글 — 드릴다운이 모르는 길이라 글을 같이 비운다. */
   const toggleCategory = (value: string) => {
     const next = new Set(categories);
     if (next.has(value)) next.delete(value);
     else next.add(value);
     setCategories(next);
-    setProductTerm("");
+    setQuery("");
   };
 
   /** 브랜드 등록 — 걸러 남은 것을 그대로 brand_catalog_* 에 넣는다. */
@@ -377,16 +388,17 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
           category={pickedCategory}
           summaries={summaries}
           onNeedSummaries={needSummaries}
+          query={query}
+          onQueryChange={setQuery}
           categoryFacets={categoryFacets}
           progress={progress}
           canQuery={Boolean(token)}
           onPickBrand={pickBrand}
           onPickKind={(brand, next) => void loadKind(brand, next)}
           onClearKind={clearKind}
-          onProductTerm={setProductTerm}
           onPickCategory={(value) => {
             setCategories(value ? new Set([value]) : new Set());
-            setProductTerm("");
+            setQuery("");
           }}
           onReset={reset}
         />
@@ -406,7 +418,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
               type="button"
               onClick={() => {
                 setCategories(new Set());
-                setProductTerm("");
+                setQuery("");
               }}
               className="ml-auto px-2 py-0.5 text-[18.9px] rounded btn btn-secondary"
             >
@@ -521,10 +533,10 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
                 )}
               </span>
               {productTerm && (
-                // 지우는 것은 3단계 경로 태그의 X 하나로 모은다 — 여기에 또 두면 입력칸 글과 어긋난다.
+                // 지우는 자리는 입력칸 하나로 모은다 — 여기에 또 두면 입력칸 글과 어긋난다.
                 <span
                   className="px-2 py-0.5 rounded-full border border-[var(--pg-line)] bg-white text-[18.9px] flex items-center gap-1"
-                  title="3단계 경로의 검색 태그에서 X 를 누르면 지워집니다"
+                  title="입력칸의 글을 지우면 지워집니다"
                 >
                   <Search className="w-3 h-3 text-[var(--color-accent-700)]" />
                   <span className="text-black">{productTerm}</span>
@@ -540,7 +552,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
             {shown.length === 0 ? (
               <p className="m-0 text-[20.7px] text-black/60">
                 {productTerm && visible.length > 0
-                  ? `'${productTerm}' 에 맞는 상품이 없습니다. 3단계 경로의 검색 태그에서 X 를 누르면 ${visible.length.toLocaleString()}건이 다시 보입니다.`
+                  ? `'${productTerm}' 에 맞는 상품이 없습니다. 입력칸의 글을 지우면 ${visible.length.toLocaleString()}건이 다시 보입니다.`
                   : models.length > 0
                     ? "걸러낸 결과가 없습니다. 위 토글을 확인하세요."
                     : progress
