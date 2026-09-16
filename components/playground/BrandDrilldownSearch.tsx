@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronRight, RefreshCw, Search, Sparkles, X } from "lucide-react";
 import { hangulMatchIndex, startsWithLoose, stripLoosePrefix } from "@/lib/hangul";
 import { shortLabel } from "@/components/playground/CatalogFacets";
@@ -31,6 +31,9 @@ import type { Facet } from "@/lib/playground/product-link";
  * 고른 것을 다시 입력칸 글에 적어 둔다("디올 상의 "). 그래서 지우면 그만큼 되돌아간다 —
  * `startsWithLoose` 로 글이 아직 그 경로로 시작하는지만 본다. 목록을 맞출 때는
  * `hangulMatchIndex` 라 "ㄷㅇ" · "디올 ㅅ" 처럼 초성으로도 좁혀진다.
+ *
+ * 고른 경로는 레벨마다 태그 하나로 보이고, 태그 끝의 X 는 **그 레벨부터 다시 고르기** 다.
+ * 그 위까지만 글에 남기고 입력칸에 커서를 준다 — 바로 초성을 쳐 내려가면 된다.
  *
  * 최하위 카테고리 후보(`categoryFacets`)는 부모가 준다. 내재화된 브랜드면 우리 DB 에서
  * 바로 오고, 아니면 네이버 조회가 끝나는 대로 채워진다.
@@ -130,6 +133,8 @@ export default function BrandDrilldownSearch({
   onReset,
 }: BrandDrilldownSearchProps) {
   const [query, setQuery] = useState("");
+  /** X 로 레벨을 물린 뒤 바로 이어 칠 수 있게 커서를 돌려준다. */
+  const inputRef = useRef<HTMLInputElement>(null);
   /** 경로 뒤에 이어 적은 글. 부모에게도 넘기지만 경로 줄에 보여 주려고 여기서도 든다. */
   const [productTerm, setProductTerm] = useState("");
   const kindDef = CLOTHING_KINDS.find((def) => def.key === kind) ?? null;
@@ -209,6 +214,32 @@ export default function BrandDrilldownSearch({
   const commit = (label: string) => {
     setQuery(`${label} `);
     emitProductTerm("");
+  };
+
+  /**
+   * 그 레벨부터 다시 고른다 — 경로 태그 끝의 X.
+   *
+   * 그 위까지만 글에 남기므로 바로 이어 칠 수 있다. 예를 들어 '상의' 의 X 는 글을 "디올 "
+   * 로 되돌리고 최상위 후보를 다시 깔아 준다. 커서까지 옮겨 줘야 초성을 바로 친다.
+   */
+  const resetFrom = (level: "brand" | "kind" | "category" | "product") => {
+    if (level === "brand") {
+      setQuery("");
+      emitProductTerm("");
+      onReset();
+    } else if (level === "kind") {
+      setQuery(picked ? `${picked.displayName} ` : "");
+      emitProductTerm("");
+      onClearKind();
+    } else if (level === "category") {
+      setQuery(`${pathLabel(picked, kindDef, null)} `);
+      emitProductTerm("");
+      onPickCategory(null);
+    } else {
+      setQuery(`${pathLabel(picked, kindDef, category)} `);
+      emitProductTerm("");
+    }
+    inputRef.current?.focus();
   };
 
   const suggestions: Suggestion[] = useMemo(() => {
@@ -319,6 +350,7 @@ export default function BrandDrilldownSearch({
         <div className="relative flex-1 min-w-[320px]">
           <Search className="w-3.5 h-3.5 absolute left-2 top-1/2 -translate-y-1/2 text-black/40 pointer-events-none" />
           <input
+            ref={inputRef}
             className="pg-input pl-8 pr-8"
             placeholder={placeholder}
             value={query}
@@ -370,47 +402,57 @@ export default function BrandDrilldownSearch({
         <p className="m-0 text-[18.9px] text-[#b42318] whitespace-pre-wrap">{brandsError}</p>
       )}
 
-      {/* 고른 경로 — 어디까지 내려왔는지 */}
+      {/* 고른 경로 — 레벨마다 태그 하나. X 를 누르면 그 레벨부터 다시 고른다. */}
       {picked && (
         <div className="flex items-center gap-1 flex-wrap text-[19.8px]">
           <span className="text-black/60 w-[72px] flex-none">경로</span>
-          <span className="font-semibold text-black">{picked.displayName}</span>
+          <PathTag
+            label={picked.displayName}
+            title={`브랜드 ${picked.displayName}${picked.naverBrandName ? ` · ${picked.naverBrandName}` : ""}`}
+            clearLabel="브랜드부터 다시 고르기"
+            onClear={() => resetFrom("brand")}
+          />
           {kindDef && (
             <>
               <ChevronRight className="w-3.5 h-3.5 text-black/35" />
-              <span className="font-semibold text-black">{kindDef.label}</span>
+              <PathTag
+                label={kindDef.label}
+                title={`최상위 카테고리 ${kindDef.label}`}
+                clearLabel="최상위 카테고리부터 다시 고르기"
+                onClear={() => resetFrom("kind")}
+              />
             </>
           )}
           {category && (
             <>
               <ChevronRight className="w-3.5 h-3.5 text-black/35" />
-              <span className="font-semibold text-black" title={category}>
-                {category.split(">").pop()}
-              </span>
+              <PathTag
+                label={category.split(">").pop() ?? category}
+                title={category}
+                clearLabel="최하위 카테고리부터 다시 고르기"
+                onClear={() => resetFrom("category")}
+              />
+            </>
+          )}
+          {productTerm && (
+            <>
+              <ChevronRight className="w-3.5 h-3.5 text-black/35" />
+              <PathTag
+                icon={<Search className="w-3 h-3 text-[var(--color-accent-700)]" />}
+                label={productTerm}
+                title={`상품 검색 '${productTerm}'`}
+                clearLabel="상품 검색어 지우고 다시 적기"
+                onClear={() => resetFrom("product")}
+              />
             </>
           )}
           {!kindDef && <span className="text-black/50">— 최상위 카테고리를 고르세요</span>}
           {kindDef && !category && (
             <span className="text-black/50">— 최하위 카테고리를 고르면 상품만 남습니다</span>
           )}
-          {category &&
-            (productTerm ? (
-              <>
-                <ChevronRight className="w-3.5 h-3.5 text-black/35" />
-                <span className="text-black/70">
-                  상품 검색 &lsquo;<span className="font-semibold text-black">{productTerm}</span>&rsquo;
-                </span>
-              </>
-            ) : (
-              <span className="text-black/50">— 이어서 상품명을 적으면 목록을 훑습니다</span>
-            ))}
-          <button
-            type="button"
-            onClick={clearAll}
-            className="ml-2 px-2 py-0.5 text-[18.9px] rounded btn btn-secondary"
-          >
-            처음부터
-          </button>
+          {category && !productTerm && (
+            <span className="text-black/50">— 이어서 상품명을 적으면 목록을 훑습니다</span>
+          )}
         </div>
       )}
 
@@ -491,5 +533,43 @@ export default function BrandDrilldownSearch({
         </div>
       )}
     </div>
+  );
+}
+
+/**
+ * 경로 한 마디 — 끝의 X 는 '이 레벨부터 다시 고르기' 다.
+ * 지우기(입력칸 오른쪽 X)와 달리 위 레벨은 남는다.
+ */
+function PathTag({
+  label,
+  title,
+  clearLabel,
+  onClear,
+  icon,
+}: {
+  label: string;
+  title: string;
+  /** X 의 접근성 이름 · 툴팁. */
+  clearLabel: string;
+  onClear: () => void;
+  icon?: React.ReactNode;
+}) {
+  return (
+    <span
+      title={title}
+      className="pl-2 pr-0.5 py-0.5 rounded-full border border-[var(--pg-line-strong)] bg-white flex items-center gap-1 max-w-[280px]"
+    >
+      {icon}
+      <span className="font-semibold text-black truncate">{label}</span>
+      <button
+        type="button"
+        onClick={onClear}
+        aria-label={clearLabel}
+        title={clearLabel}
+        className="w-6 h-6 flex-none rounded-full hover:bg-black/10 flex items-center justify-center"
+      >
+        <X className="w-3 h-3 text-black" />
+      </button>
+    </span>
   );
 }

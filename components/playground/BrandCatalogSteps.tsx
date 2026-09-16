@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Check, Database, ExternalLink, RefreshCw, Search, X } from "lucide-react";
+import { Check, Database, ExternalLink, RefreshCw, Search } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
 import { hangulMatchIndex } from "@/lib/hangul";
 import { FacetRow, Step, shortLabel } from "@/components/playground/CatalogFacets";
@@ -521,18 +521,13 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
                 )}
               </span>
               {productTerm && (
-                <span className="px-2 py-0.5 rounded-full border border-[var(--pg-line)] bg-white text-[18.9px] flex items-center gap-1">
+                // 지우는 것은 3단계 경로 태그의 X 하나로 모은다 — 여기에 또 두면 입력칸 글과 어긋난다.
+                <span
+                  className="px-2 py-0.5 rounded-full border border-[var(--pg-line)] bg-white text-[18.9px] flex items-center gap-1"
+                  title="3단계 경로의 검색 태그에서 X 를 누르면 지워집니다"
+                >
                   <Search className="w-3 h-3 text-[var(--color-accent-700)]" />
                   <span className="text-black">{productTerm}</span>
-                  <button
-                    type="button"
-                    onClick={() => setProductTerm("")}
-                    aria-label="상품 검색어 지우기"
-                    title="상품 검색어 지우기 — 입력칸의 뒷글도 지우면 됩니다"
-                    className="w-5 h-5 rounded-full hover:bg-black/10 flex items-center justify-center"
-                  >
-                    <X className="w-3 h-3 text-black" />
-                  </button>
                 </span>
               )}
               {searchName && (
@@ -545,7 +540,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
             {shown.length === 0 ? (
               <p className="m-0 text-[20.7px] text-black/60">
                 {productTerm && visible.length > 0
-                  ? `'${productTerm}' 에 맞는 상품이 없습니다. 입력칸의 뒷글을 지우면 ${visible.length.toLocaleString()}건이 다시 보입니다.`
+                  ? `'${productTerm}' 에 맞는 상품이 없습니다. 3단계 경로의 검색 태그에서 X 를 누르면 ${visible.length.toLocaleString()}건이 다시 보입니다.`
                   : models.length > 0
                     ? "걸러낸 결과가 없습니다. 위 토글을 확인하세요."
                     : progress
