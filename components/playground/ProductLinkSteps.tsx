@@ -13,11 +13,13 @@ import {
   X,
 } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
-import { sendDraft } from "@/lib/playground/client";
+import { FacetRow, Step } from "@/components/playground/CatalogFacets";
+import {
+  CATALOG_PAGE_SIZE,
+  searchBrandKindModels,
+} from "@/lib/playground/catalog-search";
 import {
   CLOTHING_KINDS,
-  brandSearchNames,
-  pickClothingModels,
   searchBrands,
   type ClothingBrand,
   type ClothingKind,
@@ -33,11 +35,10 @@ import {
   applyFacets,
   buildCatalogLink,
   facetsOf,
-  parseModelPage,
   type CatalogModel,
   type ModelPage,
 } from "@/lib/playground/product-link";
-import type { NaverTokenResult, RequestDraft } from "@/types/playground";
+import type { NaverTokenResult } from "@/types/playground";
 
 /**
  * 상품링크의 3단계부터 — 옷 브랜드 · 분류로 카탈로그 모델을 찾고(3), 세부 카테고리로 걸러(4),
@@ -69,57 +70,6 @@ interface ProductLinkStepsProps {
   pickPostHint: string;
   /** true 면 결과 목록이 남은 높이 안에서 스스로 스크롤한다(모달). 페이지는 바깥이 스크롤한다. */
   scrollResults?: boolean;
-}
-
-/** size 상한은 100 이다(500·1000 은 400). */
-const PAGE_SIZE = 100;
-/** 호출 사이 최소 간격. 이보다 촘촘하면 429 가 난다(sync-brands 와 같은 값). */
-const MIN_INTERVAL_MS = 550;
-const RETRIES_ON_429 = 3;
-
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-/** 부를 때마다 직전 호출에서 MIN_INTERVAL_MS 가 지날 때까지 기다리는 함수를 만든다. */
-function createPacer() {
-  let lastCallAt = 0;
-  return async () => {
-    await sleep(Math.max(0, lastCallAt + MIN_INTERVAL_MS - Date.now()));
-    lastCallAt = Date.now();
-  };
-}
-
-const searchDraft = (term: string): RequestDraft => ({
-  method: "GET",
-  url: "{{baseUrl}}/v1/product-models",
-  params: [
-    { id: "name", enabled: true, key: "name", value: term },
-    { id: "page", enabled: true, key: "page", value: "1" },
-    { id: "size", enabled: true, key: "size", value: String(PAGE_SIZE) },
-  ],
-  headers: [],
-  bodyType: "none",
-  body: "",
-  auth: { mode: "naver", token: "", username: "", password: "" },
-});
-
-/** 모델 한 페이지. 검색 결과가 없으면 404 라 빈 페이지로 돌린다. 429 는 물러났다 다시 부른다. */
-async function fetchModelPage(
-  term: string,
-  accessToken: string | null
-): Promise<{ value: ModelPage } | { error: string }> {
-  for (let attempt = 0; ; attempt++) {
-    const { result, error } = await sendDraft(searchDraft(term), accessToken);
-    if (error) return { error };
-    if (!result) return { error: "응답이 없습니다." };
-    if (result.status === 429 && attempt < RETRIES_ON_429) {
-      await sleep(1000 * 2 ** attempt);
-      continue;
-    }
-    if (result.status === 404) return { value: { contents: [], totalElements: 0 } };
-    if (!result.ok) return { error: `HTTP ${result.status} · ${result.body.slice(0, 300)}` };
-    const page = parseModelPage(result.body);
-    return page ? { value: page } : { error: "모델 목록 형식이 아닙니다. 응답 원문을 확인하세요." };
-  }
 }
 
 /** 옷 브랜드 목록. idle 이면 마운트될 때 불러온다. */
@@ -326,11 +276,7 @@ export default function ProductLinkSteps({
     clearModels();
   };
 
-  /**
-   * 브랜드 × 분류의 모델 — 분류의 키워드마다 `name=<브랜드명> <키워드>` 로 한 번씩, 차례로 부른다
-   * (한꺼번에 쏘면 429). 받는 대로 목록에 더한다. 브랜드 이름으로 하나도 안 걸리면 다음 이름
-   * (네이버 등록명 등)으로 다시 찾는다.
-   */
+  /** 브랜드 × 분류의 모델. 조회는 lib/playground/catalog-search 가 한다. */
   const loadKind = async (brand: ClothingBrand, next: ClothingKind) => {
     const def = CLOTHING_KINDS.find((k) => k.key === next);
     if (!def) return;
@@ -340,29 +286,14 @@ export default function ProductLinkSteps({
     setNotice(null);
     clearModels();
 
-    const accessToken = token?.accessToken ?? null;
-    const pace = createPacer();
-    for (const name of brandSearchNames(brand)) {
-      const seen = new Set<string>();
-      const found: CatalogModel[] = [];
-      let total = 0;
-      for (const [index, keyword] of def.keywords.entries()) {
-        setProgress(`'${name} ${keyword}' 조회 중… ${index + 1}/${def.keywords.length}`);
-        await pace();
-        const outcome = await fetchModelPage(`${name} ${keyword}`, accessToken);
-        if (runRef.current !== run) return;
-        if ("error" in outcome) {
-          setProgress(null);
-          setError(`${name} ${keyword} · ${outcome.error}`);
-          return;
-        }
-        total += outcome.value.totalElements ?? 0;
-        found.push(...pickClothingModels(outcome.value.contents, brand.naverBrandId, def, seen));
-        setPage({ contents: [...found], totalElements: total });
-      }
-      if (found.length > 0) break;
-    }
+    const outcome = await searchBrandKindModels(brand, def, token?.accessToken ?? null, {
+      onProgress: setProgress,
+      onPartial: (partial) => setPage(partial),
+      isStale: () => runRef.current !== run,
+    });
+    if (outcome.state === "stale") return;
     setProgress(null);
+    if (outcome.state === "error") setError(outcome.error);
   };
 
   const toggle = (set: Set<string>, setter: (next: Set<string>) => void, value: string) => {
@@ -504,7 +435,7 @@ export default function ProductLinkSteps({
                 ? "토큰을 발급하면 조회할 수 있습니다."
                 : (progress ??
                   (page
-                    ? `검색 ${page.totalElements?.toLocaleString() ?? "-"}건 중 ${picked.displayName} · ${kindLabel} 일치 ${models.length}건 (키워드당 size ${PAGE_SIZE})`
+                    ? `검색 ${page.totalElements?.toLocaleString() ?? "-"}건 중 ${picked.displayName} · ${kindLabel} 일치 ${models.length}건 (키워드당 size ${CATALOG_PAGE_SIZE})`
                     : "누르면 이 브랜드의 해당 분류 상품 링크를 조회합니다."))}
             </span>
           </div>
@@ -909,62 +840,6 @@ function ProductPreview({ preview }: { preview?: Preview }) {
           </tr>
         </tbody>
       </table>
-    </div>
-  );
-}
-
-export const Step = ({ n, label }: { n: number; label: string }) => (
-  <span className="flex items-center gap-1.5 flex-none">
-    <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center text-[19.8px] font-bold text-black">
-      {n}
-    </span>
-    <span className="text-[20.7px] font-semibold text-black">{label}</span>
-  </span>
-);
-
-/**
- * 카테고리 경로는 `패션의류>여성의류>니트>풀오버` 처럼 길다. 버튼에는 끝 두 마디만
- * 보이고 전체 경로는 title 로 둔다 — 토글이 한 줄을 다 잡아먹지 않도록.
- */
-const shortLabel = (value: string) => {
-  const parts = value.split(">");
-  return parts.length <= 2 ? value : `…>${parts.slice(-2).join(">")}`;
-};
-
-function FacetRow({
-  label,
-  facets,
-  selected,
-  onToggle,
-}: {
-  label: string;
-  facets: { value: string; count: number }[];
-  selected: Set<string>;
-  onToggle: (value: string) => void;
-}) {
-  return (
-    <div className="flex items-start gap-2">
-      <span className="text-[19.8px] text-black/60 w-[72px] flex-none pt-1">{label}</span>
-      <div className="flex items-center gap-1 flex-wrap min-h-[30px]">
-        {facets.length === 0 ? (
-          <span className="text-[18.9px] text-black/40 pt-1">조회 결과가 없습니다.</span>
-        ) : (
-          facets.map((facet) => (
-            <button
-              key={facet.value}
-              type="button"
-              className="pg-tab"
-              data-active={selected.has(facet.value)}
-              aria-pressed={selected.has(facet.value)}
-              onClick={() => onToggle(facet.value)}
-              title={facet.value}
-            >
-              {shortLabel(facet.value)}
-              <span className="ml-1 text-black/45">{facet.count}</span>
-            </button>
-          ))
-        )}
-      </div>
     </div>
   );
 }
