@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { RefreshCw, Search, Sparkles, X } from "lucide-react";
 import { hangulMatchIndex } from "@/lib/hangul";
 import { shortLabel } from "@/components/playground/CatalogFacets";
-import type { BrandCatalogSummary } from "@/lib/playground/brand-catalog";
+import type { BrandCatalogCategory, BrandCatalogSummary } from "@/lib/playground/brand-catalog";
 import {
   CLOTHING_KINDS,
   searchBrands,
@@ -25,6 +25,7 @@ import type { Facet } from "@/lib/playground/product-link";
  *   ① 2자 이상        브랜드 후보
  *   ② 브랜드 3개 이하  거기에 '브랜드명 + 최상위 카테고리' 를 덧붙인다 — 한 번에 분류까지 고른다
  *   ③ 최상위 고른 뒤   그 분류의 최하위 카테고리 후보
+ *      (내재화된 브랜드면 ② 자리에서 '상의 · 여성의류>티셔츠' 처럼 둘을 한 줄로 고를 수 있다)
  *   ④ 최하위 고른 뒤   상품만 남고, 치는 글이 그 상품 목록을 훑는다
  *
  * ④ 의 상품 검색은 **보는 것만 좁힌다.** 내재화 대상은 4단계 걸러내기까지로 정해지고
@@ -71,6 +72,17 @@ type Suggestion =
       hays: string[];
       wholeCategoryName: string;
       count: number;
+    }
+  /** 최상위 + 최하위를 한 줄로 — 내재화된 브랜드에서만 나온다. */
+  | {
+      level: "kindCategory";
+      key: string;
+      label: string;
+      hays: string[];
+      brand: ClothingBrand;
+      kind: ClothingKindDef;
+      wholeCategoryName: string;
+      count: number;
     };
 
 /** 태그로 앉은 레벨. 'brand' 를 물리면 그 아래가 다 딸려 온다. */
@@ -107,8 +119,15 @@ interface BrandDrilldownSearchProps {
   canQuery: boolean;
 
   /** 아래 넷은 모두 글도 같이 비운다(부모가 한다). */
+  /**
+   * 내재화된 브랜드면 세 분류의 최하위 카테고리 전부. 있으면 최상위 단계에서
+   * '상의 · 여성의류>티셔츠' 처럼 한 줄로 둘을 같이 고를 수 있다.
+   */
+  savedCategories: BrandCatalogCategory[] | null;
+
   onPickBrand: (brand: ClothingBrand) => void;
-  onPickKind: (brand: ClothingBrand, kind: ClothingKind) => void;
+  /** startCategory 를 주면 그 최하위로 좁힌 채 연다. */
+  onPickKind: (brand: ClothingBrand, kind: ClothingKind, startCategory?: string) => void;
   /** 최상위 카테고리만 물린다(브랜드는 남긴다). */
   onClearKind: () => void;
   onPickCategory: (wholeCategoryName: string | null) => void;
@@ -128,6 +147,7 @@ export default function BrandDrilldownSearch({
   category,
   summaries,
   onNeedSummaries,
+  savedCategories,
   categoryFacets,
   progress,
   canQuery,
@@ -205,7 +225,25 @@ export default function BrandDrilldownSearch({
     }
     if (stage === "kind" && picked) {
       // 브랜드는 이미 태그로 앉았으니 후보에는 분류 이름만 둔다.
-      return CLOTHING_KINDS.map((def) => kindRow(picked, def, false));
+      const rows: Suggestion[] = CLOTHING_KINDS.map((def) => kindRow(picked, def, false));
+      // 내재화된 브랜드면 최하위까지 한 줄로 — 한 번에 상품 목록까지 내려간다.
+      for (const saved of savedCategories ?? []) {
+        const def = CLOTHING_KINDS.find((k) => k.key === saved.kind);
+        if (!def) continue;
+        rows.push({
+          level: "kindCategory",
+          key: `${def.key}:${saved.categoryId}`,
+          // 잎 이름은 분류 안에서도 겹친다(여성의류>티셔츠 · 남성의류>티셔츠).
+          // shortLabel 이 첫 마디만 떼므로 남는 경로로 갈라진다.
+          label: `${def.label} · ${shortLabel(saved.wholeCategoryName)}`,
+          hays: [`${def.label} ${saved.wholeCategoryName}`, saved.wholeCategoryName, saved.name],
+          brand: picked,
+          kind: def,
+          wholeCategoryName: saved.wholeCategoryName,
+          count: saved.modelCount,
+        });
+      }
+      return rows;
     }
 
     // 브랜드 단계 — 후보가 적으면 분류까지 붙인 줄을 덧붙인다.
@@ -224,7 +262,7 @@ export default function BrandDrilldownSearch({
     return rows;
     // kindRow 는 summaries · picked 만 본다 — 아래 deps 로 충분하다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stage, picked, categoryFacets, brandMatches, summaries]);
+  }, [stage, picked, categoryFacets, brandMatches, summaries, savedCategories]);
 
   /** 친 글로 후보를 좁힌다. 초성 · 대소문자는 가리지 않는다. */
   const visible = useMemo(() => {
@@ -244,9 +282,13 @@ export default function BrandDrilldownSearch({
       onPickBrand(suggestion.brand);
       return;
     }
-    if (suggestion.level === "kind") {
+    if (suggestion.level === "kind" || suggestion.level === "kindCategory") {
       if (picked?.id !== suggestion.brand.id) onPickBrand(suggestion.brand);
-      onPickKind(suggestion.brand, suggestion.kind.key);
+      onPickKind(
+        suggestion.brand,
+        suggestion.kind.key,
+        suggestion.level === "kindCategory" ? suggestion.wholeCategoryName : undefined
+      );
       return;
     }
     onPickCategory(suggestion.wholeCategoryName);
@@ -427,13 +469,15 @@ export default function BrandDrilldownSearch({
                   title={
                     s.level === "kind" && !canQuery && s.saved === null
                       ? "토큰을 먼저 발급하세요 (내재화된 분류는 토큰 없이도 열립니다)"
-                      : s.level === "category"
+                      : s.level === "category" || s.level === "kindCategory"
                         ? s.wholeCategoryName
                         : s.label
                   }
                 >
                   {s.label}
-                  {s.level === "category" && <span className="ml-1 text-black/45">{s.count}</span>}
+                  {(s.level === "category" || s.level === "kindCategory") && (
+                    <span className="ml-1 text-black/45">{s.count}</span>
+                  )}
                   {s.level === "kind" && s.saved !== null && (
                     <span
                       className="ml-1 text-[var(--color-accent-700)]"

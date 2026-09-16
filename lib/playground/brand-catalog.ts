@@ -64,6 +64,8 @@ export interface BrandCatalogCategory {
   /** 경로의 마지막 마디 — "원피스". */
   name: string;
   modelCount: number;
+  /** 세 분류를 통틀어 받을 때만 온다 — 한 분류만 받으면 이미 알고 있으니 비운다. */
+  kind?: ClothingKind;
 }
 
 /** `GET /api/playground/brand-catalog?naverBrandId=` 응답. */
@@ -75,6 +77,8 @@ export interface BrandCatalogSummary {
   kinds: BrandCatalogKind[];
   /** 내재화 표가 아직 없다(마이그레이션 0005 미실행). */
   missingTables?: boolean;
+  /** `?categories=1` 로 불렀을 때만 — 세 분류를 통틀어 이 브랜드의 최하위 카테고리 전부. */
+  categories?: BrandCatalogCategory[];
 }
 
 /** `&kind=` 를 붙여 부른 응답 — 그 최상위 카테고리의 최하위 카테고리와 상품까지. */
@@ -189,14 +193,19 @@ export async function saveBrandCatalog(
   }
 }
 
-/** 이 브랜드가 이미 무엇을 내재화했는지. */
+/**
+ * 이 브랜드가 이미 무엇을 내재화했는지.
+ * `withCategories` 면 세 분류의 최하위 카테고리까지 한 번에 받는다 — 드릴다운이
+ * 최상위 · 최하위를 한 줄로 고르게 하려고 쓴다.
+ */
 export async function fetchBrandCatalog(
-  naverBrandId: number
+  naverBrandId: number,
+  withCategories = false
 ): Promise<{ value: BrandCatalogSummary } | { error: string }> {
+  const params = new URLSearchParams({ naverBrandId: String(naverBrandId) });
+  if (withCategories) params.set("categories", "1");
   try {
-    const res = await authFetch(
-      `/api/playground/brand-catalog?naverBrandId=${encodeURIComponent(naverBrandId)}`
-    );
+    const res = await authFetch(`/api/playground/brand-catalog?${params}`);
     const data = await res.json().catch(() => null);
     if (!res.ok || !Array.isArray(data?.kinds)) {
       return { error: data?.error ?? `HTTP ${res.status}` };

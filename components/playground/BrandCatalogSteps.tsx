@@ -154,27 +154,32 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
 
   const kindDef = CLOTHING_KINDS.find((def) => def.key === kind) ?? null;
   const catalog = picked ? (summaries[picked.naverBrandId] ?? null) : null;
-  const savedKind = catalog?.kinds.find((k) => k.kind === kind) ?? null;
 
-  /** 브랜드의 내재화 현황을 받아 둔다. `force` 면 이미 받았어도 다시 읽는다. */
-  const loadSummaries = useCallback(async (list: ClothingBrand[], force = false) => {
-    const missing = list.filter((b) => force || !askedRef.current.has(b.naverBrandId));
-    if (missing.length === 0) return;
-    missing.forEach((b) => askedRef.current.add(b.naverBrandId));
-    await Promise.all(
-      missing.map(async (brand) => {
-        const outcome = await fetchBrandCatalog(brand.naverBrandId);
-        if ("error" in outcome) {
-          // 다음에 다시 시도할 수 있게 표시를 물린다.
-          askedRef.current.delete(brand.naverBrandId);
-          setCatalogError(outcome.error);
-          return;
-        }
-        setCatalogError(null);
-        setSummaries((prev) => ({ ...prev, [brand.naverBrandId]: outcome.value }));
-      })
-    );
-  }, []);
+  /**
+   * 브랜드의 내재화 현황을 받아 둔다. `force` 면 이미 받았어도 다시 읽는다.
+   * `withCategories` 면 세 분류의 최하위 카테고리까지 — 브랜드를 고른 뒤에만 쓴다(치는 중에는 무겁다).
+   */
+  const loadSummaries = useCallback(
+    async (list: ClothingBrand[], { force = false, withCategories = false } = {}) => {
+      const missing = list.filter((b) => force || !askedRef.current.has(b.naverBrandId));
+      if (missing.length === 0) return;
+      missing.forEach((b) => askedRef.current.add(b.naverBrandId));
+      await Promise.all(
+        missing.map(async (brand) => {
+          const outcome = await fetchBrandCatalog(brand.naverBrandId, withCategories);
+          if ("error" in outcome) {
+            // 다음에 다시 시도할 수 있게 표시를 물린다.
+            askedRef.current.delete(brand.naverBrandId);
+            setCatalogError(outcome.error);
+            return;
+          }
+          setCatalogError(null);
+          setSummaries((prev) => ({ ...prev, [brand.naverBrandId]: outcome.value }));
+        })
+      );
+    },
+    []
+  );
 
   /** 드릴다운이 후보를 좁혔을 때 부르는 것 — 렌더 중에 상태를 건드리지 않게 비동기로만. */
   const needSummaries = useCallback(
@@ -199,7 +204,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
     setError(null);
     setNotice(null);
     clearModels();
-    void loadSummaries([brand]);
+    void loadSummaries([brand], { force: true, withCategories: true });
   };
 
   const reset = () => {
@@ -244,8 +249,15 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
   /**
    * 브랜드 × 최상위 카테고리의 상품.
    * 내재화한 것이 있으면 우리 DB 에서 바로, 없으면 네이버에서.
+   *
+   * `startCategory` 는 최상위 · 최하위를 한 줄로 골랐을 때 온다 — 목록을 받자마자 그
+   * 최하위로 좁혀 보여준다. 등록 대상과는 무관하다(등록은 브랜드 전체다).
    */
-  const loadKind = async (brand: ClothingBrand, next: ClothingKind) => {
+  const loadKind = async (
+    brand: ClothingBrand,
+    next: ClothingKind,
+    startCategory?: string
+  ) => {
     const def = CLOTHING_KINDS.find((k) => k.key === next);
     if (!def) return;
     const run = ++runRef.current;
@@ -254,13 +266,22 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
     setError(null);
     setNotice(null);
     clearModels();
+    if (startCategory) setCategories(new Set([startCategory]));
     setProgress("내재화한 것이 있는지 보는 중…");
 
     const saved = await fetchBrandCatalogKind(brand.naverBrandId, next);
     if (runRef.current !== run) return;
     if (!("error" in saved)) {
       askedRef.current.add(brand.naverBrandId);
-      setSummaries((prev) => ({ ...prev, [brand.naverBrandId]: saved.value }));
+      // 한 분류만 담긴 categories 로 세 분류 전부를 덮어쓰면 드릴다운의 '한 번에 고르기' 가
+      // 그 분류만 보게 된다. 이미 받아 둔 전체 목록을 지킨다.
+      setSummaries((prev) => ({
+        ...prev,
+        [brand.naverBrandId]: {
+          ...saved.value,
+          categories: prev[brand.naverBrandId]?.categories ?? saved.value.categories,
+        },
+      }));
       if (saved.value.models.length > 0) {
         setProgress(null);
         setSource("catalog");
@@ -301,42 +322,76 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
     setQuery("");
   };
 
-  /** 브랜드 등록 — 걸러 남은 것을 그대로 brand_catalog_* 에 넣는다. */
-  const register = async () => {
-    if (!picked || !kindDef) return;
-    if (visible.length === 0) {
-      setError("내재화할 상품이 없습니다. 3단계에서 조회하고 4단계를 확인하세요.");
+  /**
+   * 브랜드 등록 — 그 브랜드의 **모든 상품**을 내재화한다.
+   *
+   * 상의 · 하의 · 기타를 차례로 네이버에서 조회해 분류마다 한 번씩 올린다. 화면의 드릴다운과
+   * 4단계 걸러내기는 보는 것만 좁히므로 여기에 아무 영향이 없다 — 잎 하나를 보고 있다가
+   * 눌러도 브랜드 전체가 들어간다.
+   *
+   * 네이버 조회는 키워드마다 0.55 초를 쉬므로 세 분류에 15~20 초쯤 걸린다. 그래서 진행 문구를
+   * 계속 갈아 준다. 한 분류가 비면(그 브랜드에 그 분류 상품이 없으면) 건너뛴다.
+   */
+  const registerBrand = async () => {
+    if (!picked) return;
+    if (!token) {
+      setError("브랜드 전체를 조회하려면 토큰을 먼저 발급하세요.");
       return;
     }
-    const names = [searchName, picked.clothingQuery, picked.displayName]
-      .filter((name): name is string => Boolean(name))
-      .filter((name, index, all) => all.indexOf(name) === index);
-    const { payload, skipped } = buildBrandCatalogPayload(picked, kindDef, visible, names);
-
+    const brand = picked;
+    const run = ++runRef.current;
     setSaving(true);
     setError(null);
     setNotice(null);
-    const outcome = await saveBrandCatalog(payload);
-    setSaving(false);
 
-    if (outcome.error) {
-      setError(outcome.error);
-      return;
+    const lines: string[] = [];
+    let total = 0;
+    for (const [index, def] of CLOTHING_KINDS.entries()) {
+      setProgress(`${brand.displayName} · ${def.label} 조회 중… ${index + 1}/${CLOTHING_KINDS.length}`);
+      const found = await searchBrandKindModels(brand, def, token.accessToken, {
+        onProgress: (text) => setProgress(`${def.label} — ${text}`),
+        onPartial: () => {},
+        isStale: () => runRef.current !== run,
+      });
+      if (runRef.current !== run) return;
+      if (found.state === "stale") return;
+      if (found.state === "error") {
+        setProgress(null);
+        setSaving(false);
+        setError(`${def.label} 조회에서 멈췄습니다 — ${found.error}`);
+        return;
+      }
+      if (found.page.contents.length === 0) {
+        lines.push(`${def.label} — 상품이 없어 건너뜁니다.`);
+        continue;
+      }
+
+      setProgress(`${brand.displayName} · ${def.label} 등록 중… (상품 ${found.page.contents.length}건)`);
+      const names = [found.searchName, brand.clothingQuery, brand.displayName]
+        .filter((name): name is string => Boolean(name))
+        .filter((name, i, all) => all.indexOf(name) === i);
+      const { payload, skipped } = buildBrandCatalogPayload(brand, def, found.page.contents, names);
+      const outcome = await saveBrandCatalog(payload);
+      if (runRef.current !== run) return;
+      if (outcome.error) {
+        setProgress(null);
+        setSaving(false);
+        setError(`${def.label} 등록에서 멈췄습니다 — ${outcome.error}`);
+        return;
+      }
+      total += outcome.modelCount ?? 0;
+      lines.push(
+        `${def.label} — 최하위 카테고리 ${outcome.categoryCount}개 · 상품 ${outcome.modelCount}건` +
+          (outcome.removedCount ? ` (없어져 지운 것 ${outcome.removedCount}건)` : "") +
+          (skipped.length ? ` (카테고리 경로가 없어 뺀 것 ${skipped.length}건)` : "") +
+          outcome.warnings.map((w) => `\n  ${w}`).join("")
+      );
     }
-    setNotice(
-      [
-        `${picked.displayName} · ${kindDef.label} — 최하위 카테고리 ${outcome.categoryCount}개,` +
-          ` 상품 ${outcome.modelCount}건을 내재화했습니다.`,
-        outcome.removedCount ? `이번 목록에 없어 지운 상품 ${outcome.removedCount}건.` : null,
-        skipped.length
-          ? `카테고리 경로가 없는 상품 ${skipped.length}건은 계층에 넣을 자리가 없어 뺐습니다.`
-          : null,
-        ...outcome.warnings,
-      ]
-        .filter(Boolean)
-        .join("\n")
-    );
-    await loadSummaries([picked], true);
+
+    setProgress(null);
+    setSaving(false);
+    setNotice([`${brand.displayName} 전체 ${total.toLocaleString()}건을 내재화했습니다.`, ...lines].join("\n"));
+    await loadSummaries([picked], { force: true, withCategories: true });
   };
 
   return (
@@ -394,7 +449,8 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
           progress={progress}
           canQuery={Boolean(token)}
           onPickBrand={pickBrand}
-          onPickKind={(brand, next) => void loadKind(brand, next)}
+          onPickKind={(brand, next, startCategory) => void loadKind(brand, next, startCategory)}
+          savedCategories={catalog?.categories ?? null}
           onClearKind={clearKind}
           onPickCategory={(value) => {
             setCategories(value ? new Set([value]) : new Set());
@@ -411,7 +467,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
         <div className="flex items-center gap-2">
           <Step n={4} label="걸러내기" />
           <span className="text-[19.8px] text-black/60">
-            켠 것이 없으면 전체입니다. 여러 개를 켜서 넓힐 수도 있습니다.
+            보는 것만 좁힙니다 — 등록은 늘 브랜드 전체입니다. 켠 것이 없으면 전체를 봅니다.
           </span>
           {categories.size > 0 && (
             <button
@@ -440,12 +496,14 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
         <div className="flex items-center gap-2 flex-wrap">
           <button
             type="button"
-            onClick={() => void register()}
-            disabled={!picked || !kindDef || visible.length === 0 || saving || progress !== null}
+            onClick={() => void registerBrand()}
+            disabled={!picked || !token || saving || progress !== null}
             title={
-              picked && kindDef
-                ? `${picked.displayName} → ${kindDef.label} → 최하위 카테고리 → 상품 을 우리 DB 에 넣는다`
-                : "브랜드와 최상위 카테고리를 먼저 고르세요"
+              !picked
+                ? "브랜드를 먼저 고르세요"
+                : !token
+                  ? "토큰을 먼저 발급하세요"
+                  : `${picked.displayName} 의 상의 · 하의 · 기타를 모두 조회해 우리 DB 에 넣는다`
             }
             className="px-3 py-1.5 text-[21.6px] rounded btn btn-primary flex items-center gap-1.5 disabled:opacity-50"
           >
@@ -455,19 +513,15 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
           <span className="text-[19.8px] text-black/70">
             {!picked
               ? "3단계에서 브랜드를 고르세요."
-              : !kindDef
-                ? `${picked.displayName} — 최상위 카테고리(상의 · 하의 · 기타)를 고르세요.`
-                : progress
-                  ? "조회가 끝나면 등록할 수 있습니다."
-                  : `${picked.displayName} → ${kindDef.label} → 최하위 카테고리 ${
-                      facetsOf(visible, "wholeCategoryName").length
-                    }개 → 상품 ${visible.length}건`}
+              : !token
+                ? "브랜드 전체를 조회하려면 토큰이 필요합니다."
+                : saving
+                  ? (progress ?? "등록 중…")
+                  : `${picked.displayName} 의 상의 · 하의 · 기타 전부 — 네이버 조회에 15~20초쯤 걸립니다.`}
           </span>
-          {productTerm && visible.length > 0 && (
-            <span className="text-[18.9px] text-black/55">
-              — 상품 검색은 보는 것만 좁힙니다. 등록되는 것은 걸러내기까지의 {visible.length}건입니다.
-            </span>
-          )}
+          <span className="text-[18.9px] text-black/55">
+            아래에서 무엇을 보고 있든 등록되는 것은 브랜드 전체입니다.
+          </span>
         </div>
 
         <div className="flex items-center gap-1.5 flex-wrap text-[18.9px]">
@@ -496,10 +550,8 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
           {catalog?.catalogSyncedAt && (
             <span className="text-black/45">마지막 등록 {formatDate(catalog.catalogSyncedAt)}</span>
           )}
-          {savedKind && kindDef && source === "naver" && (
-            <span className="text-black/55">
-              — {kindDef.label} 를 등록하면 이전 {savedKind.modelCount}건을 이번 목록으로 갈아끼웁니다.
-            </span>
+          {catalog && catalog.kinds.length > 0 && (
+            <span className="text-black/55">— 다시 등록하면 분류마다 네이버의 지금 값으로 갈아끼웁니다.</span>
           )}
         </div>
 

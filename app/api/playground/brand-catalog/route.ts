@@ -7,7 +7,7 @@ import {
   type BrandCatalogCategoryInput,
   type BrandCatalogPayload,
 } from "@/lib/playground/brand-catalog";
-import { CLOTHING_KINDS, isClothingKind } from "@/lib/playground/clothing";
+import { CLOTHING_KINDS, isClothingKind, type ClothingKind } from "@/lib/playground/clothing";
 import type { CatalogModel } from "@/lib/playground/product-link";
 
 /**
@@ -15,6 +15,7 @@ import type { CatalogModel } from "@/lib/playground/product-link";
  *
  * `GET  ?naverBrandId=14298`            → `{ brandId, naverBrandId, displayName, catalogSyncedAt, kinds[] }`
  * `GET  ?naverBrandId=14298&kind=top`   → 위에 더해 `{ kind, categories[], models[] }`
+ * `GET  ?naverBrandId=14298&categories=1` → 위에 더해 `{ categories[] }` (세 분류 전부)
  * `POST BrandCatalogPayload`            → `{ categoryCount, modelCount, removedCount, warnings }`
  *
  * `kind` 를 주면 그 최상위 카테고리의 최하위 카테고리와 상품을 통째로 돌려준다. 드릴다운
@@ -116,6 +117,31 @@ interface CategoryRow {
   model_count: number;
 }
 
+/** 세 분류를 통틀어 그 브랜드의 최하위 카테고리 전부. 드릴다운이 한 번에 고르려고 쓴다. */
+async function readAllCategories(
+  supabase: ReturnType<typeof getAdminSupabase>,
+  brandId: string
+): Promise<{ categories: BrandCatalogCategory[] } | { error: string }> {
+  const rows = await readAllRows<CategoryRow & { clothing_kind: string }>((from, to) =>
+    supabase
+      .from("brand_catalog_categories")
+      .select("category_id, clothing_kind, whole_category_name, name, model_count")
+      .eq("brand_id", brandId)
+      .order("model_count", { ascending: false })
+      .range(from, to)
+  );
+  if ("error" in rows) return rows;
+  return {
+    categories: rows.rows.filter((row) => isClothingKind(row.clothing_kind)).map((row) => ({
+      kind: row.clothing_kind as ClothingKind,
+      categoryId: row.category_id,
+      wholeCategoryName: row.whole_category_name,
+      name: row.name,
+      modelCount: row.model_count ?? 0,
+    })),
+  };
+}
+
 interface ModelRow {
   id: string;
   name: string;
@@ -190,6 +216,7 @@ export async function GET(req: NextRequest) {
   if (naverBrandId === null) {
     return NextResponse.json({ error: "naverBrandId 가 필요합니다." }, { status: 400 });
   }
+  const wantCategories = req.nextUrl.searchParams.get("categories") === "1";
   const kindParam = req.nextUrl.searchParams.get("kind");
   if (kindParam !== null && !isClothingKind(kindParam)) {
     return NextResponse.json(
@@ -254,7 +281,12 @@ export async function GET(req: NextRequest) {
       catalogSyncedAt: found.row.catalog_synced_at ?? null,
       kinds,
     };
-    if (!kindParam) return NextResponse.json(summary);
+    if (!kindParam) {
+      if (!wantCategories) return NextResponse.json(summary);
+      const all = await readAllCategories(supabase, found.row.id);
+      if ("error" in all) return NextResponse.json({ error: all.error }, { status: 500 });
+      return NextResponse.json({ ...summary, ...all });
+    }
 
     // 아직 내재화하지 않은 분류면 조회할 것이 없다 — 화면은 네이버로 넘어간다.
     if (!kinds.some((k) => k.kind === kindParam)) {

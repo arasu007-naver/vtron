@@ -17,12 +17,16 @@ export const Step = ({ n, label }: { n: number; label: string }) => (
 );
 
 /**
- * 카테고리 경로는 `패션의류>여성의류>니트>풀오버` 처럼 길다. 버튼에는 끝 두 마디만
- * 보이고 전체 경로는 title 로 둔다 — 토글이 한 줄을 다 잡아먹지 않도록.
+ * 카테고리 경로는 `패션의류>여성의류>니트>풀오버` 처럼 길다. 첫 마디만 떼고 보여준다.
+ *
+ * 첫 마디는 옷 카테고리에서 늘 `패션의류` 라 아무것도 구분해 주지 않는다. 반대로 끝 두
+ * 마디만 남기면 서로 다른 것이 같아 보인다 — 디올의 `베스트` 는 여성 · 남성 아우터와
+ * 여성 · 남성 니트 밑에 넷이 있어 `…>아우터>베스트` 가 둘씩 겹친다. 첫 마디만 떼면
+ * 한 브랜드 안에서 경로가 유일하므로 라벨도 유일하다. 전체 경로는 title 로 둔다.
  */
 export const shortLabel = (value: string) => {
   const parts = value.split(">");
-  return parts.length <= 2 ? value : `…>${parts.slice(-2).join(">")}`;
+  return parts.length <= 2 ? value : parts.slice(1).join(">");
 };
 
 export function FacetRow({
