@@ -13,6 +13,8 @@ Next.js 16 (App Router) + Supabase 기반 가상 피팅 플랫폼.
 | `/tryon` | **FASHN Try-On 데모** — 원본 `tryon-nextjs-app` 을 그대로 이식한 단일 가먼트 데모(모델/가먼트 업로드, 파라미터 컨트롤, 결과 갤러리, 모델 버전 비교 슬라이더). |
 | `/mov` | **Portrait Studio** — 배경 애니메이션 24종 위에 배경 제거된 캐릭터를 등장시켜 세로 영상(webm)을 만든다. `style-ID-movie-studio` 이식. → [docs/portrait-studio.md](docs/portrait-studio.md) |
 | `/api-playground` | **API 플레이그라운드** — 네이버 쇼핑(커머스) API 호출 테스트를 중심으로 임의의 RESTful 엔드포인트를 호출하고 응답을 보는 콘솔. → [아래 절](#api-플레이그라운드-api-playground) |
+| `/products-2-link` | **상품링크** — stmx-web Loox 목록에서 게시물을 고르고, 옷 브랜드 × 분류의 네이버 카탈로그 상품을 찾아 붙인다. |
+| `/brand-integration` | **브랜드 내재화** — 브랜드 → 최상위 카테고리 → 최하위 카테고리 → 상품 계층을 확정해 우리 DB 에 넣는다. → [아래 절](#브랜드-내재화-brand-integration) |
 
 모든 페이지 위에는 전역 상단 내비게이션([`components/NavBar.tsx`](components/NavBar.tsx))이
 붙는다. 라우트 링크(현재 위치 강조)와 로그아웃만 담고, `/login` 에서는 렌더하지 않는다.
@@ -53,6 +55,7 @@ Tailwind 의 이름있는 크기(`text-sm` 등)는 배율을 곱할 수 없어 �
 | `GET/POST /api/vton/projects`, `GET/DELETE /api/vton/projects/[id]` | 세션(프로젝트) CRUD. |
 | `POST /api/playground/request` | 플레이그라운드 프록시. 임의의 HTTP 요청을 서버가 대신 보내고 응답 전문을 돌려준다. |
 | `GET/POST /api/playground/naver/token` | 네이버 커머스 자격 증명 설정 여부 조회 / 액세스 토큰 발급. |
+| `GET/POST /api/playground/brand-catalog` | 브랜드 내재화 조회 / 등록. `&kind=` 를 붙이면 그 분류의 최하위 카테고리와 상품까지 준다. POST 는 브랜드 × 최상위 카테고리 하나를 통째로 갈아끼운다. |
 
 ## 실행
 
@@ -71,6 +74,15 @@ npm run dev    # http://localhost:8920
 
 테이블이 없어도 렌더 자체는 동작한다(잡 기록만 건너뛴다). 반면 `세션 저장`과
 `세션 목록`은 테이블이 있어야 한다.
+
+브랜드 쪽 표는 번호 순서대로 한 번씩 실행한다. 모두 SQL Editor 에 붙여넣는 방식이다.
+
+| 파일 | 만드는 것 |
+| --- | --- |
+| [`0002_brands.sql`](supabase/migrations/0002_brands.sql) | `brands` · `brand_groups` · `brand_categories` · `naver_categories` |
+| [`0003_brand_clothing.sql`](supabase/migrations/0003_brand_clothing.sql) | `brand_clothing_categories` (표본에서 센 분포) |
+| [`0004_clothing_etc.sql`](supabase/migrations/0004_clothing_etc.sql) | 옷 분류를 상의 · 하의 · 기타로 |
+| [`0005_brand_catalog.sql`](supabase/migrations/0005_brand_catalog.sql) | `brand_catalog_kinds` · `brand_catalog_categories` · `brand_catalog_models` (내재화) |
 
 ### 환경 변수
 
@@ -470,6 +482,127 @@ ID/시크릿을 한 번 넘겨 발급받을 수 있다(저장하지 않는다).
 [`docs/naver-shopping-dev-api-registration.png`](docs/naver-shopping-dev-api-registration.png)
 에 있다. 커머스 API 는 **등록된 IP 에서만** 호출할 수 있으므로, 배포 환경이 바뀌면
 애플리케이션의 `API호출 IP` 를 함께 갱신해야 한다.
+
+## 브랜드 내재화 (`/brand-integration`)
+
+브랜드를 고를 때마다 네이버 커머스 API 를 부르던 것을 그만두기 위한 화면이다. 한 번
+확정한 계층을 우리 DB 에 넣어 두고 그 뒤로는 우리 것을 읽는다.
+
+```
+brands                          브랜드                     (0002)
+  └ brand_catalog_kinds         브랜드 최상위 카테고리      상의 · 하의 · 기타
+      └ brand_catalog_categories  최하위 카테고리          네이버 카테고리 id
+          └ brand_catalog_models  상품                    네이버 카탈로그 모델
+```
+
+최하위 카테고리는 상품링크 4단계 '걸러내기' 토글의 값과 같은 것이다
+(`패션의류>여성의류>원피스`). 화면에서 걸러 남긴 것이 그대로 확정값이 된다.
+
+### 화면
+
+상품링크(`/products-2-link`)에서 Loox 쪽(목록 · 붙일 Loox · 붙이기 · 가격 · 이미지)을
+들어내고 3 · 4단계만 남긴 모양이다.
+
+| 줄 | 내용 |
+| --- | --- |
+| 1 | 토큰 발급 — 커머스 API 액세스 토큰. 메모리에만 둔다. |
+| 2 | 3단계 **브랜드** — 입력칸 하나로 브랜드 → 최상위 → 최하위 카테고리를 파고든다. 먼저 내재화하기로 한 브랜드는 '먼저' 줄에 깔린다. |
+| 3 | 4단계 **걸러내기** — 최하위 카테고리 토글. 켠 것이 없으면 전체다. 3단계 드릴다운과 같은 값을 보고, **여기까지가 내재화 대상**이다. |
+| 4 | **브랜드 등록** — 남은 카테고리 · 상품을 `brand_catalog_*` 에 넣는다. 그 아래에 들어갈 상품 목록이 보인다. |
+
+한 번의 등록이 다루는 것은 **브랜드 × 최상위 카테고리 하나**다. 분류를 바꿔 다시 고르면
+그 분류가 더해지고, 같은 분류를 다시 등록하면 이번 목록으로 **갈아끼운다**(이번에 없는
+카테고리 · 상품은 지운다). 화면에서 걸러낸 결과가 확정값이어야 하기 때문이다.
+
+### 드릴다운 검색
+
+3단계의 입력칸 하나가 계층을 끝까지 좁힌다
+([`components/playground/BrandDrilldownSearch.tsx`](components/playground/BrandDrilldownSearch.tsx)).
+
+| 단계 | 조건 | 목록 |
+| --- | --- | --- |
+| ① | **2자 이상** | 브랜드 |
+| ② | 브랜드 후보 **3개 이하** | 거기에 `브랜드명 + 최상위 카테고리` 를 덧붙인다 |
+| ③ | 최상위까지 골랐다 | 그 분류의 최하위 카테고리 |
+| ④ | 최하위까지 골랐다 | 상품만 남고, 이어 적는 글이 그 목록을 훑는다 |
+
+```
+디올            → 브랜드 · 브랜드+분류 후보
+디올 상의        → 그 분류의 최하위 카테고리 후보
+디올 상의 티셔츠  → 티셔츠 상품만
+디올 상의 티셔츠 린넨  → 그중 '린넨' 이 든 것만
+```
+
+고른 것은 입력칸 글에 되적힌다(`디올 상의 `). 그래서 **지우면 그만큼 되돌아간다** —
+[`startsWithLoose`](lib/hangul.ts) 로 글이 아직 그 경로로 시작하는지만 본다.
+`"디올 상의 "` 는 분류를 지키고 `"디올"` 은 분류를 푼다.
+
+목록을 맞출 때는 `hangulMatchIndex` 라 경로 전체를 초성으로도 좁힐 수 있다. 브랜드명과
+분류를 **한 번에 쳐도** 된다 — `"디올 상"` 은 브랜드명으로 안 걸리므로 뒤 낱말부터 하나씩
+떼어 보며 브랜드를 집어낸다. `"ㄷㅇ 기타"` · `"dior 상"`(네이버 등록명 DIOR) 도 걸린다.
+
+최하위 카테고리 줄은 경로 전체(`패션의류>남성의류>티셔츠`)가 맞춤 대상이라 `"남성의류"`
+로도 좁혀진다.
+
+### 상품 검색은 보는 것만 좁힌다
+
+④ 에서 경로 뒤에 이어 적은 글은 [`stripLoosePrefix`](lib/hangul.ts) 로 떼어내 상품 검색어가
+된다. 상품명도 초성 · 대소문자를 가리지 않는다(`"ㅇㅂㄹㅋ"` → 오블리크).
+
+**이 검색은 내재화 대상을 바꾸지 않는다.** 등록되는 것은 4단계 걸러내기까지로 정해진
+목록이고, 상품 검색은 화면에 뿌리는 것만 좁힌다 — 상품명을 치다가 '브랜드 등록' 을 눌러
+900건이 3건으로 덮이면 안 되기 때문이다. 검색 중에는 머리글이 `상품 3건 / 등록 대상 690건`
+으로 둘을 같이 보여주고, 등록 줄에도 그 사실을 적어 둔다.
+
+최하위 카테고리를 갈아타거나 4단계 토글을 건드리면 상품 검색어는 버린다 — 다른 카테고리를
+보는데 앞 카테고리에서 치던 상품명이 남아 있으면 빈 목록처럼 보인다.
+
+### 내재화된 것은 네이버를 부르지 않는다
+
+최상위 카테고리를 고르면 **내재화한 것이 있는지 먼저 본다**
+(`GET /api/playground/brand-catalog?naverBrandId=&kind=`).
+
+- **있으면** 우리 DB 에서 최하위 카테고리와 상품을 통째로 받는다. 바로 뜨고 **토큰도
+  필요 없다** — 드릴다운의 분류 줄에 `✓ 상품수` 가 붙은 것이 그것이다. 네이버의 지금 값을
+  보고 싶으면 '네이버에서 다시 조회' 를 누른다.
+- **없으면** 그때만 네이버를 부른다. 토큰이 없으면 여기서 막힌다.
+
+네이버 조회는 키워드마다 0.55 초를 쉬어 한 분류에 3~6 초가 걸린다. 내재화의 값어치가
+여기서 나온다.
+
+### 먼저 내재화한 브랜드
+
+디올 · 루이비통 · 룰루레몬 · 리바이스 · 랄프로렌 · 캘빈클라인.
+목록은 [`lib/playground/brand-catalog.ts`](lib/playground/brand-catalog.ts) 의
+`BRAND_INTEGRATION_TARGETS` 와 [`scripts/sync-brand-catalog.mjs`](scripts/sync-brand-catalog.mjs)
+의 `DEFAULT_TARGETS` 두 곳에 있고 같아야 한다. 나머지 브랜드는 화면에서 하나씩 이어서 한다.
+
+```bash
+npm run sync:brand-catalog                        # 위 여섯 브랜드 × 상의 · 하의 · 기타
+npm run sync:brand-catalog -- --only=디올,리바이스
+npm run sync:brand-catalog -- --kinds=top,bottom
+npm run sync:brand-catalog -- --dry-run           # 조회만, DB 에 쓰지 않는다
+```
+
+스크립트는 화면의 '브랜드 등록' 과 같은 일을 한다. 다른 점은 사람이 4단계에서 거를 수
+없다는 것뿐이라, `res/clothing-categories.json` 의 분류에 드는 카테고리를 모두 넣는다.
+화면에서 다시 등록하면 그때 걸러낸 것으로 갈아끼워진다.
+
+브랜드 행(`brands`)은 `npm run sync:brands` 가 먼저 채워 둬야 한다 — 내재화는
+`brands.naver_brand_id` 로 브랜드를 짚는다.
+
+### 조회는 한 곳에서 한다
+
+브랜드 × 분류 → 카탈로그 모델을 찾는 일은
+[`lib/playground/catalog-search.ts`](lib/playground/catalog-search.ts) 하나에 있고,
+상품링크(`ProductLinkSteps`)와 브랜드 내재화(`BrandCatalogSteps`)가 같이 부른다. 3 · 4단계의
+단계 번호표 · 토글 줄도 [`components/playground/CatalogFacets.tsx`](components/playground/CatalogFacets.tsx)
+에 모아 뒀다. 두 화면이 같은 단계를 보여주므로 한쪽만 고쳐져 어긋나는 일이 없게 한다.
+
+모델 조회(`GET /v1/product-models`)는 브랜드 id · 카테고리 id 를 받지 않는다(무시된다).
+그래서 "브랜드명 + 옷 키워드" 로 키워드마다 한 번씩 부르고, 섞여 든 다른 브랜드 ·
+카테고리는 응답의 `brandCode` · `categoryId` 로 거른다. 429 를 피해 호출 사이에 0.55 초를
+쉬므로 한 분류에 3~6 초가 걸린다 — 내재화하려는 이유가 이것이다.
 
 ## 스튜디오 ↔ FASHN 매핑
 
