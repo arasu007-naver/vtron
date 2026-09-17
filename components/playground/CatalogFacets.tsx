@@ -1,6 +1,6 @@
 "use client";
 
-import type { Facet } from "@/lib/playground/product-link";
+import { modelCodeOf, type Facet } from "@/lib/playground/product-link";
 
 /**
  * 상품링크 3·4단계의 공통 조각 — 단계 번호표와 토글 버튼 줄.
@@ -28,6 +28,23 @@ export const shortLabel = (value: string) => {
   const parts = value.split(">");
   return parts.length <= 2 ? value : parts.slice(1).join(">");
 };
+
+/**
+ * 상품명에서 뽑은 품번. 커머스 API 에는 품번 필드가 없다 — `modelCodeOf` 의 주석을 보라.
+ * 이름에 품번이 없으면 아무것도 그리지 않는다(빈 칸이 줄마다 자리를 차지하지 않게).
+ */
+export function ModelCode({ name }: { name: string }) {
+  const code = modelCodeOf(name);
+  if (!code) return null;
+  return (
+    <span
+      className="px-1.5 py-0.5 rounded border border-[var(--pg-line)] bg-black/[0.03] text-[18px] text-black/70"
+      title="상품명에서 뽑은 품번"
+    >
+      {code}
+    </span>
+  );
+}
 
 export function FacetRow({
   label,

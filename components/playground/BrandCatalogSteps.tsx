@@ -4,7 +4,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Check, Database, ExternalLink, RefreshCw, Search } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
 import { hangulMatchIndex } from "@/lib/hangul";
-import { FacetRow, Step, shortLabel } from "@/components/playground/CatalogFacets";
+import { FacetRow, ModelCode, Step, shortLabel } from "@/components/playground/CatalogFacets";
+import ModelCodeNoticeModal from "@/components/playground/ModelCodeNoticeModal";
 import BrandDrilldownSearch from "@/components/playground/BrandDrilldownSearch";
 import {
   BRAND_INTEGRATION_TARGETS,
@@ -25,7 +26,9 @@ import {
   applyFacets,
   buildCatalogLink,
   facetsOf,
+  modelCodeStats,
   type CatalogModel,
+  type ModelCodeStats,
   type ModelPage,
 } from "@/lib/playground/product-link";
 import type { NaverTokenResult } from "@/types/playground";
@@ -109,6 +112,13 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
   const [catalogError, setCatalogError] = useState<string | null>(null);
   /** 이미 받았거나 받는 중인 브랜드 — 같은 것을 두 번 부르지 않게. */
   const askedRef = useRef<Set<number>>(new Set());
+  /** '이 브랜드는 품번을 사용하지 않습니다' 모달. */
+  const [codeNotice, setCodeNotice] = useState<{
+    brandName: string;
+    stats: ModelCodeStats;
+  } | null>(null);
+  /** 그 모달을 이미 보여 준 브랜드 — 분류를 옮길 때마다 다시 막아서지 않게. */
+  const codeNoticedRef = useRef<Set<string>>(new Set());
 
   // 브랜드 목록은 토큰이 없어도 된다(우리 DB). 한 번 받아 둔다.
   useEffect(() => {
@@ -151,6 +161,20 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
         : visible,
     [visible, productTerm]
   );
+
+  /** 품번은 상품명에서 뽑는다 — 이 브랜드가 품번을 쓰는지도 거기서 센다. */
+  const codeStats = useMemo(() => modelCodeStats(models), [models]);
+
+  /**
+   * 조회가 끝난 뒤 품번이 거의 없으면 한 번 알린다. 우리 DB 에서 읽었든 네이버에서 받았든
+   * 같다. 조회 중(progress)에는 부분 결과라 비율이 흔들리므로 기다린다.
+   */
+  useEffect(() => {
+    if (progress || !picked || !codeStats.unused) return;
+    if (codeNoticedRef.current.has(picked.id)) return;
+    codeNoticedRef.current.add(picked.id);
+    setCodeNotice({ brandName: picked.displayName, stats: codeStats });
+  }, [progress, picked, codeStats]);
 
   const kindDef = CLOTHING_KINDS.find((def) => def.key === kind) ?? null;
   const catalog = picked ? (summaries[picked.naverBrandId] ?? null) : null;
@@ -619,6 +643,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
                     className="py-1.5 border-b border-[var(--pg-line)] flex items-center gap-2 flex-wrap"
                   >
                     <span className="text-[21.6px] text-black">{model.name}</span>
+                    <ModelCode name={model.name} />
                     <span className="text-[18px] text-black/50" title={model.wholeCategoryName}>
                       {shortLabel(model.wholeCategoryName ?? "")}
                     </span>
@@ -639,6 +664,14 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
           </>
         )}
       </div>
+
+      {codeNotice && (
+        <ModelCodeNoticeModal
+          brandName={codeNotice.brandName}
+          stats={codeNotice.stats}
+          onClose={() => setCodeNotice(null)}
+        />
+      )}
     </>
   );
 }

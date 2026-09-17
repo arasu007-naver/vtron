@@ -76,3 +76,75 @@ export function applyFacets(models: CatalogModel[], categories: Set<string>): Ca
   if (!categories.size) return models;
   return models.filter((model) => categories.has((model.wholeCategoryName ?? "").trim()));
 }
+
+/**
+ * 품번 — 커머스 API 는 주지 않는다. 상품명에서 뽑는다.
+ *
+ * 모델 조회(`/v1/product-models`)가 돌려주는 필드는 id · name · brandCode/brandName ·
+ * manufacturerCode/manufacturerName · categoryId · wholeCategoryName 뿐이고, 단건 조회
+ * (`/v1/product-models/{id}`)도 똑같다. `manufacturerCode` 는 네이버 제조사 마스터 id 지
+ * 상품 품번이 아니다. 판매자 상품 조회의 `sellerManagementCode` 는 내 스토어에 등록한
+ * 상품에만 있는 값이라 카탈로그 상품에는 쓸 수 없다.
+ *
+ * 그런데 상품명 끝에 품번이 붙어 오는 브랜드가 많다 — '올 인 BB M13480', '윈플로 12 로드
+ * 러닝화 HV9273'. 그래서 이름의 토큰에서 찾는다.
+ */
+
+/** 품번으로 볼 토큰 — 영숫자 · '-' 로만 이어지는 4자 이상. 대소문자는 가리지 않는다. */
+const CODE_TOKEN = /^[A-Za-z0-9][A-Za-z0-9-]{3,}$/;
+/** 숫자가 이만큼은 있어야 한다. 'Nulu' 같은 영문 낱말과, '8inch' 같은 치수와 갈라놓는 선. */
+const MIN_DIGITS = 2;
+/** 치수 — '230mm' · '500ml'. 숫자 뒤가 단위뿐이면 품번이 아니다. */
+const UNIT = /^\d+(mm|cm|inch|in|ml|l|g|kg|oz|p|pcs)$/i;
+/** 시즌 — '24SS' · '2025FW'. 해마다 도는 값이라 상품을 가리키지 못한다. */
+const SEASON = /^(19|20)?\d{2}(ss|fw|aw|sp)$/i;
+
+/**
+ * 상품명에서 품번 하나. 없으면 null.
+ *
+ * 품번 뒤에 색상 코드가 한 번 더 붙는 브랜드가 있어(나이키 `FQ6873 101`, 디올
+ * `M1291VRIW M928`) 후보 중 **가장 긴 것**을 고른다 — 색상 코드가 늘 더 짧다.
+ *
+ * 숫자만 있는 토큰은 뺀다. 그렇지 않으면 리바이스의 핏 번호(501 · 505)나 '30 몽테인' 의
+ * 30 까지 품번이 되어 버린다. 반대로 대문자만 보면 안 된다 — 캘빈클라인 `47d26`,
+ * 디올 `2esca549cdi` 처럼 소문자로도, 숫자로 시작하는 형태로도 온다.
+ */
+export function modelCodeOf(name: string): string | null {
+  let best: string | null = null;
+  for (const raw of name.split(/[\s,()[\]/·]+/)) {
+    const token = raw.replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g, "");
+    if (!CODE_TOKEN.test(token)) continue;
+    if ((token.match(/\d/g)?.length ?? 0) < MIN_DIGITS) continue;
+    if (!/[A-Za-z]/.test(token)) continue;
+    if (UNIT.test(token) || SEASON.test(token)) continue;
+    if (!best || token.length > best.length) best = token;
+  }
+  return best;
+}
+
+/** 품번을 쓰는 브랜드로 볼 최소 비율. 리바이스는 100건에 33건이라 여기 못 미친다. */
+export const MODEL_CODE_MIN_RATIO = 0.4;
+/** 이보다 적게 조회됐으면 판단하지 않는다 — 몇 건으로는 브랜드의 버릇을 알 수 없다. */
+export const MODEL_CODE_MIN_SAMPLE = 10;
+
+export interface ModelCodeStats {
+  total: number;
+  /** 이름에서 품번을 뽑아낸 상품 수. */
+  withCode: number;
+  ratio: number;
+  /** 표본이 충분하고 비율이 기준에 못 미친다 — '이 브랜드는 품번을 사용하지 않습니다'. */
+  unused: boolean;
+}
+
+/** 조회 결과 한 묶음이 품번을 쓰는지. */
+export function modelCodeStats(models: CatalogModel[]): ModelCodeStats {
+  const total = models.length;
+  const withCode = models.filter((model) => modelCodeOf(model.name)).length;
+  const ratio = total ? withCode / total : 0;
+  return {
+    total,
+    withCode,
+    ratio,
+    unused: total >= MODEL_CODE_MIN_SAMPLE && ratio < MODEL_CODE_MIN_RATIO,
+  };
+}
