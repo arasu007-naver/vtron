@@ -711,3 +711,9 @@ help · seed <n> · fit <0-100> · scale <n> · mode <performance|balanced|quali
     (하이드레이션 불일치도 함께 해소).
 - 애니메이션 variants 에 `Variants` 타입 지정(framer-motion 12 의 좁아진 `transition.type`).
 - 미사용이던 `next-themes` / `theme-provider` 는 이식하지 않음.
+
+
+새 위치에서 처음 돌릴 때
+cd services/product-crop && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/playwright install chromium
+
+한 가지 안 한 것: .vercelignore입니다. .vercel 디렉터리가 없어 Vercel 연결이 아직 없는 것 같아 건너뛰었습니다. 나중에 배포를 붙이면 services/를 제외해두는 게 좋습니다 (Next 빌드가 .py를 건드리진 않지만 업로드 용량만 늘어납니다).
