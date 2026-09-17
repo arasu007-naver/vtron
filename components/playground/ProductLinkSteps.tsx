@@ -54,7 +54,7 @@ import type { NaverTokenResult } from "@/types/playground";
  * 링크 목록의 버튼 두 가지는 하는 일이 다르다.
  *   - 등록         : 판매 페이지를 새 탭으로 열고, 버튼 아래에 판매가 입력 툴팁(입력칸 · '적용')을
  *                    띄운다. '적용' 하면 입력한 가격으로 상품 마스터(stmx-web products)에 올린다.
- *                    이미지는 mvps/product-crop 의 save-product-image 로 등록한다. Loox 와는 잇지 않는다.
+ *                    이미지는 services/product-crop 의 save-product-image 로 등록한다. Loox 와는 잇지 않는다.
  *   - Loox에 붙이기 : 고른 Loox 에 상품을 잇기만 한다(post_products).
  *
  * 브랜드는 brands 테이블(scripts/sync-brands.mjs 가 네이버 브랜드 조회로 채움)에서 옷 브랜드만 온다.
@@ -248,7 +248,7 @@ export default function ProductLinkSteps({
   /**
    * '적용' — 입력한 판매가로 상품 마스터(stmx-web products)에 올린다. Loox 와는 잇지 않는다.
    * 결과 · 오류는 그 입력 줄에 보인다.
-   * 가격이 들어가면 이어서 이미지를 mvps/product-crop 의 save-product-image 로 등록한다
+   * 가격이 들어가면 이어서 이미지를 services/product-crop 의 save-product-image 로 등록한다
    * (`/api/playground/stmx/loox/products/image`). 수 초 ~ 수십 초 걸려 툴팁은 잠그지 않는다.
    */
   const register = async (model: CatalogModel) => {

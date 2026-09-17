@@ -71,7 +71,7 @@ async function cropProductImage(
     return {
       error:
         `product-crop 서버(${base})에 연결하지 못했습니다 — ${reason}. ` +
-        "product-crop 에서 `.venv/bin/uvicorn server:app --port 8930` 을 띄웠는지 확인하세요.",
+        "services/product-crop 에서 `npm run crop:dev` 로 서버를 띄웠는지 확인하세요.",
     };
   }
 

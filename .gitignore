@@ -39,3 +39,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /assets/*
+# python services (services/product-crop)
+.venv/
+__pycache__/
+*.py[cod]
+# capture output
+services/product-crop/naver_out/
+services/product-crop/naver_sample*/
+# but keep the env template (the .env* rule above would hide it)
+!services/product-crop/.env.example
