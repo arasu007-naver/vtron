@@ -17,7 +17,7 @@ import { listProducts, type ProductSort } from "@/lib/playground/stmx-products";
  * stmx-web products 에 올리기만 하고 Loox(post_products)와는 잇지 않는다 — 잇는 것은
  * `/api/playground/stmx/loox/products` 의 'Loox에 붙이기' 다. 같은 카탈로그가 있으면 가격
  * (과 준 경우 이미지)만 바꾼다. 가격은 새 탭의 판매 페이지를 보고 사람이 입력한 값이고,
- * 이미지는 mvps/product-crop 의 save-product-image 가 돌려준 URL 이다.
+ * 이미지는 services/product-crop 의 save-product-image 가 돌려준 URL 이다.
  *
  * 목록은 상품 페이지(/products)가 쓴다.
  *

@@ -1,0 +1,8 @@
+opencv-python-headless>=4.8
+pillow>=10.0
+playwright>=1.40
+fastapi>=0.115
+uvicorn[standard]>=0.30
+supabase>=2.10
+pydantic>=2.11
+pydantic-settings>=2.5

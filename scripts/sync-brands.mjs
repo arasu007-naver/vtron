@@ -12,34 +12,28 @@
  * 스키마는 supabase/migrations/0002_brands.sql · 0003_brand_clothing.sql · 0004_clothing_etc.sql.
  * 먼저 SQL Editor 에서 실행해 둔다.
  *
- * 네이버 쪽 사실(직접 호출해 확인함):
- *  - 브랜드 조회 `GET /v1/product-brands?name=` 은 [{ id, name }] 만 준다. 토큰/접두 매칭이라
- *    "타임" 을 찾으면 타임존·타임즈…가 같이 오고, 없으면 404 NOT_FOUND 다. 단건 조회 경로는 없다.
- *  - 브랜드가 영문명으로 등록된 경우가 많다(샤넬 → CHANEL, 코스 → COS). 별칭은 res/brand-aliases.json.
- *  - 모델 조회 `GET /v1/product-models?name=` 은 brandCode 파라미터가 없다. 브랜드명으로 찾고
- *    brandCode 로 거른 것만 집계한다.
- *  - 호출을 몰아서 하면 429 GW.RATE_LIMIT 이 난다. 호출 간격을 두고 429 는 기다렸다 다시 부른다.
- *  - 커머스 API 는 등록된 IP(NAVER_SHOPPING_CONNECT_IP)에서만 받는다.
+ * 네이버 커머스 호출의 사실과 재시도 규칙은 scripts/lib/naver-commerce.mjs 에 적어 뒀다.
  */
 
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { hashSync } from "bcryptjs";
 import { createClient } from "@supabase/supabase-js";
+import {
+  MODEL_PAGE_SIZE,
+  NaverCommerce,
+  ROOT,
+  loadEnv,
+  readJson,
+} from "./lib/naver-commerce.mjs";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const BRANDS_FILE = path.join(ROOT, "res/korea_fashion_brands.json");
 const ALIASES_FILE = path.join(ROOT, "res/brand-aliases.json");
 const SNAPSHOT_FILE = path.join(ROOT, "res/brands-naver-snapshot.json");
 const CLOTHING_FILE = path.join(ROOT, "res/clothing-categories.json");
 const SECTIONS = ["fashion_brands_120", "accessories_and_shoes_72"];
 
-/** 호출 사이 최소 간격. 이보다 촘촘하면 429 가 난다. */
-const MIN_INTERVAL_MS = 550;
-/** 브랜드당 받아볼 모델 페이지 수(페이지당 100건). */
+/** 브랜드당 받아볼 모델 페이지 수(페이지당 MODEL_PAGE_SIZE 건). */
 const MODEL_PAGES = 3;
-const MODEL_PAGE_SIZE = 100;
 
 const args = process.argv.slice(2);
 const flag = (name) => args.includes(`--${name}`);
@@ -51,124 +45,12 @@ const FROM_SNAPSHOT = flag("from-snapshot");
 const CLOTHING_ONLY = flag("clothing-only");
 const ONLY = option("only")?.split(",").map((s) => s.trim()).filter(Boolean);
 
-// ── env ────────────────────────────────────────────────────────────────────
-// Next.js 처럼 .env.local 을 읽는다. 시크릿의 `$` 가 `\$` 로 이스케이프돼 있어 푼다.
-function loadEnv() {
-  for (const file of [".env", ".env.local"]) {
-    const full = path.join(ROOT, file);
-    if (!fs.existsSync(full)) continue;
-    for (const line of fs.readFileSync(full, "utf8").split(/\r?\n/)) {
-      const m = line.match(/^([A-Z0-9_]+)=(.*)$/);
-      if (!m || process.env[m[1]]) continue;
-      process.env[m[1]] = m[2].trim().replace(/^(['"])(.*)\1$/, "$2").replace(/\\\$/g, "$");
-    }
-  }
-}
-
-const readJson = (file) => JSON.parse(fs.readFileSync(file, "utf8"));
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 /** 브랜드명 비교용: 대소문자 · 공백 · 구두점 차이를 없앤다. */
 const norm = (value) =>
   String(value ?? "")
     .normalize("NFKC")
     .toLowerCase()
     .replace(/[\s.'’`\-_/·]/g, "");
-
-// ── 네이버 커머스 API ───────────────────────────────────────────────────────
-class NaverCommerce {
-  constructor({ baseUrl, clientId, clientSecret }) {
-    this.baseUrl = baseUrl;
-    this.clientId = clientId;
-    this.clientSecret = clientSecret;
-    this.token = null;
-    this.lastCallAt = 0;
-    this.calls = 0;
-  }
-
-  async issueToken() {
-    const timestamp = Date.now();
-    const sign = Buffer.from(
-      hashSync(`${this.clientId}_${timestamp}`, this.clientSecret),
-      "utf-8"
-    ).toString("base64");
-    const res = await fetch(`${this.baseUrl}/v1/oauth2/token`, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        client_id: this.clientId,
-        timestamp: String(timestamp),
-        client_secret_sign: sign,
-        grant_type: "client_credentials",
-        type: "SELF",
-      }),
-    });
-    const text = await res.text();
-    if (!res.ok) throw new Error(`토큰 발급 실패 HTTP ${res.status}: ${text.slice(0, 300)}`);
-    this.token = JSON.parse(text).access_token;
-  }
-
-  /** GET → { status, data }. 429 는 물러났다 재시도, 401 은 토큰을 새로 받아 한 번 더. */
-  async get(pathname, params) {
-    const url = new URL(`${this.baseUrl}${pathname}`);
-    for (const [key, value] of Object.entries(params ?? {})) {
-      url.searchParams.set(key, String(value));
-    }
-    if (!this.token) await this.issueToken();
-
-    let refreshed = false;
-    for (let attempt = 0; attempt < 8; attempt++) {
-      const wait = this.lastCallAt + MIN_INTERVAL_MS - Date.now();
-      if (wait > 0) await sleep(wait);
-      this.lastCallAt = Date.now();
-      this.calls++;
-
-      const res = await fetch(url, { headers: { Authorization: `Bearer ${this.token}` } });
-      const text = await res.text();
-
-      if (res.status === 429) {
-        await sleep(1000 * 2 ** Math.min(attempt, 4));
-        continue;
-      }
-      if (res.status === 401 && !refreshed) {
-        refreshed = true;
-        await this.issueToken();
-        continue;
-      }
-      let data = null;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        data = text;
-      }
-      return { status: res.status, data };
-    }
-    throw new Error(`계속 429 입니다: ${url}`);
-  }
-
-  /** 브랜드 검색. 없으면 404 NOT_FOUND 라서 빈 배열로 돌린다. */
-  async searchBrands(name) {
-    const { status, data } = await this.get("/v1/product-brands", { name });
-    if (status === 404) return [];
-    if (status !== 200 || !Array.isArray(data)) {
-      throw new Error(`브랜드 조회 실패 [${name}] HTTP ${status}: ${JSON.stringify(data).slice(0, 300)}`);
-    }
-    return data.filter((b) => b && b.id != null && typeof b.name === "string");
-  }
-
-  async searchModels(name, page) {
-    const { status, data } = await this.get("/v1/product-models", {
-      name,
-      page,
-      size: MODEL_PAGE_SIZE,
-    });
-    if (status === 404) return { contents: [], totalElements: 0, last: true };
-    if (status !== 200 || !Array.isArray(data?.contents)) {
-      throw new Error(`모델 조회 실패 [${name}] HTTP ${status}: ${JSON.stringify(data).slice(0, 300)}`);
-    }
-    return data;
-  }
-}
 
 // ── 원천 파일 ──────────────────────────────────────────────────────────────
 /** 브랜드 파일 → 묶음 목록 + 브랜드별 소속 묶음 (등장 순서 유지, 중복 제거). */
@@ -412,18 +294,7 @@ const clothingSummary = (clothing) => {
 };
 
 async function fetchFromNaver(source, previous, persist) {
-  const clientId = process.env.NAVER_COMMERCE_CLIENT_ID?.trim();
-  const clientSecret = process.env.NAVER_COMMERCE_CLIENT_SECRET?.trim();
-  if (!clientId || !clientSecret) {
-    throw new Error("NAVER_COMMERCE_CLIENT_ID · NAVER_COMMERCE_CLIENT_SECRET 이 없습니다.");
-  }
-  const naver = new NaverCommerce({
-    baseUrl:
-      process.env.NAVER_COMMERCE_BASE_URL?.replace(/\/+$/, "") ||
-      "https://api.commerce.naver.com/external",
-    clientId,
-    clientSecret,
-  });
+  const naver = NaverCommerce.fromEnv();
   const aliasConfig = readJson(ALIASES_FILE);
   const clothingConfig = readJson(CLOTHING_FILE);
   const prevByName = new Map((previous?.brands ?? []).map((b) => [b.displayName, b]));

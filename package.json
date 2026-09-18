@@ -8,6 +8,10 @@
     "start": "next start -p 8920",
     "lint": "eslint",
     "sync:brands": "node scripts/sync-brands.mjs",
+    "sync:brand-catalog": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/sync-brand-catalog.mjs",
+    "crop:dev": "cd services/product-crop && .venv/bin/uvicorn server:app --host 127.0.0.1 --port 8930",
+    "backfill:model-codes": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/backfill-model-codes.mjs",
+    "register:catalog-products": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/register-catalog-products.mjs",
     "thumbs:products": "node scripts/backfill-product-thumbnails.mjs"
   },
   "dependencies": {

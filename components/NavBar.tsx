@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
+  Database,
   Film,
   LayoutDashboard,
   Link2,
@@ -62,6 +63,12 @@ const LINKS = [
     label: "상품",
     icon: ShoppingBag,
     title: "stmx-web 상품 마스터를 브랜드 · 카테고리 · 제품명 · 품번으로 찾아보고 고친다",
+  },
+  {
+    href: "/brand-integration",
+    label: "브랜드 내재화",
+    icon: Database,
+    title: "브랜드 → 최상위 카테고리 → 최하위 카테고리 → 상품 계층을 우리 DB 에 넣는다",
   },
   {
     href: "/creator-req",

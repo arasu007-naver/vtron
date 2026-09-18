@@ -4,8 +4,20 @@
     {
       "name": "vton-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 8920
+    },
+    {
+      "name": "product-crop",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "crop:dev"
+      ],
+      "port": 8930
     }
   ]
 }
