@@ -1,6 +1,10 @@
 "use client";
 
-import { modelCodeOf, type Facet } from "@/lib/playground/product-link";
+import {
+  catalogModelCode,
+  type CatalogModel,
+  type Facet,
+} from "@/lib/playground/product-link";
 
 /**
  * 상품링크 3·4단계의 공통 조각 — 단계 번호표와 토글 버튼 줄.
@@ -30,16 +34,17 @@ export const shortLabel = (value: string) => {
 };
 
 /**
- * 상품명에서 뽑은 품번. 커머스 API 에는 품번 필드가 없다 — `modelCodeOf` 의 주석을 보라.
- * 이름에 품번이 없으면 아무것도 그리지 않는다(빈 칸이 줄마다 자리를 차지하지 않게).
+ * 품번 배지. 커머스 API 에는 품번 필드가 없다 — `modelCodeOf` 의 주석을 보라.
+ * 내재화된 상품은 담아 둔 값을, 네이버에서 막 받은 것은 이름에서 뽑은 값을 보인다.
+ * 품번이 없으면 아무것도 그리지 않는다(빈 칸이 줄마다 자리를 차지하지 않게).
  */
-export function ModelCode({ name }: { name: string }) {
-  const code = modelCodeOf(name);
+export function ModelCode({ model }: { model: CatalogModel }) {
+  const code = catalogModelCode(model);
   if (!code) return null;
   return (
     <span
       className="px-1.5 py-0.5 rounded border border-[var(--pg-line)] bg-black/[0.03] text-[18px] text-black/70"
-      title="상품명에서 뽑은 품번"
+      title={model.modelCode ? "품번" : "상품명에서 뽑은 품번"}
     >
       {code}
     </span>

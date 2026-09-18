@@ -43,6 +43,15 @@ export const dynamic = "force-dynamic";
  */
 const MISSING_TABLE_CODES = new Set(["42P01", "PGRST205"]);
 const isMissingTable = (code?: string) => Boolean(code && MISSING_TABLE_CODES.has(code));
+/**
+ * 열이 없을 때의 코드 — 42703 은 Postgres 의 undefined_column, PGRST204 는 쓰려는 열이
+ * 스키마 캐시에 없을 때다. `model_code`(0006)를 아직 안 더한 DB 를 견디려고 본다.
+ */
+const MISSING_COLUMN_CODES = new Set(["42703", "PGRST204"]);
+const isMissingColumn = (code?: string) => Boolean(code && MISSING_COLUMN_CODES.has(code));
+const MODEL_CODE_HINT =
+  "품번(model_code) 열이 없어 품번 없이 다뤘습니다. Supabase SQL Editor 에서" +
+  " supabase/migrations/0006_model_code.sql 을 실행하세요.";
 const MIGRATION_HINT =
   "브랜드 내재화 표가 없습니다. Supabase SQL Editor 에서 supabase/migrations/0005_brand_catalog.sql 을 실행하세요.";
 
@@ -145,6 +154,8 @@ async function readAllCategories(
 interface ModelRow {
   id: string;
   name: string;
+  /** 0006 이 더한 열. 이름에 품번이 없던 상품은 null 이다. */
+  model_code: string | null;
   category_id: string;
   naver_brand_name: string | null;
   manufacturer_code: number | null;
@@ -170,18 +181,27 @@ async function readKind(
   );
   if ("error" in categories) return categories;
 
-  const models = await readAllRows<ModelRow>((from, to) =>
-    supabase
-      .from("brand_catalog_models")
-      .select(
-        "id, name, category_id, naver_brand_name, manufacturer_code, manufacturer_name, whole_category_name"
-      )
-      .eq("brand_id", brandId)
-      .eq("clothing_kind", kind)
-      .order("name")
-      .range(from, to)
-  );
-  if ("error" in models) return models;
+  const columns =
+    "id, name, category_id, naver_brand_name, manufacturer_code, manufacturer_name, whole_category_name";
+  const readModels = (select: string) =>
+    readAllRows<ModelRow>((from, to) =>
+      supabase
+        .from("brand_catalog_models")
+        .select(select)
+        .eq("brand_id", brandId)
+        .eq("clothing_kind", kind)
+        .order("name")
+        .range(from, to)
+        .overrideTypes<ModelRow[]>()
+    );
+
+  // 0006 을 아직 안 돌렸으면 model_code 열이 없다. 품번만 빼고 읽는다 — 목록까지 막을 일은 아니다.
+  let models = await readModels(`${columns}, model_code`);
+  if ("error" in models) {
+    const retry = await readModels(columns);
+    if ("error" in retry) return models;
+    models = retry;
+  }
 
   return {
     categories: categories.rows.map((row) => ({
@@ -193,6 +213,7 @@ async function readKind(
     models: models.rows.map((row) => ({
       id: row.id,
       name: row.name,
+      modelCode: row.model_code,
       brandCode,
       brandName: row.naver_brand_name ?? undefined,
       manufacturerCode: row.manufacturer_code ?? undefined,
@@ -466,14 +487,30 @@ export async function POST(req: NextRequest) {
       if (error) return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    // 품번(model_code)은 0006 이 더한 열이다. 아직이면 그 칸만 빼고 다시 넣고 경고를 남긴다.
+    let dropModelCode = false;
     for (const rows of chunk(
       payload.models.map((model) =>
         toCatalogModelRow(model, brandId, payload.naverBrandId, payload.kind)
       )
     )) {
-      const { error } = await supabase
-        .from("brand_catalog_models")
-        .upsert(rows, { onConflict: "id" });
+      const send = (withCode: boolean) =>
+        supabase.from("brand_catalog_models").upsert(
+          withCode
+            ? rows
+            : rows.map((row) => {
+                const without: Partial<typeof row> = { ...row };
+                delete without.model_code;
+                return without;
+              }),
+          { onConflict: "id" }
+        );
+      let { error } = await send(!dropModelCode);
+      if (error && !dropModelCode && isMissingColumn(error.code)) {
+        dropModelCode = true;
+        warnings.push(MODEL_CODE_HINT);
+        ({ error } = await send(false));
+      }
       if (error) return NextResponse.json({ error: error.message }, { status: 500 });
     }
 

@@ -39,7 +39,7 @@ MAC_UA = (
     "Chrome/122.0.0.0 Safari/537.36"
 )
 
-EXTRACT_IMAGE_JS = r"""
+EXTRACT_PAGE_JS = r"""
 () => {
   const pick = (sel) => {
     const el = document.querySelector(sel);
@@ -48,25 +48,72 @@ EXTRACT_IMAGE_JS = r"""
     return src && src.startsWith('http') ? src : null;
   };
 
-  const candidates = [];
-  const og = pick('meta[property="og:image"]') || pick('meta[name="og:image"]');
-  if (og) candidates.push({src: og, score: 1000, w: 0, h: 0});
+  const imageUrl = (() => {
+    const candidates = [];
+    const og = pick('meta[property="og:image"]') || pick('meta[name="og:image"]');
+    if (og) candidates.push({src: og, score: 1000, w: 0, h: 0});
 
-  const imgs = Array.from(document.images || []);
-  for (const img of imgs) {
-    const src = img.currentSrc || img.src || '';
-    if (!src.startsWith('http')) continue;
-    if (/sprite|icon|logo|lazy|blank|data:|avatar|btn_/i.test(src)) continue;
-    const w = img.naturalWidth || img.width || 0;
-    const h = img.naturalHeight || img.height || 0;
-    if (w * h < 80 * 80) continue;
-    let score = w * h;
-    if (/shopping-phinf|shop-phinf|pstatic\.net/i.test(src)) score *= 3;
-    if (/main_/i.test(src)) score *= 2;
-    candidates.push({src, score, w, h});
-  }
-  candidates.sort((a, b) => b.score - a.score);
-  return candidates.length ? candidates[0].src : null;
+    const imgs = Array.from(document.images || []);
+    for (const img of imgs) {
+      const src = img.currentSrc || img.src || '';
+      if (!src.startsWith('http')) continue;
+      if (/sprite|icon|logo|lazy|blank|data:|avatar|btn_/i.test(src)) continue;
+      const w = img.naturalWidth || img.width || 0;
+      const h = img.naturalHeight || img.height || 0;
+      if (w * h < 80 * 80) continue;
+      let score = w * h;
+      if (/shopping-phinf|shop-phinf|pstatic\.net/i.test(src)) score *= 3;
+      if (/main_/i.test(src)) score *= 2;
+      candidates.push({src, score, w, h});
+    }
+    candidates.sort((a, b) => b.score - a.score);
+    return candidates.length ? candidates[0].src : null;
+  })();
+
+  /**
+   * Price, taken from the same page load as the image (one visit, both values).
+   *
+   * Catalog (가격비교) pages carry no price meta tag and no JSON-LD, so read the
+   * "최저" figure the page renders: strong[class*=catalogLowestPrice_num]. The hash
+   * after the class prefix changes whenever Naver deploys, hence prefix matching.
+   */
+  const won = (text) => {
+    if (!text) return null;
+    const digits = String(text).replace(/[^\d]/g, '');
+    if (!digits) return null;
+    const n = Number(digits);
+    // Below 100 or above 100M KRW is not a price (review counts, reward points, ...).
+    return Number.isInteger(n) && n >= 100 && n <= 100000000 ? n : null;
+  };
+
+  const price = (() => {
+    // 1) catalog "lowest" → 2) buy box
+    for (const sel of ['[class*="catalogLowestPrice_num"]', '[class*="buyBoxProduct_num"]']) {
+      const found = won(document.querySelector(sel)?.textContent);
+      if (found) return found;
+    }
+    // 3) meta tags — smartstore and other non-catalog sales pages
+    for (const sel of [
+      'meta[property="product:price:amount"]',
+      'meta[property="og:price:amount"]',
+      'meta[itemprop="price"]',
+    ]) {
+      const found = won(document.querySelector(sel)?.getAttribute('content'));
+      if (found) return found;
+    }
+    // 4) lowestPrice in Next.js flight data — the net for when the DOM classes change
+    try {
+      const blob = (window.__next_f || [])
+        .map((x) => (Array.isArray(x) ? x[1] : x))
+        .filter((v) => typeof v === 'string')
+        .join('');
+      const m = /"lowestPrice"\s*:\s*(\d{3,9})/.exec(blob);
+      if (m) return won(m[1]);
+    } catch (e) {}
+    return null;
+  })();
+
+  return { imageUrl, price };
 }
 """
 
@@ -115,6 +162,8 @@ class ItemResult:
     ok: bool
     screenshot: str | None = None
     image_url: str | None = None
+    # Sale price (KRW) scraped from the same page load; None when not found.
+    price: int | None = None
     crops: list[str] | None = None
     error: str | None = None
 
@@ -248,11 +297,15 @@ async def capture_one(
             )
 
         image_url = None
+        price = None
         if not args.screenshot_only:
             try:
-                image_url = await page.evaluate(EXTRACT_IMAGE_JS)
+                extracted = await page.evaluate(EXTRACT_PAGE_JS) or {}
+                image_url = extracted.get("imageUrl")
+                price = extracted.get("price")
             except Exception:  # noqa: BLE001
                 image_url = None
+                price = None
 
         if image_url:
             dest = crop_dir / f"{item_id}_product_01.jpg"
@@ -266,6 +319,7 @@ async def capture_one(
                     ok=True,
                     screenshot=str(shot) if args.keep_screenshot else None,
                     image_url=image_url,
+                    price=price,
                     crops=[str(dest)],
                 )
             except Exception as exc:  # noqa: BLE001
@@ -291,6 +345,7 @@ async def capture_one(
                 ok=False,
                 screenshot=str(shot),
                 image_url=image_url,
+                price=price,
                 error=f"crop_failed: {exc}" + (f" (dl: {dl_err})" if dl_err else ""),
             )
         if not crops:
@@ -300,6 +355,7 @@ async def capture_one(
                 ok=False,
                 screenshot=str(shot),
                 image_url=image_url,
+                price=price,
                 error="No crops produced"
                 + (f" (dl: {dl_err})" if dl_err else ""),
             )
@@ -309,6 +365,7 @@ async def capture_one(
             ok=True,
             screenshot=str(shot),
             image_url=image_url,
+            price=price,
             crops=[str(c) for c in crops],
         )
     except Exception as exc:  # noqa: BLE001

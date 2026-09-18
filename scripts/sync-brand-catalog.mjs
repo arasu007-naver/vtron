@@ -13,7 +13,8 @@
  * 카테고리를 걸러낼 수 없다는 점뿐이라, 여기서는 res/clothing-categories.json 의 분류에
  * 드는 카테고리를 모두 넣는다. 화면에서 다시 등록하면 그때 걸러낸 것으로 갈아끼워진다.
  *
- * 스키마는 supabase/migrations/0005_brand_catalog.sql. 먼저 SQL Editor 에서 실행해 둔다.
+ * 스키마는 supabase/migrations/0005_brand_catalog.sql 과 품번 열을 더하는 0006_model_code.sql.
+ * 먼저 SQL Editor 에서 실행해 둔다.
  * 브랜드 자체(brands 행)는 npm run sync:brands 가 먼저 채워 둬야 한다.
  */
 
@@ -26,6 +27,8 @@ import {
   loadEnv,
   readJson,
 } from "./lib/naver-commerce.mjs";
+// 품번 규칙은 화면과 한 곳에서 나와야 한다 — 노드가 타입만 걷어내고 그대로 읽는다.
+import { modelCodeOf } from "../lib/playground/product-link.ts";
 
 const CLOTHING_FILE = path.join(ROOT, "res/clothing-categories.json");
 const SNAPSHOT_FILE = path.join(ROOT, "res/brands-naver-snapshot.json");
@@ -273,6 +276,8 @@ async function writeKind(supabase, brandId, brand, collected) {
       category_id: String(m.categoryId),
       clothing_kind: collected.kind,
       name: m.name,
+      // 품번은 있으면 담고, 없으면 null 로 둔다.
+      model_code: modelCodeOf(m.name),
       naver_brand_id: brand.naverBrandId,
       naver_brand_name: m.brandName ?? null,
       manufacturer_code: m.manufacturerCode ?? null,

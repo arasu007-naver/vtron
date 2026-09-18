@@ -1,4 +1,4 @@
-"""Supabase Storage upload + products.image_url update (stmx-web project)."""
+"""Supabase Storage upload + products.image_url / sale_price update (stmx-web project)."""
 
 from __future__ import annotations
 
@@ -71,11 +71,31 @@ class ProductStore:
         return UploadedImage(path=path, public_url=f"{public_url}?v={int(time.time())}")
 
     async def set_image_url(self, product_id: str, image_url: str) -> None:
+        await self.update_product(product_id, image_url=image_url)
+
+    async def update_product(
+        self,
+        product_id: str,
+        *,
+        image_url: str | None = None,
+        price: int | None = None,
+    ) -> None:
+        """Write what the page gave us. Values left as None are not touched.
+
+        `price` lands in sale_price. stmx-web's CHECK wants sale_price >= 0 and
+        original_price null-or-greater, so a scraped price is only ever written when
+        it is a sane positive integer (see EXTRACT_PAGE_JS) and original_price is
+        left alone.
+        """
+        changes: dict[str, object] = {}
+        if image_url is not None:
+            changes["image_url"] = image_url
+        if price is not None and price >= 0:
+            changes["sale_price"] = price
+        if not changes:
+            return
         resp = await (
-            self._client.table(self._table)
-            .update({"image_url": image_url})
-            .eq("id", product_id)
-            .execute()
+            self._client.table(self._table).update(changes).eq("id", product_id).execute()
         )
         if not resp.data:
             raise LookupError(f"product {product_id} not found")

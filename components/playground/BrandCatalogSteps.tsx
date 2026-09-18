@@ -643,7 +643,7 @@ export default function BrandCatalogSteps({ token }: BrandCatalogStepsProps) {
                     className="py-1.5 border-b border-[var(--pg-line)] flex items-center gap-2 flex-wrap"
                   >
                     <span className="text-[21.6px] text-black">{model.name}</span>
-                    <ModelCode name={model.name} />
+                    <ModelCode model={model} />
                     <span className="text-[18px] text-black/50" title={model.wholeCategoryName}>
                       {shortLabel(model.wholeCategoryName ?? "")}
                     </span>

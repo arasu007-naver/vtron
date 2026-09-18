@@ -1,6 +1,10 @@
 import { authFetch } from "@/lib/auth-client";
 import type { ClothingBrand, ClothingKind, ClothingKindDef } from "@/lib/playground/clothing";
-import { buildCatalogLink, type CatalogModel } from "@/lib/playground/product-link";
+import {
+  buildCatalogLink,
+  catalogModelCode,
+  type CatalogModel,
+} from "@/lib/playground/product-link";
 
 /**
  * 브랜드 내재화 — 브랜드 → 최상위 카테고리 → 최하위 카테고리 → 상품.
@@ -158,6 +162,8 @@ export const toCatalogModelRow = (
   category_id: String(model.categoryId ?? ""),
   clothing_kind: kind,
   name: model.name,
+  // 품번은 있으면 담고 없으면 null 로 둔다. 이름에 없는 것을 지어내지 않는다.
+  model_code: catalogModelCode(model),
   naver_brand_id: naverBrandId,
   naver_brand_name: model.brandName ?? null,
   manufacturer_code: model.manufacturerCode ?? null,

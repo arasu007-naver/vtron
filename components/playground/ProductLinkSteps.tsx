@@ -543,7 +543,7 @@ export default function ProductLinkSteps({
                   >
                     <span className="flex items-center gap-2 flex-wrap">
                       <span className="text-[21.6px] text-black">{model.name}</span>
-                      <ModelCode name={model.name} />
+                      <ModelCode model={model} />
                       {model.brandName && (
                         <span className="text-[18.9px] text-black/55">{model.brandName}</span>
                       )}

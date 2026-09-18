@@ -14,6 +14,11 @@ export interface CatalogModel {
   manufacturerName?: string;
   categoryId?: string;
   wholeCategoryName?: string;
+  /**
+   * 품번. 내재화된 상품은 DB 에 담긴 값이 오고, 네이버에서 막 받은 것은 없다(이름에서 뽑는다).
+   * 이름에 품번이 없으면 null 이다 — 지어내지 않는다.
+   */
+  modelCode?: string | null;
 }
 
 export interface ModelPage {
@@ -122,6 +127,15 @@ export function modelCodeOf(name: string): string | null {
   return best;
 }
 
+/**
+ * 이 상품의 품번. 담겨 온 값이 있으면 그것이고, 없으면 이름에서 뽑는다.
+ *
+ * 내재화된 상품(`brand_catalog_models.model_code`)은 넣을 때 이미 계산해 뒀다. 네이버에서
+ * 막 받은 것에는 그 칸이 없으므로 그때만 이름을 본다. 둘 다 없으면 null 로 둔다.
+ */
+export const catalogModelCode = (model: CatalogModel): string | null =>
+  model.modelCode ?? modelCodeOf(model.name);
+
 /** 품번을 쓰는 브랜드로 볼 최소 비율. 리바이스는 100건에 33건이라 여기 못 미친다. */
 export const MODEL_CODE_MIN_RATIO = 0.4;
 /** 이보다 적게 조회됐으면 판단하지 않는다 — 몇 건으로는 브랜드의 버릇을 알 수 없다. */
@@ -139,7 +153,7 @@ export interface ModelCodeStats {
 /** 조회 결과 한 묶음이 품번을 쓰는지. */
 export function modelCodeStats(models: CatalogModel[]): ModelCodeStats {
   const total = models.length;
-  const withCode = models.filter((model) => modelCodeOf(model.name)).length;
+  const withCode = models.filter((model) => catalogModelCode(model)).length;
   const ratio = total ? withCode / total : 0;
   return {
     total,

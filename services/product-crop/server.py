@@ -4,7 +4,7 @@
   ./start_chrome_debug.mac.sh          # keep that Chrome open (logged into Naver)
   .venv/bin/uvicorn server:app --host 127.0.0.1 --port 8930
 
-  POST /save-product-image
+  POST /save-product-image   (image -> Storage, and sale_price from the same page load)
   Authorization: Bearer <API_KEY | Supabase user access token>
   [{"id": "<products.id uuid>", "naverUrl": "https://search.shopping.naver.com/catalog/..."}]
 """
@@ -56,6 +56,8 @@ class ProductImageResult(CamelModel):
     image_url: str | None = None
     image_path: str | None = None
     source_image_url: str | None = None
+    # Sale price scraped from the same page load and written to products.sale_price.
+    price: int | None = None
     error: str | None = None
 
 
@@ -103,17 +105,25 @@ async def process_item(
             return ProductImageResult(**base, ok=False, error="product_not_found")
         captured = await browser.capture(item.naver_url, product_id, work_dir)
         if not captured.ok or not captured.crops:
+            # The page may still have given us a price — keep it rather than lose the visit.
+            if captured.price is not None:
+                await store.update_product(product_id, price=captured.price)
             return ProductImageResult(
-                **base, ok=False, source_image_url=captured.image_url, error=captured.error
+                **base,
+                ok=False,
+                source_image_url=captured.image_url,
+                price=captured.price,
+                error=captured.error,
             )
         image = await store.upload_image(Path(captured.crops[0]), f"products/{product_id}")
-        await store.set_image_url(product_id, image.public_url)
+        await store.update_product(product_id, image_url=image.public_url, price=captured.price)
         return ProductImageResult(
             **base,
             ok=True,
             image_url=image.public_url,
             image_path=image.path,
             source_image_url=captured.image_url,
+            price=captured.price,
         )
     except Exception as exc:  # noqa: BLE001 - one bad item must not fail the batch
         log.exception("save-product-image failed: %s", item.naver_url)
