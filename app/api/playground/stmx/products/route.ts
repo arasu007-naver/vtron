@@ -6,6 +6,7 @@ import {
   getStmxWebAdminCredentials,
   registerProduct,
 } from "@/lib/playground/stmx-loox";
+import { listProducts, type ProductSort } from "@/lib/playground/stmx-products";
 
 /**
  * 상품 마스터 등록 — /products-2-link 링크 목록의 '등록'.
@@ -17,6 +18,11 @@ import {
  * `/api/playground/stmx/loox/products` 의 'Loox에 붙이기' 다. 같은 카탈로그가 있으면 가격
  * (과 준 경우 이미지)만 바꾼다. 가격은 새 탭의 판매 페이지를 보고 사람이 입력한 값이고,
  * 이미지는 mvps/product-crop 의 save-product-image 가 돌려준 URL 이다.
+ *
+ * 목록은 상품 페이지(/products)가 쓴다.
+ *
+ * `GET ?brand=&category=&name=&modelCode=&sort=recent|oldest&page=1&pageSize=24`
+ *   → `{ products, total, page, pageSize, sort }`
  */
 
 export const runtime = "nodejs";
@@ -116,6 +122,57 @@ export async function POST(req: NextRequest) {
       imageUrl: image.value,
     });
     return NextResponse.json(result);
+  } catch (error) {
+    return error instanceof StmxWebWriteError
+      ? NextResponse.json({ error: error.message }, { status: error.status })
+      : NextResponse.json(
+          { error: error instanceof Error ? error.message : String(error) },
+          { status: 500 }
+        );
+  }
+}
+
+/** 쓰기 · 목록 모두 secret 키가 있어야 한다 — products 에는 익명 읽기 정책이 없다. */
+const noCredentials = () =>
+  NextResponse.json(
+    {
+      error:
+        "stmx-web 에 쓸 수 있는 키가 없습니다. 상품 조회 · 등록은 RLS 상 secret 키로만 할 수 있습니다. " +
+        ".env.local 의 STMX_WEB_SUPABASE_SECRET_KEY(sb_secret_…)를 확인하세요.",
+    },
+    { status: 503 }
+  );
+
+/** 1 이상의 정수. 아니면 기본값. */
+const toCount = (raw: string | null, fallback: number, max: number) => {
+  const n = Number(raw);
+  return Number.isInteger(n) && n >= 1 ? Math.min(n, max) : fallback;
+};
+
+export async function GET(req: NextRequest) {
+  const auth = await authenticate(req);
+  if (!auth) return unauthorized();
+
+  const creds = getStmxWebAdminCredentials();
+  if (!creds) return noCredentials();
+
+  const params = req.nextUrl.searchParams;
+  const sort: ProductSort = params.get("sort") === "oldest" ? "oldest" : "recent";
+
+  try {
+    const page = await listProducts(
+      creds,
+      {
+        brand: params.get("brand") ?? undefined,
+        category: params.get("category") ?? undefined,
+        name: params.get("name") ?? undefined,
+        modelCode: params.get("modelCode") ?? undefined,
+      },
+      sort,
+      toCount(params.get("page"), 1, 100_000),
+      toCount(params.get("pageSize"), 24, 100)
+    );
+    return NextResponse.json(page);
   } catch (error) {
     return error instanceof StmxWebWriteError
       ? NextResponse.json({ error: error.message }, { status: error.status })

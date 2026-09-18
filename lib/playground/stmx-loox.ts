@@ -45,10 +45,13 @@ export function getStmxWebAdminCredentials(): StmxWebCredentials | null {
   return { url, key };
 }
 
-const connect = ({ url, key }: StmxWebCredentials) =>
+export const connectStmx = ({ url, key }: StmxWebCredentials) =>
   createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
+
+/** 이 파일 안에서 쓰던 이름 — 상품 페이지(stmx-products.ts)도 같은 클라이언트를 쓴다. */
+const connect = connectStmx;
 
 export interface LooxImage {
   url: string;

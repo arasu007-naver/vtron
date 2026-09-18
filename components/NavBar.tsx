@@ -8,6 +8,7 @@ import {
   LayoutDashboard,
   Link2,
   LogOut,
+  ShoppingBag,
   Shirt,
   Sparkles,
   TerminalSquare,
@@ -57,6 +58,12 @@ const LINKS = [
     title: "Loox 목록에서 게시물을 고르고 옷 브랜드 × 분류의 카탈로그 상품을 붙인다",
   },
   {
+    href: "/products",
+    label: "상품",
+    icon: ShoppingBag,
+    title: "stmx-web 상품 마스터를 브랜드 · 카테고리 · 제품명 · 품번으로 찾아보고 고친다",
+  },
+  {
     href: "/creator-req",
     label: "Creator 요청",
     icon: UserCheck,
@@ -64,8 +71,9 @@ const LINKS = [
   },
 ] as const;
 
+// `/products` 가 `/products-2-link` 까지 켜지지 않도록 경계(`/`)까지 본다.
 const isActive = (pathname: string, href: string) =>
-  href === "/" ? pathname === "/" : pathname.startsWith(href);
+  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
 export default function NavBar() {
   const pathname = usePathname();
