@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start -p 8920",
     "lint": "eslint",
-    "sync:brands": "node scripts/sync-brands.mjs"
+    "sync:brands": "node scripts/sync-brands.mjs",
+    "thumbs:products": "node scripts/backfill-product-thumbnails.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

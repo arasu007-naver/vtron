@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowDownWideNarrow, ArrowUpWideNarrow, ExternalLink, RefreshCw, Search } from "lucide-react";
+import { ExternalLink, RefreshCw, Search } from "lucide-react";
 import Pagination from "@/components/playground/Pagination";
 import ProductEditModal from "@/components/playground/ProductEditModal";
 import {
@@ -22,7 +22,7 @@ import {
  *   ┌ 조회 ─────────────────────────────────────────────────────────┐
  *   │ 브랜드 · 카테고리 · 제품명 · 품번                              │
  *   ├ 페이지 ───────────────────────────────────────────────────────┤
- *   │ 페이지 단추                 가장 최근 [번호][이동] 가장 오래된 │
+ *   │ 총 n건 · 현재 쪽             [번호][이동]        페이지 단추 │
  *   ├ 목록 ─────────────────────────────────────────────────────────┤
  *   │ 상품 카드(이미지 · 상품명 · 가격 · [갱신][열기])               │
  *   └───────────────────────────────────────────────────────────────┘
@@ -33,6 +33,12 @@ import {
 
 const PAGE_SIZE = 24;
 
+/**
+ * 정렬은 최근 등록 순으로 고정한다. '가장 최근' · '가장 오래된' 단추를 두었다가 뺐다 —
+ * 그 자리는 페이지 단추의 '첫 페이지' · '마지막 페이지' 가 이미 하는 일이다.
+ */
+const SORT: ProductSort = "recent";
+
 const EMPTY_FORM = { brand: "", category: "", name: "", modelCode: "" };
 
 const price = (value: number) => `${value.toLocaleString("ko-KR")}원`;
@@ -41,7 +47,6 @@ export default function ProductsPage() {
   /** 입력 중인 조회 조건. '조회' 를 눌러야 [[filters]] 에 반영된다. */
   const [form, setForm] = useState(EMPTY_FORM);
   const [filters, setFilters] = useState<ProductFilters>({});
-  const [sort, setSort] = useState<ProductSort>("recent");
   const [page, setPage] = useState(1);
   const [data, setData] = useState<ProductPage | null>(null);
   const [loading, setLoading] = useState(true);
@@ -72,19 +77,19 @@ export default function ProductsPage() {
     };
   }, []);
 
-  // 조회 조건 · 정렬 · 페이지가 바뀔 때마다 다시 읽는다.
+  // 조회 조건 · 페이지가 바뀔 때마다 다시 읽는다.
   useEffect(() => {
     const run = ++loadRef.current;
     void (async () => {
       setLoading(true);
       setError(null);
-      const outcome = await fetchProducts(filters, sort, page, PAGE_SIZE);
+      const outcome = await fetchProducts(filters, SORT, page, PAGE_SIZE);
       if (loadRef.current !== run) return;
       setLoading(false);
       if ("error" in outcome) setError(outcome.error);
       else setData(outcome.value);
     })();
-  }, [filters, sort, page]);
+  }, [filters, page]);
 
   const search = (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,11 +115,6 @@ export default function ProductsPage() {
     setPage(Math.min(n, totalPages));
   };
 
-  const orderBy = (next: ProductSort) => {
-    setSort(next);
-    setPage(1);
-  };
-
   const save = async (patch: ProductPatch) => {
     if (!editing) return;
     setSaving(true);
@@ -132,7 +132,7 @@ export default function ProductsPage() {
     setEditing(null);
   };
 
-  const sortButton =
+  const moveButton =
     "px-2.5 h-9 text-[19.8px] rounded btn flex items-center gap-1 disabled:opacity-40";
 
   return (
@@ -219,14 +219,8 @@ export default function ProductsPage() {
         )}
       </form>
 
-      {/* 둘째 줄 — 페이지 단추와 이동 · 정렬 */}
+      {/* 둘째 줄 — 왼쪽에 조회 결과, 오른쪽 끝에 페이지 단추와 그 왼쪽의 번호 이동 */}
       <div className="flex-none px-4 py-2 border-b border-[var(--pg-line)] flex items-center gap-3 flex-wrap">
-        <Pagination
-          page={page}
-          totalPages={totalPages}
-          disabled={loading}
-          onPage={(next) => setPage(next)}
-        />
         <span className="text-[19.8px] text-black/60">
           {loading
             ? "불러오는 중…"
@@ -240,17 +234,6 @@ export default function ProductsPage() {
         </span>
 
         <div role="group" aria-label="페이지 이동" className="ml-auto flex items-center gap-1">
-          <button
-            type="button"
-            aria-pressed={sort === "recent"}
-            title="가장 최근에 등록된 상품부터"
-            className={`${sortButton} ${sort === "recent" ? "btn-primary" : "btn-secondary"}`}
-            disabled={loading}
-            onClick={() => orderBy("recent")}
-          >
-            <ArrowDownWideNarrow className="w-4 h-4" />
-            가장 최근
-          </button>
           <input
             className="pg-input"
             style={{ width: 84 }}
@@ -268,24 +251,20 @@ export default function ProductsPage() {
           />
           <button
             type="button"
-            className={`${sortButton} btn-secondary`}
+            className={`${moveButton} btn-secondary`}
             disabled={loading || gotoPage === ""}
             onClick={move}
           >
             이동
           </button>
-          <button
-            type="button"
-            aria-pressed={sort === "oldest"}
-            title="가장 먼저 등록된 상품부터"
-            className={`${sortButton} ${sort === "oldest" ? "btn-primary" : "btn-secondary"}`}
-            disabled={loading}
-            onClick={() => orderBy("oldest")}
-          >
-            <ArrowUpWideNarrow className="w-4 h-4" />
-            가장 오래된
-          </button>
         </div>
+
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          disabled={loading}
+          onPage={(next) => setPage(next)}
+        />
       </div>
 
       {/* 본문 — 상품 목록 */}
