@@ -1,12 +1,14 @@
-"""Supabase Storage upload + products.image_url / sale_price update (stmx-web project)."""
+"""Supabase Storage upload + products.image_url / thumbnail / sale_price update (stmx-web project)."""
 
 from __future__ import annotations
 
+import io
+import logging
 import time
 from dataclasses import dataclass
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageOps
 from supabase import AsyncClient, acreate_client
 
 from config import Settings
@@ -18,6 +20,38 @@ CONTENT_TYPES = {
     "GIF": ("image/gif", "gif"),
     "AVIF": ("image/avif", "avif"),
 }
+
+log = logging.getLogger("product_store")
+
+# List thumbnail — same format as vtron scripts/backfill-product-thumbnails.mjs, so rows
+# written here and rows backfilled there look identical to stmx-web
+# (supabase/migrations/12_product_thumbnails.sql).
+# The largest product photo slot in the app is 58dp (174px @3x); 200px is sharp enough.
+THUMB_MAX_EDGE = 200
+THUMB_WEBP_QUALITY = 72
+THUMB_CONTENT_TYPE = "image/webp"
+# The thumbnail URL carries `?v=`, so a new image means a new URL — safe to cache for a year.
+THUMB_CACHE_CONTROL = "31536000"
+
+# Sentinel for update_product: "set this column to NULL" (None means "leave it alone").
+CLEAR = object()
+
+
+def make_thumbnail(file: Path) -> bytes | None:
+    """Shrink to THUMB_MAX_EDGE on the long side as WebP. None if the image can't be read."""
+    try:
+        with Image.open(file) as img:
+            img = ImageOps.exif_transpose(img)
+            if img.mode not in ("RGB", "RGBA"):
+                img = img.convert("RGBA" if "transparency" in img.info or "A" in img.mode else "RGB")
+            # thumbnail() never enlarges, like sharp's withoutEnlargement.
+            img.thumbnail((THUMB_MAX_EDGE, THUMB_MAX_EDGE), Image.Resampling.LANCZOS)
+            out = io.BytesIO()
+            img.save(out, format="WEBP", quality=THUMB_WEBP_QUALITY, method=6)
+            return out.getvalue()
+    except Exception as exc:  # noqa: BLE001 - the list falls back to image_url
+        log.warning("thumbnail failed for %s: %s", file, exc)
+        return None
 
 
 def sniff_image(path: Path) -> tuple[str, str]:
@@ -37,6 +71,7 @@ def sniff_image(path: Path) -> tuple[str, str]:
 class UploadedImage:
     path: str
     public_url: str
+    version: str
 
 
 class ProductStore:
@@ -68,7 +103,33 @@ class ProductStore:
         public_url = await bucket.get_public_url(path)
         # Re-registering overwrites the same object; a version query keeps CDN/browser
         # caches from serving the old image.
-        return UploadedImage(path=path, public_url=f"{public_url}?v={int(time.time())}")
+        version = str(int(time.time()))
+        return UploadedImage(path=path, public_url=f"{public_url}?v={version}", version=version)
+
+    async def upload_thumbnail(
+        self, file: Path, product_id: str, version: str
+    ) -> UploadedImage | None:
+        """Upload `products/thumb/<id>.webp`. None if the image couldn't be shrunk.
+
+        The URL reuses the original's `?v=` (same rule as the backfill script), so the
+        thumbnail's cache is invalidated exactly when the original changes.
+        """
+        data = make_thumbnail(file)
+        if data is None:
+            return None
+        path = f"products/thumb/{product_id}.webp"
+        bucket = self._client.storage.from_(self._bucket)
+        await bucket.upload(
+            path,
+            data,
+            {
+                "content-type": THUMB_CONTENT_TYPE,
+                "cache-control": THUMB_CACHE_CONTROL,
+                "upsert": "true",
+            },
+        )
+        public_url = await bucket.get_public_url(path)
+        return UploadedImage(path=path, public_url=f"{public_url}?v={version}", version=version)
 
     async def set_image_url(self, product_id: str, image_url: str) -> None:
         await self.update_product(product_id, image_url=image_url)
@@ -78,9 +139,11 @@ class ProductStore:
         product_id: str,
         *,
         image_url: str | None = None,
+        thumbnail: str | object | None = None,
         price: int | None = None,
     ) -> None:
-        """Write what the page gave us. Values left as None are not touched.
+        """Write what the page gave us. Values left as None are not touched;
+        `thumbnail=CLEAR` sets the column to NULL.
 
         `price` lands in sale_price. stmx-web's CHECK wants sale_price >= 0 and
         original_price null-or-greater, so a scraped price is only ever written when
@@ -90,6 +153,10 @@ class ProductStore:
         changes: dict[str, object] = {}
         if image_url is not None:
             changes["image_url"] = image_url
+        if thumbnail is CLEAR:
+            changes["thumbnail"] = None
+        elif thumbnail is not None:
+            changes["thumbnail"] = thumbnail
         if price is not None and price >= 0:
             changes["sale_price"] = price
         if not changes:

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""HTTP API: product naver_url → cropped image → Supabase Storage → products.image_url.
+"""HTTP API: product naver_url → cropped image (+ list thumbnail) → Supabase Storage
+→ products.image_url / products.thumbnail.
 
   ./start_chrome_debug.mac.sh          # keep that Chrome open (logged into Naver)
   .venv/bin/uvicorn server:app --host 127.0.0.1 --port 8930
@@ -26,7 +27,7 @@ from supabase import acreate_client
 from auth import Caller, require_bearer
 from browser_session import BLOCK_ERRORS, BrowserSession
 from config import Settings, get_settings
-from product_store import ProductStore
+from product_store import CLEAR, ProductStore
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 log = logging.getLogger("server")
@@ -55,6 +56,10 @@ class ProductImageResult(CamelModel):
     ok: bool
     image_url: str | None = None
     image_path: str | None = None
+    # 200px WebP for product lists (products.thumbnail). None if it couldn't be made —
+    # stmx-web then falls back to image_url.
+    thumbnail_url: str | None = None
+    thumbnail_path: str | None = None
     source_image_url: str | None = None
     # Sale price scraped from the same page load and written to products.sale_price.
     price: int | None = None
@@ -115,13 +120,28 @@ async def process_item(
                 price=captured.price,
                 error=captured.error,
             )
-        image = await store.upload_image(Path(captured.crops[0]), f"products/{product_id}")
-        await store.update_product(product_id, image_url=image.public_url, price=captured.price)
+        crop = Path(captured.crops[0])
+        image = await store.upload_image(crop, f"products/{product_id}")
+        # A thumbnail failure must not fail the image. When there is none, clear the
+        # column so an older thumbnail never outlives the image it was made from.
+        thumb = None
+        try:
+            thumb = await store.upload_thumbnail(crop, product_id, image.version)
+        except Exception:  # noqa: BLE001
+            log.exception("thumbnail upload failed: %s", product_id)
+        await store.update_product(
+            product_id,
+            image_url=image.public_url,
+            thumbnail=thumb.public_url if thumb else CLEAR,
+            price=captured.price,
+        )
         return ProductImageResult(
             **base,
             ok=True,
             image_url=image.public_url,
             image_path=image.path,
+            thumbnail_url=thumb.public_url if thumb else None,
+            thumbnail_path=thumb.path if thumb else None,
             source_image_url=captured.image_url,
             price=captured.price,
         )

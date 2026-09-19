@@ -46,9 +46,13 @@ If you still see `access_restricted_418`, stop for a while — do not keep retry
 
 stmx-web `products` 행의 `naver_url` 을 열어 이미지를 crop → Supabase Storage
 (`product-images/products/<id>.jpg`) 업로드 → 그 행의 `image_url` 을 public URL 로 갱신.
+같은 사진을 긴 변 200px WebP 로 줄여 `product-images/products/thumb/<id>.webp` 에 올리고
+`thumbnail` 에 그 public URL 을 적는다(stmx-web 앱의 상품 목록이 원본 대신 읽는다).
+`?v=` 는 원본과 같은 값 — vtron `npm run thumbs:products` 백필과 같은 규칙이다.
+축소에 실패하면 `thumbnail` 을 비운다(목록은 `image_url` 로 되돌아간다). 이미지 등록 자체는 성공.
 vtron `/products-2-link` 페이지의 **등록** 버튼이 이 API 를 부른다.
 
-1. stmx-web Supabase SQL editor 에서 `supabase/schema.sql` 실행 (버킷 생성).
+1. stmx-web Supabase SQL editor 에서 `supabase/schema.sql` 실행 (버킷 생성 · `thumbnail` 칼럼).
 2. `.env`: `SUPABASE_URL` = stmx-web 프로젝트 URL, `SUPABASE_SERVICE_ROLE_KEY` = 그 프로젝트의 secret 키.
 3. debug Chrome(1단계)을 띄운 뒤:
 ```bash
@@ -73,6 +77,8 @@ Response (HTTP 200; 항목별 `ok` 확인):
     "ok": true,
     "imageUrl": "https://<ref>.supabase.co/storage/v1/object/public/product-images/products/<uuid>.jpg?v=1757770000",
     "imagePath": "products/<uuid>.jpg",
+    "thumbnailUrl": "https://<ref>.supabase.co/storage/v1/object/public/product-images/products/thumb/<uuid>.webp?v=1757770000",
+    "thumbnailPath": "products/thumb/<uuid>.webp",
     "sourceImageUrl": "https://shopping-phinf.pstatic.net/...",
     "error": null
   }]

@@ -18,6 +18,7 @@ import {
  *
  * 이미지는 product-crop 서버(`POST /save-product-image`)가 디버그 Chrome 으로 naverUrl 을 열어
  * 잘라 stmx-web Storage(product-images 버킷)에 올리고 image_url 을 그 공개 URL 로 바꾼다.
+ * 같은 사진을 200px WebP 로 줄여 thumbnail 에도 적는다(stmx-web 앱의 상품 목록이 읽는다).
  * 캡처는 한 건씩 줄을 서서 수 초 ~ 수십 초 걸린다.
  *
  * product-crop 주소는 `PRODUCT_CROP_API_URL`(기본 http://127.0.0.1:8930).
@@ -42,6 +43,7 @@ const cropApiBase = () =>
 interface CropResult {
   ok: boolean;
   imageUrl: string | null;
+  thumbnailUrl?: string | null;
   sourceImageUrl: string | null;
   error: string | null;
 }
@@ -51,7 +53,9 @@ async function cropProductImage(
   productId: string,
   naverUrl: string,
   accessToken: string
-): Promise<{ imageUrl: string; sourceImageUrl: string | null } | { error: string }> {
+): Promise<
+  { imageUrl: string; thumbnailUrl: string | null; sourceImageUrl: string | null } | { error: string }
+> {
   const base = cropApiBase();
 
   let res: Response;
@@ -99,7 +103,11 @@ async function cropProductImage(
   if (!result.ok || !result.imageUrl) {
     return { error: `이미지 등록 실패: ${result.error ?? "알 수 없는 오류"}` };
   }
-  return { imageUrl: result.imageUrl, sourceImageUrl: result.sourceImageUrl };
+  return {
+    imageUrl: result.imageUrl,
+    thumbnailUrl: result.thumbnailUrl ?? null,
+    sourceImageUrl: result.sourceImageUrl,
+  };
 }
 
 export async function POST(req: NextRequest) {
@@ -174,6 +182,7 @@ export async function POST(req: NextRequest) {
     productId,
     createdProduct,
     imageUrl: crop.imageUrl,
+    thumbnailUrl: crop.thumbnailUrl,
     sourceImageUrl: crop.sourceImageUrl,
     warnings,
   });
