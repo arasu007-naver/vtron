@@ -33,8 +33,10 @@ export default function TryOnLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
+    // 페이지가 콘텐츠 영역의 세로를 그대로 쓰려면 이 껍데기부터 높이를 넘겨줘야 한다.
+    // 여기가 auto 면 아래의 h-full 이 전부 0 에 걸려 화면 아래가 텅 빈다.
     <div
-      className={`fashn-app ${geistSans.variable} ${geistMono.variable} select-text`}
+      className={`fashn-app h-full min-h-0 ${geistSans.variable} ${geistMono.variable} select-text`}
     >
       {children}
     </div>
