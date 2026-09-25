@@ -7,10 +7,27 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
   label?: string;
   description?: string;
   colorScheme?: 'default';
+  /**
+   * 글자 크기를 정하는 곳. 기본값은 데모 화면에 맞춘 큰 글씨라, 빽빽한 컨트롤 줄에 놓을 때는
+   * 부르는 쪽이 줄여야 한다 — 바깥의 text-* 로는 못 덮는다(여기서 이미 정해 버리기 때문).
+   */
+  labelClassName?: string;
+  descriptionClassName?: string;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, description, colorScheme = 'default', ...props }, ref) => {
+  (
+    {
+      className,
+      label,
+      description,
+      colorScheme = 'default',
+      labelClassName,
+      descriptionClassName,
+      ...props
+    },
+    ref
+  ) => {
     const id = React.useId();
     
     const colorStyles = {
@@ -63,13 +80,16 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             {label && (
               <label
                 htmlFor={props.id || id}
-                className="cursor-pointer text-[25.2px] font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className={cn(
+                  'cursor-pointer text-[25.2px] font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+                  labelClassName
+                )}
               >
                 {label}
               </label>
             )}
             {description && (
-              <p className="text-[21.6px] text-black dark:text-gray-400">
+              <p className={cn('text-[21.6px] text-black dark:text-gray-400', descriptionClassName)}>
                 {description}
               </p>
             )}
