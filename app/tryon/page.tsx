@@ -24,7 +24,7 @@ import {
 import { ReactCompareSlider, ReactCompareSliderImage, useReactCompareSliderRef } from 'react-compare-slider';
 import TipsModal from '@/components/tryon/TipsModal';
 import ApiKeyModal from '@/components/tryon/ApiKeyModal';
-import ProductSearch from '@/components/tryon/ProductSearch';
+import ProductSearch, { type GarmentSlot } from '@/components/tryon/ProductSearch';
 import Button from '@/components/tryon/ui/button';
 import Checkbox from '@/components/tryon/ui/checkbox';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/tryon/ui/card';
@@ -54,9 +54,7 @@ import pica from 'pica';
  * 카탈로그 상품은 목록용 축소본이 아니라 **원본**(`originalImageUrl`)을 내려받아 넣는다.
  */
 
-/** 옷을 넣는 자리. 자리 하나에 사진 한 장이고, 그 자리가 FASHN 의 category 를 정한다. */
-type GarmentSlot = 'top' | 'bottom' | 'onepiece';
-
+/** 옷을 넣는 자리([[GarmentSlot]]). 자리 하나에 사진 한 장이고, 그 자리가 FASHN 의 category 를 정한다. */
 interface GarmentSlotDef {
   id: GarmentSlot;
   name: string;
@@ -83,7 +81,7 @@ interface GarmentPick {
   file: File | null;
   preview: string | null;
   /** 카탈로그에서 고른 것이면 그 상품. 직접 올린 사진이면 null. */
-  product: Pick<CatalogProduct, 'id' | 'name' | 'brandName' | 'catalogUrl'> | null;
+  product: CatalogProduct | null;
 }
 
 const EMPTY_PICK: GarmentPick = { file: null, preview: null, product: null };
@@ -280,19 +278,21 @@ export default function Home() {
   };
 
   /**
-   * 오른쪽에서 고른 상품을 지금 자리에 담는다.
+   * 오른쪽에서 고른 상품을 담는다. 상품 줄의 상의 · 하의 · 원피스 단추를 눌렀으면 그 자리에,
+   * 줄을 눌렀으면 지금 자리에 담는다. 단추로 담은 자리는 피팅 대상이 된다.
    *
    * 목록에 보이는 것은 200px 축소본이라 그대로 보내면 가먼트가 뭉개진다. 피팅에 넣는 것은
    * 원본(`originalImageUrl`)이다.
    */
   const pickProduct = useCallback(
-    async (product: CatalogProduct) => {
+    async (product: CatalogProduct, target?: GarmentSlot) => {
       const url = product.originalImageUrl ?? product.imageUrl;
-      const slot = activeSlot;
+      const slot = target ?? activeSlot;
       if (!url) {
         setError('이 상품에는 등록된 사진이 없습니다. 다른 상품을 고르거나 사진을 올려 주세요.');
         return;
       }
+      setActiveSlot(slot);
       setLoadingSlot(slot);
       setError(null);
       try {
@@ -300,12 +300,7 @@ export default function Home() {
         setGarment(slot, {
           file,
           preview: URL.createObjectURL(file),
-          product: {
-            id: product.id,
-            name: product.name,
-            brandName: product.brandName,
-            catalogUrl: product.catalogUrl,
-          },
+          product,
         });
       } catch (err) {
         console.error('Failed to load product image:', err);
@@ -495,7 +490,7 @@ export default function Home() {
   return (
     <div
       className="w-full h-full min-h-0 flex flex-col bg-gradient-to-b from-[#f8f9fa] to-[#edeef0] dark:from-gray-950 dark:to-gray-900 p-2.5 sm:p-3 gap-2.5"
-      style={{ fontSize: '70%' }}
+      style={{ fontSize: '105%' }}
     >
       {/* ============================================================================== */}
       {/* TOP: Global Action Toolbar                                                     */}
@@ -508,10 +503,10 @@ export default function Home() {
         <div className="flex items-center flex-wrap gap-1.5">
           <div className="flex items-center gap-1.5 pr-2.5 border-r border-gray-200 dark:border-gray-700">
             <Sparkle className="w-4 h-4 text-amber-600 fill-amber-500" />
-            <span className="font-semibold text-gray-900 dark:text-gray-100 text-[10.5px]">
+            <span className="font-semibold text-gray-900 dark:text-gray-100 text-[15.75px]">
               STMX Studio
             </span>
-            <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-medium">
+            <span className="text-[12px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-medium">
               v1.6 Ready
             </span>
           </div>
@@ -521,7 +516,7 @@ export default function Home() {
             variant="outline"
             size="sm"
             onClick={() => setIsApiKeyModalOpen(true)}
-            className="flex items-center gap-1 text-[9px] h-7 px-2.5"
+            className="flex items-center gap-1 text-[13.5px] h-7 px-2.5"
           >
             <Zap className="w-3 h-3 text-blue-600" />
             <span>{apiKey ? 'API Key 연동됨' : 'API Key 설정'}</span>
@@ -534,7 +529,7 @@ export default function Home() {
               variant="outline"
               size="sm"
               onClick={() => setIsGalleryOpen(true)}
-              className="flex items-center gap-1 text-[9px] h-7 px-2.5"
+              className="flex items-center gap-1 text-[13.5px] h-7 px-2.5"
             >
               <Sparkles className="w-3 h-3 text-amber-500" />
               <span>결과 보기 ({resultGallery.length})</span>
@@ -548,7 +543,7 @@ export default function Home() {
             variant="secondary"
             size="sm"
             onClick={() => setIsTipsModalOpen(true)}
-            className="flex items-center gap-1 text-[9px] font-medium h-7 px-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300/60 dark:border-gray-700"
+            className="flex items-center gap-1 text-[13.5px] font-medium h-7 px-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300/60 dark:border-gray-700"
           >
             <Lightbulb className="w-3 h-3 text-amber-500" />
             <span>View Tips</span>
@@ -559,7 +554,7 @@ export default function Home() {
             variant={showAdvancedSettings ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
-            className="flex items-center gap-1 text-[9px] font-medium h-7 px-2.5 transition-all"
+            className="flex items-center gap-1 text-[13.5px] font-medium h-7 px-2.5 transition-all"
           >
             <Settings className="w-3 h-3" />
             <span>{showAdvancedSettings ? 'Hide' : 'Show'} Advanced Settings</span>
@@ -580,13 +575,13 @@ export default function Home() {
         <div className="lg:col-span-4 min-h-0 h-full flex flex-col">
           <Card className="flex flex-col h-full min-h-0 shadow-2xs border-gray-200/90 dark:border-gray-800 bg-white dark:bg-gray-900">
             <CardHeader className="flex-shrink-0 pb-2 pt-2.5 px-3 border-b border-gray-100 dark:border-gray-800">
-              <CardTitle className="flex items-center justify-between text-[11px]">
+              <CardTitle className="flex items-center justify-between text-[16.5px]">
                 <div className="flex items-center gap-1.5 font-semibold">
                   <UserRound className="h-4 w-4 text-gray-700 dark:text-gray-300" />
                   <span>모델 이미지 (Model)</span>
                 </div>
                 {modelImagePreview && (
-                  <span className="text-[8px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                  <span className="text-[12px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
                     선택 완료
                   </span>
                 )}
@@ -596,7 +591,7 @@ export default function Home() {
             <CardContent className="p-2.5 flex-1 min-h-0 flex flex-col gap-2 overflow-y-auto vt-scroll">
               {/* 1. 상단 한줄 버튼 그룹 */}
               <div className="flex-shrink-0 flex items-center justify-between gap-1 p-1 bg-gray-100/80 dark:bg-gray-800/80 rounded-md border border-gray-200/60 dark:border-gray-700/60">
-                <label className="flex-1 inline-flex items-center justify-center gap-1 py-1 px-1.5 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 rounded shadow-2xs text-[8.5px] font-medium text-gray-800 dark:text-gray-100 cursor-pointer transition-colors text-center truncate">
+                <label className="flex-1 inline-flex items-center justify-center gap-1 py-1 px-1.5 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 rounded shadow-2xs text-[12.75px] font-medium text-gray-800 dark:text-gray-100 cursor-pointer transition-colors text-center truncate">
                   <Upload className="w-3 h-3 text-gray-600" />
                   <span>사진 업로드</span>
                   <input type="file" onChange={handleModelImageChange} accept="image/*" className="hidden" />
@@ -609,7 +604,7 @@ export default function Home() {
                     setModelExampleIndex(nextIdx);
                     loadExampleModel(modelExamples[nextIdx]);
                   }}
-                  className="flex-1 inline-flex items-center justify-center gap-1 py-1 px-1.5 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 rounded shadow-2xs text-[8.5px] font-medium text-gray-800 dark:text-gray-100 cursor-pointer transition-colors text-center truncate"
+                  className="flex-1 inline-flex items-center justify-center gap-1 py-1 px-1.5 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 rounded shadow-2xs text-[12.75px] font-medium text-gray-800 dark:text-gray-100 cursor-pointer transition-colors text-center truncate"
                 >
                   <RefreshCw className="w-3 h-3 text-gray-600" />
                   <span>
@@ -674,10 +669,10 @@ export default function Home() {
                           onClick={() => loadExampleModel(modelExamples[modelExampleIndex])}
                           className="absolute inset-0 bg-black/40 hover:bg-black/50 transition-colors flex flex-col items-center justify-center p-2 text-center"
                         >
-                          <div className="bg-white/95 dark:bg-gray-900/95 text-gray-900 dark:text-gray-100 px-2.5 py-1 rounded-full text-[8.5px] font-semibold shadow-md backdrop-blur-sm mb-1.5">
+                          <div className="bg-white/95 dark:bg-gray-900/95 text-gray-900 dark:text-gray-100 px-2.5 py-1 rounded-full text-[12.75px] font-semibold shadow-md backdrop-blur-sm mb-1.5">
                             클릭하여 이 모델 선택
                           </div>
-                          <span className="text-[8px] text-white/90">또는 상단 [사진 업로드] 클릭</span>
+                          <span className="text-[12px] text-white/90">또는 상단 [사진 업로드] 클릭</span>
                         </div>
 
                         <div className="absolute bottom-2 left-0 right-0 flex items-center justify-between px-2.5 z-10">
@@ -688,7 +683,7 @@ export default function Home() {
                               handleModelSwipe('left');
                             }}
                             disabled={modelExampleIndex === 0}
-                            className="w-6 h-6 rounded-full bg-black/70 border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer text-[10px]"
+                            className="w-6 h-6 rounded-full bg-black/70 border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer text-[15px]"
                           >
                             ‹
                           </button>
@@ -709,7 +704,7 @@ export default function Home() {
                               handleModelSwipe('right');
                             }}
                             disabled={modelExampleIndex === modelExamples.length - 1}
-                            className="w-6 h-6 rounded-full bg-black/70 border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer text-[10px]"
+                            className="w-6 h-6 rounded-full bg-black/70 border border-white/20 flex items-center justify-center disabled:opacity-30 text-white cursor-pointer text-[15px]"
                           >
                             ›
                           </button>
@@ -727,7 +722,7 @@ export default function Home() {
                   onClick={() => handleSubmit()}
                   disabled={isLoading || !modelImageFile}
                   loading={isLoading}
-                  className="flex-1 h-8.5 text-[10.5px] font-semibold bg-gray-900 hover:bg-black text-white shadow-2xs"
+                  className="flex-1 h-8.5 text-[15.75px] font-semibold bg-gray-900 hover:bg-black text-white shadow-2xs"
                 >
                   <Zap className="w-3.5 h-3.5 mr-1 text-amber-400" />
                   {isLoading ? '가상 피팅 생성 중...' : `Run Try-On · ${activeSlotDef.name}`}
@@ -746,12 +741,12 @@ export default function Home() {
 
               {/* 4. 컨트롤 */}
               <div className="flex-shrink-0 p-2 bg-gray-50/90 dark:bg-gray-850/80 rounded-lg border border-gray-200/70 dark:border-gray-750 space-y-2">
-                <div className="flex items-center justify-between text-[9px] font-semibold text-gray-800 dark:text-gray-200">
+                <div className="flex items-center justify-between text-[13.5px] font-semibold text-gray-800 dark:text-gray-200">
                   <div className="flex items-center gap-1">
                     <SlidersHorizontal className="w-3 h-3 text-gray-500" />
                     <span>피팅 컨트롤 (Controls)</span>
                   </div>
-                  <span className="text-[8px] font-normal text-gray-500">모드: {mode}</span>
+                  <span className="text-[12px] font-normal text-gray-500">모드: {mode}</span>
                 </div>
 
                 <div className="grid grid-cols-3 gap-1 p-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700">
@@ -761,7 +756,7 @@ export default function Home() {
                       type="button"
                       onClick={() => setMode(m)}
                       className={cn(
-                        'py-0.5 text-[8.5px] font-medium rounded transition-all text-center cursor-pointer',
+                        'py-0.5 text-[12.75px] font-medium rounded transition-all text-center cursor-pointer',
                         mode === m
                           ? 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 shadow-2xs'
                           : 'text-gray-600 dark:text-gray-400 hover:text-gray-900'
@@ -772,17 +767,17 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between gap-2 text-[8.5px]">
+                <div className="flex items-center justify-between gap-2 text-[12.75px]">
                   <Checkbox
                     checked={segmentationFree}
                     onChange={(e) => setSegmentationFree(e.target.checked)}
                     label="Auto Segmentation"
                     description="인물/의류 자동 영역 분리"
-                    labelClassName="text-[9px]"
-                    descriptionClassName="text-[8px] text-gray-500 dark:text-gray-400"
+                    labelClassName="text-[13.5px]"
+                    descriptionClassName="text-[12px] text-gray-500 dark:text-gray-400"
                   />
 
-                  <div className="text-[8px] text-gray-500 flex items-center gap-1 font-mono">
+                  <div className="text-[12px] text-gray-500 flex items-center gap-1 font-mono">
                     <span>Seed:</span>
                     <span className="font-semibold text-gray-700 dark:text-gray-300">{seed}</span>
                     <button
@@ -806,13 +801,13 @@ export default function Home() {
                     >
                       <div className="grid grid-cols-2 gap-1.5">
                         <div>
-                          <label className="block text-[8px] font-medium text-gray-600 dark:text-gray-400 mb-0.5">
+                          <label className="block text-[12px] font-medium text-gray-600 dark:text-gray-400 mb-0.5">
                             Model Engine
                           </label>
                           <select
                             value={modelVersion}
                             onChange={(e) => setModelVersion(e.target.value)}
-                            className="w-full px-1.5 py-0.5 text-[8.5px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded"
+                            className="w-full px-1.5 py-0.5 text-[12.75px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded"
                           >
                             <option value="tryon-v1.6">v1.6 (Latest)</option>
                             <option value="tryon-v1.5">v1.5 (Stable)</option>
@@ -821,13 +816,13 @@ export default function Home() {
                         </div>
 
                         <div>
-                          <label className="block text-[8px] font-medium text-gray-600 dark:text-gray-400 mb-0.5">
+                          <label className="block text-[12px] font-medium text-gray-600 dark:text-gray-400 mb-0.5">
                             생성 매수 (Samples)
                           </label>
                           <select
                             value={numSamples}
                             onChange={(e) => setNumSamples(Number(e.target.value))}
-                            className="w-full px-1.5 py-0.5 text-[8.5px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded"
+                            className="w-full px-1.5 py-0.5 text-[12.75px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded"
                           >
                             <option value={1}>1장</option>
                             <option value={2}>2장</option>
@@ -841,15 +836,15 @@ export default function Home() {
                         onChange={(e) => setComparison(e.target.checked)}
                         label="⚖️ 듀얼 모델 비교 실행"
                         description="v1.5와 v1.6 모델 결과를 나란히 비교합니다"
-                        labelClassName="text-[9px]"
-                        descriptionClassName="text-[8px] text-gray-500 dark:text-gray-400"
+                        labelClassName="text-[13.5px]"
+                        descriptionClassName="text-[12px] text-gray-500 dark:text-gray-400"
                       />
                     </motion.div>
                   )}
                 </AnimatePresence>
 
                 {error && (
-                  <div className="p-2 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 text-[8.5px] rounded border border-red-200 dark:border-red-900/60 flex items-start gap-1">
+                  <div className="p-2 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 text-[12.75px] rounded border border-red-200 dark:border-red-900/60 flex items-start gap-1">
                     <X className="h-3 w-3 flex-shrink-0 mt-0.5" />
                     <p>{error}</p>
                   </div>
@@ -865,12 +860,12 @@ export default function Home() {
         <div className="lg:col-span-3 min-h-0 h-full flex flex-col">
           <Card className="h-full min-h-0 flex flex-col shadow-2xs border-gray-200/90 dark:border-gray-800 bg-white dark:bg-gray-900">
             <CardHeader className="flex-shrink-0 pb-2 pt-2.5 px-3 border-b border-gray-100 dark:border-gray-800">
-              <CardTitle className="flex items-center justify-between text-[11px]">
+              <CardTitle className="flex items-center justify-between text-[16.5px]">
                 <div className="flex items-center gap-1.5 font-semibold">
                   <Shirt className="h-4 w-4 text-gray-700 dark:text-gray-300" />
                   <span>의류 선택 (자리마다 1장)</span>
                 </div>
-                <span className="text-[8.5px] font-normal text-gray-500">
+                <span className="text-[12.75px] font-normal text-gray-500">
                   피팅 대상:{' '}
                   <span className="font-semibold text-gray-900 dark:text-gray-100">
                     {activeSlotDef.name}
@@ -904,7 +899,7 @@ export default function Home() {
                       <div className="flex items-center gap-1.5">
                         <span
                           className={cn(
-                            'w-4.5 h-4.5 rounded-full text-[8px] font-bold flex items-center justify-center',
+                            'w-4.5 h-4.5 rounded-full text-[12px] font-bold flex items-center justify-center',
                             isActive
                               ? 'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900'
                               : 'bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
@@ -913,11 +908,11 @@ export default function Home() {
                           {index + 1}
                         </span>
                         <Icon className="w-3 h-3 text-gray-500" />
-                        <span className="font-semibold text-[10px] text-gray-900 dark:text-gray-100">
+                        <span className="font-semibold text-[15px] text-gray-900 dark:text-gray-100">
                           {slot.name}
                         </span>
                         {pick.preview && (
-                          <span className="text-[7px] bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 px-1.5 py-0.5 rounded-full font-medium">
+                          <span className="text-[10.5px] bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 px-1.5 py-0.5 rounded-full font-medium">
                             등록됨
                           </span>
                         )}
@@ -925,7 +920,7 @@ export default function Home() {
 
                       <label
                         onClick={(e) => e.stopPropagation()}
-                        className="text-[8px] font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white inline-flex items-center gap-1 cursor-pointer px-1.5 py-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 shadow-2xs"
+                        className="text-[12px] font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white inline-flex items-center gap-1 cursor-pointer px-1.5 py-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 shadow-2xs"
                       >
                         <Upload className="w-2.5 h-2.5" />
                         <span>사진 올리기</span>
@@ -974,10 +969,10 @@ export default function Home() {
                       <div className="flex-1 min-w-0 overflow-y-auto vt-scroll">
                         {pick.product ? (
                           <>
-                            <p className="text-[9px] font-medium text-gray-900 dark:text-gray-100 line-clamp-2">
+                            <p className="text-[13.5px] font-medium text-gray-900 dark:text-gray-100 line-clamp-2">
                               {pick.product.name}
                             </p>
-                            <p className="text-[8px] text-gray-500 truncate mt-0.5">
+                            <p className="text-[12px] text-gray-500 truncate mt-0.5">
                               {pick.product.brandName ?? '브랜드 미상'}
                             </p>
                             <a
@@ -985,18 +980,18 @@ export default function Home() {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-0.5 mt-1 text-[8px] text-blue-600 dark:text-blue-400 hover:underline"
+                              className="inline-flex items-center gap-0.5 mt-1 text-[12px] text-blue-600 dark:text-blue-400 hover:underline"
                             >
                               <ExternalLink className="w-2 h-2" />
                               <span>판매 페이지</span>
                             </a>
                           </>
                         ) : pick.preview ? (
-                          <p className="text-[8px] text-gray-500 break-all">
+                          <p className="text-[12px] text-gray-500 break-all">
                             직접 올린 사진 · {pick.file?.name}
                           </p>
                         ) : (
-                          <p className="text-[8px] text-gray-400 leading-relaxed">
+                          <p className="text-[12px] text-gray-400 leading-relaxed">
                             {slot.hint}
                             <br />
                             오른쪽에서 상품을 고르거나 사진을 올리세요.
@@ -1017,20 +1012,25 @@ export default function Home() {
         <div className="lg:col-span-3 min-h-0 h-full flex flex-col">
           <Card className="flex flex-col h-full min-h-0 shadow-2xs border-gray-200/90 dark:border-gray-800 bg-white dark:bg-gray-900">
             <CardHeader className="flex-shrink-0 pb-2 pt-2.5 px-3 border-b border-gray-100 dark:border-gray-800">
-              <CardTitle className="flex items-center justify-between text-[11px]">
+              <CardTitle className="flex items-center justify-between text-[16.5px]">
                 <div className="flex items-center gap-1.5 font-semibold">
                   <ShoppingBag className="h-4 w-4 text-gray-700 dark:text-gray-300" />
                   <span>착장 상품 찾기</span>
                 </div>
-                <span className="text-[8px] font-normal text-gray-500">내재화 카탈로그</span>
+                <span className="text-[12px] font-normal text-gray-500">내재화 카탈로그</span>
               </CardTitle>
             </CardHeader>
 
             <CardContent className="p-2.5 flex-1 min-h-0">
               <ProductSearch
                 targetLabel={activeSlotDef.name}
-                pickedId={garments[activeSlot].product?.id ?? null}
+                picked={{
+                  top: garments.top.product,
+                  bottom: garments.bottom.product,
+                  onepiece: garments.onepiece.product,
+                }}
                 onPick={pickProduct}
+                onRemove={clearGarment}
               />
             </CardContent>
           </Card>
@@ -1050,7 +1050,7 @@ export default function Home() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
-            style={{ fontSize: '70%' }}
+            style={{ fontSize: '105%' }}
             onClick={() => setIsGalleryOpen(false)}
           >
             <motion.div
@@ -1062,11 +1062,11 @@ export default function Home() {
               className="w-full max-w-4xl h-[85vh] flex flex-col rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xl overflow-hidden"
             >
               <div className="flex-shrink-0 flex items-center justify-between gap-2 px-3 py-2.5 border-b border-gray-100 dark:border-gray-800">
-                <div className="flex items-center gap-1.5 text-[12px] font-semibold text-gray-900 dark:text-gray-100">
+                <div className="flex items-center gap-1.5 text-[18px] font-semibold text-gray-900 dark:text-gray-100">
                   <Sparkles className="h-4 w-4 text-amber-500" />
                   <span>가상 피팅 결과</span>
                   {!isLoading && resultGallery.length > 0 && (
-                    <span className="text-[8.5px] font-normal text-gray-500">
+                    <span className="text-[12.75px] font-normal text-gray-500">
                       {activeSlotDef.name} · {resultGallery.length}장
                     </span>
                   )}
@@ -1076,7 +1076,7 @@ export default function Home() {
                   {resultGallery.length > 1 && !isLoading && (
                     <>
                       {isComparisonMode && (
-                        <span className="text-[9px] text-gray-600 dark:text-gray-400">
+                        <span className="text-[13.5px] text-gray-600 dark:text-gray-400">
                           비교할 2장을 고르세요 ({selectedResults.length}/2)
                         </span>
                       )}
@@ -1087,7 +1087,7 @@ export default function Home() {
                           setIsComparisonMode(!isComparisonMode);
                           setSelectedResults([]);
                         }}
-                        className="flex items-center gap-1 text-[9px] h-6 px-2"
+                        className="flex items-center gap-1 text-[13.5px] h-6 px-2"
                       >
                         {isComparisonMode ? (
                           <>
@@ -1118,14 +1118,14 @@ export default function Home() {
                       <div className="h-12 w-12 rounded-full border-3 border-gray-200 dark:border-gray-700 border-t-gray-900 dark:border-t-gray-100 animate-spin" />
                       <Sparkles className="h-5 w-5 text-amber-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                     </div>
-                    <p className="text-gray-800 dark:text-gray-200 text-[11px] font-medium animate-pulse">
+                    <p className="text-gray-800 dark:text-gray-200 text-[16.5px] font-medium animate-pulse">
                       FASHN AI 가상 피팅 이미지를 생성하고 있습니다...
                     </p>
                   </div>
                 ) : resultGallery.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center gap-1.5 text-center text-gray-400">
                     <ShoppingBag className="w-7 h-7 text-gray-300 dark:text-gray-700" />
-                    <p className="text-[10px]">아직 만든 결과가 없습니다.</p>
+                    <p className="text-[15px]">아직 만든 결과가 없습니다.</p>
                   </div>
                 ) : (
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -1179,7 +1179,7 @@ export default function Home() {
                             <div className="absolute top-1.5 left-1.5 z-10">
                               <div
                                 className={cn(
-                                  'w-5 h-5 rounded-full border-2 flex items-center justify-center text-[8.5px] font-bold',
+                                  'w-5 h-5 rounded-full border-2 flex items-center justify-center text-[12.75px] font-bold',
                                   isSelected
                                     ? 'bg-blue-500 border-blue-500 text-white'
                                     : 'bg-white/90 border-gray-400 text-black'
@@ -1192,7 +1192,7 @@ export default function Home() {
 
                           {!isComparisonMode && (
                             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
-                              <div className="bg-white/95 text-gray-900 py-1 px-2.5 rounded-full text-[9px] font-semibold flex items-center gap-1 shadow-md">
+                              <div className="bg-white/95 text-gray-900 py-1 px-2.5 rounded-full text-[13.5px] font-semibold flex items-center gap-1 shadow-md">
                                 <Zap className="h-3 w-3 text-amber-500" />
                                 <span>크게 보기</span>
                               </div>
@@ -1228,13 +1228,13 @@ export default function Home() {
                 <X className="h-5 w-5" />
               </button>
 
-              <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-3.5 py-1.5 rounded-full text-[10px] backdrop-blur-sm">
+              <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-3.5 py-1.5 rounded-full text-[15px] backdrop-blur-sm">
                 <div className="flex items-center gap-1.5">
                   <span>
                     {currentResultIndex + 1} of {resultGallery.length}
                   </span>
                   {resultGallery.length > 1 && (
-                    <span className="text-[8.5px] opacity-75">• 키보드 ← → 방향키로 이동</span>
+                    <span className="text-[12.75px] opacity-75">• 키보드 ← → 방향키로 이동</span>
                   )}
                 </div>
               </div>
@@ -1246,7 +1246,7 @@ export default function Home() {
                     e.stopPropagation();
                     navigateResult('prev');
                   }}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2.5 backdrop-blur-sm transition-colors cursor-pointer text-[14px]"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2.5 backdrop-blur-sm transition-colors cursor-pointer text-[21px]"
                 >
                   ‹
                 </button>
@@ -1259,7 +1259,7 @@ export default function Home() {
                     e.stopPropagation();
                     navigateResult('next');
                   }}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2.5 backdrop-blur-sm transition-colors cursor-pointer text-[14px]"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2.5 backdrop-blur-sm transition-colors cursor-pointer text-[21px]"
                 >
                   ›
                 </button>
@@ -1289,7 +1289,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 download
-                className="absolute bottom-4 right-4 z-10 bg-white text-gray-900 font-semibold px-4 py-2 rounded-full text-[10px] flex items-center gap-1.5 backdrop-blur-sm transition-colors cursor-pointer shadow-lg"
+                className="absolute bottom-4 right-4 z-10 bg-white text-gray-900 font-semibold px-4 py-2 rounded-full text-[15px] flex items-center gap-1.5 backdrop-blur-sm transition-colors cursor-pointer shadow-lg"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Zap className="h-3.5 w-3.5" />
@@ -1328,7 +1328,7 @@ export default function Home() {
                 <X className="h-5 w-5" />
               </button>
 
-              <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-3.5 py-1.5 rounded-full text-[10px] backdrop-blur-sm">
+              <div className="absolute top-4 left-4 z-10 bg-black/70 text-white px-3.5 py-1.5 rounded-full text-[15px] backdrop-blur-sm">
                 <span>⚖️ 슬라이더로 두 피팅 결과 비교</span>
               </div>
 

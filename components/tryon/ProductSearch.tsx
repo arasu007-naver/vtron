@@ -22,6 +22,7 @@ import {
  *   아랫줄  상품명.       브랜드를 고르기 전에는 잠겨 있다.
  *   단추   다시 고르기.   브랜드만 두고 카테고리부터 되돌린다.
  *   칩     브랜드.       내재화된 것이 다 선다. 고르면 그 하나만 남는다.
+ *   담은 것  자리에 담긴 상품. 브랜드 · 카테고리를 바꿔도 목록 맨 위에 남는다. ✕ 로 뺀다.
  *   ─── 여기부터 스크롤 ───
  *   카테고리 칩 · 상품 목록
  *
@@ -50,13 +51,28 @@ const SEARCH_DEBOUNCE_MS = 300;
 /** 브랜드 후보 줄 수. 더 치면 좁혀진다. */
 const MAX_BRAND_ROWS = 8;
 
+/** 옷을 넣는 자리. 자리 하나에 사진 한 장이다. */
+export type GarmentSlot = 'top' | 'bottom' | 'onepiece';
+
+/** 상품 줄마다 서는 자리 단추 — 누르면 그 자리에 곧바로 담긴다. */
+const SLOT_BUTTONS: { id: GarmentSlot; label: string }[] = [
+  { id: 'top', label: '상의' },
+  { id: 'bottom', label: '하의' },
+  { id: 'onepiece', label: '원피스' },
+];
+
 export interface ProductSearchProps {
-  /** 고른 상품이 담길 자리 — "상의" 처럼 사람이 읽는 말. */
+  /** 줄을 눌렀을 때 담길 자리 — "상의" 처럼 사람이 읽는 말. */
   targetLabel: string;
-  /** 지금 그 자리에 담긴 상품의 모델 id. 그 줄은 '담김' 으로 표시한다. */
-  pickedId?: string | null;
-  /** 한 장을 담는다. 자리에 이미 있던 사진은 이것으로 바뀐다. */
-  onPick: (product: CatalogProduct) => void;
+  /** 자리마다 지금 담긴 상품. 목록 맨 위에 붙어 있고, 그 자리 단추를 채워 표시한다. */
+  picked?: Partial<Record<GarmentSlot, CatalogProduct | null>>;
+  /**
+   * 한 장을 담는다. `slot` 이 있으면 그 자리에, 없으면 지금 자리에 담는다. 자리에 이미 있던
+   * 사진은 이것으로 바뀐다.
+   */
+  onPick: (product: CatalogProduct, slot?: GarmentSlot) => void;
+  /** 한 자리를 비운다. */
+  onRemove: (slot: GarmentSlot) => void;
 }
 
 /** 초성 · 별칭까지 훑어 좁힌다. 앞에서 맞을수록 위. */
@@ -85,7 +101,12 @@ async function readJson<T>(res: Response, fallback: string): Promise<T> {
 const message = (cause: unknown, fallback: string) =>
   cause instanceof Error ? cause.message : fallback;
 
-export default function ProductSearch({ targetLabel, pickedId, onPick }: ProductSearchProps) {
+export default function ProductSearch({
+  targetLabel,
+  picked,
+  onPick,
+  onRemove,
+}: ProductSearchProps) {
   /** 윗줄 — 브랜드를 고르기 전에는 브랜드 이름, 고른 뒤에는 카테고리 칩 좁히기. */
   const [topQuery, setTopQuery] = useState('');
   const [brands, setBrands] = useState<CatalogBrand[] | null>(null);
@@ -204,6 +225,24 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
     return () => clearTimeout(timer);
   }, [searchKey, brand, category, narrowing, trimmedQuery]);
 
+  /**
+   * 담은 상품 — 자리 순서대로, 같은 상품이 두 자리에 담겼으면 한 줄로 모은다. 이 줄들은 목록
+   * 맨 위에 붙박이로 서고, 아래 검색 결과에서는 빠진다(같은 것이 두 번 보이지 않게).
+   */
+  const pinned = useMemo(() => {
+    const rows: { product: CatalogProduct; slots: GarmentSlot[] }[] = [];
+    for (const { id: slot } of SLOT_BUTTONS) {
+      const product = picked?.[slot];
+      if (!product) continue;
+      const row = rows.find((entry) => entry.product.id === product.id);
+      if (row) row.slots.push(slot);
+      else rows.push({ product, slots: [slot] });
+    }
+    return rows;
+  }, [picked]);
+  const pinnedIds = new Set(pinned.map((row) => row.product.id));
+  const listed = products.filter((row) => !pinnedIds.has(row.id));
+
   /** 윗줄이 내놓는 브랜드 후보. 브랜드를 고르고 나면 사라진다. */
   const brandRows = useMemo(
     () =>
@@ -280,7 +319,7 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
           <Search className="w-3 h-3 text-gray-400 flex-shrink-0" />
           {brand && (
             <span className="inline-flex items-center gap-1 pl-1.5 pr-1 py-0.5 rounded-full bg-gray-900 dark:bg-gray-100 max-w-[60%]">
-              <span className="text-[8px] font-semibold text-white dark:text-gray-900 truncate">
+              <span className="text-[12px] font-semibold text-white dark:text-gray-900 truncate">
                 {brand.displayName}
               </span>
               <button
@@ -307,7 +346,7 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
                   : '카테고리 좁히기 (예: 티셔츠 · ㅌㅅㅊ)'
                 : '브랜드 (2자 이상 — 예: ㄷㅇ · 디올)'
             }
-            className="flex-1 min-w-[90px] bg-transparent text-[8.5px] text-gray-900 dark:text-gray-100 placeholder:text-gray-400 focus:outline-none disabled:cursor-not-allowed"
+            className="flex-1 min-w-[90px] bg-transparent text-[12.75px] text-gray-900 dark:text-gray-100 placeholder:text-gray-400 focus:outline-none disabled:cursor-not-allowed"
           />
         </div>
 
@@ -335,7 +374,7 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
                   : `${brand.displayName} 상품명 (2자 이상)`
                 : '브랜드를 먼저 고르세요'
             }
-            className="flex-1 min-w-0 bg-transparent text-[8.5px] text-gray-900 dark:text-gray-100 placeholder:text-gray-400 focus:outline-none disabled:cursor-not-allowed"
+            className="flex-1 min-w-0 bg-transparent text-[12.75px] text-gray-900 dark:text-gray-100 placeholder:text-gray-400 focus:outline-none disabled:cursor-not-allowed"
           />
           {searching && <Loader2 className="w-3 h-3 text-gray-400 animate-spin flex-shrink-0" />}
         </div>
@@ -350,7 +389,7 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
             disabled={!brand}
             onClick={nextProduct}
             className={cn(
-              'inline-flex items-center gap-1 px-2 py-0.5 rounded border text-[8px] font-medium transition-colors',
+              'inline-flex items-center gap-1 px-2 py-0.5 rounded border text-[12px] font-medium transition-colors',
               brand
                 ? 'border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer'
                 : 'border-gray-100 dark:border-gray-800 text-gray-300 dark:text-gray-700 cursor-not-allowed'
@@ -360,7 +399,7 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
             <span>카테고리부터 다시 고르기</span>
           </button>
 
-          <span className="text-[8px] text-gray-500 dark:text-gray-400 truncate">
+          <span className="text-[12px] text-gray-500 dark:text-gray-400 truncate">
             고른 상품은{' '}
             <span className="font-semibold text-gray-900 dark:text-gray-100">{targetLabel}</span>
             에 담깁니다
@@ -392,7 +431,7 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
                 aria-checked={on}
                 onClick={() => (on ? clearBrand() : pickBrand(row))}
                 className={cn(
-                  'px-1.5 py-0.5 rounded-full border text-[8px] font-medium truncate max-w-full transition-all cursor-pointer',
+                  'px-1.5 py-0.5 rounded-full border text-[12px] font-medium truncate max-w-full transition-all cursor-pointer',
                   on
                     ? 'bg-gray-900 border-gray-900 text-white dark:bg-gray-100 dark:border-gray-100 dark:text-gray-900'
                     : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
@@ -406,15 +445,37 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
       )}
 
       {brands === null && (
-        <div className="mt-2 flex items-center gap-1 text-[8px] text-gray-400">
+        <div className="mt-2 flex items-center gap-1 text-[12px] text-gray-400">
           <Loader2 className="w-3 h-3 animate-spin" />
           <span>브랜드를 불러오는 중…</span>
         </div>
       )}
       {brands?.length === 0 && !error && (
-        <p className="mt-2 text-[8px] text-gray-400 leading-relaxed">
+        <p className="mt-2 text-[12px] text-gray-400 leading-relaxed">
           내재화된 브랜드가 없습니다. /brand-integration 에서 브랜드를 먼저 등록하세요.
         </p>
+      )}
+
+      {/* 담은 상품 — 무엇을 찾고 있든 목록 맨 위에 남는다. ✕ 는 그 상품이 앉은 자리를 다 비운다. */}
+      {pinned.length > 0 && (
+        <div className="mt-2 flex-shrink-0 max-h-[40%] overflow-y-auto vt-scroll pr-1 rounded-md border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/50 dark:bg-emerald-950/20 px-1.5">
+          <p className="pt-1 text-[12px] font-semibold text-emerald-800 dark:text-emerald-300">
+            담은 상품 {pinned.length}
+          </p>
+          {pinned.map(({ product, slots }) => (
+            <Row
+              key={product.id}
+              title={product.name}
+              hint={[product.brandName, product.path].filter(Boolean).join(' · ')}
+              thumb={product.imageUrl}
+              pickedSlots={slots}
+              onPick={() => onPick(product)}
+              onPickSlot={(slot) => onPick(product, slot)}
+              onPreview={() => setPreviewUrl(product.originalImageUrl ?? product.imageUrl)}
+              onRemove={() => slots.forEach(onRemove)}
+            />
+          ))}
+        </div>
       )}
 
       {/* 여기부터 스크롤 — 칩이 여러 줄이 되거나 상품이 서른 건이어도 위 두 칸은 자리를 지킨다. */}
@@ -443,7 +504,7 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
                     setTopQuery('');
                   }}
                   className={cn(
-                    'px-1.5 py-0.5 rounded-full border text-[8px] font-medium max-w-full truncate transition-all cursor-pointer',
+                    'px-1.5 py-0.5 rounded-full border text-[12px] font-medium max-w-full truncate transition-all cursor-pointer',
                     on
                       ? 'bg-gray-900 border-gray-900 text-white dark:bg-gray-100 dark:border-gray-100 dark:text-gray-900'
                       : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
@@ -456,7 +517,7 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
           </div>
         )}
 
-        {products.map((row) => (
+        {listed.map((row) => (
           <Row
             key={row.id}
             title={row.name}
@@ -465,26 +526,26 @@ export default function ProductSearch({ targetLabel, pickedId, onPick }: Product
             thumb={row.imageUrl}
             // 사진이 없으면 피팅에 넣을 것이 없다. 줄은 두되 고르지 못하게 막는다.
             disabled={!row.originalImageUrl}
-            picked={pickedId === row.id}
             onPick={() => onPick(row)}
+            onPickSlot={(slot) => onPick(row, slot)}
             onPreview={() => setPreviewUrl(row.originalImageUrl ?? row.imageUrl)}
           />
         ))}
 
         {brand && !searching && products.length === 0 && (category || narrowing) && (
-          <p className="pt-1.5 text-[8px] text-gray-400">
+          <p className="pt-1.5 text-[12px] text-gray-400">
             {!narrowing
               ? '이 카테고리에 상품이 없습니다.'
               : `'${productQuery.trim()}' 에 맞는 상품이 없습니다.`}
           </p>
         )}
         {total > products.length && (
-          <p className="pt-1.5 text-[8px] text-gray-400">
+          <p className="pt-1.5 text-[12px] text-gray-400">
             {`${total.toLocaleString()}건 중 ${products.length}건 — 더 치면 좁혀집니다.`}
           </p>
         )}
 
-        {error && <p className="pt-1.5 text-[8px] text-red-500">{error}</p>}
+        {error && <p className="pt-1.5 text-[12px] text-red-500">{error}</p>}
       </div>
 
       {/* 담기 전에 이 옷이 맞는지 원본으로 보는 자리. */}
@@ -529,8 +590,10 @@ function Row({
   thumb,
   onPick,
   onPreview,
+  onPickSlot,
+  onRemove,
   disabled = false,
-  picked = false,
+  pickedSlots = [],
 }: {
   title: string;
   hint: string;
@@ -538,8 +601,13 @@ function Row({
   thumb?: string | null;
   onPick: () => void;
   onPreview?: () => void;
+  /** 넘기면 상의 · 하의 · 원피스 단추가 선다. 누른 자리에 곧바로 담는다. */
+  onPickSlot?: (slot: GarmentSlot) => void;
+  /** 넘기면 오른쪽 끝에 ✕ 가 선다 — 담은 것을 뺀다. */
+  onRemove?: () => void;
   disabled?: boolean;
-  picked?: boolean;
+  /** 이 상품이 담겨 있는 자리들. */
+  pickedSlots?: GarmentSlot[];
 }) {
   return (
     <div className="flex items-center gap-1.5 py-1 border-b border-gray-100 dark:border-gray-800">
@@ -549,46 +617,90 @@ function Row({
             type="button"
             onClick={onPreview}
             title={`${title} — 크게 보기`}
-            className="w-8 h-8 flex-shrink-0 rounded overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-zoom-in"
+            className="w-12 h-12 flex-shrink-0 rounded overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-zoom-in"
           >
             <Image
               src={thumb}
               alt={title}
-              width={32}
-              height={32}
+              width={48}
+              height={48}
               unoptimized
               className="w-full h-full object-cover"
             />
           </button>
         ) : (
-          <div className="w-8 h-8 flex-shrink-0 rounded bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <div className="w-12 h-12 flex-shrink-0 rounded bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
             <ImageOff className="w-3 h-3 text-gray-300 dark:text-gray-600" />
           </div>
         ))}
 
-      <button
-        type="button"
-        disabled={disabled}
-        onClick={onPick}
-        className={cn(
-          'flex-1 min-w-0 text-left px-1 py-0.5 rounded transition-colors',
-          disabled
-            ? 'opacity-40 cursor-not-allowed'
-            : 'hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer'
-        )}
-      >
-        <span className="flex items-center gap-1">
-          <span className="block truncate text-[8.5px] font-medium text-gray-900 dark:text-gray-100">
-            {title}
-          </span>
-          {picked && (
-            <span className="flex-shrink-0 text-[7px] font-medium px-1 py-px rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
-              담김
-            </span>
+      <div className="flex-1 min-w-0">
+        <button
+          type="button"
+          disabled={disabled}
+          onClick={onPick}
+          className={cn(
+            'w-full text-left px-1 py-0.5 rounded transition-colors',
+            disabled
+              ? 'opacity-40 cursor-not-allowed'
+              : 'hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer'
           )}
-        </span>
-        {hint && <span className="block truncate text-[7.5px] text-gray-400">{hint}</span>}
-      </button>
+        >
+          <span className="flex items-center gap-1">
+            <span className="block truncate text-[12.75px] font-medium text-gray-900 dark:text-gray-100">
+              {title}
+            </span>
+            {pickedSlots.length > 0 && (
+              <span className="flex-shrink-0 text-[10.5px] font-medium px-1 py-px rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                담김
+              </span>
+            )}
+          </span>
+          {hint && <span className="block truncate text-[11.25px] text-gray-400">{hint}</span>}
+        </button>
+
+        {/* 자리 단추 — 지금 자리와 상관없이 누른 자리에 담는다. 담겨 있는 자리는 채워 보인다. */}
+        {onPickSlot && (
+          <div className="flex gap-1 px-1 pt-0.5">
+            {SLOT_BUTTONS.map((slot) => {
+              const on = pickedSlots.includes(slot.id);
+              return (
+                <button
+                  key={slot.id}
+                  type="button"
+                  disabled={disabled}
+                  onClick={() => onPickSlot(slot.id)}
+                  title={`${title} → ${slot.label}에 담기`}
+                  className={cn(
+                    'px-1.5 py-px rounded border text-[11.25px] font-medium transition-colors',
+                    on
+                      ? 'bg-gray-900 border-gray-900 text-white dark:bg-gray-100 dark:border-gray-100 dark:text-gray-900'
+                      : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300',
+                    disabled
+                      ? 'opacity-40 cursor-not-allowed'
+                      : !on && 'hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer',
+                    on && !disabled && 'cursor-pointer'
+                  )}
+                >
+                  {slot.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {onRemove && (
+        <button
+          type="button"
+          onClick={onRemove}
+          title={`${title} 빼기`}
+          aria-label={`${title} 빼기`}
+          className="self-start flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-900 hover:bg-gray-200 dark:hover:text-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+        >
+          <X className="w-3.5 h-3.5" />
+        </button>
+      )}
     </div>
   );
 }
