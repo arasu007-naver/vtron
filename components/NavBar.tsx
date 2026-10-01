@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   Database,
+  FileText,
   Film,
   LayoutDashboard,
   Link2,
@@ -14,6 +15,8 @@ import {
   Sparkles,
   TerminalSquare,
   UserCheck,
+  Users,
+  Building2,
 } from "lucide-react";
 import { logout } from "@/lib/auth-client";
 
@@ -71,10 +74,28 @@ const LINKS = [
     title: "브랜드 → 최상위 카테고리 → 최하위 카테고리 → 상품 계층을 우리 DB 에 넣는다",
   },
   {
+    href: "/contracts",
+    label: "계약/신청",
+    icon: FileText,
+    title: "STMX↔크리에이터 · STMX↔브랜드 · 크리에이터↔브랜드 직접 연결 신청서",
+  },
+  {
     href: "/creator-req",
     label: "Creator 요청",
     icon: UserCheck,
     title: "Creator 역할 신청(user_biz_request) 및 선호 브랜드 목록 조회",
+  },
+  {
+    href: "/admin/creators",
+    label: "크리에이터",
+    icon: Users,
+    title: "크리에이터 계약 신청 관리 (STMX↔크리에이터 · 직접 연결)",
+  },
+  {
+    href: "/admin/brands",
+    label: "브랜드 관리",
+    icon: Building2,
+    title: "브랜드 ShopMy 제휴 메타 · 수수료율 · 스타일 코드 관리",
   },
 ] as const;
 
