@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { unlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import Anthropic from "@anthropic-ai/sdk";
 
 // 관찰: 현재 production Vision Producer V1_3 (37개 파라미터 + DM 디테일 관찰층).
 //   SR · DM 엔진이 V1_3 에 묶여 있고, EI 는 V1_1 과 같은 37개 파라미터를 V1_3 에서 그대로 읽는다.
@@ -13,7 +14,8 @@ import { buildPrompt as buildProducerPrompt } from "./scoring/01_ENGINES/ITEM_VI
 import { validateColorObservation } from "./engine/run/color_recovery/color_contract_v1.js";
 import { buildCombinedPromptV2 } from "./engine/run/onecall_prototype/onecall_prototype_v1.js";
 import { buildPrompt as buildRootPrompt } from "./engine/producer_prompt_v1.js";
-import { makeAnthropicVisionFn } from "./engine/run/anthropic_vision_fn.js";
+import { imageToBlock } from "./engine/run/anthropic_vision_fn.js";
+import { anthropicClientOptions } from "./api-key";
 import { judgeStyleId } from "./judge";
 import {
   ENGINE_AXES,
@@ -38,6 +40,8 @@ import { STYLE_IDS } from "./style-ids";
 const TIMEOUT_MS = 300_000;
 /** 관찰 출력이 잘리면 JSON 이 깨지므로 엔진 기본값(8192)보다 넉넉히 준다 */
 const VISION_MAX_TOKENS = 32_000;
+/** 엔진 anthropic_vision_fn 의 기본 모델과 같다 (precision-first) */
+const DEFAULT_VISION_MODEL = "claude-opus-4-8";
 
 // 색상 관찰 지시문 — onecall 프로토타입의 Sequential One-Call V2 추가 지시를 그대로 떼어 쓴다.
 // (결합 프롬프트 = 루트 Producer 프롬프트 + 추가 지시. 앞부분을 잘라내면 추가 지시만 남는다.)
@@ -77,10 +81,29 @@ export interface ExtractInput {
 
 /** Vision 호출 → 관찰 envelope (+ 대상별 색상 · 연출 유형) */
 async function observe(image: Buffer, fileName: string, prompt: string) {
-  const model = process.env.STYLE_EX_MODEL || undefined;
-  const baseFn = makeAnthropicVisionFn({ model, maxTokens: VISION_MAX_TOKENS });
-  // 엔진의 주입 지점(visionFn)에서 프롬프트만 바꿔 끼운다 — 엔진 코드는 건드리지 않는다.
-  const visionFn = (_enginePrompt: string, img: unknown, opts: unknown) => baseFn(prompt, img, opts);
+  const model = process.env.STYLE_EX_MODEL || DEFAULT_VISION_MODEL;
+  const client = new Anthropic(anthropicClientOptions());
+  // 엔진의 주입 지점(visionFn). 엔진 anthropic_vision_fn 과 같은 요청(이미지 + 프롬프트, 1회)을 SDK 로 보낸다 —
+  // 워크스페이스 헤더(anthropic-workspace-id)를 붙일 수 있게 하기 위해서다. 이미지 블록은 엔진의
+  // imageToBlock 이 파일 바이트로 미디어 타입을 판별해 만든다. 프롬프트는 엔진 것 대신 style-ex 프롬프트를 쓴다.
+  // 출력이 길어 스트리밍으로 받는다 (긴 비스트리밍 요청은 HTTP 타임아웃 위험).
+  const visionFn = async (_enginePrompt: string, img: unknown) => {
+    const message = await client.messages
+      .stream({
+        model,
+        max_tokens: VISION_MAX_TOKENS,
+        messages: [
+          {
+            role: "user",
+            // imageToBlock 은 JS 라 타입이 넓게 추론된다 — 실제 모양은 { type: "image", source: { type: "base64", … } }
+            content: [imageToBlock(img) as Anthropic.ImageBlockParam, { type: "text", text: prompt }],
+          },
+        ],
+      })
+      .finalMessage();
+    if (message.stop_reason === "max_tokens") throw new Error("관찰 출력이 max_tokens 에서 잘렸습니다.");
+    return message.content.flatMap((b) => (b.type === "text" ? [b.text] : [])).join("\n");
+  };
 
   // 미디어 타입은 확장자가 아니라 파일 바이트로 판별한다(엔진 D5 규칙).
   // 엔진의 판별기는 파일 경로 입력에서만 동작하므로 임시 파일로 넘긴다.

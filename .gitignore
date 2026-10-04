@@ -51,3 +51,6 @@ services/product-crop/naver_sample*/
 
 # 대량 등록 기록(register-catalog-products)
 logs/
+
+# style-ex 부위 크롭 저장 폴더 (로컬)
+/.style-ex-crops/

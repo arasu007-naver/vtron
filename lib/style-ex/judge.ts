@@ -1,5 +1,6 @@
 import "server-only";
 import Anthropic from "@anthropic-ai/sdk";
+import { anthropicClientOptions } from "./api-key";
 import { z } from "zod";
 import { AXES, STYLE_IDS, type AxisKey } from "./style-ids";
 
@@ -152,7 +153,7 @@ export async function judgeStyleId({ targets: input, prompt }: JudgeInput): Prom
   const instructions = prompt?.trim() ? prompt : DEFAULT_JUDGE_PROMPT;
   const content = `${instructions}\n\n[관찰값]\n${JSON.stringify({ targets }, null, 2)}`;
 
-  const client = new Anthropic();
+  const client = new Anthropic(anthropicClientOptions());
   try {
     const response = await client.beta.messages.create({
       model: MODEL,

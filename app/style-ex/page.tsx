@@ -13,7 +13,7 @@
    그대로면 서버가 기본 프롬프트를 쓴다. */
 
 import { useEffect, useRef, useState } from "react";
-import { ImagePlus, Loader2, RotateCcw, ScanSearch } from "lucide-react";
+import { Crop, ImagePlus, Loader2, RotateCcw, ScanSearch } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
 
 type Status = "idle" | "running" | "done" | "error";
@@ -66,6 +66,24 @@ const SOURCE_LABEL: Record<Source, string> = {
   LLM_FALLBACK: "LLM 대체",
 };
 
+/** 부위 크롭 결과 (/api/style-ex/crops) */
+interface CropResult {
+  ok: boolean;
+  dir?: string;
+  error?: string;
+  crops?: Array<{
+    id: string;
+    param: string;
+    value: string;
+    component: string | null;
+    descriptor: string | null;
+    found: boolean;
+    file: string | null;
+    data_url: string | null;
+  }>;
+  skipped?: Array<{ param: string; value: string; reason: string }>;
+}
+
 interface Summary {
   styleId: StyleIdResult | null;
   judgement: LlmJudgement | null;
@@ -84,6 +102,10 @@ export default function StyleExPage() {
   const [result, setResult] = useState("");
   const [summary, setSummary] = useState<Summary | null>(null);
   const [elapsed, setElapsed] = useState<number | null>(null);
+  // 부위 크롭 — 추출 결과의 관찰 envelope 가 있어야 할 수 있다
+  const [envelope, setEnvelope] = useState<unknown>(null);
+  const [cropping, setCropping] = useState(false);
+  const [crops, setCrops] = useState<CropResult | null>(null);
 
   // 기본 프롬프트 (관찰 · 판정)
   useEffect(() => {
@@ -121,6 +143,8 @@ export default function StyleExPage() {
     setFile(picked);
     setResult("");
     setSummary(null);
+    setEnvelope(null);
+    setCrops(null);
     setStatus("idle");
     setElapsed(null);
   };
@@ -130,6 +154,8 @@ export default function StyleExPage() {
     setStatus("running");
     setResult("");
     setSummary(null);
+    setEnvelope(null);
+    setCrops(null);
     const started = performance.now();
 
     const body = new FormData();
@@ -143,12 +169,30 @@ export default function StyleExPage() {
       const data = await res.json();
       setResult(JSON.stringify(data, null, 2));
       setSummary({ styleId: data.styleId ?? null, judgement: data.judgement ?? null });
+      setEnvelope(data.observation?.ok ? data.observation.envelope : null);
       setStatus(res.ok && data.observation?.ok !== false && data.styleId?.ok ? "done" : "error");
     } catch (e) {
       setResult(e instanceof Error ? e.message : String(e));
       setStatus("error");
     } finally {
       setElapsed((performance.now() - started) / 1000);
+    }
+  };
+
+  const handleCrop = async () => {
+    if (!file || !envelope || cropping) return;
+    setCropping(true);
+    setCrops(null);
+    const body = new FormData();
+    body.append("image", file);
+    body.append("envelope", JSON.stringify(envelope));
+    try {
+      const res = await authFetch("/api/style-ex/crops", { method: "POST", body });
+      setCrops(await res.json());
+    } catch (e) {
+      setCrops({ ok: false, error: e instanceof Error ? e.message : String(e) });
+    } finally {
+      setCropping(false);
     }
   };
 
@@ -267,9 +311,20 @@ export default function StyleExPage() {
               {status === "error" && (
                 <span className="text-xs font-normal text-[var(--color-danger)]">실패</span>
               )}
+              <button
+                type="button"
+                onClick={handleCrop}
+                disabled={!envelope || cropping || status === "running"}
+                title={envelope ? "부위가 정해진 관찰값마다 256×256 크롭을 저장" : "먼저 추출하세요"}
+                className="ml-auto btn btn-secondary px-3 py-1 rounded-full flex items-center gap-1.5 text-xs font-normal disabled:opacity-50"
+              >
+                {cropping ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Crop className="w-3.5 h-3.5" />}
+                {cropping ? "크롭 중…" : "부위 크롭"}
+              </button>
             </div>
             <div className="flex-1 min-h-0 mx-4 mb-4 overflow-auto rounded border border-[var(--color-divider)] bg-white vt-scroll">
               {summary?.styleId && <StyleIdCard summary={summary} />}
+              {crops && <CropGrid result={crops} />}
               <pre className="p-3 font-[family-name:var(--font-mono)] text-xs leading-relaxed whitespace-pre-wrap break-all">
                 {status === "running"
                   ? "관찰 → 스코어링 → 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
@@ -354,6 +409,51 @@ function StyleIdCard({ summary }: { summary: Summary }) {
       )}
       {judgement && !judgement.ok && (
         <p className="text-xs text-[var(--color-danger)]">LLM 판정 실패: {judgement.error}</p>
+      )}
+    </div>
+  );
+}
+
+/** 부위 크롭 썸네일 — 각 크롭이 어느 관찰값에서 나왔는지 함께 보여 준다 */
+function CropGrid({ result }: { result: CropResult }) {
+  if (!result.ok) {
+    return (
+      <div className="p-3 border-b border-[var(--color-divider)] text-sm text-[var(--color-danger)]">
+        부위 크롭 실패: {result.error}
+      </div>
+    );
+  }
+  const found = result.crops?.filter((c) => c.found) ?? [];
+  const missed = result.crops?.filter((c) => !c.found) ?? [];
+  const where = (c: { component: string | null; descriptor: string | null }) =>
+    [c.component, c.descriptor].filter(Boolean).join("/");
+  return (
+    <div className="p-3 border-b border-[var(--color-divider)] text-sm space-y-2">
+      <p className="text-xs text-black/60">
+        저장 위치: <span className="font-[family-name:var(--font-mono)] select-all">{result.dir}</span>
+      </p>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(128px,1fr))] gap-2">
+        {found.map((c) => (
+          <figure key={c.id} className="space-y-1">
+            {/* data: URL 이라 next/image 최적화를 쓸 수 없다 */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={c.data_url ?? ""} alt={`${c.param} = ${c.value}`} className="w-full aspect-square object-contain border border-[var(--color-divider)] rounded" />
+            <figcaption className="text-xs leading-tight">
+              <span className="font-semibold">{c.param}</span> = {c.value}
+              {where(c) && <span className="text-black/50"> @ {where(c)}</span>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      {missed.length > 0 && (
+        <p className="text-xs text-black/50">
+          이미지에서 찾지 못함: {missed.map((c) => `${c.param}=${c.value}${where(c) ? "@" + where(c) : ""}`).join(" · ")}
+        </p>
+      )}
+      {(result.skipped?.length ?? 0) > 0 && (
+        <p className="text-xs text-black/50">
+          부위 없음(건너뜀): {result.skipped!.map((c) => `${c.param}=${c.value}`).join(" · ")}
+        </p>
       )}
     </div>
   );

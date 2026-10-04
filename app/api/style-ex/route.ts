@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { MISSING_KEY_MESSAGE, anthropicApiKey } from "@/lib/style-ex/api-key";
 import { authenticate, unauthorized } from "@/lib/supabase/route";
 import { defaultPrompt, extractStyle } from "@/lib/style-ex/extract";
 import { DEFAULT_JUDGE_PROMPT } from "@/lib/style-ex/judge";
@@ -30,9 +31,9 @@ export async function POST(request: Request) {
   const auth = await authenticate(request);
   if (!auth) return unauthorized();
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!anthropicApiKey()) {
     return NextResponse.json(
-      { error: "ANTHROPIC_API_KEY 가 설정되지 않았습니다. .env.local 에 추가하세요." },
+      { error: MISSING_KEY_MESSAGE },
       { status: 500 }
     );
   }
