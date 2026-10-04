@@ -1,0 +1,156 @@
+{
+  "unit_id": "REF_000849#SU2",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "0ef0b632eba02f737e5a3ebb4f48c522d752871c65b22caa3aa537947c41ec10",
+  "projected_hash": "c8e9cb9092bd9f99a20123ac0fba110d2092bb3cadd9341b61f62881c4390b3d",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "mid-weight heathered woven cloth"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth heathered suiting-type cloth"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "melange/heather yarn is not a constructed treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid gray, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "front slant pockets and cargo flap pockets on legs"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          },
+          {
+            "location": "Leg",
+            "construction": "Applied",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt or hardware attachment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric leg and pocket layout"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "cargo pockets, relaxed styling"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "wide leg keeps width to hem, no flare or taper"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "lower",
+        "evidence": [
+          "wide roomy leg with ease"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem reaches to near the ankle over shoes"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds soft shape with wide falling leg"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "gray",
+          "carrier_kind": "closure",
+          "carrier_ref": "Button"
+        }
+      ],
+      "evidence": {
+        "primary": "heathered mid gray cloth",
+        "lightness": "medium tone",
+        "usage": "one color, low-contrast fly button",
+        "effect": "matte"
+      },
+      "color_notes": "melange/heathered yarn appearance"
+    }
+  }
+}

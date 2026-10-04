@@ -1,0 +1,170 @@
+{
+  "unit_id": "REF_000642#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "e1441eee5023ffa19eb601c952ed80c810cdca1d4f2d62dd67633500edbbcb80",
+  "projected_hash": "5235afcd43ae8dbf17103425023505a8a8b320aac7eb587f7bc15b1cd2cc9c17",
+  "input": {
+    "category": "Skirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth technical metallic-coated fabric",
+          "no knit/weave grain readable"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "metallic-coated smooth shell fabric",
+              "consistent with synthetic metallic textile"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "accordion pleats run whole skirt body",
+          "high metallic light-return"
+        ],
+        "values": [
+          {
+            "value": "Pleated",
+            "evidence": [
+              "continuous narrow accordion pleats top to hem"
+            ],
+            "locations": [
+              {
+                "component": "Skirt Body"
+              }
+            ]
+          },
+          {
+            "value": "Reflective",
+            "evidence": [
+              "strong mirror-like metallic light return along pleat faces"
+            ],
+            "locations": [
+              {
+                "component": "Skirt Body"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no repeating printed motif; solid metallic tone",
+          "vertical lines are pleat geometry, not print"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, text or image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "clean pleated waist and body with no pocket openings visible"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim attachments visible"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "pleats mirror side to side",
+          "hem line consistent around; no single-sided panel or edge"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt expands outward from waist toward hem",
+          "pleats fan out into fuller lower body"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "lower",
+        "evidence": [
+          "waist/hip seat sits close, body flares via pleats",
+          "not clinging, not oversized frame"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Midi",
+        "region": "lower",
+        "evidence": [
+          "hem falls below the calf, above the ankle on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "pleats hold defined shape yet swing and yield with movement",
+          "shape supported by pleating not by stiff self-body"
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "continuous pleated hem, no split visible"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gold",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "metallic",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "champagne/bronze metallic gold across whole skirt",
+        "lightness": "mid-value metallic, neither light nor dark",
+        "usage": "one continuous metallic color",
+        "effect": "clear metallic sheen-as-color"
+      },
+      "color_notes": "metallic champagne/bronze with strong highlight-to-shadow shift along pleat faces from reflectivity"
+    }
+  }
+}

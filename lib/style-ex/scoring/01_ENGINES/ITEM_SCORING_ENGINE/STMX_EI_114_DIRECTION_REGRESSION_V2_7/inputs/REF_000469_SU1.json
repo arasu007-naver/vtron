@@ -1,0 +1,292 @@
+{
+  "unit_id": "REF_000469#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "d509794030254d9524065d0cc4bb6e3d4521f0c799947674978731d5bd866a61",
+  "projected_hash": "3a40453efcaea8676ec5ff0936ac3215e4f438bf6c155380eb46b738ca897189",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "soft jersey/knit body of a track jacket"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "soft stretch jersey body typical of track jacket"
+            ]
+          },
+          {
+            "value": "Velvet",
+            "evidence": [
+              "plush lustrous striped tape running down the sleeves"
+            ],
+            "locations": [
+              {
+                "component": "Sleeve"
+              }
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth plain jersey body, no distinct constructed surface treatment on the body"
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Repeat",
+        "region": "whole_garment",
+        "evidence": [
+          "all-over black-and-white zebra stripe motif across body and sleeves"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "small placed logo emblem on the left chest"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "two zippered openings at the lower front"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "multicolor velvet stripe tape applied along the sleeves"
+        ],
+        "values": [
+          {
+            "value": "Piping",
+            "evidence": [
+              "narrow applied velvet stripe running down the outer sleeve seam"
+            ],
+            "locations": [
+              {
+                "component": "Sleeve",
+                "descriptor": "Edge"
+              }
+            ]
+          }
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, epaulette, fur, fringe or other canonical attachment visible"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric left/right construction of zip, pockets and stripes"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "upper",
+        "evidence": [
+          "body drapes loosely away from torso",
+          "soft blousing above the hem"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem descends past waist into hip zone, covering hip area over swimwear"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "soft cloth follows the body with gentle drape at hem and sleeves"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves run full length to the wrists"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "low standing self-fabric band at the neck with drawstring hood-style casing"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "ribbed elasticated band at the lower hem edge"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "zip runs the full length of the front from neck to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "visible metal front zip with gold pull"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight body with no inward waist shaping, hem gathered evenly by rib band"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, no deliberate enlargement"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Ribbed",
+        "region": "upper",
+        "evidence": [
+          "elasticated ribbed knit band gathering the sleeve ends at the wrists"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ribbed cuff band occupies an ordinary depth against sleeve width at wrist"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "stand band covers an ordinary share of the neck span"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "white_family",
+      "color_lightness": "light",
+      "color_usage": "multi",
+      "multi_color": true,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "black",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Repeat"
+        },
+        {
+          "color_family": "red",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Panel"
+        },
+        {
+          "color_family": "orange",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Panel"
+        },
+        {
+          "color_family": "gold",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Panel"
+        },
+        {
+          "color_family": "blue",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Panel"
+        },
+        {
+          "color_family": "gold",
+          "carrier_kind": "closure",
+          "carrier_ref": "Zipper"
+        },
+        {
+          "color_family": "uncertain",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        }
+      ],
+      "evidence": {
+        "primary": "black-and-white zebra print dominated by white ground",
+        "lightness": "overall light with white base",
+        "usage": "zebra black/white plus multicolor velvet sleeve stripes",
+        "effect": "no neon or metallic body color"
+      },
+      "color_notes": "rainbow velvet side stripe runs through red, orange, gold, and blue down each sleeve"
+    }
+  }
+}

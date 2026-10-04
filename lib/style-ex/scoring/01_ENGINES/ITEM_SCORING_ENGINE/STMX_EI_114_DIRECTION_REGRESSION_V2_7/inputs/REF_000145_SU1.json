@@ -1,0 +1,282 @@
+{
+  "unit_id": "REF_000145#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "0e1b726dd4f70596f320f1ff2c9d9cef0cc4b1e42622a049b4f77d4ab526e380",
+  "projected_hash": "7aae5f1d94398bee8af00d89db913d6e5baad5489658c8343e85e63607f8d826",
+  "input": {
+    "category": "Coat",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "down-filled puffer channels",
+          "technical shell fabric"
+        ],
+        "values": [
+          {
+            "value": "Padding",
+            "evidence": [
+              "baffled down-filled quilted channels across body"
+            ]
+          },
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "glossy technical shell on body",
+              "matte woven upper yoke and shoulders"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "CEO adjudication"
+            ],
+            "value": "Quilted"
+          },
+          {
+            "evidence": [
+              "CEO adjudication"
+            ],
+            "value": "Glossy",
+            "finish_realization": "Enhanced",
+            "coverage": "Dominant"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Quilted"
+          },
+          {
+            "value": "Glossy",
+            "finish_realization": "Enhanced",
+            "coverage": "Dominant"
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "The North Face logo printed on chest",
+          "square logo patch on sleeve"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered ruffle elements"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping trim visible"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "drawcord toggles at hood"
+        ],
+        "values": [
+          {
+            "value": "Other",
+            "descriptor": "hood drawcord toggles",
+            "evidence": [
+              "cord-lock adjusters at hood edges"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric left/right construction"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "moderate ease with slight waist taper",
+          "not close nor markedly oversized"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "garment shown as product image with no worn body to locate hem"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "down loft holds volume away from body",
+          "coat stands in a full self-supporting silhouette"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend full length to wrist with elastic cuffs"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits at natural shoulder point"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "rounded continuous shoulder line into sleeve",
+          "no readable endpoint on shoulder line"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "distinct standing black band at neck below hood opening"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain finished quilted hem, no rib band"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "attached hood with drawcord adjusters"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "zipper runs full length from neck to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "central two-way front zipper visible full length"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Utility",
+        "region": "whole_garment",
+        "evidence": [
+          "technical shell, drawcord hood, functional outdoor down construction"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "silhouette narrows in at the waist and widens below"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary down sleeve envelope, bulk from insulation only"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Coat"
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat",
+            "evidence": [
+              "set-in slash opening along vertical seam",
+              "opening flush with body, no standoff volume"
+            ]
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "white_family",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        }
+      ],
+      "evidence": {
+        "primary": "black shell across whole garment",
+        "lightness": "deep black tone throughout",
+        "usage": "black body with small white logo",
+        "effect": "glossy sheen is a finish, not a chromatic effect"
+      },
+      "color_notes": null
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "document": "CODE_FREEZE_SEAL_DM_ENGINE_V1_FINAL",
+  "engine_identity": "STMX_DM_ENGINE_V1",
+  "engine_directory": "STMX_DM_DIRECTION_FIRST_ENGINE_V1",
+  "issued": "2026-09-13",
+  "order": "STMX DM DIRECTION-BSC-1 OBSERVATION CONTRACT COVERAGE CORRECTION + FULL ENGINE FINAL FREEZE V1",
+  "★_status": "★ DM FULL ENGINE = COMPLETE_AND_CLOSED_AND_FROZEN — every full-freeze hard condition (§51) passed; DIRECTION-BSC-1 closed by observation-contract coverage correction",
+  "★_separate_baselines_s44_s49": {
+    "direction_semantic_baseline": {
+      "status": "FINAL CLOSED_AND_FROZEN — CEO 2026-09-10 (V3) · unchanged by every order since",
+      "modules": [
+        "engine/dm_admission_v1.js",
+        "engine/dm_direction_resolver_v1.js"
+      ],
+      "byte_identical_to_v3_seal": true,
+      "direction_sub_aggregate_sha256": "ba5e84613bd3c7a8a6f5e6e0f397a46912acb85811b0cd828668f9cd23124413",
+      "v3_seal_aggregate_sha256": "17f915af3e28a60fd09d84f35055220a5d8eaaab8c51991baf2f31fae19fcab3"
+    },
+    "strength_semantic_baseline": {
+      "status": "CLOSED_AND_FROZEN — CEO 2026-09-12 (D-1 · D-2 · D-4) · unchanged by this order",
+      "modules": [
+        "engine/dm_strength_resolver_v1.js"
+      ]
+    },
+    "final_score_baseline": {
+      "status": "CLOSED_AND_FROZEN — CEO 2026-09-12 (D-3 · D-5 · §28 map) · unchanged by this order",
+      "modules": [
+        "engine/dm_ordinal_projector_v1.js",
+        "engine/dm_engine_v1.js (orchestrator call site)"
+      ]
+    },
+    "m1_m2_refinement": {
+      "status": "frozen · unchanged",
+      "modules": [
+        "engine/dm_m1_m2_refinement_v1.js",
+        "STMX_DM_OBSERVATION_LAYER_IMPLEMENTATION_V1/engine/dm_m1_predicate_v1.js"
+      ]
+    },
+    "observation_contract_dependency": {
+      "id": "STMX_VISION_PRODUCER_V1_3",
+      "status": "PRODUCTION — promoted 2026-09-13",
+      "changed_by_this_order": true,
+      "previous": "STMX_VISION_PRODUCER_V1_2 (HOLD build · rollback target)",
+      "what_changed": "realization-container coverage (all 7 families) · validator gate + Direction/Strength leak rejection · prompt DM guide. ⛔ No field, value, family, Primitive, parameter or Direction rule added."
+    }
+  },
+  "engine_modules": [
+    {
+      "file": "engine/dm_admission_v1.js",
+      "sha256": "2fb03acb211dcff99fa0ab757cbfed01ba3b9a1b306e3a44dee5ca86a8b62058",
+      "bytes": 7903,
+      "executable_sha256": "f186a59345c0205f522b39a438415358b62d5dbeb2d11a510d52cc70ba506ac5",
+      "hold_build_sha256": "2fb03acb211dcff99fa0ab757cbfed01ba3b9a1b306e3a44dee5ca86a8b62058",
+      "changed_by_this_order": false
+    },
+    {
+      "file": "engine/dm_direction_resolver_v1.js",
+      "sha256": "7f0c54a9bd4b1c7786cf56664b7f5b665b5bed30e1f1c4821d78eb31617c0058",
+      "bytes": 19480,
+      "executable_sha256": "a2e84b7f73636bbd5aa01514a88d1944c14f02873adabb92eab425d20570cd50",
+      "hold_build_sha256": "7f0c54a9bd4b1c7786cf56664b7f5b665b5bed30e1f1c4821d78eb31617c0058",
+      "changed_by_this_order": false
+    },
+    {
+      "file": "engine/dm_engine_v1.js",
+      "sha256": "96407c555d55f6dd67108ecda8da9a5620f2ec3e7f93f7218caa9bf24b1b7ddd",
+      "bytes": 6012,
+      "executable_sha256": "77c96cede5c0c69d7493d32d240190336c33cc9f4d1b53c6e6fdb76923b5633d",
+      "hold_build_sha256": "96407c555d55f6dd67108ecda8da9a5620f2ec3e7f93f7218caa9bf24b1b7ddd",
+      "changed_by_this_order": false
+    },
+    {
+      "file": "engine/dm_m1_m2_refinement_v1.js",
+      "sha256": "af5b64ddcf0630b040f8abbbae127652ad1e69d8f9f2eb9218fc320c46b2707c",
+      "bytes": 6509,
+      "executable_sha256": "d41b2cf7ff9009d79f4cefa95cd6b0765294ab2f80d19aab2a82ec2e6c6856b1",
+      "hold_build_sha256": "af5b64ddcf0630b040f8abbbae127652ad1e69d8f9f2eb9218fc320c46b2707c",
+      "changed_by_this_order": false
+    },
+    {
+      "file": "engine/dm_ordinal_projector_v1.js",
+      "sha256": "4b6f5aecf1b6e9b8f293c53105c420b33a795d4883e5ac481d8e78473c6a0ff9",
+      "bytes": 10262,
+      "executable_sha256": "52226ab65df5cde8f494433043dbeaae8edd2f7ba0203a1160e72b13a8fd04f6",
+      "hold_build_sha256": "4b6f5aecf1b6e9b8f293c53105c420b33a795d4883e5ac481d8e78473c6a0ff9",
+      "changed_by_this_order": false
+    },
+    {
+      "file": "engine/dm_strength_resolver_v1.js",
+      "sha256": "69f6e5c0b3eed926ba662ecfdd5888be2926a048ff6e72a96d04553726772bc0",
+      "bytes": 16819,
+      "executable_sha256": "48fb0c2d104d91e05d5d93f0b3e6f729e8795628d5d927e7a969e8a54a1c2849",
+      "hold_build_sha256": "69f6e5c0b3eed926ba662ecfdd5888be2926a048ff6e72a96d04553726772bc0",
+      "changed_by_this_order": false
+    }
+  ],
+  "m1_predicate": {
+    "file": "STMX_DM_OBSERVATION_LAYER_IMPLEMENTATION_V1/engine/dm_m1_predicate_v1.js",
+    "sha256": "2ae30206eb27921da5d5606c242c0278769dfac5c42cb05bee0366dda29ef295",
+    "bytes": 6430,
+    "bound_by_name_from": "engine/dm_m1_m2_refinement_v1.js",
+    "unchanged": true
+  },
+  "engine_aggregate_sha256": "fd15a9a9b211a2fbd438844dc524dcd3ddd2456f7be55e5c42d399198a0fdf0e",
+  "★_engine_aggregate_equals_hold_build": true,
+  "observation_contract": {
+    "id": "STMX_VISION_PRODUCER_V1_3",
+    "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3",
+    "modules": [
+      {
+        "file": "producer_rules_v1.js",
+        "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+        "bytes": 74550,
+        "v1_2_sha256": "3f6c5540b47eda6a282f582905bd0c562fba61c732f597d6b144b660f783af13",
+        "changed_vs_v1_2": true
+      },
+      {
+        "file": "producer_prompt_v1.js",
+        "sha256": "9779cc44716a241d23127bedf8ab9fb79ff7a3e73f2e2e642b6083779996f23f",
+        "bytes": 161641,
+        "v1_2_sha256": "230c6c57eb3d430b0cedd44012fb8c692b53a652f16ad067e2bb77d246968a9d",
+        "changed_vs_v1_2": true
+      },
+      {
+        "file": "producer_validator_v1.js",
+        "sha256": "26ad25a8a2b3477e83f4858ec5fe6450040025a26a2efab9bb4599d8416e2d81",
+        "bytes": 69678,
+        "v1_2_sha256": "0d773394c1cbb06af9ebc63d3f15c71346c867e9bc77737e3026c50f86d34fbb",
+        "changed_vs_v1_2": true
+      },
+      {
+        "file": "producer_controller_v1.js",
+        "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b",
+        "bytes": 45575,
+        "v1_2_sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b",
+        "changed_vs_v1_2": false
+      },
+      {
+        "file": "producer_model_adapter_v1.js",
+        "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+        "bytes": 3881,
+        "v1_2_sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+        "changed_vs_v1_2": false
+      }
+    ],
+    "contract_document": "STMX_VISION_PRODUCER_CONTRACT_V1_3.json",
+    "aggregate_sha256": "4f38eedc1d65d7e34560d79ff814b7806c183358174faabe51cb556aa0e3cd08"
+  },
+  "full_identity_sha256": "bb82c8ff25943270d52c94d9acc28a3024c83dff9c66558ea12900f81bc98a5e",
+  "★_full_identity_definition": "sha256(\"ENGINE:\" + engine_aggregate_sha256 + \"\\nOBSERVATION:STMX_VISION_PRODUCER_V1_3:\" + observation_contract.aggregate_sha256) — semantic engine identity and observation-contract identity are recorded separately and combined only here",
+  "⛔_source_hash_is_identity_not_behavioural_proof": "⛔ sha256 / executable_sha256 record WHICH bytes are frozen. Behavioural claims rest on the regression evidence (deliverables 09–15 · 20), never on hash equality (V4.3 rule).",
+  "superseded_seals": [
+    {
+      "order": "STMX DM STRENGTH + FINAL SCORE IMPLEMENTATION AND CLOSURE V1 (2026-09-12)",
+      "document": "STMX_DM_ENGINE_V1_PRODUCTION_CLOSURE/CODE_FREEZE_SEAL_DM_ENGINE_V1.json",
+      "aggregate_sha256": "fd15a9a9b211a2fbd438844dc524dcd3ddd2456f7be55e5c42d399198a0fdf0e",
+      "status_then": "HOLD (DIRECTION-BSC-1)",
+      "role_now": "historical HOLD-build seal — same engine byte-set; superseded as the production seal because the observation-contract dependency moved to V1_3. ⛔ It is not rewritten to claim it was complete."
+    },
+    {
+      "order": "V3 (Direction closure, re-issued V4 / corrected V4.2 / V4.3)",
+      "document": "STMX_DM_DIRECTION_PRODUCTION_CLOSURE_V3/CODE_FREEZE_SEAL_V3.json",
+      "aggregate_sha256": "17f915af3e28a60fd09d84f35055220a5d8eaaab8c51991baf2f31fae19fcab3",
+      "role_now": "historical DIRECTION seal — the Direction semantic baseline evidence"
+    }
+  ]
+}

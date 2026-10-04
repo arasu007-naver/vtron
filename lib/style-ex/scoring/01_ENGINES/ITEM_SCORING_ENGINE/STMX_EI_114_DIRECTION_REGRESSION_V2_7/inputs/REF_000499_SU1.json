@@ -1,0 +1,219 @@
+{
+  "unit_id": "REF_000499#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "7926d97f1d8d992f28cea33c17e95f155d95d0ee82cf14b159b37aed53ba510f",
+  "projected_hash": "6fb47b2b9802897b3743b5b8671af50b9de290a9722f9987a29da4788f0d5b84",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "soft matte fleece pile surface",
+          "solid uniform cream color"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "fleece pile texture typical of synthetic fleece"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "soft brushed fleece nap across body"
+        ],
+        "values": [
+          {
+            "value": "Textured Knit",
+            "evidence": [
+              "visible fleece pile/nap giving a raised fuzzy body texture"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid cream cloth with no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "small woven Columbia brand label on chest"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "side-seam pocket openings visible at lower front"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fur, fringe or epaulette present"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "centre zipper, symmetric collar, level hem, mirrored side pockets"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "body carries ordinary room through chest and waist",
+          "shoulder line sits at natural shoulders, hem hangs near the body"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "worn on visible body, hem descends into hip region covering the hip line"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "fleece holds a soft shape but yields readily, falls with light body"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "armholes are bound edges with no sleeve, arms in a contrast grey top"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "armhole seam forms a clear endpoint at the natural shoulder"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder line runs round and continuous into the armhole, no held endpoint"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "distinct self-fabric standing band collar at the neck, separate from any hood"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain self-fabric hem, no ribbed band at the lower edge"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "neck finished with a stand collar, no hood at neck or upper back"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "zipper runs the full length of the front from collar to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "visible full-length front zipper with pull"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "plain fleece vest with simple zip and side pockets, no tailoring or utility construction"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "stand collar covers an ordinary share of the neck height"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "beige",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform light cream/off-white fleece body",
+        "lightness": "pale cream reads light",
+        "usage": "one continuous garment color including zipper tape",
+        "effect": "matte fleece, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

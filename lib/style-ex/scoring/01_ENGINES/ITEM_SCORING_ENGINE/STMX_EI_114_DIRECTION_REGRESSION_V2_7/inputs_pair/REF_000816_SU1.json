@@ -1,0 +1,388 @@
+{
+  "unit_id": "REF_000816#SU1",
+  "scoring_unit_type": "MATCHING_PAIR",
+  "member_count": 2,
+  "members": [
+    {
+      "member_id": "target_1",
+      "category": "Jacket",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "matte tailoring cloth"
+          ],
+          "values": [
+            {
+              "value": "Wool",
+              "evidence": [
+                "matte smooth suiting weave"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "plain matte cloth, no distinct treatment"
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "solid black, no repeating motif"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no placed graphic element"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "whole_garment",
+          "evidence": [
+            "chest welt pocket",
+            "lower flap pockets",
+            "ticket pocket"
+          ],
+          "pockets": [
+            {
+              "location": "Chest",
+              "construction": "Inset",
+              "projection": "Flat"
+            },
+            {
+              "location": "Lower Front",
+              "construction": "Inset",
+              "projection": "Flat"
+            }
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no applied decorative construction"
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no belt or hardware attachments"
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "symmetric front"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "clean fit through torso, not close nor oversized"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Hip Length",
+          "region": "upper",
+          "evidence": [
+            "hem descends into hip region",
+            "covers hip area on standing body"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Structured",
+          "region": "whole_garment",
+          "evidence": [
+            "clean held tailored silhouette",
+            "lapels and body hold shape"
+          ]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Long",
+          "region": "upper",
+          "evidence": [
+            "sleeves reach wrist"
+          ]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "seam sits at natural shoulder point"
+          ]
+        },
+        "shoulder_structure": {
+          "state": "OBSERVED",
+          "value": "Mild",
+          "region": "upper",
+          "evidence": [
+            "readable shoulder-line endpoint",
+            "modest tailored shoulder"
+          ]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "Peak",
+          "region": "upper",
+          "evidence": [
+            "lower lapel edge extends up into point overlapping above collar seam",
+            "no notch"
+          ]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "plain tailored hem, no ribbed band"
+          ]
+        },
+        "hood": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "upper",
+          "evidence": [
+            "no hood on tailored jacket"
+          ]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "Full",
+          "region": "upper",
+          "evidence": [
+            "button opening runs full front length"
+          ]
+        },
+        "closure_type": {
+          "state": "OBSERVED",
+          "value": "Single Breasted Button",
+          "region": "upper",
+          "evidence": [
+            "single column of buttons, centre overlap"
+          ]
+        },
+        "grammar": {
+          "state": "OBSERVED",
+          "value": "Tailored",
+          "region": "whole_garment",
+          "evidence": [
+            "structured lapel, tailored construction"
+          ]
+        },
+        "waist_definition": {
+          "state": "OBSERVED",
+          "value": "Defined",
+          "region": "whole_garment",
+          "evidence": [
+            "silhouette narrows slightly at waist via tailoring seams"
+          ]
+        },
+        "sleeve_volume": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "ordinary tailored sleeve envelope"
+          ]
+        },
+        "cuff_type": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "plain tailored sleeve end, no cuff band"
+          ]
+        },
+        "collar_scale": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "lapel breadth covers ordinary share of chest panel"
+          ]
+        },
+        "shoulder_span": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "shoulder at natural width"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "black",
+        "color_lightness": "dark",
+        "color_usage": "single",
+        "multi_color": false,
+        "color_effect": "none",
+        "additional_colors": [],
+        "evidence": {
+          "primary": "uniform black cloth",
+          "lightness": "deep black",
+          "usage": "single tone throughout",
+          "effect": "matte, no metallic/neon"
+        },
+        "color_notes": null
+      }
+    },
+    {
+      "member_id": "target_3",
+      "category": "Trouser",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "matte suiting cloth matching jacket"
+          ],
+          "values": [
+            {
+              "value": "Wool",
+              "evidence": [
+                "matte smooth suiting weave"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "plain matte cloth"
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "solid black"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no graphic"
+          ]
+        },
+        "pocket": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "front hip pocket area not clearly readable"
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no applied decorative construction"
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no visible belt or hardware"
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "symmetric legs"
+          ]
+        },
+        "trouser_distinction": {
+          "state": "OBSERVED",
+          "value": "Tailored",
+          "region": "whole_garment",
+          "evidence": [
+            "front crease, suiting cloth, dress trouser build"
+          ]
+        },
+        "silhouette": {
+          "state": "OBSERVED",
+          "value": "Straight",
+          "region": "whole_garment",
+          "evidence": [
+            "leg keeps width to hem"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "lower",
+          "evidence": [
+            "ordinary tailored leg width, not close nor wide"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Full Length",
+          "region": "lower",
+          "evidence": [
+            "hem reaches shoe top"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Structured",
+          "region": "whole_garment",
+          "evidence": [
+            "holds pressed crease with soft drape"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "black",
+        "color_lightness": "dark",
+        "color_usage": "single",
+        "multi_color": false,
+        "color_effect": "none",
+        "additional_colors": [],
+        "evidence": {
+          "primary": "uniform black trousers",
+          "lightness": "deep black",
+          "usage": "single tone",
+          "effect": "matte, no metallic/neon"
+        },
+        "color_notes": null
+      }
+    }
+  ],
+  "note": "pair-level input — one scoring unit, every member materialized (order §6)"
+}

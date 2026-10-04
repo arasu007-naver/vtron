@@ -1,0 +1,145 @@
+{
+  "document": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1_MANIFEST",
+  "date": "2026-09-08",
+  "baseline_id": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1",
+  "packaging_revision": "R1",
+  "freeze_date": "2026-09-08",
+  "runtime_identity": "STMX_EI_NUMERIC_LAYER_V1",
+  "runtime_sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b",
+  "consumes": {
+    "direction_baseline": "STMX_EI_DIRECTION_FROZEN_BASELINE_V1",
+    "direction_manifest_entries": 324,
+    "direction_aggregate_sha256": "08eb312074db17009f2bb791365b6200b8d3ed9d1e8459f7de8b07f07305fb35"
+  },
+  "predecessor_baseline_identity": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE",
+  "predecessor_entry_count": 16,
+  "predecessor_frozen_aggregate_sha256": "febafbf27e49408b41fded13c66c833b5f8495c953fae9f64c2bbc373c744021",
+  "supersession_reason": "PACKAGING_ONLY_CORRECTION\n\nRemoved stale predecessor-stage reproduction source that was incorrectly classified as IMMUTABLE_TEST_SOURCE.\n\nRuntime/scoring/governance semantic delta = 0.",
+  "removed_entries": [
+    {
+      "relative_path": "tests/reproduce_ei_numeric_v1_frozen_baseline.js",
+      "previous_classification": "IMMUTABLE_TEST_SOURCE",
+      "previous_sha256": "376a30c4cb94d5744002bd0275b1b67615f4b347797bf0dd1b8bf85a08d118fb",
+      "reason": "stale predecessor-stage reproduction code · cannot run from this location · its source writes REPRODUCTION_RESULT.json into the Frozen tree",
+      "new_classification": "NOT_FROZEN — superseded by the non-frozen VERIFICATION_TOOL in the review package"
+    }
+  ],
+  "added_entries": [],
+  "★_no_replacement_test": "★ §4/§5 — no replacement test was added to the Frozen baseline. IMMUTABLE_TEST_SOURCE executable population = 0.",
+  "⛔_hard_rule": "⛔ §7 — a file that writes outputs into the Frozen tree cannot be immutable Frozen authority.",
+  "classification_counts": {
+    "GOVERNANCE_AUTHORITY": 8,
+    "AUTHORITATIVE_CONTRACT": 2,
+    "AUTHORITATIVE_FIXTURE": 4,
+    "AUTHORITATIVE_SOURCE": 1
+  },
+  "file_count": 15,
+  "frozen_aggregate_sha256": "5c5ad6e233277ae80fc7ff347b4b90bd799524c224abe694c196d95da3c80610",
+  "items": [
+    {
+      "relative_path": "FROZEN_BASELINE_IDENTITY.json",
+      "classification": "GOVERNANCE_AUTHORITY",
+      "why": "baseline readme",
+      "bytes": 1042,
+      "sha256": "8cffbd5c8aab3844fc9d0253cc6a9f06d09df078fd5d16a4199b54560ddb1556"
+    },
+    {
+      "relative_path": "README_FROZEN_BASELINE.txt",
+      "classification": "GOVERNANCE_AUTHORITY",
+      "why": "baseline readme",
+      "bytes": 1624,
+      "sha256": "7a961902055536336c3e5bf346dc91120e3b7b072dda7357e29332af98215a1c"
+    },
+    {
+      "relative_path": "contracts/STMX_EI_EXPOSURE_REALIZATION_AUTHORITY_V1.json",
+      "classification": "AUTHORITATIVE_CONTRACT",
+      "why": "the exposure_realization representation authority with its Approval Anchor",
+      "bytes": 3694,
+      "sha256": "5b544986627496008fc723f490b1ab528782448b6493d20591c76467c4a9138d"
+    },
+    {
+      "relative_path": "contracts/STMX_EI_NUMERIC_OUTPUT_CONTRACT_V1.json",
+      "classification": "AUTHORITATIVE_CONTRACT",
+      "why": "the output contract, side invariant and rule register",
+      "bytes": 3428,
+      "sha256": "addcfef57b5f745f9540089ce4a1987da3860ea49f575a975d5d041a292114c7"
+    },
+    {
+      "relative_path": "fixtures/NUMERIC_SEMANTIC_STATE_114.json",
+      "classification": "AUTHORITATIVE_FIXTURE",
+      "why": "the admission-aware semantic state the runtime is defined against",
+      "bytes": 126331,
+      "sha256": "2eb85b884a66be032c9624af8bf66bf77a2e90f82079b52032fdf0323d9fc392"
+    },
+    {
+      "relative_path": "fixtures/successor_corrected_inputs/REF_000616_SU2.json",
+      "classification": "AUTHORITATIVE_FIXTURE",
+      "why": "CEO-authorised corrected input",
+      "bytes": 5336,
+      "sha256": "56757fe5fac7bd25706fe2bee7015416ec94a0fb9761dfe1187dce763ccc1fec"
+    },
+    {
+      "relative_path": "fixtures/successor_corrected_inputs/REF_000622_SU1.json",
+      "classification": "AUTHORITATIVE_FIXTURE",
+      "why": "CEO-authorised corrected input",
+      "bytes": 4544,
+      "sha256": "8509ab31ce192e2936f449409fb0f3060cb8ebad1b61da057ff2428b23773cd1"
+    },
+    {
+      "relative_path": "fixtures/successor_corrected_inputs/REF_000689_SU1.json",
+      "classification": "AUTHORITATIVE_FIXTURE",
+      "why": "CEO-authorised corrected input",
+      "bytes": 7752,
+      "sha256": "cedb98a633d8a258c20ac0bfaaa777fd150921bf62a60ec15d21f375a08d6e8a"
+    },
+    {
+      "relative_path": "governance/CEO_NUMERIC_V1_GOVERNANCE_CLOSURE_DECISION.json",
+      "classification": "GOVERNANCE_AUTHORITY",
+      "why": "the CEO decision that closed Numeric V1",
+      "bytes": 4398,
+      "sha256": "f9dee468dae16c55042e4e3bdf8be04a29b84f5a47a2ca5f84f8fb9d9c3b72d4"
+    },
+    {
+      "relative_path": "governance/D2_AUTOMATIC_LIFT_REMOVAL_PROOF.json",
+      "classification": "GOVERNANCE_AUTHORITY",
+      "why": "proof the automatic persistent lift was removed",
+      "bytes": 3298,
+      "sha256": "914ef2b68e9636fe0ef82699ae6277a79ce7784c67d97ec8f23cb8d3f0a84f95"
+    },
+    {
+      "relative_path": "governance/D3_689_AUTHORITY_CORRECTION_PROOF.json",
+      "classification": "GOVERNANCE_AUTHORITY",
+      "why": "proof the fabricated persistence assertion was removed",
+      "bytes": 1210,
+      "sha256": "70d2fe98d58e2054cebbca83bff98538ef2013433f6bc6c48db5ece278d779ff"
+    },
+    {
+      "relative_path": "governance/FINAL_AUTHORITY_CORRECTION_MAP.json",
+      "classification": "GOVERNANCE_AUTHORITY",
+      "why": "the two authority corrections and what they superseded",
+      "bytes": 1574,
+      "sha256": "e17380e59a44ba2158369dc882842274bcef71eeab3cb5980de669d2a6faabc8"
+    },
+    {
+      "relative_path": "governance/REF000616_GOVERNED_RESIDUE_RECORD.json",
+      "classification": "GOVERNANCE_AUTHORITY",
+      "why": "the accepted within-side residue and its Approval Anchor",
+      "bytes": 2129,
+      "sha256": "7ec5fcde49fcf66e990934275e6532dbcef934a57388732f1084966f04fb7874"
+    },
+    {
+      "relative_path": "governance/REF_000616_BLOCKER_ANALYSIS.json",
+      "classification": "GOVERNANCE_AUTHORITY",
+      "why": "the firsthand evidence base for the accepted residue",
+      "bytes": 7278,
+      "sha256": "4c68501328681257e996a4498dcb4c098b83a211f0e13cb25e5327d80be67443"
+    },
+    {
+      "relative_path": "src/ei_numeric_layer_v1.js",
+      "classification": "AUTHORITATIVE_SOURCE",
+      "why": "the Numeric V1 resolver itself",
+      "bytes": 8295,
+      "sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b"
+    }
+  ]
+}

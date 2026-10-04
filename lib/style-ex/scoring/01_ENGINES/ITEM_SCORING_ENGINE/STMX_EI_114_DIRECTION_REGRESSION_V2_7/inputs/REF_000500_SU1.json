@@ -1,0 +1,246 @@
+{
+  "unit_id": "REF_000500#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "d1f79016c61fe2f7850357137b6ac50f441f44958f51911de250658e83fcfdb8",
+  "projected_hash": "3aaa6c5663cf535b022ed660b46b3fce1ef0c997961a4d062bad5f0b53533cfd",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth technical shell fabric",
+          "down-filled quilted baffles"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "glossy nylon-type shell"
+            ],
+            "locations": [
+              {
+                "component": "Body"
+              }
+            ]
+          },
+          {
+            "value": "Padding",
+            "evidence": [
+              "visible down-fill loft in baffles"
+            ],
+            "locations": [
+              {
+                "component": "Body"
+              }
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "horizontal quilted baffles across body"
+        ],
+        "values": [
+          {
+            "value": "Quilted",
+            "evidence": [
+              "stitched horizontal down channels"
+            ],
+            "locations": [
+              {
+                "component": "Body"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid olive shell, quilt lines are construction not print"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "mont-bell logo on left chest",
+          "EX 800 text near hem"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "zippered opening at lower front side"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping trim"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware trim, fur or fringe"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right halves mirror, level hem, centered zip"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "shoulder, chest and waist follow body with ordinary ease past the down loft"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem descends to hip covering pocket region on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds soft shape from loft but yields, not self-supporting shell"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "armholes open, no vest sleeve"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "armhole edge forms clear shoulder endpoint at natural shoulder"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "rounded continuous shoulder contour into armhole"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "distinct standing band rising at neck, separate collar piece"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain quilted self-fabric hem, no ribbed band"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "stand collar with no hood at neck or back"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "zip runs full front length neck to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "central front zipper with pull"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Utility",
+        "region": "whole_garment",
+        "evidence": [
+          "technical down insulation vest, functional outdoor build"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "stand band covers an ordinary share of neck-to-chin span"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "olive",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "white_family",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        }
+      ],
+      "evidence": {
+        "primary": "dark olive-green shell throughout",
+        "lightness": "deep dark green",
+        "usage": "one garment color body-wide",
+        "effect": "matte-to-soft-sheen shell, no metallic/neon"
+      },
+      "color_notes": null
+    }
+  }
+}

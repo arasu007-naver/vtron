@@ -1,0 +1,2008 @@
+{
+  "document": "STMX_EI_DIRECTION_FROZEN_BASELINE_MANIFEST_FINAL",
+  "date": "2026-09-07",
+  "supersedes": [
+    "STMX_EI_DIRECTION_FROZEN_BASELINE_MANIFEST_V2",
+    "STMX_EI_DIRECTION_FROZEN_BASELINE_MANIFEST_V1"
+  ],
+  "why_superseded": "V1 and V2 both listed generated artifacts as frozen authority. A full write-target audit removed all 34 of them, so the frozen set — and its aggregate — changed.",
+  "frozen_baseline_identity": "STMX_EI_DIRECTION_FROZEN_BASELINE_V1",
+  "convention": "★ Follows the existing STMX baseline convention (CIRP_EI_PARK_V1): a governance directory carrying a `repo/` mirror at exact repo-relative paths. ⛔ No new freeze architecture was invented.",
+  "manifest_written_last": true,
+  "manifest_excluded_from_its_own_hash_list": "MANIFEST.json cannot contain its own hash; it is excluded and the aggregate covers every other frozen file.",
+  "runtime_version": "STMX_EI_DIRECTION_RUNTIME_V1_2_7",
+  "producer_version": "STMX_VISION_PRODUCER_V1_1",
+  "p3_version": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_6",
+  "freeze_date": "2026-09-07",
+  "candidate_aggregate_sha256": "ba5f483002fdc912181714e7c6de8a4b37403198a6c936d264ef4f29f35b122d",
+  "previous_file_count": 357,
+  "file_count": 324,
+  "removed_from_the_frozen_set": 34,
+  "★_frozen_aggregate_sha256": "08eb312074db17009f2bb791365b6200b8d3ed9d1e8459f7de8b07f07305fb35",
+  "previous_aggregate_sha256": "5b0328a98deeaf8e99d3d0cc234e10c20c820cfc6154ab5b6db078ccc3637ad4",
+  "aggregate_history": [
+    {
+      "manifest": "V1",
+      "file_count": 359,
+      "aggregate": "b82d180b29955d11a93ceab02734031baef394390b58e7fefe874b180455b6d1"
+    },
+    {
+      "manifest": "V2",
+      "file_count": 357,
+      "aggregate": "5b0328a98deeaf8e99d3d0cc234e10c20c820cfc6154ab5b6db078ccc3637ad4"
+    },
+    {
+      "manifest": "FINAL",
+      "file_count": 324,
+      "aggregate": "08eb312074db17009f2bb791365b6200b8d3ed9d1e8459f7de8b07f07305fb35"
+    }
+  ],
+  "aggregate_changed": true,
+  "★_write_isolated_immutable_sources": [],
+  "write_isolated_immutable_sources": [],
+  "⛔_no_manifest_entry_is_a_write_target": "Proved statically (writer scan over every runnable file in the frozen set) and dynamically (fs write-API interception across the whole workload). ⛔ Byte-stability is explicitly NOT accepted as proof of immutability.",
+  "⛔_immutability": "No runtime-generated artifact may overwrite a frozen file. No test may modify a frozen file. Every frozen file is set read-only, and §16 proves byte-identity after a full production + regression + provenance + guard run.",
+  "permanent_guard": "governance/freeze_manifest_write_target_guard_v1.js",
+  "roles_summary": {
+    "FROZEN BASELINE IDENTITY": 1,
+    "FROZEN BASELINE README": 1,
+    "FREEZE GOVERNANCE": 1,
+    "GOVERNED RESIDUE LEDGER": 1,
+    "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes": 12,
+    "SEALED PARKING EVIDENCE": 2,
+    "HISTORICAL SEALED LINE": 125,
+    "FROZEN REGRESSION TOOLING": 5,
+    "AUTHORITY ARTIFACT named directly by a frozen suite.": 4,
+    "FROZEN RUNTIME": 132,
+    "ENGINE-LEVEL SHARED MODULE required by the frozen runtime or its suites.": 1,
+    "SHARED AUTHORITY": 24,
+    "FROZEN PRODUCER": 6,
+    "FROZEN GOVERNED SOURCE": 9
+  },
+  "items": [
+    {
+      "relative_path": "FROZEN_BASELINE_IDENTITY.json",
+      "role": "FROZEN BASELINE IDENTITY — the freeze metadata record.",
+      "size_bytes": 6972,
+      "sha256": "50c55041600a38c777d6584a98e746ae7e4f528e14e7d7002a5f250b1f6e88c3"
+    },
+    {
+      "relative_path": "README_FROZEN_BASELINE.txt",
+      "role": "FROZEN BASELINE README — identity, layout and the immutability contract.",
+      "size_bytes": 2906,
+      "sha256": "0656f1f9897f748d6f6933131b0cf732e684aea5984bf9e0044819c34690c001"
+    },
+    {
+      "relative_path": "governance/freeze_manifest_write_target_guard_v1.js",
+      "role": "FREEZE GOVERNANCE — the permanent write-target guard (§23). Read-only; it writes its result to the working directory, never into the frozen set.",
+      "size_bytes": 5391,
+      "sha256": "d3ae26a1fd8042c8ac148ff0b967cc88069b0fbd9a6c4a7153187011708e795b"
+    },
+    {
+      "relative_path": "governed_residue/STMX_EI_DIRECTION_V1_GOVERNED_RESIDUE_LEDGER_V1.json",
+      "role": "GOVERNED RESIDUE LEDGER — the five CEO-accepted V1 governed unresolved boundaries.",
+      "size_bytes": 4808,
+      "sha256": "73b7fffb278f2b8db2b4bd50b35a8cec4d2c192c6cd176040544e055249ce9a2"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/00_STMX_MASTER_INDEX.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 186091,
+      "sha256": "e895c12539dd5c73d553bc8a674390b7eeff7221d54c767bf09eae2d53efb699"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/01_STMX_FROZEN_DECISIONS.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 448595,
+      "sha256": "9ef7efee28391f7c5912cd91ad2dba1f8744e6f63e7421ae6805d401b1bb10be"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/02_STMX_CURRENT_SPRINT.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 1418283,
+      "sha256": "df3f8d41d7c9944ad6194103e67fe5addd362830f86dc6270b4a5b88b86c2bed"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/03_STMX_ARCHITECTURE_MAP.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 199965,
+      "sha256": "c73007ef6e70190f9ab19e9d5436dd658180ca5efc105a0a38ba4b99cff44790"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/04_STMX_MIGRATION_LOG.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 313670,
+      "sha256": "77f45c7ec38921f650c2d2305f9c36d50a3e06354c1b738b0d4df209e691af46"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/05_STMX_BACKLOG.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 353103,
+      "sha256": "57607ecce19de1cbf876225960a07d46294d946a94462d55d6c657c344d0f1ee"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/06_STMX_CLAUDE_REPORTS_INDEX.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 169016,
+      "sha256": "e43f8529b2f9bbfadc7da1f432ba7b431e6534a38f9125217b277f972ce507f3"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/07_STMX_DECISION_HISTORY.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 707478,
+      "sha256": "89b7f967b07ae748837b6890effe9b482cbd51a2566919bcf2d72e162cfd3e8a"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/08_STMX_ARCHITECTURE_GUARD.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 240294,
+      "sha256": "2ba34d6b06a8d8329bce91f36245363596770640b74c059230ae708641e883ec"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/09_STMX_VERSION.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 284443,
+      "sha256": "5d521734fcf761f12fceee3bbebaae2575d7520a679d05cd163d905d97907033"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/10_STMX_CHANGELOG.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 886344,
+      "sha256": "b860d7925f191a5d203a2e874b3779ed54969c4ad4700d984c5fb1122540ef5a"
+    },
+    {
+      "relative_path": "repo/00_STMX_CHATGPT_PROJECT_CONTEXT/HANDOVER_LATEST.md",
+      "role": "GOVERNANCE STATE AT FREEZE TIME. ⛔ This is the context AS FROZEN. The FROZEN DECISION record is written to the live context AFTER this freeze completes — a freeze cannot contain the record of its own completion.",
+      "size_bytes": 130031,
+      "sha256": "31e1690317d2710f07722614a4732c0dee2223c97fbbd874555fd016e01eb8c9"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/CIRP_EI_PARK_V1/repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_4.json",
+      "role": "SEALED PARKING EVIDENCE — the two exact files the version-isolation suite hashes against.",
+      "size_bytes": 20765,
+      "sha256": "43dbc79dc4e36b9dec5128b611c317574448b1f6fdfebb98c872d8c61e99ddf3"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/CIRP_EI_PARK_V1/repo/01_ENGINES/ITEM_VISION_EXTRACTOR/producer_rules_v1.js",
+      "role": "SEALED PARKING EVIDENCE — the two exact files the version-isolation suite hashes against.",
+      "size_bytes": 63810,
+      "sha256": "588da46bd0242e5a0c35dd5017c6ba570499968efacdc0a3387e57e76f14c6cf"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_114_DIRECTION_REGRESSION_V2_6/STMX_EI_EXPECTED_DIRECTION_AUTHORITY_V1_2_6.json",
+      "role": "HISTORICAL SEALED LINE — the V2.6 regression tooling.",
+      "size_bytes": 2436,
+      "sha256": "2ba9722f5a639d2f5c42faa81b2321cde8314ff62b2dd9e71b993522b3d5fd10"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_114_DIRECTION_REGRESSION_V2_6/tools/stmx_ei_114_regression_tool_v2_6.js",
+      "role": "HISTORICAL SEALED LINE — the V2.6 regression tooling.",
+      "size_bytes": 65491,
+      "sha256": "4a8fbbb9922ffdff462b53c57be558586d5e51ebebd02ab9e52af8d78c445e32"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_114_DIRECTION_REGRESSION_V2_7/STMX_EI_114_REEXTRACTION_REQUIRED_REGISTER_V2_7.json",
+      "role": "FROZEN REGRESSION TOOLING — the 114 tool, the expected-direction authority and the evidence-reuse ledger. ⛔ Generated outputs are excluded: the frozen baseline regenerates them.",
+      "size_bytes": 422,
+      "sha256": "b1500e3e207a86f083724bdfd6676f4d8c39dd717900096f45a51ee4cfe2b91d"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_114_DIRECTION_REGRESSION_V2_7/STMX_EI_36_TO_37_LOSSLESS_PROJECTION_CONTRACT_V2_7.json",
+      "role": "FROZEN REGRESSION TOOLING — the 114 tool, the expected-direction authority and the evidence-reuse ledger. ⛔ Generated outputs are excluded: the frozen baseline regenerates them.",
+      "size_bytes": 6460,
+      "sha256": "f1d10ce32f57c8842fabfe71d2c3c26518a2acf90c53ad213d6c9efffecb59b7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_114_DIRECTION_REGRESSION_V2_7/STMX_EI_EXPECTED_DIRECTION_AUTHORITY_V1_2_7.json",
+      "role": "FROZEN REGRESSION TOOLING — the 114 tool, the expected-direction authority and the evidence-reuse ledger. ⛔ Generated outputs are excluded: the frozen baseline regenerates them.",
+      "size_bytes": 2436,
+      "sha256": "2ba9722f5a639d2f5c42faa81b2321cde8314ff62b2dd9e71b993522b3d5fd10"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_114_DIRECTION_REGRESSION_V2_7/STMX_EI_PRODUCER36_TO_37_REGRESSION_PROJECTION_LEDGER_V2_7.json",
+      "role": "FROZEN REGRESSION TOOLING — the 114 tool, the expected-direction authority and the evidence-reuse ledger. ⛔ Generated outputs are excluded: the frozen baseline regenerates them.",
+      "size_bytes": 49872,
+      "sha256": "945268d2c45ec1d084e045c800e89cef8b0c1ceac83b9286b0f7ddc7e4972b5a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_114_DIRECTION_REGRESSION_V2_7/tools/stmx_ei_114_regression_tool_v2_7.js",
+      "role": "FROZEN REGRESSION TOOLING — the 114 tool, the expected-direction authority and the evidence-reuse ledger. ⛔ Generated outputs are excluded: the frozen baseline regenerates them.",
+      "size_bytes": 70992,
+      "sha256": "8b9f9ecbe096092ffe018f21a8c4c477b4754c370662523244231a682b7c1682"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_D03_DESCRIPTOR_TARGET_MAPPING_MICRO_CORRECTION_V1/06_DESCRIPTOR_AUDIT_POPULATION_RECOUNT.json",
+      "role": "AUTHORITY ARTIFACT named directly by a frozen suite.",
+      "size_bytes": 4150,
+      "sha256": "ee125f0d3c3d7060d5d1ed0dfa05229828281d51d97638b5879556a1f9a598c4"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_D03_DESCRIPTOR_TARGET_MAPPING_MICRO_CORRECTION_V1/_corrected_rows.json",
+      "role": "AUTHORITY ARTIFACT named directly by a frozen suite.",
+      "size_bytes": 17578,
+      "sha256": "13ef2ef9560c641f95807d35ce99af6bd6233e3a9a4dc9a319dda2d05c33a7ff"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_FINAL_CONSOLIDATED_CEO_WORD_RENDER_QA_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 11953,
+      "sha256": "2ae335999b876e858dac11a0b0d735a64a9ae613005d39bfaadc8bda14fb11fe"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_FINAL_CONSOLIDATED_DESIGN_REVIEW_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 9711,
+      "sha256": "6ff9a24ea92522345968f177e4b958dc72d0afe48c67ae235c4ece4324d550b6"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_FINAL_CONSOLIDATED_IMPLEMENTATION_AND_114_REGRESSION_FINAL_REPORT_V1.md",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 24294,
+      "sha256": "2120e7a28f6c9634ab818ebd07097d130c384ffbbc49a39bacdb419bca1a3650"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_FINAL_CONSOLIDATED_MACHINE_QA_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 15696,
+      "sha256": "bb9df5ee5e9a6be7059a2357ddb918f352d45efb00fb3ce7b282eb85c8d10d84"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_RUNTIME_V1_2_2_AUTHORITY_PINS.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5271,
+      "sha256": "c1bc5b421ef3605ff3cc81b424b24ca2ac6dc96146b4683329bf359e5360adc2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_RUNTIME_V1_2_2_IMPLEMENTATION_DIFF.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 37601,
+      "sha256": "cffed339280936228e665fe79b37cc8b96c24bacfb982b24f6a60a4c6c272659"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_RUNTIME_V1_2_2_NON_ANCHOR_TRANSITION_TESTS.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 23060,
+      "sha256": "abaec0d2b8744d540f2ace682c34392221654fac7aed59f4b064fcbd224d2d23"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_RUNTIME_V1_2_2_QA.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3290,
+      "sha256": "116b35e2da50550279d713c06d8f6b1fd715946af461fa6f176cd9c393cc286a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_RUNTIME_V1_2_2_SUPERSESSION_NOTICE.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3706,
+      "sha256": "1b1f689c179ab147b2f639b64c78e731227f92ad8bf02671c52e84759930213a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_RUNTIME_V1_2_2_TEST_MATRIX.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 7547,
+      "sha256": "20f8cdc5bfb7f518d041d966ab79ec59f2a4101ada81ac1e553a1e36c6977286"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_RUNTIME_V1_2_3_NON_ANCHOR_TRANSITION_TESTS.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 23060,
+      "sha256": "abaec0d2b8744d540f2ace682c34392221654fac7aed59f4b064fcbd224d2d23"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_V1_2_2_MATCHING_PAIR_VALIDATION_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3551,
+      "sha256": "8f36d20e7134b12c324dc32012ce4e32e38d3cb574ac9fb5861abdd3d90f3430"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_V1_2_2_PROJECT_CONTEXT_SYNC_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 825,
+      "sha256": "5fd3d5fac4091a44fb70211e6940f7c814db6b7fd33b6744925eb6c2f719a708"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_V1_2_2_TARGETED_REALIZATION_VALIDATION_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 8110,
+      "sha256": "f64555be4c7e47b174da68606a3a22484f16017d10771ffd241925ad8d67baf8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_V1_2_2_TEST_ORACLE_SUPERSESSION_LEDGER_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 9757,
+      "sha256": "7f55e3f678e0ea3e5b2d979bfcc3fd235c3010382c91c9519c955af423d019de"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_GAP_REGISTER_V1_1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 14928,
+      "sha256": "b7e80df0a865b304e88dc92a89557a6702b5779226e4590578509eaeb2f9eeac"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_RULE_MATRIX_V1_1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 52490,
+      "sha256": "76fd8e7d0cc19af7f19489afc8e40247a3c05d4e28a1b250bf65e929d5cfcb52"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_REALIZATION_EVIDENCE_CONTRACT_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 10669,
+      "sha256": "2ab255d71074f52dc820191cdd3d37733537c2cd90574b4fff2b500f5c38af69"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_DENIM_NEUTRAL_ELIGIBILITY_AUTHORITY_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5674,
+      "sha256": "be1209508dd6fe4b02dc0e31201a130b311210cfa0752837f3c390a6651aa0a1"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_DIRECTION_RUNTIME_DEDUP_INDEPENDENCE_PINS_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 2714,
+      "sha256": "29b0b639e76c10dc8a68caff0618543f9a4fa8bb9641b83efa865ea14c52d355"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V2_TABLE.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 10695,
+      "sha256": "6714ca16965d997046d1695165e1cc8bf9fb190bd13892c3459d37bca9e17395"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V3_TABLE.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 9128,
+      "sha256": "6ba8f01080c5a22a6a652175a7fc3295656a38846c05f7ac0aa98efc121dbc4a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_DIRECTION_RUNTIME_STATE_MACHINE_V1_1_1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 7348,
+      "sha256": "3d9907bcf29adeaefec9c78c016f163c2f2c7d4a4a61fc09d7688c9c24f01e6f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 159281,
+      "sha256": "ec237705d19fa6eedba4879fbc7f5ce5e84f1099164ae569083c8273aa12d346"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_2.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 14022,
+      "sha256": "03bb784dd5530496dbd0e0e514d73e00996ed618cfc81f2685912af5f8df8165"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_3.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 19716,
+      "sha256": "4651de198b0d49c6a00954d9e06272cbfe620c7b178b8cb44aa56c20cc3c61f7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_4.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 20765,
+      "sha256": "43dbc79dc4e36b9dec5128b611c317574448b1f6fdfebb98c872d8c61e99ddf3"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_SCORING_CONTEXT_CONTRACT_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4437,
+      "sha256": "2cc2fc2cdbbe9ccd6a2b01d7e88592f436ec943a163d248e2440275bdec433bd"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/contracts/STMX_EI_TC_PARAMETER_OWNERSHIP_GUARD_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 1749,
+      "sha256": "cfa63484f8df488e65afc6017f04170593c695ecb74e13fc06e34d35b2f74d67"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/KCASE_FIXTURE_INDEX_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5499,
+      "sha256": "e5422a9e18ca62f4fc14ea5a6687765e77aa252e8efd0ba6d5e890dcf5fc0fce"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K01_COV__REF_000011.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5625,
+      "sha256": "e274278816bfd8c3edd5f9c4b3befbd6b3878fb65b35840b4b139578f425bda6"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K01__REF_000011.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5226,
+      "sha256": "01aba6886084ffbeb2b57d311c100539786d04c3240175017198348ae89070f0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K02_COV__REF_000834.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 7529,
+      "sha256": "b111b555929aa479150dbfe34851067199279c2145b0924f8cfd6ec7908f097f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K02__REF_000834.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 7095,
+      "sha256": "5e87279d66cbda24717de6cad247388c17bc08e516932d9577e203484389f414"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K03_COV__REF_000007.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5040,
+      "sha256": "3544c75ce16e58a27c5834a20a583d0145425fa54056e27e584439cc1d9f27b0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K03__REF_000007.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4606,
+      "sha256": "f855ce51b2a7e14983c057666e09fd6039a15dc8c1fec2569625eca2cc869e65"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K04_COV__REF_000694.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 7476,
+      "sha256": "24b4339a2c4ba13f781b83d67ce240284b771bf2c79dd146c8657aa92e36a9e2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K04__REF_000694.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 7043,
+      "sha256": "e9f33ce237461d6a6e29b90da985e98504e56e4b126e0872ea3eb02e862c2878"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K05__REF_000432.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5541,
+      "sha256": "8440a6e8a746df45818be992d12347256e1dc6d44ead429c67efbdf4ae71a1b5"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K06__REF_000010.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5941,
+      "sha256": "94ceaff102a720bcddfe3fcd84c5275b56e03892457f8f60e6f65805311a6aed"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K07__REF_000001.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5749,
+      "sha256": "0819c5c5a3597aed9d812bb6b12a28ecb02d4e5499e2fc296160877fc15cafe2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K08_COV__REF_000698.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 8288,
+      "sha256": "fef9580881892eec59bb8dda1f3164acb8daa20e331feee14b9c91500ccfa138"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K08__REF_000698.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 7822,
+      "sha256": "9d4f083ecef993a632627952b7f4e5d02e2c76de7b893973dd3b9e9f614ceb4e"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K09__REF_000012.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 6005,
+      "sha256": "616f65a23ae57d50993d62ed329507daef763e9ee9cfa2eac9d05d18b17f4fa1"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K10__REF_000003.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5160,
+      "sha256": "e91fb62df3f74cb2fd82418c5b540429a534cc0d4e5ef140c1743c3347d6522e"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K11__REF_000005.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5450,
+      "sha256": "62d839f963a2331d4b61590a7792fa4347bbb53493569969098162327f7a00c8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K12__REF_000004.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5539,
+      "sha256": "306863b0a56e16e3dbd093bd7c0909ffeede2b18ef733c0e9e7ec84ed5ecc0fb"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K13__REF_000198.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5998,
+      "sha256": "801b31463441687e3751a02918dd243663fff65d7dd95ab91efd0a15a7e92a6b"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K14__REF_000586.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4840,
+      "sha256": "4cf1e4d8dcd1e33340b0cef1aa973cb788cbcec2a1a56993a999540f3c5fd9f8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/kcases/K15__REF_000590.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5248,
+      "sha256": "ffcc2cd3047795302684635eb55a5735e9476899719e539f19ef88c391e5ad14"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-AP-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3767,
+      "sha256": "d7555ba46e703dec5fec57deaa7ff2946983497d5115d7bb168bef19e9bdfcc2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-AP-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4397,
+      "sha256": "feb82da668f655def84ad226301970fc905fd1a21d0d93d729755a56bc2e85da"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-EX-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3924,
+      "sha256": "f180a886c2bb703bdd30635369223c116b5fa0cfbc2d0a30dda956b8b12d1765"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-EX-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4363,
+      "sha256": "62f29452ff459855e62a77739f566785208a20e15ce437caf3754f555000c616"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-EX-03.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3903,
+      "sha256": "ccb121755502ec0d61284b9d878d7946842f866b89638802d932a84741679593"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GD-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3946,
+      "sha256": "8632d8ac9c11b57c00acdf2d89bb13395f18538f067c17e8bcf0da1ab8f9ed7b"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GD-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3927,
+      "sha256": "fcd74bd3b659703e8a52499ae8b52bdf233d1ac08af63882ae97fec56e0faa90"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GD-03.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4042,
+      "sha256": "71dd04c3a8cbc0cbd59c99fbe23653cf1f69b42e46f2e90627e6e372b1e0b4c7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GD-04.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4159,
+      "sha256": "74380b75f292e16b0f25128f96de55d6ecba2672f8ed691de1f241d168372f6f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GD-05.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4026,
+      "sha256": "2d7bf3a8b4d9678c9406b23a554c194ca6fdbf410cd021b3cb9946585197a7d5"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GL-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 2464,
+      "sha256": "d19f4fa3f2199e0d05ed6ed4e4a3494d902cdb6923a888db022711977fc77a2c"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GL-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 2829,
+      "sha256": "8f6e3c65028d28e83530758a3115fa7fa2fe7e2d4a5bc790429395974b163352"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GL-03.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3897,
+      "sha256": "8593b86d84cbc61180206e7613395121d5ae4a499a17c227c1d6b3d2ca960b84"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GL-04.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3874,
+      "sha256": "a443a0c4071c735df7a5e0f334857f7203e5383faf6136f52fa412607438a30b"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GR-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3783,
+      "sha256": "de31167a11a8de214821e42db41ce113672a25689c1389e219c6b273e76e8665"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-GR-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3989,
+      "sha256": "1537cea095ab419e95b6f071af254bd87b6ee696250418b2842dba856d3b5d1f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-LN-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 2886,
+      "sha256": "ea8f22255c9c220e72cae7f2fb1b9af4445c47ffd15e33510319b2905625351a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-LN-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3535,
+      "sha256": "41c478f746bfaf698e2da3bfa154f2a5ec929af14ee1be1f779c8d42087b4ae3"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-LN-03.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 2488,
+      "sha256": "71f8a961a4be60b4da670375ab09333a1153fcc3389c8ab62e959597a01ab6dd"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3918,
+      "sha256": "c4b0dffa21f831297dd25376833c164f446f340220e99fe001d3cc36aeddbe3c"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 2991,
+      "sha256": "1076c8053e6596bbedea08206ca44b7d1ce1115a80d719d04cfbdca1c9f9a77a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-03.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4056,
+      "sha256": "511326de31117f0e1a806e7ddb1e169dc61a11de3721c82529f4d93c7eb70480"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-04.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3944,
+      "sha256": "c9846ebcd845516b28ea14609dd8fca97847a76820925cf7785f11dc720d680c"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-05.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3984,
+      "sha256": "d878b1ee9a0d1d3913b2a206d731c8954311d06d35380a0c1b8faa5e927b2fe0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-06.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3735,
+      "sha256": "41fc890d8a7cd1c21d910c141997c0970a2385dda056848abe44e1a54f6954e7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-07.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4165,
+      "sha256": "0682896f68b836479b64d97d829b184257780cd8608baa9d8fb3c66518f9b325"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-08.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 2677,
+      "sha256": "761713583933e5028ed46371e9b297f5892f0a5abfca9b3bd15470449becf12d"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-09.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3927,
+      "sha256": "efc10839f58741acf18ca6a5fd5a363ed1fdcb6dc0b2a059046d7efa930f367c"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MH-10.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4024,
+      "sha256": "81a7860329cab3cc96ca1d7ee7d7e4e7eec3f8de5528a3c81b2a4b2e77a46c2a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MIX-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4136,
+      "sha256": "d6c436e0dd840d6fd221a2b512800bf0a1339950e6bab2c161d43cc5fee0bfc1"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-MIX-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4483,
+      "sha256": "a1a11671d74b728703b5c8f92aa8d0fe543576163df0502db8016ccd7b4f8ff0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-QU-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3875,
+      "sha256": "a1a4c11dadd53338d3957d3b3616c6c908f08e3510e9c35cdfccf6768a914788"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-QU-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4045,
+      "sha256": "b3f472023e0691a5ac4281348e32a6bf3657e50c144b0983626fa37284961495"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-RP-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4213,
+      "sha256": "f31e526f50db4bac56e201e42a7ef528599ba9f93e1ce991b58c2b62ec5c8962"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-RP-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4740,
+      "sha256": "a0fe9d14269324ee766947bfcdd356cacd376fe342e82c5323db99e761f00080"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-RP-03.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3800,
+      "sha256": "75230ede22c3e48cb024b62b70855791e3adffed240753b5d17f9691f33240c8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-ST-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 2453,
+      "sha256": "4e3d287b127e6cd8b4d49d4f87c882fbc51752878184b6696b40117f9c6c731f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-ST-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4230,
+      "sha256": "51e16f11141d1c5311d6a8efa7e651ef2120356c87130c1423703deb31bf34fd"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-ST-03.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4190,
+      "sha256": "c10d5043b679f2392b02aad0e971030c2c3ad349f7f16efd3d3439ce7fd75d8e"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-TK-01.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3909,
+      "sha256": "cab68405b6e0460869944b1eec37a6a2feab95058d719e19eeac8fb7cab83572"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NA-TK-02.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4035,
+      "sha256": "435d12c880c052518a8dfa6bd0901edbe94f9d88e0eb970a9ea506ff98f31c7f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor/NON_ANCHOR_FIXTURE_INDEX_V1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 21635,
+      "sha256": "0068d8e3afea6b6cc908fdb0372a734b1155edb11348734a8e3e33874459a14a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-CN-MM.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4666,
+      "sha256": "f2994e77f653691d35d00515e3cde86a2ed2d5c7cf301a26e49c0ed1d5d4dd57"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-CN-S.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3801,
+      "sha256": "ce6f1745d0cea37f057fcb35fa7a866ee5fcee2ed2f2e1af40b1a4b4601ddcb7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-CN-W.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3960,
+      "sha256": "efca49cf39f89ba16187f7ad55cbd12a49c7782bfcc87fb573b9b157493a3023"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-D7-B.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3871,
+      "sha256": "056cf14804f915ff75556a9b5306afaedfcac9edb167fbaee285494b73901221"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-D7.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4493,
+      "sha256": "b6cd9ecb12cfd7f10109a65511730a97e8012f5b7bea9b5db4779ad1b239c22a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-D8-B.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 2859,
+      "sha256": "b3c84742eeb0d5c2cd8386f7741688622ca6ba044acb5fc457c7c353fbf6cbac"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-D8.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4482,
+      "sha256": "94253115237bdabf9919e1c22ecea3f960318f2c9bc6e6630700b40b40dcfed0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-E-M.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4423,
+      "sha256": "9158b4dc656885f58ddd3577461d35da88ea13d5070c7110de068a2db9c10724"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-E-N.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3676,
+      "sha256": "3166d2099b4c2ff3ae65a48d9ff586f60137590ae6735be0e6714c68e36938f6"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-I-MM.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4683,
+      "sha256": "422f9b6dc78d8197719b81b3e89ad35dc866db62812005e04cebf8f26a78cda2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-I-S.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3796,
+      "sha256": "2d749fb2b7eaab4c801534f22f840983237c2de8843b0246f97e4d6f33401f46"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/N-I-W.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 3930,
+      "sha256": "28e6900302b59244abb77590fd31207c247ddc804fd61014c780bcebd2aec2d9"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/fixtures/non_anchor_transition/NON_ANCHOR_TRANSITION_FIXTURE_INDEX_V1_1_1.json",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 5379,
+      "sha256": "321f606d36380259ef0fa1985755aa1c430a1a183a2cc52b01cb00dc0a6cd3f4"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/src/ei_direction_runtime_v1_2_6.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 72928,
+      "sha256": "e3d2c8af2a9d284d1688f64b25f76202db8c2ab7ba1cbe585040c599ef256188"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/src/ei_p3_general_force_resolver_v1_1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 46428,
+      "sha256": "022d8b4802ee78222529773365beb19bc9097862cae3ca39e22f1be01dd53505"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/anchor_independence_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 9945,
+      "sha256": "b8c3ab123b577c572a647725cd2ad31045f688f76f71526a8e82e564790af2b3"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/denim_neutral_eligibility_v1_2_6.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 15196,
+      "sha256": "e1ec6b70d9521f64fc9046e89a1510a3cdbee6e66cb0af140a5f568072f339b6"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/ei_direction_runtime_v1_2_6.test.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 57764,
+      "sha256": "c384b6730632060c1efaa7cd771b6f6f7b067da8f0bf0ae35dfdf4a396894841"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/kcase_general_rule_regression_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 16583,
+      "sha256": "756641318af62ada6daade88081dca3c6cb79d84c2d3164e0e4c0c830ace61d8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/non_anchor_generalization_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 6605,
+      "sha256": "3e2b7f218b435ff43c971213afdd6cce627a7a928fc7146dd30392efe8226b88"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/non_anchor_transition_v1_2_6.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 4825,
+      "sha256": "38c39daea97bab3320691c96a4cb2f2bd498402632d867a8d49a131eb7d84c29"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_authority_cleanup_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 13249,
+      "sha256": "4b9c7642d627f11b7c7d2ace8c4f200702043f0960668277fe542a8177a61e6e"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_d03_decontamination_score_always_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 18180,
+      "sha256": "ed44f985632f0edec9e540dc66a2e34aa9d8676e0c5fb5bbeac6a95ee8c539d3"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_gender_independence_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 12613,
+      "sha256": "8703515db8d936a8423470fd470123466e3d237e37c442ddb8ab273a425effe0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_matching_pair_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 12662,
+      "sha256": "9bb90c53979d4f7753447d8323b8309e16eacd13743fbb9b58abb29d209d6259"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_p3_contract_authority_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 9076,
+      "sha256": "d5f21de3caebf79061d3bc3af2bcdd11bdea9cc4db21599a96186cc3b76e2f27"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_surface_authority_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 11465,
+      "sha256": "246e13a37053abbf94bea99608134d7abdcd27a0d3b10ea9b28e560ee7775289"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_surface_scope_and_pattern_subtle_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 13614,
+      "sha256": "a6e82960ad661b1eca59d1f2739dedae3409c942f89f95decc22341ca83834c7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_target_su_observation_consistency_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 13751,
+      "sha256": "05d1f68663bbfbcf184c7197068dd024898c1367c32c2d2d16e74515c5783e1a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_targeted_realization_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 30130,
+      "sha256": "65a641d6877476fca13038e2ccdceb910432f342bd32832ec3cc2628ac73834a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/v1_2_6_transition_trace_non_vacuity_v1.js",
+      "role": "HISTORICAL SEALED LINE — V1.2.6, carried unchanged so version routing and version isolation can be proved from the frozen baseline alone.",
+      "size_bytes": 11815,
+      "sha256": "4378929e887e3c141218e74b5515d99020696c14e71a68153990e152fe2abe83"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_FINAL_CONSOLIDATED_CEO_WORD_RENDER_QA_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 11953,
+      "sha256": "2ae335999b876e858dac11a0b0d735a64a9ae613005d39bfaadc8bda14fb11fe"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_FINAL_CONSOLIDATED_DESIGN_REVIEW_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 9711,
+      "sha256": "6ff9a24ea92522345968f177e4b958dc72d0afe48c67ae235c4ece4324d550b6"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_FINAL_CONSOLIDATED_IMPLEMENTATION_AND_114_REGRESSION_FINAL_REPORT_V1.md",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 24294,
+      "sha256": "2120e7a28f6c9634ab818ebd07097d130c384ffbbc49a39bacdb419bca1a3650"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_FINAL_CONSOLIDATED_MACHINE_QA_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 15696,
+      "sha256": "bb9df5ee5e9a6be7059a2357ddb918f352d45efb00fb3ce7b282eb85c8d10d84"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_RUNTIME_V1_2_2_AUTHORITY_PINS.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5271,
+      "sha256": "c1bc5b421ef3605ff3cc81b424b24ca2ac6dc96146b4683329bf359e5360adc2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_RUNTIME_V1_2_2_IMPLEMENTATION_DIFF.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 37601,
+      "sha256": "cffed339280936228e665fe79b37cc8b96c24bacfb982b24f6a60a4c6c272659"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_RUNTIME_V1_2_2_NON_ANCHOR_TRANSITION_TESTS.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 23060,
+      "sha256": "abaec0d2b8744d540f2ace682c34392221654fac7aed59f4b064fcbd224d2d23"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_RUNTIME_V1_2_2_QA.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3290,
+      "sha256": "116b35e2da50550279d713c06d8f6b1fd715946af461fa6f176cd9c393cc286a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_RUNTIME_V1_2_2_SUPERSESSION_NOTICE.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3706,
+      "sha256": "1b1f689c179ab147b2f639b64c78e731227f92ad8bf02671c52e84759930213a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_RUNTIME_V1_2_2_TEST_MATRIX.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 7547,
+      "sha256": "20f8cdc5bfb7f518d041d966ab79ec59f2a4101ada81ac1e553a1e36c6977286"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_RUNTIME_V1_2_3_NON_ANCHOR_TRANSITION_TESTS.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 23060,
+      "sha256": "abaec0d2b8744d540f2ace682c34392221654fac7aed59f4b064fcbd224d2d23"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_V1_2_2_MATCHING_PAIR_VALIDATION_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3551,
+      "sha256": "8f36d20e7134b12c324dc32012ce4e32e38d3cb574ac9fb5861abdd3d90f3430"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_V1_2_2_PROJECT_CONTEXT_SYNC_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 825,
+      "sha256": "5fd3d5fac4091a44fb70211e6940f7c814db6b7fd33b6744925eb6c2f719a708"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_V1_2_2_TARGETED_REALIZATION_VALIDATION_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 8110,
+      "sha256": "f64555be4c7e47b174da68606a3a22484f16017d10771ffd241925ad8d67baf8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_V1_2_2_TEST_ORACLE_SUPERSESSION_LEDGER_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 9757,
+      "sha256": "7f55e3f678e0ea3e5b2d979bfcc3fd235c3010382c91c9519c955af423d019de"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_GAP_REGISTER_V1_1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 14928,
+      "sha256": "b7e80df0a865b304e88dc92a89557a6702b5779226e4590578509eaeb2f9eeac"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_RULE_MATRIX_V1_1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 52490,
+      "sha256": "76fd8e7d0cc19af7f19489afc8e40247a3c05d4e28a1b250bf65e929d5cfcb52"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_REALIZATION_EVIDENCE_CONTRACT_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 10669,
+      "sha256": "2ab255d71074f52dc820191cdd3d37733537c2cd90574b4fff2b500f5c38af69"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/canonical_overlay/STMX_EI_TREATED_SURFACE_MATERIALIZED_OBSERVATIONS_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5641,
+      "sha256": "25c1899cc3ac17def9d3d19d1ad2c0f3ba00adce4621519894e16caf32789b98"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DENIM_NEUTRAL_ELIGIBILITY_AUTHORITY_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5674,
+      "sha256": "be1209508dd6fe4b02dc0e31201a130b311210cfa0752837f3c390a6651aa0a1"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_DEDUP_INDEPENDENCE_PINS_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 2714,
+      "sha256": "29b0b639e76c10dc8a68caff0618543f9a4fa8bb9641b83efa865ea14c52d355"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V2_TABLE.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 10695,
+      "sha256": "6714ca16965d997046d1695165e1cc8bf9fb190bd13892c3459d37bca9e17395"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V3_TABLE.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 9128,
+      "sha256": "6ba8f01080c5a22a6a652175a7fc3295656a38846c05f7ac0aa98efc121dbc4a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_STATE_MACHINE_V1_1_1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 7348,
+      "sha256": "3d9907bcf29adeaefec9c78c016f163c2f2c7d4a4a61fc09d7688c9c24f01e6f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 159281,
+      "sha256": "ec237705d19fa6eedba4879fbc7f5ce5e84f1099164ae569083c8273aa12d346"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_2.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 14022,
+      "sha256": "03bb784dd5530496dbd0e0e514d73e00996ed618cfc81f2685912af5f8df8165"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_3.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 19716,
+      "sha256": "4651de198b0d49c6a00954d9e06272cbfe620c7b178b8cb44aa56c20cc3c61f7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_4.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 20801,
+      "sha256": "1058916c5f830532d9ab7dae23965faaa87199a841f9fb13e24ec6077eb7a5b5"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_5.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 23330,
+      "sha256": "ce0bf4ce57a65010bc4a6ca7f4486457be8bf0f45457ce47fea849f4153c8dcc"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_6.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 25201,
+      "sha256": "e16fcb301fdf1aa53987afde6718deef411fd6bbe862cf613d8cda81b8fd22e0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_PRODUCER_CONTRACT_BINDING_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 1204,
+      "sha256": "daf5a9a938ec8b31eae15ad6fc98e9c06fe079be755f1c925b61afb75f70861f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_SCORING_CONTEXT_CONTRACT_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4437,
+      "sha256": "2cc2fc2cdbbe9ccd6a2b01d7e88592f436ec943a163d248e2440275bdec433bd"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_TC_PARAMETER_OWNERSHIP_GUARD_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 1749,
+      "sha256": "cfa63484f8df488e65afc6017f04170593c695ecb74e13fc06e34d35b2f74d67"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/KCASE_FIXTURE_INDEX_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5499,
+      "sha256": "e5422a9e18ca62f4fc14ea5a6687765e77aa252e8efd0ba6d5e890dcf5fc0fce"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K01_COV__REF_000011.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5625,
+      "sha256": "e274278816bfd8c3edd5f9c4b3befbd6b3878fb65b35840b4b139578f425bda6"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K01__REF_000011.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5226,
+      "sha256": "01aba6886084ffbeb2b57d311c100539786d04c3240175017198348ae89070f0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K02_COV__REF_000834.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 7529,
+      "sha256": "b111b555929aa479150dbfe34851067199279c2145b0924f8cfd6ec7908f097f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K02__REF_000834.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 7095,
+      "sha256": "5e87279d66cbda24717de6cad247388c17bc08e516932d9577e203484389f414"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K03_COV__REF_000007.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5040,
+      "sha256": "3544c75ce16e58a27c5834a20a583d0145425fa54056e27e584439cc1d9f27b0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K03__REF_000007.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4606,
+      "sha256": "f855ce51b2a7e14983c057666e09fd6039a15dc8c1fec2569625eca2cc869e65"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K04_COV__REF_000694.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 7476,
+      "sha256": "24b4339a2c4ba13f781b83d67ce240284b771bf2c79dd146c8657aa92e36a9e2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K04__REF_000694.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 7043,
+      "sha256": "e9f33ce237461d6a6e29b90da985e98504e56e4b126e0872ea3eb02e862c2878"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K05__REF_000432.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5541,
+      "sha256": "8440a6e8a746df45818be992d12347256e1dc6d44ead429c67efbdf4ae71a1b5"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K06__REF_000010.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5941,
+      "sha256": "94ceaff102a720bcddfe3fcd84c5275b56e03892457f8f60e6f65805311a6aed"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K07__REF_000001.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5749,
+      "sha256": "0819c5c5a3597aed9d812bb6b12a28ecb02d4e5499e2fc296160877fc15cafe2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K08_COV__REF_000698.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 8288,
+      "sha256": "fef9580881892eec59bb8dda1f3164acb8daa20e331feee14b9c91500ccfa138"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K08__REF_000698.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 7822,
+      "sha256": "9d4f083ecef993a632627952b7f4e5d02e2c76de7b893973dd3b9e9f614ceb4e"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K09__REF_000012.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 6005,
+      "sha256": "616f65a23ae57d50993d62ed329507daef763e9ee9cfa2eac9d05d18b17f4fa1"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K10__REF_000003.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5160,
+      "sha256": "e91fb62df3f74cb2fd82418c5b540429a534cc0d4e5ef140c1743c3347d6522e"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K11__REF_000005.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5450,
+      "sha256": "62d839f963a2331d4b61590a7792fa4347bbb53493569969098162327f7a00c8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K12__REF_000004.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5539,
+      "sha256": "306863b0a56e16e3dbd093bd7c0909ffeede2b18ef733c0e9e7ec84ed5ecc0fb"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K13__REF_000198.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5998,
+      "sha256": "801b31463441687e3751a02918dd243663fff65d7dd95ab91efd0a15a7e92a6b"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K14__REF_000586.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4840,
+      "sha256": "4cf1e4d8dcd1e33340b0cef1aa973cb788cbcec2a1a56993a999540f3c5fd9f8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/kcases/K15__REF_000590.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5248,
+      "sha256": "ffcc2cd3047795302684635eb55a5735e9476899719e539f19ef88c391e5ad14"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-AP-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3767,
+      "sha256": "d7555ba46e703dec5fec57deaa7ff2946983497d5115d7bb168bef19e9bdfcc2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-AP-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4397,
+      "sha256": "feb82da668f655def84ad226301970fc905fd1a21d0d93d729755a56bc2e85da"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-EX-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3924,
+      "sha256": "f180a886c2bb703bdd30635369223c116b5fa0cfbc2d0a30dda956b8b12d1765"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-EX-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4363,
+      "sha256": "62f29452ff459855e62a77739f566785208a20e15ce437caf3754f555000c616"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-EX-03.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3903,
+      "sha256": "ccb121755502ec0d61284b9d878d7946842f866b89638802d932a84741679593"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GD-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3946,
+      "sha256": "8632d8ac9c11b57c00acdf2d89bb13395f18538f067c17e8bcf0da1ab8f9ed7b"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GD-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3927,
+      "sha256": "fcd74bd3b659703e8a52499ae8b52bdf233d1ac08af63882ae97fec56e0faa90"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GD-03.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4042,
+      "sha256": "71dd04c3a8cbc0cbd59c99fbe23653cf1f69b42e46f2e90627e6e372b1e0b4c7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GD-04.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4159,
+      "sha256": "74380b75f292e16b0f25128f96de55d6ecba2672f8ed691de1f241d168372f6f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GD-05.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4026,
+      "sha256": "2d7bf3a8b4d9678c9406b23a554c194ca6fdbf410cd021b3cb9946585197a7d5"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GL-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 2464,
+      "sha256": "d19f4fa3f2199e0d05ed6ed4e4a3494d902cdb6923a888db022711977fc77a2c"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GL-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 2829,
+      "sha256": "8f6e3c65028d28e83530758a3115fa7fa2fe7e2d4a5bc790429395974b163352"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GL-03.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3897,
+      "sha256": "8593b86d84cbc61180206e7613395121d5ae4a499a17c227c1d6b3d2ca960b84"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GL-04.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3874,
+      "sha256": "a443a0c4071c735df7a5e0f334857f7203e5383faf6136f52fa412607438a30b"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GR-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3783,
+      "sha256": "de31167a11a8de214821e42db41ce113672a25689c1389e219c6b273e76e8665"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-GR-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3989,
+      "sha256": "1537cea095ab419e95b6f071af254bd87b6ee696250418b2842dba856d3b5d1f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-LN-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 2886,
+      "sha256": "ea8f22255c9c220e72cae7f2fb1b9af4445c47ffd15e33510319b2905625351a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-LN-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3535,
+      "sha256": "41c478f746bfaf698e2da3bfa154f2a5ec929af14ee1be1f779c8d42087b4ae3"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-LN-03.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 2488,
+      "sha256": "71f8a961a4be60b4da670375ab09333a1153fcc3389c8ab62e959597a01ab6dd"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3918,
+      "sha256": "c4b0dffa21f831297dd25376833c164f446f340220e99fe001d3cc36aeddbe3c"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 2991,
+      "sha256": "1076c8053e6596bbedea08206ca44b7d1ce1115a80d719d04cfbdca1c9f9a77a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-03.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4056,
+      "sha256": "511326de31117f0e1a806e7ddb1e169dc61a11de3721c82529f4d93c7eb70480"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-04.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3944,
+      "sha256": "c9846ebcd845516b28ea14609dd8fca97847a76820925cf7785f11dc720d680c"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-05.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3984,
+      "sha256": "d878b1ee9a0d1d3913b2a206d731c8954311d06d35380a0c1b8faa5e927b2fe0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-06.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3735,
+      "sha256": "41fc890d8a7cd1c21d910c141997c0970a2385dda056848abe44e1a54f6954e7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-07.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4165,
+      "sha256": "0682896f68b836479b64d97d829b184257780cd8608baa9d8fb3c66518f9b325"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-08.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 2677,
+      "sha256": "761713583933e5028ed46371e9b297f5892f0a5abfca9b3bd15470449becf12d"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-09.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3927,
+      "sha256": "efc10839f58741acf18ca6a5fd5a363ed1fdcb6dc0b2a059046d7efa930f367c"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MH-10.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4024,
+      "sha256": "81a7860329cab3cc96ca1d7ee7d7e4e7eec3f8de5528a3c81b2a4b2e77a46c2a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MIX-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4136,
+      "sha256": "d6c436e0dd840d6fd221a2b512800bf0a1339950e6bab2c161d43cc5fee0bfc1"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-MIX-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4483,
+      "sha256": "a1a11671d74b728703b5c8f92aa8d0fe543576163df0502db8016ccd7b4f8ff0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-QU-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3875,
+      "sha256": "a1a4c11dadd53338d3957d3b3616c6c908f08e3510e9c35cdfccf6768a914788"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-QU-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4045,
+      "sha256": "b3f472023e0691a5ac4281348e32a6bf3657e50c144b0983626fa37284961495"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-RP-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4213,
+      "sha256": "f31e526f50db4bac56e201e42a7ef528599ba9f93e1ce991b58c2b62ec5c8962"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-RP-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4740,
+      "sha256": "a0fe9d14269324ee766947bfcdd356cacd376fe342e82c5323db99e761f00080"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-RP-03.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3800,
+      "sha256": "75230ede22c3e48cb024b62b70855791e3adffed240753b5d17f9691f33240c8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-ST-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 2453,
+      "sha256": "4e3d287b127e6cd8b4d49d4f87c882fbc51752878184b6696b40117f9c6c731f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-ST-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4230,
+      "sha256": "51e16f11141d1c5311d6a8efa7e651ef2120356c87130c1423703deb31bf34fd"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-ST-03.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4190,
+      "sha256": "c10d5043b679f2392b02aad0e971030c2c3ad349f7f16efd3d3439ce7fd75d8e"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-TK-01.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3909,
+      "sha256": "cab68405b6e0460869944b1eec37a6a2feab95058d719e19eeac8fb7cab83572"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NA-TK-02.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4035,
+      "sha256": "435d12c880c052518a8dfa6bd0901edbe94f9d88e0eb970a9ea506ff98f31c7f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor/NON_ANCHOR_FIXTURE_INDEX_V1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 21635,
+      "sha256": "0068d8e3afea6b6cc908fdb0372a734b1155edb11348734a8e3e33874459a14a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-CN-MM.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4666,
+      "sha256": "f2994e77f653691d35d00515e3cde86a2ed2d5c7cf301a26e49c0ed1d5d4dd57"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-CN-S.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3801,
+      "sha256": "ce6f1745d0cea37f057fcb35fa7a866ee5fcee2ed2f2e1af40b1a4b4601ddcb7"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-CN-W.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3960,
+      "sha256": "efca49cf39f89ba16187f7ad55cbd12a49c7782bfcc87fb573b9b157493a3023"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-D7-B.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3871,
+      "sha256": "056cf14804f915ff75556a9b5306afaedfcac9edb167fbaee285494b73901221"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-D7.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4493,
+      "sha256": "b6cd9ecb12cfd7f10109a65511730a97e8012f5b7bea9b5db4779ad1b239c22a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-D8-B.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 2859,
+      "sha256": "b3c84742eeb0d5c2cd8386f7741688622ca6ba044acb5fc457c7c353fbf6cbac"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-D8.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4482,
+      "sha256": "94253115237bdabf9919e1c22ecea3f960318f2c9bc6e6630700b40b40dcfed0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-E-M.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4423,
+      "sha256": "9158b4dc656885f58ddd3577461d35da88ea13d5070c7110de068a2db9c10724"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-E-N.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3676,
+      "sha256": "3166d2099b4c2ff3ae65a48d9ff586f60137590ae6735be0e6714c68e36938f6"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-I-MM.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4683,
+      "sha256": "422f9b6dc78d8197719b81b3e89ad35dc866db62812005e04cebf8f26a78cda2"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-I-S.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3796,
+      "sha256": "2d749fb2b7eaab4c801534f22f840983237c2de8843b0246f97e4d6f33401f46"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/N-I-W.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3930,
+      "sha256": "28e6900302b59244abb77590fd31207c247ddc804fd61014c780bcebd2aec2d9"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/fixtures/non_anchor_transition/NON_ANCHOR_TRANSITION_FIXTURE_INDEX_V1_1_1.json",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 5379,
+      "sha256": "321f606d36380259ef0fa1985755aa1c430a1a183a2cc52b01cb00dc0a6cd3f4"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_direction_runtime_v1_2_7.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 73038,
+      "sha256": "3f210adbb709a8183f0c42631239b17e5549ae6363fae81d2f39ae52b7fd6e74"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_p3_general_force_resolver_v1_1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 50710,
+      "sha256": "fdf7f9410b130a4ee09bf8953bed88b7941bd3044d0212d6758f01d8a4fb448f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/producer_contract_binding_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 3020,
+      "sha256": "a3b1bd526b59d9c2250203de9cc781316b3bc16c3e64da314a19060fa533a95a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/anchor_independence_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 10533,
+      "sha256": "54fee26c51513cba95d27953f6b1ef07f41e847e709ec061a6dc7baf2f2fa3d4"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/denim_neutral_eligibility_v1_2_6.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 15196,
+      "sha256": "78b886607f364625c005738c00166a6639567b82df568dafee714e48a6eb04a1"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/ei_direction_runtime_v1_2_6.test.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 57764,
+      "sha256": "26f87a9cbbd0404ded6325e6aae259fb30f41dcb0c353460a8c40c07706f089d"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/kcase_general_rule_regression_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 16583,
+      "sha256": "1024753b6b719fcc86a7295fb7f10ea4887abbdf03c14805fac7f7417ab2281b"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/non_anchor_generalization_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 6605,
+      "sha256": "7525ba8589094c2e90248a274b0c6d362be66eb6b013618ec08a2161f5a8fb39"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/non_anchor_transition_v1_2_6.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 4825,
+      "sha256": "9cb8b974ec5fb4318c052b972d22564211bb823e87540378e7e68ee6870fef84"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_authority_cleanup_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 13254,
+      "sha256": "2ac911dec41b2c18dbcf39a79cd37667b2210df7762a27cd42fb27da3c28e87d"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_d03_decontamination_score_always_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 18180,
+      "sha256": "90c271e022ed14d63ab40850e57c258b93d4699d383fc0cd68b750ced5961328"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_gender_independence_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 12613,
+      "sha256": "73b9b26c7337b97436ab8a4aa60aebf726847691c2515a351b1d2bcd2736c7bc"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_matching_pair_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 12662,
+      "sha256": "d788079006fb758fbcaed05809be02344d81a20449ac08a1fe18d09679e278ef"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_p3_contract_authority_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 9805,
+      "sha256": "4e6c63e73e1dc958ca9a07965cd80488b9f2790abb3831de336eab0aab21d2f9"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_surface_authority_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 11465,
+      "sha256": "46e164d023465f8015d8d17953a2ca01e62ecdd31fae97cf4424aaf06bd7443e"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_surface_scope_and_pattern_subtle_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 13614,
+      "sha256": "a0eb5ebf8d1ad1436ef67d71586350b867aa17ff8465bb15e4ac57e3945acbb0"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_target_su_observation_consistency_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 13751,
+      "sha256": "05d1f68663bbfbcf184c7197068dd024898c1367c32c2d2d16e74515c5783e1a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_targeted_realization_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 30130,
+      "sha256": "6b55ec8a24abe84088f50c58d4a63fa586a9f34ea4520b7b3c24941df90531ea"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_6_transition_trace_non_vacuity_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 11815,
+      "sha256": "c700866a165d53126381cb111b60327b3508b54c54e703a016238efc4eb2bd8e"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_7_final_residual_closure_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 16190,
+      "sha256": "6b762f014d84f5b473847010b5c78c67351f7a8d12dac587ed0bbdc348b02299"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_7_producer_version_isolation_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 10600,
+      "sha256": "bb334fa93d3e692416d07d427ef56176c1625d8b644e6e45ceea6d4914f47beb"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_7_treated_surface_realization_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 16331,
+      "sha256": "a215e605e6ecaadc2097f5eaf90d99f5643bafed800b790f650e0083af096d8c"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/tests/v1_2_7_version_identity_correction_v1.js",
+      "role": "FROZEN RUNTIME — EI Direction V1.2.7: runtime, resolvers, validators, controllers, authority contracts, Neutral Registry, fixtures and the full test closure.",
+      "size_bytes": 13580,
+      "sha256": "898288985ae27bec837470da0709adb9b3fffb90a6025fb19f5948033e323440"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NEUTRAL_V3_AUTHORITY_CLEANUP_V1/STMX_EI_NEUTRAL_V3_CHANGED_FILE_INVENTORY_V1.json",
+      "role": "AUTHORITY ARTIFACT named directly by a frozen suite.",
+      "size_bytes": 9876,
+      "sha256": "3615489b03ecab56f389174a256083c0b438e529009e480eb7e1e8053b551d63"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_P3_FINAL_CLOSURE_V1_1/STMX_EI_P3_KCASE_ANCHOR_MATRIX_FINAL_V1_1_1.json",
+      "role": "AUTHORITY ARTIFACT named directly by a frozen suite.",
+      "size_bytes": 26297,
+      "sha256": "2f2c2a814726a27a19aa78479fb694d9f443f98095f4bda09fb1ebb56403ba29"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_SCORING_ENGINE/stmx_score_notation_v1.js",
+      "role": "ENGINE-LEVEL SHARED MODULE required by the frozen runtime or its suites.",
+      "size_bytes": 8448,
+      "sha256": "fc364336d321d2c3baa395b47647073cb4175bb772728e13dd3404d325b577f6"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/EXPOSURE_CATEGORY_APPLICABILITY_CORRECTION_V1/CHATGPT_EXPOSURE_APPLICABILITY_MINIMUM_REVIEW_FILES/producer_prompt_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 142065,
+      "sha256": "ac634156d91a4b8cc54417d5165cd45917b639a6299f71d3fa7af69e4539146f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/EXPOSURE_CATEGORY_APPLICABILITY_CORRECTION_V1/CHATGPT_EXPOSURE_APPLICABILITY_MINIMUM_REVIEW_FILES/producer_rules_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 44370,
+      "sha256": "274caf269e3cd942b50c7aadfad789d899ae46facd79696d0424305ffa5ecaea"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/EXPOSURE_CATEGORY_APPLICABILITY_CORRECTION_V1/CHATGPT_EXPOSURE_CLOSEOUT_MINIMUM_REVIEW_FILES/producer_prompt_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 142969,
+      "sha256": "022afe837453ffb61f15297e1539112a0fa7aea4ac37502cc947083917e28646"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/EXPOSURE_CATEGORY_APPLICABILITY_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_APPLICABILITY_V1/producer_controller_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 40341,
+      "sha256": "4c5b0b861e4a5d377641af35509867b7357a89c2c9f0d442421e6ee2fa63e446"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/EXPOSURE_CATEGORY_APPLICABILITY_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_APPLICABILITY_V1/producer_prompt_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 142065,
+      "sha256": "ac634156d91a4b8cc54417d5165cd45917b639a6299f71d3fa7af69e4539146f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/EXPOSURE_CATEGORY_APPLICABILITY_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_APPLICABILITY_V1/producer_rules_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 44370,
+      "sha256": "274caf269e3cd942b50c7aadfad789d899ae46facd79696d0424305ffa5ecaea"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/EXPOSURE_CATEGORY_APPLICABILITY_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_APPLICABILITY_V1/producer_validator_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 47009,
+      "sha256": "4ffa37e07cf629975287bef00ee6f5b10798788ee588d02fc94893f8da076630"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/EXPOSURE_CATEGORY_APPLICABILITY_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_CLOSEOUT_V1_1/producer_prompt_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 142969,
+      "sha256": "022afe837453ffb61f15297e1539112a0fa7aea4ac37502cc947083917e28646"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/EXPOSURE_CATEGORY_APPLICABILITY_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_CLOSEOUT_V1_1/producer_rules_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 44370,
+      "sha256": "274caf269e3cd942b50c7aadfad789d899ae46facd79696d0424305ffa5ecaea"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_EXPOSURE_FINAL_LIVE_REVALIDATION_V1/CHATGPT_EXPOSURE_FINAL_LIVE_MINIMUM_REVIEW_FILES/producer_rules_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 44370,
+      "sha256": "274caf269e3cd942b50c7aadfad789d899ae46facd79696d0424305ffa5ecaea"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_EXPOSURE_FINAL_LIVE_REVALIDATION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_FINAL_LIVE_V1/producer_prompt_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 142969,
+      "sha256": "022afe837453ffb61f15297e1539112a0fa7aea4ac37502cc947083917e28646"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_EXPOSURE_FINAL_LIVE_REVALIDATION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_FINAL_LIVE_V1/producer_rules_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 44370,
+      "sha256": "274caf269e3cd942b50c7aadfad789d899ae46facd79696d0424305ffa5ecaea"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_EXPOSURE_SEMANTIC_STATE_CORRECTION_V1/CHATGPT_EXPOSURE_SEMANTIC_STATE_MINIMUM_REVIEW_FILES/producer_prompt_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 145007,
+      "sha256": "b0abf95b256094960d27f00fcdeb2149d0336d34e01ef1fac5c5748e8a5e74b8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_EXPOSURE_SEMANTIC_STATE_CORRECTION_V1/CHATGPT_EXPOSURE_SEMANTIC_STATE_MINIMUM_REVIEW_FILES/producer_rules_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 44370,
+      "sha256": "274caf269e3cd942b50c7aadfad789d899ae46facd79696d0424305ffa5ecaea"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_EXPOSURE_SEMANTIC_STATE_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_SEMANTIC_STATE_V1/producer_controller_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 40341,
+      "sha256": "4c5b0b861e4a5d377641af35509867b7357a89c2c9f0d442421e6ee2fa63e446"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_EXPOSURE_SEMANTIC_STATE_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_SEMANTIC_STATE_V1/producer_prompt_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 145007,
+      "sha256": "b0abf95b256094960d27f00fcdeb2149d0336d34e01ef1fac5c5748e8a5e74b8"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_EXPOSURE_SEMANTIC_STATE_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_SEMANTIC_STATE_V1/producer_rules_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 44370,
+      "sha256": "274caf269e3cd942b50c7aadfad789d899ae46facd79696d0424305ffa5ecaea"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_EXPOSURE_SEMANTIC_STATE_CORRECTION_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EXPOSURE_SEMANTIC_STATE_V1/producer_validator_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 47009,
+      "sha256": "4ffa37e07cf629975287bef00ee6f5b10798788ee588d02fc94893f8da076630"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/STMX_VISION_PRODUCER_CONTRACT_V1_1.json",
+      "role": "FROZEN PRODUCER — STMX_VISION_PRODUCER_V1_1, the complete declared module closure and its contract.",
+      "size_bytes": 3736,
+      "sha256": "f0a119f75b0245f8938f72e7c39694668eafe6b67a8e07a056e7e47be4685576"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_controller_v1.js",
+      "role": "FROZEN PRODUCER — STMX_VISION_PRODUCER_V1_1, the complete declared module closure and its contract.",
+      "size_bytes": 42326,
+      "sha256": "7a2aa66e2f278e22857b8de51bab467f2a221883734bf50d96dbd0308ab71944"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_model_adapter_v1.js",
+      "role": "FROZEN PRODUCER — STMX_VISION_PRODUCER_V1_1, the complete declared module closure and its contract.",
+      "size_bytes": 3881,
+      "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_prompt_v1.js",
+      "role": "FROZEN PRODUCER — STMX_VISION_PRODUCER_V1_1, the complete declared module closure and its contract.",
+      "size_bytes": 154376,
+      "sha256": "0d3016e084d5f6f0749bb1a87dda8eef2b9cf65579ceba06e1646ec46f996d84"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_rules_v1.js",
+      "role": "FROZEN PRODUCER — STMX_VISION_PRODUCER_V1_1, the complete declared module closure and its contract.",
+      "size_bytes": 66546,
+      "sha256": "c4190ece1408854d039eda4d9a1c3f4de2c5209ae1eefb7f8a461ba5825bf98f"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_validator_v1.js",
+      "role": "FROZEN PRODUCER — STMX_VISION_PRODUCER_V1_1, the complete declared module closure and its contract.",
+      "size_bytes": 56972,
+      "sha256": "c261d36b4905928efe7cda14c76194d13f0ac4cd357919f0e18faf27d01e2462"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/producer_controller_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 41902,
+      "sha256": "a0ea904b1308ac6ad3838a3cff22d945a0bc65080c75fd895ffb8bf4953a849d"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/producer_model_adapter_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 3881,
+      "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/producer_prompt_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 152883,
+      "sha256": "f0684013abad48455cf3973b22ee9bd9528675a088fb1766419ba8e245bbdd05"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/producer_rules_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 63810,
+      "sha256": "588da46bd0242e5a0c35dd5017c6ba570499968efacdc0a3387e57e76f14c6cf"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/producer_validator_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 55806,
+      "sha256": "63fb0b809d4db7673bdbe659345214ba2c7074e20fe22f6513175c3176990a6a"
+    },
+    {
+      "relative_path": "repo/01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+      "role": "SHARED AUTHORITY — the sealed Producer V1 and the Colour V1 authority the frozen runtime depends on.",
+      "size_bytes": 20327,
+      "sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52"
+    },
+    {
+      "relative_path": "repo/02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/FINAL_REPRESENTATION/CANONICAL_FINAL_REPRESENTATION_MANIFEST.json",
+      "role": "FROZEN GOVERNED SOURCE — the final representation the target/provenance mapping resolves against.",
+      "size_bytes": 7985,
+      "sha256": "b4bc608139fd93f2ab9ea9034ac829b1c1fca7efd1e61f8660c8abde0b6e8ebe"
+    },
+    {
+      "relative_path": "repo/02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/FINAL_REPRESENTATION/CANONICAL_FINAL_REPRESENTATION_V1.jsonl",
+      "role": "FROZEN GOVERNED SOURCE — the final representation the target/provenance mapping resolves against.",
+      "size_bytes": 715113,
+      "sha256": "9963333b1dc97ae43f5a5415374c1fb809eead3936ce25145bf6e75285c31d93"
+    },
+    {
+      "relative_path": "repo/02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/MASTER/STMX_CEO_CALIBRATION_CORPUS.jsonl",
+      "role": "FROZEN GOVERNED SOURCE — the canonical corpus the 114 runtime inputs are regenerated FROM. ⛔ Copied, never mutated.",
+      "size_bytes": 6600580,
+      "sha256": "621d6b905fb71b0c265791ccd02d4a3a7e0339d129ff769cef5ccdbf4eace267"
+    },
+    {
+      "relative_path": "repo/02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/TOOLS/corpus_build_v1.js",
+      "role": "FROZEN GOVERNED SOURCE — final representation, scoring-unit resolution, historical domain, target descriptor and corpus build. ★ corpus_build_v1.js is reached by a DYNAMIC require and is included explicitly.",
+      "size_bytes": 28609,
+      "sha256": "5521da2137e5816dc38e9115915e57be40bb8b0b6340bbe7ca6a60e28bc81cb5"
+    },
+    {
+      "relative_path": "repo/02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/TOOLS/final_representation_v1.js",
+      "role": "FROZEN GOVERNED SOURCE — final representation, scoring-unit resolution, historical domain, target descriptor and corpus build. ★ corpus_build_v1.js is reached by a DYNAMIC require and is included explicitly.",
+      "size_bytes": 57854,
+      "sha256": "d2d241744370019c54db92ee9ee6e142e8241bb4987612bc20d866b6262141b9"
+    },
+    {
+      "relative_path": "repo/02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/TOOLS/historical_domain_v1.js",
+      "role": "FROZEN GOVERNED SOURCE — final representation, scoring-unit resolution, historical domain, target descriptor and corpus build. ★ corpus_build_v1.js is reached by a DYNAMIC require and is included explicitly.",
+      "size_bytes": 16158,
+      "sha256": "06b3ff7a3805140f31b2ff5b232bad61d75226edf1c7e630ae63c803c7a59a1a"
+    },
+    {
+      "relative_path": "repo/02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/TOOLS/scoring_units_v1.js",
+      "role": "FROZEN GOVERNED SOURCE — final representation, scoring-unit resolution, historical domain, target descriptor and corpus build. ★ corpus_build_v1.js is reached by a DYNAMIC require and is included explicitly.",
+      "size_bytes": 15261,
+      "sha256": "b46d4c9fe8bb9a8349c6d1d4cb4aab9eaec0c0ec961ed1242dc81acddc1fd723"
+    },
+    {
+      "relative_path": "repo/02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/TOOLS/target_descriptor_v1.js",
+      "role": "FROZEN GOVERNED SOURCE — final representation, scoring-unit resolution, historical domain, target descriptor and corpus build. ★ corpus_build_v1.js is reached by a DYNAMIC require and is included explicitly.",
+      "size_bytes": 35560,
+      "sha256": "69c5173875398a3c5dedcd3d0c8ff024e24b5e297f1a2aec7924e5c6debdeed0"
+    },
+    {
+      "relative_path": "repo/02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/TOOLS/write_final_representation_v1.js",
+      "role": "FROZEN GOVERNED SOURCE — final representation, scoring-unit resolution, historical domain, target descriptor and corpus build. ★ corpus_build_v1.js is reached by a DYNAMIC require and is included explicitly.",
+      "size_bytes": 6699,
+      "sha256": "ed61c8438b7e77d8d4997cfe4146149762a118813b2829d13e46fd0b8848747f"
+    }
+  ]
+}

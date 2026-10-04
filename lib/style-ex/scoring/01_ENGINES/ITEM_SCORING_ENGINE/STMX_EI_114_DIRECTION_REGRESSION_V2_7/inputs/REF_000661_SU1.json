@@ -1,0 +1,336 @@
+{
+  "unit_id": "REF_000661#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "f4f5ee1bdc655e32f0c59de4fd73943a9040e6c9ee59d990c5bca81934c14f34",
+  "projected_hash": "d29a0004b6aac055da3fbf39c3dd491cdafe286730ed98c316d25f188f525135",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth matte drapey body cloth",
+          "sheer net yoke with applied lace"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth matte jersey-like body with fluid drape"
+            ],
+            "locations": [
+              {
+                "component": "Skirt Body"
+              }
+            ]
+          },
+          {
+            "value": "Other",
+            "descriptor": "sheer net/tulle",
+            "evidence": [
+              "transparent net panel at neck and shoulders"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              }
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "floral lace applique at yoke",
+          "sheer net at upper chest and shoulders"
+        ],
+        "values": [
+          {
+            "value": "Lace",
+            "evidence": [
+              "scrolling floral lace appliqué across yoke and neckline"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              }
+            ]
+          },
+          {
+            "value": "Semi Transparent",
+            "evidence": [
+              "skin visible through net panel at upper chest and shoulders"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black cloth with no repeating printed motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, text or printed image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "clean fitted bodice and skirt with no pocket openings"
+        ]
+      },
+      "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "applied floral lace motif at yoke"
+        ],
+        "values": [
+          {
+            "value": "Appliqué",
+            "evidence": [
+              "floral lace pieces applied onto sheer net yoke"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              }
+            ]
+          }
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fur, fringe or ribbon visible"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "mirrored yoke lace left and right",
+          "even straight hem across floor",
+          "centered neckline"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Narrowing",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt follows body then tapers slightly toward hem before slight flare puddle"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "close body-conforming bodice and hips"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice traces torso and waist closely"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "skirt follows hips and thighs closely, cloth traces the body"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "whole_garment",
+        "evidence": [
+          "hem reaches the floor on standing model"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "cloth follows body with soft fall"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "bodice cloth conforms to torso with slight body"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "skirt drapes and falls softly to floor with no self-support"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "upper",
+        "evidence": [
+          "cap sleeves covering only the shoulder tops"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder endpoint clearly formed at natural shoulder before cap sleeve"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "soft rounded shoulder contour continuous into cap sleeve"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Mock",
+        "region": "upper",
+        "evidence": [
+          "standing band collar high against neck"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "opening sits high at the base of the throat"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "distinct standing band around the neck"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no ribbed band at lower edge; plain skirt hem"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no front placket or opening visible"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "sheer net reveals chest and shoulder skin"
+        ],
+        "values": [
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "upper chest skin visible through sheer net yoke"
+            ]
+          },
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulder skin visible through sheer net panel"
+            ]
+          }
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "skirt hem intact with no visible split"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered or tiered frill construction"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "cap sleeve ends in a plain edge with no cuff construction"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "stand covers a modest portion of the neck height"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniformly black body, bodice, lace and net",
+        "lightness": "deep black throughout",
+        "usage": "one color across all components including lace appliqué",
+        "effect": "matte black, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

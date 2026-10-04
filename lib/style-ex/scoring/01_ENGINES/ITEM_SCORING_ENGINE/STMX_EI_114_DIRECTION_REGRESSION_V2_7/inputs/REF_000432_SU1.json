@@ -1,0 +1,220 @@
+{
+  "unit_id": "REF_000432#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "315e331b3d26ba4a958cf812018311fa0199c245ae5d8f3c4b3b427d134f861d",
+  "projected_hash": "e660ebd76c16fba50366095c6ee042516ac63d419d322db93090e40cdc0d9a0f",
+  "input": {
+    "category": "Sweater",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "visible knit stitch structure"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "ribbed collar/cuffs/hem",
+              "cable-knit body texture"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "values": [
+          {
+            "evidence": [
+              "raised cable/aran texture on the body",
+              "chunky knit structure"
+            ],
+            "value": "Textured Knit",
+            "locations": [
+              {
+                "component": "Body"
+              }
+            ]
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Textured Knit",
+            "evidence": [
+              "raised cable/aran texture on the body",
+              "chunky knit structure"
+            ],
+            "locations": [
+              {
+                "component": "Body"
+              }
+            ]
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no repeating color/print motif; texture only"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic or logo"
+        ]
+      },
+      "pocket": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no pockets visible on knit body"
+        ]
+      },
+      "ruffle": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffle present"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied embroidery/beading/appliqué/piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt/hardware/trim attachments"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric construction"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "hem sits around low hip on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "chunky knit holds soft shape but yields into folds"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves reach the wrist/hand"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits below natural shoulder onto upper arm"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Turtleneck",
+        "region": "upper",
+        "evidence": [
+          "tall folded ribbed collar around neck"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "collar rises to the neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "ribbed standing turtleneck band"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "ribbed band at bottom hem"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "pullover with no front opening"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary relaxed sleeve envelope, not deliberately ballooned"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "light heather gray knit throughout",
+        "lightness": "pale light-value gray",
+        "usage": "one uniform color across garment",
+        "effect": "matte knit, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

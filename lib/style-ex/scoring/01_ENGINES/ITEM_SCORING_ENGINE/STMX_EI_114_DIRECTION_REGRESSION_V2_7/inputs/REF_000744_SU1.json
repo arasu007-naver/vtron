@@ -1,0 +1,290 @@
+{
+  "unit_id": "REF_000744#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "b93178dd69cdc901e3f3f5c5616bb2a249192762ff9cb3f08c66b9c7bdd16b68",
+  "projected_hash": "223b32dc0cd8f37740519f4afc2d62d2dd4b7ccb64ff55273f3cc3e633691087",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "fine open lace/mesh knit construction",
+          "sheer black textile"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "fine patterned lace-knit fabric visible over body and skirt"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "open lace patterning over bodice and skirt",
+          "see-through fabric revealing legs and underlayer"
+        ],
+        "values": [
+          {
+            "value": "Lace",
+            "evidence": [
+              "patterned lace mesh visible on bodice and skirt panels"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              },
+              {
+                "component": "Skirt Body"
+              }
+            ]
+          },
+          {
+            "value": "Semi Transparent",
+            "evidence": [
+              "legs and inner bodysuit visible through the skirt and upper bodice fabric"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Linear",
+        "region": "whole_garment",
+        "evidence": [
+          "vertical striped lace channels running down the skirt"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": []
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "smooth sheer bodice and skirt with no pocket openings"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied embroidery, sequin, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fringe or trim attached"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "both straps present symmetrically",
+          "hem and waistline mirror side to side"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt expands progressively from hips to floor-length hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "evidence": [
+          "close bodice, flowing skirt with independent room"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice follows the torso closely"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Relaxed",
+            "evidence": [
+              "skirt hangs away from legs with generous flowing room"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "whole_garment",
+        "evidence": [
+          "hem falls to floor near the ankles on a standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "lightweight sheer cloth drapes softly"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "bodice fabric follows body with soft movement"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "skirt drapes and falls softly with no self-support"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "thin straps only, no sleeve covering the arm"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "strap sits at shoulder, no shoulder construction extending onto arm"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no built shoulder line; bare shoulders with thin straps"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "fabric edge angles down to a V point at center front chest"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Low",
+        "region": "upper",
+        "evidence": [
+          "neckline dips low onto the chest"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare V neckline with no collar band or structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no ribbed band at the garment lower edge; lace hem"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "pull-on slip style with no front placket or opening"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "bare shoulders and sheer skirt revealing legs"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulders fully bared by thin-strap sleeveless construction"
+            ]
+          },
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "low V neckline exposes upper chest"
+            ]
+          },
+          {
+            "value": "Upper Thigh",
+            "evidence": [
+              "sheer transparent skirt reveals upper thighs through the fabric"
+            ]
+          }
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "continuous skirt hem with no vertical slit opening"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered ruffle or frill strip applied"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "black lace fabric throughout bodice and skirt",
+        "lightness": "dark black tone",
+        "usage": "single uniform black across whole garment",
+        "effect": "matte lace, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

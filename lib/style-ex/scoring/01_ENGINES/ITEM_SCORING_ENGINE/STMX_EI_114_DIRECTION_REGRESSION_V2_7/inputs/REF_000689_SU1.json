@@ -1,0 +1,278 @@
+{
+  "unit_id": "REF_000689#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "761848889f29be399ed8cbb21a2f89519e3dfadec6d67b7a970c14a3c9fcd486",
+  "projected_hash": "2abdc576c2e2df98af0ad7e8f9937037d9e9be9bff2ab6564ed87cf075068092",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "stretch jersey-like cloth conforming to body"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "smooth stretch jersey clinging to body contours"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth matte jersey with no distinct constructed or optical treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black cloth, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, slogan or image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "smooth body with no pocket openings"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain jersey, no applied embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, trim or other attachment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric straps, neckline and hem"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "width stays consistent from hip to hem, no flare"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "garment visibly close to body"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice closely conforms to torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "skirt clings tightly to hips and thighs"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Mini",
+        "region": "whole_garment",
+        "evidence": [
+          "hem sits at upper thigh on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "cloth follows body with soft cling"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "bodice follows torso softly"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "skirt clings to hips with soft movement"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "thin straps, no sleeve construction on arms"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "straps sit at natural shoulder, no seam dropped onto arm"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "thin straps produce no shoulder contour or endpoint"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Scoop",
+        "region": "upper",
+        "evidence": [
+          "deep rounded U-shaped fabric opening across chest"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Low",
+        "region": "upper",
+        "evidence": [
+          "opening descends onto upper chest"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare scoop neckline, no collar band or structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain self-fabric lower edge, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "pull-on slip with no front opening"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "shoulders bare, upper chest exposed by low scoop"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulders fully bare between thin straps"
+            ]
+          },
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "low scoop exposes upper chest"
+            ]
+          }
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "continuous hem with no slit"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered or tiered frill construction"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight column silhouette with no inward waist shaping"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Strap",
+        "region": "upper",
+        "evidence": [
+          "thin spaghetti straps over shoulders"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniformly black jersey across whole garment",
+        "lightness": "deep black tone",
+        "usage": "one color, no distinct secondary",
+        "effect": "matte, no neon or metallic"
+      },
+      "color_notes": null
+    }
+  }
+}

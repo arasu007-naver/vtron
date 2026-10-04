@@ -1,0 +1,257 @@
+{
+  "unit_id": "REF_000143#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "f1e19f10bf5c8af5f2c0e7513d985cb29cabb38d42da83dbc2428ea3659ef43a",
+  "projected_hash": "10224e2ed054cd13ab78bf2543718e18a4b560a70b7c4a6b075b8fd915ab5072",
+  "input": {
+    "category": "Coat",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "puffed horizontal quilted channels indicating down/insulated fill",
+          "smooth technical shell face"
+        ],
+        "values": [
+          {
+            "value": "Padding",
+            "evidence": [
+              "puffed quilted chambers along body"
+            ]
+          },
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth matte technical shell fabric"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "horizontal stitched quilt channels across body and sleeves"
+        ],
+        "values": [
+          {
+            "value": "Quilted",
+            "evidence": [
+              "repeated horizontal quilted tubes on body and sleeves"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print on body"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "drawcord with cord ends at hood"
+        ],
+        "values": [
+          {
+            "value": "Other",
+            "descriptor": "Hood drawcord",
+            "evidence": [
+              "orange/patterned drawstring cords hanging from hood"
+            ],
+            "locations": [
+              {
+                "component": "Hood"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front placket and hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "falls straight with moderate ease, not tight or oversized"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Knee Length",
+        "region": "upper",
+        "evidence": [
+          "hem falls at around the knee on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "down fill holds full standing volume away from body"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves run to the wrist"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "rounded continuous shoulder contour into sleeve"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "distinct high standing quilted collar band above zip separate from hood"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "attached hood raised at neck with drawcords"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "closure runs full front from neck to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Snap Button",
+        "region": "upper",
+        "evidence": [
+          "row of snap studs along the front placket over the zip guard"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "puffer down construction with hood and snap placket"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight column silhouette, no waist shaping"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary padded sleeve envelope, not enlarged"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Coat"
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat",
+            "evidence": [
+              "slit welt openings set into quilted body",
+              "opening lies flush with body surface"
+            ]
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "navy",
+      "color_lightness": "dark",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "orange",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Hood"
+        }
+      ],
+      "evidence": {
+        "primary": "deep dark navy shell across whole coat",
+        "lightness": "very dark tone",
+        "usage": "orange drawcord and hood lining accent against navy body",
+        "effect": "matte non-metallic finish"
+      },
+      "color_notes": null,
+      "additional_colors[]": "TWO entries — orange @ Hood (lining panels) + uncertain @ attachment \"Other\" (the multicoloured drawcord)"
+    }
+  }
+}

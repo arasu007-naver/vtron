@@ -1,0 +1,171 @@
+{
+  "unit_id": "REF_000007#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "e82e8c603c8c1e9df3aa19027fc2f4f5113bede3172d2232187069e914ad4227",
+  "projected_hash": "41f52723502c3771dbdce08565cc5a705704117532b8356ead7e88977cd6567c",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte tailoring cloth body",
+          "satin-faced lapel"
+        ],
+        "values": [
+          {
+            "value": "Wool",
+            "evidence": [
+              "matte suiting cloth typical of tailored blazer body"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "CEO adjudication"
+            ],
+            "value": "Glossy",
+            "finish_realization": "Enhanced"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Glossy",
+            "finish_realization": "Enhanced"
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black cloth, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "lower front cropped/occluded, pocket region not clearly readable"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "hem cropped out of frame"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "rigid tailored body holds shape",
+          "clean lapel roll"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves run full length to wrist"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Strong",
+        "region": "upper",
+        "evidence": [
+          "sharp defined shoulder line",
+          "built/padded shoulder"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Peak",
+        "region": "upper",
+        "evidence": [
+          "lower lapel edge extends up into a point overlapping above collar seam",
+          "no visible notch step"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Double Breasted Button",
+        "region": "upper",
+        "evidence": [
+          "two parallel button columns",
+          "wide front overlap"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "lapel, structured shoulder, tailored construction"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "silhouette narrows at waist via tailored cut"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve body within ordinary tailored envelope"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black tailoring cloth",
+        "lightness": "deep dark tone throughout",
+        "usage": "one garment color; lapel sheen is same-family surface difference",
+        "effect": "no neon or metallic color"
+      },
+      "color_notes": null
+    }
+  }
+}

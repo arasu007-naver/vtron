@@ -1,0 +1,165 @@
+{
+  "document": "STMX_VISION_PRODUCER_CONTRACT_V1_3",
+  "date": "2026-09-13",
+  "producer_contract_version": "V1.3",
+  "id": "STMX_VISION_PRODUCER_V1_3",
+  "status": "★ CURRENT PRODUCTION VISION PRODUCER — PROMOTED 2026-09-13. The DM Observation Layer is PRODUCTION with DIRECTION-BSC-1 realization coverage corrected.",
+  "approval_anchor": {
+    "CEO Decision": "2026-09-13",
+    "Order": "STMX DM DIRECTION-BSC-1 OBSERVATION CONTRACT COVERAGE CORRECTION + FULL ENGINE FINAL FREEZE V1 §3 / §13 / §14 / §16 / §17 / §18",
+    "Reason": "DIRECTION-BSC-1 (OPTION A approved): the frozen Direction resolver may legitimately consult the two internal-composition observations as bounded support at the moderate-separation boundary, but V1_2 gated the container that carries them on M1 ELIGIBILITY, so decorative_construction · attached_hardware · designed_color_contrast systems could never supply the observation and Direction resolved UNKNOWN by contract construction. The container is now allowed on every controlled family. ⛔ No new field, value, family, Primitive, parameter or Direction rule. ⛔ M1 eligibility (engine predicate) unchanged.",
+    "Affected Scope": "STMX_VISION_PRODUCER_V1_3 (new directory · rules realization-coverage constant · validator container gate + Direction/Strength leak rejection · prompt DM guide) · STMX_VISION_PRODUCER_PRODUCTION_AUTHORITY_V1.json · DM full-engine binding"
+  },
+  "promotion": {
+    "promoted": "2026-09-13",
+    "authority_pointer": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_PRODUCTION_AUTHORITY_V1.json",
+    "rollback_pointer": "STMX_VISION_PRODUCER_V1_2",
+    "⛔_scope_of_promotion": "The observation contract coverage correction is production. The DM full engine consumes THIS contract by name through STMX_DM_ENGINE_V1_FINAL_FREEZE/production/dm_engine_binding_v1.js.",
+    "⛔_no_other_consumer_was_rebound": "STMX_EI_DIRECTION_RUNTIME_V1_2_7 still binds V1_1 (frozen EI baseline); V1.2.6 still binds the sealed V1; the HOLD-build DM binding still names V1_2 as historical evidence."
+  },
+  "branched_from": {
+    "id": "STMX_VISION_PRODUCER_V1_2",
+    "why": "V1_2 is the current production Producer (promoted 2026-09-10) and the Producer of the frozen DM Direction baseline. V1_3 is a byte-for-byte branch of V1_2 with the coverage correction only; V1_2 is untouched and is the rollback target."
+  },
+  "⛔_does_not_supersede": [
+    "the sealed Producer V1 at 01_ENGINES/ITEM_VISION_EXTRACTOR/producer_rules_v1.js — guard G52",
+    "STMX_VISION_PRODUCER_V1_1 — the Producer of the frozen EI Direction baseline",
+    "STMX_VISION_PRODUCER_V1_2 as HISTORICAL production baseline and rollback target — it is superseded only as the CURRENT contract for forward DM work"
+  ],
+  "naming_convention": "directory-versioned, following the repository’s own STMX_VISION_PRODUCER_V<version>/ precedent (V1_1 → V1_2 → V1_3). Filenames inside are deliberately unchanged so every intra-set require stays verbatim.",
+  "routing": "★ A consumer must bind this Producer by NAME through an explicit binding module. ⛔ No directory scan, no glob, no mtime, no \"latest\", no fallback — a missing contract must FAIL CLOSED.",
+  "module_closure": [
+    "producer_rules_v1.js",
+    "producer_prompt_v1.js",
+    "producer_validator_v1.js",
+    "producer_controller_v1.js",
+    "producer_model_adapter_v1.js"
+  ],
+  "self_contained": true,
+  "delta_vs_v1_2": {
+    "changed_modules": [
+      "producer_rules_v1.js",
+      "producer_prompt_v1.js",
+      "producer_validator_v1.js"
+    ],
+    "unchanged_modules": [
+      "producer_controller_v1.js",
+      "producer_model_adapter_v1.js"
+    ],
+    "parameters_added": 0,
+    "top_level_parameter_count": 37,
+    "new_fields": 0,
+    "new_values": 0,
+    "new_families": 0,
+    "new_primitives": 0,
+    "added": [
+      "producer_rules_v1.js — DM_REALIZATION_ELIGIBLE_FAMILIES (= the 7 controlled families) + isDmRealizationEligibleFamily; DM_M1_ELIGIBLE_FAMILIES retained unchanged as the frozen M1 calibration fact",
+      "producer_validator_v1.js — the container gate reads the realization-coverage list (error DM_REALIZATION_FAMILY_INELIGIBLE replaces DM_M1_FAMILY_INELIGIBLE); direction / dm_direction / strength / dm_strength added to the score-leak rejection list",
+      "producer_prompt_v1.js — DM_OBSERVATION_GUIDE: container requested on every evidence; same-reading-on-every-family note; UNKNOWN / NOT_VISIBLE never-guess line; NEVER EMIT names Direction and Strength"
+    ],
+    "removed": [
+      "the V1_2 family restriction on m1_supporting_realization (M1-eligible families only)"
+    ],
+    "⛔_untouched_semantics": "ALL_PARAMS · PN · MANDATORY/CONDITIONAL · VALUE_DOMAINS · applicableSet · operationalClass · completenessCounts · coverage · locations · every EI realization · Colour V1 · the 7 DM families · the 3 DM primitives and their domains · the realization field names, values and states · the requiredness gate · the controller carry · the model adapter"
+  },
+  "dm_observation_layer": {
+    "placement": "record.dm_designed_detail_evidence — SIBLING of record.observations, on the target record",
+    "⛔_not_a_parameter": "no PN, not in ALL_PARAMS, not counted by completenessCounts()",
+    "per_evidence": [
+      "evidence_id",
+      "evidence_family",
+      "source_observation_refs[]",
+      "relative_size {state,value}",
+      "contrast {state,value}",
+      "spatial_position {state,value}",
+      "m1_supporting_realization (optional · allowed on EVERY controlled family as of V1_3 · raw internal-composition observation · not an M1 verdict)"
+    ],
+    "primitive_states": [
+      "OBSERVED",
+      "NOT_VISIBLE",
+      "UNKNOWN"
+    ],
+    "⛔_absent_illegal_on_primitives": true,
+    "m1_eligible_families": [
+      "graphic",
+      "surface_pattern",
+      "surface_treatment",
+      "attached_detail"
+    ],
+    "requiredness": {
+      "flag": "DM_OBSERVATION_REQUIRED = true",
+      "declared_in": "producer_rules_v1.js (the rules module the validator is bound to)",
+      "enforced_by": "validateDmObservation → error DM_OBSERVATION_BLOCK_REQUIRED (ERROR, never a warning)",
+      "★_semantics": "★ A MISSING dm_designed_detail_evidence block is NOT \"no designed detail\". Missing = we do not know whether DM observation was performed. When nothing is admitted the block is emitted explicitly with evidence: []. Conflating the two would let a model that silently skipped the DM task validate as a clean garment.",
+      "★_version_scoped_by_construction": "★ The flag lives in the bound rules module. The sealed Producer V1 and V1_1 do not define it, so their behaviour is untouched. ⛔ No directory-name test, no glob, no \"latest\" lookup, no environment-dependent routing.",
+      "⛔_separate_from_completeness": "⛔ This is a SECOND, independent gate. The 37-parameter completeness gate is unchanged and the two are never summed — DM requiredness is not implemented as 38/38.",
+      "legacy_mode": "★ CORRECTED 2026-09-10 — NONE. This field previously read \"validateDmObservation(target, { requireDmObservation: false }) preserves pre-correction behaviour\". That runtime bypass was REMOVED by the Integration Closure order §7 and the line was left behind stale. There is no caller-side way to switch requiredness off on this line: it is read only from the bound rules module and is hard fail-closed. Legacy behaviour is verified by loading the REAL V1 / V1_1 validators, never by degrading this one."
+    },
+    "realization_eligible_families": [
+      "graphic",
+      "surface_pattern",
+      "surface_treatment",
+      "decorative_construction",
+      "attached_hardware",
+      "attached_detail",
+      "designed_color_contrast"
+    ],
+    "★_m1_eligible_families_meaning_as_of_v1_3": "the frozen M1 CALIBRATION fact consumed by the engine-side M1 predicate — no longer a container gate",
+    "★_direction_bounded_support_consumer": "dm_direction_resolver_v1.js reads the two realization fields as raw observation at the moderate-separation boundary (CEO scope amendment 2026-09-10). It never reads an M1 verdict and never branches on family."
+  },
+  "files": [
+    {
+      "file": "producer_rules_v1.js",
+      "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+      "bytes": 74550,
+      "changed_vs_v1_2": true,
+      "v1_2_sha256": "3f6c5540b47eda6a282f582905bd0c562fba61c732f597d6b144b660f783af13"
+    },
+    {
+      "file": "producer_prompt_v1.js",
+      "sha256": "9779cc44716a241d23127bedf8ab9fb79ff7a3e73f2e2e642b6083779996f23f",
+      "bytes": 161641,
+      "changed_vs_v1_2": true,
+      "v1_2_sha256": "230c6c57eb3d430b0cedd44012fb8c692b53a652f16ad067e2bb77d246968a9d"
+    },
+    {
+      "file": "producer_validator_v1.js",
+      "sha256": "26ad25a8a2b3477e83f4858ec5fe6450040025a26a2efab9bb4599d8416e2d81",
+      "bytes": 69678,
+      "changed_vs_v1_2": true,
+      "v1_2_sha256": "0d773394c1cbb06af9ebc63d3f15c71346c867e9bc77737e3026c50f86d34fbb"
+    },
+    {
+      "file": "producer_controller_v1.js",
+      "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b",
+      "bytes": 45575,
+      "changed_vs_v1_2": false,
+      "v1_2_sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b"
+    },
+    {
+      "file": "producer_model_adapter_v1.js",
+      "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+      "bytes": 3881,
+      "changed_vs_v1_2": false,
+      "v1_2_sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb"
+    }
+  ],
+  "correction_history": [
+    {
+      "correction": "DIRECTION_BSC1_REALIZATION_COVERAGE",
+      "date": "2026-09-13",
+      "origin": "Strength + Final Score closure V1 cargo1 narrow gate — DIRECTION-BSC-1 classified C (systematic by contract construction); CEO Option A.",
+      "changed": [
+        "producer_rules_v1.js",
+        "producer_validator_v1.js",
+        "producer_prompt_v1.js"
+      ],
+      "unchanged": [
+        "producer_controller_v1.js",
+        "producer_model_adapter_v1.js"
+      ],
+      "⛔_no_architecture_change": "⛔ No new vocabulary, primitive, parameter, family or scoring physics. The M1 predicate is byte-identical. The Direction resolver is byte-identical."
+    }
+  ],
+  "⛔_no_credentials": "⛔ No API key, token or credential appears in this document."
+}

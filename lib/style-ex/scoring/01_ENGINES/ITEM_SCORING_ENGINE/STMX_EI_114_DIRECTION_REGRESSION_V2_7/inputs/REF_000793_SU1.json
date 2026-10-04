@@ -1,0 +1,263 @@
+{
+  "unit_id": "REF_000793#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "1819d82d1526ee06ffef9aafb9488373f56f617d8f91712fd910255a5f1118ce",
+  "projected_hash": "f11712a91fd2447bef20e3a7ed2767434e4c762a6e122f25b8591515c873d2c9",
+  "input": {
+    "category": "Jumpsuit",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte woven cotton-type workwear cloth",
+          "even opaque weave"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "matte woven twill-like workwear cloth"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain matte woven surface",
+          "no pleating, quilting, gloss or texture treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black throughout, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, print or text visible"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "two chest patch pockets",
+          "large front thigh pockets on the legs"
+        ],
+        "pockets": [
+          {
+            "location": "Chest",
+            "construction": "Applied",
+            "projection": "Flat"
+          },
+          {
+            "location": "Leg",
+            "construction": "Applied",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequins, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, epaulette or trim attachment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "chest pockets mirror side to side",
+          "waist seam level, legs symmetric"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "legs keep even width down to the hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "evidence": [
+          "swept shoulder/chest/waist/legs: ordinary body-relative ease throughout"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "bodice has ordinary room over torso, not close-tracing"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "legs hang with ordinary ease, not standing away"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "leg hem falls at the ankle over the shoe on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "cloth keeps soft shape without fully draping"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "bodice holds a soft shape, some body but yields"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "legs hold shape with soft vertical folds"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "upper",
+        "evidence": [
+          "sleeves end mid-upper-arm"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam ends at the wearer's own shoulder point, clear endpoint before sleeve"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "rounded continuous shoulder contour into sleeve, no held line"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "open collar creates a V-shaped opening at the unbuttoned top"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "neckline sits at ordinary chest level with a couple of buttons open"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "folded shirt collar with two points at the neck"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "waist joined by a flat seam, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "body fully covered, no designed cutout or meaningful skin exposure"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Button",
+        "region": "upper",
+        "evidence": [
+          "round buttons along the center front placket"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "collar points reach an ordinary distance onto upper chest"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniformly black coverall throughout",
+        "lightness": "deep black cloth",
+        "usage": "single black color, buttons also dark/tonal",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

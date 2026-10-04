@@ -1,0 +1,14 @@
+{
+  "name": "stmx-clean-engine",
+  "version": "0.0.1-skeleton",
+  "private": true,
+  "description": "STMX Clean Engine — Sprint 1 skeleton (Frozen Architecture V1.0). No scoring logic.",
+  "architecture": "CLEAN_ARCHITECTURE_FREEZE_V1_0",
+  "migration": "SPRINT_1_SKELETON",
+  "main": "src/runtime/runtime_skeleton.js",
+  "scripts": {
+    "test": "node ../07_REGRESSION/contract_tests.js"
+  },
+  "dependencies": {},
+  "license": "UNLICENSED"
+}

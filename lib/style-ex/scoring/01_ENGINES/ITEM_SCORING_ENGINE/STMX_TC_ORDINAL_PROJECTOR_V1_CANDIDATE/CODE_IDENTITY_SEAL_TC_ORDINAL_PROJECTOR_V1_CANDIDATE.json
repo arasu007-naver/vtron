@@ -1,0 +1,29 @@
+{
+ "artefact": "CODE_IDENTITY_SEAL_TC_ORDINAL_PROJECTOR_V1_CANDIDATE",
+ "runtime_id": "STMX_TC_ORDINAL_PROJECTOR_V1_CANDIDATE",
+ "status": "CANDIDATE — not bound, not frozen, not promoted",
+ "sealed_at": "2026-09-27T09:56:02.949Z",
+ "contract": {
+  "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_ORDINAL_REPRESENTATION_CONTRACT_FREEZE_V1.md",
+  "sha256": "78a726e49f5945b55b8fb474f30404d388da9a31c0ddd4070d14b20a34b0f8cf"
+ },
+ "files": [
+  {
+   "file": "src/tc_ordinal_projector_v1.js",
+   "sha256": "494e3e267636cc33762f83795253f52f4eb1dfcba756a1340042781725108396"
+  },
+  {
+   "file": "tests/run_projector_tests_v2390.js",
+   "sha256": "291548a10186477bdf738b2be520dffb33f63e166c511bb6ceaa476dcf31d386"
+  },
+  {
+   "file": "README.md",
+   "sha256": "bbf4d7497f2ed4223b85427510b871c3bbd1ae66ec65f40abf34d6120482cc61"
+  }
+ ],
+ "CODE_IDENTITY_AGGREGATE_SHA256": "352a7ea6d11d034baee405e17bbd102227728e65ee786911ea8e2e068f29e470",
+ "tests": {
+  "pass": 26,
+  "total": 26
+ }
+}

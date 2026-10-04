@@ -1,0 +1,289 @@
+{
+  "unit_id": "REF_000806#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "9a24e929b8d97a515b4c156b42efee148981318ba83e51a0b25ac2100828453e",
+  "projected_hash": "25f4cd52de5208efedfb3cf7ef6f15ea68ce6dbad4e460cd8a43845e0f2ad39e",
+  "input": {
+    "category": "Jumpsuit",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte woven cotton-twill appearance",
+          "crisp body holding pocket and cuff shape"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "matte firm woven twill surface",
+              "utility-style construction"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain woven cloth, no pleating/quilting/lace/mesh/gloss"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid off-white, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, text or image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "two chest pockets with zip openings",
+          "side hip pocket at shorts"
+        ],
+        "pockets": [
+          {
+            "location": "Chest",
+            "construction": "Applied",
+            "projection": "Flat"
+          },
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequins, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "self-fabric tie belt at waist"
+        ],
+        "values": [
+          {
+            "value": "Belt",
+            "evidence": [
+              "knotted self-fabric tie belt worn at the waist"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right halves mirror; hem, waist, collar and pockets balanced side to side"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "short legs keep width to rolled cuff hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "evidence": [
+          "shoulder near natural, torso ordinary ease, shorts ordinary room"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "bodice carries ordinary room over torso, waist drawn in by tie belt",
+              "shoulder sits near natural shoulder"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "shorts stand slightly away with ordinary ease over hip and thigh"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "lower",
+        "evidence": [
+          "worn on standing body; leg hem falls at upper thigh"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "evidence": [
+          "cloth holds shape but yields into soft folds"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "collar and chest pockets hold their shape",
+              "soft folds at waist"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "shorts hold a shaped leg with rolled cuff",
+              "some soft folding at hip"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "upper",
+        "evidence": [
+          "sleeves end at mid-upper-arm"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam forms a clear endpoint at the natural shoulder"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder line runs round and continuous into sleeve"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "pointed shirt collar with spread points over chest"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no ribbed band at bodice/waist junction; self-fabric construction"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "front zip runs from collar down through waist into shorts"
+        ]
+      },
+      "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no meaningful designed body exposure or cutout; ordinary leg only"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Cinched",
+        "region": "whole_garment",
+        "evidence": [
+          "tie belt knotted at waist visibly draws garment inward",
+          "waistline narrows relative to hip and chest"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "gold-tone metal front zipper visible from collar down"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary short-sleeve envelope, no puff or balloon"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "short sleeve ends in a plain hem, no constructed cuff band"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "collar points reach ordinary distance toward the chest, not enlarged"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "white_family",
+      "color_lightness": "light",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "gold",
+          "carrier_kind": "closure",
+          "carrier_ref": "Zipper"
+        }
+      ],
+      "evidence": {
+        "primary": "off-white/cream cotton twill body",
+        "lightness": "high overall value",
+        "usage": "single body color with gold zip accent",
+        "effect": "matte, no neon or metallic body color"
+      },
+      "color_notes": null
+    }
+  }
+}

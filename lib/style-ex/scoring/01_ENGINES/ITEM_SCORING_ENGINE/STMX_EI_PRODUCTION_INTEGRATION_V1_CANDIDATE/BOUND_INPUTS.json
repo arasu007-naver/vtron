@@ -1,0 +1,137 @@
+{
+ "document": "BOUND_INPUTS",
+ "package": "STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE",
+ "created_at": "2026-09-27T13:31:17.195Z",
+ "note": "Every frozen file the EI production integration successor executes against or rests on. The entry re-hashes each at load and fails closed on drift. ⛔ Nothing listed here is modified by the successor.",
+ "frozen_identities": {
+  "direction_frozen_baseline": "STMX_EI_DIRECTION_FROZEN_BASELINE_V1 · 324 entries · 08eb312074db17009f2bb791365b6200b8d3ed9d1e8459f7de8b07f07305fb35",
+  "numeric_frozen_baseline": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1 · 15 entries · 5c5ad6e233277ae80fc7ff347b4b90bd799524c224abe694c196d95da3c80610"
+ },
+ "inputs": [
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DENIM_NEUTRAL_ELIGIBILITY_AUTHORITY_V1.json",
+   "sha256": "be1209508dd6fe4b02dc0e31201a130b311210cfa0752837f3c390a6651aa0a1"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_DEDUP_INDEPENDENCE_PINS_V1.json",
+   "sha256": "29b0b639e76c10dc8a68caff0618543f9a4fa8bb9641b83efa865ea14c52d355"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V2_TABLE.json",
+   "sha256": "6714ca16965d997046d1695165e1cc8bf9fb190bd13892c3459d37bca9e17395"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V3_TABLE.json",
+   "sha256": "6ba8f01080c5a22a6a652175a7fc3295656a38846c05f7ac0aa98efc121dbc4a"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_STATE_MACHINE_V1_1_1.json",
+   "sha256": "3d9907bcf29adeaefec9c78c016f163c2f2c7d4a4a61fc09d7688c9c24f01e6f"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_1.json",
+   "sha256": "ec237705d19fa6eedba4879fbc7f5ce5e84f1099164ae569083c8273aa12d346"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_2.json",
+   "sha256": "03bb784dd5530496dbd0e0e514d73e00996ed618cfc81f2685912af5f8df8165"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_3.json",
+   "sha256": "4651de198b0d49c6a00954d9e06272cbfe620c7b178b8cb44aa56c20cc3c61f7"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_4.json",
+   "sha256": "1058916c5f830532d9ab7dae23965faaa87199a841f9fb13e24ec6077eb7a5b5"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_5.json",
+   "sha256": "ce0bf4ce57a65010bc4a6ca7f4486457be8bf0f45457ce47fea849f4153c8dcc"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_6.json",
+   "sha256": "e16fcb301fdf1aa53987afde6718deef411fd6bbe862cf613d8cda81b8fd22e0"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_PRODUCER_CONTRACT_BINDING_V1.json",
+   "sha256": "daf5a9a938ec8b31eae15ad6fc98e9c06fe079be755f1c925b61afb75f70861f"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_SCORING_CONTEXT_CONTRACT_V1.json",
+   "sha256": "2cc2fc2cdbbe9ccd6a2b01d7e88592f436ec943a163d248e2440275bdec433bd"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_CONTRACT",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_TC_PARAMETER_OWNERSHIP_GUARD_V1.json",
+   "sha256": "cfa63484f8df488e65afc6017f04170593c695ecb74e13fc06e34d35b2f74d67"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_RUNTIME",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_direction_runtime_v1_2_7.js",
+   "sha256": "3f210adbb709a8183f0c42631239b17e5549ae6363fae81d2f39ae52b7fd6e74"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_RUNTIME",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_p3_general_force_resolver_v1_1.js",
+   "sha256": "fdf7f9410b130a4ee09bf8953bed88b7941bd3044d0212d6758f01d8a4fb448f"
+  },
+  {
+   "role": "FROZEN_EI_DIRECTION_RUNTIME",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/producer_contract_binding_v1.js",
+   "sha256": "a3b1bd526b59d9c2250203de9cc781316b3bc16c3e64da314a19060fa533a95a"
+  },
+  {
+   "role": "FROZEN_EI_NUMERIC_RUNTIME",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/src/ei_numeric_layer_v1.js",
+   "sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b"
+  },
+  {
+   "role": "BOUND_PRODUCER_V1_1 (frozen EI observation contract)",
+   "file": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_controller_v1.js",
+   "sha256": "7a2aa66e2f278e22857b8de51bab467f2a221883734bf50d96dbd0308ab71944"
+  },
+  {
+   "role": "BOUND_PRODUCER_V1_1 (frozen EI observation contract)",
+   "file": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_model_adapter_v1.js",
+   "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb"
+  },
+  {
+   "role": "BOUND_PRODUCER_V1_1 (frozen EI observation contract)",
+   "file": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_prompt_v1.js",
+   "sha256": "0d3016e084d5f6f0749bb1a87dda8eef2b9cf65579ceba06e1646ec46f996d84"
+  },
+  {
+   "role": "BOUND_PRODUCER_V1_1 (frozen EI observation contract)",
+   "file": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_rules_v1.js",
+   "sha256": "c4190ece1408854d039eda4d9a1c3f4de2c5209ae1eefb7f8a461ba5825bf98f"
+  },
+  {
+   "role": "BOUND_PRODUCER_V1_1 (frozen EI observation contract)",
+   "file": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_validator_v1.js",
+   "sha256": "c261d36b4905928efe7cda14c76194d13f0ac4cd357919f0e18faf27d01e2462"
+  },
+  {
+   "role": "SOURCE_PRODUCER_V1_3 (compatibility guard)",
+   "file": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+  },
+  {
+   "role": "COLOUR_V1_CONTRACT",
+   "file": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+   "sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52"
+  }
+ ]
+}

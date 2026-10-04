@@ -1,0 +1,189 @@
+{
+  "document": "REF_000616_BLOCKER_ANALYSIS",
+  "date": "2026-09-08",
+  "unit_id": "REF_000616#SU2",
+  "ceo_ground_truth": "EI7",
+  "ceo_rationale_quoted_from_order": "§9 — \"persistent / inherent substantial thigh exposure + expressive detailing / additional expressive realization\"",
+  "★_question": "★ §9 permits an EI7 rule only if an INDEPENDENT EXPRESSIVE PATHWAY actually exists in the governed admitted evidence. This file answers that question firsthand.",
+  "admitted_state_616": {
+    "admitted_pathways": [
+      "P2_E04:RESOLVED/STRONG"
+    ],
+    "no_force_pathways": 1,
+    "admitted_evidence": [
+      "exposure_opening=Upper Thigh",
+      "additional_color=navy"
+    ],
+    "exposure": [
+      "Upper Thigh/CLASS_A_LOWER/INHERENT_PERSISTENT/STRONG"
+    ],
+    "excluded": [
+      "surface=Gathered",
+      "material=Denim",
+      "attachment=Belt"
+    ],
+    "base": "CONTEXTUAL_NEUTRAL"
+  },
+  "admitted_state_622": {
+    "admitted_pathways": [
+      "P2_E04:RESOLVED/STRONG"
+    ],
+    "no_force_pathways": 0,
+    "admitted_evidence": [
+      "exposure_opening=Upper Thigh"
+    ],
+    "exposure": [
+      "Upper Thigh/CLASS_A_LOWER/CONDITIONAL_OPENING_MEDIATED/STRONG"
+    ],
+    "excluded": [
+      "material=Synthetic"
+    ],
+    "base": "CONTEXTUAL_NEUTRAL"
+  },
+  "⛔_finding": "⛔ REF_000616#SU2 has exactly ONE admitted independent pathway — P2_E04 (Upper Thigh), RESOLVED/STRONG. Its second pathway P3_ADDCOL_material_component_Denim is NO_FORCE, which the frozen Direction runtime itself resolves as carrying no force, and which the governed admission semantics never count as a mechanism. Every observation the CEO rationale describes as expressive detailing — surface Gathered, attachment Belt, material Denim — sits in excluded_observations, rejected as not EI evidence under current authority.",
+  "excluded_observations_616": [
+    {
+      "parameter": "surface",
+      "value": "Gathered",
+      "reason": "DEFERRED_OPEN_NOT_USED — not EI evidence under current authority"
+    },
+    {
+      "parameter": "material",
+      "value": "Denim",
+      "reason": "Phase 2 §5 No-Effect / §10 REJECTED — ordinary material identity is not P3 evidence"
+    },
+    {
+      "parameter": "attachment",
+      "value": "Belt",
+      "reason": "Phase 2 §5 No-Effect / §10 REJECTED — ordinary material identity is not P3 evidence"
+    }
+  ],
+  "candidate_separators_tested": [
+    {
+      "id": "C1",
+      "description": "realization mode INHERENT_PERSISTENT on a lower-body region",
+      "fires_on_616": true,
+      "fires_on_622": false,
+      "separates_the_pair": true,
+      "e_side_hits": 1,
+      "e_side_gt_distribution": {
+        "EI7": 1
+      },
+      "precision_for_EI7_or_above": 1,
+      "legal": false,
+      "rejection": "⛔ PROHIBITED — this is the automatic persistent→EI7 rule §8 orders removed.",
+      "note": "⛔ CORRECTION A — this is the removed automatic rule. Prohibited by §8/§10."
+    },
+    {
+      "id": "C2",
+      "description": "any admitted additional_color evidence",
+      "fires_on_616": true,
+      "fires_on_622": false,
+      "separates_the_pair": true,
+      "e_side_hits": 19,
+      "e_side_gt_distribution": {
+        "EI6": 12,
+        "EI7": 6,
+        "EI8": 1
+      },
+      "precision_for_EI7_or_above": 0.368,
+      "legal": false,
+      "rejection": "⛔ Refuted on the E side: fires on 19 units with ground truth {\"EI6\":12,\"EI7\":6,\"EI8\":1} — it does not track the tier.",
+      "note": null
+    },
+    {
+      "id": "C3",
+      "description": "at least one NO_FORCE pathway present",
+      "fires_on_616": true,
+      "fires_on_622": false,
+      "separates_the_pair": true,
+      "e_side_hits": 22,
+      "e_side_gt_distribution": {
+        "EI6": 14,
+        "EI7": 7,
+        "EI8": 1
+      },
+      "precision_for_EI7_or_above": 0.364,
+      "legal": false,
+      "rejection": "⛔ Refuted on the E side: fires on 22 units with ground truth {\"EI6\":14,\"EI7\":7,\"EI8\":1} — it does not track the tier.",
+      "note": null
+    },
+    {
+      "id": "C4",
+      "description": "persistent lower-body exposure AND at least one further pathway of any status",
+      "fires_on_616": true,
+      "fires_on_622": false,
+      "separates_the_pair": true,
+      "e_side_hits": 1,
+      "e_side_gt_distribution": {
+        "EI7": 1
+      },
+      "precision_for_EI7_or_above": 1,
+      "legal": false,
+      "rejection": "⛔ Fires on exactly ONE unit (REF_000616#SU2). A rule with a population of one is a REF-specific rule in disguise — prohibited by §14 and §26.",
+      "note": null
+    },
+    {
+      "id": "C5",
+      "description": "any admitted surface / decorative_detail / attachment / pattern / graphic evidence",
+      "fires_on_616": false,
+      "fires_on_622": false,
+      "separates_the_pair": false,
+      "e_side_hits": 31,
+      "e_side_gt_distribution": {
+        "EI6": 14,
+        "EI7": 12,
+        "EI8": 5
+      },
+      "precision_for_EI7_or_above": 0.548,
+      "legal": false,
+      "rejection": "⛔ Does not separate the pair: fires on 616=false, 622=false.",
+      "note": null
+    },
+    {
+      "id": "C6",
+      "description": "a second independent ADMITTED pathway alongside the exposure pathway",
+      "fires_on_616": false,
+      "fires_on_622": false,
+      "separates_the_pair": false,
+      "e_side_hits": 22,
+      "e_side_gt_distribution": {
+        "EI6": 8,
+        "EI7": 12,
+        "EI8": 2
+      },
+      "precision_for_EI7_or_above": 0.636,
+      "legal": false,
+      "rejection": "⛔ Does not separate the pair: fires on 616=false, 622=false.",
+      "note": null
+    },
+    {
+      "id": "C7",
+      "description": "EXCLUDED observations exist (the expressive detailing CEO cites for 616)",
+      "fires_on_616": true,
+      "fires_on_622": true,
+      "separates_the_pair": false,
+      "e_side_hits": 48,
+      "e_side_gt_distribution": {
+        "EI6": 26,
+        "EI7": 17,
+        "EI8": 5
+      },
+      "precision_for_EI7_or_above": 0.458,
+      "legal": false,
+      "rejection": "⛔ Does not separate the pair: fires on 616=true, 622=true.",
+      "note": null
+    }
+  ],
+  "surviving_legal_separators": 0,
+  "⛔_conclusion": "⛔ NO independent expressive pathway exists in REF_000616#SU2 governed admitted evidence. Every candidate separator is either the prohibited automatic rule, fails to separate the pair, is refuted across the E side, or has a population of exactly one unit. §9 forbids manufacturing one, so the layer fails closed per §10.",
+  "disposition": {
+    "numeric_status": "UNRESOLVED",
+    "numeric_rule": "NUM-E-FAILCLOSED-1",
+    "blocker": "LOWER_BODY_REALIZATION_WITHOUT_GOVERNED_LIFT",
+    "frozen_direction": "E",
+    "side_preserved": true,
+    "★_not_a_side_failure": "★ The Direction side remains E. This is a within-side exact-tier block, not an I/Neutral/E failure."
+  },
+  "★_what_would_unblock_it": "★ Either (a) CEO authority materializing the expressive detailing of REF_000616 into a governed EI-owned carrier so it becomes an admitted pathway, or (b) CEO authority stating the tier that persistent lower-body realization alone reaches. Both are Architecture/Scoring decisions and CEO-only. ⛔ Claude selected neither and implemented neither."
+}

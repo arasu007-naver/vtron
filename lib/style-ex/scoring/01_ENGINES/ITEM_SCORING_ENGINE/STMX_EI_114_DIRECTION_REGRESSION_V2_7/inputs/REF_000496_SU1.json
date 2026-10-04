@@ -1,0 +1,176 @@
+{
+  "unit_id": "REF_000496#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "767851586fddd4bef594859f9abb40da60666f5313f3844e588a1a532c596fad",
+  "projected_hash": "38646f21f991b96ab9e597dd010c36f5bff5527c4722d993fb183210fc40622a",
+  "input": {
+    "category": "Sweatshirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "heather jersey knit fleece-type body"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "matte heathered sweatshirt fleece appearance"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth plain fleece body, melange yarn only, no distinct constructed surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid heathered color, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print visible"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "front of sweatshirt visible with hands entering trouser pockets, no pouch pocket on the sweatshirt body"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, trim or attachment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right halves mirror, hem even side to side"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "hem sits at hip level on a standing worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds a soft rounded shape but yields into folds at the arms and hem"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to the wrist"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "anatomical shoulder end read at wearer's shoulder point; garment shoulder line continues onto upper arm with no distinct endpoint, sleeve junction on upper arm"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "neckline sits high around the base of the neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "standing material at neck is the hood opening/funnel, no distinct separate collar band"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "ribbed band at the lower hem"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "hood draping behind the neck and shoulders"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "beige",
+      "color_lightness": "light",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "black",
+          "carrier_family": null,
+          "carrier_kind": "closure",
+          "carrier_ref": "Zipper"
+        }
+      ],
+      "evidence": {
+        "primary": "light heathered beige body",
+        "lightness": "pale overall tone",
+        "usage": "dark zip and inner neck contrast",
+        "effect": "matte fleece, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

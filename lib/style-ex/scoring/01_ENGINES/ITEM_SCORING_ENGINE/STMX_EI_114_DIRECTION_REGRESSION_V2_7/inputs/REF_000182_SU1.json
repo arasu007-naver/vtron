@@ -1,0 +1,240 @@
+{
+  "unit_id": "REF_000182#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "566519b52bd16becaa2de91af99cc71f4e44ff635d819ac9310f03680b911c35",
+  "projected_hash": "bb3a42b3ee37c932f2826edcf7c0cc42be634d5bb3ee69a0a9a3ecb19caa1d59",
+  "input": {
+    "category": "Coat",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte fibrous nap consistent with brushed wool/alpaca coating"
+        ],
+        "values": [
+          {
+            "value": "Wool",
+            "evidence": [
+              "soft brushed napped tailoring cloth"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain napped wool body, no constructed or optical surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid taupe, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "welt/flap opening at waist level on coat front"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequins, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fur trim or other attachment on the coat"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right halves mirror; hem straight and level, waist seaming balanced, closure conventional double-breasted"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Slim",
+        "region": "upper",
+        "evidence": [
+          "shoulder sits at wearer's shoulder",
+          "chest and waist follow the torso closely with nipped waist seaming",
+          "column hangs close through hem"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "upper",
+        "evidence": [
+          "worn on standing body, hem reaches the ankle/shoe"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth holds tailored lapels and shaped waist, column stands with its own body"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeve runs to the wrist/gloved hand"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "clear shoulder endpoint at wearer's own shoulder end, sleeve turns down there"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Strong",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Peak",
+        "region": "upper",
+        "evidence": [
+          "tailored lapel with lower edge extending up into pointed peaks overlapping above collar seam, no notch"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain tailored self-fabric hem, no ribbed band"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "no hood at neck, beanie is separate"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "button opening runs full length of coat front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Double Breasted Button",
+        "region": "upper",
+        "evidence": [
+          "two parallel columns of dark buttons with wide overlap"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "peak lapels, shaped waist seaming, tailored construction"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "silhouette narrows in at waist via curved seaming then widens toward hem, no marked inward suppression"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary tailored sleeve envelope, no deliberate enlargement"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends plainly at wrist, no constructed cuff band visible"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "lapel breadth covers an ordinary share of the chest panel"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "brown",
+      "color_lightness": "normal",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "black",
+          "carrier_kind": "closure",
+          "carrier_ref": "Button"
+        }
+      ],
+      "evidence": {
+        "primary": "warm taupe/camel-brown napped wool body",
+        "lightness": "mid-tone value",
+        "usage": "dark buttons form a distinct but limited contrast against camel body",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

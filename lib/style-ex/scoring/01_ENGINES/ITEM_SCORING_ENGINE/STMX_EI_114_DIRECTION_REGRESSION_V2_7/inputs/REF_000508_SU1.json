@@ -1,0 +1,216 @@
+{
+  "unit_id": "REF_000508#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "5c0d1874f5f4627023d5abf1461cd7caec5fcf85a586862756eae0c1288b929b",
+  "projected_hash": "fb260506161bcc13450c15265b0baa6b7dcb74fa05abe8c1a634695aebbbd06a",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth matte tailoring cloth"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth even matte suiting surface consistent with poly-blend tailoring cloth"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth cloth, no constructed or optical surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid pink, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic or logo"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "flap pocket at lower left front",
+          "welt breast pocket at right chest",
+          "hand inserted into right lower front pocket"
+        ],
+        "pockets": [
+          {
+            "location": "Chest",
+            "construction": "Inset",
+            "projection": "Flat"
+          },
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffle detail"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, trim or epaulette"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric lapels and fronts"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "moderate ease, hangs cleanly without cling or excess volume"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem descends below waist into hip/pocket region on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds soft tailored shape but yields, drapes softly along the fronts"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "no sleeves, armholes bound at shoulder"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits at natural shoulder point"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Mild",
+        "region": "upper",
+        "evidence": [
+          "readable shoulder-line endpoint at armhole",
+          "not extended outward or held straight across a span"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Notched",
+        "region": "upper",
+        "evidence": [
+          "visible notch/step where collar meets lapel",
+          "lower lapel edge does not rise to a peak"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "front opening runs full length of garment"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Single Breasted Button",
+        "region": "upper",
+        "evidence": [
+          "single visible front button on one column with centre overlap"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "notched lapel, welt/flap pockets, clean tailored construction"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight body, no visible waist shaping or belt"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "pink",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "gray",
+          "carrier_kind": "closure",
+          "carrier_ref": "Button"
+        }
+      ],
+      "evidence": {
+        "primary": "uniform muted rose-pink cloth across body and lapels",
+        "lightness": "mid-value pink, neither light pastel nor dark",
+        "usage": "one garment color throughout",
+        "effect": "matte non-metallic, no neon"
+      },
+      "color_notes": "muted rose/dusty pink tone"
+    }
+  }
+}

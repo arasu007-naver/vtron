@@ -1,0 +1,152 @@
+{
+  "document": "STMX_EI_ENGINE_V1_FINAL_CLOSURE",
+  "date": "2026-09-08",
+  "axis": "EI",
+  "version": "V1",
+  "status": "COMPLETE · CLOSED_AND_FROZEN",
+  "★_accurate_meaning": "★ The Direction architecture and the governed Numeric V1 are complete and frozen, WITH explicitly accepted within-side calibration limitations and governed residue. ⛔ NOT a claim that every exact tier is perfectly calibrated.",
+  "formal_closure_date": "2026-09-08",
+  "ceo_authority": "CEO ORDER 2026-09-08 — SUCCESSOR FROZEN BASELINE PACKAGING CORRECTION + FINAL ARCHIVAL CLOSURE",
+  "direction": {
+    "status": "CLOSED_AND_FROZEN",
+    "frozen_identity": "STMX_EI_DIRECTION_FROZEN_BASELINE_V1",
+    "runtime_identity": "STMX_EI_DIRECTION_RUNTIME_V1_2_7",
+    "entry_count": 324,
+    "aggregate_sha256": "08eb312074db17009f2bb791365b6200b8d3ed9d1e8459f7de8b07f07305fb35",
+    "containment_this_order": {
+      "verdict": "PASS",
+      "hash_changes": 0,
+      "mtime_changes": 0,
+      "appeared": 0,
+      "vanished": 0,
+      "writable_files": 0
+    }
+  },
+  "numeric": {
+    "status": "CLOSED_AND_FROZEN",
+    "successor_frozen_identity": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1",
+    "packaging_revision": "R1",
+    "successor_entry_count": 15,
+    "successor_aggregate_sha256": "5c5ad6e233277ae80fc7ff347b4b90bd799524c224abe694c196d95da3c80610",
+    "predecessor_frozen_identity": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE",
+    "predecessor_entry_count": 16,
+    "predecessor_aggregate_sha256": "febafbf27e49408b41fded13c66c833b5f8495c953fae9f64c2bbc373c744021",
+    "successor_reason": "PACKAGING_ONLY — removed a stale predecessor-stage reproduction source that was incorrectly classified as IMMUTABLE_TEST_SOURCE. Runtime/scoring/governance semantic delta = 0.",
+    "runtime_identity": "STMX_EI_NUMERIC_LAYER_V1",
+    "runtime_sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b",
+    "classification_counts": {
+      "GOVERNANCE_AUTHORITY": 8,
+      "AUTHORITATIVE_CONTRACT": 2,
+      "AUTHORITATIVE_FIXTURE": 4,
+      "AUTHORITATIVE_SOURCE": 1
+    },
+    "immutable_test_source_executable_population": 0,
+    "write_target_audit": "PASS",
+    "writable_files": 0
+  },
+  "parameter_count": 37,
+  "exposure_domain": [
+    "Shoulder",
+    "Chest / Décolletage",
+    "Midriff / Waist",
+    "Back",
+    "Upper Thigh",
+    "Open Back",
+    "Front Cutout",
+    "Side Cutout",
+    "Shoulder Cutout"
+  ],
+  "side_lock_contract": {
+    "I": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "NEUTRAL": [
+      5
+    ],
+    "E": [
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "neutral_registry": "STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V3 · 18 rows · gender-independent",
+  "producer_contract": "STMX_VISION_PRODUCER_V1_1",
+  "p3_authority": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_6",
+  "direction_regression_state": {
+    "total": 114,
+    "pass_direction": 95,
+    "gt_authority_review": 14,
+    "explicit_governed_unresolved": 5,
+    "⛔_must_not_be_stated_as": [
+      "114 / 114 fully resolved",
+      "all canonical units PASS_DIRECTION"
+    ]
+  },
+  "numeric_final_state": {
+    "total": 114,
+    "DIRECTION_UNRESOLVED": 5,
+    "SIDE_PASS_EXACT_PASS": 76,
+    "GT_AUTHORITY_REVIEW": 14,
+    "SIDE_PASS_EXACT_MISMATCH": 16,
+    "NUMERIC_GT_RECONCILIATION_REQUIRED": 2,
+    "GOVERNED_WITHIN_SIDE_NUMERIC_RESIDUE": 1
+  },
+  "numeric_caused_cross_side_errors": 0,
+  "ceo_7_control_state": {
+    "direction_side": "7 / 7",
+    "exact_numeric": "6 / 7",
+    "governed_within_side_residue": "1 / 7",
+    "illegal_workaround": 0,
+    "⛔_never_write": "⛔ Never state this as all seven receiving exact Numeric outputs."
+  },
+  "direction_residue": {
+    "count": 5,
+    "units": [
+      "REF_000001#SU1",
+      "REF_000378#SU2",
+      "REF_000598#SU1",
+      "REF_000810#SU1",
+      "REF_000851#SU1"
+    ]
+  },
+  "within_side_numeric_residue": {
+    "count": 1,
+    "units": [
+      "REF_000616#SU2"
+    ],
+    "detail": "REF_000616#SU2 · Direction E · CEO GT EI7 · Numeric null · GOVERNED_WITHIN_SIDE_NUMERIC_RESIDUE"
+  },
+  "gt_reconciliation": {
+    "count": 2,
+    "units": [
+      "REF_000520#SU1",
+      "REF_000521#SU1"
+    ]
+  },
+  "⛔_classes_never_merged": "⛔ §13 — three distinct governance classes, never merged or relabelled.",
+  "known_calibration_limitations": {
+    "classification": "WITHIN_SIDE_CALIBRATION_LIMITATION",
+    "exact_tier_accuracy": "76 / 92 = 82.6%",
+    "within_1_pct": 96.7,
+    "mae": 0.207,
+    "ei7_recall": 0.313,
+    "ei7_precision": 0.714,
+    "ei8_recall": 0,
+    "ei8_clean_support": 5,
+    "within_side_exact_mismatch": 16,
+    "★_ei8_policy": "★ EI8 remains a legitimate E-side tier. Not removed, not RESERVED, ground truth not rewritten, no EI8 physics invented."
+  },
+  "api_usage": {
+    "external_vision_api": 0,
+    "live_re_extraction": 0,
+    "image_generation": 0,
+    "fable": 0,
+    "embedding": 0,
+    "vector_rebuild": 0
+  },
+  "⛔_next_axis": "⛔ DM / SR / TC not started. Sequence: DM → SR → TC → four-engine integration."
+}

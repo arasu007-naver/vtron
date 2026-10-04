@@ -1,0 +1,64 @@
+{
+  "document": "STMX_EI_EXPOSURE_REALIZATION_AUTHORITY_V1",
+  "date": "2026-09-08",
+  "approval_anchor": {
+    "ceo_decision": "2026-09-08",
+    "order": "STMX EI NUMERIC V1 — FINAL REPRESENTATION CORRECTION + RUNTIME CLOSURE §4–§9",
+    "reason": "D2 representation gap — an identical admitted exposure observation (Upper Thigh / E04 / RESOLVED-STRONG) must yield different Numeric tiers because one exposure is inherent to ordinary realization and the other is opening-mediated. The exposure carrier records WHICH REGION is exposed and nothing about how it is produced.",
+    "affected_scope": "exposure_opening evidence carrier — subordinate metadata only"
+  },
+  "concept_name": "exposure_realization",
+  "storage": "exposure_opening.realization_qualifiers[] = [{ region, mode, authority, date, basis }]",
+  "★_placement": "★ Metadata SUBORDINATE to the existing exposure_opening carrier, bound to a specific Class-A region.",
+  "⛔_what_it_is_not": [
+    "⛔ NOT a new top-level garment parameter — parameter count remains 37",
+    "⛔ NOT a tenth exposure_opening value — the 9-value domain is unchanged",
+    "⛔ NOT a TC/SR/DM parameter",
+    "⛔ NOT a magnitude",
+    "⛔ NOT a Descriptor scoring field"
+  ],
+  "exposure_value_domain_unchanged": {
+    "class_a": [
+      "Shoulder",
+      "Chest / Décolletage",
+      "Midriff / Waist",
+      "Back",
+      "Upper Thigh"
+    ],
+    "class_b": [
+      "Open Back",
+      "Front Cutout",
+      "Side Cutout",
+      "Shoulder Cutout"
+    ],
+    "total": 9
+  },
+  "modes": {
+    "INHERENT_PERSISTENT": "The body-region exposure is created by the garment's ordinary realized coverage/cut and remains materially visible in ordinary neutral wear. It does not require a limb extended through an opening, a slit to spread materially, garment displacement, or a pose-dependent opening.",
+    "CONDITIONAL_OPENING_MEDIATED": "The body-region exposure becomes materially present through an opening/slit/displacement relationship and depends materially on body position or opening realization.",
+    "UNKNOWN": "The region is genuinely observed but governed evidence is insufficient to decide. ⛔ MUST fail closed wherever the distinction is required for Numeric tier resolution; ⛔ never silently mapped to either other value."
+  },
+  "⛔_observation_firewall": {
+    "rule": "⛔ §7 — an EI-owned VISUAL SEMANTIC observation of the physical realization relationship, never inferred from a downstream token.",
+    "insufficient_alone": [
+      "Mini token",
+      "Short token",
+      "Slit token",
+      "category",
+      "pose",
+      "the Upper Thigh region itself"
+    ],
+    "⛔_length_and_slit": "⛔ `length` is TC-owned and `slit` (parameter 30) is not EI-owned. Neither may derive the qualifier, and neither may be read by the Numeric resolver."
+  },
+  "⛔_no_magnitude_vocabulary": "⛔ DR-4 — no Minor/Moderate/Extensive, percentage, pixel area, coordinates, coverage percentage, numeric exposure amount or region-count score.",
+  "binding_rules": [
+    "bound to one specific Class-A region",
+    "multiple Class-A regions independently bindable",
+    "⛔ Class-B designed openings never auto-create a Class-A qualifier entry",
+    "⛔ a missing qualifier is never inferred",
+    "values[] remains authoritative",
+    "legacy records without the qualifier remain parseable"
+  ],
+  "⛔_population_policy": "⛔ §9 — NO mass backfill. Populated only where actual CEO authority exists; absent elsewhere, and absence is read as UNKNOWN.",
+  "★_future_vision_semantics": "★ Contract semantics are defined now so a future Producer can emit it. ⛔ External Vision/API calls in this order = 0."
+}

@@ -1,0 +1,209 @@
+{
+  "unit_id": "REF_000521#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "c9d811dbbf81fa2b757d4944140d6057f223e519e4412a0e9c6ac3a18ff8bf2c",
+  "projected_hash": "c12c3b569347b61ca332102c019b4f1e19f96460189c6c41080d676a241779d0",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "visible denim twill weave",
+          "washed black indigo cast"
+        ],
+        "values": [
+          {
+            "value": "Denim",
+            "evidence": [
+              "twill diagonal grain",
+              "washed/faded denim surface"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "faded/washed streaking across thighs"
+        ],
+        "values": [
+          {
+            "value": "Treated Surface",
+            "evidence": [
+              "uneven wash fading down legs and pockets"
+            ],
+            "treated_surface_realization": "Baseline"
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered ruffle trim"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "metal shank button at waist closure"
+        ],
+        "values": [
+          {
+            "value": "Metal Hardware",
+            "evidence": [
+              "silver-tone waist button"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric left/right pocket arrangement"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Jeans",
+        "region": "whole_garment",
+        "evidence": [
+          "constructed non-elastic waistband with belt loops",
+          "fly front closed by a branded metal shank button",
+          "shaped / slanted set-in hip pockets, topstitched",
+          "small coin / watch pocket at the left hip",
+          "denim twill, washed black",
+          "ADDITIONALLY: three flap / bellows cargo pockets down each leg — an ADDITIVE utility variant that does not cancel the Jeans product class"
+        ],
+        "superseded_value": {
+          "state": "OBSERVED",
+          "value": "Casual",
+          "region": "whole_garment",
+          "evidence": [
+            "cargo utility pockets",
+            "not 5-pocket jeans layout"
+          ]
+        },
+        "superseding_authority": "CEO superseding adjudication 2026-08-26 · D-J2 / D-J3 · ADR-126 CA#40",
+        "product_interpretation": "Cargo Jeans — the human-readable reading of Trouser + Jeans + Denim + cargo pocket morphology. ⛔ NOT a canonical category and NOT a trouser_distinction value."
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "wide leg keeps width to hem, no flare or taper"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem reaches ankle/foot on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "denim holds soft folds and volume but yields into creases"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "coverage": "Partial",
+        "density": "dense",
+        "pockets": [
+          {
+            "location": "Leg",
+            "construction": "Applied",
+            "projection": "Volumetric",
+            "evidence": [
+              "patch cargo pockets stitched onto legs",
+              "gusseted bellows pockets standing away from leg"
+            ]
+          },
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat",
+            "evidence": [
+              "front hip slash pocket set into seam",
+              "flush front pocket opening"
+            ]
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "silver",
+          "carrier_kind": "attachment",
+          "carrier_ref": "Metal Hardware"
+        }
+      ],
+      "evidence": {
+        "primary": "washed black denim across whole garment",
+        "lightness": "dark charcoal-black tone",
+        "usage": "one garment color with faded areas of same family",
+        "effect": "no neon or metallic color in cloth"
+      },
+      "color_notes": "washed/faded charcoal tone with lighter streaks across thighs and pockets"
+    }
+  }
+}

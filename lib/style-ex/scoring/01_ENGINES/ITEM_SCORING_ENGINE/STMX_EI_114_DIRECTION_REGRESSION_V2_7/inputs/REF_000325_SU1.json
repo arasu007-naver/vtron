@@ -1,0 +1,190 @@
+{
+  "unit_id": "REF_000325#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "84bfb6c99d101c024325eb42a6d91bed6cd3cde5bedc6a72f304f62046a2b622",
+  "projected_hash": "8f20aedee0d977674928747dfd208603da185fb37897f8da9013ce66dbe40ed8",
+  "input": {
+    "category": "T-Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte jersey knit appearance"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "dense matte jersey typical of heavy cotton tee"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth plain jersey body, no distinct constructed surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print on front"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffles"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied decorative construction"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belts, hardware or trims"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric left/right construction"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "broad boxy body, dropped shoulders, wide sleeves"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "hem falls around mid-hip on worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "heavy jersey holds a soft boxy shape, some drape at sides"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "upper",
+        "evidence": [
+          "sleeves end above the elbow"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits clearly onto the upper arm"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Round",
+        "region": "upper",
+        "evidence": [
+          "rounded neckline close to base of neck"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "neckline sits high at base of neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain ribbed crew neck band, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain stitched bottom hem, no ribbing"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "pullover, no front opening"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, no deliberate enlargement"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black jersey",
+        "lightness": "deep dark tone throughout",
+        "usage": "one solid color",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

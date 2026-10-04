@@ -1,0 +1,53 @@
+{
+  "document": "D2_AUTOMATIC_LIFT_REMOVAL_PROOF",
+  "date": "2026-09-08",
+  "⛔_defect_A": "⛔ ChatGPT Independent Review: the predecessor treated INHERENT_PERSISTENT lower-body exposure as an automatic EI7. That is stronger than CEO authority.",
+  "predecessor_rule_present": true,
+  "predecessor_rule_source": "function lift2(st) {\n  const lower = st.exposure.filter(e => e.klass === 'CLASS_A_LOWER');\n  const persistent = lower.find(e => e.mode === MODE.PERSISTENT);\n  if (!persistent) return null;\n  const pw = st.pathways.find(p => /E04/.test(String(p.dedup_group)));\n  return { rule_id: 'NUM-E-LIFT-2', tier: 7,\n    reason: 'an admitted Class-A lower-body exposure region whose governed realization is ' +\n      MODE.PERSISTENT + ' — a substantial exposure inherent to ordinary garment realization',",
+  "corrected_rule_present_in_new_runtime": false,
+  "corrected_lift_source": "function liftExposureConjunction(st) {\n  const upper = strongRegions(st, 'CLASS_A_UPPER');\n  const lower = strongRegions(st, 'CLASS_A_LOWER');\n  if (!upper.length || !lower.length) return null;\n  const independent = upper.some(u => lower.some(l => u.pathway_id && l.pathway_id && u.pathway_id !== l.pathway_id));\n  if (!independent) return null;\n  return { rule_id: 'NUM-E-LIFT-2', tier: 7,\n    basis: 'strong admitted upper-body exposure with an independent strong admitted lower-body exposure',\n    evidence: upper.map(u => u.region + ':' + u.pathway_id).concat(lower.map(l => l.region + ':' + l.pathway_id)) };\n}",
+  "★_replacement": "★ NUM-E-LIFT-2 now expresses the §12 semantic conjunction — strong admitted upper-body exposure with an INDEPENDENT strong admitted lower-body exposure. It reads the region class only and never reads the realization qualifier.",
+  "qualifier_read_by_any_lift": false,
+  "behavioural_proof": {
+    "persistent_lower_alone": {
+      "ei_numeric": null,
+      "numeric_rule": "NUM-E-FAILCLOSED-1",
+      "numeric_status": "UNRESOLVED",
+      "numeric_blocker": "LOWER_BODY_REALIZATION_WITHOUT_GOVERNED_LIFT",
+      "numeric_provenance": {
+        "direction": "E",
+        "side_allowed": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "rule_id": "NUM-E-FAILCLOSED-1",
+        "blocker": "LOWER_BODY_REALIZATION_WITHOUT_GOVERNED_LIFT",
+        "basis": "admitted lower-body exposure with realization INHERENT_PERSISTENT and no governed lift satisfied — no tier is authorized",
+        "evidence": [
+          "Upper Thigh:PW01:INHERENT_PERSISTENT"
+        ]
+      }
+    },
+    "conditional_lower_alone": {
+      "ei_numeric": 6,
+      "numeric_rule": "NUM-E-BASE",
+      "numeric_status": "RESOLVED",
+      "numeric_blocker": null,
+      "numeric_provenance": {
+        "direction": "E",
+        "side_allowed": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "basis": "frozen Direction E with no governed lift condition satisfied",
+        "base_tier": 6,
+        "applied_lifts": []
+      }
+    }
+  },
+  "★_qualifier_still_governed_evidence": "★ §7 — the exposure_realization representation is PRESERVED. It remains governed semantic evidence: it decides whether the conditional case is safely calibrated at base, or whether the layer must decline. It is no longer an exact-tier lookup."
+}

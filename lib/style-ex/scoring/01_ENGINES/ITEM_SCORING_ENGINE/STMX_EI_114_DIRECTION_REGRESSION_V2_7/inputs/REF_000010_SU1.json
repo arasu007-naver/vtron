@@ -1,0 +1,232 @@
+{
+  "unit_id": "REF_000010#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "fad5d543544368324765ee7c643a863f5677ac56b786e1e1e5a37a5741ce017f",
+  "projected_hash": "7fe3dc3e877e225eaa9d4d9e19753d011f2e1117f5791a2cd5a719835349ca26",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "fleece pile surface",
+          "ribbed trims"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "pile fleece body texture"
+            ]
+          },
+          {
+            "value": "Knit",
+            "evidence": [
+              "ribbed cuffs and hem"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "dense curly fleece pile on body"
+        ],
+        "values": [
+          {
+            "value": "Textured Knit",
+            "evidence": [
+              "pronounced sherpa/fleece pile texture across body"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid navy body"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "patch and text are appliqué/embroidery, not a printed placed graphic"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "hands inserted into lower front pockets"
+        ]
+      },
+      "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "letter patch and embroidered lettering"
+        ],
+        "values": [
+          {
+            "value": "Appliqué",
+            "evidence": [
+              "large yellow 'R' letter patch on chest"
+            ]
+          },
+          {
+            "value": "Embroidery",
+            "evidence": [
+              "'College Football' script stitched on chest"
+            ]
+          }
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "easy body-following volume, not slim or oversized"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Waist Length",
+        "region": "upper",
+        "evidence": [
+          "hem at waist"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "thick fleece holds body shape softly"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "full-length sleeves to wrist"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "soft natural fleece shoulder, no built structure"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "folded fleece shirt-style collar"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "striped ribbed hem band at bottom"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "shirt collar, no hood"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Snap Button",
+        "region": "upper",
+        "evidence": [
+          "visible snap studs down front placket"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "fleece varsity-style casual outer jacket"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight body, no waist shaping"
+        ]
+      },
+      "pocket_construction": {
+        "state": "OBSERVED",
+        "value": "Inset",
+        "region": "whole_garment",
+        "evidence": [
+          "set-in side entry pockets"
+        ]
+      },
+      "pocket_projection": {
+        "state": "OBSERVED",
+        "value": "Flat",
+        "region": "whole_garment",
+        "evidence": [
+          "flush to body"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "navy",
+      "color_lightness": "dark",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "yellow",
+          "carrier_kind": "material_component",
+          "carrier_ref": "Knit"
+        },
+        {
+          "color_family": "white_family",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Cuff"
+        },
+        {
+          "color_family": "gold",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Panel"
+        }
+      ]
+    }
+  }
+}

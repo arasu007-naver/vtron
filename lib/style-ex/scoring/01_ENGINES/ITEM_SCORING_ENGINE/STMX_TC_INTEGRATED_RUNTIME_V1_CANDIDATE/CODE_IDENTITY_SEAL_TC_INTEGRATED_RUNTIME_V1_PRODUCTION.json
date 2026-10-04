@@ -1,0 +1,77 @@
+{
+ "artefact": "CODE_IDENTITY_SEAL_TC_INTEGRATED_RUNTIME_V1_PRODUCTION",
+ "package": "STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE",
+ "engine_id": "STMX_TC_ENGINE_V1",
+ "status": "PRODUCTION AUTHORITY · STMX_TC_ENGINE_V1 · TC FINAL FREEZE V1 · FROZEN",
+ "order": "STMX TC MAINLINE V2.3.92",
+ "sealed_at": "2026-09-27T11:52:24.988Z",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-27",
+  "Order": "STMX TC MAINLINE V2.3.92 — TC FINAL FREEZE + PRODUCTION PROMOTION §15–§19",
+  "Reason": "V2.3.91 reproduced exactly (13 / 13 entry gate); pre-promotion GT-blind replay passed (44 / 53 / 17 · exact 0 · null 114 · TC5 0 · 114 / 114 standalone equivalence · 18 / 18 collisions fail-closed · deterministic); the verified integrated TC runtime is promoted to canonical production authority without any semantic change",
+  "Affected Scope": "this record · Clean Engine registry TC entry (authority_status PRODUCTION) · CODE_IDENTITY_SEAL_AXIS_RUNTIME_BINDING_V3_PRODUCTION.json · CURRENT_CONSTITUTION/STMX_TC_ENGINE_FINAL_FREEZE_V1*"
+ },
+ "model": "Opus 5.5 (claude-opus-5-5); Fable not used",
+ "rule": "aggregate = sha256 over [file, sha256] of the listed files in order",
+ "files": [
+  {
+   "file": "src/tc_integrated_runtime_v1.js",
+   "sha256": "64a3d0c0b6555dc54cade6332dabcf0df9444a5774cc8bbc3248965e8b1aef1f"
+  },
+  {
+   "file": "BOUND_INPUTS.json",
+   "sha256": "b6c9265b406c9d36a97c9136050ca9c5280ce8ceecd02efc9dcf45af36cb3785"
+  },
+  {
+   "file": "tests/run_integrated_runtime_tests_v2391.js",
+   "sha256": "d7bebeba6e19b514656ba7d4b23ab3cff44d6a337907534ced4289cd5f4d88e4"
+  },
+  {
+   "file": "README.md",
+   "sha256": "a48f17bf163bb8cbf82302bbb1ceee59ef72e72adeff72e2705260ce50bc688a"
+  }
+ ],
+ "CODE_IDENTITY_AGGREGATE_SHA256": "88e6982f13efc409a7e5c45e6952f6c65989fd8e7fd98875eda7b4f3f830a21d",
+ "REPLAY_OUTPUT_SHA256": "2f27d1a979de7e606665f8f964d584a027e41cca68894afbc0e6dd4a88c23aa8",
+ "code_identity_unchanged_from_predecessor": true,
+ "predecessor_seal": {
+  "file": "CODE_IDENTITY_SEAL_TC_INTEGRATED_RUNTIME_V1_CANDIDATE.json",
+  "sha256": "0755b9e173c0cb88b46fcd0a7e9d4b9ecadf0248250b6dc5c369aeb1d5658839",
+  "note": "kept byte-unchanged as the V2.3.91 integration record; superseded as authority by this seal"
+ },
+ "directory_name_note": "the physical directory and runtime id keep their historical _CANDIDATE suffix (never renamed in place, SR precedent); production authority is conferred by this seal, the registry entry and STMX_TC_ENGINE_PRODUCTION_AUTHORITY_V1.json, by explicit name and hash",
+ "bound_inputs": [
+  {
+   "role": "direction_chain_binding",
+   "sha256": "594fa5479630bcd12cd6e59171d33c1c026e27d87ebd3c42b593a91a24465fa4"
+  },
+  {
+   "role": "direction_freeze_manifest",
+   "sha256": "1f6d6552847c3ec8ef0db954e39d7b83ddc92695609a53360f574214dbe3ecca"
+  },
+  {
+   "role": "strength_semantic_contract",
+   "sha256": "6bbb8c1faa10262cdc4d3860019ae5c449d2cf6826d21cbc1ef0ef4a33acc702"
+  },
+  {
+   "role": "strength_automation_limitation_record",
+   "sha256": "a62da2711c14d3c446d52c4d2f33e4b0518cdac7aef6ceecc146a75af8784e55"
+  },
+  {
+   "role": "classic_identity_limitation_record",
+   "sha256": "6d4a9dd048ed3d22ca9837cbca70714e7101741bd723f07458bfad214d7a3baa"
+  },
+  {
+   "role": "ordinal_representation_contract",
+   "sha256": "78a726e49f5945b55b8fb474f30404d388da9a31c0ddd4070d14b20a34b0f8cf"
+  },
+  {
+   "role": "ordinal_projector",
+   "sha256": "494e3e267636cc33762f83795253f52f4eb1dfcba756a1340042781725108396"
+  },
+  {
+   "role": "ordinal_projector_code_identity_seal",
+   "sha256": "3cb891031e6df30c25e6a4dabdefad010bf63d06d11cb931326350018d1b00a2"
+  }
+ ]
+}

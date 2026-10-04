@@ -1,0 +1,323 @@
+{
+  "image_id": "REF_000342",
+  "producer": {
+    "version": "v1",
+    "vision_calls": 1,
+    "one_call_default": true,
+    "model": "claude-opus-5"
+  },
+  "targets": [
+    {
+      "target_id": "target_1",
+      "role": "Primary",
+      "extraction_depth": "PARTIAL",
+      "role_basis": "scoring-target candidate; extraction PARTIAL — unreadable mandatory morphology: fit, length, shoulder_drop (readability does NOT determine scoring role)",
+      "prominence": "dominant",
+      "descriptor": "Front print is a two-part placed system stacked centrally: a wide serif wordmark reading GUCCI spanning nearly the full chest width across the upper chest, and beneath it a much larger roundel of two overlapping outlined circles forming interlocking double-G shapes, whose outer edges reach close to the side seams and drop past mid-body. The neck opening is notably broad and shallow, finished with a narrow self/rib binding rather than a deep band, and a small pale woven brand label with a red-and-green tab sits at the inside back neck, legible through the opening. Short set-in sleeves are cut with a plainly stitched straight edge and the body ends in a plain turned hem with a single visible topstitch line, so the piece reads as a soft jersey shell with no trims other than the print. Shown unworn and laid out, so how the shoulder line and body relate to a wearer cannot be established.",
+      "eligible": true,
+      "record": {
+        "category": {
+          "state": "OBSERVED",
+          "value": "T-Shirt"
+        },
+        "observations": {
+          "material": {
+            "state": "OBSERVED",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "matte soft jersey cloth with fine even surface"
+            ],
+            "values": [
+              {
+                "value": "Cotton",
+                "evidence": [
+                  "matte, slightly soft-folding jersey typical of cotton tee cloth"
+                ]
+              }
+            ]
+          },
+          "surface": {
+            "state": "ABSENT",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "plain smooth cloth, no quilting, pleating, lace, mesh, gloss or raised knit structure visible"
+            ]
+          },
+          "pattern": {
+            "state": "ABSENT",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "ground is uniformly solid; no repeating motif anywhere on body or sleeves"
+            ]
+          },
+          "graphic": {
+            "state": "OBSERVED",
+            "value": "Localized",
+            "region": "whole_garment",
+            "evidence": [
+              "serif wordmark across upper chest",
+              "large interlocking double-circle logo below it, confined to centre front"
+            ]
+          },
+          "pocket": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "whole_garment",
+            "evidence": [
+              "chest and lower front fully visible with no pocket opening, welt or patch"
+            ]
+          },
+          "decorative_detail": {
+            "state": "ABSENT",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "no embroidery, sequins, appliqué or piping; front motif is a flat print"
+            ]
+          },
+          "attachment": {
+            "state": "ABSENT",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "no hardware, belt, ribbon, trim or hanging attachment on any edge"
+            ]
+          },
+          "asymmetry": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "whole_garment",
+            "evidence": [
+              "left and right halves mirror at shoulders, sleeves and side seams",
+              "hem edge runs level across the full width",
+              "swept for one-sided panels, ties or trims — none found"
+            ]
+          },
+          "exposure_opening": {
+            "state": "NOT_VISIBLE",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "garment shown without a wearer, so no body relationship can be read",
+              "no designed cutout or opening visible on the garment itself"
+            ]
+          },
+          "fit": {
+            "state": "UNKNOWN",
+            "value": null,
+            "region": "upper",
+            "evidence": [
+              "garment laid out and largely flattened; shoulder span, torso room and hem ease cannot be measured against a body"
+            ]
+          },
+          "length": {
+            "state": "NOT_VISIBLE",
+            "value": null,
+            "region": "upper",
+            "evidence": [
+              "no worn body in frame, so hem position relative to body landmarks is unavailable"
+            ]
+          },
+          "fabric_behavior": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "region": "whole_garment",
+            "evidence": [
+              "soft shallow folds across body and sleeve heads",
+              "cloth yields and collapses with no self-supporting volume"
+            ]
+          },
+          "sleeve": {
+            "state": "OBSERVED",
+            "value": "Short",
+            "region": "upper",
+            "evidence": [
+              "sleeve ends a short distance below the armhole, well above the elbow line of the sleeve"
+            ]
+          },
+          "shoulder_drop": {
+            "state": "UNKNOWN",
+            "value": null,
+            "region": "upper",
+            "evidence": [
+              "shoulder and sleeve junction is in frame but no wearer's anatomical shoulder end is available as reference"
+            ]
+          },
+          "neckline_shape": {
+            "state": "OBSERVED",
+            "value": "Round",
+            "region": "upper",
+            "evidence": [
+              "continuous rounded fabric opening edge with no point, corner or straight run"
+            ]
+          },
+          "neckline_position": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "region": "upper",
+            "evidence": [
+              "opening sits shallow, close to the base of the neck, well above the chest print"
+            ]
+          },
+          "collar": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "upper",
+            "evidence": [
+              "neck finished with a narrow flat binding only; no standing band or collar piece"
+            ]
+          },
+          "rib_hem": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "upper",
+            "evidence": [
+              "lower edge is a plain turned and topstitched hem, no ribbed band"
+            ]
+          },
+          "front_opening_extent": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "upper",
+            "evidence": [
+              "centre front is continuous cloth with no placket, zip or split"
+            ]
+          },
+          "sleeve_volume": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "region": "upper",
+            "evidence": [
+              "sleeve body is an ordinary straight tube with no gathering or enlarged envelope"
+            ]
+          },
+          "cuff_type": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "upper",
+            "evidence": [
+              "sleeve end is a plain stitched edge with no constructed band"
+            ]
+          }
+        },
+        "completeness": {
+          "U": 9,
+          "M": 11,
+          "C": 9,
+          "N": 8,
+          "total": 37,
+          "reported": 21,
+          "conditional_na": 7,
+          "unreported": 1,
+          "reconciled": true
+        },
+        "dm_designed_detail_evidence": {
+          "evidence": [
+            {
+              "evidence_id": "dd-front-print",
+              "evidence_family": "graphic",
+              "detail": "serif wordmark plus large interlocking double-circle roundel stacked on centre front",
+              "relative_size": {
+                "state": "OBSERVED",
+                "value": "large"
+              },
+              "contrast": {
+                "state": "OBSERVED",
+                "value": "high"
+              },
+              "spatial_position": {
+                "state": "OBSERVED",
+                "value": "localized"
+              },
+              "source_observation_refs": [
+                "observations.graphic"
+              ],
+              "m1_supporting_realization": {
+                "internal_chromatic_composition": "limited_or_uniform",
+                "internal_fill_realization": "uniform_or_sparse"
+              }
+            }
+          ],
+          "excluded": [
+            {
+              "item": "solid dark ground of the body cloth",
+              "reason": "single_base_colour"
+            }
+          ]
+        }
+      },
+      "diagnostics": {
+        "unreported": [
+          "category"
+        ],
+        "conditional_na": [
+          {
+            "param": "closure_type",
+            "reason": "front_opening_extent !== None"
+          },
+          {
+            "param": "shoulder_connection",
+            "reason": "non-standard connection visible (Strap/Strapless/Halter/One Shoulder); ordinary sleeved → N/A this instance"
+          },
+          {
+            "param": "shoulder_span",
+            "reason": "span is a meaningful design variable (Narrow/Extended); ordinary sleeved → N/A this instance"
+          },
+          {
+            "param": "pocket_construction",
+            "reason": "pocket === Present (CA#28: readability is a Vision STATE, not an applicability condition)"
+          },
+          {
+            "param": "pocket_projection",
+            "reason": "pocket === Present (CA#28: readability is a Vision STATE, not an applicability condition)"
+          },
+          {
+            "param": "cuff_scale",
+            "reason": "cuff_type OBSERVED ∧ cuff_type ≠ 'None' (readability is a Vision STATE, not an applicability condition — mirrors pocket_construction)"
+          },
+          {
+            "param": "collar_scale",
+            "reason": "collar OBSERVED ∧ collar ≠ 'None' (readability is a Vision STATE, not an applicability condition — mirrors cuff_scale)"
+          }
+        ],
+        "not_applicable_count": 8,
+        "notes": [
+          "DM observation layer carried verbatim: 1 evidence, 1 excluded"
+        ]
+      },
+      "validation": {
+        "ok": false,
+        "errors": [
+          {
+            "code": "DM_M1_FIELD_SHAPE",
+            "msg": "evidence[0].internal_chromatic_composition must be {state, value}"
+          },
+          {
+            "code": "DM_M1_FIELD_SHAPE",
+            "msg": "evidence[0].internal_fill_realization must be {state, value}"
+          }
+        ],
+        "warnings": [
+          {
+            "code": "DESCRIPTOR_NEED_ABSENT_LEGACY",
+            "param": null,
+            "message": "pre-protocol extraction — descriptor_need not asserted"
+          }
+        ]
+      },
+      "readability": {
+        "value": true,
+        "basis": "RECONSTRUCTABLE",
+        "limitation": [
+          "CONTINUOUS_STRUCTURE_VISIBLE"
+        ],
+        "contract_error": null
+      }
+    }
+  ],
+  "relationships": [],
+  "image_validation_status": "ALL_GARMENTS_INVALID"
+}

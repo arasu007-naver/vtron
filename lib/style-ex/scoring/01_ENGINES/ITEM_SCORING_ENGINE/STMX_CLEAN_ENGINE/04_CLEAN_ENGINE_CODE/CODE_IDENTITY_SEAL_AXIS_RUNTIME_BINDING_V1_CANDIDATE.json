@@ -1,0 +1,166 @@
+{
+ "document": "CODE_IDENTITY_SEAL_AXIS_RUNTIME_BINDING_V1_CANDIDATE",
+ "sealed_at": "2026-09-23T12:16:54.904Z",
+ "order": "STMX TC MAINLINE V2.3.46 — GENERIC AXIS RUNTIME BINDING IMPLEMENTATION + TC FIRST INTEGRATION CANDIDATE (SHADOW)",
+ "status": "CANDIDATE — identity-sealed — NOT FROZEN — NOT PRODUCTION — TC executes only in SHADOW mode",
+ "authority": "Blueprint Deliverable 3a · G42-A (CEO 2026-09-23)",
+ "composition": {
+  "GENERIC_BINDING": "layers/l7_axis_runtime_binding.js + layers/l7_governance_scoring.js",
+  "TC_INTEGRATION_CANDIDATE": "runtime/axis_binding_contracts.js (TC entry) + shadow harness, composed with the bound semantic runtime identity and the shadow output fingerprint",
+  "BOUND_SEMANTIC_RUNTIME": "STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V1_CANDIDATE (V2.3.43) — sealed separately, unchanged, not re-sealed here",
+  "why_one_file": "repository convention seals one candidate package per sprint; the three identities are kept distinct inside it"
+ },
+ "pre_seal_evidence": {
+  "replay": "EXACT · 4739 leaves · mismatch 0",
+  "authority_attacks": "22/22",
+  "negative_phase_A": "46/47 (1 pending post-seal)",
+  "unauthorized_delta": 0
+ },
+ "gt_read_before_seal": false,
+ "rule": "each identity = sha256 over [file name then sha256] of its files in listed order (+ composed strings where stated); aggregate = same rule over all files",
+ "files": [
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l1_builder.js",
+   "bytes": 1543,
+   "sha256": "9d157de91c315c3c3d98361e1e3a64eca02321864eef5883282109d9c263229c",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l1_field_spec.js",
+   "bytes": 4656,
+   "sha256": "f92a806663bf7a12d7bc1063922dc2b560851ad74fcfd85fde36c2468634cb7d",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l1_observation.js",
+   "bytes": 1774,
+   "sha256": "f1930c3fda43bc52feba38b86f44fab318bb5b86af75080e69ec0f7d58634501",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l1_validator.js",
+   "bytes": 3246,
+   "sha256": "18e74eef2246db5d9fa9463ab87bd9ce9c5b7e3e3d533c6a1ebf6b0931166324",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l2_builder.js",
+   "bytes": 2603,
+   "sha256": "3ef0988d5e5b240a83636e5a7be84e70e8f41774560dea1fe55c6d20f793e09a",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l2_canonical.js",
+   "bytes": 1102,
+   "sha256": "d2ecda35fbcf863092f46f7f0d897297ab8ab788778e66c8bc1214945e1d6d06",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l2_field_spec.js",
+   "bytes": 4120,
+   "sha256": "87ac75d97849c3e3d8d09c9a7912bf7b3a69da31999e7bf46e22b72e57008a89",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l2_validator.js",
+   "bytes": 2558,
+   "sha256": "7dcbc0c171be47a6ef7156f347c5b5a813b931ecb98dda53a6f54f856cb2d43e",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l3_derived.js",
+   "bytes": 432,
+   "sha256": "e00ecd573b86dac7a87d28f5463d50148692b706c8ca5097ec9e071bc1093911",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l4_projection.js",
+   "bytes": 529,
+   "sha256": "2aeff2ced605811b49aa8d618690a3de90021bcaef326f29dc40c72ef6b22bd0",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l5_knowledge.js",
+   "bytes": 843,
+   "sha256": "19f5f8539514c57505b949b670631ef28f594f8b96a0ebd9bb620fefbff114a6",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l6_interaction.js",
+   "bytes": 741,
+   "sha256": "dd051ba7f046fc14120941ea5e336ec9733139c58562e88660e1ddf61cf7249b",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l7_axis_runtime_binding.js",
+   "bytes": 12440,
+   "sha256": "ce10feba3930c56b3cae9383e4f0ef2214f308f454f7a49fc598e403f5827e8d",
+   "role": "GENERIC_BINDING"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l7_governance_scoring.js",
+   "bytes": 1863,
+   "sha256": "0da11ce76a4251a51106a386308fa003f196980461f7950e41e74699aeb8af03",
+   "role": "GENERIC_BINDING"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/layers/l8_output.js",
+   "bytes": 807,
+   "sha256": "eb8ccfc44508c6a68351dce257a2a82eeff9f666d6d8e3392861402ad044dfa3",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/runtime/axis_binding_contracts.js",
+   "bytes": 1754,
+   "sha256": "80624724b2a0342ca3c21463085942afbef4da7e9853171ee34e650e46a36e91",
+   "role": "TC_INTEGRATION_CANDIDATE"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/runtime/deep_equal.js",
+   "bytes": 1232,
+   "sha256": "4f2ac9578d9c2bfea052a6f5efc6e3bc905be8214d1c075b01d2728f0e746823",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/runtime/errors.js",
+   "bytes": 1167,
+   "sha256": "845ff21ddf2e9f8f976c26f74b7819895e646223086a186c5c2fdb3bac64e3e6",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/runtime/layer_interfaces.js",
+   "bytes": 2657,
+   "sha256": "7c99361f5acaa1d17787816e9c8d58d520ec6f6625e919ba81f34fb3507bf857",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/runtime/packages.js",
+   "bytes": 3636,
+   "sha256": "ad9ffbfc8f936741f96b28182e8f4be7dcc990a0ee1aa77fb463c95a635b9208",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/src/runtime/runtime_skeleton.js",
+   "bytes": 3614,
+   "sha256": "bba3282f3d1ba1dfa1687a5e914766c9155be02fcafc8d14303f6fecccdfd7a0",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "04_CLEAN_ENGINE_CODE/package.json",
+   "bytes": 446,
+   "sha256": "331a437b2cda383a47b67557f9007b0fbf69e7ed441f8e6bfbd73d9af0bef030",
+   "role": "CLEAN_ENGINE_RUNTIME (bound, unchanged unless listed above)"
+  },
+  {
+   "file": "06_SHADOW_VALIDATION/runners/axis_binding_shadow_harness.js",
+   "bytes": 815,
+   "sha256": "e55b03f4b5d7d33d126b43e52fe1f2ed2a1ee8606d203dd844a1eb5a1ad1f203",
+   "role": "TC_INTEGRATION_CANDIDATE"
+  }
+ ],
+ "GENERIC_BINDING_IDENTITY_SHA256": "c141a6e60a72067271633ed5556f8d977f9b4857d20bec44e0ede13afbc24684",
+ "TC_INTEGRATION_CANDIDATE_IDENTITY_SHA256": "40fc2b2e775779b7c33acc4dcd77515f84fb1d7a0e5b6a3f23be07464aa7d012",
+ "BOUND_SEMANTIC_RUNTIME_IDENTITY_SHA256": "a3cbf6dd30453434f5f54496eb1b91245fb3e86ac352372903ec15f2a3ed0dbf",
+ "SHADOW_OUTPUT_FINGERPRINT_SHA256": "12cfaf46ad90f9df12b49c6e2038af3cc070d99101b1c94782f119514800c240",
+ "CODE_IDENTITY_AGGREGATE_SHA256": "47f1a8b0775ae90c6b863bfc8f26166333e6b598bf4d086a3b9a0e2d3a46b3ea"
+}

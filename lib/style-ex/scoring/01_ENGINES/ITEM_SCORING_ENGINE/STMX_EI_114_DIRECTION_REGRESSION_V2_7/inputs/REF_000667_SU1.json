@@ -1,0 +1,291 @@
+{
+  "unit_id": "REF_000667#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "abf01f29aebe7e80d6936fd46a48872f3a832511228f6b5ad9621f393d673394",
+  "projected_hash": "bb6082bf4b63cdc05ea1ce550ce9693dc347769e6570f70346ecb77612f638cc",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "fluid lustrous drape typical of satin"
+        ],
+        "values": [
+          {
+            "value": "Silk",
+            "evidence": [
+              "smooth satin-weave sheen",
+              "soft flowing folds in skirt"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "visible soft sheen and gathered folds"
+        ],
+        "values": [
+          {
+            "value": "Gathered",
+            "evidence": [
+              "ruched folds across the hip and upper skirt"
+            ],
+            "locations": [
+              {
+                "component": "Skirt Body"
+              }
+            ]
+          },
+          {
+            "value": "Glossy",
+            "evidence": [
+              "high-luster wet-look sheen on satin surface"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "gathered folds but no ruffle frills"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim attachments"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric bodice and skirt"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt falls in a straight column to the floor with consistent width"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "corset bodice closely conforms to torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "skirt hugs hip and thigh closely"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "whole_garment",
+        "evidence": [
+          "hem reaches the floor on standing model"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Structured",
+            "evidence": [
+              "corset bodice holds its own rigid shape at bust and torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "skirt satin follows body with soft draping folds"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "no sleeve construction; arms fully bare"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no built shoulder line; shoulders bare"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "upper",
+        "evidence": [
+          "near-horizontal top edge across the bust"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "top edge sits across the upper bust"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare strapless neckline with no collar structure"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "smooth continuous bodice front with no opening"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "both shoulders fully bare above the straight top edge"
+            ],
+            "value": "Shoulder"
+          },
+          {
+            "evidence": [
+              "upper chest bared above the strapless bodice edge"
+            ],
+            "value": "Chest / Décolletage"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "both shoulders fully bare above the straight top edge"
+            ]
+          },
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "upper chest bared above the strapless bodice edge"
+            ]
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "front of skirt shows no slit opening"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "silhouette narrows sharply at waist below the corset bodice"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Strapless",
+        "region": "upper",
+        "evidence": [
+          "straight bodice edge across bust with bare shoulders"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black satin across bodice and skirt",
+        "lightness": "deep dark tone throughout",
+        "usage": "one continuous color",
+        "effect": "chromatic black, sheen is finish not color"
+      },
+      "color_notes": null
+    }
+  }
+}

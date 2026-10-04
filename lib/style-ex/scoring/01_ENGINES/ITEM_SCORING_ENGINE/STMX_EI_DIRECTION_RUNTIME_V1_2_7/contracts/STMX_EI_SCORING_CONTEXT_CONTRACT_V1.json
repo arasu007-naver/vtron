@@ -1,0 +1,67 @@
+{
+  "document": "STMX_EI_SCORING_CONTEXT_CONTRACT_V1",
+  "date": "2026-09-06",
+  "status": "SUPERSEDED FOR THE GENDER CLAUSE — the field is no longer a Neutral Registry selector.",
+  "authority": "CEO 2026-09-06 §16 · §17 · §18 · §19 · §20 · §21",
+  "field": "scoring_context.user_gender",
+  "domain": [
+    "MEN",
+    "WOMEN"
+  ],
+  "semantics": "The gender of the STMX USER ACCOUNT / PROFILE. External scoring context supplied by the caller.",
+  "is_not": [
+    "the gender of the garment",
+    "the apparent gender of the model",
+    "a Vision observation",
+    "one of the 37 Producer parameters",
+    "a product / SKU taxonomy value"
+  ],
+  "flow": "⛔ SUPERSEDED — user gender no longer reaches the Neutral Registry at all.",
+  "consumed_by": [],
+  "never_consumed_by": [
+    "EI P1 Neutral Registry",
+    "EI P2 exposure physics",
+    "EI P3 surface / pattern / material physics",
+    "TC scoring",
+    "SR scoring",
+    "DM scoring"
+  ],
+  "superseded_alias": {
+    "field": "gender_or_provenance",
+    "status": "SUPERSEDED — PRESERVED, still accepted, resolved through the same reader",
+    "why": "its name encoded the now-superseded \"product gender provenance\" framing"
+  },
+  "product_gender_provenance_architecture": "SUPERSEDED / NOT ADOPTED — ⛔ not implemented",
+  "missing_context_behaviour": "If a gender-sensitive Neutral Registry lookup requires user gender and the context is absent or invalid, the unit FAILS CLOSED with root cause MISSING_SCORING_CONTEXT. ⛔ Never defaulted to MEN, never to WOMEN, never guessed, never inferred.",
+  "prohibited": [
+    "adding gender to the 37 Vision parameters",
+    "inferring gender from face",
+    "inferring gender from body",
+    "inferring gender from hairstyle",
+    "inferring gender from garment silhouette",
+    "inferring gender from clothing stereotype",
+    "inferring gender from Product/SKU taxonomy",
+    "creating a garment-gender classifier",
+    "defaulting an unknown gender"
+  ],
+  "caller_integration_requirement": {
+    "_supersession": "⚠ SUPERSEDED 2026-09-06 — this whole block is a HISTORICAL record of the integration contract as it stood BEFORE the gender-independent Neutral Registry V3. ⛔ It is not the current requirement. The CURRENT policy is `current_policy` below: user_gender is a DEPRECATED COMPATIBILITY FIELD, consumed_by_item_scoring = false, Gender scoring ownership = 0. Found by the post-Independent-Review stale-authority audit as a second instance of IR-B2.",
+    "engine_side": "⚠ SUPERSEDED — was: \"DEFINED AND VALIDATED in this repository — scoring_context.user_gender is accepted, validated to the MEN|WOMEN domain, and consumed only by EI P1.\" ⛔ The \"consumed only by EI P1\" clause is NO LONGER TRUE. The token is still validated for backward compatibility, but it is consumed by NO scoring surface.",
+    "caller_side": "The STMX application must pass the account/profile gender as scoring_context.user_gender on every Item Scoring request. That application code is NOT present in this repository and was NOT invented here.",
+    "regression": "The regression harness injects a governed test_user_gender through this SAME interface — ⛔ never into raw Vision output and never into the canonical observation."
+  },
+  "superseded_by": "CEO 2026-09-06 — the EI Neutral Registry is gender-independent; user gender has ZERO Item Scoring ownership.",
+  "current_policy": {
+    "field": "scoring_context.user_gender (and the older gender_or_provenance alias)",
+    "classification": "DEPRECATED COMPATIBILITY FIELD",
+    "required_by_item_scoring": false,
+    "consumed_by_item_scoring": false,
+    "accepted": "only in its legacy valid form — MEN | WOMEN | null",
+    "value_scored_or_interpreted": false,
+    "effect_on_any_scoring_output": "NONE",
+    "token_still_validated": true,
+    "invalid_value_behaviour": "an out-of-domain value fails the input contract with USER_GENDER_TOKEN_INVALID and the request is rejected. ⛔ It is NOT silently accepted.",
+    "why_validation_retained": "§19 — removing the check would let a malformed legacy payload pass silently, an interface-safety regression. The accurate description is therefore \"accepted only in legacy valid form, zero scoring effect\", NOT simply \"ignored\".",
+    "measured": "MEN, WOMEN and an absent field produce byte-identical EI resolutions; UNISEX and other out-of-domain values return INVALID_INPUT."
+  }
+}

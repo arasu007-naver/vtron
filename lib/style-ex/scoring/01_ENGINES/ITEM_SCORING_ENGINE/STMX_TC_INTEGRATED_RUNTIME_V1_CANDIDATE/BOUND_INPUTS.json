@@ -1,0 +1,56 @@
+{
+ "artefact": "BOUND_INPUTS",
+ "runtime_id": "STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE",
+ "order": "STMX TC MAINLINE V2.3.91",
+ "rule": "every input is re-hashed at module load; any drift throws BOUND_INPUT_DRIFT (fail closed). No latest, no glob, no fallback.",
+ "inputs": [
+  {
+   "role": "direction_chain_binding",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/shadow/step2_successor_shadow_binding_v3.js",
+   "sha256": "594fa5479630bcd12cd6e59171d33c1c026e27d87ebd3c42b593a91a24465fa4",
+   "why": "frozen Direction chain entry (STMX_TC_DIRECTION_FREEZE_V1 · Step 2 successor V4 · Step 3 successor V2 · runtime V3.4)"
+  },
+  {
+   "role": "direction_freeze_manifest",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_DIRECTION_FREEZE_V1_MANIFEST.json",
+   "sha256": "1f6d6552847c3ec8ef0db954e39d7b83ddc92695609a53360f574214dbe3ecca",
+   "why": "frozen Direction authority: expected chain fingerprint + census"
+  },
+  {
+   "role": "strength_semantic_contract",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_TRANSFORMATIVE_STRENGTH_SEMANTIC_CONTRACT_FREEZE_V1.md",
+   "sha256": "6bbb8c1faa10262cdc4d3860019ae5c449d2cf6826d21cbc1ef0ef4a33acc702",
+   "why": "frozen Strength semantics (Classic NOT_APPLICABLE · U NOT_ELIGIBLE)"
+  },
+  {
+   "role": "strength_automation_limitation_record",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_TRANSFORMATIVE_STRENGTH_AUTOMATION_LIMITATION_RECORD_V1.md",
+   "sha256": "a62da2711c14d3c446d52c4d2f33e4b0518cdac7aef6ceecc146a75af8784e55",
+   "why": "frozen automation limitation (class D · no resolver)"
+  },
+  {
+   "role": "classic_identity_limitation_record",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_CLASSIC_IDENTITY_LIMITATION_RECORD_V1.md",
+   "sha256": "6d4a9dd048ed3d22ca9837cbca70714e7101741bd723f07458bfad214d7a3baa",
+   "why": "frozen Classic Level-4 limitation (G63)"
+  },
+  {
+   "role": "ordinal_representation_contract",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_ORDINAL_REPRESENTATION_CONTRACT_FREEZE_V1.md",
+   "sha256": "78a726e49f5945b55b8fb474f30404d388da9a31c0ddd4070d14b20a34b0f8cf",
+   "why": "frozen ordinal contract O-1 … O-8"
+  },
+  {
+   "role": "ordinal_projector",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ORDINAL_PROJECTOR_V1_CANDIDATE/src/tc_ordinal_projector_v1.js",
+   "sha256": "494e3e267636cc33762f83795253f52f4eb1dfcba756a1340042781725108396",
+   "why": "bounded ordinal projector V1 (code identity 352a7ea6…)"
+  },
+  {
+   "role": "ordinal_projector_code_identity_seal",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ORDINAL_PROJECTOR_V1_CANDIDATE/CODE_IDENTITY_SEAL_TC_ORDINAL_PROJECTOR_V1_CANDIDATE.json",
+   "sha256": "3cb891031e6df30c25e6a4dabdefad010bf63d06d11cb931326350018d1b00a2",
+   "why": "projector code-identity seal"
+  }
+ ]
+}

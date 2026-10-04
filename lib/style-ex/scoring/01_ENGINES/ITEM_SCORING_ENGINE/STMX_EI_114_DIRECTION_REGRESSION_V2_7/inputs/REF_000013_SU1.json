@@ -1,0 +1,208 @@
+{
+  "unit_id": "REF_000013#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "d708931a6a5a842265a43d7046fb74e5978bcc730078d57040a00d7caee0981c",
+  "projected_hash": "312882da1908d1fb7b30520fc2f2c57c672c5f0a9679c62f246303360e810f68",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "values": [],
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Single Breasted Button",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Notched",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "values": [],
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "material": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "declared accepted observation"
+            ]
+          }
+        ],
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "values": [],
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Jacket",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Applied",
+            "projection": "Flat",
+            "evidence": []
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "beige",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "brown",
+          "carrier_kind": "closure",
+          "carrier_ref": "Button"
+        }
+      ],
+      "evidence": {
+        "primary": "even taupe/greige tone across body and sleeves",
+        "lightness": "mid-tone neutral",
+        "usage": "one continuous garment color",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

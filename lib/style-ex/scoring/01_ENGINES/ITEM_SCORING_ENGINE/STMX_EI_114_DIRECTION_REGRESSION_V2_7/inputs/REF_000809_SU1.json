@@ -1,0 +1,240 @@
+{
+  "unit_id": "REF_000809#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "7659f5dcd64859edac6ad126e961eba6d441c6fe4e0897ac9d61eb3a6274c865",
+  "projected_hash": "16814a931605e63bd39bf85b7b98ba332cde0b7dd7caa3cf731d9ce10ee560a0",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte tailoring cloth",
+          "fine even weave"
+        ],
+        "values": [
+          {
+            "value": "Wool",
+            "evidence": [
+              "matte woven suiting cloth appearance"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain even suiting cloth",
+          "no constructed or optical treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid gray, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered frills"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim attachment on jacket"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric lapels and front"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Slim",
+        "region": "upper",
+        "evidence": [
+          "close to torso",
+          "trim through waist and chest"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem descends into hip zone below waist"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "silhouette holds shape",
+          "clean tailored front and lapels"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves reach the wrist"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits at natural shoulder point"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Mild",
+        "region": "upper",
+        "evidence": [
+          "readable shoulder-line endpoint",
+          "modestly held contour into sleeve"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Notched",
+        "region": "upper",
+        "evidence": [
+          "visible cut notch at collar-lapel seam",
+          "no rising point"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "front opening runs full length of jacket front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Single Breasted Button",
+        "region": "upper",
+        "evidence": [
+          "single column of two buttons",
+          "centre overlap"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "notched lapel",
+          "welt and flap pockets",
+          "structured tailored build"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "silhouette narrows in at waist via tailored cut"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary tailored sleeve envelope"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "pockets": [
+          {
+            "location": "Chest",
+            "construction": "Inset",
+            "projection": "Flat",
+            "evidence": [
+              "flat welt breast pocket",
+              "flush with jacket front"
+            ]
+          },
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat",
+            "evidence": [
+              "set-in flap pockets",
+              "flush pockets under flaps"
+            ]
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "black",
+          "carrier_kind": "closure",
+          "carrier_ref": "Button"
+        }
+      ],
+      "evidence": {
+        "primary": "even mid-gray suiting cloth",
+        "lightness": "medium value gray",
+        "usage": "one garment color throughout",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+ "backup_name": "ITEM_SCORING_ENGINE_V1_FINAL_BACKUP_20260927_R1",
+ "backup_date": "2026-09-27",
+ "scope": "STMX ITEM SCORING ENGINE V1 (four-axis composition)",
+ "identities": {
+  "engine": "STMX ITEM SCORING ENGINE V1",
+  "status": "COMPLETE_AND_CLOSED_AND_FROZEN · PRODUCTION",
+  "v1_manifest_aggregate": "05307a0eec17d78a46502b9801fdf2cd7a583dc83e0372aa6db456b7a86ec288",
+  "final_freeze_manifest_aggregate": "a7280ad15bd2956aed752fcf278ece034bb5ae3d6a22c61f3dbb4c49ac739bd6",
+  "production_output_fingerprint": "01706775a25f0113c6ed99f3a3d783920ea26a955e782fadc335a2cb169bf9cd",
+  "registry": "AXIS_BINDING_CONTRACTS_V5_PRODUCTION · 8b6b8715cb40e5631b0becd92b709d8cbbb6e07491e6e07c29d7919797e10810",
+  "binding_seal_v5": "4368141f5f2509107578ea0d7f597af8e8115a2fc0f496cc07442c02b9b05dcb",
+  "generic_binding": "c141a6e60a72067271633ed5556f8d977f9b4857d20bec44e0ede13afbc24684",
+  "axes": {
+   "TC": {
+    "runtime_id": "STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE",
+    "expected_identity": "88e6982f13efc409a7e5c45e6952f6c65989fd8e7fd98875eda7b4f3f830a21d",
+    "authority_status": "PRODUCTION",
+    "kind": "CODE_IDENTITY_SEAL",
+    "record": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE/CODE_IDENTITY_SEAL_TC_INTEGRATED_RUNTIME_V1_PRODUCTION.json"
+   },
+   "EI": {
+    "runtime_id": "STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE",
+    "expected_identity": "fd1617037ce09fef6a05e2288e7584bdd92b26337a22ca44fc1cef37f3c0a401",
+    "authority_status": "PRODUCTION",
+    "kind": "CODE_IDENTITY_SEAL",
+    "record": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/CODE_IDENTITY_SEAL_EI_PRODUCTION_INTEGRATION_V1_PRODUCTION.json"
+   },
+   "SR": {
+    "runtime_id": "STMX_SR_ENGINE_V1",
+    "expected_identity": "59ea6dfdcca30ba8813a06733069daf9efab917df6b5103717d7cb334aebf1e3",
+    "authority_status": "PRODUCTION",
+    "kind": "PRODUCTION_AUTHORITY_POINTER",
+    "record": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1.json"
+   },
+   "DM": {
+    "runtime_id": "STMX_DM_ITEM_ENTRY_ADAPTER_V1_CANDIDATE",
+    "expected_identity": "6f1e3b0d879a6f2b0fab32cea6bf1bdc5f908309be88f10e61a6373995bd0f81",
+    "authority_status": "PRODUCTION",
+    "kind": "CODE_IDENTITY_SEAL",
+    "record": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ITEM_ENTRY_ADAPTER_V1_CANDIDATE/CODE_IDENTITY_SEAL_DM_ITEM_ENTRY_ADAPTER_V1_PRODUCTION.json"
+   }
+  },
+  "pre_promotion_seal": "ac573932511d84378f75804ee537f10c2641a00def957296b90bc4a65263f946"
+ },
+ "local_final_backup": "VERIFIED after validation (see backup_validation.json beside the ZIP)",
+ "google_drive_final_backup": "READY_FOR_UPLOAD / PENDING CEO CONFIRMATION",
+ "drive_destination": "20_ITEM_SCORING_ENGINES/05_INTEGRATED_ITEM_SCORING_RUNTIME/ (CEO-approved canonical destination, 2026-09-27)",
+ "supersedes_local_candidate": "ITEM_SCORING_ENGINE_V1_FINAL_BACKUP_20260927"
+}

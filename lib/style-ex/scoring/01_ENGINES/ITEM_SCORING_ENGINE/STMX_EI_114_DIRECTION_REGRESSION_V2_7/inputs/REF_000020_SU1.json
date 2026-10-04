@@ -1,0 +1,322 @@
+{
+  "unit_id": "REF_000020#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "d514b6f7a7d63a9b6342c56690d80340d52e09f053afc4a5f94da16172726c1c",
+  "projected_hash": "f3cb453aec1c4119482444148d33e1be1d5c090308c3cce2471af73356ba8b6c",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte woven wool center panel",
+          "glossy quilted down side and sleeve panels"
+        ],
+        "values": [
+          {
+            "value": "Wool",
+            "evidence": [
+              "matte flat woven cloth on front placket and collar"
+            ],
+            "locations": [
+              {
+                "component": "Body"
+              },
+              {
+                "component": "Collar"
+              }
+            ]
+          },
+          {
+            "value": "Padding",
+            "evidence": [
+              "horizontal channel-quilted puffed panels on sides and sleeves"
+            ],
+            "locations": [
+              {
+                "component": "Sleeve"
+              }
+            ]
+          },
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "glossy technical shell on quilted panels and applied chest pockets"
+            ],
+            "locations": [
+              {
+                "component": "Pocket"
+              }
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "CEO adjudication"
+            ],
+            "value": "Quilted"
+          },
+          {
+            "evidence": [
+              "CEO adjudication"
+            ],
+            "value": "Glossy",
+            "finish_realization": "Baseline"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Quilted"
+          },
+          {
+            "value": "Glossy",
+            "finish_realization": "Baseline"
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered ruffle trim"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "strap tab at shoulder",
+          "metal snap hardware and zip pull"
+        ],
+        "values": [
+          {
+            "value": "Epaulette",
+            "evidence": [
+              "strap tab across right shoulder"
+            ],
+            "locations": [
+              {
+                "component": "Shoulder"
+              }
+            ]
+          },
+          {
+            "value": "Metal Hardware",
+            "evidence": [
+              "ringed metal snap buttons and metal zip slider"
+            ],
+            "locations": [
+              {
+                "component": "Body"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "chest patch pockets on left, vertical zip pocket on right, sleeve pocket on one arm only"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "straight body with moderate ease",
+          "sleeves and body follow an ordinary envelope"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "flat product shot, no body to locate hem against"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds a soft standing shape from wool center and puffed panels",
+          "quilted panels are localized, overall body soft"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves run full length to ribbed cuffs"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits at natural shoulder point"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "rounded continuous shoulder line into sleeve, no readable endpoint"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "pointed folded shirt collar with visible collar band"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "button placket runs full length of front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Button",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Utility",
+        "region": "whole_garment",
+        "evidence": [
+          "multiple cargo/utility chest pockets, zip pocket, shoulder strap tab"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight column body with no waist shaping"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, bulk only from quilting not enlarged design"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "pockets": [
+          {
+            "location": "Chest",
+            "construction": "Applied",
+            "projection": "Flat",
+            "evidence": [
+              "patch pockets stitched onto quilted front panel with snap and flap",
+              "pockets lie flush against panel"
+            ]
+          },
+          {
+            "location": "Chest",
+            "construction": "Inset",
+            "projection": "Flat",
+            "evidence": [
+              "vertical zip opening set into wool placket panel",
+              "zip pocket flush with placket"
+            ]
+          },
+          {
+            "location": "Sleeve",
+            "construction": "Applied",
+            "projection": "Flat",
+            "evidence": [
+              "small tabbed pocket applied to right sleeve",
+              "lies flush on sleeve panel"
+            ]
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "navy",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "red",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Collar"
+        },
+        {
+          "color_family": "white_family",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Collar"
+        }
+      ]
+    }
+  }
+}

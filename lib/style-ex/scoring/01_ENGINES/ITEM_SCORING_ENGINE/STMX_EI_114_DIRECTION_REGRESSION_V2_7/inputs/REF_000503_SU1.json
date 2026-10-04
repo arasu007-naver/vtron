@@ -1,0 +1,239 @@
+{
+  "unit_id": "REF_000503#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "a3fd49827522835799a6f1f8ba70c430191b76660d637473cae97573b18f1ea0",
+  "projected_hash": "53f8e6a0d48d930e29fa5e20c4bad06aa877dbb518dde7093d159eb853c4baa3",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth technical quilted shell",
+          "corduroy-look inner collar"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth waxed/technical quilted shell cloth"
+            ]
+          },
+          {
+            "value": "Padding",
+            "evidence": [
+              "quilted baffles indicate insulation fill"
+            ]
+          },
+          {
+            "value": "Cotton",
+            "evidence": [
+              "ribbed corduroy inner collar"
+            ],
+            "locations": [
+              {
+                "component": "Collar"
+              }
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "diamond quilt stitching across body"
+        ],
+        "values": [
+          {
+            "value": "Quilted",
+            "evidence": [
+              "diamond-pattern quilt channels over entire body"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid color; diamond geometry is quilting-owned, not textile pattern"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print visible on body"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "two lower-front flap pockets with snap tabs"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Applied",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, epaulette, fur or fringe present"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right halves mirror; hem and placket straight and even"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "body follows torso with ordinary ease; shoulder within wearer frame; hem hangs near body"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem descends below waist into hip zone covering pocket area"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds soft shape from quilting yet yields, no self-supporting rigidity"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "no sleeves; armholes bound, knit sleeves underneath"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "armhole seam sits at wearer's natural shoulder end, endpoint preserved"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder line runs rounded and continuous into armhole"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "distinct standing corduroy band collar at neck"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain bound quilted hem edge, no ribbed band"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "stand collar only, no hood at neck or back"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "snap/zip placket runs full length of front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Snap Button",
+        "region": "upper",
+        "evidence": [
+          "row of snap buttons down front placket, zipper also visible at neck"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "quilted country gilet, flap pockets, casual construction"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "stand covers ordinary portion of neck-to-chin span"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "navy",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "brown",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Collar"
+        },
+        {
+          "color_family": "gray",
+          "carrier_kind": "closure",
+          "carrier_ref": "Snap Button"
+        }
+      ]
+    }
+  }
+}

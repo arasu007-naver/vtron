@@ -1,0 +1,194 @@
+{
+  "unit_id": "REF_000616#SU2",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "48c703f8c94edef2a569479f1e3bd487e566e964313ec752f90ef78ff9ce10ca",
+  "projected_hash": "eae13253950b693fbbd609c5fbc2d1b1b529311b8b255cbde6bbd6e90c7a9d34",
+  "input": {
+    "category": "Skirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "visible denim twill weave",
+          "washed indigo tone with contrast stitching"
+        ],
+        "values": [
+          {
+            "value": "Denim",
+            "evidence": [
+              "blue washed cotton twill with topstitching"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "gathered tiered denim flounces at the skirt body"
+        ],
+        "values": [
+          {
+            "value": "Gathered",
+            "evidence": [
+              "tiered gathered ruffle strips forming the skirt body"
+            ],
+            "locations": [
+              {
+                "component": "Skirt Body"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid washed denim, no repeating printed motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "front/side of waistband partly hidden by hands and belt loops, pocket area not readable"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "contrast topstitching only, no embroidery/beading/appliqué/piping"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "denim belt with buckle across the waist"
+        ],
+        "values": [
+          {
+            "value": "Belt",
+            "evidence": [
+              "self-denim belt with buckle at waistband"
+            ],
+            "locations": [
+              {
+                "component": "Waistband"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "a dark denim tail/panel hangs down at one side below the ruffles"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "tiered flounces flare outward from waistband toward hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "lower",
+        "evidence": [
+          "skirt sits close at waist then flares via ruffles, ordinary ease at hip"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Mini",
+        "region": "lower",
+        "evidence": [
+          "hem sits high on the upper thigh on a standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "stiff denim holds ruffle body but folds softly at the tiers"
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "no cut slit; tiered ruffle hem instead"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "value": "Upper Thigh",
+            "evidence": [
+              "CEO adjudication"
+            ]
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "realization_qualifiers": [
+          {
+            "region": "Upper Thigh",
+            "mode": "INHERENT_PERSISTENT",
+            "authority": "CEO 2026-09-08 §5/§9 — mini skirt; both thighs substantially/inherently visible; persistent in ordinary garment realization; not dependent on moving one leg through a slit",
+            "date": "2026-09-08",
+            "basis": "realized garment coverage/cut"
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "blue",
+      "color_lightness": "normal",
+      "color_usage": "subtle",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "navy",
+          "carrier_kind": "material_component",
+          "carrier_ref": "Denim"
+        }
+      ],
+      "evidence": {
+        "primary": "washed indigo denim body",
+        "lightness": "mid blue tone",
+        "usage": "darker denim tail panel at side",
+        "effect": "no metallic or neon"
+      },
+      "color_notes": "washed/faded indigo denim with a darker raw denim panel at one side"
+    }
+  }
+}

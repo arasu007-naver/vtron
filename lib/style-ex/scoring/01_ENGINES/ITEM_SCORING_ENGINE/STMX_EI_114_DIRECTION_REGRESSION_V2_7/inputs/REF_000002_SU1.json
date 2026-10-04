@@ -1,0 +1,230 @@
+{
+  "unit_id": "REF_000002#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "87f4c9d1a3ce9bae761bd3670fdf16b4d7380af5936225ec000a98a6e68f4242",
+  "projected_hash": "84d0f8e394ae23c9c02bc67792c39e52c785e8bf531117736746a04dc8e20532",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth technical shell fabric with sheen"
+            ]
+          },
+          {
+            "value": "Padding",
+            "evidence": [
+              "quilted padded body with loft"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "diamond-stitched quilting across whole body and sleeves"
+            ],
+            "value": "Quilted"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Quilted",
+            "evidence": [
+              "diamond-stitched quilting across whole body and sleeves"
+            ]
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, quilting is construction not print"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic or logo"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "two front pockets at lower body"
+        ],
+        "count": 2
+      },
+      "ruffle": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffle"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [],
+        "values": [
+          {
+            "value": "Metal Hardware",
+            "evidence": [
+              "metal snap studs at front"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetrical front and pockets"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "straight moderate-ease silhouette off-body"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem falls around hip"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "quilted padding holds shape with some give"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to wrist"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "soft natural shoulder, no built structure"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "pointed shirt-style collar in corduroy"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Snap Button",
+        "region": "upper",
+        "evidence": [
+          "visible round metal snap studs down center front"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "quilted country-style jacket with corduroy trim and snap front"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight silhouette, no waist shaping"
+        ]
+      },
+      "pocket_construction": {
+        "state": "OBSERVED",
+        "value": "Applied",
+        "region": "whole_garment",
+        "evidence": [
+          "patch pockets sit on surface with corduroy trim top edge"
+        ]
+      },
+      "pocket_projection": {
+        "state": "OBSERVED",
+        "value": "Flat",
+        "region": "whole_garment",
+        "evidence": [
+          "pockets lie flush against body"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, no expansion"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "subtle",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "silver",
+          "carrier_kind": "closure",
+          "carrier_ref": "Snap Button"
+        },
+        {
+          "color_family": "beige",
+          "carrier_kind": "material_component",
+          "carrier_ref": "Knit"
+        }
+      ],
+      "evidence": {
+        "primary": "black quilted shell dominates",
+        "lightness": "deep black tone",
+        "usage": "black body with minor contrasting inner and snap accents",
+        "effect": "no neon or metallic color body"
+      },
+      "color_notes": null
+    }
+  }
+}

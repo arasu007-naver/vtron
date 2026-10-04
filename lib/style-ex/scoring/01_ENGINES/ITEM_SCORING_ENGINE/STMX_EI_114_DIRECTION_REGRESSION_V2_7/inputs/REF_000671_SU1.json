@@ -1,0 +1,289 @@
+{
+  "unit_id": "REF_000671#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "30f01bf22d57a234b3459673943956ad000ebb7542587c427363c035e51a0320",
+  "projected_hash": "04b54dcdf64dafb26a589e5e2ea285557b6100306041e49f378e176b048fb665",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth matte technical-looking cloth",
+          "sheer panel at upper chest"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth matte jersey-like drape over body"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "sheer see-through banded panel across upper chest/shoulders"
+        ],
+        "values": [
+          {
+            "value": "Semi Transparent",
+            "evidence": [
+              "upper yoke panel transmits skin visibly through fabric"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black body with no repeating printed motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, slogan or image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "smooth body with no visible pocket openings"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, ribbon or trim"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "hem level and straight, waist gathering mirrors both sides, both sides mirror each other"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "column skirt keeps consistent width from hip to floor"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice follows torso closely, body outline legible through cloth"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "column skirt hugs hips and legs, close body-tracing silhouette"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "whole_garment",
+        "evidence": [
+          "hem reaches the floor on the worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "bodice cloth follows the torso with soft movement"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "skirt falls close to the body with soft drape, no self-supporting volume"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends at upper arm"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "clear shoulder endpoint at natural shoulder before sleeve begins"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder line runs rounded and continuous into sleeve"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Round",
+        "region": "upper",
+        "evidence": [
+          "rounded fabric opening edge at base of neck"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "opaque neckline sits high near base of neck above the sheer yoke"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain neckline with no collar band or structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no ribbed band at any top edge"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no visible front opening or placket on the body"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "sheer banded yoke transmits upper chest/shoulder skin"
+        ],
+        "values": [
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "upper chest visible through semi-sheer striped yoke panel"
+            ]
+          },
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulder area visible through the sheer yoke panel"
+            ]
+          }
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "no visible slit or split in the skirt front"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered frill or flounce strip applied"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "ruched side gathering narrows the silhouette at the waist and widens toward hip"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary close sleeve envelope, not enlarged"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends in a plain hem with no cuff band"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": []
+    }
+  }
+}

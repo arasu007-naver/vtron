@@ -1,0 +1,359 @@
+{
+  "unit_id": "REF_000851#SU1",
+  "scoring_unit_type": "MATCHING_PAIR",
+  "member_count": 2,
+  "members": [
+    {
+      "member_id": "target_1",
+      "category": "Shirt",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "fluid woven cloth with sheen"
+          ],
+          "values": [
+            {
+              "value": "Silk",
+              "evidence": [
+                "lightweight lustrous drape",
+                "fine floral print"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "soft gathering at waist tie"
+          ],
+          "values": [
+            {
+              "value": "Gathered",
+              "evidence": [
+                "fabric gathered at waist tie"
+              ]
+            }
+          ]
+        },
+        "pattern": {
+          "state": "OBSERVED",
+          "value": "Repeat",
+          "evidence": [
+            "CEO adjudication"
+          ],
+          "density": "dense",
+          "visual_dominance": "Dominant"
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "all-over motif is a pattern, no placed graphic"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "no pockets on printed top"
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no applied embroidery/beading/piping"
+          ]
+        },
+        "attachment": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "thin ties wrapping the waist"
+          ],
+          "values": [
+            {
+              "value": "Other",
+              "descriptor": "self-fabric waist tie",
+              "evidence": [
+                "thin fabric strings knotted at waist"
+              ]
+            }
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "top body reads symmetric"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Relaxed",
+          "region": "upper",
+          "evidence": [
+            "loose draped body, soft fullness"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Cropped",
+          "region": "upper",
+          "evidence": [
+            "hem exposes waist above skirt on worn body"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Fluid",
+          "region": "whole_garment",
+          "evidence": [
+            "cloth drapes and falls with soft folds"
+          ]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Long",
+          "region": "upper",
+          "evidence": [
+            "sleeves extend past wrists, drape long"
+          ]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "Dropped",
+          "region": "upper",
+          "evidence": [
+            "seam falls onto upper arm, wide boat shoulder"
+          ]
+        },
+        "neckline_shape": {
+          "state": "OBSERVED",
+          "value": "Straight",
+          "region": "upper",
+          "evidence": [
+            "near-horizontal wide top edge across collarbone"
+          ]
+        },
+        "neckline_position": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "neckline sits at base of neck"
+          ]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "plain boat neckline, no collar structure"
+          ]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "cropped edge is plain self-fabric, no ribbing"
+          ]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "pullover-style top, no front opening"
+          ]
+        },
+        "sleeve_volume": {
+          "state": "OBSERVED",
+          "value": "Voluminous",
+          "region": "upper",
+          "evidence": [
+            "wide draped sleeve body enlarged beyond ordinary sleeve"
+          ]
+        },
+        "cuff_type": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "sleeve ends in plain draped edge, no cuff band"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "brown",
+        "color_lightness": "dark",
+        "color_usage": "multi",
+        "multi_color": true,
+        "color_effect": "none",
+        "additional_colors": [
+          {
+            "color_family": "orange",
+            "carrier_kind": "pattern",
+            "carrier_ref": "Repeat",
+            "contrast_with_body": "Distinct"
+          }
+        ]
+      }
+    },
+    {
+      "member_id": "target_2",
+      "category": "Skirt",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "lightweight lustrous drape matching top"
+          ],
+          "values": [
+            {
+              "value": "Silk",
+              "evidence": [
+                "fluid sheen cloth",
+                "fine floral print"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "gathered draping across body and cascading side"
+          ],
+          "values": [
+            {
+              "value": "Gathered",
+              "evidence": [
+                "fabric gathered/ruched into folds"
+              ]
+            }
+          ]
+        },
+        "pattern": {
+          "state": "OBSERVED",
+          "value": "Repeat",
+          "evidence": [
+            "CEO adjudication"
+          ],
+          "density": "dense",
+          "visual_dominance": "Dominant"
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "all-over motif is pattern, no placed graphic"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "no pockets visible"
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no applied decorative construction"
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no belt/hardware on skirt itself"
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "whole_garment",
+          "evidence": [
+            "high-low hem, one side rises to knee, other cascades below calf"
+          ]
+        },
+        "silhouette": {
+          "state": "OBSERVED",
+          "value": "Straight",
+          "region": "whole_garment",
+          "evidence": [
+            "width stays consistent, draped fall"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "lower",
+          "evidence": [
+            "follows body with draped ease"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Midi",
+          "region": "lower",
+          "evidence": [
+            "longest cascade falls to lower calf on worn body"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Fluid",
+          "region": "whole_garment",
+          "evidence": [
+            "cloth drapes and cascades with no self-support"
+          ]
+        },
+        "slit": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "lower",
+          "evidence": [
+            "hem is asymmetric drape, no cut slit"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "brown",
+        "color_lightness": "dark",
+        "color_usage": "multi",
+        "multi_color": true,
+        "color_effect": "none",
+        "additional_colors": [
+          {
+            "color_family": "orange",
+            "carrier_kind": "pattern",
+            "carrier_ref": "Repeat",
+            "contrast_with_body": "Distinct"
+          }
+        ]
+      }
+    }
+  ],
+  "note": "pair-level input — one scoring unit, every member materialized (order §6)"
+}

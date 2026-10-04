@@ -1,0 +1,340 @@
+{
+  "unit_id": "REF_000586#SU1",
+  "scoring_unit_type": "MATCHING_PAIR",
+  "member_count": 2,
+  "members": [
+    {
+      "member_id": "target_1",
+      "category": "Shirt",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "matte woven cloth with linen-like slub texture"
+          ],
+          "values": [
+            {
+              "value": "Cotton",
+              "evidence": [
+                "natural matte woven appearance, linen/cotton family"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "plain woven surface, no constructed or optical treatment"
+          ],
+          "values": []
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "solid beige, no repeating motif"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no placed graphic element"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "no pockets visible on the top"
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no applied decorative construction"
+          ],
+          "values": []
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no belt, hardware or trim"
+          ],
+          "values": []
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "symmetric neckline, hem and armholes"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "skims the torso with modest ease, softly bloused at hem"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "hem sits at hip level over the trouser waistband on worn body"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Fluid",
+          "region": "whole_garment",
+          "evidence": [
+            "cloth follows body with soft drape and gentle folds at waist"
+          ]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Sleeveless",
+          "region": "upper",
+          "evidence": [
+            "open armholes, no sleeve"
+          ]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "shoulder seam sits at natural shoulder point"
+          ]
+        },
+        "neckline_shape": {
+          "state": "OBSERVED",
+          "value": "V",
+          "region": "upper",
+          "evidence": [
+            "fabric edge angles down to a point at center front"
+          ]
+        },
+        "neckline_position": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "V opening sits at a moderate depth on the upper chest"
+          ]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "bare V-neck edge, no collar structure"
+          ]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "plain self-fabric hem, no ribbed band"
+          ]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "pullover-style, no front opening"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "beige",
+        "color_lightness": "light",
+        "color_usage": "single",
+        "multi_color": false,
+        "color_effect": "none",
+        "additional_colors": [],
+        "evidence": {
+          "primary": "warm light beige natural linen tone",
+          "lightness": "pale light value",
+          "usage": "one uniform color",
+          "effect": "matte, no metallic/neon"
+        },
+        "color_notes": null
+      }
+    },
+    {
+      "member_id": "target_2",
+      "category": "Trouser",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "matte woven cloth with linen-like drape and slub"
+          ],
+          "values": [
+            {
+              "value": "Cotton",
+              "evidence": [
+                "natural matte woven linen/cotton appearance"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "gathered fullness released from the elasticated waistband"
+          ],
+          "values": [
+            {
+              "value": "Gathered",
+              "evidence": [
+                "fabric gathered at the shirred waistband",
+                "locations"
+              ],
+              "locations": [
+                {
+                  "component": "Waistband"
+                }
+              ]
+            }
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "solid white, no repeating motif"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no placed graphic"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "whole_garment",
+          "evidence": [
+            "hand inserted into a side/front-hip pocket at the hip"
+          ],
+          "pockets": [
+            {
+              "location": "Lower Front",
+              "construction": "Inset",
+              "projection": "Flat"
+            }
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no applied decorative construction"
+          ],
+          "values": []
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no belt or hardware; waistband is elasticated/shirred"
+          ],
+          "values": []
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "symmetric legs and waistband"
+          ]
+        },
+        "trouser_distinction": {
+          "state": "OBSERVED",
+          "value": "Casual",
+          "region": "whole_garment",
+          "evidence": [
+            "soft elastic-waist pull-on linen trousers, no tailoring or 5-pocket build"
+          ]
+        },
+        "silhouette": {
+          "state": "OBSERVED",
+          "value": "Straight",
+          "region": "whole_garment",
+          "evidence": [
+            "wide palazzo leg keeps its width to the hem"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Relaxed",
+          "region": "lower",
+          "evidence": [
+            "wide, loose legs with generous ease"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Full Length",
+          "region": "lower",
+          "evidence": [
+            "hem reaches the ankle/top of foot on standing body"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Fluid",
+          "region": "whole_garment",
+          "evidence": [
+            "cloth drapes and falls freely in soft vertical folds"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "beige",
+        "color_lightness": "light",
+        "color_usage": "single",
+        "multi_color": false,
+        "color_effect": "none",
+        "additional_colors": [],
+        "evidence": {
+          "primary": "warm light beige natural linen tone",
+          "lightness": "pale light value",
+          "usage": "one uniform color",
+          "effect": "matte, no metallic/neon"
+        },
+        "color_notes": null
+      }
+    }
+  ],
+  "note": "pair-level input — one scoring unit, every member materialized (order §6)"
+}

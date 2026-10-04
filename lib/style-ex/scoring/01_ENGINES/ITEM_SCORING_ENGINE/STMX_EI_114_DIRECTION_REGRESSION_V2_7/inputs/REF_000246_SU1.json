@@ -1,0 +1,210 @@
+{
+  "unit_id": "REF_000246#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "36512dec430d8423c8eeb815384204912486c26d7731e5e784df9439f2f7e214",
+  "projected_hash": "b38e9bef013e7e573afac95bb74658f104fb3482017fc97fa1deaa7a9ee6d00f",
+  "input": {
+    "category": "Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "openwork eyelet lace fabric across body"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "dense woven eyelet lace typical of cotton broderie anglaise"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "cut-out openwork holes throughout body and sleeves"
+        ],
+        "values": [
+          {
+            "value": "Lace",
+            "evidence": [
+              "broderie anglaise eyelet openwork across body and sleeves"
+            ]
+          },
+          {
+            "value": "Semi Transparent",
+            "evidence": [
+              "skin visible through openwork areas at chest and sleeves"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black; openwork is a surface treatment, not a repeating color motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, print or image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no pockets on lace body"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery-as-applique, sequins, or piping trim beyond the openwork fabric itself"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, ribbon or trim attachments"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right mirror; scalloped hem even both sides",
+          "no single-sided panel, tie or drape"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary ease at chest and torso",
+          "body not traced closely; hem falls with modest room"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "scalloped hem sits around the hip/waist on the worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds a soft shape, some body but yields and falls at hem"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Mid",
+        "region": "upper",
+        "evidence": [
+          "sleeves end around mid-forearm/below elbow"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "clear shoulder endpoint at natural shoulder before sleeve begins"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Round",
+        "region": "upper",
+        "evidence": [
+          "rounded opening close to base of neck"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "neckline sits high near the base of the neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare rounded neckline with scalloped edge trim, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "scalloped self-fabric hem, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "front placket/closure area not clearly visible; possible back closure not in view"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Voluminous",
+        "region": "upper",
+        "evidence": [
+          "sleeve body puffs outward with rounded fullness, gathered at cuff"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends in a gathered ruffled band, no constructed cuff structure"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black eyelet lace fabric",
+        "lightness": "dark black throughout",
+        "usage": "single black tone, no secondary designed color",
+        "effect": "matte fabric, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

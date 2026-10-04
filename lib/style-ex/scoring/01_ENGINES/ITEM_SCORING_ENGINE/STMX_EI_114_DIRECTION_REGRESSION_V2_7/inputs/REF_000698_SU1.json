@@ -1,0 +1,256 @@
+{
+  "unit_id": "REF_000698#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "9f7a1e5b81790dacc8dbe7a5652c4b4fe92d9b647763ee688386e4a45756fa5b",
+  "projected_hash": "6846334af537446edeb598abbafb58465f0781fcc61bcaba1e04192403b5ecf0",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "fine lightweight pleated cloth, chiffon-like translucency"
+        ],
+        "values": [
+          {
+            "value": "Silk",
+            "evidence": [
+              "fine sheer pleated fabric with soft translucent drape"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "fine parallel pleats across body and cape",
+          "diagonal chevron pleat direction on lower body",
+          "fabric transmits light showing arm beneath"
+        ],
+        "values": [
+          {
+            "value": "Pleated",
+            "evidence": [
+              "dense fine accordion pleats throughout body and upper drape"
+            ]
+          },
+          {
+            "value": "Semi Transparent",
+            "evidence": [
+              "arm visible through fabric at sleeve/torso region"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Linear",
+        "region": "whole_garment",
+        "evidence": [
+          "directional pleat-line striping creating diagonal chevron lines on lower body"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or printed image"
+        ]
+      },
+      "pocket": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "pocket regions obscured by drape"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "pleated edges flare into ruffled folds along the draped overlay edge"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fur, fringe or ribbon"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "draped overlay falls unevenly, one side wing lower than the other"
+        ]
+      },
+      "silhouette": {
+        "state": "UNKNOWN",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "lower hem out of frame, directional geometry toward hem not readable"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "large enveloping pleated volume around body"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Oversized",
+            "evidence": [
+              "voluminous cape-like drape standing well away from torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Relaxed",
+            "evidence": [
+              "loose flowing pleated body below the drape"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "hem below the crop, not in frame"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "fabric extends over arms toward wrist within draped form"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "shoulder seam masked by draped pleated overlay"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Turtleneck",
+        "region": "upper",
+        "evidence": [
+          "fabric rises high and wraps around the neck"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "neckline sits high at base of neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "high wrapped neck finish, no distinct collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "lower hem out of frame"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no visible front opening; continuous pleated wrap"
+        ]
+      },
+      "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "body fully covered, no meaningful skin exposure or designed opening"
+        ]
+      },
+      "slit": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "lower",
+        "evidence": [
+          "lower body/hem out of frame"
+        ]
+      },
+      "waist_definition": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "waist obscured by voluminous draped overlay"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Voluminous",
+        "region": "upper",
+        "evidence": [
+          "wide draped sleeve/cape body deliberately enlarged around arms"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "pink",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "saturated bright pink throughout garment",
+        "lightness": "mid-value pink, neither pale nor dark",
+        "usage": "single continuous pink, tonal shading from folds only",
+        "effect": "no neon or metallic appearance"
+      },
+      "color_notes": "tonal light-to-dark variation across pleats caused by folds and translucency, not separate colors"
+    }
+  }
+}

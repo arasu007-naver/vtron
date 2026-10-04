@@ -1,0 +1,218 @@
+{
+  "unit_id": "REF_000001#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "5b6ee192c0b198b315691706bf09e2b5a5c6adbc71be7b8d59cba0183fe1d27f",
+  "projected_hash": "b6976cf7eae3c747a2dc1c83f9fca30051a7f034beaac6cc72843033546e8313",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "woven textured cloth"
+        ],
+        "values": [
+          {
+            "value": "Other",
+            "descriptor": "textured jacquard woven cloth",
+            "evidence": [
+              "dense woven surface with raised floral motif"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "raised textured woven surface across body"
+        ],
+        "values": [
+          {
+            "value": "Textured Knit",
+            "descriptor": "",
+            "evidence": [
+              "pronounced raised structural texture across garment body"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Repeat",
+        "region": "whole_garment",
+        "evidence": [
+          "all-over repeating floral motif across body and sleeves"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or slogan; motif is all-over"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "flap pockets at hip",
+          "welt chest pocket"
+        ],
+        "count": 3,
+        "density": "sparse"
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "straight tailored body, moderate ease"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem falls at hip"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds tailored shape with some softness"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "full-length sleeves to cuff"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Mild",
+        "region": "upper",
+        "evidence": [
+          "soft natural shoulder line, minimal built structure"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Notched",
+        "region": "upper",
+        "evidence": [
+          "visible notch/step where collar meets lapel"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Single Breasted Button",
+        "region": "upper",
+        "evidence": [
+          "single centre button column",
+          "one visible button at waist"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "notched lapel, welt pocket, single-breasted blazer construction"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight body with no visible waist shaping"
+        ]
+      },
+      "pocket_construction": {
+        "state": "OBSERVED",
+        "value": "Inset",
+        "region": "whole_garment",
+        "evidence": [
+          "set-in flap pockets and welt chest pocket flush with body"
+        ]
+      },
+      "pocket_projection": {
+        "state": "OBSERVED",
+        "value": "Flat",
+        "region": "whole_garment",
+        "evidence": [
+          "pockets flush with garment surface"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "multi",
+      "multi_color": true,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "pink",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Repeat"
+        },
+        {
+          "color_family": "orange",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Repeat"
+        },
+        {
+          "color_family": "green",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Repeat"
+        },
+        {
+          "color_family": "blue",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Repeat"
+        },
+        {
+          "color_family": "yellow",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Repeat"
+        }
+      ],
+      "evidence": {
+        "primary": "black woven ground dominates",
+        "lightness": "dark black base",
+        "usage": "multicolor floral motif across body",
+        "effect": "no metallic or neon"
+      },
+      "color_notes": "muted multicolor floral print over dark ground"
+    }
+  }
+}

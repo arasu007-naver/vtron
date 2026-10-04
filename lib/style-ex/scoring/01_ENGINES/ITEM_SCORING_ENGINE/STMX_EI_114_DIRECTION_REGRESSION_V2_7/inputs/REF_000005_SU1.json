@@ -1,0 +1,204 @@
+{
+  "unit_id": "REF_000005#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "9f45bcbd013d2f2643acb96e253f2568584e0ddc38ec8aff645aacca93a23407",
+  "projected_hash": "5e6dcf189ace46e6294569adf178a29fe06633d1019c6da6a35eac7aa0e3801c",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "woven textile with visible fine ripstop grid weave"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "technical woven shell, ripstop-like texture"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain woven body, no constructed surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid beige, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "HH logo on chest"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "large kangaroo pouch pocket at front",
+          "lower side entry"
+        ],
+        "count": 1
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffles"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery/sequin/appliqué"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "clean body with moderate ease, not close or oversized"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem sits at the hip"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds shape with soft folds, slight body"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "full-length sleeves to wrist"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "soft natural shoulder, no padding"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "hooded neckline, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "elasticated woven hem, not ribbed"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "drawstring hood behind neck"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "central half-zip at chest"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "anorak pullover, drawstring hood, casual sport styling"
+        ]
+      },
+      "pocket_construction": {
+        "state": "OBSERVED",
+        "value": "Applied",
+        "region": "whole_garment",
+        "evidence": [
+          "patch pouch stitched onto front"
+        ]
+      },
+      "pocket_projection": {
+        "state": "OBSERVED",
+        "value": "Projected",
+        "region": "whole_garment",
+        "evidence": [
+          "pocket stands slightly away from body but no independent gusset"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "beige",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform light beige woven shell",
+        "lightness": "pale value overall",
+        "usage": "one garment color throughout including zip and logo tonal",
+        "effect": "matte woven, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

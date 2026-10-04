@@ -1,0 +1,229 @@
+{
+  "unit_id": "REF_000141#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "071407962a6c6d1fae6ede4731ee36e9825e3d3a991bcfeb3c30ec58d2b3d783",
+  "projected_hash": "e3237b958ef00e94956067ef8c1bb1ccdb716ff7332f92f12fd39a83d1f74e6c",
+  "input": {
+    "category": "Coat",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth hide grain",
+          "leather sheen at folds"
+        ],
+        "values": [
+          {
+            "value": "Leather",
+            "evidence": [
+              "visible leather grain and creasing across body"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "CEO adjudication"
+            ],
+            "value": "Glossy",
+            "finish_realization": "Enhanced",
+            "coverage": "Dominant"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Glossy",
+            "finish_realization": "Enhanced",
+            "coverage": "Dominant"
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid brown, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "UNKNOWN",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "front covered by open panels and bag; no pocket opening clearly readable"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no piping, embroidery, appliqué or beading visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no waist belt, epaulette or trim visible"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "hem level side to side",
+          "double-breasted front mirrors, lapels symmetric"
+        ]
+      },
+      "fit": {
+        "state": "UNKNOWN",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "upper",
+        "evidence": [
+          "hem falls near the ankle on standing model"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds soft shape with large folds",
+          "yields readily, silhouette not fully self-supporting"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves reach the wrist"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "anatomical shoulder end passed; shoulder line continues onto upper arm before sleeve turns down"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "rounded continuous shoulder contour into sleeve, no held endpoint"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Notched",
+        "region": "upper",
+        "evidence": [
+          "visible notch/step where collar meets lapel",
+          "lower lapel edge does not rise to a point"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain leather hem edge, no ribbed band"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "notched lapel collar at neck, no hood"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "front opening runs full length of the coat"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Double Breasted Button",
+        "region": "upper",
+        "evidence": [
+          "two parallel columns of covered buttons on the front"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "notched lapel, double-breasted front, structured trench construction"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Standard",
+        "region": "upper",
+        "evidence": [
+          "turned-back constructed cuff band at sleeve end"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "cuff band depth ordinary against sleeve width at wrist"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Enlarged",
+        "region": "upper",
+        "evidence": [
+          "wide lapel breadth covering a large share of the chest panel"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "brown",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": []
+    }
+  }
+}

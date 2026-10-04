@@ -1,0 +1,280 @@
+{
+  "unit_id": "REF_000787#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "6e6d4261753969f0f08f89bbe8f817603e1fbc5b98da95f804a61012a5458b5d",
+  "projected_hash": "3039d59a2f204eba60562b823854a138a49180a98c2bbbc0a16778adddda2139",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte lightweight woven cloth with soft creasing"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "matte crisp woven surface with fine wrinkling typical of cotton poplin"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain woven cloth, no constructed or optical surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid pink, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "hand inserted into side seam pocket"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim attachments"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric strap and hem construction"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "body progressively expands outward toward the hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "very wide, voluminous body billowing away from figure"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Oversized",
+            "evidence": [
+              "loose bodice hangs from straps with no body contact"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Voluminous",
+            "evidence": [
+              "extremely wide flowing skirt volume"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "whole_garment",
+        "evidence": [
+          "hem falls near the ankle on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "cloth falls into soft vertical folds",
+          "wide body drapes with movement"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "bodice follows soft drape with light body"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "skirt falls in soft vertical folds without stiff self-support"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "bare arms, thin shoulder straps only"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "straps sit at natural shoulder point"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no built shoulder contour, bare shoulders with straps"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "upper",
+        "evidence": [
+          "straight horizontal top edge across the bust"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "top edge sits across upper chest at moderate height"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare straight neckline, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain self-fabric lower edge, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "continuous front with no opening"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "bare shoulders exposed with strap construction"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulders and upper arms visibly bare"
+            ]
+          }
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "continuous hem, no slit"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "plain edges, no gathered frill strip"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "no waist shaping, straight tent-like fall from bust"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Strap",
+        "region": "upper",
+        "evidence": [
+          "thin self-fabric tie straps over shoulders"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "pink",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "bright saturated pink across whole garment",
+        "lightness": "medium value pink, neither pale nor deep",
+        "usage": "one uniform color throughout",
+        "effect": "matte woven, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

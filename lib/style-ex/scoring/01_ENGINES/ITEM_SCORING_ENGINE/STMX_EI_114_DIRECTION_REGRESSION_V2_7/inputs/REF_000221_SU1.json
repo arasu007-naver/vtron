@@ -1,0 +1,220 @@
+{
+  "unit_id": "REF_000221#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "ce35b5584373ffdbd410e1ef9b80d2fccc5690b219be63d9ac951dcc3a2b979b",
+  "projected_hash": "70afb75520720c137b81bbd7f3104e81fb0f7e531b8e5a4fa4fceaff956d9c02",
+  "input": {
+    "category": "Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte crisp woven cloth",
+          "opaque smooth surface"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "crisp matte woven appearance typical of cotton poplin"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth woven cloth",
+          "no constructed or optical surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid white throughout, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "clean chest and front, no visible pocket"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, trim or other attachment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front placket and hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "dropped shoulders, generous body volume, long roomy sleeves"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "hem falls well below the hip toward the mid-thigh"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "crisp cloth holds soft shape but yields into folds at the front"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to and past the wrists"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits clearly outboard on the upper arm"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "open collar creates V opening at chest"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "opening sits at upper chest level with top buttons undone"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "pointed collar with stand and points at neckline"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain woven curved shirttail hem, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "button placket runs full length of front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Button",
+        "region": "upper",
+        "evidence": [
+          "row of white buttons down the front placket"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve body within ordinary envelope, not deliberately enlarged"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Standard",
+        "region": "upper",
+        "evidence": [
+          "constructed cuff band at sleeve end"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Enlarged",
+        "region": "upper",
+        "evidence": [
+          "cuff band is deep, extends well up the lower forearm"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Enlarged",
+        "region": "upper",
+        "evidence": [
+          "long collar points descend well down toward the chest"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "white_family",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform white woven cloth",
+        "lightness": "bright white",
+        "usage": "one color throughout including buttons",
+        "effect": "matte no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

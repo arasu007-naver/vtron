@@ -1,0 +1,295 @@
+{
+  "unit_id": "REF_000697#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "98e7cca06f59c7fdb0aaad5388648846d396e07ca05759299d3f434169cde476",
+  "projected_hash": "9b967f656c45b4895abc6907ef8b8e794b64e13f3d949cb72a978dd315f8855a",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "light matte drape typical of chiffon"
+        ],
+        "values": [
+          {
+            "value": "Silk",
+            "evidence": [
+              "fine translucent chiffon-like drape across the skirt"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "soft flowing skirt fabric"
+        ],
+        "values": [
+          {
+            "value": "Semi Transparent",
+            "evidence": [
+              "skirt shows light transmissive quality of chiffon"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid light blue throughout, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "smooth bodice and skirt, no pocket openings visible"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim attached"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "bodice, waist seam and hem mirror side to side",
+          "no single-sided panel, slit or drape"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt expands progressively outward toward the floor in an A-line"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "fitted bodice, flowing skirt"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice follows the torso closely with little independent room"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "skirt flows away in an A-line with ordinary ease, not standing far off"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt reaches the floor on the standing model"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "soft bodice over draping skirt"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "bodice holds a soft shaped form"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "skirt drapes and falls with no self-supporting body"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "shoulders and arms bare",
+          "halter construction leaves arms uncovered"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no shoulder construction present; halter neck",
+          "shoulders bare"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no built shoulder line; halter leaves shoulder bare"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "fabric bodice edges angle down to a point at center chest"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "neckline opening sits at mid upper chest, not deeply low"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "fabric rises into a standing band at the back of the neck"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no ribbed band at any edge"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "continuous bodice front, no placket or opening visible"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "halter construction leaves shoulders bare"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "both shoulders visibly bare in halter construction"
+            ]
+          }
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "skirt front continuous, no split visible"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered frill or flounce strip on the garment"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "waist seam nips inward and skirt widens below",
+          "silhouette narrows at waist"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Halter",
+        "region": "upper",
+        "evidence": [
+          "fabric wraps up to a high neck band behind the neck",
+          "bare shoulders with strap around neck"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "standing neck band covers ordinary portion of the neck height"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "blue",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "pale light blue across bodice and skirt",
+        "lightness": "high value, soft pastel tone",
+        "usage": "one uniform color throughout",
+        "effect": "matte chiffon, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

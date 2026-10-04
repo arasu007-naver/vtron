@@ -1,0 +1,285 @@
+{
+  "targets": [
+    {
+      "descriptor_need": "REQUIRED",
+      "reconstruction_gaps": ["RG-2", "RG-3"],
+      "descriptor": "The all-over motif is a double-F monogram repeat set in offset horizontal rows that run continuously across body and sleeves with no placement break at the shoulder or side seams, and the rows read slightly larger across the chest than at the lower body. Each motif is rendered in a mottled, bleached, denim-washed manner — pale chalky fill inside dark irregular outlines, with brush-like breakup so no two repeats look identical — giving the cloth a faded indigo-print appearance rather than a clean flat print. The body is cut squarely: the side line falls straight from the underarm to a plain unshaped hem with no taper, and the short sleeve hangs as a straight tube ending mid-upper arm with a plain turned edge.",
+      "identity": { "value": true, "evidence": ["separate short-sleeved upper-body garment worn over trousers", "own neckline, sleeves and hem visible"] },
+      "readability": {
+        "value": true,
+        "basis": "RECONSTRUCTABLE",
+        "limitation": ["CONTINUOUS_STRUCTURE_VISIBLE"],
+        "evidence": ["neckline, both shoulders, both sleeves, full torso and lower hem all visible in one continuous run", "body volume and drape readable from shoulder to hem"]
+      },
+      "prominence": "dominant",
+      "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt",
+        "evidence": ["soft jersey-knit body with no front opening, pulled on over the head", "plain crew neck rib finish and short set sleeves", "straight self-fabric hem falling to the hip"],
+        "product_context": "General"
+      },
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["matte jersey-knit cloth with soft rounded folds at the sleeve and side"],
+          "values": [
+            { "value": "Cotton", "evidence": ["matte non-shiny jersey surface, soft creasing at underarm and waist"] }
+          ]
+        },
+        "surface": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no raised, quilted, pleated, sheer or coated treatment visible; cloth face is plain jersey carrying a printed motif"]
+        },
+        "pattern": {
+          "state": "OBSERVED",
+          "value": "Repeat",
+          "region": "whole_garment",
+          "evidence": ["double-F monogram motif repeating in offset rows across body and sleeves"],
+          "visual_dominance": "Dominant",
+          "motif_complexity": "Simple",
+          "density": "dense"
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no single placed logo, slogan or image; the motif is an all-over repeat"]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["chest and lower front visible with no pocket opening, welt or patch"]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no embroidery, beading, appliqué or piping visible on body, neckline or sleeve edges"]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no hardware, belt, tabs, trims or hanging elements on the garment"]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["left and right sleeve lengths match", "hem runs at an even level across both sides with no stepped or angled edge", "no one-sided panel, tie or drape found when sweeping the body"]
+        },
+        "exposure_opening": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["neck, torso and midriff fully covered by the garment; no cutout or bared body region visible"]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Relaxed",
+          "region": "upper",
+          "evidence": ["shoulder span reaches slightly beyond the wearer's shoulder points", "chest and torso cloth stands clearly away from the body with soft vertical folds", "body stays wide down to the hem with no waist taper"]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["hem falls at hip level on the standing wearer, above the top of the trouser leg"]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Structured",
+          "region": "whole_garment",
+          "evidence": ["body holds a soft squared shape but yields into creases at the underarm and waist", "sleeves hang softly without self-supporting volume"]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Short",
+          "region": "upper",
+          "evidence": ["sleeve ends on the upper arm well above the elbow"]
+        },
+        "sleeve_volume": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["sleeve body is a straight ordinary tube, not deliberately enlarged or gathered"]
+        },
+        "cuff_type": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["sleeve end is a plain turned edge with no constructed band"]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "Dropped",
+          "region": "upper",
+          "evidence": ["wearer's anatomical shoulder end reads at the outer edge of the deltoid; the garment forms no endpoint there", "shoulder line continues past that point and the sleeve junction falls on the upper arm"]
+        },
+        "neckline_shape": {
+          "state": "OBSERVED",
+          "value": "Round",
+          "region": "upper",
+          "evidence": ["opening edge is a shallow continuous curve around the base of the neck"]
+        },
+        "neckline_position": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["neckline sits at the base of the neck, no descent onto the upper chest"]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["flat narrow neck finish only, no standing band or collar piece"]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["lower edge is a plain self-fabric hem with no ribbed band"]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["continuous printed front with no placket, zip or button opening"]
+        }
+      },
+      "dm_designed_detail_evidence": {
+        "evidence": [
+          {
+            "evidence_id": "tshirt-monogram-repeat",
+            "evidence_family": "surface_pattern",
+            "detail": "all-over double-F monogram repeat in washed indigo tones across body and sleeves",
+            "relative_size": { "state": "OBSERVED", "value": "large" },
+            "contrast": { "state": "OBSERVED", "value": "high" },
+            "spatial_position": { "state": "OBSERVED", "value": "whole_garment" },
+            "m1_supporting_realization": {
+              "internal_chromatic_composition": "limited_or_uniform",
+              "internal_fill_realization": "uniform_or_sparse"
+            },
+            "source_observation_refs": ["observations.pattern"]
+          }
+        ],
+        "excluded": []
+      }
+    },
+    {
+      "descriptor_need": "REQUIRED",
+      "reconstruction_gaps": ["RG-2", "RG-4"],
+      "descriptor": "Only a narrow band of this garment is available: a dark section below the shirt hem showing a faint fine vertical striation in the weave, with a soft diagonal fold running across the front of the visible portion. The waist anchoring is entirely hidden under the shirt hem and the legs leave the frame immediately below, so how the garment is fastened and how the leg falls cannot be traced.",
+      "identity": { "value": true, "evidence": ["dark lower-body garment visible below the shirt hem, distinct in colour and cloth from the top"] },
+      "readability": {
+        "value": false,
+        "basis": "NOT_RECONSTRUCTABLE",
+        "limitation": ["OCCLUDED_BY_OTHER_GARMENT", "TERMINAL_REGION_CROPPED", "FRAGMENTARY_VISIBILITY"],
+        "evidence": ["waistband and front closure hidden beneath the T-shirt hem", "legs cut off at the bottom edge of the frame just below the hip", "silhouette cannot be traced from waist to hem"]
+      },
+      "prominence": "secondary",
+      "category": {
+        "state": "OBSERVED",
+        "value": "Trouser",
+        "evidence": ["dark bifurcated lower-body garment beginning at the hip below the shirt hem", "woven bottomweight cloth falling over the upper thigh"]
+      },
+      "observations": {
+        "material": {
+          "state": "UNKNOWN",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["dark textured woven visible but the class cannot be settled between wool-type and synthetic suiting cloth"]
+        },
+        "surface": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["visible area shows no quilting, pleating, coating, sheerness or applied surface treatment"]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["only fine weave striation visible; no deliberate repeating printed or woven motif"]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no placed logo, slogan or image on the visible section"]
+        },
+        "pocket": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["hip and front pocket area covered by the shirt hem and cropped by the frame"]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no embroidery, beading, appliqué or piping on the visible section"]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no hardware, belt or trim visible on the exposed portion"]
+        },
+        "asymmetry": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["only a small portion of one side is in frame; the two halves cannot be compared"]
+        },
+        "exposure_opening": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["garment/body relationship cropped below the hip, cannot be judged"]
+        },
+        "trouser_distinction": {
+          "state": "UNKNOWN",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["waistband, front closure and hip pocket treatment all unreadable in the visible band"]
+        },
+        "silhouette": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["legs leave the frame immediately below the hip; hem direction not observable"]
+        },
+        "fit": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "lower",
+          "evidence": ["seat and leg cropped out of frame, ease against the body cannot be read"]
+        },
+        "length": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "lower",
+          "evidence": ["trouser hem is outside the frame"]
+        },
+        "fabric_behavior": {
+          "state": "UNKNOWN",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["only a small band of cloth with one fold visible; whole-garment cloth behaviour cannot be settled"]
+        }
+      },
+      "dm_designed_detail_evidence": {
+        "evidence": [],
+        "excluded": [
+          { "what": "dark uniform cloth of the visible band", "reason": "single_base_colour" }
+        ]
+      }
+    }
+  ]
+}

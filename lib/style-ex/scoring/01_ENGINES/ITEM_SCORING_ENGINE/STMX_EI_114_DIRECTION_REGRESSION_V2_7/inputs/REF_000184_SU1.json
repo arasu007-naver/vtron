@@ -1,0 +1,220 @@
+{
+  "unit_id": "REF_000184#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "85a23bd81b74854f4bf447ec680cbda6d9b4d937410330152255a31f8c1b9100",
+  "projected_hash": "553b2fd12e9b582d650747189ff4790cd5ed9d665bbb284b7c0a430bfc5473fc",
+  "input": {
+    "category": "Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth lightweight drapey woven cloth"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "fluid smooth surface consistent with viscose/synthetic blend"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth woven face, no constructed or optical treatment"
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Repeat",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "density": "sparse",
+        "motif_complexity": "Simple",
+        "visual_dominance": "Subordinate"
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "motif is all-over pattern, no placed logo or image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no visible pockets on body"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, trim or other attachment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front placket and collar"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "moderate ease through torso, not close nor oversized"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "hem sits around the hip, tucked toward waistband area on worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth follows body with soft movement and light drape"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to the wrist"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits slightly outboard of natural shoulder"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "open collar forms a V at the unbuttoned top"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "collar opening sits at upper chest"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "pointed shirt collar with stand"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain woven lower edge, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "button placket runs full length of front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Button",
+        "region": "upper",
+        "evidence": [
+          "visible buttons down the front placket"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, no deliberate enlargement"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Standard",
+        "region": "upper",
+        "evidence": [
+          "constructed buttoned cuff band at sleeve ends"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "cuff band ordinary depth against sleeve width at wrist"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "collar points reach ordinary depth toward the placket"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "white_family",
+      "color_lightness": "light",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "brown",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Repeat",
+          "contrast_with_body": "Distinct"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "unit_id": "REF_000802#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "eb9b1cf65089881bdec34a20c8f81f500a0377992bcffc9b913d3008d99defa7",
+  "projected_hash": "c8eb3bf1a5a41630a2d7cca32b6a2ad59afb10a74d5f223c0fd582a2d24283d0",
+  "input": {
+    "category": "Jumpsuit",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth even matte-to-soft-sheen cloth",
+          "no visible weave or nap indicating exact fibre"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth continuous surface with faint soft sheen",
+              "drapes with body"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth cloth",
+          "no distinct constructed or optical treatment on body"
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid white throughout"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic element"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "side seam pocket opening visible at hip"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffle detail"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied embroidery, sequin, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "metal O-ring at center bust"
+        ],
+        "values": [
+          {
+            "value": "Metal Hardware",
+            "evidence": [
+              "gold-tone O-ring joining bodice at bust"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric bodice and legs"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "wide leg keeps consistent width to hem",
+          "no flare or taper toward ankle"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "evidence": [
+          "fitted through bodice and waist",
+          "wide relaxed legs but overall balanced ease"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "close-fitting bodice through torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Relaxed",
+            "evidence": [
+              "wide-leg trousers with loose volume"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem falls to the ankle on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "bare arms and shoulders",
+          "no sleeve fabric"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "halter neck with no shoulder seam to locate"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no shoulder line present, bare shoulders"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "upper",
+        "evidence": [
+          "straight-across top edge of bust bodice"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "bodice edge sits across upper chest"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "halter tie, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no ribbed finish at bodice edge"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no visible front opening on bodice"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "bare shoulders and upper chest from halter neckline"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulders fully bare"
+            ]
+          },
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "upper chest exposed above bodice edge"
+            ]
+          }
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "silhouette narrows in at waist and widens to legs",
+          "fitted torso"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Halter",
+        "region": "upper",
+        "evidence": [
+          "strap ties around the neck",
+          "shoulders fully bare"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "white_family",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "gold",
+          "carrier_kind": "attachment",
+          "carrier_ref": "Metal Hardware"
+        }
+      ],
+      "evidence": {
+        "primary": "uniform white cloth throughout",
+        "lightness": "bright light-toned garment",
+        "usage": "one continuous color across bodice and legs",
+        "effect": "no neon or metallic color on cloth"
+      },
+      "color_notes": null
+    }
+  }
+}

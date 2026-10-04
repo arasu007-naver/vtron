@@ -1,0 +1,141 @@
+{
+  "unit_id": "REF_000494#SU2",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "f5fd99082f9fc7e4003ee2cf58ef04b46be21e94bc00881b975a0f10277f2c8b",
+  "projected_hash": "826e90bdafd565b0e5feff1bd34270abe447eecbda21276fba131198923edb1f",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "lightweight taupe technical/cotton-nylon cloth with soft sheen"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth lightweight parachute-type shell fabric"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain cloth, soft folds only, no constructed surface treatment"
+        ],
+        "values": []
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid taupe, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic on legs"
+        ]
+      },
+      "pocket": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "hip/pocket area obscured by hanging hoodie hem and bag"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping"
+        ],
+        "values": []
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt or hardware visible"
+        ],
+        "values": []
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "both legs mirror, hems level"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "UNKNOWN",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "waistband and front closure hidden by hoodie; hip-pocket treatment not readable"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "very wide leg keeps its width to hem, no directional flare or taper"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "lower",
+        "evidence": [
+          "extremely voluminous wide-leg body standing far from legs, puddling at ankle"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem reaches down over the shoes at the ankle"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "lightweight cloth follows leg with soft movement and folds"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "beige",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "warm taupe/khaki-brown cloth",
+        "lightness": "mid value",
+        "usage": "single uniform color",
+        "effect": "soft matte sheen, no metallic/neon"
+      },
+      "color_notes": "warm greige/taupe tone between beige and khaki-brown"
+    }
+  }
+}

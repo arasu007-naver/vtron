@@ -1,0 +1,24 @@
+{
+  "document": "STMX_EI_PRODUCER_CONTRACT_BINDING_V1",
+  "date": "2026-09-07",
+  "runtime_version": "STMX_EI_DIRECTION_RUNTIME_V1_2_7",
+  "producer_contract": "STMX_VISION_PRODUCER_V1_1",
+  "binding_file": "src/producer_contract_binding_v1.js",
+  "resolution": "⛔ BY NAME. No directory scan, no glob, no mtime, no \"latest\". A missing contract directory throws PRODUCER_CONTRACT_UNRESOLVED and ⛔ never falls back to the sealed Producer.",
+  "sealed_producer": {
+    "id": "Producer V1 (sealed)",
+    "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/producer_rules_v1.js",
+    "belongs_to": "STMX_EI_DIRECTION_RUNTIME_V1_2_6",
+    "⛔": "V1.2.7 must never load it"
+  },
+  "p3_routing": {
+    "STMX_EI_DIRECTION_RUNTIME_V1_2_6": [
+      "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_4.json"
+    ],
+    "STMX_EI_DIRECTION_RUNTIME_V1_2_7": [
+      "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_6.json"
+    ]
+  },
+  "colour_contract": "shared, separately sealed, byte-identical for both lines — ⛔ not part of the Producer contract",
+  "p3_routing_basis": "⛔ read from the contract files themselves (is_current === true), ⛔ never a \"latest P3\" lookup. Routing stays explicit and fail-closed."
+}

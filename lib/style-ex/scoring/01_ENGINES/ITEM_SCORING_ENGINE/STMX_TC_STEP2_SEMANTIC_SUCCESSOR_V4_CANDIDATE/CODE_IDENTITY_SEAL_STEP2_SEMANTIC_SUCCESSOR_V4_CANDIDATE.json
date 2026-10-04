@@ -1,0 +1,47 @@
+{
+ "artefact": "CODE_IDENTITY_SEAL_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE",
+ "sprint": "V2.3.86",
+ "sealed_at": "2026-09-27T08:08:49.510Z",
+ "status": "CANDIDATE · SHADOW · NOT FROZEN",
+ "files": [
+  {
+   "file": "README.md",
+   "sha256": "8aa13794d2a04da0cb92c9f6b8ba9c6b7d14262a088d82afe7f09525375215f6"
+  },
+  {
+   "file": "STEP2_SUCCESSOR_V4_CONTRACT.json",
+   "sha256": "bad306ec6fed0f883d65fa7399bbc8279f88c6cb89a608a8a6873261b48ee615"
+  },
+  {
+   "file": "BOUND_INPUTS_STEP2_SUCCESSOR_V4.json",
+   "sha256": "1165bdaaab8f6ef74de23f9bd696741516a46cb1dd1003925c6455ef89af17fe"
+  },
+  {
+   "file": "src/step2_semantic_successor_v4.js",
+   "sha256": "868850fdc40221c48437e24011c716d412f902d1a4fe79d590ba7cc960e2b9e1"
+  },
+  {
+   "file": "shadow/step2_successor_shadow_binding_v3.js",
+   "sha256": "594fa5479630bcd12cd6e59171d33c1c026e27d87ebd3c42b593a91a24465fa4"
+  },
+  {
+   "file": "tests/successor_v4_fixtures_v2386.json",
+   "sha256": "f0a7161f9b90e940b978e808e385b033bfceac1549da47681cc9eeedead78e94"
+  },
+  {
+   "file": "tests/run_successor_v4_tests_v2386.js",
+   "sha256": "1e1330586ee9f9828dac405294014ce4b814a2e36d661d0ece6f28d99c9148d8"
+  }
+ ],
+ "CODE_IDENTITY_AGGREGATE_SHA256": "0c587da00c7bcbfea786271a023eac96f69021337ae51415c845c2f0ca550cf5",
+ "REPLAY_OUTPUT_SHA256": "a7d53f76780fa86600af9e7f35913e4dddfbd1616383dd0131d612281afdfbe2",
+ "REPLAY_OUTPUT_SHA256_V3_RULES_ONLY": "41aed0d37038e50619de3d61c00a1379d0c8c88b3959c0214bca2dc18811efb2",
+ "v3_rules_only_equals_successor_v3": true,
+ "tests": {
+  "v4": "15/15",
+  "v3": "30/30",
+  "r09": "49/49 (B1 superseded by D-85-1)",
+  "sor": "5/5",
+  "equivalence": "45/45"
+ }
+}

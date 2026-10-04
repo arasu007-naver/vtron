@@ -1,0 +1,29 @@
+{
+ "document": "BOUND_INPUTS",
+ "package": "STMX_DM_ITEM_ENTRY_ADAPTER_V1_CANDIDATE",
+ "created_at": "2026-09-27T13:26:45.957Z",
+ "note": "The DM authority files the adapter resolves by name. The engine modules, M1 predicate and observation contract are drift-checked by the frozen binding itself (verifyFrozenBaseline, called at load). ⛔ Nothing listed here is modified.",
+ "dm_engine": {
+  "id": "STMX_DM_ENGINE_V1",
+  "full_identity_sha256": "bb82c8ff25943270d52c94d9acc28a3024c83dff9c66558ea12900f81bc98a5e",
+  "engine_aggregate_sha256": "fd15a9a9b211a2fbd438844dc524dcd3ddd2456f7be55e5c42d399198a0fdf0e",
+  "observation_contract": "STMX_VISION_PRODUCER_V1_3"
+ },
+ "inputs": [
+  {
+   "role": "DM_PRODUCTION_POINTER",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "sha256": "32f7d256e86749c4e35f5f5971c9a7cc34c87a1ed629756edb3aa44e9da2f926"
+  },
+  {
+   "role": "DM_PRODUCTION_BINDING",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_FINAL_FREEZE/production/dm_engine_binding_v1.js",
+   "sha256": "69fdbd6aaf8d5f935e860abe89ffa3b229067d906974ead7273aefc4bd3fe962"
+  },
+  {
+   "role": "DM_FINAL_FREEZE_SEAL",
+   "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_DM_ENGINE_V1_FINAL.json",
+   "sha256": "909f9f90c25a21d2461218d2219c0ff2d62c82eb4da9d33d20a4654f5670ed17"
+  }
+ ]
+}

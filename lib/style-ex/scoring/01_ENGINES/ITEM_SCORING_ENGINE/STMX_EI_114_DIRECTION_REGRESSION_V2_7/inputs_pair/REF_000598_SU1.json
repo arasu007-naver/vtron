@@ -1,0 +1,401 @@
+{
+  "unit_id": "REF_000598#SU1",
+  "scoring_unit_type": "MATCHING_PAIR",
+  "member_count": 2,
+  "members": [
+    {
+      "member_id": "target_1",
+      "category": "Jacket",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "denim twill weave visible",
+            "washed beige tone"
+          ],
+          "values": [
+            {
+              "value": "Denim",
+              "evidence": [
+                "diagonal twill texture",
+                "denim body construction"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "values": [
+            {
+              "evidence": [
+                "CEO adjudication"
+              ],
+              "value": "Treated Surface",
+              "coverage": "Partial",
+              "treated_surface_realization": "Distressed"
+            }
+          ],
+          "values_detail": [
+            {
+              "value": "Treated Surface",
+              "coverage": "Partial",
+              "treated_surface_realization": "Distressed"
+            }
+          ],
+          "evidence": [
+            "CEO adjudication"
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "solid beige denim, no repeating motif"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no placed logo or print"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "whole_garment",
+          "evidence": [
+            "welt pocket opening at lower front"
+          ],
+          "pockets": [
+            {
+              "location": "Lower Front",
+              "construction": "Inset",
+              "projection": "Flat"
+            }
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "distress is a surface treatment, no applied embroidery/piping/sequin/appliqué"
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no belt, fringe, hardware trim visible"
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "left and right halves mirror",
+            "even elasticated hem, centered placket"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Relaxed",
+          "region": "upper",
+          "evidence": [
+            "body stands away from torso with generous room through chest and sleeves",
+            "shoulder reaches beyond wearer but forms endpoint"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Cropped",
+          "region": "upper",
+          "evidence": [
+            "hem ends clearly above waist zone, midriff exposed"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Structured",
+          "region": "whole_garment",
+          "evidence": [
+            "holds soft shape but yields into folds at sleeves and hem"
+          ]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Long",
+          "region": "upper",
+          "evidence": [
+            "sleeves reach the wrist/hand"
+          ]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "Dropped",
+          "region": "upper",
+          "evidence": [
+            "shoulder construction continues past anatomical shoulder end onto upper arm before sleeve transition"
+          ]
+        },
+        "shoulder_structure": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "shoulder line rounds continuously into sleeve, no readable endpoint break"
+          ]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "Stand",
+          "region": "upper",
+          "evidence": [
+            "distinct standing band collar at neck"
+          ]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "hem is an elasticated gathered self-fabric casing, not a ribbed knit band"
+          ]
+        },
+        "hood": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "upper",
+          "evidence": [
+            "stand collar at neck, no hood"
+          ]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "Full",
+          "region": "upper",
+          "evidence": [
+            "button placket runs full length of front"
+          ]
+        },
+        "closure_type": {
+          "state": "OBSERVED",
+          "value": "Button",
+          "region": "upper",
+          "evidence": [
+            "column of visible round buttons on center front placket"
+          ]
+        },
+        "grammar": {
+          "state": "OBSERVED",
+          "value": "Casual",
+          "region": "whole_garment",
+          "evidence": [
+            "casual washed denim bomber, no tailoring or utility hardware"
+          ]
+        },
+        "cuff_type": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "sleeve ends with plain edge, no constructed cuff band"
+          ]
+        },
+        "collar_scale": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "stand covers ordinary portion of neck height"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "beige",
+        "color_lightness": "light",
+        "color_usage": "subtle",
+        "multi_color": false,
+        "color_effect": "none",
+        "additional_colors": [
+          {
+            "color_family": "gray",
+            "carrier_kind": "closure",
+            "carrier_ref": "Button"
+          }
+        ]
+      }
+    },
+    {
+      "member_id": "target_2",
+      "category": "Skirt",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "denim twill",
+            "washed beige"
+          ],
+          "values": [
+            {
+              "value": "Denim",
+              "evidence": [
+                "twill denim body"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "values": [
+            {
+              "evidence": [
+                "CEO adjudication"
+              ],
+              "value": "Treated Surface",
+              "coverage": "Partial",
+              "treated_surface_realization": "Distressed"
+            }
+          ],
+          "values_detail": [
+            {
+              "value": "Treated Surface",
+              "coverage": "Partial",
+              "treated_surface_realization": "Distressed"
+            }
+          ],
+          "evidence": [
+            "CEO adjudication"
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "solid beige denim, no repeating motif"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no placed logo or print"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "whole_garment",
+          "evidence": [
+            "curved front hip pockets visible at waist"
+          ],
+          "pockets": [
+            {
+              "location": "Lower Front",
+              "construction": "Inset",
+              "projection": "Flat"
+            }
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "distress/fray is surface treatment, no applied embroidery/piping/sequin/appliqué"
+          ]
+        },
+        "attachment": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "long shredded frayed strands hang from hem"
+          ],
+          "values": [
+            {
+              "value": "Fringe",
+              "evidence": [
+                "ragged frayed fabric strands forming fringe at hem"
+              ],
+              "locations": [
+                {
+                  "component": "Hem"
+                }
+              ]
+            }
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "irregular shredded hem is a uniform fray treatment, not a designed left-right imbalance",
+            "waistband level, sides mirror"
+          ]
+        },
+        "silhouette": {
+          "state": "OBSERVED",
+          "value": "Straight",
+          "region": "whole_garment",
+          "evidence": [
+            "skirt body keeps consistent width to base before fringe"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "lower",
+          "evidence": [
+            "skirt seat has ordinary room, follows hip without close conformity or excess"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Midi",
+          "region": "lower",
+          "evidence": [
+            "solid skirt body to above knee with shredded fringe extending below knee toward mid-shin"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Structured",
+          "region": "whole_garment",
+          "evidence": [
+            "denim holds soft shape, hem frays into loose strands"
+          ]
+        },
+        "slit": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "lower",
+          "evidence": [
+            "no constructed slit; leg gap is from shredded fringe openings, not a designed slit"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "beige",
+        "color_lightness": "light",
+        "color_usage": "single",
+        "multi_color": false,
+        "color_effect": "none",
+        "additional_colors": []
+      }
+    }
+  ],
+  "note": "pair-level input — one scoring unit, every member materialized (order §6)"
+}

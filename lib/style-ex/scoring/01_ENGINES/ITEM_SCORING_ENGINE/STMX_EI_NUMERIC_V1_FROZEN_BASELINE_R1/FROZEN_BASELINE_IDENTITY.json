@@ -1,0 +1,16 @@
+{
+  "baseline_id": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1",
+  "axis": "EI",
+  "layer": "NUMERIC",
+  "version": "V1",
+  "packaging_revision": "R1",
+  "status": "CLOSED_AND_FROZEN",
+  "freeze_date": "2026-09-08",
+  "runtime_identity": "STMX_EI_NUMERIC_LAYER_V1",
+  "runtime_sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b",
+  "predecessor_baseline": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE",
+  "supersession_reason": "PACKAGING_ONLY_CORRECTION — removed stale predecessor-stage reproduction source that was incorrectly classified as IMMUTABLE_TEST_SOURCE. Runtime/scoring/governance semantic delta = 0.",
+  "★_scoring_unchanged": "★ Scoring semantics and the Runtime are unchanged from the approved build. This is a packaging revision, not a scoring version change.",
+  "consumes": "STMX_EI_DIRECTION_FROZEN_BASELINE_V1 · 324 entries · 08eb312074db17009f2bb791365b6200b8d3ed9d1e8459f7de8b07f07305fb35",
+  "⛔_do_not_edit": "⛔ Route any change through a new versioned baseline. Never edit this tree in place."
+}

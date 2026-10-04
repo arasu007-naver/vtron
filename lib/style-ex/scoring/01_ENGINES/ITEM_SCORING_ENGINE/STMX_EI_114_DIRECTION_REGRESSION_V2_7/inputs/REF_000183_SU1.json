@@ -1,0 +1,264 @@
+{
+  "unit_id": "REF_000183#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "26a042e895d4a4063303492e9147c75edfc694c642b9ea278a18d5933ecc6cf3",
+  "projected_hash": "897ad2400b018399a8b4ff520f373f72fc1773608fb4bc9e812bfc83f2220677",
+  "input": {
+    "category": "Coat",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth hide with soft creasing and sheen typical of leather"
+        ],
+        "values": [
+          {
+            "value": "Leather",
+            "evidence": [
+              "supple smooth hide, natural fold creasing at body and sleeves"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte-to-soft leather with no distinct constructed or optical surface treatment",
+          "sheen is ordinary leather, not high-luster"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid olive-brown, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, text or printed image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "lower-front pocket openings visible where the hands/gloves enter"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": null,
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin-beading, appliqué or applied piping trim visible"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "self-fabric tie belt at the waist"
+        ],
+        "values": [
+          {
+            "value": "Belt",
+            "evidence": [
+              "leather tie belt knotted at the natural waist"
+            ],
+            "locations": [
+              {
+                "component": "Waistband"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "swept the whole garment: collar, front zip edge, hem and belt tie all mirror side to side",
+          "no single-sided panel, drape or uneven hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "shoulder line drafted well past the wearer's own shoulder points",
+          "body cut wide with generous ease through chest and waist",
+          "frame reads larger than the wearer"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Knee Length",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves run full length to the wrist and over the hands"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "anatomical shoulder end read from the body; garment forms a clear structural shoulder endpoint at the extended frame corner",
+          "outward placement produced by enlarged frame, not loss of endpoint"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Strong",
+        "region": "upper",
+        "evidence": [
+          "shoulder line held near-horizontal and extended substantially outward with a clear endpoint after which the sleeve turns downward",
+          "endpoint does not itself rise or turn upward"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain leather lower edge, no ribbed knit band"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "no hood present at the neck"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "zip runs the full length of the front from collar to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "central zipper visible running down the front placket"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "shirt collar, zip front and self-belt read as casual outerwear styling rather than tailored suiting or hard utility"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Cinched",
+        "region": "whole_garment",
+        "evidence": [
+          "self-fabric belt tied at the waist pulls the body visibly inward",
+          "circumference reduced against the wide body above and below"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve body within an ordinary envelope, no deliberate puff or balloon enlargement"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends simply, no constructed cuff band; leather sleeve terminates over gloves with a plain edge"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Coat",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "brown",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "camel",
+          "carrier_kind": "attachment",
+          "carrier_ref": "Belt",
+          "coverage": "Partial",
+          "contrast_with_body": "Distinct"
+        }
+      ],
+      "evidence": {
+        "primary": "olive-brown leather body, collar, sleeves and belt all one family",
+        "lightness": "mid-tone value, neither light nor dark",
+        "usage": "one continuous garment color; wine turtleneck and gloves are separate items, not part of this jacket",
+        "effect": "ordinary leather sheen, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

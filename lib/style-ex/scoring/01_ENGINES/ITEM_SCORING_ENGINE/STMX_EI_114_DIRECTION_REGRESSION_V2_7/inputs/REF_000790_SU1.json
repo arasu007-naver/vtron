@@ -1,0 +1,249 @@
+{
+  "unit_id": "REF_000790#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "0022b5db92de94fb01ccc2506fe0092328ecd3c335a8dd16159dc5f692b04494",
+  "projected_hash": "e41ac77ad8a86ad8ba045079ed07d0bfd5f9db0b105fd600f768d732082f1c14",
+  "input": {
+    "category": "Jumpsuit",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth matte suiting-type cloth",
+          "even drape with no visible weave detail"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth uniform matte surface consistent with a blended suiting cloth"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth cloth",
+          "no pleating, quilting, texture or optical treatment visible"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black throughout, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, print or lettering"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "vertical opening seam at each front hip of the trouser portion"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, trim or other attachment visible"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "surplice wrap front laps one side over the other producing a diagonal crossover closure edge at the waist"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Tapered",
+        "region": "whole_garment",
+        "evidence": [
+          "legs narrow progressively toward the cropped ankle hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "evidence": [
+          "swept shoulder/chest to waist and through the leg; garment carries its own moderate room without standing far off the body"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "bodice carries soft own room through chest with kimono-style sleeves, not close to body"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "trouser has ordinary ease at hip, tapering leg but not close-fitting through the thigh"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Ankle Length",
+        "region": "lower",
+        "evidence": [
+          "hem ends at the ankle bone, above the shoe on the standing model"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "cloth holds moderate shape but is not self-supporting"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "bodice holds a soft shape with drape at the kimono sleeves"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "trouser keeps a clean tapered line with a soft front crease, some body but yields"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "upper",
+        "evidence": [
+          "kimono-style sleeve ends on the upper arm well above the elbow"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "no distinct shoulder endpoint; the kimono-cut shoulder flows continuously onto the upper arm before the sleeve"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder line runs round and continuous into the sleeve with no readable endpoint or break"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "surplice wrap creates a fabric edge angling down to a point at centre chest"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Low",
+        "region": "upper",
+        "evidence": [
+          "V opening descends onto the upper chest below the collarbone"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain wrap neckline edge with no collar band or structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "waist junction is a clean seam, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "wrap surplice is a fixed crossover with no functional front opening/placket visible"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "upper chest / décolletage meaningfully bared by the deep V wrap neckline"
+        ],
+        "values": [
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "deep V wrap exposes the upper chest and décolletage"
+            ]
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black cloth across bodice and legs",
+        "lightness": "deep black, no light areas",
+        "usage": "one continuous garment color with no designed secondary color",
+        "effect": "matte finish, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

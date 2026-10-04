@@ -1,0 +1,267 @@
+{
+  "unit_id": "REF_000021#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "74a278564ee54b3ab07f305f2fd0ab14143845540b11b15326c00ecc5a9bfd4b",
+  "projected_hash": "087497a22a410079d91f8436e6e4a0dddc8c7f1bf887716452d92760f8352849",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "glossy technical shell",
+          "down-filled quilted channels"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth high-sheen technical shell fabric"
+            ]
+          },
+          {
+            "value": "Padding",
+            "evidence": [
+              "puffed quilted down-filled channels across body and sleeves"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "CEO adjudication"
+            ],
+            "value": "Quilted"
+          },
+          {
+            "evidence": [
+              "CEO adjudication"
+            ],
+            "value": "Glossy",
+            "finish_realization": "Baseline"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Quilted"
+          },
+          {
+            "value": "Glossy",
+            "finish_realization": "Baseline"
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "small metal logo plaque on sleeve"
+        ],
+        "values": [
+          {
+            "value": "Metal Hardware",
+            "evidence": [
+              "small badge/plaque on upper sleeve",
+              "zipper pulls"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric left/right construction"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "moderate close body ease, not oversized or slim"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "garment shown as product packshot, no body to locate hem against"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "down loft holds puffed volume standing away from body"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves run full length to wrist with elastic cuff"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits at natural shoulder point"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "rounded continuous shoulder contour into sleeve"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "neck finish is the hood opening, no separate collar band"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "elasticated shell hem, no ribbed knit band"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "attached quilted hood at neck"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "zip runs full length of front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "two-way front zipper with visible teeth and pull"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "hooded down puffer, sporty casual outerwear"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight body, no waist shaping"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary down sleeve envelope, not deliberately enlarged"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat",
+            "evidence": [
+              "set-in zippered slit openings, no patch panel",
+              "openings sit flush with quilted body"
+            ]
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black shell across whole garment",
+        "lightness": "deep dark tone throughout",
+        "usage": "no distinct secondary color, zippers and hardware read same black/dark",
+        "effect": "high sheen is a surface finish, not a chromatic effect"
+      },
+      "color_notes": null
+    }
+  }
+}

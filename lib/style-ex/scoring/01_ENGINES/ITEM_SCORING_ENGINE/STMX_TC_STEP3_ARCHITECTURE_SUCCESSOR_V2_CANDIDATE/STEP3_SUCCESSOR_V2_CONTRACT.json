@@ -1,0 +1,133 @@
+{
+ "document": "STEP3_SUCCESSOR_V2_CONTRACT",
+ "identity": "STMX_TC_STEP3_ARCHITECTURE_SUCCESSOR_V2_CANDIDATE",
+ "status": "CANDIDATE · SHADOW · NOT FROZEN · NOT PRODUCTION",
+ "order": "STMX TC MAINLINE V2.3.66 (CEO D-65 APPROVED — Option C)",
+ "design_authority": {
+  "package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_65_STEP3_SUCCESSOR_PATH_ARCHITECTURE_DESIGN",
+  "design_spec_sha256": "13ce9d819e814a4916caeee7204a30b40b71f9e8ed412936d791723a1dc97207",
+  "preferred": "19_PREFERRED_STEP3_SUCCESSOR_ARCHITECTURE.md"
+ },
+ "predecessor": {
+  "identity": "STMX_TC_STEP3_ARCHITECTURE_FROZEN_BASELINE_V1",
+  "frozen_aggregate_sha256": "2d7ec641460dca67c8c66dfa038763ad313ef6e25179f461e4c293ea2c058274",
+  "grammar_state_contract": {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_27_STEP3_FINAL_FREEZE/13_GRAMMAR_STATE_FROZEN_CONTRACT.json",
+   "sha256": "b1f0a18d56877fcb98ab58c7802001f65779162459e43e22c4e92ecd3bfb4644"
+  },
+  "per_unit_resolution_record": {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_27_STEP3_FINAL_FREEZE/06_STEP3_FINAL_114_UNIT_REPLAY_LEDGER.json",
+   "sha256": "724c5695c810d317f2ab7cf6ddd9420a0b8cd1bdd0ea97037c33cac4366d5ed9",
+   "role": "the frozen evaluation of R-GS-1…9 per unit (the frozen baseline has no executable source)"
+  },
+  "byte_identical": true
+ },
+ "preserved_rules_verbatim": {
+  "R-GS-1": "no valid departure -> CLASSIC (GOVERNED, verbatim frozen authority)",
+  "R-GS-2": "C-3 Grammar x Grammar -> CONTEMPORARY_REWRITTEN (GOVERNED CANDIDATE, 0 firings)",
+  "R-GS-3": "C-2 transplantation -> CONTEMPORARY_PRESERVED (GOVERNED CANDIDATE, 0 firings)",
+  "R-GS-4": "C-3 Material-Construction System x System -> CONTEMPORARY_PRESERVED (GOVERNED CANDIDATE; recovered corroboration WITHDRAWN in V2.3.25 and remains withdrawn)",
+  "R-GS-5": "valid departures only in Silhouette and/or Proportion -> CONTEMPORARY_PRESERVED (AUTHORIZED_RECONSTRUCTED_RULE)",
+  "R-GS-6": "magnitude STRONG -> CONTEMPORARY_REWRITTEN (NOT AUTHORIZED, 0 firings, promotion not recommended)",
+  "R-GS-7": "C-3 / R1 scope not adjudicated -> fail closed",
+  "R-GS-8": "C-3 trigger scope ambiguous -> fail closed",
+  "R-GS-9": "ownerless asymmetry -> fail closed"
+ },
+ "preserved_enum": {
+  "members": [
+   "Classic",
+   "Neutral",
+   "Contemporary-Preserved",
+   "Contemporary-Rewritten"
+  ],
+  "live_members": [
+   "Classic",
+   "Contemporary-Preserved",
+   "Contemporary-Rewritten"
+  ]
+ },
+ "process_order": [
+  "atomic Statements (frozen Step 2)",
+  "Statement Set",
+  "constitutive-system relations",
+  "P-2 evidence ownership",
+  "P-3 member composition (where applicable)",
+  "whole_garment_reading",
+  "governed whole-unit organizational relation (PARALLEL after whole_garment_reading; consumes it)",
+  "completed Grammar Transformation process",
+  "Grammar State successor resolution"
+ ],
+ "completed_process_relation": {
+  "owner": "Grammar Transformation PROCESS (executed by the semantic carrier runtime)",
+  "category_resolution": "UPSTREAM — category / archetype / register reasoning is resolved inside the process from the Reference organization blocks; the successor never inspects it",
+  "fields": {
+   "whole_garment_reading": [
+    "BASE_GRAMMAR_PRINCIPAL",
+    "INTERVENTION_PRINCIPAL",
+    "UNRESOLVED"
+   ],
+   "organizational_relation": [
+    "ORIGINAL_ORGANIZATION_PRINCIPAL",
+    "ORGANIZATIONAL_PRIMACY_SHIFT",
+    "ORGANIZATION_DISPLACED_PRIMACY_NOT_SHIFTED",
+    "UNRESOLVED",
+    "NOT_AUTHORED"
+   ],
+   "traceability": [
+    "TRACEABLE",
+    "UNRESOLVED",
+    "NOT_TRACEABLE"
+   ],
+   "members": "per member: status (organizational relation value) · traceability · organizing_relation {status PRESENT | DISPLACED | UNRESOLVED, channels} or null · organising_statements [{statement, organising, on_organizing_channel}] · p2_consumption [{kind, fact}]",
+   "provenance": "statement_ids · channels · reference_sha256 · constitutive statuses · p3_rule"
+  },
+  "values_source": "V2.3.65 spec successor_contract.process_output_relation.values (registered candidate relation values; not canonical Dictionary vocabulary)"
+ },
+ "grammar_state_successor_resolution": {
+  "rule_ids_preceded_by_R_GS_OP": [
+   "R-GS-6",
+   "R-GS-5"
+  ],
+  "precedence": [
+   "upstream fail-closed (NOT_EVALUATED) — carried",
+   "R-GS-1 — carried",
+   "R-GS-7 · R-GS-8 · R-GS-9 — carried (fail-closed precedes)",
+   "R-GS-2 · R-GS-3 · R-GS-4 — carried",
+   "R-GS-OP (candidate) — evaluated on the completed process relation",
+   "R-GS-6 — carried (not authorized, never fires)",
+   "R-GS-5 — carried, text unchanged (residual)"
+  ],
+  "equivalence": "R-GS-OP sits immediately before R-GS-6 and R-GS-5; a unit reaches R-GS-OP iff no earlier rule applied, i.e. iff its frozen resolution is R-GS-6 or R-GS-5. Evaluating R-GS-OP exactly on those units and carrying every other frozen resolution is therefore equivalent to evaluating the full successor precedence list, with predicate delta 0 on every frozen rule.",
+  "R_GS_OP": {
+   "id": "R-GS-OP",
+   "status": "CANDIDATE (V2.3.65 · D-65)",
+   "output": "CONTEMPORARY_REWRITTEN",
+   "conditions": {
+    "OP-0": "valid Transformative context (Direction TRANSFORMATIVE)",
+    "OP-1": "whole_garment_reading = INTERVENTION_PRINCIPAL",
+    "OP-2": "whole-unit traceability = TRACEABLE",
+    "OP-3": "P-3 whole-unit organizational_relation = ORGANIZATIONAL_PRIMACY_SHIFT",
+    "OP-4": "P-3 completion: every member authored, traceable and itself ORGANIZATIONAL_PRIMACY_SHIFT (no unresolved required member relation)",
+    "OP-5": "provenance: every member organizing_relation DISPLACED and an organising Statement MOST_PROMINENT on the organizing relation channel, drawn from the unit Statement Set",
+    "OP-6": "P-2: the organizing-relation status of every member consumed exactly once (no duplicate consumption)",
+    "OP-7": "completed-process record structurally valid"
+   },
+   "rule": "every condition read from the completed process record; any one withheld → R-GS-OP does not hold → the frozen resolution is carried (R-GS-5 residual)"
+  },
+  "R_GS_5": "text byte-identical; residual by precedence (V2.3.65 23_)"
+ },
+ "shadow_policy": "the successor Grammar State is emitted only in the V3.4 CANDIDATE runtime output object step3_successor_shadow; the frozen grammar_state echo, the canonical representation, the Dictionary and the Clean Engine binding are untouched",
+ "forbidden_in_successor_source": [
+  "category / archetype key / grammar / register names",
+  "REF identifiers",
+  "register channel literals",
+  "D1 labels or booleans",
+  "Grammar State as process input",
+  "fabric_behavior / material",
+  "TC numbers",
+  "counts · weights · thresholds · magnitude",
+  "TC9 wording",
+  "J2 predicates"
+ ],
+ "single_instance_limitation": "one governed positive = one corpus instance (V2.3.65 39_); CANDIDATE implementation only — no Final Freeze, no promotion, no TC mapping"
+}

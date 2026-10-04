@@ -1,0 +1,223 @@
+```json
+{
+  "targets": [
+    {
+      "descriptor_need": "REQUIRED",
+      "reconstruction_gaps": ["RG-1", "RG-2", "RG-3", "RG-4"],
+      "descriptor": "Full-length sequinned column built as a surplice wrap bodice: the two front panels cross low over the bust and the right-hand panel is drawn across and gathered into the left waist seam, so a fan of soft self-fabric folds radiates from the left side of the waist and continues into the skirt front. Sleeves are set at the natural shoulder and read as bishop-style — narrow through the upper arm, then widening into a rounded blouson mass at the elbow and forearm before collapsing to a soft, slightly gathered edge at the wrist with no constructed band visible. A single slit runs up the centre-front-right of the skirt from the floor to about thigh level, opening on a plain, un-sequinned lighter under-layer that shows as a smooth panel behind the sparkling outer cloth. The sequin coverage is tonal on tonal and slightly uneven — denser and near-continuous over the bodice and hips, thinning to a scattered, speckled distribution toward the lower skirt, where the base cloth reads through between sequins; this uneven scatter, rather than any repeating motif, is what gives the surface its texture, and it is why the surface treatment could only be read as a general luster rather than a determinate weave or print.",
+      "identity": { "value": true, "evidence": ["single one-piece garment covering torso and legs", "continuous bodice-to-skirt construction with no separate top or bottom edge"] },
+      "readability": {
+        "value": true,
+        "basis": "RECONSTRUCTABLE",
+        "limitation": ["CONTINUOUS_STRUCTURE_VISIBLE"],
+        "evidence": ["shoulders, neckline, both sleeves, waist and full skirt to floor hem all visible in one continuous run", "no outer layer over the garment"]
+      },
+      "prominence": "dominant",
+      "category": {
+        "state": "OBSERVED",
+        "value": "Dress",
+        "evidence": ["one-piece soft-draping garment worn as the body layer from shoulders to floor", "bodice and skirt joined at a waist seam, no front opening or outer-shell construction"]
+      },
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["light base cloth carrying dense applied sequins", "smooth plain panel visible inside the slit"],
+          "values": [
+            { "value": "Synthetic", "evidence": ["fine light base cloth supporting sequin application, soft collapsing folds"], "locations": [{"component":"Bodice"},{"component":"Skirt Body"},{"component":"Sleeve"}] },
+            { "value": "Other", "descriptor": "smooth un-sequinned lining cloth visible through the slit", "evidence": ["plain lighter panel behind the slit opening with no sequins"], "locations": [{"component":"Skirt Body"}] }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["surface returns bright highlights across bodice, sleeves and skirt"],
+          "values": [
+            { "value": "Glossy", "coverage": "Dominant", "finish_realization": "Enhanced", "evidence": ["dense high-luster spangled highlights over the whole outer cloth"] }
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["sequin placement is scattered and irregular", "no repeating motif or geometric system visible"]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no placed logo, slogan or printed image anywhere on the garment"]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["bodice and skirt fronts inspected; no pocket opening, welt or patch visible"]
+        },
+        "decorative_detail": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["applied discs cover the outer cloth"],
+          "values": [
+            { "value": "Sequin-Beading", "coverage": "Dominant", "evidence": ["individually applied reflective discs across bodice, sleeves and skirt"], "locations": [{"component":"Bodice"},{"component":"Sleeve"},{"component":"Skirt Body"}] }
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no belt, hardware, ribbon, fringe, feather or fur trim visible on the garment"]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["only side-to-side difference is the conventional surplice crossover of the bodice front", "hem runs level to the floor on both sides; setting the single slit aside, the two halves mirror"]
+        },
+        "exposure_opening": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["deep crossover neckline and high skirt slit"],
+          "values": [
+            { "value": "Chest / Décolletage", "evidence": ["upper chest and sternum area bared between the crossing bodice edges as constructed"] },
+            { "value": "Upper Thigh", "evidence": ["bare leg visible through the front slit up to the thigh"] }
+          ]
+        },
+        "silhouette": {
+          "state": "OBSERVED",
+          "value": "Straight",
+          "region": "whole_garment",
+          "evidence": ["skirt width stays consistent from hip to floor hem", "no progressive outward expansion or contraction"]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": null,
+          "evidence": ["ease read at shoulder, chest, waist and down through the skirt"],
+          "byRegion": {
+            "upper": { "state": "OBSERVED", "value": "Slim", "evidence": ["bodice outline reproduces the torso outline, wrap cloth lies against the ribcage and waist with little independent room"] },
+            "lower": { "state": "OBSERVED", "value": "Regular", "evidence": ["skirt skims the hip then hangs with its own modest room to the floor rather than tracing the leg"] }
+          }
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Maxi Length",
+          "region": "whole_garment",
+          "evidence": ["worn on a standing body; hem reaches the floor over the ankles and feet"]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": null,
+          "evidence": ["cloth folds and collapses without holding its own volume"],
+          "byRegion": {
+            "upper": { "state": "OBSERVED", "value": "Semi-Fluid", "evidence": ["bodice cloth follows the torso with soft radiating folds from the waist", "sleeve cloth collapses into limp gathers at the forearm"] },
+            "lower": { "state": "OBSERVED", "value": "Semi-Fluid", "evidence": ["skirt falls in soft vertical folds close to the body with no self-supported standing volume"] }
+          }
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Long",
+          "region": "upper",
+          "evidence": ["sleeve continues past the elbow and ends at the wrist on both arms"]
+        },
+        "sleeve_volume": {
+          "state": "OBSERVED",
+          "value": "Voluminous",
+          "region": "upper",
+          "evidence": ["sleeve body balloons into a deliberately enlarged rounded mass over the elbow and forearm before narrowing at the wrist"]
+        },
+        "cuff_type": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["sleeve end gathers softly at the wrist with no constructed cuff band or fastening visible"]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["wearer's shoulder end reads at the outer deltoid; the garment forms a clear shoulder endpoint at that point before the sleeve begins"]
+        },
+        "shoulder_structure": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["shoulder line runs rounded and continuous into the sleeve with no readable break or held straight span"]
+        },
+        "neckline_shape": {
+          "state": "OBSERVED",
+          "value": "V",
+          "region": "upper",
+          "evidence": ["complete opening edge visible: two fabric edges angle down from the shoulders to a point at the crossover, framing exposed skin"]
+        },
+        "neckline_position": {
+          "state": "OBSERVED",
+          "value": "Low",
+          "region": "upper",
+          "evidence": ["neckline point sits well down on the chest, below the bust line"]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["bare neckline edge with no standing band or collar piece at the neck"]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["garment terminates in a plain floor-length edge; no ribbed band anywhere on the garment"]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["bodice front is a closed crossover with no placket, zip or fastened opening visible down the front"]
+        },
+        "slit": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "lower",
+          "evidence": ["open vertical split in the skirt front running from the hem up to thigh level, showing the under-layer and leg"]
+        },
+        "ruffle": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["edges and panels are plain; no gathered or tiered applied frill strip anywhere"]
+        },
+        "waist_definition": {
+          "state": "OBSERVED",
+          "value": "Defined",
+          "region": "whole_garment",
+          "evidence": ["wrap seam and waist gathering shape the garment inward at the waist and it widens again over the hip, without marked constriction"]
+        }
+      },
+      "dm_designed_detail_evidence": {
+        "evidence": [
+          {
+            "evidence_id": "dd-sequin-field",
+            "evidence_family": "attached_detail",
+            "source_observation_refs": ["observations.decorative_detail", "observations.surface"],
+            "relative_size": { "state": "OBSERVED", "value": "large" },
+            "contrast": { "state": "OBSERVED", "value": "medium" },
+            "spatial_position": { "state": "OBSERVED", "value": "whole_garment" },
+            "m1_supporting_realization": {
+              "internal_chromatic_composition": { "state": "OBSERVED", "value": "limited_or_uniform" },
+              "internal_fill_realization": { "state": "OBSERVED", "value": "dense_varied" }
+            }
+          }
+        ],
+        "excluded": [
+          { "item": "vertical fold shadows in the skirt", "reason": "single_base_colour" }
+        ]
+      }
+    }
+  ]
+}
+```

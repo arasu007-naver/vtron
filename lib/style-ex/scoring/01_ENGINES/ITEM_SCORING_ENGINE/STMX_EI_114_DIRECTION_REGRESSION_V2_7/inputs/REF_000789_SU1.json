@@ -1,0 +1,254 @@
+{
+  "unit_id": "REF_000789#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "86df374c06adfd9e2fe80d6d378ac3c4680a200ac71580901e488b7bad82dba2",
+  "projected_hash": "60c07a74fa9b0b60f67cccdab28d3f99c56a214a5520d718945a1f8acc7d320c",
+  "input": {
+    "category": "Jumpsuit",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth matte technical-looking cloth"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth uniform matte drape consistent with synthetic crepe"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain matte cloth, no constructed or optical surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic or logo"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "clean edges, no gathered frills"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim attachments visible"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric bodice and legs"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "wide palazzo legs keep their width to the hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "fitted bodice close to torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Relaxed",
+            "evidence": [
+              "wide loose palazzo legs"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem reaches the ankle/floor on worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "bodice holds a soft shaped form"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "wide legs fall with soft vertical drape"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "bare arms, thin shoulder straps only"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no structured shoulder contour, bare shoulder line"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "deep V-shaped fabric opening angling down to a central point"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Low",
+        "region": "upper",
+        "evidence": [
+          "plunging opening descends well below the bust line"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare open neckline, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no ribbed finish at bodice edge"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no functional front placket opening visible"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "deep plunge bares upper chest, shoulders bare"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulders fully bare with thin straps"
+            ]
+          },
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "deep plunging V bares the upper chest"
+            ]
+          }
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "silhouette narrows in at the waist via seaming between bodice and legs"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Strap",
+        "region": "upper",
+        "evidence": [
+          "thin spaghetti straps over the shoulders"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Jumpsuit"
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniformly black fabric throughout",
+        "lightness": "deep dark tone with minimal highlight",
+        "usage": "one continuous garment color",
+        "effect": "matte, no metallic or neon appearance"
+      },
+      "color_notes": null
+    }
+  }
+}

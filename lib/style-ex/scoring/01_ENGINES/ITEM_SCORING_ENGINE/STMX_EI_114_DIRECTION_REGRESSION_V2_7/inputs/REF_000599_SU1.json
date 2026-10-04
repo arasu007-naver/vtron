@@ -1,0 +1,188 @@
+{
+  "unit_id": "REF_000599#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "27a7a0d3308c95179fd135745597dc1c54990011a36351aee40118f6c95db0f9",
+  "projected_hash": "2e5dda08c1483a152d47ffb452f68ba9f99a62275fd744134f5370da1a046826",
+  "input": {
+    "category": "Skirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "metallic foiled coated fabric",
+          "black elastic knit waistband"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "metallic-coated lame-like fabric with sheen"
+            ],
+            "locations": [
+              {
+                "component": "Skirt Body"
+              }
+            ]
+          },
+          {
+            "value": "Knit",
+            "evidence": [
+              "ribbed black elastic waistband"
+            ],
+            "locations": [
+              {
+                "component": "Waistband"
+              }
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "knife pleats running vertically",
+          "high metallic luster"
+        ],
+        "values": [
+          {
+            "value": "Pleated",
+            "evidence": [
+              "regular vertical knife pleats down the skirt body"
+            ],
+            "locations": [
+              {
+                "component": "Skirt Body"
+              }
+            ]
+          },
+          {
+            "value": "Reflective",
+            "evidence": [
+              "strong mirror-like metallic light return"
+            ],
+            "locations": [
+              {
+                "component": "Skirt Body"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid metallic finish, no repeating printed motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "smooth pleated body with no pocket openings visible"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim attachment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "hem and waistband level side to side",
+          "pleats mirror symmetrically"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt expands outward from waist toward hem via pleat release"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "lower",
+        "evidence": [
+          "fitted at waistband, pleats provide ordinary flared volume down to hem"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "lower",
+        "evidence": [
+          "product-only image, no body to locate hem against"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "pleats hold their shape and stand out",
+          "cloth keeps form but flares softly at hem"
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "continuous pleated hem, no slit or split"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gold",
+      "color_lightness": "normal",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "metallic",
+      "additional_colors": [
+        {
+          "color_family": "black",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Waistband"
+        }
+      ],
+      "evidence": {
+        "primary": "metallic gold foiled skirt body",
+        "lightness": "mid-value metallic gold with silvery highlights",
+        "usage": "black waistband is a distinct limited-extent contrast",
+        "effect": "clear metallic sheen"
+      },
+      "color_notes": "silver/gray highlights are metallic reflection of the same gold fabric, not a separate color"
+    }
+  }
+}

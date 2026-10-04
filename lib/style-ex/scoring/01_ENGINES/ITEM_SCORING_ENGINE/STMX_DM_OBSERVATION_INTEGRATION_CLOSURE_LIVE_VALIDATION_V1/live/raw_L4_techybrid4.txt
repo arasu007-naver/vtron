@@ -1,0 +1,224 @@
+{
+  "targets": [
+    {
+      "descriptor_need": "REQUIRED",
+      "reconstruction_gaps": ["RG-1", "RG-2", "RG-4"],
+      "descriptor": "The diamond quilting is confined to the front and back body panels and stops at a curved yoke-like seam over the upper chest and at the armhole; the sleeves are plain un-quilted shell with a single horizontal seam crossing the upper arm, so the garment reads as a quilted body set into smooth sleeves rather than an all-over quilted piece. Contrasting light tan ribbing forms three separate bands — a standing neck band, both sleeve ends, and a hem band that is interrupted at centre front where the zip tape and a plain shell panel pass between the two rib sections. The zip runs on a slightly raised self-fabric tape that reads as a narrow vertical break through the quilt grid. Presented flat as a product image with no wearer, so body-relative proportion cannot be established; a small woven brand label is visible inside the neck facing.",
+      "identity": { "value": true, "evidence": ["single complete outer garment shown alone", "full front zip, two sleeves, collar band and hem band all present"] },
+      "readability": {
+        "value": true,
+        "basis": "RECONSTRUCTABLE",
+        "limitation": ["CONTINUOUS_STRUCTURE_VISIBLE"],
+        "evidence": ["entire garment in frame from neck band to hem band", "both sleeves visible end to end", "front opening traceable from collar to hem"]
+      },
+      "prominence": "dominant",
+      "category": {
+        "state": "OBSERVED",
+        "value": "Jacket",
+        "evidence": ["woven technical shell body with diamond quilting and padded loft", "full-length front zip with ribbed neck, cuff and hem bands typical of an outer shell layer", "set-in sleeve panels and welt pocket openings on an outer-layer body"]
+      },
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["smooth matte shell cloth on body and sleeves", "rib bands at neck, cuffs and hem", "puffed compartments between stitch lines"],
+          "values": [
+            { "value": "Synthetic", "evidence": ["smooth technical-looking shell with fine even sheen"], "locations": [{ "component": "Body" }, { "component": "Sleeve" }] },
+            { "value": "Knit", "evidence": ["fine vertical rib structure in the tan bands"], "locations": [{ "component": "Collar" }, { "component": "Cuff" }, { "component": "Hem" }] },
+            { "value": "Padding", "evidence": ["quilt compartments bulge softly between stitch lines"], "locations": [{ "component": "Body" }] }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["stitched diamond grid raising padded compartments across the body"],
+          "values": [
+            { "value": "Quilted", "coverage": "Partial", "evidence": ["diamond stitch grid with lofted compartments on front body panels; sleeves plain"], "locations": [{ "component": "Body" }] }
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["the only repeating geometry is the quilt stitch grid itself; cloth is otherwise solid with no printed or woven motif"]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no placed print, logo or slogan on shell panels"]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "whole_garment",
+          "evidence": ["narrow slit openings at both lower front sides above the hem band"],
+          "pockets": [
+            {
+              "location": "Lower Front",
+              "construction": { "state": "OBSERVED", "value": "Inset", "evidence": ["opening reads as a slit set into the shell with no applied patch edge"] },
+              "projection": { "state": "OBSERVED", "value": "Flat", "evidence": ["pocket sits flush with the surrounding quilted panel, no standing body"] }
+            }
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no embroidery, beading, appliqué or applied cord trim visible"]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no belt, epaulette, storm flap, fringe or trim attachment on the shell"]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["left and right sleeves, rib bands and hem line mirror each other", "hem band runs level across both sides", "no one-sided panel, tie or drape found on sweep"]
+        },
+        "exposure_opening": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no wearer and no body relationship available; no designed cutout visible on the shell"]
+        },
+        "fit": {
+          "state": "UNKNOWN",
+          "value": null,
+          "region": "upper",
+          "evidence": ["garment shown flat with no body inside, so ease at shoulder span, chest and waist cannot be measured against a wearer"]
+        },
+        "length": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "upper",
+          "evidence": ["no worn body; hem cannot be placed against any body landmark"]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Structured",
+          "region": "whole_garment",
+          "evidence": ["quilted body holds a soft rounded shape but yields into creases at the sleeves", "sleeve cloth folds and collapses at the elbow area rather than standing on its own"]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Long",
+          "region": "upper",
+          "evidence": ["sleeve runs from shoulder to a rib band at the wrist end"]
+        },
+        "sleeve_volume": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["sleeve tube keeps an ordinary envelope from armhole to cuff with no deliberate enlargement or gathering"]
+        },
+        "shoulder_drop": {
+          "state": "UNKNOWN",
+          "value": null,
+          "region": "upper",
+          "evidence": ["no wearer, so the anatomical shoulder end cannot be located to compare with the garment's shoulder-to-sleeve junction"]
+        },
+        "shoulder_structure": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["shoulder line curves round and continuous into the sleeve with no readable endpoint or break on the line itself"]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "Stand",
+          "region": "upper",
+          "evidence": ["distinct tan ribbed band standing up around the neck, separate from the body shell"]
+        },
+        "collar_scale": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["band covers an ordinary part of the neck-to-shoulder span, rising only a short distance above the shell seam"]
+        },
+        "cuff_type": {
+          "state": "OBSERVED",
+          "value": "Ribbed",
+          "region": "upper",
+          "evidence": ["tan elasticated rib knit band closing each sleeve end"]
+        },
+        "cuff_scale": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["band depth is a moderate fraction of the sleeve width at the wrist and does not extend far up the lower sleeve"]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "upper",
+          "evidence": ["tan ribbed knit band along the lower edge of the body on both sides of the zip"]
+        },
+        "hood": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "upper",
+          "evidence": ["neck band is a plain standing rib with no hood attached at the neck or upper back"]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "Full",
+          "region": "upper",
+          "evidence": ["zip runs unbroken from the collar band down through the hem band"]
+        },
+        "closure_type": {
+          "state": "OBSERVED",
+          "value": "Zipper",
+          "region": "upper",
+          "evidence": ["continuous zip teeth and a pull tab visible at centre front"]
+        },
+        "waist_definition": {
+          "state": "OBSERVED",
+          "value": "Undefined",
+          "region": "whole_garment",
+          "evidence": ["body sides run straight from underarm to the hem band with no inward shaping or seaming at waist level"]
+        },
+        "grammar": {
+          "state": "OBSERVED",
+          "value": "Casual",
+          "region": "whole_garment",
+          "evidence": ["ribbed neck, cuff and hem bands with a plain zip-front quilted shell, no tailored lapel or utility pocket array"]
+        }
+      },
+      "dm_designed_detail_evidence": {
+        "evidence": [
+          {
+            "evidence_id": "dd-quilt-grid",
+            "evidence_family": "surface_treatment",
+            "source_observation_refs": ["observations.surface"],
+            "relative_size": { "state": "OBSERVED", "value": "large" },
+            "contrast": { "state": "OBSERVED", "value": "low" },
+            "spatial_position": { "state": "OBSERVED", "value": "distributed" },
+            "m1_supporting_realization": {
+              "internal_chromatic_composition": "limited_or_uniform",
+              "internal_fill_realization": "uniform_or_sparse"
+            },
+            "detail": "tonal black diamond quilt stitching across the body panels, read only through relief"
+          },
+          {
+            "evidence_id": "dd-contrast-rib-bands",
+            "evidence_family": "designed_color_contrast",
+            "source_observation_refs": ["observations.collar", "observations.cuff_type", "observations.rib_hem"],
+            "relative_size": { "state": "OBSERVED", "value": "medium" },
+            "contrast": { "state": "OBSERVED", "value": "high" },
+            "spatial_position": { "state": "OBSERVED", "value": "distributed" },
+            "detail": "light tan ribbed bands at neck, both cuffs and hem set against the black shell"
+          }
+        ],
+        "excluded": [
+          { "item": "black shell field", "reason": "single_base_colour" }
+        ]
+      }
+    }
+  ]
+}

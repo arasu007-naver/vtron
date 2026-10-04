@@ -1,0 +1,354 @@
+{
+  "image_id": "REF_000193",
+  "producer": {
+    "version": "v1",
+    "vision_calls": 1,
+    "one_call_default": true,
+    "model": "claude-opus-5"
+  },
+  "targets": [
+    {
+      "target_id": "target_1",
+      "role": "Primary",
+      "extraction_depth": "PARTIAL",
+      "role_basis": "scoring-target candidate; extraction PARTIAL — unreadable mandatory morphology: length (readability does NOT determine scoring role)",
+      "prominence": "dominant",
+      "descriptor": "The print is a collage-type composition rather than a simple repeat: large blown-up roses and peonies sit among faded photographic vignettes of faces and figures and lines of script and block lettering, all on a pale stone-beige ground. A dark near-black band runs the full length of the centre-front placket and continues around the collar, and further dark panels run down the shoulder-to-underarm/side seams and along the sleeve seams, so the garment reads as a light printed body framed by dark vertical edges. The sleeve widens gently from elbow to the wrist band, and the front hem is slightly shaped rather than cut straight across, with the placket buttons continuing down to that edge. The piece is shown on a headless torso form, so the sleeves and body hang with only the form's own volume behind them.",
+      "eligible": true,
+      "record": {
+        "category": {
+          "state": "OBSERVED",
+          "value": "Shirt"
+        },
+        "observations": {
+          "material": {
+            "state": "OBSERVED",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "fine, light woven cloth with soft small folds and a slight surface sheen"
+            ],
+            "values": [
+              {
+                "value": "Synthetic",
+                "evidence": [
+                  "lightweight printed woven with a faint sheen and crisp printed imagery typical of a fine synthetic weave"
+                ]
+              }
+            ]
+          },
+          "surface": {
+            "state": "ABSENT",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "cloth face is a plain woven ground carrying a print; no quilting, pleating, lace, mesh or applied finish visible"
+            ]
+          },
+          "pattern": {
+            "state": "OBSERVED",
+            "value": "Repeat",
+            "region": "whole_garment",
+            "evidence": [
+              "motifs of roses, photographic vignettes and lettering recur across body, sleeves and collar"
+            ],
+            "motif_complexity": "Compound",
+            "visual_dominance": "Dominant"
+          },
+          "graphic": {
+            "state": "ABSENT",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "lettering and imagery recur across the whole cloth rather than sitting as one placed element"
+            ]
+          },
+          "pocket": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "whole_garment",
+            "evidence": [
+              "chest and lower front are visible with no welt, patch or flap opening"
+            ]
+          },
+          "decorative_detail": {
+            "state": "ABSENT",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "no embroidery, beading, appliqué or applied cord trim visible on collar, placket or cuffs"
+            ]
+          },
+          "attachment": {
+            "state": "ABSENT",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "no belt, epaulette, fur trim, fringe or applied hardware on the visible garment"
+            ]
+          },
+          "asymmetry": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "whole_garment",
+            "evidence": [
+              "left and right fronts, sleeves and side panels mirror each other",
+              "hem sits at the same height on both sides; no one-sided panel, tie or drape found on a sweep of the garment"
+            ]
+          },
+          "exposure_opening": {
+            "state": "NOT_VISIBLE",
+            "value": null,
+            "region": "whole_garment",
+            "evidence": [
+              "garment shown on a headless torso form with no body reference, so garment-to-body exposure cannot be read",
+              "no designed cutout visible on the garment itself"
+            ]
+          },
+          "fit": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "region": "upper",
+            "evidence": [
+              "shoulder line sits at the form's shoulder edge without extending past it",
+              "chest and waist carry ordinary room, cloth hanging near the form rather than standing away",
+              "body stays the same easy width down to the hem"
+            ]
+          },
+          "length": {
+            "state": "NOT_VISIBLE",
+            "value": null,
+            "region": "upper",
+            "evidence": [
+              "garment is on a torso form, not a worn human body, so no body landmark exists to place the hem against"
+            ]
+          },
+          "fabric_behavior": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "region": "whole_garment",
+            "evidence": [
+              "body and sleeves fall in soft small folds that follow the form",
+              "cloth creates no volume of its own; sleeve heads and hem collapse softly"
+            ]
+          },
+          "sleeve": {
+            "state": "OBSERVED",
+            "value": "Long",
+            "region": "upper",
+            "evidence": [
+              "sleeves run from shoulder to wrist-level cuff bands"
+            ]
+          },
+          "shoulder_drop": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "upper",
+            "evidence": [
+              "form's shoulder end is at the outer top corner of the torso; the sleeve junction forms a clear endpoint at that same point before turning into the sleeve"
+            ]
+          },
+          "neckline_shape": {
+            "state": "OBSERVED",
+            "value": "Round",
+            "region": "upper",
+            "evidence": [
+              "neck opening edge under the collar band curves round the base of the neck"
+            ]
+          },
+          "neckline_position": {
+            "state": "OBSERVED",
+            "value": "High",
+            "region": "upper",
+            "evidence": [
+              "collar band sits at the base of the neck, well above the chest"
+            ]
+          },
+          "collar": {
+            "state": "OBSERVED",
+            "value": "Shirt",
+            "region": "upper",
+            "evidence": [
+              "turned-down pointed collar on a visible collar band"
+            ]
+          },
+          "rib_hem": {
+            "state": "OBSERVED",
+            "value": "None",
+            "region": "upper",
+            "evidence": [
+              "lower edge is a plain self-fabric hem with no ribbed band"
+            ]
+          },
+          "front_opening_extent": {
+            "state": "OBSERVED",
+            "value": "Full",
+            "region": "upper",
+            "evidence": [
+              "placket with fastenings runs from the collar band down to the bottom edge"
+            ]
+          },
+          "closure_type": {
+            "state": "OBSERVED",
+            "value": "Button",
+            "region": "upper",
+            "evidence": [
+              "row of round button faces spaced down the centre-front placket"
+            ]
+          },
+          "sleeve_volume": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "region": "upper",
+            "evidence": [
+              "sleeve body stays within an ordinary envelope, widening only slightly toward the cuff"
+            ]
+          },
+          "cuff_type": {
+            "state": "OBSERVED",
+            "value": "Standard",
+            "region": "upper",
+            "evidence": [
+              "distinct constructed band at each sleeve end, separate from the sleeve body"
+            ]
+          },
+          "cuff_scale": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "region": "upper",
+            "evidence": [
+              "band depth is a modest fraction of the sleeve width at the wrist and does not extend up the forearm"
+            ]
+          },
+          "collar_scale": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "region": "upper",
+            "evidence": [
+              "collar points stop short of the first placket button, covering a modest part of the neckline-to-upper-chest span"
+            ]
+          }
+        },
+        "completeness": {
+          "U": 9,
+          "M": 11,
+          "C": 9,
+          "N": 8,
+          "total": 37,
+          "reported": 24,
+          "conditional_na": 4,
+          "unreported": 1,
+          "reconciled": true
+        },
+        "dm_designed_detail_evidence": {
+          "evidence": [
+            {
+              "evidence_id": "dd-collage-print",
+              "evidence_family": "surface_pattern",
+              "detail": "all-over collage print of roses, photographic vignettes and script/block lettering",
+              "source_observation_refs": [
+                "observations.pattern"
+              ],
+              "relative_size": {
+                "state": "OBSERVED",
+                "value": "large"
+              },
+              "contrast": {
+                "state": "OBSERVED",
+                "value": "high"
+              },
+              "spatial_position": {
+                "state": "OBSERVED",
+                "value": "whole_garment"
+              },
+              "m1_supporting_realization": {
+                "internal_chromatic_composition": {
+                  "state": "OBSERVED",
+                  "value": "multi_colour_compound"
+                },
+                "internal_fill_realization": {
+                  "state": "OBSERVED",
+                  "value": "dense_varied"
+                }
+              }
+            },
+            {
+              "evidence_id": "dd-dark-edge-panels",
+              "evidence_family": "designed_color_contrast",
+              "detail": "near-black band along the centre-front placket and collar, continuing as dark panels down the side and sleeve seams",
+              "source_observation_refs": [
+                "DM_SPECIFIC_OBSERVATION"
+              ],
+              "relative_size": {
+                "state": "OBSERVED",
+                "value": "medium"
+              },
+              "contrast": {
+                "state": "OBSERVED",
+                "value": "high"
+              },
+              "spatial_position": {
+                "state": "OBSERVED",
+                "value": "distributed"
+              }
+            }
+          ],
+          "excluded": [
+            {
+              "item": "buttons on placket and cuffs",
+              "reason": "single_base_colour"
+            }
+          ]
+        }
+      },
+      "diagnostics": {
+        "unreported": [
+          "category"
+        ],
+        "conditional_na": [
+          {
+            "param": "shoulder_connection",
+            "reason": "non-standard connection visible (Strap/Strapless/Halter/One Shoulder); ordinary sleeved → N/A this instance"
+          },
+          {
+            "param": "shoulder_span",
+            "reason": "span is a meaningful design variable (Narrow/Extended); ordinary sleeved → N/A this instance"
+          },
+          {
+            "param": "pocket_construction",
+            "reason": "pocket === Present (CA#28: readability is a Vision STATE, not an applicability condition)"
+          },
+          {
+            "param": "pocket_projection",
+            "reason": "pocket === Present (CA#28: readability is a Vision STATE, not an applicability condition)"
+          }
+        ],
+        "not_applicable_count": 8,
+        "notes": [
+          "DM observation layer carried verbatim: 2 evidence, 1 excluded"
+        ]
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "DESCRIPTOR_NEED_ABSENT_LEGACY",
+            "param": null,
+            "message": "pre-protocol extraction — descriptor_need not asserted"
+          }
+        ]
+      },
+      "readability": {
+        "value": true,
+        "basis": "RECONSTRUCTABLE",
+        "limitation": [
+          "CONTINUOUS_STRUCTURE_VISIBLE"
+        ],
+        "contract_error": null
+      }
+    }
+  ],
+  "relationships": [],
+  "image_validation_status": "ALL_GARMENTS_VALID"
+}

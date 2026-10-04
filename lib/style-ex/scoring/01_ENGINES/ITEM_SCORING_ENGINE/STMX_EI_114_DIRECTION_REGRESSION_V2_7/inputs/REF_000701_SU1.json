@@ -1,0 +1,317 @@
+{
+  "unit_id": "REF_000701#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "e7313706b41d77ad506c2d160bd1b31cac0a9d7d626f6a41922d11ae1eb077de",
+  "projected_hash": "94a991fdff7e81da18a9fbb1f448fefa9ebac2705edcc7261edb3892046a4b75",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "fluid metallic-coated fabric with high light return"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "metallic lamé-type coated stretch fabric",
+              "smooth continuous surface"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "strong mirror-like light return across body",
+          "gathered radiating folds at neckline"
+        ],
+        "values": [
+          {
+            "value": "Reflective",
+            "evidence": [
+              "bright specular highlights, mirror-like metallic sheen"
+            ]
+          },
+          {
+            "value": "Gathered",
+            "evidence": [
+              "radiating gathers cinched at the chain neckline"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid metallic tone, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "smooth body, no pocket openings"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping on the fabric"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "gold chain integrated at the neck"
+        ],
+        "values": [
+          {
+            "value": "Jewelry Attachment",
+            "evidence": [
+              "gold chain halter loop at the neckline gathering the bodice"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "column narrows through hips then expands gently toward floor hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "body follows torso closely, hem widens gently"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice conforms closely to torso, body outline traced"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "skirt hangs with ordinary room, gently widening to hem"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "whole_garment",
+        "evidence": [
+          "hem falls to the floor over the ankles on standing model"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "cloth falls in soft vertical folds, follows body"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "bodice drapes softly with gathered fullness"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "skirt falls in long soft vertical folds with no self-support"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "bare shoulders and arms, halter construction"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no shoulder construction, halter neck only"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulders fully bare, no shoulder contour built by garment"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Round",
+        "region": "upper",
+        "evidence": [
+          "gathered fabric forms a rounded edge across upper chest"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "neckline sits across the upper chest, not deep"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare neckline gathered to a chain, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "fluid metallic hem, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "continuous front, no placket or opening"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "bare shoulders and exposed leg via side slit"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "both shoulders fully bare in halter construction"
+            ]
+          },
+          {
+            "value": "Upper Thigh",
+            "evidence": [
+              "high side slit reveals upper leg region"
+            ]
+          }
+        ],
+        "region": "whole_garment"
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "lower",
+        "evidence": [
+          "high side slit visible at lower left, exposing leg"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no gathered frill strips applied"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "no waist seam or shaping, straight column through midsection"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Halter",
+        "region": "upper",
+        "evidence": [
+          "gold chain wraps behind the neck, bodice suspended from neck"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "silver",
+      "color_lightness": "normal",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "metallic",
+      "additional_colors": [
+        {
+          "color_family": "gold",
+          "carrier_kind": "attachment",
+          "carrier_ref": "Jewelry Attachment"
+        }
+      ],
+      "evidence": {
+        "primary": "metallic silver body with mirror-like light return",
+        "lightness": "mid-value metallic reflecting bright and dark",
+        "usage": "single garment color with distinct gold chain accent at neck",
+        "effect": "metallic silver color-family sheen"
+      },
+      "color_notes": null
+    }
+  }
+}

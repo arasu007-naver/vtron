@@ -1,0 +1,290 @@
+{
+  "unit_id": "REF_000397#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "7c3cc5c039775b0bce240d5d6de58f972b9559c860d16a2ed73e5782803d5320",
+  "projected_hash": "a5ae0fbb84f5725495a1880a6bef539e7ef6fe014b56d29c91317e67eaeb1651",
+  "input": {
+    "category": "Sweater",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "knit stitch structure across body and sleeves"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "visible knit loops throughout body and sleeves"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "chunky bold hand-knit ribbing/loops on the sleeves"
+        ],
+        "values": [
+          {
+            "value": "Textured Knit",
+            "evidence": [
+              "pronounced chunky knit texture on the striped sleeves"
+            ],
+            "locations": [
+              {
+                "component": "Sleeve"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Linear",
+        "region": "whole_garment",
+        "evidence": [
+          "horizontal multicolor stripes running across both sleeves"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "yellow embroidered triomphe-style logo on the chest"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "welt chest pocket outline on left chest"
+        ],
+        "pockets": [
+          {
+            "location": "Chest",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "stitched logo motif on chest"
+        ],
+        "values": [
+          {
+            "value": "Embroidery",
+            "evidence": [
+              "yellow embroidered logo on chest"
+            ],
+            "locations": [
+              {
+                "component": "Body"
+              }
+            ]
+          }
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fringe, fur or other applied attachment visible"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "hem level side to side",
+          "both sleeves striped identically",
+          "placket centred"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "shoulders, chest and hem read ordinary ease in the flat layout",
+          "body follows without generous standing away"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "flat lay, not worn on a body; no body landmark to locate hem"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "knit holds a soft shape but yields",
+          "collar and body sit softly"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to full wrist length"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "clear shoulder endpoint where body meets sleeve in the flat layout"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "knit polo-style shirt collar with points"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "lower body edge is plain knit, no distinct ribbed band"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "collared neckline, no hood at neck"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Partial",
+        "region": "upper",
+        "evidence": [
+          "short buttoned placket at the neck stopping mid-chest"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Button",
+        "region": "upper",
+        "evidence": [
+          "row of white buttons on the short placket"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Ribbed",
+        "region": "upper",
+        "evidence": [
+          "ribbed knit band at the sleeve ends"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ribbed cuff band an ordinary depth against sleeve width"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "collar points reach an ordinary distance toward the chest"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "wine",
+      "color_lightness": "normal",
+      "color_usage": "multi",
+      "multi_color": true,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "white_family",
+          "carrier_kind": "material_component",
+          "carrier_ref": "Knit"
+        },
+        {
+          "color_family": "white_family",
+          "carrier_kind": "closure",
+          "carrier_ref": "Button"
+        },
+        {
+          "color_family": "yellow",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        },
+        {
+          "color_family": "pink",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear"
+        },
+        {
+          "color_family": "blue",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear"
+        },
+        {
+          "color_family": "green",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear"
+        },
+        {
+          "color_family": "yellow",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear"
+        },
+        {
+          "color_family": "red",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear"
+        },
+        {
+          "color_family": "brown",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear"
+        },
+        {
+          "color_family": "black",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear"
+        }
+      ],
+      "evidence": {
+        "primary": "wine/burgundy mélange knit body",
+        "lightness": "mid-tone burgundy",
+        "usage": "multicolor striped sleeves plus mélange body",
+        "effect": "no metallic or neon appearance"
+      },
+      "color_notes": "body is a burgundy-and-white mélange (heather) knit; sleeves carry dense multicolor horizontal stripes"
+    }
+  }
+}

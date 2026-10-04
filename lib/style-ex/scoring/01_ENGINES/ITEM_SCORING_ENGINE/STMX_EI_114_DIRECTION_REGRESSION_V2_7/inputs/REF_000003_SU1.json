@@ -1,0 +1,198 @@
+{
+  "unit_id": "REF_000003#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "21b7bcb4341387e4d55be5241ca1ec2838803495c74ec44ff8dc3dce7902ebcb",
+  "projected_hash": "f4a079b024821267e7091da87f7ebcabc88eaec44c8c47dbc8f9afef61d4f345",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth woven front panel",
+          "knit heather sleeves"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth matte woven navy front panel"
+            ]
+          },
+          {
+            "value": "Knit",
+            "evidence": [
+              "heather-gray knit sleeves and collar"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "heather yarn is not a constructed surface treatment",
+          "smooth panel body"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no repeating motif",
+          "solid tonal color blocks"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "white The North Face logo on chest"
+        ]
+      },
+      "pocket": {
+        "state": "UNKNOWN",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no clearly visible pocket openings on front panel"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front and sleeves"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "straight body with moderate ease"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Waist Length",
+        "region": "upper",
+        "evidence": [
+          "ribbed hem sits at waist"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds shape with soft knit body"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "full-length sleeves to cuff"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "soft unstructured shoulder",
+          "no padding"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "ribbed standing bomber collar"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "dark ribbed hem band at bottom"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "standing collar, no hood"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "black full-length center front zipper"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "bomber sportswear construction",
+          "ribbed trims"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve body within ordinary envelope"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Standard",
+        "region": "upper",
+        "evidence": [
+          "raglan seams from collar to underarm"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "navy",
+      "color_lightness": "dark",
+      "color_usage": "multi",
+      "multi_color": true,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "gray",
+          "carrier_kind": "material_component",
+          "carrier_ref": "Knit"
+        },
+        {
+          "color_family": "black",
+          "carrier_kind": "closure",
+          "carrier_ref": "Zipper"
+        },
+        {
+          "color_family": "white_family",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        }
+      ]
+    }
+  }
+}

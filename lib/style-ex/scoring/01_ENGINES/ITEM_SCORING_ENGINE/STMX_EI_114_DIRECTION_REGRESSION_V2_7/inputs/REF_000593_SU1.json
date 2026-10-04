@@ -1,0 +1,216 @@
+{
+  "unit_id": "REF_000593#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "da2692d7b542f42e7976693706f713899527723aaaa732242bdd15d8d5c7595b",
+  "projected_hash": "98176720ddd10c607d5d4f4f1f001ceb2f98d61a90169e187306b81bd4409cab",
+  "input": {
+    "category": "T-Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte stretch knit jersey"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "smooth stretch jersey clinging to body"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth surface, no distinct treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "clean front, no pockets"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied decoration"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric straps and hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Slim",
+        "region": "upper",
+        "evidence": [
+          "closely follows torso contour"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Cropped",
+        "region": "upper",
+        "evidence": [
+          "hem ends at lower ribcage, midriff exposed"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "soft knit follows body with slight movement"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "thin straps, no sleeve"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "strap-supported, seam at natural shoulder"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Scoop",
+        "region": "upper",
+        "evidence": [
+          "deep rounded U-shaped opening across chest"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "opening sits mid-chest, not deep"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain scoop neckline, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain self-fabric bottom edge"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "pullover, no front opening"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Strap",
+        "region": "upper",
+        "evidence": [
+          "thin spaghetti straps over shoulders"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "product_context": "Activewear-Performance"
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "CEO 2026-09-05 §15.1"
+            ],
+            "value": "Midriff / Waist"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Midriff / Waist",
+            "evidence": [
+              "CEO 2026-09-05 §15.1"
+            ]
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black jersey",
+        "lightness": "deep black tone",
+        "usage": "single solid color",
+        "effect": "matte no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

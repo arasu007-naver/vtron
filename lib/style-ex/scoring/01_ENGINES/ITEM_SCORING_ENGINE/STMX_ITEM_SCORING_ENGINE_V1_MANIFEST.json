@@ -1,0 +1,467 @@
+{
+ "document": "STMX_ITEM_SCORING_ENGINE_V1_MANIFEST",
+ "engine": "STMX ITEM SCORING ENGINE V1",
+ "engine_id": "STMX_ITEM_SCORING_ENGINE_V1",
+ "version": "V1",
+ "date": "2026-09-27",
+ "final_freeze_date": "2026-09-27",
+ "status": "FINAL_PRODUCTION_AUTHORITY — STMX ITEM SCORING ENGINE V1 = COMPLETE_AND_CLOSED_AND_FROZEN · PRODUCTION PROMOTED (composition of four frozen axis authorities; not a scorer)",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-27",
+  "Order": "STMX ITEM SCORING ENGINE V1 — FINAL FREEZE + PRODUCTION PROMOTION + FINAL BACKUP PREPARATION · Decision 1 · §30",
+  "Reason": "promote the SEALED_CANDIDATE manifest to the final production composition authority",
+  "Affected Scope": "this manifest (in place; candidate bytes preserved in the Final Freeze package prototypes/pre_promotion_bytes)"
+ },
+ "supersedes": {
+  "candidate_manifest_file_sha256": "91f6e857e5dbc1818b3e37b6d78fcfb23a6c5b1d7abcdfde0d5e3cdea403d0b4",
+  "candidate_manifest_aggregate": "e2643e9548e91492432c2a77e104b135f99cd78396ebddef1041d2148839c24c",
+  "status": "SEALED_CANDIDATE → FINAL_PRODUCTION_AUTHORITY"
+ },
+ "⛔_not_a_scorer": "This manifest executes nothing and holds no scoring rule, weight, tier, threshold or combination. Each axis result is produced only by its own frozen authority and returned side by side, unchanged. A future V2 may pin a different combination without mutating any axis.",
+ "axes": {
+  "EI": {
+   "engine_id": "STMX_EI_ENGINE_V1",
+   "axis_version": "V1 (Direction V1.2.7 · Numeric V1 R1) — unchanged",
+   "authority_status": "FROZEN · production authority via the EI-owned production integration",
+   "production_authority": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+    "sha256": "0623735875f697e5bc254d8cff2afeff3148dcf2f21543b185db9cd8d60e8ebb"
+   },
+   "production_seal": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/CODE_IDENTITY_SEAL_EI_PRODUCTION_INTEGRATION_V1_PRODUCTION.json",
+    "sha256": "8e2f30aee210fca126900bc6016e8fcd4910a9266e91ae0295ebccc3bdbf357c",
+    "code_identity": "fd1617037ce09fef6a05e2288e7584bdd92b26337a22ca44fc1cef37f3c0a401"
+   },
+   "integration_entry": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/src/ei_production_integration_v1.js",
+    "sha256": "7ff05cbf5caeb30b43792adf37430753f8273aeb759427517ffd4b3cbbbb2215"
+   },
+   "integration_bridge": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/src/ei_direction_numeric_bridge_v1.js",
+    "sha256": "21116a4155ed6d0595dc38cde0f51cfcb1dc2ba1d551557fd16dac09c602fc44"
+   },
+   "integration_bound_inputs": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/BOUND_INPUTS.json",
+    "sha256": "69abbb580e2326547c0f7628eb1d015adb31fdcd6146964760a6703ce0a785d1"
+   },
+   "frozen_direction": {
+    "id": "STMX_EI_DIRECTION_FROZEN_BASELINE_V1",
+    "aggregate": "08eb312074db17009f2bb791365b6200b8d3ed9d1e8459f7de8b07f07305fb35",
+    "manifest": {
+     "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_FROZEN_BASELINE_V1/MANIFEST.json",
+     "sha256": "fd22c288ed73e9a84a3d94ff8083d6b1e6231e597acdef586338fe56d592c548"
+    },
+    "runtime": {
+     "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_direction_runtime_v1_2_7.js",
+     "sha256": "3f210adbb709a8183f0c42631239b17e5549ae6363fae81d2f39ae52b7fd6e74"
+    }
+   },
+   "frozen_numeric": {
+    "id": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1",
+    "aggregate": "5c5ad6e233277ae80fc7ff347b4b90bd799524c224abe694c196d95da3c80610",
+    "manifest": {
+     "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/MANIFEST.json",
+     "sha256": "11e7a0d0910ce3571b1a0ad0637993e968f8fcd3f78430cf4e15761673302707"
+    },
+    "runtime": {
+     "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/src/ei_numeric_layer_v1.js",
+     "sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b"
+    }
+   },
+   "closure_record": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V1_SUCCESSOR_FREEZE_2026_09_08/STMX_EI_ENGINE_V1_FINAL_CLOSURE.json",
+    "sha256": "d9916d33c73f7c89c9253f7d054a248ce0ca9e61d4dfde0931570e3e6297276c"
+   },
+   "registry_entry_fingerprint": "08597b59a5c36dfc725436310d55cc9f6f2367a7a3aea2a8bf2f68b593b7bee1"
+  },
+  "TC": {
+   "engine_id": "STMX_TC_ENGINE_V1",
+   "axis_version": "V1 — COMPLETE_AND_CLOSED_AND_FROZEN · PRODUCTION (unchanged)",
+   "authority_status": "FROZEN · unchanged production authority",
+   "production_authority": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+    "sha256": "5b237300e9fc5b99b134077875f9e38ec0021702155ec08d62b64c281e362d9a"
+   },
+   "production_seal": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE/CODE_IDENTITY_SEAL_TC_INTEGRATED_RUNTIME_V1_PRODUCTION.json",
+    "sha256": "e2d6cfbfa7f2bd8351d35cd7638e4ca00fe3c919b571774e2e9005688581b336",
+    "code_identity": "88e6982f13efc409a7e5c45e6952f6c65989fd8e7fd98875eda7b4f3f830a21d"
+   },
+   "final_freeze_manifest": {
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_ENGINE_FINAL_FREEZE_V1_MANIFEST.json",
+    "sha256": "f41201af9b88f5bd85754c097a6cdafd5ffbabdb34117071b8361fc0ec11752b"
+   },
+   "registry_entry_fingerprint": "4677540f3c5bd7877e58ae28e4a632516275a0f91a00ef701761a5b68e55066d"
+  },
+  "SR": {
+   "engine_id": "STMX_SR_ENGINE_V1",
+   "axis_version": "V1 FINAL — COMPLETE_AND_CLOSED_AND_FROZEN · PRODUCTION (unchanged)",
+   "authority_status": "FROZEN · unchanged production authority",
+   "production_authority": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+    "sha256": "6a670aa417c9692364352303aa760a4a6ec7441f60dcac73c2316f7689c36db7",
+    "full_identity": "59ea6dfdcca30ba8813a06733069daf9efab917df6b5103717d7cb334aebf1e3"
+   },
+   "freeze_seal": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_SR_ENGINE_V1_FINAL.json",
+    "sha256": "9a8f6db4b50aa75fbfd6a3455bb97e4c2d81d2e79834aaa9a95a14c12f572a26"
+   },
+   "entry": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/src/sr_engine_v1_final.js",
+    "sha256": "700931fef86fd40da40c4c024955fe1fef75883f27062c61dfbc0ac5bae51390"
+   },
+   "registry_entry_fingerprint": "74a2c72b3b53c2247d9d3b0179ae96268217f0772d11de6aa0ae7763c21a1c93"
+  },
+  "DM": {
+   "engine_id": "STMX_DM_ENGINE_V1",
+   "axis_version": "V1 — COMPLETE_AND_CLOSED_AND_FROZEN · PRODUCTION (unchanged)",
+   "authority_status": "FROZEN · production authority via the DM-local delegation adapter",
+   "production_authority": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+    "sha256": "32f7d256e86749c4e35f5f5971c9a7cc34c87a1ed629756edb3aa44e9da2f926",
+    "full_identity": "bb82c8ff25943270d52c94d9acc28a3024c83dff9c66558ea12900f81bc98a5e"
+   },
+   "freeze_seal": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_DM_ENGINE_V1_FINAL.json",
+    "sha256": "909f9f90c25a21d2461218d2219c0ff2d62c82eb4da9d33d20a4654f5670ed17"
+   },
+   "adapter_production_seal": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ITEM_ENTRY_ADAPTER_V1_CANDIDATE/CODE_IDENTITY_SEAL_DM_ITEM_ENTRY_ADAPTER_V1_PRODUCTION.json",
+    "sha256": "b3a2c3ed621e9f4c94089cb6428a227ddc57763778bdb4e38d22e22fa5310528",
+    "code_identity": "6f1e3b0d879a6f2b0fab32cea6bf1bdc5f908309be88f10e61a6373995bd0f81"
+   },
+   "adapter_entry": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ITEM_ENTRY_ADAPTER_V1_CANDIDATE/src/dm_item_entry_adapter_v1.js",
+    "sha256": "d7a31acad9c9197c4f924340a9464927a6a102218fb0a92cb55da5641b46aa57"
+   },
+   "registry_entry_fingerprint": "c71e11ce3dbf5cd6b554edc9adaa0ea2dc1ed65990bb43796c5be64006a8b232"
+  }
+ },
+ "registry": {
+  "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/runtime/axis_binding_contracts.js",
+  "sha256": "8b6b8715cb40e5631b0becd92b709d8cbbb6e07491e6e07c29d7919797e10810",
+  "REGISTRY_VERSION": "AXIS_BINDING_CONTRACTS_V5_PRODUCTION",
+  "axes": [
+   "TC",
+   "EI",
+   "SR",
+   "DM"
+  ],
+  "status": "PRODUCTION_AUTHORITY",
+  "binding_seal": {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/CODE_IDENTITY_SEAL_AXIS_RUNTIME_BINDING_V5_PRODUCTION.json",
+   "sha256": "01e28ca6fa5a5ab6192a9b37276700ff64f3631ca8d03eb80c4064b3fc978ac4",
+   "aggregate": "4368141f5f2509107578ea0d7f597af8e8115a2fc0f496cc07442c02b9b05dcb"
+  }
+ },
+ "generic_binding": {
+  "identity": "c141a6e60a72067271633ed5556f8d977f9b4857d20bec44e0ede13afbc24684",
+  "files": [
+   {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/layers/l7_axis_runtime_binding.js",
+    "sha256": "ce10feba3930c56b3cae9383e4f0ef2214f308f454f7a49fc598e403f5827e8d"
+   },
+   {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/layers/l7_governance_scoring.js",
+    "sha256": "0da11ce76a4251a51106a386308fa003f196980461f7950e41e74699aeb8af03"
+   }
+  ],
+  "changed_by_v1": false
+ },
+ "item_entry": {
+  "id": "STMX_ITEM_ENTRY_V1",
+  "status": "PRODUCTION_AUTHORITY",
+  "binding_mode": "PRODUCTION",
+  "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item/item_entry_v1.js",
+  "sha256": "aa3010e72be5d532039c6189ff2df8f75f0bac6695a15e9f9f1f97f24bc1b989"
+ },
+ "result_composer": {
+  "id": "STMX_ITEM_RESULT_COMPOSER_V1",
+  "status": "PRODUCTION_AUTHORITY",
+  "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item/item_result_composer_v1.js",
+  "sha256": "ef969aade8aac65b120a90201d25e7bbb4a23bada238ed1497df2688337cf94c"
+ },
+ "contracts": {
+  "request_contract": "STMX_ITEM_REQUEST_CONTRACT_V1",
+  "result_contract": "STMX_ITEM_RESULT_CONTRACT_V1",
+  "vocabulary": "Canonical Dictionary V1.10",
+  "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item/item_contracts_v1.js",
+  "sha256": "954e367a17894a20dfc8fc292212e38571b504e827857fc2d6655b3b547c39a5"
+ },
+ "input_contracts": {
+  "EI": {
+   "namespace_keys": [
+    "unit"
+   ],
+   "runtime_input_contract": "STMX_EI_DIRECTION_RUNTIME_INPUT_CONTRACT_V1",
+   "compatibility_adapter": {
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/src/ei_vision_input_compatibility_v1.js",
+    "sha256": "d835df450b3efe48cc9f98dfeefa804e5f60d29d1777a9daef1ace7360e55759"
+   }
+  },
+  "TC": {
+   "namespace_keys": [
+    "anchor_id"
+   ],
+   "population_ledger": {
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_27_STEP3_FINAL_FREEZE/06_STEP3_FINAL_114_UNIT_REPLAY_LEDGER.json",
+    "sha256": "724c5695c810d317f2ab7cf6ddd9420a0b8cd1bdd0ea97037c33cac4366d5ed9"
+   }
+  },
+  "SR": {
+   "namespace_keys": [
+    "record",
+    "meta"
+   ]
+  },
+  "DM": {
+   "namespace_keys": [
+    "dm_designed_detail_evidence"
+   ]
+  }
+ },
+ "output_contract": {
+  "composed": "STMX_ITEM_RESULT_CONTRACT_V1",
+  "notation_authority": {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/stmx_score_notation_v1.js",
+   "sha256": "fc364336d321d2c3baa395b47647073cb4175bb772728e13dd3404d325b577f6"
+  }
+ },
+ "vision_contracts": {
+  "production_pointer": {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_PRODUCTION_AUTHORITY_V1.json",
+   "sha256": "123365a2323b18a9a04a3b294f864b9fe51c539abfcb7675843578a4f568be6d"
+  },
+  "v1_3_rules": {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+  },
+  "v1_1_rules": {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_rules_v1.js",
+   "sha256": "c4190ece1408854d039eda4d9a1c3f4de2c5209ae1eefb7f8a461ba5825bf98f"
+  },
+  "colour_v1": {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+   "sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52"
+  }
+ },
+ "governance": {
+  "canonical_dictionary": {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CANONICAL_MASTER_PACK/00_MASTER/Canonical/STMX_CANONICAL_DICTIONARY.md",
+   "sha256": "fbeb9e84fbeabc10601b758a93ee49892c5bdeb59eea82c5149fa535e9c3eadd",
+   "version": "V1.10"
+  },
+  "claude_md": {
+   "path": "CLAUDE.md",
+   "sha256": "ddb9a7d32a36bebb8e2ab35ff27c005a92e07e4b2fc348e569036e05004dfa21"
+  },
+  "final_freeze_constitution": {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_ITEM_SCORING_ENGINE_V1_FINAL_FREEZE.md",
+   "sha256": "6adf2a84e9e50c84cae932c69bfe0116de93f99be6b0a32ebb1c1e30fadb7905"
+  },
+  "final_limitation_register": {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_ITEM_SCORING_ENGINE_V1_FINAL_LIMITATION_REGISTER.md",
+   "sha256": "b6f183692ad6dec87923a582b5d485ba84a69a424a9d4ab9247f1dc4a089c2ef"
+  }
+ },
+ "rollback_baseline": {
+  "pre_promotion_seal_aggregate": "ac573932511d84378f75804ee537f10c2641a00def957296b90bc4a65263f946",
+  "registry_before_promotion": {
+   "version": "AXIS_BINDING_CONTRACTS_V4_INTEGRATED_CANDIDATE",
+   "sha256": "8423acb808908bd6896c7a28ae65d99dc07421536f7c424f91c3d6d9efc522ac",
+   "binding_seal_v4": "8cb5759b87efe97eaf86b5233790ed33658408082a246f4600325f682ac8094c"
+  },
+  "candidate_manifest_file_sha256": "91f6e857e5dbc1818b3e37b6d78fcfb23a6c5b1d7abcdfde0d5e3cdea403d0b4",
+  "note": "rollback bytes and script live in the Final Freeze closure package (04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_SCORING_ENGINE_V1_FINAL_FREEZE_AND_PRODUCTION_PROMOTION/) — referenced by identity, not a runtime dependency"
+ },
+ "model": "Opus 5.5 (claude-opus-5-5); Fable not used",
+ "pinned_files": [
+  {
+   "role": "EI_PRODUCTION_AUTHORITY_POINTER",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "sha256": "0623735875f697e5bc254d8cff2afeff3148dcf2f21543b185db9cd8d60e8ebb"
+  },
+  {
+   "role": "EI_PRODUCTION_SEAL",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/CODE_IDENTITY_SEAL_EI_PRODUCTION_INTEGRATION_V1_PRODUCTION.json",
+   "sha256": "8e2f30aee210fca126900bc6016e8fcd4910a9266e91ae0295ebccc3bdbf357c"
+  },
+  {
+   "role": "EI_INTEGRATION_ENTRY",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/src/ei_production_integration_v1.js",
+   "sha256": "7ff05cbf5caeb30b43792adf37430753f8273aeb759427517ffd4b3cbbbb2215"
+  },
+  {
+   "role": "EI_DIRECTION_NUMERIC_BRIDGE",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/src/ei_direction_numeric_bridge_v1.js",
+   "sha256": "21116a4155ed6d0595dc38cde0f51cfcb1dc2ba1d551557fd16dac09c602fc44"
+  },
+  {
+   "role": "EI_BOUND_INPUTS",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/BOUND_INPUTS.json",
+   "sha256": "69abbb580e2326547c0f7628eb1d015adb31fdcd6146964760a6703ce0a785d1"
+  },
+  {
+   "role": "EI_FROZEN_DIRECTION_MANIFEST",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_FROZEN_BASELINE_V1/MANIFEST.json",
+   "sha256": "fd22c288ed73e9a84a3d94ff8083d6b1e6231e597acdef586338fe56d592c548"
+  },
+  {
+   "role": "EI_FROZEN_DIRECTION_RUNTIME",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_direction_runtime_v1_2_7.js",
+   "sha256": "3f210adbb709a8183f0c42631239b17e5549ae6363fae81d2f39ae52b7fd6e74"
+  },
+  {
+   "role": "EI_FROZEN_NUMERIC_MANIFEST",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/MANIFEST.json",
+   "sha256": "11e7a0d0910ce3571b1a0ad0637993e968f8fcd3f78430cf4e15761673302707"
+  },
+  {
+   "role": "EI_FROZEN_NUMERIC_RUNTIME",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/src/ei_numeric_layer_v1.js",
+   "sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b"
+  },
+  {
+   "role": "EI_CLOSURE_RECORD",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V1_SUCCESSOR_FREEZE_2026_09_08/STMX_EI_ENGINE_V1_FINAL_CLOSURE.json",
+   "sha256": "d9916d33c73f7c89c9253f7d054a248ce0ca9e61d4dfde0931570e3e6297276c"
+  },
+  {
+   "role": "TC_PRODUCTION_POINTER",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "sha256": "5b237300e9fc5b99b134077875f9e38ec0021702155ec08d62b64c281e362d9a"
+  },
+  {
+   "role": "TC_PRODUCTION_SEAL",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE/CODE_IDENTITY_SEAL_TC_INTEGRATED_RUNTIME_V1_PRODUCTION.json",
+   "sha256": "e2d6cfbfa7f2bd8351d35cd7638e4ca00fe3c919b571774e2e9005688581b336"
+  },
+  {
+   "role": "TC_FINAL_FREEZE_MANIFEST",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_ENGINE_FINAL_FREEZE_V1_MANIFEST.json",
+   "sha256": "f41201af9b88f5bd85754c097a6cdafd5ffbabdb34117071b8361fc0ec11752b"
+  },
+  {
+   "role": "SR_PRODUCTION_POINTER",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "sha256": "6a670aa417c9692364352303aa760a4a6ec7441f60dcac73c2316f7689c36db7"
+  },
+  {
+   "role": "SR_FINAL_FREEZE_SEAL",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_SR_ENGINE_V1_FINAL.json",
+   "sha256": "9a8f6db4b50aa75fbfd6a3455bb97e4c2d81d2e79834aaa9a95a14c12f572a26"
+  },
+  {
+   "role": "SR_ENTRY",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/src/sr_engine_v1_final.js",
+   "sha256": "700931fef86fd40da40c4c024955fe1fef75883f27062c61dfbc0ac5bae51390"
+  },
+  {
+   "role": "DM_PRODUCTION_POINTER",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "sha256": "32f7d256e86749c4e35f5f5971c9a7cc34c87a1ed629756edb3aa44e9da2f926"
+  },
+  {
+   "role": "DM_FINAL_FREEZE_SEAL",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_DM_ENGINE_V1_FINAL.json",
+   "sha256": "909f9f90c25a21d2461218d2219c0ff2d62c82eb4da9d33d20a4654f5670ed17"
+  },
+  {
+   "role": "DM_ADAPTER_PRODUCTION_SEAL",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ITEM_ENTRY_ADAPTER_V1_CANDIDATE/CODE_IDENTITY_SEAL_DM_ITEM_ENTRY_ADAPTER_V1_PRODUCTION.json",
+   "sha256": "b3a2c3ed621e9f4c94089cb6428a227ddc57763778bdb4e38d22e22fa5310528"
+  },
+  {
+   "role": "DM_ADAPTER_ENTRY",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ITEM_ENTRY_ADAPTER_V1_CANDIDATE/src/dm_item_entry_adapter_v1.js",
+   "sha256": "d7a31acad9c9197c4f924340a9464927a6a102218fb0a92cb55da5641b46aa57"
+  },
+  {
+   "role": "BINDING_SEAL_V5",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/CODE_IDENTITY_SEAL_AXIS_RUNTIME_BINDING_V5_PRODUCTION.json",
+   "sha256": "01e28ca6fa5a5ab6192a9b37276700ff64f3631ca8d03eb80c4064b3fc978ac4"
+  },
+  {
+   "role": "GENERIC_BINDING",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/layers/l7_axis_runtime_binding.js",
+   "sha256": "ce10feba3930c56b3cae9383e4f0ef2214f308f454f7a49fc598e403f5827e8d"
+  },
+  {
+   "role": "GENERIC_BINDING",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/layers/l7_governance_scoring.js",
+   "sha256": "0da11ce76a4251a51106a386308fa003f196980461f7950e41e74699aeb8af03"
+  },
+  {
+   "role": "ITEM_ENTRY",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item/item_entry_v1.js",
+   "sha256": "aa3010e72be5d532039c6189ff2df8f75f0bac6695a15e9f9f1f97f24bc1b989"
+  },
+  {
+   "role": "RESULT_COMPOSER",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item/item_result_composer_v1.js",
+   "sha256": "ef969aade8aac65b120a90201d25e7bbb4a23bada238ed1497df2688337cf94c"
+  },
+  {
+   "role": "ITEM_CONTRACTS",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item/item_contracts_v1.js",
+   "sha256": "954e367a17894a20dfc8fc292212e38571b504e827857fc2d6655b3b547c39a5"
+  },
+  {
+   "role": "EI_INPUT_COMPATIBILITY_ADAPTER",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/src/ei_vision_input_compatibility_v1.js",
+   "sha256": "d835df450b3efe48cc9f98dfeefa804e5f60d29d1777a9daef1ace7360e55759"
+  },
+  {
+   "role": "TC_POPULATION_LEDGER",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_27_STEP3_FINAL_FREEZE/06_STEP3_FINAL_114_UNIT_REPLAY_LEDGER.json",
+   "sha256": "724c5695c810d317f2ab7cf6ddd9420a0b8cd1bdd0ea97037c33cac4366d5ed9"
+  },
+  {
+   "role": "NOTATION_AUTHORITY",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/stmx_score_notation_v1.js",
+   "sha256": "fc364336d321d2c3baa395b47647073cb4175bb772728e13dd3404d325b577f6"
+  },
+  {
+   "role": "VISION_PRODUCTION_POINTER",
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_PRODUCTION_AUTHORITY_V1.json",
+   "sha256": "123365a2323b18a9a04a3b294f864b9fe51c539abfcb7675843578a4f568be6d"
+  },
+  {
+   "role": "PRODUCER_V1_3_RULES",
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+  },
+  {
+   "role": "PRODUCER_V1_1_RULES",
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_rules_v1.js",
+   "sha256": "c4190ece1408854d039eda4d9a1c3f4de2c5209ae1eefb7f8a461ba5825bf98f"
+  },
+  {
+   "role": "COLOUR_V1_CONTRACT",
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+   "sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52"
+  },
+  {
+   "role": "CANONICAL_DICTIONARY",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CANONICAL_MASTER_PACK/00_MASTER/Canonical/STMX_CANONICAL_DICTIONARY.md",
+   "sha256": "fbeb9e84fbeabc10601b758a93ee49892c5bdeb59eea82c5149fa535e9c3eadd"
+  },
+  {
+   "role": "CLAUDE_MD",
+   "path": "CLAUDE.md",
+   "sha256": "ddb9a7d32a36bebb8e2ab35ff27c005a92e07e4b2fc348e569036e05004dfa21"
+  },
+  {
+   "role": "FINAL_FREEZE_CONSTITUTION",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_ITEM_SCORING_ENGINE_V1_FINAL_FREEZE.md",
+   "sha256": "6adf2a84e9e50c84cae932c69bfe0116de93f99be6b0a32ebb1c1e30fadb7905"
+  },
+  {
+   "role": "FINAL_LIMITATION_REGISTER",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_ITEM_SCORING_ENGINE_V1_FINAL_LIMITATION_REGISTER.md",
+   "sha256": "b6f183692ad6dec87923a582b5d485ba84a69a424a9d4ab9247f1dc4a089c2ef"
+  }
+ ],
+ "rule": "MANIFEST_AGGREGATE_SHA256 = sha256 over [path, sha256] of pinned_files in order",
+ "MANIFEST_AGGREGATE_SHA256": "05307a0eec17d78a46502b9801fdf2cd7a583dc83e0372aa6db456b7a86ec288"
+}

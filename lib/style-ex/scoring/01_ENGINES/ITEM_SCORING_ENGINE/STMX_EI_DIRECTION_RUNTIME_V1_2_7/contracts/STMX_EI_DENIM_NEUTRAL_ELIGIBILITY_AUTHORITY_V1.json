@@ -1,0 +1,70 @@
+{
+  "document": "STMX_EI_DENIM_NEUTRAL_ELIGIBILITY_AUTHORITY_V1",
+  "authority_status": "🔒 CURRENT CANONICAL AUTHORITY — CEO Decision 2026-09-05 (post-Denim consolidated update)",
+  "supersedes": {
+    "document": "STMX_EI_DENIM_MATERIAL_COLOR_AUTHORITY_V1",
+    "runtime": "STMX_EI_DIRECTION_RUNTIME_V1_1_3",
+    "why": "the V1.1.3 rule was material-only and therefore category-INDEPENDENT: it granted Denim basic-colour Neutral to every Denim garment in every category. The CEO has now frozen a category-eligibility model — Denim Neutral eligibility ≠ all Denim garments.",
+    "status_of_v1_1_3": "SUPERSEDED_BY_DENIM_NEUTRAL_ELIGIBILITY_CORRECTION (history preserved, not deleted)"
+  },
+  "ceo_decision_date": "2026-09-05",
+  "approval_anchor": {
+    "ceo_decision": "2026-09-05",
+    "order": "CLAUDE CODE CORRECTION ORDER — EI DIRECTION POST-DENIM CONSOLIDATED CEO UPDATE V1",
+    "reason": "Denim basic-colour Neutral applies only to conventional Denim product contexts (Trouser/Jeans · Denim Jacket · Skirt); Navy joins the Denim basic palette; an ineligible Denim category bypasses BOTH the Denim Neutral rule and the ordinary Category×Color Neutral Registry and resolves from intrinsic colour-family semantics.",
+    "affected_scope": "STMX_EI_DIRECTION_RUNTIME_V1_2_6 Stage 2.5 + startingState + this contract + Denim tests. ⛔ D7 · D8 · Registry V2 rows · Base Character · Colour V1 schema · P3 force contract unchanged."
+  },
+  "material_scope": [
+    "Denim"
+  ],
+  "basic_neutral_color_families": [
+    "black",
+    "gray",
+    "blue",
+    "navy"
+  ],
+  "basic_set_change": "Navy ADDED to the interim Black/Gray/Blue set (CEO 2026-09-05).",
+  "eligible_categories": [
+    "Trouser",
+    "Jacket",
+    "Skirt"
+  ],
+  "eligibility_predicates": {
+    "Trouser": "category = Trouser ∧ material includes Denim — the Trouser/Jeans conventional denim product context. The governed Jeans product context (trouser_distinction = Jeans, Registry V2 §5 · CEO D-J6) is ALSO available and is recorded in the trace for every Denim trouser; eligibility itself is category-level because the CEO ineligible list (§7) is expressed entirely in categories. ⚠ CEO REVIEW ITEM: if eligibility is meant to be the narrower Jeans product context only, this predicate must be narrowed — see DN-ELIG-REVIEW-1 (0 corpus units affected today: every governed Denim trouser in the corpus carries trouser_distinction = Jeans).",
+    "Jacket": "category = Jacket ∧ material includes Denim — the same predicate the Registry V2 §4 Jacket chain already uses for its Jacket · Denim context.",
+    "Skirt": "category = Skirt ∧ material includes Denim."
+  },
+  "ineligible_categories": [
+    "T-Shirt",
+    "Shirt",
+    "Sweater",
+    "Sweatshirt",
+    "Coat",
+    "Dress",
+    "Jumpsuit"
+  ],
+  "ineligible_note": "The canonical category vocabulary is exactly [T-Shirt · Shirt · Sweater · Sweatshirt · Jacket · Coat · Trouser · Skirt · Dress · Jumpsuit] (producer_rules_v1.js). \"Blouse\" in the CEO order is not a canonical category; it falls under Shirt, which is ineligible. Eligibility is a CLOSED allow-list: any category not in eligible_categories is ineligible, so a future category is ineligible by default until the CEO says otherwise.",
+  "eligible_rule": "material includes Denim ∧ category ∈ {Trouser · Jacket · Skirt}: primary_color_family ∈ {black · gray · blue · navy} → CONTEXTUAL_NEUTRAL; any other Base-Character family → E_BASE.",
+  "ineligible_rule": "material includes Denim ∧ category ∉ eligible: (a) NO Denim Neutral, (b) BYPASS the ordinary Category×Color Neutral Registry — an ineligible Denim garment must not regain Neutral through a row it would otherwise hit, (c) resolve from the intrinsic colour-family semantics (Registry V2 §1 Base Character), (d) continue through EI evidence normally.",
+  "denim_is_not_evidence": "⛔ The Denim material itself is NEVER admitted as EI P3 evidence. This decision governs Neutral eligibility/routing ONLY. No \"Denim in an unusual category = Meaningful\" pathway exists or may be created.",
+  "lightness_non_requirement": "⛔ color_lightness is not part of any predicate (EI-X-D9 preserved).",
+  "unresolvable_family_rule": "primary_color_family that is not a Base-Character family (Colour V1 'uncertain') stays UNRESOLVED in every branch — never promoted to Expressive (fail-closed, EI-X-D2).",
+  "precedence": {
+    "order": [
+      "37 Parameters + Colour V1",
+      "Stage 2 intrinsic Base Character",
+      "Stage 2.5 material/category routing — IF material = Denim: eligible → Denim basic rule decides · ineligible → Registry bypass + intrinsic semantics · ELSE fall through",
+      "Stage 3 Category×Color Neutral Registry (skipped for ALL Denim garments)",
+      "P2 / P3 evidence",
+      "D7 / D8",
+      "Final Direction"
+    ],
+    "no_downgrade": "⛔ An eligible-Denim non-basic E_BASE is never downgraded afterwards by generic Non-Expressive family semantics."
+  },
+  "no_name_guessing": "⛔ Eligibility is derived from the governed category observation and the governed material observation only. No string matching on descriptors or file names.",
+  "implementation_location": {
+    "runtime": "STMX_EI_DIRECTION_RUNTIME_V1_2_6/src/ei_direction_runtime_v1_2_6.js — Stage 2.5 resolveMaterialColorContext(obs, colorBase, category) + startingState() precedence + trace.material_color_context",
+    "prohibition": "⛔ No REF / case identity appears in the runtime. The rule is a pure function of (category, material, primary_color_family)."
+  },
+  "tests": "STMX_EI_DIRECTION_RUNTIME_V1_2_6/tests/denim_neutral_eligibility_v1_2.js"
+}

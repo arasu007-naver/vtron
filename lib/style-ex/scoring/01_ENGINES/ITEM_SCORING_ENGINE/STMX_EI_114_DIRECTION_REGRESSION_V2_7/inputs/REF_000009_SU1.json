@@ -1,0 +1,234 @@
+{
+  "unit_id": "REF_000009#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "7d60dab669f3cd98bb4b8cf86489728bd5660b0c64ca68f15a4627305d6a04a2",
+  "projected_hash": "9c3051c2b824fa6293c1a4de7d8e20a8d8a1f48d357089eedbb89545d6d00a16",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte woven body",
+          "ribbed knit trims"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth matte woven bomber shell"
+            ]
+          },
+          {
+            "value": "Knit",
+            "evidence": [
+              "ribbed collar, cuffs, and hem"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain matte woven body, no constructed surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black cloth, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "zippered utility pocket on left upper sleeve",
+          "welt pocket at right lower body"
+        ],
+        "count": 2
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "metal zipper pulls and teeth"
+        ],
+        "values": [
+          {
+            "value": "Metal Hardware",
+            "evidence": [
+              "silver-tone zipper hardware at front and sleeve pocket"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "symmetrical front"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "broad body, dropped shoulders, long roomy sleeves"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "ribbed hem falls at hip"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "body holds shape yet drapes softly at sleeves"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to wrists"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "soft natural shoulder line, no built padding"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "ribbed standing bomber collar band"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "ribbed knit hem band at bottom"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "standing collar, no hood"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "central two-way front zipper with metal teeth"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "bomber shape with ribbed trims and sleeve pocket"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight body, no waist shaping"
+        ]
+      },
+      "pocket_construction": {
+        "state": "OBSERVED",
+        "value": "Inset",
+        "region": "whole_garment",
+        "evidence": [
+          "set-in zippered sleeve pocket",
+          "welt lower pocket"
+        ]
+      },
+      "pocket_projection": {
+        "state": "OBSERVED",
+        "value": "Flat",
+        "region": "whole_garment",
+        "evidence": [
+          "pockets flush with surface"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits past natural shoulder"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "silver",
+          "carrier_kind": "closure",
+          "carrier_ref": "Zipper"
+        }
+      ],
+      "evidence": {
+        "primary": "uniformly black woven body and ribbed trims",
+        "lightness": "deep black tone",
+        "usage": "single black across garment",
+        "effect": "matte, no metallic or neon chroma"
+      },
+      "color_notes": null
+    }
+  }
+}

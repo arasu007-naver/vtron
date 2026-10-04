@@ -1,0 +1,228 @@
+{
+  "unit_id": "REF_000525#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "25afad50b471bbf7c98987313b1cb49c016948a614ac52fec266965d9efc045f",
+  "projected_hash": "9b4495293d23544cf1964f62ad44f791b3df66454b698a8d3b130de079548c94",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "denim body",
+          "woven plaid fabric patches"
+        ],
+        "values": [
+          {
+            "value": "Denim",
+            "evidence": [
+              "blue cotton denim weave, indigo wash"
+            ],
+            "locations": [
+              {
+                "component": "Leg"
+              }
+            ]
+          },
+          {
+            "value": "Cotton",
+            "evidence": [
+              "plaid woven fabric patches applied to legs"
+            ],
+            "locations": [
+              {
+                "component": "Leg",
+                "descriptor": "Panel"
+              }
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "CEO adjudication"
+            ],
+            "value": "Treated Surface",
+            "coverage": "Partial",
+            "treated_surface_realization": "Distressed"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Treated Surface",
+            "coverage": "Partial",
+            "treated_surface_realization": "Distressed"
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Grid",
+        "region": "whole_garment",
+        "evidence": [
+          "plaid check patches on legs"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "embroidered bear patch",
+          "circular camp patches",
+          "rainbow egg motif patch"
+        ]
+      },
+      "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "embroidered patches and appliqued fabric patches"
+        ],
+        "values": [
+          {
+            "value": "Appliqué",
+            "evidence": [
+              "contrast denim and plaid fabric patches sewn onto legs"
+            ],
+            "locations": [
+              {
+                "component": "Leg",
+                "descriptor": "Panel"
+              }
+            ]
+          },
+          {
+            "value": "Embroidery",
+            "evidence": [
+              "embroidered bear patch, camp badge, RL circular patches"
+            ],
+            "locations": [
+              {
+                "component": "Leg"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "patches and patchwork concentrated on one leg, differing from the other"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Jeans",
+        "region": "whole_garment",
+        "evidence": [
+          "5-pocket construction",
+          "rivets and denim topstitching"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "leg width consistent to hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "lower",
+        "evidence": [
+          "moderate straight leg, ordinary ease"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "lower",
+        "evidence": [
+          "flat-lay product image, no body to reference"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat",
+            "evidence": [
+              "curved set-in front-hip pocket openings",
+              "flush against denim"
+            ]
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "blue",
+      "color_lightness": "normal",
+      "color_usage": "multi",
+      "multi_color": true,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "blue",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Grid"
+        },
+        {
+          "color_family": "orange",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Grid"
+        },
+        {
+          "color_family": "red",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        },
+        {
+          "color_family": "green",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        },
+        {
+          "color_family": "yellow",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        },
+        {
+          "color_family": "white_family",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        }
+      ],
+      "evidence": {
+        "primary": "medium indigo denim body",
+        "lightness": "mid-tone wash",
+        "usage": "multiple contrasting patches and plaid fabrics",
+        "effect": "no neon or metallic color"
+      },
+      "color_notes": "faded/washed denim with distressed lighter abrasion areas"
+    }
+  }
+}

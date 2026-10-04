@@ -1,0 +1,35 @@
+{
+ "document": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CONTRACT",
+ "successor": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE",
+ "status": "CANDIDATE · SHADOW · NOT FROZEN · NOT PRODUCTION",
+ "sprint": "V2.3.86",
+ "date": "2026-09-27",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-27 — D-85-1 APPROVED · D-85-3 APPROVED (order V2.3.86 §2)",
+  "Reason": "implement the frozen Strong-shoulder clarification (D-85-1) and the scoring-object membership correction (D-85-3) on the Direction path; every V3 rule (GRC · WG · MC1) carried unchanged",
+  "Affected Scope": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/ (new). Successor V3, V2, the frozen Step 2 evaluator and every sealed runtime stay byte-identical."
+ },
+ "predecessor": {
+  "id": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V3_CANDIDATE (V2.3.84)",
+  "relation": "V4 = V3 + rules SHC and SOR. With SHC and SOR inactive the chain output equals V3 exactly (equivalence proof in the V2.3.86 package)."
+ },
+ "rules": {
+  "SHC": {
+   "name": "Strong-shoulder clarification",
+   "authority": "CEO D-85-1 · CURRENT_CONSTITUTION/STMX_TC_STRONG_SHOULDER_CLARIFICATION_FREEZE_V1.md",
+   "keys": ["JACKET:Tailored", "COAT:Tailored"],
+   "values": ["Strong"],
+   "rule": "on the listed keys an observed shoulder_structure = Strong is conventional tailored structure: it is withheld from the frozen silhouette predicate's morphology eligibility (the token is not presented to silh()); every other token — fit, sleeve_volume, shoulder_span — is read by the frozen predicate as before",
+   "unchanged": ["Extreme on every key", "Strong on every non-tailored key", "Oversized · Proportion · Construction · asymmetry departures"],
+   "never": ["Strong = Transformative", "Strong = Classic by itself (the channel is decided by the frozen ladder)", "a shoulder scoring layer"]
+  },
+  "SOR": {
+   "name": "scoring-object membership",
+   "authority": "CEO D-85-3 · 02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/SCORING_OBJECT_CORRECTION_V1.json",
+   "rule": "for an anchor listed in the sealed scoring-object record, the unit is formed from the recorded member(s) only; the other extracted garments remain member records as context and never enter the unit Direction, its valid departures or its conformity profile",
+   "never": ["look-level / outfit TC", "aggregation of garment Directions", "a membership chosen at runtime"]
+  },
+  "carried_from_V3": ["GRC", "WG", "MC1"]
+ },
+ "not_responsibilities": ["430 relational sleeve realization (V2.3.86 §15 STOP — no rule exists)", "Strength", "Score Physics", "tier / ordinal", "new Atomic / Vision field / Departure family / vocabulary / enum"]
+}

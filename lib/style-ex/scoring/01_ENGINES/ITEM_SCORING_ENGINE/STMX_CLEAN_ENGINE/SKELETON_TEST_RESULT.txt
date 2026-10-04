@@ -1,0 +1,152 @@
+==============================
+STMX Validation
+Time: 07/11/2026 Sat 23:32:35.71
+==============================
+
+Node Version  : v24.18.0
+
+----- Contract Tests -----
+PASS  1 pipeline matches migration stage profile
+PASS  2 undefined input does not crash
+PASS  3 forbidden field yields no decision
+PASS  4 empty knowledge yields non-decision
+PASS  5 L3..L8 remain skeleton
+PASS  6 contract validation rejects wrong package type
+PASS  7 shadow with unconnected legacy is NOT_COMPARABLE
+PASS  8 empty regression suite
+PASS  9 deterministic same-input same-output
+PASS  10 L8 output skeleton schema
+
+--- STMX Contract Tests: 10 passed, 0 failed ---
+SUMMARY: PASS (10/10)
+
+----- L1 Observation Tests -----
+PASS  1 valid normal observation
+PASS  2 missing required object
+PASS  3 forbidden field excluded
+PASS  4 invalid enum
+PASS  5 invalid boolean type
+PASS  6 invalid array type
+PASS  7 unknown preserved losslessly
+PASS  8 provenance preserved
+PASS  9 duplicate conflict
+PASS  10 same input deterministic
+PASS  11 runtime integration
+PASS  12 exact shadow key/status
+PASS  13 unknown shadow equivalence
+PASS  14 array deep comparison
+PASS  15 object deep comparison
+PASS  16 intentional mismatch detected
+PASS  17 status vs data.valid separation
+
+--- STMX L1 Tests: 17 passed, 0 failed ---
+SUMMARY: PASS (17/17)
+
+----- L2 Canonical Tests -----
+PASS  1 valid canonical
+PASS  2 wrong input package
+PASS  3 alias mechanism
+PASS  4 enum canonical rule
+PASS  5 invalid enum flagged
+PASS  6 unknown passthrough
+PASS  7 duplicate conflict propagated
+PASS  8 forbidden not generated
+PASS  9 provenance chain
+PASS  10 raw preserved
+PASS  11 deterministic
+PASS  12 runtime integration
+PASS  13 shadow exact key/status
+PASS  14 shadow unknown equivalence
+PASS  15 shadow intentional mismatch
+PASS  16 shadow expected diff (forbidden)
+PASS  17 status vs data.valid
+PASS  18 axis-neutral structural key absence
+PASS  19 uncertain allowed
+PASS  20 single source no conflict
+PASS  21 required missing flagged
+PASS  22 number/array preserved
+PASS  23 alias target in canonical enum
+PASS  24 alias map full integrity
+PASS  25 invalid alias target detected
+PASS  26 alias result enum-validated in validator
+PASS  27 rule_source alias
+PASS  28 rule_source identity & duplicate
+PASS  29 missing rule_source flagged
+PASS  30 shadow scope field-level
+PASS  31 legacy not connected, oracle false
+PASS  32 no derived/projection keys
+PASS  33 wrong input contract behavior
+PASS  34 alias approved with anchor
+PASS  35 hoodie compound requirement recorded
+
+--- STMX L2 Tests: 35 passed, 0 failed ---
+SUMMARY: PASS (35/35)
+
+----- Runtime Skeleton -----
+{
+  "run_id": "DEMO",
+  "architecture_version": "CLEAN_ARCHITECTURE_FREEZE_V1_0",
+  "migration_version": "SPRINT_1_SKELETON",
+  "execution_status": "OK",
+  "layer_statuses": [
+    {
+      "layer": "L1",
+      "type": "ObservationPackage",
+      "status": "OK"
+    },
+    {
+      "layer": "L2",
+      "type": "CanonicalPackage",
+      "status": "OK"
+    },
+    {
+      "layer": "L3",
+      "type": "DerivedPackage",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "layer": "L4",
+      "type": "ProjectionContext",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "layer": "L5",
+      "type": "ApplicableKnowledgeSet",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "layer": "L6",
+      "type": "InteractionContext",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "layer": "L7",
+      "type": "DecisionPackage",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "layer": "L8",
+      "type": "OutputPackage",
+      "status": "NOT_IMPLEMENTED"
+    }
+  ],
+  "decision_status": "NOT_IMPLEMENTED",
+  "decision_payload": {},
+  "errors": [],
+  "diagnostics": {
+    "final_type": "OutputPackage",
+    "note": "Sprint 1 skeleton — all layers NOT_IMPLEMENTED"
+  }
+}
+RUNTIME_DEMO_OK
+
+==============================
+Node          : PASS (v24.18.0)
+Contract Tests: PASS (10/10)
+L1 Tests      : PASS (17/17)
+L2 Tests      : PASS (35/35)
+Runtime       : PASS
+Architecture  : UNCHANGED
+Production    : UNCHANGED
+OVERALL       : PASS
+==============================

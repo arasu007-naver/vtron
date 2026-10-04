@@ -1,0 +1,244 @@
+{
+  "unit_id": "REF_000811#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "a6d728cbaa0b065806b6b439f02f51fd264ebd591e24ca7a2cfc8153c0c35b39",
+  "projected_hash": "25e79841a985c225f21b3eee82fb22ae01a0ad51838088aca95cd802881a5306",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "allover small disc sequins over base cloth"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "dense small sequins with glitter base fabric"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "glittering allover sequin coverage"
+        ],
+        "values": [
+          {
+            "value": "Reflective",
+            "evidence": [
+              "numerous light-returning sequins across body and sleeves"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "single burgundy tone, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "flap pocket visible at lower front"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "allover sequin coverage"
+        ],
+        "values": [
+          {
+            "value": "Sequin-Beading",
+            "evidence": [
+              "dense small sequins across whole garment"
+            ]
+          }
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "self-fabric tie belt at waist"
+        ],
+        "values": [
+          {
+            "value": "Belt",
+            "evidence": [
+              "matching sequined self-tie belt wrapped at waist"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "diagonal wrap closure edge crosses to one side, tie end hangs on one side with no counterpart"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Slim",
+        "region": "upper",
+        "evidence": [
+          "body follows torso closely",
+          "waist wrapped and tied close",
+          "sleeves fitted to arm"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem descends into hip region below waist tie"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds a soft tailored shape, follows body with some give"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to the wrist"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "clear shoulder endpoint formed at natural shoulder, sleeve begins there"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Strong",
+        "region": "upper",
+        "evidence": [
+          "shoulder line held near-horizontal with clear endpoint before sleeve turns down"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Peak",
+        "region": "upper",
+        "evidence": [
+          "lower lapel edge extends up into a point overlapping above collar seam, no notch"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no ribbed band at lower edge, self-fabric jacket hem"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "wrap front opening runs full length of jacket front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Open",
+        "region": "upper",
+        "evidence": [
+          "wrap closure held by tie belt, no visible buttons or zipper"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "structured lapel, shaped body, tailored jacket construction"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Cinched",
+        "region": "whole_garment",
+        "evidence": [
+          "self-tie belt pulls waist visibly inward, wrapped closure reduces circumference"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve envelope ordinary, follows arm"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends plainly at wrist, no constructed cuff band visible"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "lapel breadth covers ordinary share of chest panel"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "wine",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": []
+    }
+  }
+}

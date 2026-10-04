@@ -1,0 +1,213 @@
+{
+  "unit_id": "REF_000520#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "b948f72caead2db00a1ac9ffbb2e06003a75bee646a5f51b34423ff8d7187827",
+  "projected_hash": "edaef12b3c7bd27902c2ba3ad12c7950a4628ee34c82d5821a0b8969bfd8eaff",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "denim twill weave",
+          "faded gray denim body"
+        ],
+        "values": [
+          {
+            "value": "Denim",
+            "evidence": [
+              "visible denim twill",
+              "characteristic denim wash and fade"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "heavy fading/whiskering and washed appearance",
+          "lightened thigh zones"
+        ],
+        "values": [
+          {
+            "value": "Treated Surface",
+            "evidence": [
+              "washed/faded denim with whiskering and abrasion",
+              "frayed hem edges"
+            ],
+            "treated_surface_realization": "Distressed"
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "small woven brand tab only, no placed graphic print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "two front pockets with zip closures below the waist"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "small angled leather-style brand patch at front"
+        ],
+        "values": [
+          {
+            "value": "Appliqué",
+            "evidence": [
+              "applied red/white brand tab at hip pocket area"
+            ],
+            "locations": [
+              {
+                "component": "Pocket"
+              }
+            ]
+          }
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "evidence": [
+              "silver zipper pulls at pockets",
+              "metal shank waist buttons"
+            ],
+            "value": "Metal Hardware",
+            "coverage": "Partial",
+            "locations": [
+              {
+                "component": "Pocket"
+              }
+            ]
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Metal Hardware",
+            "coverage": "Partial",
+            "locations": [
+              {
+                "component": "Pocket"
+              }
+            ],
+            "evidence": [
+              "silver zipper pulls at pockets",
+              "metal shank waist buttons"
+            ]
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right pockets, legs and waistband mirror each other",
+          "no one-sided panel or uneven hem"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Jeans",
+        "region": "whole_garment",
+        "evidence": [
+          "denim bottomweight",
+          "non-elastic waistband with belt loops",
+          "button fly waist assembly and shaped hip pockets"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Flared",
+        "region": "whole_garment",
+        "evidence": [
+          "leg narrows through knee then expands outward toward the hem (bootcut/bell)"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Slim",
+        "region": "lower",
+        "evidence": [
+          "close through hip and thigh following the leg",
+          "widening only at the lower leg flare"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem reaches the ankle/foot on the standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "denim holds shape at hip and waist but drapes softly down the leg"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "silver",
+          "carrier_kind": "attachment",
+          "carrier_ref": "Metal Hardware"
+        },
+        {
+          "color_family": "red",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Panel"
+        }
+      ],
+      "evidence": {
+        "primary": "washed gray denim body",
+        "lightness": "mid-tone gray with faded zones",
+        "usage": "single dominant denim color",
+        "effect": "no neon or metallic color in cloth"
+      },
+      "color_notes": "washed/faded gray denim with whiskering; base family retained despite fading"
+    }
+  }
+}

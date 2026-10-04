@@ -1,0 +1,200 @@
+{
+  "unit_id": "REF_000808#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "8bf10eaf0c76cebce08e122c4fe4b6cc899f7340cff7cb2c7afe1b00c40412f1",
+  "projected_hash": "c1247ae13d8354439d4b4789c9c536d98f07e71f7c6d1607a472fe3e2e5c027b",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte tailoring cloth surface"
+        ],
+        "values": [
+          {
+            "value": "Wool",
+            "evidence": [
+              "matte suiting weave typical of wool tailoring"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain matte cloth, no constructed or optical treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic element"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied decorative construction"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, or trim attachment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front and lapels"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "clean straight body with moderate ease, not close, not oversized"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Cropped",
+        "region": "upper",
+        "evidence": [
+          "hem ends clearly above the waist zone, high on the torso"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth holds a clean standing boxy shape away from the body"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to the wrist"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits at natural shoulder point"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Strong",
+        "region": "upper",
+        "evidence": [
+          "shoulder line held near-horizontal across a span",
+          "clear endpoint before sleeve turns down"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Notched",
+        "region": "upper",
+        "evidence": [
+          "visible step/notch where collar meets lapel",
+          "lower lapel edge does not rise to a point"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "flat banded hem, no ribbing"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "no hood present"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "center front placket runs full length from neck to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Open",
+        "region": "upper",
+        "evidence": [
+          "front hangs closed but no visible buttons, zip, or snaps"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "tailored lapel and clean structured build"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary straight sleeve envelope"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black tailoring cloth",
+        "lightness": "deep black tone throughout",
+        "usage": "one solid color, no secondary color",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "document": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_2",
+  "contract_version": "V1.2",
+  "date": "2026-09-06",
+  "status": "⚠ SUPERSEDED 2026-09-06 — HISTORICAL. Superseded by STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_3 under the D03A/D03B case-authority decontamination. ⛔ PRESERVED, not deleted: it is the authority record of what V1.2.4/V1.2.5 executed.",
+  "is_current": false,
+  "supersedes": {
+    "file": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_1.json",
+    "sha256": "ec237705d19fa6eedba4879fbc7f5ce5e84f1099164ae569083c8273aa12d346",
+    "status_of_prior": "HISTORICAL — PRESERVED, NOT OVERWRITTEN, NOT CURRENT"
+  },
+  "purpose": "§10 · §11 — a formal freeze cannot proceed with two contradictory ACTIVE contracts. V1.1 still carried clauses (Treated Surface / Pleated → GAP-06, the old Pattern GAP-12 logic, the coverage-based Glossy rules) that later CEO decisions superseded. This contract states the CURRENT authority and links every superseded clause. ⛔ It freezes nothing new.",
+  "classification_legend": {
+    "A_FINAL_GENERAL_RULE": "a decided rule that applies to any garment meeting its governed conditions",
+    "B_FINAL_CASE_AUTHORITY_ONLY": "a CEO adjudication scoped by GOVERNED CONTEXT. ⛔ It is NOT universal token physics and must never be generalized.",
+    "C_REPRESENTATION_DEPENDENT": "the architecture is decided; this record does not carry the governed fact. Fails closed as an input representation gap.",
+    "D_UNRESOLVED_CEO_AUTHORITY": "the CEO has not decided the force. Fails closed as a CEO authority gap.",
+    "E_SUPERSEDED_HISTORICAL": "preserved for provenance. ⛔ NOT executable and NOT current."
+  },
+  "classification_counts": {
+    "A_FINAL_GENERAL_RULE": 9,
+    "C_REPRESENTATION_DEPENDENT": 4,
+    "B_FINAL_CASE_AUTHORITY_ONLY": 2,
+    "D_UNRESOLVED_CEO_AUTHORITY": 2,
+    "E_SUPERSEDED_HISTORICAL": 6
+  },
+  "rules": [
+    {
+      "rule_id": "GFR-SFIN-V122-N1",
+      "status": "A_FINAL_GENERAL_RULE",
+      "family": "surface = Glossy",
+      "classification": "GENERAL",
+      "required_governed_representation": "surface.finish_realization = Baseline",
+      "force_behaviour": "NO EFFECT",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "CEO 2026-09-05 §9/§10 Glossy finish realization",
+      "supersedes_prior_clause": "the coverage-based Glossy rules GFR-S03-GLOSSY-* (V1.1)"
+    },
+    {
+      "rule_id": "GFR-SFIN-V122-M2",
+      "status": "A_FINAL_GENERAL_RULE",
+      "family": "surface = Glossy",
+      "classification": "GENERAL",
+      "required_governed_representation": "finish_realization = Pronounced",
+      "force_behaviour": "MEANINGFUL",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "CEO 2026-09-05 §9/§10",
+      "supersedes_prior_clause": null
+    },
+    {
+      "rule_id": "GFR-SFIN-V122-M1",
+      "status": "A_FINAL_GENERAL_RULE",
+      "family": "surface = Glossy",
+      "classification": "GENERAL",
+      "required_governed_representation": "finish_realization = Enhanced + governed substantial extent",
+      "force_behaviour": "MEANINGFUL",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "CEO 2026-09-05 §9/§10",
+      "supersedes_prior_clause": null
+    },
+    {
+      "rule_id": "GFR-SFIN-V122-W1",
+      "status": "A_FINAL_GENERAL_RULE",
+      "family": "surface = Glossy",
+      "classification": "GENERAL",
+      "required_governed_representation": "finish_realization = Enhanced",
+      "force_behaviour": "WEAK",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "CEO 2026-09-05 §9/§10",
+      "supersedes_prior_clause": null
+    },
+    {
+      "rule_id": "GFR-SFIN-V122-U1",
+      "status": "C_REPRESENTATION_DEPENDENT",
+      "family": "surface = Glossy",
+      "classification": "GENERAL",
+      "required_governed_representation": "finish_realization",
+      "force_behaviour": null,
+      "fail_closed_behaviour": "UNRESOLVED · INPUT_REPRESENTATION_GAP · GAP-SURFACE-FINISH",
+      "authority_anchor": "CEO 2026-09-05 §9/§10",
+      "supersedes_prior_clause": "GAP-03 / GAP-04 Glossy authority gaps (V1.1)"
+    },
+    {
+      "rule_id": "GFR-S-FM4-V12-M1",
+      "status": "A_FINAL_GENERAL_RULE",
+      "family": "surface = Treated Surface | Pleated",
+      "classification": "GENERAL",
+      "required_governed_representation": "governed SUBSTANTIAL extent",
+      "force_behaviour": "MEANINGFUL",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "CEO 2026-09-05 D03A/D03B realization",
+      "supersedes_prior_clause": null
+    },
+    {
+      "rule_id": "GFR-PAT-V123-W1",
+      "status": "A_FINAL_GENERAL_RULE",
+      "family": "pattern",
+      "classification": "GENERAL",
+      "required_governed_representation": "base_contrast_relation = Tonal",
+      "force_behaviour": "WEAK",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "frozen P3-D-1 \"tonal ⇒ Weak\" · CEO 2026-09-06 §8 exception",
+      "supersedes_prior_clause": "the (Tonal OR Subtle) hard cap GFR-PAT-V122-W1 (V1.2.2)"
+    },
+    {
+      "rule_id": "GFR-PAT-V122-S1",
+      "status": "A_FINAL_GENERAL_RULE",
+      "family": "pattern",
+      "classification": "GENERAL",
+      "required_governed_representation": "separating relation + visual_dominance = Dominant + density dense",
+      "force_behaviour": "STRONG",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "CEO 2026-09-05 §11 four-factor Pattern",
+      "supersedes_prior_clause": "GAP-01 Repeat Strong boundary"
+    },
+    {
+      "rule_id": "GFR-PAT-V122-S2",
+      "status": "A_FINAL_GENERAL_RULE",
+      "family": "pattern",
+      "classification": "GENERAL",
+      "required_governed_representation": "separating relation + motif_complexity = Compound + Dominant",
+      "force_behaviour": "STRONG",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "CEO 2026-09-05 §11",
+      "supersedes_prior_clause": null
+    },
+    {
+      "rule_id": "GFR-PAT-V122-M1",
+      "status": "A_FINAL_GENERAL_RULE",
+      "family": "pattern",
+      "classification": "GENERAL",
+      "required_governed_representation": "separating relation + governed visual_dominance",
+      "force_behaviour": "MEANINGFUL",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "CEO 2026-09-05 §11",
+      "supersedes_prior_clause": null
+    },
+    {
+      "rule_id": "GFR-PAT-V122-U1",
+      "status": "C_REPRESENTATION_DEPENDENT",
+      "family": "pattern",
+      "classification": "GENERAL",
+      "required_governed_representation": "additional_colors[].contrast_with_body on the pattern carriers",
+      "force_behaviour": null,
+      "fail_closed_behaviour": "UNRESOLVED · INPUT_REPRESENTATION_GAP · GAP-PAT-CONTRAST",
+      "authority_anchor": "CEO 2026-09-05 §11 · CEO 2026-09-06 §13",
+      "supersedes_prior_clause": "GAP-02 tonal/subtle Repeat boundary"
+    },
+    {
+      "rule_id": "GFR-PAT-V122-U2",
+      "status": "C_REPRESENTATION_DEPENDENT",
+      "family": "pattern",
+      "classification": "GENERAL",
+      "required_governed_representation": "pattern.visual_dominance",
+      "force_behaviour": null,
+      "fail_closed_behaviour": "UNRESOLVED · INPUT_REPRESENTATION_GAP · GAP-PAT-DOMINANCE",
+      "authority_anchor": "CEO 2026-09-05 §11",
+      "supersedes_prior_clause": null
+    },
+    {
+      "rule_id": "GFR-S-FM4-V124-N1",
+      "status": "B_FINAL_CASE_AUTHORITY_ONLY",
+      "family": "surface = Treated Surface",
+      "classification": "CASE — scoped by governed material = Denim",
+      "required_governed_representation": "material includes Denim + extent NOT governed",
+      "force_behaviour": "NO EFFECT",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "EI-FINAL-D03A · CEO 2026-09-05 · scoped 2026-09-06 §6",
+      "supersedes_prior_clause": "the universal !governed_extent → NO EFFECT branch GFR-S-FM4-V12-N1 (V1.2.3)"
+    },
+    {
+      "rule_id": "GFR-S-FM4-V124-N2",
+      "status": "B_FINAL_CASE_AUTHORITY_ONLY",
+      "family": "surface = Pleated",
+      "classification": "CASE — scoped by governed trouser_distinction = Tailored",
+      "required_governed_representation": "trouser_distinction = Tailored + extent NOT governed",
+      "force_behaviour": "NO EFFECT",
+      "fail_closed_behaviour": "n/a",
+      "authority_anchor": "EI-FINAL-D03B · CEO 2026-09-05 · scoped 2026-09-06 §6",
+      "supersedes_prior_clause": "the universal !governed_extent → NO EFFECT branch GFR-S-FM4-V12-N1 (V1.2.3)"
+    },
+    {
+      "rule_id": "GFR-S-FM4-V124-U1",
+      "status": "C_REPRESENTATION_DEPENDENT",
+      "family": "surface = Treated Surface | Pleated",
+      "classification": "GENERAL",
+      "required_governed_representation": "extent / prominence",
+      "force_behaviour": null,
+      "fail_closed_behaviour": "UNRESOLVED · INPUT_REPRESENTATION_GAP · GAP-08",
+      "authority_anchor": "CEO 2026-09-06 §7 — unknown is NOT ordinary",
+      "supersedes_prior_clause": "the universal NO EFFECT default (V1.2.3)"
+    },
+    {
+      "rule_id": "GFR-S03-REFLECTIVE-U1",
+      "status": "D_UNRESOLVED_CEO_AUTHORITY",
+      "family": "surface = Reflective",
+      "classification": "GENERAL",
+      "required_governed_representation": "a CEO force tier for Reflective",
+      "force_behaviour": null,
+      "fail_closed_behaviour": "UNRESOLVED · CEO_AUTHORITY_GAP · GAP-05",
+      "authority_anchor": "open since the P3 gap register",
+      "supersedes_prior_clause": null
+    },
+    {
+      "rule_id": "FM4-ROWS",
+      "status": "D_UNRESOLVED_CEO_AUTHORITY",
+      "family": "the frozen Force Resolution Matrix FM4 rows",
+      "classification": "GENERAL",
+      "required_governed_representation": "a CEO force authority for these rows",
+      "force_behaviour": null,
+      "fail_closed_behaviour": "UNRESOLVED · CEO_AUTHORITY_GAP · GAP-06",
+      "authority_anchor": "frozen Force Resolution Matrix",
+      "supersedes_prior_clause": null
+    },
+    {
+      "rule_id": "GAP-12",
+      "status": "E_SUPERSEDED_HISTORICAL",
+      "family": "pattern",
+      "classification": "RETIRED",
+      "required_governed_representation": null,
+      "force_behaviour": null,
+      "fail_closed_behaviour": "⛔ NOT CURRENT — the exterior all-over question is settled at ADMISSION",
+      "authority_anchor": "CEO 2026-09-05 §4 Pattern admission boundary",
+      "supersedes_prior_clause": "the V1.1 \"Pattern location/role representation gap\" reading"
+    },
+    {
+      "rule_id": "GAP-01",
+      "status": "E_SUPERSEDED_HISTORICAL",
+      "family": "pattern",
+      "classification": "RETIRED",
+      "required_governed_representation": null,
+      "force_behaviour": null,
+      "fail_closed_behaviour": "⛔ NOT CURRENT — the Pattern force architecture is DECIDED",
+      "authority_anchor": "CEO 2026-09-05 §11",
+      "supersedes_prior_clause": "the V1.1 Repeat Strong boundary CEO-authority gap"
+    },
+    {
+      "rule_id": "GAP-02",
+      "status": "E_SUPERSEDED_HISTORICAL",
+      "family": "pattern",
+      "classification": "RETIRED",
+      "required_governed_representation": null,
+      "force_behaviour": null,
+      "fail_closed_behaviour": "⛔ NOT CURRENT — the Pattern force architecture is DECIDED",
+      "authority_anchor": "CEO 2026-09-05 §11",
+      "supersedes_prior_clause": "the V1.1 tonal/subtle Repeat boundary CEO-authority gap"
+    },
+    {
+      "rule_id": "GFR-S03-GLOSSY-W1 / M1",
+      "status": "E_SUPERSEDED_HISTORICAL",
+      "family": "surface = Glossy",
+      "classification": "RETIRED",
+      "required_governed_representation": null,
+      "force_behaviour": null,
+      "fail_closed_behaviour": "⛔ NOT CURRENT — replaced by the finish-realization ladder",
+      "authority_anchor": "CEO 2026-09-05 §9/§10",
+      "supersedes_prior_clause": "the V1.1 coverage-based Glossy rules"
+    },
+    {
+      "rule_id": "GFR-S-FM4-V12-N1",
+      "status": "E_SUPERSEDED_HISTORICAL",
+      "family": "surface = Treated Surface | Pleated",
+      "classification": "RETIRED",
+      "required_governed_representation": null,
+      "force_behaviour": null,
+      "fail_closed_behaviour": "⛔ NOT CURRENT — it could not distinguish a governed-small extent from an ABSENT one, so unknown was read as ordinary",
+      "authority_anchor": "CEO 2026-09-06 §5 · §7",
+      "supersedes_prior_clause": "the V1.2.3 universal !governed_extent → NO EFFECT branch"
+    },
+    {
+      "rule_id": "GAP-06 on Treated Surface / Pleated",
+      "status": "E_SUPERSEDED_HISTORICAL",
+      "family": "surface",
+      "classification": "RETIRED",
+      "required_governed_representation": null,
+      "force_behaviour": null,
+      "fail_closed_behaviour": "⛔ NOT CURRENT for these tokens — D03A/D03B decided their case authorities and §7 governs the rest",
+      "authority_anchor": "EI-FINAL-D03A / D03B",
+      "supersedes_prior_clause": "the V1.1 \"Treated Surface / Pleated → AUTHORITY_UNRESOLVED / GAP-06\" clause"
+    }
+  ],
+  "prohibited_generalizations": [
+    "Treated Surface = Meaningful when large",
+    "Pleated = Meaningful when large",
+    "Pleated = No Effect when extent is unavailable",
+    "Treated Surface = No Effect when extent is unavailable",
+    "any generic all-Surface finish_realization requirement",
+    "Glossy = Meaningful",
+    "pattern = Repeat → STRONG",
+    "Grid = Weak",
+    "Subtle contrast = universal Weak"
+  ],
+  "unknown_is_not_ordinary": "§7 — where a force depends on a governed realization and that realization is ABSENT, the engine fails closed. It must never read unknown as ordinary and answer NO EFFECT.",
+  "gender": "user gender is NOT a P3 input. It is external scoring context consumed only by EI P1 Neutral Registry selection.",
+  "superseded_by": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_3.json",
+  "superseded_on": "2026-09-06",
+  "superseded_reason": "three clauses were classified as production physics that the CEO never approved as universal: the extent→MEANINGFUL general rule and the two case-scoped NO EFFECT branches."
+}

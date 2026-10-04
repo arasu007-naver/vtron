@@ -1,0 +1,38 @@
+{
+  "document": "FINAL_AUTHORITY_CORRECTION_MAP",
+  "date": "2026-09-08",
+  "supersedes": "STMX_EI_NUMERIC_V1_FINAL_CLOSURE_2026_09_08 (its FREEZE_CANDIDATE claim only)",
+  "★_chronology": [
+    "Previous Claude result → FREEZE_CANDIDATE claimed",
+    "ChatGPT Independent Review → HOLD, two authority defects identified",
+    "This order → corrected revalidation result"
+  ],
+  "corrections": [
+    {
+      "id": "CORRECTION_A",
+      "defect": "INHERENT_PERSISTENT Upper Thigh → automatic EI7 — stronger than CEO authority",
+      "action": "rule removed from the Numeric runtime",
+      "replaced_by": "NUM-E-LIFT-2 (§12 semantic conjunction, qualifier-independent)",
+      "evidence": "D2_AUTOMATIC_LIFT_REMOVAL_PROOF.json",
+      "status": "CLOSED"
+    },
+    {
+      "id": "CORRECTION_B",
+      "defect": "REF_000689#SU1 given Upper Thigh + INHERENT_PERSISTENT without independent CEO adjudication of persistence",
+      "action": "persistence assertion removed; qualifier set to UNKNOWN; Upper Thigh region preserved",
+      "evidence": "D3_689_AUTHORITY_CORRECTION_PROOF.json",
+      "status": "CLOSED"
+    }
+  ],
+  "preserved_unchanged": [
+    "exposure_realization representation (§7)",
+    "37 parameters",
+    "exposure 9-value domain",
+    "EI Direction CLOSED_AND_FROZEN",
+    "EI8 as a legitimate E-side tier and all EI8 ground truth",
+    "520 / 521 reconciliation state",
+    "the five frozen Direction residue units"
+  ],
+  "ceo_controls_reproduced": "6 / 7",
+  "remaining_blocker": "REF_000616#SU2 — see REF_000616_BLOCKER_ANALYSIS.json"
+}

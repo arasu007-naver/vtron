@@ -1,0 +1,4928 @@
+{
+  "document": "NUMERIC_SEMANTIC_STATE_114",
+  "date": "2026-09-08",
+  "★_purpose": "★ The admission-aware semantic state derived from the frozen Direction traces — exactly the object the resolver consumes. A reviewer can require the runtime and re-resolve all 114 without repository access.",
+  "⛔_not_scoring_input": "⛔ numeric_gt and eligibility travel alongside the state for reporting only. The resolver receives ONLY { frozen_direction, exposure, pathways, admitted }.",
+  "resolver_input_fields": [
+    "frozen_direction",
+    "exposure",
+    "pathways",
+    "admitted"
+  ],
+  "units": [
+    {
+      "unit": "REF_000001#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "D_DIRECTION_UNRESOLVED",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "UNRESOLVED",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S01",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV02",
+              "EV03",
+              "EV04",
+              "EV05",
+              "EV06",
+              "EV07"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Textured Knit",
+            "canonical_id": "S01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pattern",
+            "value": "Repeat",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "pink",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "orange",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "green",
+            "canonical_id": null
+          },
+          {
+            "id": "EV06",
+            "parameter": "additional_color",
+            "value": "blue",
+            "canonical_id": null
+          },
+          {
+            "id": "EV07",
+            "parameter": "additional_color",
+            "value": "yellow",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000002#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01",
+              "EV04"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "beige",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000003#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01",
+              "EV04"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "gray",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "black",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000004#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01",
+              "EV03"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "navy",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000005#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000006#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000007#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S03",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Glossy",
+            "canonical_id": "S03"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000008#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "brown",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "gold",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000009#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000010#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S01",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01",
+              "EV03"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "D02",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Textured Knit",
+            "canonical_id": "S01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "decorative_detail",
+            "value": "Appliqué",
+            "canonical_id": "D02/D03"
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "yellow",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "gold",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000011#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000012#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "S01",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Textured Knit",
+            "canonical_id": "S01"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000013#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "brown",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000014#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000020#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Glossy",
+            "canonical_id": "S03"
+          },
+          {
+            "id": "EV03",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV04",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "red",
+            "canonical_id": null
+          },
+          {
+            "id": "EV06",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000021#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Glossy",
+            "canonical_id": "S03"
+          },
+          {
+            "id": "EV03",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV04",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000139#SU1",
+      "category": "Coat",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000141#SU1",
+      "category": "Coat",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S03",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Glossy",
+            "canonical_id": "S03"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000143#SU1",
+      "category": "Coat",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "orange",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000145#SU1",
+      "category": "Coat",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "S03",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV03",
+              "EV05"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Glossy",
+            "canonical_id": "S03"
+          },
+          {
+            "id": "EV03",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV04",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000152#SU1",
+      "category": "Coat",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "khaki",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "brown",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000172#SU1",
+      "category": "Coat",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000182#SU1",
+      "category": "Coat",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "black",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000183#SU1",
+      "category": "Coat",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW02",
+            "dedup_group": "P3_ADDCOL_attachment_Belt",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "camel",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000184#SU1",
+      "category": "Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV01",
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pattern",
+            "value": "Repeat",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "brown",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000185#SU1",
+      "category": "Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01",
+              "EV03",
+              "EV04",
+              "EV05"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pattern",
+            "value": "Linear",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "wine",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "blue",
+            "canonical_id": null
+          },
+          {
+            "id": "EV06",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000190#SU1",
+      "category": "Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S10",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "S08",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Lace",
+            "canonical_id": "S10"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Semi Transparent",
+            "canonical_id": "S08"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000198#SU1",
+      "category": "Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01",
+              "EV03"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV02",
+              "EV05"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pattern",
+            "value": "Linear",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "EV02",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "brown",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000221#SU1",
+      "category": "Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000246#SU1",
+      "category": "Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S10",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "S08",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Lace",
+            "canonical_id": "S10"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Semi Transparent",
+            "canonical_id": "S08"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000323#SU1",
+      "category": "T-Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01",
+              "EV02",
+              "EV03",
+              "EV04",
+              "EV05"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "red",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "yellow",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "blue",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "green",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000325#SU1",
+      "category": "T-Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000335#SU1",
+      "category": "T-Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S08",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Semi Transparent",
+            "canonical_id": "S08"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000338#SU1",
+      "category": "T-Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW02",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV02",
+              "EV03"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Treated Surface",
+            "canonical_id": "S06/S07"
+          },
+          {
+            "id": "EV02",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000339#SU1",
+      "category": "T-Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000368#SU1",
+      "category": "T-Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000378#SU1",
+      "category": "T-Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI8",
+      "numeric_gt_historical": "EI8",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S08",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01",
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Mesh",
+            "canonical_id": "S08"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Semi Transparent",
+            "canonical_id": "S08"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000378#SU2",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "D_DIRECTION_UNRESOLVED",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "UNRESOLVED",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01",
+              "EV03"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pattern",
+            "value": "Linear",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000397#SU1",
+      "category": "Sweater",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S01",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV01",
+              "EV05"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV02",
+              "EV08",
+              "EV09",
+              "EV10",
+              "EV11",
+              "EV12",
+              "EV13",
+              "EV14"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV03",
+              "EV07"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Textured Knit",
+            "canonical_id": "S01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pattern",
+            "value": "Linear",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "EV03",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV04",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          },
+          {
+            "id": "EV06",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          },
+          {
+            "id": "EV07",
+            "parameter": "additional_color",
+            "value": "yellow",
+            "canonical_id": null
+          },
+          {
+            "id": "EV08",
+            "parameter": "additional_color",
+            "value": "pink",
+            "canonical_id": null
+          },
+          {
+            "id": "EV09",
+            "parameter": "additional_color",
+            "value": "blue",
+            "canonical_id": null
+          },
+          {
+            "id": "EV10",
+            "parameter": "additional_color",
+            "value": "green",
+            "canonical_id": null
+          },
+          {
+            "id": "EV11",
+            "parameter": "additional_color",
+            "value": "yellow",
+            "canonical_id": null
+          },
+          {
+            "id": "EV12",
+            "parameter": "additional_color",
+            "value": "red",
+            "canonical_id": null
+          },
+          {
+            "id": "EV13",
+            "parameter": "additional_color",
+            "value": "brown",
+            "canonical_id": null
+          },
+          {
+            "id": "EV14",
+            "parameter": "additional_color",
+            "value": "black",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000398#SU1",
+      "category": "Sweater",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000399#SU1",
+      "category": "Sweater",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000410#SU1",
+      "category": "Sweater",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000414#SU1",
+      "category": "Sweater",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000430#SU1",
+      "category": "Sweater",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S01",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Textured Knit",
+            "canonical_id": "S01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000432#SU1",
+      "category": "Sweater",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000447#SU1",
+      "category": "Sweater",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S01",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Textured Knit",
+            "canonical_id": "S01"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000466#SU1",
+      "category": "Sweatshirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000469#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01",
+              "EV04"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pattern",
+            "value": "Repeat",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "EV02",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV03",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "black",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "red",
+            "canonical_id": null
+          },
+          {
+            "id": "EV06",
+            "parameter": "additional_color",
+            "value": "orange",
+            "canonical_id": null
+          },
+          {
+            "id": "EV07",
+            "parameter": "additional_color",
+            "value": "gold",
+            "canonical_id": null
+          },
+          {
+            "id": "EV08",
+            "parameter": "additional_color",
+            "value": "blue",
+            "canonical_id": null
+          },
+          {
+            "id": "EV09",
+            "parameter": "additional_color",
+            "value": "gold",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000475#SU1",
+      "category": "Sweatshirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000493#SU1",
+      "category": "Sweatshirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000494#SU1",
+      "category": "Sweatshirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000494#SU2",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000496#SU1",
+      "category": "Sweatshirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "additional_color",
+            "value": "black",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000496#SU2",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000499#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S01",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Textured Knit",
+            "canonical_id": "S01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV03",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000500#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV02",
+              "EV04"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV03",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000503#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "brown",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "gray",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000508#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "gray",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000520#SU1",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "E_DIRECTION_INCOMPATIBLE_HISTORICAL_NUMERIC_GT",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S06",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "D02",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "D01",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV03",
+              "EV05"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Treated Surface",
+            "canonical_id": "S06/S07"
+          },
+          {
+            "id": "EV02",
+            "parameter": "decorative_detail",
+            "value": "Appliqué",
+            "canonical_id": "D02/D03"
+          },
+          {
+            "id": "EV03",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV04",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          },
+          {
+            "id": "EV06",
+            "parameter": "additional_color",
+            "value": "red",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000521#SU1",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "E_DIRECTION_INCOMPATIBLE_HISTORICAL_NUMERIC_GT",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW03",
+            "dedup_group": "P3_POCKET",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV03"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Treated Surface",
+            "canonical_id": "S06/S07"
+          },
+          {
+            "id": "EV02",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV03",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000525#SU1",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S06",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "D02",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV03",
+              "EV06"
+            ]
+          },
+          {
+            "id": "PW04",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV04",
+              "EV07",
+              "EV08",
+              "EV09",
+              "EV10"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Treated Surface",
+            "canonical_id": "S06/S07"
+          },
+          {
+            "id": "EV02",
+            "parameter": "decorative_detail",
+            "value": "Appliqué",
+            "canonical_id": "D02/D03"
+          },
+          {
+            "id": "EV03",
+            "parameter": "pattern",
+            "value": "Grid",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "EV04",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV05",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV06",
+            "parameter": "additional_color",
+            "value": "orange",
+            "canonical_id": null
+          },
+          {
+            "id": "EV07",
+            "parameter": "additional_color",
+            "value": "red",
+            "canonical_id": null
+          },
+          {
+            "id": "EV08",
+            "parameter": "additional_color",
+            "value": "green",
+            "canonical_id": null
+          },
+          {
+            "id": "EV09",
+            "parameter": "additional_color",
+            "value": "yellow",
+            "canonical_id": null
+          },
+          {
+            "id": "EV10",
+            "parameter": "additional_color",
+            "value": "white_family",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000541#SU1",
+      "category": "Sweater",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000541#SU2",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S09",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Pleated",
+            "canonical_id": "S09"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000575#SU1",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000586#SU1",
+      "category": "Shirt",
+      "scoring_unit_type": "MATCHING_PAIR",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "target_2:EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000590#SU1",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "brown",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000593#SU1",
+      "category": "T-Shirt",
+      "scoring_unit_type": "MATCHING_PAIR",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Midriff / Waist",
+            "canonical_id": "E02",
+            "evidence_id": "target_1:EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "target_1:EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "target_1:EV01",
+            "parameter": "exposure_opening",
+            "value": "Midriff / Waist",
+            "canonical_id": "E02"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000598#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "MATCHING_PAIR",
+      "eligibility": "D_DIRECTION_UNRESOLVED",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "UNRESOLVED",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S06",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "target_1:EV01",
+              "target_2:EV01"
+            ]
+          },
+          {
+            "id": "PW04",
+            "dedup_group": "D04",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "target_2:EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "target_1:EV01",
+            "parameter": "surface",
+            "value": "Treated Surface",
+            "canonical_id": "S06/S07"
+          },
+          {
+            "id": "target_1:EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "target_1:EV03",
+            "parameter": "additional_color",
+            "value": "gray",
+            "canonical_id": null
+          },
+          {
+            "id": "target_2:EV01",
+            "parameter": "surface",
+            "value": "Treated Surface",
+            "canonical_id": "S06/S07"
+          },
+          {
+            "id": "target_2:EV02",
+            "parameter": "attachment",
+            "value": "Fringe",
+            "canonical_id": "D04"
+          },
+          {
+            "id": "target_2:EV03",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000599#SU1",
+      "category": "Skirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S09",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "S03",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Pleated",
+            "canonical_id": "S09"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Reflective",
+            "canonical_id": "S03"
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "black",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000608#SU1",
+      "category": "Skirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01",
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pattern",
+            "value": "Grid",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "black",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000616#SU1",
+      "category": "Shirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000616#SU2",
+      "category": "Skirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Upper Thigh",
+            "canonical_id": "E04",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_LOWER",
+            "mode": "INHERENT_PERSISTENT"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E04",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Upper Thigh",
+            "canonical_id": "E04"
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "navy",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000622#SU1",
+      "category": "Skirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Upper Thigh",
+            "canonical_id": "E04",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_LOWER",
+            "mode": "CONDITIONAL_OPENING_MEDIATED"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E04",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Upper Thigh",
+            "canonical_id": "E04"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000642#SU1",
+      "category": "Skirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S09",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "S03",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Pleated",
+            "canonical_id": "S09"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Reflective",
+            "canonical_id": "S03"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000657#SU1",
+      "category": "Skirt",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pattern",
+            "value": "Repeat",
+            "canonical_id": "P3_PATTERN"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000660#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000661#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "S10",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV03"
+            ]
+          },
+          {
+            "id": "PW04",
+            "dedup_group": "S08",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV04"
+            ]
+          },
+          {
+            "id": "PW05",
+            "dedup_group": "D02",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV05"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV03",
+            "parameter": "surface",
+            "value": "Lace",
+            "canonical_id": "S10"
+          },
+          {
+            "id": "EV04",
+            "parameter": "surface",
+            "value": "Semi Transparent",
+            "canonical_id": "S08"
+          },
+          {
+            "id": "EV05",
+            "parameter": "decorative_detail",
+            "value": "Appliqué",
+            "canonical_id": "D02/D03"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000664#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI8",
+      "numeric_gt_historical": "EI8",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Upper Thigh",
+            "canonical_id": "E04",
+            "evidence_id": "EV03",
+            "pathway_id": "PW03",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_LOWER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "P2_E04",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV03"
+            ]
+          },
+          {
+            "id": "PW04",
+            "dedup_group": "S03",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV04"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV03",
+            "parameter": "exposure_opening",
+            "value": "Upper Thigh",
+            "canonical_id": "E04"
+          },
+          {
+            "id": "EV04",
+            "parameter": "surface",
+            "value": "Glossy",
+            "canonical_id": "S03"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000667#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "S03",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV03"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV03",
+            "parameter": "surface",
+            "value": "Glossy",
+            "canonical_id": "S03"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000671#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "S08",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV03"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV03",
+            "parameter": "surface",
+            "value": "Semi Transparent",
+            "canonical_id": "S08"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000689#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Upper Thigh",
+            "canonical_id": "E04",
+            "evidence_id": "EV03",
+            "pathway_id": "PW03",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_LOWER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "P2_E04",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV03"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV03",
+            "parameter": "exposure_opening",
+            "value": "Upper Thigh",
+            "canonical_id": "E04"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000694#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "S03",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV03"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV03",
+            "parameter": "surface",
+            "value": "Glossy",
+            "canonical_id": "S03"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000697#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "S08",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Semi Transparent",
+            "canonical_id": "S08"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000698#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S08",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01",
+              "EV02",
+              "EV03"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Pleated",
+            "canonical_id": "S09"
+          },
+          {
+            "id": "EV02",
+            "parameter": "surface",
+            "value": "Semi Transparent",
+            "canonical_id": "S08"
+          },
+          {
+            "id": "EV03",
+            "parameter": "pattern",
+            "value": "Linear",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000701#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI8",
+      "numeric_gt_historical": "EI8",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Upper Thigh",
+            "canonical_id": "E04",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_LOWER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E04",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "S03",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV03"
+            ]
+          },
+          {
+            "id": "PW04",
+            "dedup_group": "D02",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV04",
+              "EV05"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Upper Thigh",
+            "canonical_id": "E04"
+          },
+          {
+            "id": "EV03",
+            "parameter": "surface",
+            "value": "Reflective",
+            "canonical_id": "S03"
+          },
+          {
+            "id": "EV04",
+            "parameter": "attachment",
+            "value": "Jewelry Attachment",
+            "canonical_id": "D02"
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "gold",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000734#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI8",
+      "numeric_gt_historical": "EI8",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "D04",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "attachment",
+            "value": "Fringe",
+            "canonical_id": "D04"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000744#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Upper Thigh",
+            "canonical_id": "E04",
+            "evidence_id": "EV03",
+            "pathway_id": "PW03",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_LOWER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "P2_E04",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV03"
+            ]
+          },
+          {
+            "id": "PW04",
+            "dedup_group": "S10",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV04"
+            ]
+          },
+          {
+            "id": "PW05",
+            "dedup_group": "S08",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV05",
+              "EV06"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV03",
+            "parameter": "exposure_opening",
+            "value": "Upper Thigh",
+            "canonical_id": "E04"
+          },
+          {
+            "id": "EV04",
+            "parameter": "surface",
+            "value": "Lace",
+            "canonical_id": "S10"
+          },
+          {
+            "id": "EV05",
+            "parameter": "surface",
+            "value": "Semi Transparent",
+            "canonical_id": "S08"
+          },
+          {
+            "id": "EV06",
+            "parameter": "pattern",
+            "value": "Linear",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000775#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000787#SU1",
+      "category": "Dress",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000788#SU1",
+      "category": "Jumpsuit",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV03",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000789#SU1",
+      "category": "Jumpsuit",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000790#SU1",
+      "category": "Jumpsuit",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000791#SU1",
+      "category": "Jumpsuit",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000793#SU1",
+      "category": "Jumpsuit",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000802#SU1",
+      "category": "Jumpsuit",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [
+          {
+            "region": "Shoulder",
+            "canonical_id": "E05",
+            "evidence_id": "EV01",
+            "pathway_id": "PW01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          },
+          {
+            "region": "Chest / Décolletage",
+            "canonical_id": "E01",
+            "evidence_id": "EV02",
+            "pathway_id": "PW02",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "klass": "CLASS_A_UPPER",
+            "mode": "UNKNOWN"
+          }
+        ],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P2_E05",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P2_E01",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "EV02"
+            ]
+          },
+          {
+            "id": "PW03",
+            "dedup_group": "D01",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV03",
+              "EV05"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "exposure_opening",
+            "value": "Shoulder",
+            "canonical_id": "E05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "exposure_opening",
+            "value": "Chest / Décolletage",
+            "canonical_id": "E01"
+          },
+          {
+            "id": "EV03",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV04",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV05",
+            "parameter": "additional_color",
+            "value": "gold",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000806#SU1",
+      "category": "Jumpsuit",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "gold",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000807#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000808#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000809#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "black",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000810#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "MATCHING_PAIR",
+      "eligibility": "D_DIRECTION_UNRESOLVED",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "UNRESOLVED",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S01",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "target_1:EV01",
+              "target_1:EV02",
+              "target_1:EV03",
+              "target_1:EV04",
+              "target_2:EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "target_1:EV01",
+            "parameter": "surface",
+            "value": "Textured Knit",
+            "canonical_id": "S01"
+          },
+          {
+            "id": "target_1:EV02",
+            "parameter": "additional_color",
+            "value": "pink",
+            "canonical_id": null
+          },
+          {
+            "id": "target_1:EV03",
+            "parameter": "additional_color",
+            "value": "green",
+            "canonical_id": null
+          },
+          {
+            "id": "target_1:EV04",
+            "parameter": "additional_color",
+            "value": "yellow",
+            "canonical_id": null
+          },
+          {
+            "id": "target_1:EV05",
+            "parameter": "additional_color",
+            "value": "gold",
+            "canonical_id": null
+          },
+          {
+            "id": "target_2:EV01",
+            "parameter": "surface",
+            "value": "Textured Knit",
+            "canonical_id": "S01"
+          },
+          {
+            "id": "target_2:EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000811#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI8",
+      "numeric_gt_historical": "EI8",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S03",
+            "resolution_status": "UNRESOLVED",
+            "force": null,
+            "members": [
+              "EV01",
+              "EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Reflective",
+            "canonical_id": "S03"
+          },
+          {
+            "id": "EV02",
+            "parameter": "decorative_detail",
+            "value": "Sequin-Beading",
+            "canonical_id": "S03/D02"
+          },
+          {
+            "id": "EV03",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000816#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "MATCHING_PAIR",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "target_1:EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000817#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "MATCHING_PAIR",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "target_1:EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000834#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI6",
+      "numeric_gt_historical": "EI6",
+      "state": {
+        "frozen_direction": "E",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "D01",
+            "resolution_status": "RESOLVED",
+            "force": "MEANINGFUL",
+            "members": [
+              "EV01"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV03",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000840#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "MATCHING_PAIR",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "target_1:EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "target_1:EV02",
+            "parameter": "additional_color",
+            "value": "black",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000841#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "MATCHING_PAIR",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "target_1:EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000845#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "S05",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV01"
+            ]
+          },
+          {
+            "id": "PW02",
+            "dedup_group": "P3_GRAPHIC",
+            "resolution_status": "RESOLVED",
+            "force": "WEAK",
+            "members": [
+              "EV02",
+              "EV04"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "surface",
+            "value": "Quilted",
+            "canonical_id": "S05"
+          },
+          {
+            "id": "EV02",
+            "parameter": "graphic",
+            "value": "Localized",
+            "canonical_id": "P3_GRAPHIC"
+          },
+          {
+            "id": "EV03",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          },
+          {
+            "id": "EV04",
+            "parameter": "additional_color",
+            "value": "gray",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000845#SU2",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI4",
+      "numeric_gt_historical": "EI4",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": []
+      }
+    },
+    {
+      "unit": "REF_000846#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "C_GT_AUTHORITY_REVIEW",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "I",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "attachment",
+            "value": "Metal Hardware",
+            "canonical_id": "D01"
+          },
+          {
+            "id": "EV02",
+            "parameter": "additional_color",
+            "value": "silver",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000846#SU2",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000847#SU1",
+      "category": "Coat",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000849#SU1",
+      "category": "Jacket",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000849#SU2",
+      "category": "Trouser",
+      "scoring_unit_type": "GARMENT",
+      "eligibility": "A_TRUSTED_EXACT_TIER_CALIBRATION",
+      "numeric_gt": "EI5",
+      "numeric_gt_historical": "EI5",
+      "state": {
+        "frozen_direction": "NEUTRAL",
+        "exposure": [],
+        "pathways": [],
+        "admitted": [
+          {
+            "id": "EV01",
+            "parameter": "pocket",
+            "value": "Present",
+            "canonical_id": null
+          }
+        ]
+      }
+    },
+    {
+      "unit": "REF_000851#SU1",
+      "category": "Shirt",
+      "scoring_unit_type": "MATCHING_PAIR",
+      "eligibility": "D_DIRECTION_UNRESOLVED",
+      "numeric_gt": "EI7",
+      "numeric_gt_historical": "EI7",
+      "state": {
+        "frozen_direction": "UNRESOLVED",
+        "exposure": [],
+        "pathways": [
+          {
+            "id": "PW01",
+            "dedup_group": "P3_PATTERN",
+            "resolution_status": "RESOLVED",
+            "force": "STRONG",
+            "members": [
+              "target_1:EV01",
+              "target_1:EV02",
+              "target_2:EV01",
+              "target_2:EV02"
+            ]
+          }
+        ],
+        "admitted": [
+          {
+            "id": "target_1:EV01",
+            "parameter": "pattern",
+            "value": "Repeat",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "target_1:EV02",
+            "parameter": "additional_color",
+            "value": "orange",
+            "canonical_id": null
+          },
+          {
+            "id": "target_2:EV01",
+            "parameter": "pattern",
+            "value": "Repeat",
+            "canonical_id": "P3_PATTERN"
+          },
+          {
+            "id": "target_2:EV02",
+            "parameter": "additional_color",
+            "value": "orange",
+            "canonical_id": null
+          }
+        ]
+      }
+    }
+  ]
+}

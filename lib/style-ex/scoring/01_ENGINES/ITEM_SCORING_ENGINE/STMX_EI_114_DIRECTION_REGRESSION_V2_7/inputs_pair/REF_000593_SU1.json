@@ -1,0 +1,352 @@
+{
+  "unit_id": "REF_000593#SU1",
+  "scoring_unit_type": "MATCHING_PAIR",
+  "member_count": 2,
+  "members": [
+    {
+      "member_id": "target_1",
+      "category": "T-Shirt",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "matte stretch knit jersey"
+          ],
+          "values": [
+            {
+              "value": "Knit",
+              "evidence": [
+                "smooth stretch jersey clinging to body"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "plain smooth surface, no distinct treatment"
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "solid black, no repeating motif"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no placed graphic"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "clean front, no pockets"
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no applied decoration"
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no belt, hardware or trim"
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "symmetric straps and hem"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Slim",
+          "region": "upper",
+          "evidence": [
+            "closely follows torso contour"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Cropped",
+          "region": "upper",
+          "evidence": [
+            "hem ends at lower ribcage, midriff exposed"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Fluid",
+          "region": "whole_garment",
+          "evidence": [
+            "soft knit follows body with slight movement"
+          ]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Sleeveless",
+          "region": "upper",
+          "evidence": [
+            "thin straps, no sleeve"
+          ]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "strap-supported, seam at natural shoulder"
+          ]
+        },
+        "neckline_shape": {
+          "state": "OBSERVED",
+          "value": "Scoop",
+          "region": "upper",
+          "evidence": [
+            "deep rounded U-shaped opening across chest"
+          ]
+        },
+        "neckline_position": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": [
+            "opening sits mid-chest, not deep"
+          ]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "plain scoop neckline, no collar structure"
+          ]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "plain self-fabric bottom edge"
+          ]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "pullover, no front opening"
+          ]
+        },
+        "shoulder_connection": {
+          "state": "OBSERVED",
+          "value": "Strap",
+          "region": "upper",
+          "evidence": [
+            "thin spaghetti straps over shoulders"
+          ]
+        },
+        "category": {
+          "state": "OBSERVED",
+          "value": "T-Shirt",
+          "evidence": [
+            "CEO adjudication"
+          ],
+          "product_context": "Activewear-Performance"
+        },
+        "exposure_opening": {
+          "state": "OBSERVED",
+          "values": [
+            {
+              "evidence": [
+                "CEO 2026-09-05 §15.1"
+              ],
+              "value": "Midriff / Waist"
+            }
+          ],
+          "values_detail": [
+            {
+              "value": "Midriff / Waist",
+              "evidence": [
+                "CEO 2026-09-05 §15.1"
+              ]
+            }
+          ],
+          "evidence": [
+            "CEO adjudication"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "black",
+        "color_lightness": "dark",
+        "color_usage": "single",
+        "multi_color": false,
+        "color_effect": "none",
+        "additional_colors": [],
+        "evidence": {
+          "primary": "uniform black jersey",
+          "lightness": "deep black tone",
+          "usage": "single solid color",
+          "effect": "matte no metallic or neon"
+        },
+        "color_notes": null
+      }
+    },
+    {
+      "member_id": "target_2",
+      "category": "Trouser",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "matte stretch knit fabric"
+          ],
+          "values": [
+            {
+              "value": "Knit",
+              "evidence": [
+                "smooth stretch performance knit"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "plain smooth surface"
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "solid black, no motif"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no placed graphic"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "clean surface, no pockets"
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no applied decoration"
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no belt or hardware"
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "symmetric legs and waistband"
+          ]
+        },
+        "trouser_distinction": {
+          "state": "OBSERVED",
+          "value": "Leggings",
+          "region": "whole_garment",
+          "evidence": [
+            "skin-tight stretch leggings with wide waistband"
+          ]
+        },
+        "silhouette": {
+          "state": "OBSERVED",
+          "value": "Straight",
+          "region": "whole_garment",
+          "evidence": [
+            "leg keeps close width to hem, no taper or flare"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Slim",
+          "region": "lower",
+          "evidence": [
+            "skin-tight against legs"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Calf Length",
+          "region": "lower",
+          "evidence": [
+            "hem ends at mid-to-lower calf"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Fluid",
+          "region": "whole_garment",
+          "evidence": [
+            "stretch knit conforms to legs"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "black",
+        "color_lightness": "dark",
+        "color_usage": "single",
+        "multi_color": false,
+        "color_effect": "none",
+        "additional_colors": [],
+        "evidence": {
+          "primary": "uniform black jersey",
+          "lightness": "deep black tone",
+          "usage": "single solid color",
+          "effect": "matte no metallic or neon"
+        },
+        "color_notes": null
+      }
+    }
+  ],
+  "note": "pair-level input — one scoring unit, every member materialized (order §6)"
+}

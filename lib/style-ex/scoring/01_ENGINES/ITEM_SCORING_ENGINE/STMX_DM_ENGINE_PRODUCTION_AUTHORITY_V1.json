@@ -1,0 +1,242 @@
+{
+  "document": "STMX_DM_ENGINE_PRODUCTION_AUTHORITY_V1",
+  "date": "2026-09-13",
+  "status": "CURRENT PRODUCTION AUTHORITY POINTER — FULL DM ENGINE — COMPLETE_AND_CLOSED_AND_FROZEN — CEO APPROVED",
+  "approval_anchor": {
+    "CEO Decision": "2026-09-13",
+    "Order": "STMX DM DIRECTION-BSC-1 OBSERVATION CONTRACT COVERAGE CORRECTION + FULL ENGINE FINAL FREEZE V1 §44 / §45 / §46 / §47 / §48",
+    "Reason": "DIRECTION-BSC-1 closed by the observation-contract coverage correction (Option A); Direction semantic delta 0; every §51 hard condition passed. The complete DM engine is promoted to its final frozen production baseline.",
+    "Affected Scope": "this pointer (superseding the 2026-09-12 HOLD content, preserved below) · STMX_DM_ENGINE_V1_FINAL_FREEZE/ (new) · STMX_VISION_PRODUCER_PRODUCTION_AUTHORITY_V1.json (V1_3) · Project Context sync"
+  },
+  "★_current_production_dm_engine": {
+    "id": "STMX_DM_ENGINE_V1",
+    "engine_directory": "STMX_DM_DIRECTION_FIRST_ENGINE_V1",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine",
+    "promoted": "2026-09-13",
+    "engine_aggregate_sha256": "fd15a9a9b211a2fbd438844dc524dcd3ddd2456f7be55e5c42d399198a0fdf0e",
+    "★_engine_bytes_unchanged_since_hold_build": true,
+    "binding_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_FINAL_FREEZE/production/dm_engine_binding_v1.js",
+    "seal_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_DM_ENGINE_V1_FINAL.json",
+    "consumes_observation_contract": "STMX_VISION_PRODUCER_V1_3 (coverage-corrected successor of V1_2 — this order)",
+    "full_identity_sha256": "bb82c8ff25943270d52c94d9acc28a3024c83dff9c66558ea12900f81bc98a5e"
+  },
+  "★_layer_status": {
+    "DM OBSERVATION": "PRODUCTION — STMX_VISION_PRODUCER_V1_3 (DIRECTION-BSC-1 coverage corrected)",
+    "DM DIRECTION": "FINAL CLOSED_AND_FROZEN (semantic baseline unchanged; Direction modules byte-identical to CODE_FREEZE_SEAL_V3; Direction semantic delta 0 in this order)",
+    "DM STRENGTH": "CLOSED_AND_FROZEN — CEO 2026-09-12 (unchanged by this order)",
+    "DM FINAL DM1–DM9 PROJECTION": "CLOSED_AND_FROZEN — CEO 2026-09-12 (unchanged by this order)",
+    "FULL DM ENGINE": "★ COMPLETE_AND_CLOSED_AND_FROZEN (2026-09-13)"
+  },
+  "★_resolution_rule": "⛔ BY NAME through an explicit binding module. ⛔ NO latest, NO glob, NO directory scan, NO mtime, NO implicit auto-discovery. A missing engine, predicate or observation contract throws and fails closed.",
+  "★_rollback_pointer": {
+    "rollback_to": "the 2026-09-12 HOLD build — same engine bytes, observation contract STMX_VISION_PRODUCER_V1_2",
+    "binding_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_PRODUCTION_CLOSURE/production/dm_engine_binding_v1.js",
+    "seal_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_PRODUCTION_CLOSURE/CODE_FREEZE_SEAL_DM_ENGINE_V1.json",
+    "hold_build_aggregate_sha256": "fd15a9a9b211a2fbd438844dc524dcd3ddd2456f7be55e5c42d399198a0fdf0e",
+    "how": "Point production back to the HOLD build binding (which names STMX_VISION_PRODUCER_V1_2) and set the Vision production authority pointer back to V1_2. No engine module needs restoring — none changed.",
+    "★_what_rollback_restores": "the HOLD-build behaviour: DIRECTION-BSC-1 open (valid non-M1 systems at moderate separation → Direction UNKNOWN by contract construction). ⛔ Rollback does NOT touch GT, EI bindings or the Direction/Strength/Final Score semantics.",
+    "deeper_rollback": {
+      "rollback_to": "the Direction-closure byte-set of the same directory (V4.3 state, 2026-09-12 morning)",
+      "previous_aggregate_v3_seal": "17f915af3e28a60fd09d84f35055220a5d8eaaab8c51991baf2f31fae19fcab3",
+      "previous_modules": [
+        {
+          "file": "engine/dm_admission_v1.js",
+          "sha256": "2fb03acb211dcff99fa0ab757cbfed01ba3b9a1b306e3a44dee5ca86a8b62058"
+        },
+        {
+          "file": "engine/dm_direction_resolver_v1.js",
+          "sha256": "7f0c54a9bd4b1c7786cf56664b7f5b665b5bed30e1f1c4821d78eb31617c0058"
+        },
+        {
+          "file": "engine/dm_engine_v1.js",
+          "sha256": "857438313582fd0337f54636b26413623fdcd87ebd8f2d96adb1756823d91add"
+        },
+        {
+          "file": "engine/dm_m1_m2_refinement_v1.js",
+          "sha256": "af5b64ddcf0630b040f8abbbae127652ad1e69d8f9f2eb9218fc320c46b2707c"
+        },
+        {
+          "file": "engine/dm_ordinal_projector_v1.js",
+          "sha256": "f2cc0060c4dd68db36ecb0e6551d6600c21917fca71f3d80f14fb2f49b4f1655"
+        },
+        {
+          "file": "engine/dm_strength_resolver_v1.js",
+          "sha256": "2f697ad8deb82f1c02a5468d4fc0f72e3bbacf114e2fea8fbd7ace457ae3d3f9"
+        }
+      ],
+      "how": "Restore the three modules this order changed (dm_strength_resolver_v1.js · dm_ordinal_projector_v1.js · dm_engine_v1.js) to the sha256 values above and point production back to dm_direction_engine_binding_v1.js.",
+      "★_what_rollback_restores": "the V4.3 behaviour: M WEAK retired (M-side UNKNOWN 6), M1 applied twice on S3-only graphics (grp1/grp2 → DM8), no DM2/DM3 split. ⛔ Rollback does NOT touch Observation V1_2, GT, or any EI binding."
+    }
+  },
+  "★_bsc1_closure_recorded_s54": {
+    "defect": "DIRECTION-BSC-1",
+    "status": "CLOSED by observation-contract coverage correction",
+    "direction_semantic_delta": 0,
+    "mechanism": "m1_supporting_realization (raw internal-composition observation) is now carried on every controlled family under STMX_VISION_PRODUCER_V1_3; the frozen Direction resolver reads it unchanged; the frozen M1 predicate keeps its own eligibility list",
+    "⛔_not_done": [
+      "no new Direction semantic rule",
+      "no fourth Primitive",
+      "no Parameter 38",
+      "no new field / value / family",
+      "no M1 eligibility change",
+      "no GT change",
+      "no Vision API call"
+    ]
+  },
+  "★_semantic_decisions_recorded_§49": {
+    "D-1": "NEW CURRENT M-side Strength authority (CEO 2026-09-12) — M STRONG ⇔ nothing admitted OR all small+low; M WEAK ⇔ registered, not commanding, not centre. ⛔ Not a reactivation of DM Constitution V3 as oracle.",
+    "D-2": "mtdr2 · mtdr5 · mash4 = governed P1 Strength residue; Vision / observation schema delta 0.",
+    "D-3": "frozen M1 applied exactly once across Strength and projection.",
+    "D-4": "dmdbuk1 = governed P1 residue (observation compression / individuation); no count physics.",
+    "D-5": "Strength + Final DM1–DM9 closed in one cycle.",
+    "DM1 / DM9": "conceptual endpoints, no CEO anchor, never emitted (structurally refused by the projector)."
+  },
+  "engine_hash_manifest": [
+    {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_admission_v1.js",
+      "module": "dm_admission_v1.js",
+      "bytes": 7903,
+      "sha256": "2fb03acb211dcff99fa0ab757cbfed01ba3b9a1b306e3a44dee5ca86a8b62058",
+      "changed_by_this_order": false
+    },
+    {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_direction_resolver_v1.js",
+      "module": "dm_direction_resolver_v1.js",
+      "bytes": 19480,
+      "sha256": "7f0c54a9bd4b1c7786cf56664b7f5b665b5bed30e1f1c4821d78eb31617c0058",
+      "changed_by_this_order": false
+    },
+    {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_engine_v1.js",
+      "module": "dm_engine_v1.js",
+      "bytes": 6012,
+      "sha256": "96407c555d55f6dd67108ecda8da9a5620f2ec3e7f93f7218caa9bf24b1b7ddd",
+      "changed_by_this_order": false
+    },
+    {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_m1_m2_refinement_v1.js",
+      "module": "dm_m1_m2_refinement_v1.js",
+      "bytes": 6509,
+      "sha256": "af5b64ddcf0630b040f8abbbae127652ad1e69d8f9f2eb9218fc320c46b2707c",
+      "changed_by_this_order": false
+    },
+    {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_ordinal_projector_v1.js",
+      "module": "dm_ordinal_projector_v1.js",
+      "bytes": 10262,
+      "sha256": "4b6f5aecf1b6e9b8f293c53105c420b33a795d4883e5ac481d8e78473c6a0ff9",
+      "changed_by_this_order": false
+    },
+    {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_strength_resolver_v1.js",
+      "module": "dm_strength_resolver_v1.js",
+      "bytes": 16819,
+      "sha256": "69f6e5c0b3eed926ba662ecfdd5888be2926a048ff6e72a96d04553726772bc0",
+      "changed_by_this_order": false
+    }
+  ],
+  "m1_predicate": {
+    "file": "STMX_DM_OBSERVATION_LAYER_IMPLEMENTATION_V1/engine/dm_m1_predicate_v1.js",
+    "sha256": "2ae30206eb27921da5d5606c242c0278769dfac5c42cb05bee0366dda29ef295",
+    "bytes": 6430,
+    "bound_by_name_from": "engine/dm_m1_m2_refinement_v1.js",
+    "unchanged": true
+  },
+  "observation_contract_hash_manifest": [
+    {
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+      "module": "producer_rules_v1.js",
+      "bytes": 74550,
+      "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+      "changed_vs_v1_2": true
+    },
+    {
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_prompt_v1.js",
+      "module": "producer_prompt_v1.js",
+      "bytes": 161641,
+      "sha256": "9779cc44716a241d23127bedf8ab9fb79ff7a3e73f2e2e642b6083779996f23f",
+      "changed_vs_v1_2": true
+    },
+    {
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_validator_v1.js",
+      "module": "producer_validator_v1.js",
+      "bytes": 69678,
+      "sha256": "26ad25a8a2b3477e83f4858ec5fe6450040025a26a2efab9bb4599d8416e2d81",
+      "changed_vs_v1_2": true
+    },
+    {
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_controller_v1.js",
+      "module": "producer_controller_v1.js",
+      "bytes": 45575,
+      "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b",
+      "changed_vs_v1_2": false
+    },
+    {
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_model_adapter_v1.js",
+      "module": "producer_model_adapter_v1.js",
+      "bytes": 3881,
+      "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+      "changed_vs_v1_2": false
+    }
+  ],
+  "★_score_notation": "canonical DM1 … DM9 (full axis prefix). Direction interpretation DM1–DM4 = M · DM5 = Neutral · DM6–DM9 = D. ⛔ One-letter M3 / D7 forms are never emitted.",
+  "★_history_2026-09-12_HOLD_build": {
+    "★_current_production_dm_engine": {
+      "id": "STMX_DM_ENGINE_V1",
+      "engine_directory": "STMX_DM_DIRECTION_FIRST_ENGINE_V1",
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine",
+      "promoted": "2026-09-12",
+      "aggregate_sha256": "fd15a9a9b211a2fbd438844dc524dcd3ddd2456f7be55e5c42d399198a0fdf0e",
+      "binding_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_PRODUCTION_CLOSURE/production/dm_engine_binding_v1.js",
+      "seal_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_PRODUCTION_CLOSURE/CODE_FREEZE_SEAL_DM_ENGINE_V1.json",
+      "consumes_observation_contract": "STMX_VISION_PRODUCER_V1_2 (unchanged — D-2)"
+    },
+    "★_layer_status": {
+      "DM OBSERVATION LAYER V1_2": "PRODUCTION",
+      "DM DIRECTION": "FINAL CLOSED_AND_FROZEN (semantic baseline unchanged; Direction modules byte-identical to CODE_FREEZE_SEAL_V3)",
+      "DM STRENGTH": "CLOSED_AND_FROZEN — CEO 2026-09-12 semantic authority (D-1) · governed residue D-2 / D-4",
+      "DM FINAL DM1–DM9 PROJECTION": "CLOSED_AND_FROZEN — §28 map · M1 exactly once (D-3)",
+      "FULL DM ENGINE": "⛔ HOLD — DIRECTION-BSC-1 (see 02_STMX_DM_CARGO1_NARROW_DIRECTION_GATE_V1.json)"
+    },
+    "approval_anchor": {
+      "CEO Decision": "2026-09-12",
+      "Order": "STMX DM STRENGTH + FINAL SCORE IMPLEMENTATION AND CLOSURE V1 §2 / §44 / §45 / §46 / §48",
+      "Reason": "D-1…D-5 locked by the order. Strength and Final Score projection cleared their hard gates and are promoted. The FULL-ENGINE FREEZE is HOLD on exactly one scoped Direction finding (DIRECTION-BSC-1); no Direction code changed.",
+      "Affected Scope": "this pointer (new) · STMX_DM_ENGINE_V1_PRODUCTION_CLOSURE/ (new) · STMX_DM_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1.json (supersession note) · Project Context sync"
+    },
+    "★_rollback_pointer": {
+      "rollback_to": "the Direction-closure byte-set of the same directory (V4.3 state, 2026-09-12 morning)",
+      "previous_aggregate_v3_seal": "17f915af3e28a60fd09d84f35055220a5d8eaaab8c51991baf2f31fae19fcab3",
+      "previous_modules": [
+        {
+          "file": "engine/dm_admission_v1.js",
+          "sha256": "2fb03acb211dcff99fa0ab757cbfed01ba3b9a1b306e3a44dee5ca86a8b62058"
+        },
+        {
+          "file": "engine/dm_direction_resolver_v1.js",
+          "sha256": "7f0c54a9bd4b1c7786cf56664b7f5b665b5bed30e1f1c4821d78eb31617c0058"
+        },
+        {
+          "file": "engine/dm_engine_v1.js",
+          "sha256": "857438313582fd0337f54636b26413623fdcd87ebd8f2d96adb1756823d91add"
+        },
+        {
+          "file": "engine/dm_m1_m2_refinement_v1.js",
+          "sha256": "af5b64ddcf0630b040f8abbbae127652ad1e69d8f9f2eb9218fc320c46b2707c"
+        },
+        {
+          "file": "engine/dm_ordinal_projector_v1.js",
+          "sha256": "f2cc0060c4dd68db36ecb0e6551d6600c21917fca71f3d80f14fb2f49b4f1655"
+        },
+        {
+          "file": "engine/dm_strength_resolver_v1.js",
+          "sha256": "2f697ad8deb82f1c02a5468d4fc0f72e3bbacf114e2fea8fbd7ace457ae3d3f9"
+        }
+      ],
+      "how": "Restore the three modules this order changed (dm_strength_resolver_v1.js · dm_ordinal_projector_v1.js · dm_engine_v1.js) to the sha256 values above and point production back to dm_direction_engine_binding_v1.js.",
+      "★_what_rollback_restores": "the V4.3 behaviour: M WEAK retired (M-side UNKNOWN 6), M1 applied twice on S3-only graphics (grp1/grp2 → DM8), no DM2/DM3 split. ⛔ Rollback does NOT touch Observation V1_2, GT, or any EI binding."
+    },
+    "note": "the pointer as the 2026-09-12 order left it (HOLD build) — preserved verbatim"
+  },
+  "⛔_no_credentials": "⛔ No API key, token or credential appears in this document."
+}

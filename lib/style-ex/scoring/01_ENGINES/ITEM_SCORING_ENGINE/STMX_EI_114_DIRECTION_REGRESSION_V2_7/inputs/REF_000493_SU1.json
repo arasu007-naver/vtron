@@ -1,0 +1,215 @@
+{
+  "unit_id": "REF_000493#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "14c27bd6879e009ecc4a895cf1fbda5eadc18814dad078cea7bd19b42168f6f5",
+  "projected_hash": "0c7231e5e48ab75d73a13f48305f5a742b0ad91c31d8dea923c56b5be0e5de5f",
+  "input": {
+    "category": "Sweatshirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte soft jersey/fleece cloth"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "soft matte sweatshirt cloth"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth knit body, no distinct texture treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "two square patch pockets on lower front"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Applied",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "ruffle": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffle construction"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, trim or epaulette"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "very wide voluminous body far off the torso",
+          "dropped shoulders, generous drape"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "hem falls well below hip toward thigh on worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds a soft body shape with soft folds"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves reach the wrist with ribbed cuffs"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam set well below natural shoulder onto upper arm"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "neck finish is the hood opening, no separate collar band"
+        ]
+      },
+      "rib_hem": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "plain curved hem, no ribbed band at bottom"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "hood draped at back of neck"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "zipper runs full length of front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "visible silver zipper with pull tab down center front"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve body within ordinary envelope, not deliberately enlarged"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "rounded continuous shoulder contour, no endpoint"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "silver",
+          "carrier_kind": "closure",
+          "carrier_ref": "Zipper"
+        }
+      ],
+      "evidence": {
+        "primary": "uniform black cloth",
+        "lightness": "deep black",
+        "usage": "black body with metallic zipper accent",
+        "effect": "matte, no neon or metallic body"
+      },
+      "color_notes": null
+    }
+  }
+}

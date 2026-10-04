@@ -1,0 +1,289 @@
+{
+  "unit_id": "REF_000664#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "25d995ac779072d8e0fab696654c26dcfb1d1a484672956f8a09473f9f751914",
+  "projected_hash": "51077d00a694595112cb3e77ff64a20dfd29213544a43d1b861d65765556dfb7",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth lustrous drape typical of satin-weave silk-like cloth"
+        ],
+        "values": [
+          {
+            "value": "Silk",
+            "evidence": [
+              "fluid high-sheen satin drape across bodice and skirt"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "visible high-luster shine and gathered folds"
+        ],
+        "values": [
+          {
+            "value": "Glossy",
+            "evidence": [
+              "strong light reflection along skirt folds and bodice"
+            ]
+          },
+          {
+            "value": "Gathered",
+            "evidence": [
+              "ruched folds radiating from left waist"
+            ],
+            "locations": [
+              {
+                "component": "Bodice"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffle trim visible"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim attachments"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "single high side slit on right",
+          "diagonal ruching draws to one side of waist"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt falls in a straight column to floor without widening"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "close through bodice and hip"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice hugs torso closely"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "skirt fits close over hip then falls straight"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "whole_garment",
+        "evidence": [
+          "hem pools at the floor on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "cloth drapes and falls following the body"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "bodice holds light shape while following torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "skirt drapes freely with soft falling folds"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "bare arms, thin straps only"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no built shoulder contour, straps only"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "fabric edge angles down to a central point at chest"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Low",
+        "region": "upper",
+        "evidence": [
+          "deep plunge to mid-chest"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare neckline with no collar structure"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no front placket or opening on bodice"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "deep plunge and high leg slit"
+        ],
+        "values": [
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "plunging V bares upper chest"
+            ]
+          },
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulders bare beside thin straps"
+            ]
+          },
+          {
+            "value": "Upper Thigh",
+            "evidence": [
+              "high slit exposes upper thigh"
+            ]
+          }
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "lower",
+        "evidence": [
+          "high slit on right exposing leg to upper thigh"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Defined",
+        "region": "whole_garment",
+        "evidence": [
+          "silhouette narrows in at waist via ruched seaming"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Strap",
+        "region": "upper",
+        "evidence": [
+          "thin spaghetti straps over shoulders"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "declared accepted observation"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniformly black satin",
+        "lightness": "dark cloth with specular highlights",
+        "usage": "single black color throughout",
+        "effect": "chromatic black, sheen is finish not color"
+      },
+      "color_notes": null
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "unit_id": "REF_000414#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "dbd670202ec2788eb31a8ecd653909140c9dad27e66c3b7c5edc0922fc55003e",
+  "projected_hash": "e0a6295ff90d609f7a954ed2934dbb8f051a26b7f308b0c733053172f0648b88",
+  "input": {
+    "category": "Sweater",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "soft knit texture with melange/heather yarn"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "knit stitch texture visible across body and sleeves",
+              "ribbed knit cuffs and hem"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth knit body",
+          "melange yarn is not a surface treatment",
+          "ribbed trims only at edges, body is smooth knit"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid tonal knit with no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, slogan or printed image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no pocket visible on body or front"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right halves mirror each other",
+          "hem straight and level, no single-sided panel, tie or drape"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "upper",
+        "evidence": [
+          "shoulder reaches beyond wearer's shoulders with dropped junction",
+          "body stands away with generous room through chest and waist",
+          "hem hangs loose over the hips"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "hem sits around the hip on the worn body, ordinary top length"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "soft knit follows the body with gentle folds",
+          "no self-supporting structure"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to the wrists"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder line flows past the anatomical shoulder end onto the upper arm",
+          "no distinct shoulder endpoint formed, soft continuous transition into sleeve"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "front neck opening angles down into a V shape below the hood attachment"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "neckline sits at an ordinary depth on the upper chest"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "neck finish is the hood opening, not a separate standing collar band",
+          "no independent collar piece present"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "clear ribbed knit band at the garment's lower edge"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "pullover with no front placket or opening"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, no deliberate enlargement"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Ribbed",
+        "region": "upper",
+        "evidence": [
+          "elasticated ribbed knit band at the sleeve ends"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ribbed cuff depth is an ordinary fraction of the sleeve width at the wrist"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "hood construction visible rising behind and around the neck"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "values": [],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "values": [],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "brown",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "taupe/greige-brown melange knit across whole garment",
+        "lightness": "mid value, neither light nor dark",
+        "usage": "one uniform color throughout",
+        "effect": "matte knit, no metallic or neon"
+      },
+      "color_notes": "melange/heathered yarn gives a subtle tonal fleck but stays one brown family"
+    }
+  }
+}

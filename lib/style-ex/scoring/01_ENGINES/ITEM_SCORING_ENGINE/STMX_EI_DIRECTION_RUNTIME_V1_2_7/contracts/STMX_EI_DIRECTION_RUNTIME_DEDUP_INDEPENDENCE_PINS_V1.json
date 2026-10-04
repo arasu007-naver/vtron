@@ -1,0 +1,53 @@
+{
+  "document": "STMX_EI_DIRECTION_RUNTIME_DEDUP_INDEPENDENCE_PINS_V1",
+  "dedup_contract": {
+    "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_P3_FORCE_CONTRACT_FINAL_V1/STMX_EI_P3_PATHWAY_DEDUPLICATION_CONTRACT_V1.json",
+    "sha256": "ee164a1aeff12a682a09fd75f204a1f96650c100cdaba5a6261ce4616639c13d"
+  },
+  "independence_contract": {
+    "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_P3_FORCE_CONTRACT_FINAL_V1/STMX_EI_P3_INDEPENDENCE_CONTRACT_V1.json",
+    "sha256": "4c211b88b07583855cb4d8bffaed8a9b76f9488aa8abe9241ce93d38782510be"
+  },
+  "executable_rules": [
+    {
+      "id": "DD-1",
+      "rule": "Observations sharing one dedup_group (COVERAGE_EVIDENCE_MAP class, e.g. S08 for Transparent/Semi Transparent/Mesh) are ONE pathway.",
+      "authority": "Dedup Contract dedup_groups · Semantic Status dedup_key"
+    },
+    {
+      "id": "DD-2",
+      "rule": "Mesh co-observed with Semi Transparent / Transparent is ABSORBED into S08 and never a second force.",
+      "authority": "Semantic Status mesh_rule"
+    },
+    {
+      "id": "DD-3",
+      "rule": "Pleated co-observed with Semi Transparent / Transparent on the same target is the SAME physical pathway by default (K08). Independence requires evidence of a structurally separate realization — the current input does not carry that evidence, so the default holds.",
+      "authority": "Dedup Contract K08 pair (Semi Transparent ↔ Pleated)"
+    },
+    {
+      "id": "DD-4",
+      "rule": "pattern=Linear co-observed with Semi Transparent / Transparent is ABSORBED when the linear reading has no pattern-bound contrast carrier (K08: the pleat structure produces the lines). A contrasting pattern-bound carrier (K13: white@pattern:Linear) makes Linear a genuinely independent stripe.",
+      "authority": "Dedup Contract K08/K13 pair"
+    },
+    {
+      "id": "DD-5",
+      "rule": "Sequin-Beading co-observed with Reflective is ONE pathway (the reflectivity IS the embellishment).",
+      "authority": "Dedup Contract · canonical §4 D02 note"
+    },
+    {
+      "id": "DD-6",
+      "rule": "A Colour V1 carrier colour attributed to an evidence is that evidence's realization detail, never a second pathway.",
+      "authority": "P3-D-1 fact identity"
+    },
+    {
+      "id": "IN-1",
+      "rule": "Two surviving groups are independent when they are different physical/design phenomena (e.g. Appliqué vs ground-cloth texture — K06). Parameter count is never pathway count.",
+      "authority": "Independence Contract test_order · P3-K13"
+    },
+    {
+      "id": "IN-2",
+      "rule": "Weak pathways, however many and however independent, never aggregate.",
+      "authority": "Independence Contract prohibitions · EI-X-D3"
+    }
+  ]
+}

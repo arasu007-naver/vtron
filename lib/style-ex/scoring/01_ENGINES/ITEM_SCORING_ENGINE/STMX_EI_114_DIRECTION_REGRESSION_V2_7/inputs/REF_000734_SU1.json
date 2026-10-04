@@ -1,0 +1,273 @@
+{
+  "unit_id": "REF_000734#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "00b90dd2cd1122d05136f3c5edbca57f6a251574ac895270a961eb8df86799ce",
+  "projected_hash": "adc3105b36149dee47a190616e4935020067406dcb1064ac519d3b5c27e8b21b",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth long fringe strands with slight sheen"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "long cascading fringe cords with uniform smooth sheen consistent with synthetic yarn"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "values": [
+          {
+            "evidence": [
+              "dense all-over long fringe cords create a pronounced structured surface across the body"
+            ],
+            "value": "Textured Knit"
+          }
+        ],
+        "values_detail": [
+          {
+            "value": "Textured Knit",
+            "evidence": [
+              "dense all-over long fringe cords create a pronounced structured surface across the body"
+            ]
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid red, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "fringe body shows no pocket opening"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "long hanging tassel cords across whole garment"
+        ],
+        "values": [
+          {
+            "value": "Fringe",
+            "evidence": [
+              "dense long fringe strands hang from shoulders down through body and hem"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right halves mirror; uneven fringe tips are movement, not construction",
+          "V-neck centered"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "fringe hangs straight down maintaining width to the hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "whole_garment",
+        "evidence": [
+          "garment falls loosely from shoulders with moderate ease at chest and hip"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "bodice hangs with ordinary ease, not tracing the torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "fringe skirt falls with ordinary room away from the legs"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Mini",
+        "region": "whole_garment",
+        "evidence": [
+          "fringe hem ends around mid-thigh on the worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "cloth and fringe fall with no self-support"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "fringe cords hang softly with no self-supporting body"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "long strands drape and swing freely"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "fringe cascades from shoulders down the arms to elbow-length and beyond as cape-like sleeves"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder line flows continuously into the fringe drape past the anatomical shoulder end without a formed endpoint"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder contour rounds continuously into fringe with no readable endpoint"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "fabric opening angles down to a point at center front"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "V opening sits at ordinary depth on the upper chest"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare V-neck with no collar band or structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "lower edge is fringe strands, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "pullover fringe dress with no front placket opening"
+        ]
+      },
+      "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no meaningful body region bared beyond ordinary neckline; no designed cutout"
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "fringe hangs straight with no constructed slit"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "fringe strands are not a gathered ruffle frill"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "red",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "saturated red fringe throughout",
+        "lightness": "mid-value red, neither pale nor deep",
+        "usage": "one uniform color across the whole garment",
+        "effect": "matte-to-slight-sheen fringe, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

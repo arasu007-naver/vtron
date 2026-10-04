@@ -1,0 +1,131 @@
+{
+  "unit_id": "REF_000608#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "a9c3a37a5e4255a49bd63f649d5d015c822c6f03f18db8ed2e19ed79f24c195a",
+  "projected_hash": "8b403920c51a960bff2599e5bae6425207a753199a839d52801d6606f90ab495",
+  "input": {
+    "category": "Skirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte check tailoring cloth"
+        ],
+        "values": [
+          {
+            "value": "Wool",
+            "evidence": [
+              "matte woven check surface consistent with a wool tailoring cloth"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain woven cloth, no pleating, gathering, quilting or optical treatment"
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Grid",
+        "region": "whole_garment",
+        "evidence": [
+          "intersecting horizontal and vertical black lines over beige form a check/plaid grid"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "all-over check is a pattern, no placed graphic element"
+        ]
+      },
+      "pocket": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "skirt front partly occluded by handbag and folds; no pocket region readable"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "hemline is uneven/high-low with a diagonal draped panel dropping lower on one side"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt body flares outward from waist toward the asymmetric hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "lower",
+        "evidence": [
+          "waist/hip seat sits close with ordinary ease",
+          "skirt body widens by cut, not by tight or oversized ease"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Midi",
+        "region": "lower",
+        "evidence": [
+          "hem falls between knee and mid-calf on the worn body",
+          "longer point drops toward the calf"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth holds a soft flared shape with defined folds",
+          "wool-like check fabric keeps shape while yielding"
+        ]
+      },
+      "slit": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "lower",
+        "evidence": [
+          "draped asymmetric hem and bag occlude the lower front; a slit cannot be confirmed"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "yellow",
+      "color_lightness": "normal",
+      "color_usage": "multi",
+      "multi_color": true,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "black",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Grid"
+        }
+      ],
+      "evidence": {
+        "primary": "beige/camel base cloth dominates the skirt",
+        "lightness": "mid-tone tan base",
+        "usage": "black check lines are distinct but limited against the camel ground",
+        "effect": "matte woven, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

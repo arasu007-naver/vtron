@@ -1,0 +1,7 @@
+{
+  "★": "★ Hash of the pre-registration file, sealed BEFORE the first API call. Any later edit to expectations would change this hash.",
+  "file": "08_STMX_DM_LIVE_EXPECTATION_PREREGISTRATION_V1.json",
+  "sha256": "38a81a8f57dc0f824bbf1a3cc08607339b6abc4bc90bb3afcd677bd686ab3ba1",
+  "sealed_at": "2026-09-09T13:33:46.419Z",
+  "api_calls_made_before_this_seal": 0
+}

@@ -1,0 +1,207 @@
+{
+  "unit_id": "REF_000004#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "a7831ffc52bf935fbfde9b1442c7cc0d311117e7aff82eadd63acb19761ec46a",
+  "projected_hash": "812a1715dd4e2e8e3cfe96c8850fd494a521c8dc82fbcd66722598e0e6f674a2",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": "Synthetic",
+        "region": "whole_garment",
+        "evidence": [
+          "smooth technical shell fabric",
+          "matte waterproof-look surface"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "technical shell cloth typical of waterproof jacket"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth shell, no distinct treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid olive color, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "small white brand logo on left chest"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "front pouch pocket at waist with horizontal flap seam"
+        ]
+      },
+      "ruffle": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffles"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery or beading"
+        ]
+      },
+      "asymmetry": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "symmetrical front"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "moderate ease through body",
+          "sleeves and torso not tight, not oversized"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem falls at hip level"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "shell holds shape yet softly folds"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to wrists"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "soft natural shoulder, no built structure"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "rib_hem": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "plain hem, no ribbing"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "hood folded behind neck"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "dark half-length front zipper on chest"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Utility",
+        "region": "whole_garment",
+        "evidence": [
+          "anorak pullover with front pouch and technical shell"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight silhouette, no waist shaping"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve body within ordinary envelope",
+          "elasticated cuff"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "olive",
+      "color_lightness": "normal",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "navy",
+          "carrier_kind": "closure",
+          "carrier_ref": "Zipper"
+        },
+        {
+          "color_family": "white_family",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        }
+      ],
+      "evidence": {
+        "primary": "olive-green shell across whole jacket",
+        "lightness": "mid-tone green value",
+        "usage": "dark zipper and white logo distinct against olive",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

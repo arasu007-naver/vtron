@@ -1,0 +1,207 @@
+{
+  "unit_id": "REF_000006#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "ff3f6e6d1148f69eb324ac1f16f291297ac82f5caca38c67901bbbaae23ad8e3",
+  "projected_hash": "9a2e074afefa87ddb2216fea11ddc7456b3aaf17d927313777af74d50b7dc0fd",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte woven technical cloth"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth matte technical woven surface",
+              "utility-shell appearance"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain matte woven cloth, no distinct constructed or optical treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid uniform color, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print visible"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "multiple flapped 3-D pockets across chest and waist"
+        ],
+        "count": 8,
+        "density": "dense"
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "snap/button pocket flap fasteners"
+        ],
+        "values": [
+          {
+            "value": "Metal Hardware",
+            "evidence": [
+              "button/snap flap closures on utility pockets"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric left/right pocket layout and front closure"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "follows torso with moderate ease",
+          "not tight, not oversized"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem falls at hip level"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth holds shape with soft folds at sleeves and pockets"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to wrists"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "soft natural shoulder line, no padding or projection"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "ribbed standing collar band at neckline"
+        ]
+      },
+      "rib_hem": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "lower hem edge cropped/obscured by frame bottom"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "stand collar with no hood present"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "center-front zipper visible with buttoned pocket flaps flanking"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Utility",
+        "region": "whole_garment",
+        "evidence": [
+          "multiple cargo/utility pockets across chest and waist",
+          "technical shell construction"
+        ]
+      },
+      "pocket_construction": {
+        "state": "OBSERVED",
+        "value": "Applied",
+        "region": "whole_garment",
+        "evidence": [
+          "patch pockets applied to shell surface"
+        ]
+      },
+      "pocket_projection": {
+        "state": "OBSERVED",
+        "value": "Volumetric",
+        "region": "whole_garment",
+        "evidence": [
+          "gusseted/bellows 3-D cargo pocket bodies standing away from shell"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve body within ordinary envelope"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "brown",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform dark taupe-brown shell across body and sleeves",
+        "lightness": "deep muted mid-dark tone",
+        "usage": "one consistent color throughout including pockets and collar",
+        "effect": "matte, no metallic or neon appearance"
+      },
+      "color_notes": "muted taupe/greige-brown tone"
+    }
+  }
+}

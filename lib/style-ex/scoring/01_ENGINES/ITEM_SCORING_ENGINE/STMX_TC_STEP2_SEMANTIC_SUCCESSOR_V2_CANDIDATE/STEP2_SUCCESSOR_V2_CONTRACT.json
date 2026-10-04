@@ -1,0 +1,162 @@
+{
+ "document": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CONTRACT",
+ "successor": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE",
+ "status": "CANDIDATE · SHADOW · NOT FROZEN · NOT PRODUCTION",
+ "sprint": "V2.3.68",
+ "date": "2026-09-26",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-26 — D-67 APPROVE WITH NARROW REVISION",
+  "Reason": "D-61-2 (observation supersession + O1 rematerialization + O2 fail-closed + O3 firewall) and D-61-3 (option 3C: no numeric tier emission) implemented through ONE versioned Step 2 semantic successor; narrow revision: no new canonical O2 vocabulary",
+  "Affected Scope": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/ (new)"
+ },
+ "predecessor": {
+  "id": "STMX_TC_STEP2_EVALUATOR_V2_3_2 (V2.3.21 FINAL FREEZE seal 6fdcc977…)",
+  "status": "FROZEN · byte-identical · historical predecessor (reproducible)",
+  "relation": "the successor requires the frozen predicates verbatim; the predecessor is never edited and remains executable for historical reproduction"
+ },
+ "responsibilities_only": {
+  "A": "governed observation selection (supersession registry)",
+  "B": "semantic materialization with the frozen predicates",
+  "C": "provenance",
+  "D": "fail-closed domain-authority handling",
+  "E": "no numeric tier emission"
+ },
+ "not_responsibilities": [
+  "Step 3 semantics",
+  "Score Physics",
+  "tier / ordinal",
+  "new departure / vocabulary / enum / state",
+  "REF- or category-specific branching",
+  "production binding"
+ ],
+ "input_selection": {
+  "rule": "supersession registry entries only (explicit member × field); otherwise HISTORICAL",
+  "never": [
+   "latest timestamp",
+   "largest version number",
+   "highest confidence",
+   "closest GT fit"
+  ]
+ },
+ "reexecution_map": {
+  "fit": [
+   "silhouette"
+  ],
+  "basis": "fit is read only by the frozen silhouette predicate (evaluator_v2_2_base.js L10–17; evaluator_v2_3_2.js L134); every other channel verdict is carried from the historical materialization"
+ },
+ "historical_input_reconstruction": {
+  "rule": "historical token set = bound governed token surface (projection V4, as consumed by V3.3 / V3.4) with every silhouette-consumed field recorded in the frozen member ledger (fit · sleeve_volume · shoulder_structure) restored to its recorded historical value",
+  "guard": "a predicate is re-executed for a member only if it first REPRODUCES the frozen historical verdict from the historical token set; otherwise ReproductionError (fail closed, no successor result)"
+ },
+ "frozen_observation_domain": {
+  "fit": {
+   "default": [
+    "Slim",
+    "Regular",
+    "Relaxed",
+    "Oversized"
+   ],
+   "by_key": {
+    "skirt": [
+     "Slim",
+     "Regular",
+     "Relaxed",
+     "Oversized",
+     "Voluminous"
+    ],
+    "dress": [
+     "Slim",
+     "Regular",
+     "Relaxed",
+     "Oversized",
+     "Voluminous"
+    ]
+   }
+  },
+  "source": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_VISION_EXTRACTION_SCHEMA_FROZEN_V1.md L133 (\"fit | Slim/Regular/Relaxed/Oversized (+Voluminous Skirt/Dress-Lower)\") and L355",
+  "note": "Voluminous on trouser exists only in the Producer V1_6 CANDIDATE domain (CA#41 record) — outside the frozen Step 2 domain of the trouser key"
+ },
+ "o1": "successor value inside the frozen domain of the member key → the frozen predicate re-executed verbatim on the superseding observation (semantic contract delta 0)",
+ "o2": {
+  "rule": "successor value OBSERVED but outside the frozen domain of the member key → the value is withheld from the frozen predicate (presented as an observed value with no authored meaning); the frozen predicate then emits its OWN unresolved outcome",
+  "existing_output": {
+   "v": "UNRESOLVED",
+   "rule": "SIL-STATE",
+   "why": "fit state = OBSERVED",
+   "carrier": "fit",
+   "source": "evaluator_v2_2_base.js L17 (reached by every observed fit value outside the authored lists)"
+  },
+  "new_canonical_vocabulary": 0,
+  "diagnostic_metadata": {
+   "key": "authority_gap",
+   "value": "STEP2_DOMAIN_SEMANTICS_MISSING",
+   "noncanonical": true,
+   "non_scoring": true,
+   "not_a_semantic_enum": true,
+   "consumed_downstream": false,
+   "location": "successor result provenance only — never inside a channel verdict object"
+  },
+  "never": [
+   "FALSE via skirt / dress Q3 (L16)",
+   "TRUE by analogy with Oversized",
+   "Transformative / Classic by inference"
+  ]
+ },
+ "o3": "refused: a registry entry with delta_class ≠ O1, semantic_contract_delta ≠ 0, or any predicate / rule / semantic override key is rejected at load (RegistryError); no O3 execution path exists",
+ "d61_3_option_3C": {
+  "removed": [
+   "numeric tier emission (frozen tierEvidence L86–89 · pairTier L98 · driver tier_evidence / unit_tier_evidence)"
+  ],
+  "retained": [
+   "construction verdict `strong` flag (frozen Step 3 magnitude predicate, V2.3.27 11_ strong_predicate)",
+   "rule CON-TRUE-CONSTITUTIVE-STRONG (semantic evidence)"
+  ],
+  "mechanism": "the successor binds a restricted predicate facade (silh · prop · constr · asymmetry · direction · pairDirection · f · V); it never references the tier functions; output schema carries no tier field; auditNoTier fails closed on any tier key or numeric tier value",
+  "legacy_fields": "tier_evidence / unit_tier_evidence are OMITTED (the V3.x adapter already deletes them at parse — omission needs no new token)"
+ },
+ "output_member": {
+  "fields": [
+   "anchor_id",
+   "REF",
+   "garment_ref",
+   "category",
+   "grammar",
+   "archetype_key",
+   "key_resolved",
+   "scoring_unit_type",
+   "unit_members",
+   "observed",
+   "silhouette",
+   "proportion",
+   "construction",
+   "asymmetry",
+   "direction",
+   "identity_lineage"
+  ],
+  "provenance": [
+   "materialization_version",
+   "semantic_contract_version",
+   "historical_step2_result_ref",
+   "observation_selection[] (field · source · entry_id · historical_observation · successor_observation · value_changed · delta_class)",
+   "channels_reexecuted",
+   "historical_verdicts",
+   "diagnostics"
+  ]
+ },
+ "output_unit": {
+  "fields": [
+   "anchor_id",
+   "scoring_unit_type",
+   "direction",
+   "valid_departure_set",
+   "statement_set",
+   "statement_set_size",
+   "ownerless"
+  ],
+  "rule": "frozen Step 2 unit aggregation (run_clean L41: MATCHING_PAIR → pairDirection; single member → member direction; else null) · valid departures = TRUE channel verdicts per member (S · P · C) · Statement SET = unique channel:rule · ownerless = a member asymmetry departure with unresolved owner",
+  "no_tier": true
+ },
+ "historical_reproducibility": "with an empty registry the successor reproduces the frozen Step 2 member verdicts (126 / 126) and unit upstream (114 / 114), and the shadow V3.4 output equals the sealed V2.3.66 replay fingerprint",
+ "materialization_version": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE · M1 (V2.3.68)",
+ "semantic_contract_version": "STMX_TC_STEP2_EVALUATOR_V2_3_2 (frozen, V2.3.21) — delta 0"
+}

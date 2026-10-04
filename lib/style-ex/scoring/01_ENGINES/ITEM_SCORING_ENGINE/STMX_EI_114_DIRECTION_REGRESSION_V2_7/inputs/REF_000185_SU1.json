@@ -1,0 +1,251 @@
+{
+  "unit_id": "REF_000185#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "caf285c924fc0c259ff31541dcdfe53725e99ab2169575c1157896d095476638",
+  "projected_hash": "bbaf5c06c876866d4e2665713926612b16017c42fe8fe9bc15340fb74f210ddf",
+  "input": {
+    "category": "Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "woven shirting cloth",
+          "matte cotton-like weave"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "matte woven shirting appearance"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "ordinary woven cloth",
+          "no distinct constructed surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Linear",
+        "evidence": [
+          "CEO adjudication"
+        ],
+        "density": "dense",
+        "motif_complexity": "Compound",
+        "visual_dominance": "Dominant"
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "all-over stripe motif is a pattern, no placed logo or image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "two chest pockets with pointed flaps"
+        ],
+        "pockets": [
+          {
+            "location": "Chest",
+            "construction": "Applied",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or applied piping cord visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fringe or trim attachments"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right chest pockets mirror",
+          "placket and hem symmetric side to side"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "shoulder span sits at natural shoulders",
+          "moderate room through chest and torso",
+          "body not traced closely nor standing far away"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "hem cropped out of frame at lower edge of image"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth holds shirt shape with soft folds",
+          "yields at arms without collapsing"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to the wrists with cuffs"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam forms clear endpoint at anatomical shoulder end",
+          "sleeve begins at natural shoulder point"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Round",
+        "region": "upper",
+        "evidence": [
+          "base neckline opening rounded at neck under collar"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "neckline sits at base of neck under buttoned collar"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "folded shirt collar with points and stand"
+        ]
+      },
+      "rib_hem": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "lower hem cropped out of frame"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "snap placket runs full length of front from collar down"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Snap Button",
+        "region": "upper",
+        "evidence": [
+          "pearl-style snap fasteners visible down front placket and on cuffs"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, no deliberate enlargement"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Standard",
+        "region": "upper",
+        "evidence": [
+          "constructed cuff band at sleeve ends with snap fastening"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "cuff depth ordinary against sleeve width at wrist"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "collar points reach ordinary distance toward chest, standard proportion against neckline"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "multi",
+      "multi_color": true,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "white_family",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear",
+          "contrast_with_body": "Distinct"
+        },
+        {
+          "color_family": "wine",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear",
+          "contrast_with_body": "Distinct"
+        },
+        {
+          "color_family": "blue",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear",
+          "contrast_with_body": "Distinct"
+        },
+        {
+          "color_family": "silver",
+          "carrier_kind": "closure",
+          "carrier_ref": "Snap Button"
+        }
+      ]
+    }
+  }
+}

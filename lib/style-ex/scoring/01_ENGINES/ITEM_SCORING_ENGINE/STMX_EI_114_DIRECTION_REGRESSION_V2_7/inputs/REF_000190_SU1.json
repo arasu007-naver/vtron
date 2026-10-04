@@ -1,0 +1,221 @@
+{
+  "unit_id": "REF_000190#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "ea17841a1455bf2bf2b04ece66d8a5eae8ba35fd0e3a1522b06c72ea9a6365ad",
+  "projected_hash": "1116b113c182f6c2c9bf5e1f9b830a2f0f2f879e6060c3f5ae71e458aaee0b51",
+  "input": {
+    "category": "Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "openwork floral lace fabric across body and sleeves"
+        ],
+        "values": [
+          {
+            "value": "Other",
+            "descriptor": "corded floral lace",
+            "evidence": [
+              "dense scalloped floral lace with net ground and skin visible through openings"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "floral corded openwork",
+          "skin visible through fabric"
+        ],
+        "values": [
+          {
+            "value": "Lace",
+            "evidence": [
+              "floral lace motifs with net ground",
+              "scalloped eyelash lace edge at cuffs and hem"
+            ]
+          },
+          {
+            "value": "Semi Transparent",
+            "evidence": [
+              "skin visible through the lace openings across torso"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "motif is lace construction, not a printed repeating color motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, text or image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no visible pockets on the lace body"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied embroidery, beading, appliqué or piping beyond the lace itself"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, trim or other attachment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric left/right construction"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Slim",
+        "region": "upper",
+        "evidence": [
+          "fabric follows torso closely with visible body contour",
+          "narrow through waist"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "hem sits at hip/waistband level of jeans on worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "lace follows body with soft movement",
+          "no self-supporting volume"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to the wrist on both arms"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits at natural shoulder point"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Round",
+        "region": "upper",
+        "evidence": [
+          "rounded fabric opening close to base of neck"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "neckline sits high at base of neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain rounded neck finish with no collar band or structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "lower edge is scalloped lace, not a ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "button placket runs full length of front from neck to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Button",
+        "region": "upper",
+        "evidence": [
+          "column of round dark buttons down center front"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve body within ordinary envelope, no deliberate enlargement"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends in scalloped lace edge with no constructed cuff band"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "black lace across whole garment",
+        "lightness": "uniformly dark black",
+        "usage": "single black color; buttons same black tone as body",
+        "effect": "matte lace, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

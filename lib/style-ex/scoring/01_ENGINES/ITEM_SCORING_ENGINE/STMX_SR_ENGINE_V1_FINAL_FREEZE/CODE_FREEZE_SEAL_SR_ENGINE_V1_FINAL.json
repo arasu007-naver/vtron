@@ -1,0 +1,276 @@
+{
+  "document": "CODE_FREEZE_SEAL_SR_ENGINE_V1_FINAL",
+  "engine_identity": "STMX_SR_ENGINE_V1",
+  "engine_directory": "STMX_SR_ENGINE_V1_FINAL_FREEZE",
+  "issued": "2026-09-15",
+  "order": "STMX SR — ORDINAL PROJECTOR FINAL CORRECTION + FULL ENGINE FINAL FREEZE",
+  "★_status": "★ SR FULL ENGINE = COMPLETE_AND_CLOSED_AND_FROZEN — every §21 hard gate passed",
+  "approval_anchor": {
+    "CEO Decision": "2026-09-15",
+    "Order": "STMX SR — ORDINAL PROJECTOR FINAL CORRECTION + FULL ENGINE FINAL FREEZE §0 / §14 / §15 / §21 / §22",
+    "Reason": "SR7 Full Governance rule approved as generic; SR8 predicate corrected to exact ADR-125; the complete Eligibility → Direction V1.2 → ternary Strength V1.3 → corrected Ordinal Projector V1 chain bound by name and frozen.",
+    "Affected Scope": "STMX_SR_ENGINE_V1_FINAL_FREEZE/ (new) · STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1.json (new) · Project Context sync"
+  },
+  "★_separate_baselines": {
+    "eligibility_authority": {
+      "status": "CLOSED / FROZEN — CEO 2026-09-13 (SR-ELIG-1…8); governed metadata contract; gate module frozen inside the Direction engine; registry = authority identity only (never read by the engine)",
+      "gate_module": "STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_evidence_eligibility_gate_v1.js"
+    },
+    "direction_baseline": {
+      "status": "CLOSED / FROZEN — V1.2 (CEO cross-side closure 2026-09-15); 12 modules byte-identical to the V1.2 candidate seal",
+      "v1_2_candidate_seal_aggregate_sha256": "138adb1367ba7e4bde961da226275c91624d5453e4ccf027d5456a9b0fcc52e0",
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    "strength_baseline": {
+      "status": "CLOSED / FROZEN — V1.3 ternary WEAK / REGULAR / STRONG / N/A / UNKNOWN (CEO Strength authority V3, 2026-09-15); physics unchanged since creation",
+      "directory_name_note": "directory STMX_SR_STRENGTH_TERNARY_V1_3_CANDIDATE is bound verbatim by name — never renamed or edited in place; frozen by these hashes"
+    },
+    "ordinal_baseline": {
+      "status": "CLOSED / FROZEN — Ordinal Projector V1 FINAL (SR8 = exact ADR-125 predicate, Strength gate removed; SR7 = Full Governance CEO §2)",
+      "predecessor": "STMX_SR_ORDINAL_PROJECTOR_V1_CANDIDATE (preserved unchanged as history)"
+    }
+  },
+  "direction_modules": [
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_composition_v1.js",
+      "sha256": "e33c1827e91e2eeaa9d2765e57a114eea117437e96860c7aebd59a7a55617edc",
+      "bytes": 3568,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_direction_resolver_v1.js",
+      "sha256": "909a8328b0a616fe28561b06f13725241ad48e07fce1ae434b2368981a55c07e",
+      "bytes": 9874,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_engine_v1.js",
+      "sha256": "bed57d1ae99f1e4ac0cf2e0341ba0957d08b8c8042278f9d7f35d3f1ce027c9f",
+      "bytes": 6003,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_engine_v1_2.js",
+      "sha256": "611d9754071d1490f48e91452e5508e1d7402ee2e16fc11a81d273a8ee873461",
+      "bytes": 3898,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_evidence_admission_v1.js",
+      "sha256": "4bd774a883dd7de1760196b34badc1599b87b001c2b2e5b939b51171a77138b4",
+      "bytes": 7707,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_evidence_eligibility_gate_v1.js",
+      "sha256": "1c3eabba5ce1431c73c8a8a357b5729af79ff021687eac15c3a7303443c95bf9",
+      "bytes": 3987,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_input_adapter_v1.js",
+      "sha256": "a46dd16800804d04bae154132dd6da4ed92410be682fef5b065a77b2de4cb961",
+      "bytes": 8714,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_ordinal_projector_v1.js",
+      "sha256": "648100548a95047609508e3d44210612780311ac73d418ecc38e0880da2bd4c5",
+      "bytes": 2157,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_producer_binding_v1.js",
+      "sha256": "487cad4ec11fe66c1a61be74659cfdd59262d0275f8e50af4f8767d1b81cef3c",
+      "bytes": 5262,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_relaxed_refinement_v1.js",
+      "sha256": "4a5ed7ec80f22b49e4b1526df690622df53235fb67bdcdfb4ceb782f74b4bb23",
+      "bytes": 1436,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_strength_resolver_v1.js",
+      "sha256": "fafe69f61c3e09deb7bf9566e01903d4fabbefb92c6d4d7639aad9688dd89957",
+      "bytes": 3384,
+      "byte_identical_to_v1_2_candidate_seal": true
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_structured_refinement_v1.js",
+      "sha256": "4b458eb36749e6a71666c08cfeec6d3d6e39a4a1691899848a872845863fd41c",
+      "bytes": 1711,
+      "byte_identical_to_v1_2_candidate_seal": true
+    }
+  ],
+  "strength_modules": [
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_STRENGTH_TERNARY_V1_3_CANDIDATE/src/sr_engine_v1_3_sidecar.js",
+      "sha256": "2eb8400a76808406ddec9ebbe0129bc99012751c0af382b9667b82ca2e3ce09b",
+      "bytes": 2471
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_STRENGTH_TERNARY_V1_3_CANDIDATE/src/sr_strength_resolver_v1_3_candidate.js",
+      "sha256": "422f80517270990e76081b05d199c08bcb9a5428e5faabb1a943443c20f1948d",
+      "bytes": 9726
+    }
+  ],
+  "ordinal_projector_modules": [
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/src/sr_ordinal_projector_v1_final.js",
+      "sha256": "034c80030cc6e5e361cbacd7dded807cb7492b524a7a80e802ed2b3aa73a65e9",
+      "bytes": 6939
+    }
+  ],
+  "engine_modules": [
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/src/sr_engine_v1_final.js",
+      "sha256": "700931fef86fd40da40c4c024955fe1fef75883f27062c61dfbc0ac5bae51390",
+      "bytes": 3917
+    },
+    {
+      "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/production/sr_engine_binding_v1.js",
+      "sha256": "af7e7ade89cd43fb3105f3fb41008447b25f42b838912071b202300927c81758",
+      "bytes": 6753
+    }
+  ],
+  "direction_aggregate_sha256": "138adb1367ba7e4bde961da226275c91624d5453e4ccf027d5456a9b0fcc52e0",
+  "strength_aggregate_sha256": "9f0e62796336b5de86ab8a110d98f1b670b40927de0f44fce13bc808ec948265",
+  "ordinal_projector_aggregate_sha256": "3924c35815ecd92d6e56f71cdc35be446c7e408e1b0e102cb40e6483acf14f29",
+  "engine_modules_aggregate_sha256": "789a8b6a33da21d06409ab6216bfd724c28c2ae96c6416bd55b4256e34fd9143",
+  "full_sr_engine_aggregate_sha256": "fef01ed4303fa4b53b21fe677944a0d8daa2b65c1cf5b937703a9b8b016a5faf",
+  "observation_contract": {
+    "id": "STMX_VISION_PRODUCER_V1_3",
+    "status": "PRODUCTION (promoted 2026-09-13 with DM) · 37 parameters · unchanged by this order",
+    "modules": [
+      {
+        "file": "STMX_VISION_PRODUCER_CONTRACT_V1_3.json",
+        "sha256": "0476954043a8c684d9a0545e907eaa791a8454e5e70ce1726bbbcf0c206389fd",
+        "bytes": 10417
+      },
+      {
+        "file": "producer_controller_v1.js",
+        "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b",
+        "bytes": 45575
+      },
+      {
+        "file": "producer_model_adapter_v1.js",
+        "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+        "bytes": 3881
+      },
+      {
+        "file": "producer_prompt_v1.js",
+        "sha256": "9779cc44716a241d23127bedf8ab9fb79ff7a3e73f2e2e642b6083779996f23f",
+        "bytes": 161641
+      },
+      {
+        "file": "producer_rules_v1.js",
+        "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+        "bytes": 74550
+      },
+      {
+        "file": "producer_validator_v1.js",
+        "sha256": "26ad25a8a2b3477e83f4858ec5fe6450040025a26a2efab9bb4599d8416e2d81",
+        "bytes": 69678
+      }
+    ],
+    "aggregate_sha256": "c3d05aa4b4c1c91da9568e5339e0bb97aee91fd67288ff7fcbd56528cbb8bcac"
+  },
+  "eligibility_authority": {
+    "id": "sr_evidence_eligibility_registry_v1",
+    "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/registry/sr_evidence_eligibility_registry_v1.json",
+    "sha256": "5ca999d79453acb03dba62a21643b72582c6659e9e4a40dd81361ac7262a704a",
+    "governance_copy": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_SR_ELIGIBILITY_GATE_ENGINE_V1_1/02_STMX_SR_EVIDENCE_ELIGIBILITY_REGISTRY_V1.json",
+    "governance_copy_sha256": "5ca999d79453acb03dba62a21643b72582c6659e9e4a40dd81361ac7262a704a",
+    "units": 114,
+    "adjudicable_worn": 101,
+    "⛔": "authority identity only — the engine never reads it; the caller supplies sr_evidence_eligibility"
+  },
+  "full_identity_sha256": "59ea6dfdcca30ba8813a06733069daf9efab917df6b5103717d7cb334aebf1e3",
+  "production_binding": {
+    "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/production/sr_engine_binding_v1.js",
+    "sha256": "af7e7ade89cd43fb3105f3fb41008447b25f42b838912071b202300927c81758",
+    "resolution": "⛔ BY NAME · fail closed · no latest / glob / mtime / auto-pick"
+  },
+  "tests": {
+    "modules": [
+      {
+        "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/tests/replay_101_final.js",
+        "sha256": "4a416ad08e8511130ccc2516eefe43af543bda98e46e64a611c21c070645d3a6",
+        "bytes": 5826
+      },
+      {
+        "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/tests/run_all.js",
+        "sha256": "bb1f391541e07571fe566d8e23f77e2b0dabfc904f36ec84049d0332a8f499da",
+        "bytes": 1193
+      },
+      {
+        "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/tests/test_sr_final_binding.js",
+        "sha256": "dfd2a93ac26ce942f9d0ab5db6eb8865c0fced9f8cbf6bbd3f1f7734692815e7",
+        "bytes": 4342
+      },
+      {
+        "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/tests/test_sr_final_freeze.js",
+        "sha256": "96c43cd6de17b345bf25a17a63bb1c708f90e806710ca90a869f955f23471c19",
+        "bytes": 17739
+      }
+    ],
+    "aggregate_sha256": "0d5e0da75ed5ae5a2800dbf112c8adbc539cac979908cc7256090e8e94b6ea54",
+    "result": {
+      "total": 46,
+      "pass": 46,
+      "fail": 0
+    },
+    "replay": {
+      "total_units": 114,
+      "replay_row_count": 101,
+      "unique_ids": 101,
+      "duplicate_ids": [],
+      "set_equals_canonical_worn": true,
+      "missing": [],
+      "extra": [],
+      "ordinal_distribution": {
+        "SR1": 0,
+        "SR2": 0,
+        "SR3": 4,
+        "SR4": 28,
+        "SR5": 19,
+        "SR6": 34,
+        "SR7": 11,
+        "SR8": 0,
+        "SR9": 0,
+        "null": 5
+      },
+      "ordinal_sum": 101,
+      "pair_units": 9,
+      "direction_distribution": {
+        "STRUCTURED": 45,
+        "RELAXED": 32,
+        "NEUTRAL": 19,
+        "UNKNOWN": 5
+      },
+      "strength_distribution": {
+        "WEAK": 61,
+        "STRONG": 5,
+        "REGULAR": 11,
+        "N/A": 19,
+        "UNKNOWN": 5
+      },
+      "eligibility_distribution": {
+        "NOT_ADJUDICABLE_FLAT_PRODUCT": 12,
+        "ADJUDICABLE_WORN": 101,
+        "WORN_BUT_INSUFFICIENT": 1
+      },
+      "sums_reconcile": true
+    }
+  },
+  "⛔_never_read_by_the_engine": [
+    "GT / CEO authority files",
+    "eligibility registry",
+    "REF / batch / filename",
+    "image hashes",
+    "prose evidence[]",
+    "legacy scores"
+  ]
+}

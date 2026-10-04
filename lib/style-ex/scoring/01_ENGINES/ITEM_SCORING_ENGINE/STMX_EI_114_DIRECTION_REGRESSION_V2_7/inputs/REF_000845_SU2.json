@@ -1,0 +1,122 @@
+{
+  "unit_id": "REF_000845#SU2",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "81d902aa6f5d563eb1bd81bd27ea39386cbbfcee97f97365e54799989098b3aa",
+  "projected_hash": "5ff5c1a3362ab75c25165660a984e5e8861fe2c227f6155df0adfbae31bf4ab0",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte smooth woven cloth with soft folds"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "matte woven drape consistent with cotton/twill"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain cloth, no quilting/pleating/texture treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid brown, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic"
+        ]
+      },
+      "pocket": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "hip/front pocket area occluded by hanging arms and hem folds"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric legs"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "soft wide-leg casual trouser, no jeans/tailored features"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "wide leg keeps width to hem, no flare or taper"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "lower",
+        "evidence": [
+          "wide roomy leg with soft volume"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem breaks over the shoes at the floor"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth follows leg with soft vertical folds"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "brown",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "solid muted brown",
+        "lightness": "mid-tone",
+        "usage": "one color throughout",
+        "effect": "matte"
+      },
+      "color_notes": null
+    }
+  }
+}

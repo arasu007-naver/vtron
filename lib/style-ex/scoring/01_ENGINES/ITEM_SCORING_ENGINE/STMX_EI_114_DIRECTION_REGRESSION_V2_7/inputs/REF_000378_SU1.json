@@ -1,0 +1,193 @@
+{
+  "unit_id": "REF_000378#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "7ebe40fd7b2e0f56c0be0906d17bc94b03f7140173947c3eb0ac1aa9768b7748",
+  "projected_hash": "ee154d8137435b55a74759159777b3e746e282a1ab3988c83ca66573d4f055f0",
+  "input": {
+    "category": "T-Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "open knit netting"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "open-mesh knit netting structure"
+            ]
+          }
+        ],
+        "region": "whole_garment"
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "open net structure, body shows through"
+        ],
+        "values": [
+          {
+            "value": "Mesh",
+            "evidence": [
+              "regular open net grid across body"
+            ]
+          },
+          {
+            "value": "Semi Transparent",
+            "evidence": [
+              "skin and torso visible through fabric"
+            ]
+          }
+        ],
+        "region": "whole_garment"
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "mesh grid is construction not a printed motif; solid white"
+        ],
+        "region": "whole_garment"
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "no placed logo or print"
+        ],
+        "region": "whole_garment"
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "plain body front, no pocket"
+        ],
+        "region": "whole_garment"
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ],
+        "region": "whole_garment"
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "no belt, hardware or trim"
+        ],
+        "region": "whole_garment"
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+          "hem level, sides mirror, no one-sided element"
+        ],
+        "region": "whole_garment"
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "shoulder line drafted well past wearer's shoulders",
+          "low armhole/sleeve junction on upper arm",
+          "body stands wide away from torso to hem"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "hem falls well below hip toward mid-thigh on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "lightweight net follows body with soft movement, little self-support"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends on upper arm"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Round",
+        "region": "upper",
+        "evidence": [
+          "rounded opening close to base of neck"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sits at base of neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain bound crew edge, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain self-fabric bound lower edge, no ribbed band"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "closed pullover front, no opening"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "white_family",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "white mesh fabric",
+        "lightness": "bright white",
+        "usage": "one uniform color",
+        "effect": "matte netting"
+      },
+      "color_notes": null
+    }
+  }
+}

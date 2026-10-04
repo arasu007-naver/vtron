@@ -1,0 +1,40 @@
+{
+  "document": "REF000616_GOVERNED_RESIDUE_RECORD",
+  "date": "2026-09-08",
+  "unit_id": "REF_000616#SU2",
+  "approval_anchor": {
+    "ceo_decision": "2026-09-08",
+    "reason": "CEO accepts that EI Numeric V1 correctly resolves REF_000616#SU2 to the Expressive side while current legal governed EI-owned evidence is insufficient to assign an exact within-side tier generically. Intentional fail-closed behaviour, accepted as bounded within-side calibration residue.",
+    "affected_scope": "EI Numeric V1 closure status for REF_000616#SU2 — ⛔ no scoring semantics changed"
+  },
+  "frozen_direction": "E",
+  "ceo_exact_tier_ground_truth": "EI7",
+  "runtime_numeric": null,
+  "numeric_status": "GOVERNED_WITHIN_SIDE_NUMERIC_RESIDUE",
+  "numeric_rule": "NUM-E-FAILCLOSED-1",
+  "numeric_blocker": "LOWER_BODY_REALIZATION_WITHOUT_GOVERNED_LIFT",
+  "★_why_this_is_correct": "★ §1/§2 — the PRIMARY criterion is side correctness and the unit is correctly on the E side. Forcing a tier merely to match the historical exact-tier GT would require a prohibited mechanism.",
+  "⛔_prohibited_mechanisms_not_used": [
+    "automatic persistent-thigh → EI7",
+    "REF-specific exception",
+    "GT lookup",
+    "cross-axis proxy",
+    "fabricated observation",
+    "unsupported single-case universal rule"
+  ],
+  "⛔_do_not_convert_to": [
+    "EI5",
+    "EI6",
+    "EI7",
+    "EI8"
+  ],
+  "⛔_do_not_restore": "INHERENT_PERSISTENT → automatic EI7",
+  "evidence_basis": {
+    "legal_separators_surviving": 0,
+    "candidates_tested": 7,
+    "admitted_independent_pathways": 1,
+    "expressive_detailing_disposition": "EXCLUDED_OBSERVATIONS — surface Gathered, attachment Belt, material Denim are rejected as not EI evidence under current authority",
+    "evidence_file": "REF_000616_BLOCKER_ANALYSIS.json (carried forward from the authority-correction package)"
+  },
+  "★_future": "★ Convertible only if future independent authority changes — either materializing the expressive detailing into a governed EI-owned carrier, or stating the tier that persistent lower-body realization alone reaches. Both are CEO-only."
+}

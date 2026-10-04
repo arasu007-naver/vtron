@@ -1,0 +1,88 @@
+{
+ "document": "CODE_IDENTITY_SEAL_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE",
+ "order": "STMX TC MAINLINE V2.3.66 (CEO D-65 APPROVED)",
+ "status": "CANDIDATE / SHADOW · NOT FROZEN · NOT PRODUCTION · NOT registered in the Clean Engine registry",
+ "package": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE",
+ "canonical_entry_point": "src/tc_semantic_runtime_v3_4.js runCorpus()",
+ "successor_of": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_3_CANDIDATE (770cd533…)",
+ "predecessor_code_identity": "770cd533f07cde64ac5ae3b348818fa938019b1de2f440463996ba409744d059",
+ "predecessor_replay_output_sha256": "210f5751cd7848b42caddc63426bbb1f8585c85052697ecb3e63aa6b90c37686",
+ "carried_byte_identical_from_v3_3": [
+  "BOUND_INPUTS.json",
+  "src/tc_classic_evaluator_v3.js",
+  "src/tc_output_assembler_v3_3.js",
+  "src/tc_prominence_derivation_v3.js",
+  "src/tc_salience_admission_v3.js",
+  "src/tc_semantic_binding_adapter_v3_3.js",
+  "src/tc_semantic_runtime_v3_3.js",
+  "src/tc_semantic_vocabulary_v3.js",
+  "src/tc_transformative_evaluator_v3_3.js"
+ ],
+ "added": [
+  "README.md",
+  "BOUND_INPUTS_V3_4.json",
+  "src/tc_semantic_runtime_v3_4.js",
+  "src/tc_whole_unit_organizational_relation_v3_4.js"
+ ],
+ "step3_successor_code_identity": "2ab7f4ed05ac03ee02e2e78615b89f9613afa39f14d1fac5ddc6e09962ec73df",
+ "sealed_at": "2026-09-26T03:00:39.474Z",
+ "gt_read": 0,
+ "r1_read": 0,
+ "files": [
+  {
+   "file": "README.md",
+   "sha256": "0385b105883daa88261a793b2c023e117650cd64f243208ac6779827107a61e5"
+  },
+  {
+   "file": "BOUND_INPUTS.json",
+   "sha256": "37646e0e7433e7c91b2f374ea43570e772410a68a0276936895cc9926dad8c1d"
+  },
+  {
+   "file": "BOUND_INPUTS_V3_4.json",
+   "sha256": "e7b037b169e4c5b6d0ba3432dba47dbf192b2caa397332265649108c1995d596"
+  },
+  {
+   "file": "src/tc_classic_evaluator_v3.js",
+   "sha256": "d949219b73272437a406589d5070695b5f6f75481908543de2f185abfa6a2b5b"
+  },
+  {
+   "file": "src/tc_output_assembler_v3_3.js",
+   "sha256": "ec75afe6bcef48dcfae3d7792dd749aa1cfae191a870a2bdbb2245551e84de0c"
+  },
+  {
+   "file": "src/tc_prominence_derivation_v3.js",
+   "sha256": "32a47210d42df23463f3d2e1710adf7a7f92689d9b1bbf455fb6d9544332c32a"
+  },
+  {
+   "file": "src/tc_salience_admission_v3.js",
+   "sha256": "07bd216eeb40832321189f8dcb72039e5b63f2e4b2e4a34c9efe71b8d2c2a939"
+  },
+  {
+   "file": "src/tc_semantic_binding_adapter_v3_3.js",
+   "sha256": "35757d950320f94b743871031c1805e9db4e7e6453e2d8da12695d777cbb9217"
+  },
+  {
+   "file": "src/tc_semantic_runtime_v3_3.js",
+   "sha256": "f4afbeb101e1b2067215674e37872f0c1a5fe6f1a1a4e3e426051e9da40e6888"
+  },
+  {
+   "file": "src/tc_semantic_runtime_v3_4.js",
+   "sha256": "d5c95184819608fe8a9580d1daa0795b600c027ec9371155581aaad86bb3b1b7"
+  },
+  {
+   "file": "src/tc_semantic_vocabulary_v3.js",
+   "sha256": "e65b4beb057ecfb4fcd9457b2d30a5ea568fd37261974c47fcb77dfcc0ffb546"
+  },
+  {
+   "file": "src/tc_transformative_evaluator_v3_3.js",
+   "sha256": "0ab5037f817563061b67b5806f695de5bb8bfd65a6d98eac984b3933783a316a"
+  },
+  {
+   "file": "src/tc_whole_unit_organizational_relation_v3_4.js",
+   "sha256": "231b32e020efccbd8b5c567b8f0fb7231b3c5444aabf28686b0baef38bbd9d37"
+  }
+ ],
+ "CODE_IDENTITY_AGGREGATE_SHA256": "0d779d9c7aa9fc10ed44d8fcba717585ef8a67e3e3b0e0880632d2c676334a4f",
+ "RUNTIME_IDENTITY_SHA256": "e7085f9f627c8228f261af1fda2ce28b3fe66d2110fa158e2460fd499af08a0b",
+ "rule": "any byte change breaks identity; a post-GT runtime defect is a failed seal cycle → new candidate version, never an in-place patch"
+}

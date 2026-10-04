@@ -1,0 +1,39 @@
+{
+  "document": "D3_689_AUTHORITY_CORRECTION_PROOF",
+  "date": "2026-09-08",
+  "unit_id": "REF_000689#SU1",
+  "⛔_defect_B": "⛔ ChatGPT Independent Review: CEO authorized the Upper Thigh REGION for REF_000689 but did not separately adjudicate INHERENT_PERSISTENT. The predecessor inferred the mode from the D3 rationale. §11 rules that inference insufficient.",
+  "predecessor_qualifier": [
+    {
+      "region": "Upper Thigh",
+      "mode": "INHERENT_PERSISTENT"
+    }
+  ],
+  "corrected_qualifier": [
+    {
+      "region": "Upper Thigh",
+      "mode": "UNKNOWN"
+    }
+  ],
+  "persistence_assertion_present": false,
+  "exposure_preserved": [
+    "Shoulder",
+    "Chest / Décolletage",
+    "Upper Thigh"
+  ],
+  "region_added_preserved": true,
+  "original_extracted_exposure": [
+    "Shoulder",
+    "Chest / Décolletage"
+  ],
+  "direction_before": "E",
+  "direction_after": "E",
+  "⛔_never_inferred_from": [
+    "image pose",
+    "garment type",
+    "length",
+    "absence of slit",
+    "GT EI7"
+  ],
+  "★_consequence": "★ REF_000689 must now reach EI7 through a rule that does not read the realization qualifier at all, or not reach it. See NUM-E-LIFT-2 and the §24 qualifier-independence proof."
+}

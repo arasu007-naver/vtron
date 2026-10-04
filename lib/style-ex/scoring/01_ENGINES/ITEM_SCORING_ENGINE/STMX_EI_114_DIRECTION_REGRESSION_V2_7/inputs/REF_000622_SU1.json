@@ -1,0 +1,160 @@
+{
+  "unit_id": "REF_000622#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "19b3bce56ceb97554fe758946ba990e21be60d5e783ff4f6fbcf64e5dfe9dfca",
+  "projected_hash": "a2dc7e5a8a0456481a213ada81d3c1d158680aab3f8a09fbe546c04c29fc5f61",
+  "input": {
+    "category": "Skirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth matte cloth",
+          "even drape"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth uniform matte surface consistent with synthetic crepe"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain matte finish, no constructed surface treatment"
+        ],
+        "values": []
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": []
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": []
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "smooth front, no pocket openings visible"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "clean edges, no ruffle"
+        ]
+      },
+      "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied decorative construction visible"
+        ],
+        "values": []
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim on garment"
+        ],
+        "values": []
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "single high slit on one side creating asymmetric front"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "width stays consistent from hip to hem",
+          "column shape"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "lower",
+        "evidence": [
+          "skims body without marked closeness or extra volume"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Maxi Length",
+        "region": "lower",
+        "evidence": [
+          "hem falls at ankle on worn body",
+          "reaches near feet"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth follows body with soft movement, no self-supporting volume"
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "lower",
+        "evidence": [
+          "high thigh-length slit on the front/side exposing leg"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "values": [
+          {
+            "value": "Upper Thigh",
+            "evidence": [
+              "CEO adjudication"
+            ]
+          }
+        ],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black cloth across whole skirt",
+        "lightness": "deep dark tone",
+        "usage": "one continuous color, no secondary designed color",
+        "effect": "matte, no neon or metallic"
+      },
+      "color_notes": null
+    }
+  }
+}

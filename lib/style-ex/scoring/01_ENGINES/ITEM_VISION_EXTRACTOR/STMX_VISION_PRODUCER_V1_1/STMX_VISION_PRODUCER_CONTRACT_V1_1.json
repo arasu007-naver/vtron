@@ -1,0 +1,81 @@
+{
+  "document": "STMX_VISION_PRODUCER_CONTRACT_V1_1",
+  "date": "2026-09-07",
+  "producer_contract_version": "V1.1",
+  "id": "STMX_VISION_PRODUCER_V1_1",
+  "status": "DEVELOPMENT — the Producer contract of the V1.2.7 development line. ⛔ NOT the sealed baseline Producer.",
+  "supersedes_for": "STMX_EI_DIRECTION_RUNTIME_V1_2_7 only",
+  "⛔_does_not_supersede": "the sealed Producer V1 at 01_ENGINES/ITEM_VISION_EXTRACTOR/producer_rules_v1.js, which remains the Producer contract of the sealed V1.2.6 parking baseline and is protected by guard G52.",
+  "naming_convention": "directory-versioned, following the repository's own STMX_VISION_PRODUCER_V<version>/ precedent (99_ARCHIVE/RETIRED_LEGACY_RUNTIME/18_GARMENT_VISION_FROZEN_V1/05_FINAL_EXTRACTION_PIPELINE/STMX_VISION_PRODUCER_V1/). ⛔ Filenames inside are deliberately unchanged so every intra-set require stays verbatim and no module resolution is rewritten.",
+  "module_closure": [
+    "producer_rules_v1.js",
+    "producer_prompt_v1.js",
+    "producer_validator_v1.js",
+    "producer_controller_v1.js",
+    "producer_model_adapter_v1.js"
+  ],
+  "self_contained": true,
+  "delta_vs_producer_v1": {
+    "added": [
+      "TREATED_SURFACE_REALIZATION = [Baseline, Distressed]",
+      "TREATED_SURFACE_REALIZATION_CARRIER_VALUES = { surface: [Treated Surface] }",
+      "isTreatedSurfaceRealizationEligible(p, v) — VALUE-LEVEL gate",
+      "the Producer prompt instruction, gated to the Treated Surface value",
+      "checkTreatedSurfaceRealization in the validator, plus its call site",
+      "one verbatim carry line in the controller"
+    ],
+    "removed": [],
+    "parameters_added": 0,
+    "top_level_parameter_count": 37
+  },
+  "treated_surface_realization": {
+    "field": "treated_surface_realization",
+    "owner": "surface — per-value metadata on values_detail[] items",
+    "eligibility": "p === 'surface' && v === 'Treated Surface'  — VALUE-LEVEL",
+    "values": [
+      "Baseline",
+      "Distressed"
+    ],
+    "missing": "⛔ absent ⇒ NOT_GOVERNED — NEVER Baseline",
+    "⛔_structural": "NOT APPROVED FOR V1 · DEFERRED · no placeholder",
+    "⛔_force": "CEO_FORCE_DECISION_REQUIRED — no force is implied by this contract",
+    "firewalls": {
+      "descriptor": "NOT_SCORING_AUTHORITY — no parser, no regex, no backfill",
+      "fringe": "attachment = Fringe → D04 → GAP-06 — never encoded here",
+      "decoration": "Appliqué / Embroidery remain decorative_detail"
+    }
+  },
+  "⛔_live_extraction_consequence": "A live Vision run that loads the SHARED producer will NOT emit treated_surface_realization — the shared producer is the sealed V1 again. The future CEO-approved 9-target selective re-extraction MUST load this versioned Producer explicitly.",
+  "files": [
+    {
+      "file": "producer_rules_v1.js",
+      "sha256": "c4190ece1408854d039eda4d9a1c3f4de2c5209ae1eefb7f8a461ba5825bf98f",
+      "bytes": 66546,
+      "copied_this_run": false
+    },
+    {
+      "file": "producer_prompt_v1.js",
+      "sha256": "0d3016e084d5f6f0749bb1a87dda8eef2b9cf65579ceba06e1646ec46f996d84",
+      "bytes": 154376,
+      "copied_this_run": false
+    },
+    {
+      "file": "producer_validator_v1.js",
+      "sha256": "c261d36b4905928efe7cda14c76194d13f0ac4cd357919f0e18faf27d01e2462",
+      "bytes": 56972,
+      "copied_this_run": false
+    },
+    {
+      "file": "producer_controller_v1.js",
+      "sha256": "7a2aa66e2f278e22857b8de51bab467f2a221883734bf50d96dbd0308ab71944",
+      "bytes": 42326,
+      "copied_this_run": false
+    },
+    {
+      "file": "producer_model_adapter_v1.js",
+      "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+      "bytes": 3881,
+      "copied_this_run": false
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "unit_id": "REF_000660#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "7e68af035a0c8d9518e4132136feb8bf59fc896208c446dc8c1ae093f4bc0302",
+  "projected_hash": "5f8de5cd6fc2553eca389da1670e74e6205daf2bc431af5e034cd4f3be633610",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth matte drapey cloth with fluid fall",
+          "no visible weave/knit texture"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth fluid crepe-like drape",
+              "even matte surface consistent with technical/synthetic crepe"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "values": [],
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid olive color throughout",
+          "no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, print or lettering"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "clean bodice and skirt with no pocket openings visible"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping visible"
+        ],
+        "values": []
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, ribbon or trim on garment"
+        ],
+        "values": []
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "high-low skirt hem sits short on one side and long on other",
+          "diagonal draped panel falls on one side of skirt with no counterpart"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt flares outward from waist toward hem",
+          "A-line expansion below fitted waist"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "bodice close through torso, skirt expands"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice follows torso closely and traces the body outline"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "skirt hangs with its own room away from legs, A-line drape"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Midi",
+        "region": "whole_garment",
+        "evidence": [
+          "longest hem falls around mid-calf on standing body",
+          "high-low but reference length in the midi zone"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "cloth drapes and falls softly"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Fluid",
+            "evidence": [
+              "bodice follows body with soft molding"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "skirt drapes and falls with soft flowing folds, no self-support"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "bare shoulders and arms, halter construction with no sleeve"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "halter neck, no shoulder-covering construction to drop"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulders bare, no built shoulder line"
+        ]
+      },
+      "neckline_shape": {
+        "state": "UNKNOWN",
+        "value": null,
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "halter neck rises high to the throat/neck band"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no collar structure; halter band wraps neck but is not a collar"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no ribbed band at any garment edge"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "continuous front bodice, no front placket or opening"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "shoulders and upper back bared by halter cut"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "both shoulders fully exposed by halter neckline"
+            ]
+          }
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "asymmetric high-low hem, but no cut vertical slit in skirt"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "draped skirt panel but no gathered/tiered frill strip"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Halter",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "olive",
+      "color_lightness": "normal",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform olive-green cloth across bodice and skirt",
+        "lightness": "mid-tone green, neither light nor dark",
+        "usage": "one color throughout, no contrast trims or closures",
+        "effect": "matte finish, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

@@ -1,0 +1,379 @@
+{
+  "document": "STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V2_TABLE",
+  "authority": {
+    "file": "01_ENGINES/ITEM_SCORING_ENGINE/PRE_IMPLEMENTATION_EI_DIRECTION_FIRST_PHYSICS_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EI_DIRECTION_FIRST_V1/STMX_EI_NEUTRAL_COLOR_REGISTRY_CANONICAL_V2.md",
+    "sha256": "876fe953b19f0c98d6671dfcf42f420df0564419d002eadbfd848a58dc457520",
+    "status": "🔒 CURRENT CANONICAL AUTHORITY · CEO Decision 2026-08-26"
+  },
+  "transcription_rule": "Every value below is transcribed from the authority file named above. ⛔ No row was inferred, extended, or approximated. Colour families are the Colour V1 machine tokens.",
+  "base_character": {
+    "authority_section": "§1 LAYER 1 — BASE COLOR CHARACTER",
+    "NON_EXPRESSIVE": [
+      "black",
+      "gray",
+      "navy",
+      "beige",
+      "brown",
+      "khaki"
+    ],
+    "EXPRESSIVE": [
+      "white_family",
+      "blue",
+      "green",
+      "mint",
+      "olive",
+      "red",
+      "wine",
+      "pink",
+      "purple",
+      "yellow",
+      "orange",
+      "camel",
+      "gold",
+      "silver"
+    ],
+    "lightness_rule": "⛔ color_lightness does NOT change Base Character (§1 · EI-X-D9).",
+    "uncertain_rule": "Colour V1 `uncertain` is not a family in either set → base cannot be resolved (UNRESOLVED)."
+  },
+  "resolution_order": [
+    "1. Base Colour Character (Expressive | Non-Expressive)",
+    "2. Look up Gender × Canonical Category",
+    "3. Apply an observable-context override ONLY where the outcome actually differs",
+    "4. Registry hit → Neutral. Miss → retain Base Character. ⛔ A miss is never automatically Expressive."
+  ],
+  "rows": [
+    {
+      "category": "Sweatshirt",
+      "context": "Activewear / Performance",
+      "predicate": "product_context = Activewear-Performance",
+      "MEN": [],
+      "WOMEN": [
+        "black",
+        "gray"
+      ],
+      "gender": "WOMEN_ONLY",
+      "section": "§2026-09-05 CEO Activewear/Performance Product Context",
+      "note": "⛔ Black and Gray ONLY. ⛔ WOMEN only — the CEO reviewed the women's activewear context and no other gender is authorized. ⛔ Pink is NOT made Neutral by this decision and continues through normal intrinsic colour semantics. ⛔ No Navy expansion."
+    },
+    {
+      "category": "T-Shirt",
+      "context": "Activewear / Performance",
+      "predicate": "product_context = Activewear-Performance",
+      "MEN": [],
+      "WOMEN": [
+        "black",
+        "gray"
+      ],
+      "gender": "WOMEN_ONLY",
+      "section": "§2026-09-05 CEO Activewear/Performance Product Context",
+      "note": "⛔ Black and Gray ONLY. ⛔ WOMEN only — the CEO reviewed the women's activewear context and no other gender is authorized. ⛔ Pink is NOT made Neutral by this decision and continues through normal intrinsic colour semantics. ⛔ No Navy expansion."
+    },
+    {
+      "category": "Coat",
+      "context": "(all)",
+      "predicate": null,
+      "MEN": [
+        "black",
+        "gray",
+        "navy"
+      ],
+      "WOMEN": [
+        "black",
+        "gray",
+        "navy"
+      ],
+      "gender": "SAME",
+      "section": "§3"
+    },
+    {
+      "category": "Jacket",
+      "context": "Tailored",
+      "predicate": "grammar = Tailored",
+      "MEN": [
+        "black",
+        "navy",
+        "gray"
+      ],
+      "WOMEN": [
+        "black",
+        "navy",
+        "gray"
+      ],
+      "gender": "SAME",
+      "section": "§3 · §4 Jacket chain step 1"
+    },
+    {
+      "category": "Jacket",
+      "context": "Leather / Suede",
+      "predicate": "material includes Leather|Suede",
+      "MEN": [
+        "black"
+      ],
+      "WOMEN": [
+        "black"
+      ],
+      "gender": "SAME",
+      "section": "§3 · §4 Jacket chain step 2"
+    },
+    {
+      "category": "Jacket",
+      "context": "Denim",
+      "predicate": "material includes Denim",
+      "MEN": [
+        "black",
+        "blue"
+      ],
+      "WOMEN": [
+        "black",
+        "blue"
+      ],
+      "gender": "SAME",
+      "section": "§3 · §4 Jacket chain step 3 · §3.2 Blue"
+    },
+    {
+      "category": "Jacket",
+      "context": "ALL OTHER (fallback)",
+      "predicate": "else",
+      "MEN": [
+        "black",
+        "navy"
+      ],
+      "WOMEN": [
+        "black",
+        "navy"
+      ],
+      "gender": "SAME",
+      "section": "§3 COLLAPSED FALLBACK · §4"
+    },
+    {
+      "category": "Shirt",
+      "context": "(all)",
+      "predicate": null,
+      "MEN": [
+        "white_family"
+      ],
+      "WOMEN": [
+        "white_family"
+      ],
+      "gender": "SAME",
+      "section": "§3"
+    },
+    {
+      "category": "T-Shirt",
+      "context": "(all, incl. any Polo read)",
+      "predicate": null,
+      "MEN": [
+        "white_family"
+      ],
+      "WOMEN": [
+        "white_family"
+      ],
+      "gender": "SAME",
+      "section": "§3 · §3.2 Black T-Shirt NOT Neutral"
+    },
+    {
+      "category": "Sweater",
+      "context": "(all)",
+      "predicate": null,
+      "MEN": [
+        "black",
+        "navy",
+        "gray"
+      ],
+      "WOMEN": [
+        "black",
+        "gray"
+      ],
+      "gender": "DIFFERS",
+      "section": "§3 · §3.1 DIFFERENCE 1"
+    },
+    {
+      "category": "Sweatshirt",
+      "context": "(all, incl. Hoodie)",
+      "predicate": null,
+      "MEN": [
+        "black",
+        "navy",
+        "gray"
+      ],
+      "WOMEN": [
+        "black",
+        "gray",
+        "navy"
+      ],
+      "gender": "SAME",
+      "section": "§3 · §3.1 corrected SAME"
+    },
+    {
+      "category": "Trouser",
+      "context": "Tailored",
+      "predicate": "trouser_distinction = Tailored",
+      "MEN": [
+        "black",
+        "gray",
+        "navy"
+      ],
+      "WOMEN": [
+        "black",
+        "gray",
+        "navy"
+      ],
+      "gender": "SAME",
+      "section": "§3 · §4 Trouser chain step 1"
+    },
+    {
+      "category": "Trouser",
+      "context": "Jeans",
+      "predicate": "trouser_distinction = Jeans",
+      "MEN": [
+        "black",
+        "blue"
+      ],
+      "WOMEN": [
+        "black",
+        "blue"
+      ],
+      "gender": "SAME",
+      "section": "§3 · §5 G5 CLOSED (D-J6) · ⛔ material never consulted"
+    },
+    {
+      "category": "Trouser",
+      "context": "Sweatpants / Jogger",
+      "predicate": "trouser_distinction = Sport",
+      "MEN": [
+        "black",
+        "gray",
+        "navy"
+      ],
+      "WOMEN": [
+        "black",
+        "gray",
+        "navy"
+      ],
+      "gender": "SAME",
+      "section": "§3 · §4 Trouser chain step 3"
+    },
+    {
+      "category": "Trouser",
+      "context": "Leggings",
+      "predicate": "trouser_distinction = Leggings",
+      "MEN": [],
+      "WOMEN": [
+        "black",
+        "gray"
+      ],
+      "gender": "WOMEN_ONLY",
+      "section": "§2026-09-05 CEO Activewear/Performance Product Context",
+      "note": "⛔ Black and Gray ONLY, WOMEN only. Leggings was already a governed trouser_distinction; this row is what makes it reach the Registry."
+    },
+    {
+      "category": "Trouser",
+      "context": "General Casual (all other)",
+      "predicate": "else",
+      "MEN": [
+        "black",
+        "navy",
+        "beige"
+      ],
+      "WOMEN": [
+        "black"
+      ],
+      "gender": "DIFFERS",
+      "section": "§3 · §3.1 DIFFERENCE 2 · §4 fallback"
+    },
+    {
+      "category": "Skirt",
+      "context": "(all)",
+      "predicate": null,
+      "MEN": null,
+      "WOMEN": [
+        "black"
+      ],
+      "gender": "WOMEN_ONLY",
+      "section": "§3"
+    },
+    {
+      "category": "Dress",
+      "context": "(all)",
+      "predicate": null,
+      "MEN": null,
+      "WOMEN": [
+        "black"
+      ],
+      "gender": "WOMEN_ONLY",
+      "section": "§3"
+    },
+    {
+      "category": "Jumpsuit",
+      "context": "(all)",
+      "predicate": null,
+      "MEN": null,
+      "WOMEN": [
+        "black"
+      ],
+      "gender": "WOMEN_ONLY",
+      "section": "§3"
+    }
+  ],
+  "predicate_chains": {
+    "Jacket": [
+      "grammar = Tailored",
+      "material includes Leather|Suede",
+      "material includes Denim",
+      "else → fallback"
+    ],
+    "Trouser": [
+      "trouser_distinction = Tailored",
+      "trouser_distinction = Jeans",
+      "trouser_distinction = Sport",
+      "trouser_distinction = Leggings",
+      "else → General Casual (⛔ material is never consulted for Trouser routing)"
+    ],
+    "note": "§4 — eight of the ten categories need NO context predicate. Trouser routes on trouser_distinction, and Leggings HAS its own row (WOMEN · black/gray only); it does NOT fall through to the General Casual fallback.",
+    "authority_drift_corrected": {
+      "date": "2026-09-06",
+      "was": "Leggings has no row of its own and falls through the Trouser chain to the General Casual fallback.",
+      "why_wrong": "The CEO-approved Activewear/Performance update added an executable `trouser_distinction = Leggings` row to this same artifact, but this narrative was not updated with it. The authority artifact therefore contradicted its own executable rows.",
+      "scope": "⛔ Documentation only. No Registry row, palette, gender policy or predicate semantics was changed by this correction."
+    }
+  },
+  "gender_dependence": {
+    "differs_rows": [
+      "Sweater (all)",
+      "Trouser General Casual"
+    ],
+    "women_only_rows": [
+      "Skirt",
+      "Dress",
+      "Jumpsuit"
+    ],
+    "firewall": "⛔ Where the MEN and WOMEN outcomes differ and gender/provenance is not governed, the runtime does NOT default to either. Where the outcome is identical, the runtime may proceed and records OUTCOME_EQUIVALENT."
+  },
+  "activewear_amendment": {
+    "ceo_decision": "2026-09-05",
+    "authority": "CEO Activewear / Performance Product Context (§11–§14)",
+    "colors_authorized": [
+      "black",
+      "gray"
+    ],
+    "genders_authorized": [
+      "WOMEN"
+    ],
+    "explicitly_not_authorized": [
+      "pink",
+      "navy",
+      "MEN",
+      "any other colour",
+      "any other gender"
+    ],
+    "rationale": "The CEO reviewed the women's activewear/leggings context and made Black and Gray Neutral there. ⛔ The decision is not extended automatically to further colours or genders."
+  },
+  "status": "HISTORICAL — PRESERVED FOR PROVENANCE. ⛔ NOT CURRENT.",
+  "is_current": false,
+  "superseded_by": {
+    "file": "STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V3_TABLE.json",
+    "date": "2026-09-06",
+    "authority": "CEO 2026-09-06 §3 · §10 · §11"
+  },
+  "supersession_note": "This gender-keyed table is kept UNCHANGED in substance as historical provenance. Its MEN / WOMEN palettes and WOMEN_ONLY applicability are NOT current. ⛔ Nothing was erased."
+}

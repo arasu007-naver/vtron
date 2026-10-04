@@ -1,0 +1,337 @@
+```json
+{
+  "targets": [
+    {
+      "descriptor_need": "REQUIRED",
+      "reconstruction_gaps": ["RG-2", "RG-3", "RG-1"],
+      "descriptor": "The printed area fills most of the front torso, running from just below the neckband to a little above the hem and stopping well inside the side seams: an arched wordmark in a red-at-top to yellow-at-bottom vertical gradient sits over a squared full-colour photographic panel showing figures with instruments amid lit candles and pale flowers, its edges blurred and slightly grainy so the panel fades into the dark body rather than ending on a hard border. Construction lines are made visible by contrast lighter stitching: a run along the shoulder line and around the armholes, a second line stepping down the outer upper sleeve, and a doubled line at both the sleeve ends and the straight lower hem. The body reads squared through the chest and waist with the hem edge standing slightly off the hip rather than following it, and the neck is finished with a narrow flat rib band seamed with the same contrast thread.",
+      "identity": { "value": true, "evidence": ["separate upper-body garment with its own neckband, sleeves and hem", "tucked-out hem edge distinct from the trouser waistband below"] },
+      "readability": {
+        "value": true,
+        "basis": "RECONSTRUCTABLE",
+        "limitation": ["CONTINUOUS_STRUCTURE_VISIBLE"],
+        "evidence": ["neckline, both shoulders, both sleeves and full lower hem all in frame", "continuous front body from neck to hem visible, proportion and volume readable"]
+      },
+      "prominence": "dominant",
+      "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt",
+        "evidence": ["jersey knit body worn as the sole upper body layer", "short set-in sleeves and plain rib crew neckband with no front opening", "straight topstitched lower hem"]
+      },
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["matte cotton-jersey appearance with soft creasing at the underarm"],
+          "values": [
+            { "value": "Cotton", "evidence": ["dull matte jersey face, no sheen", "soft small creases across the body"] }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["ground reads as a washed-down charcoal rather than a flat dye"],
+          "values": [
+            { "value": "Treated Surface", "coverage": "Dominant", "treated_surface_realization": "Baseline", "evidence": ["faded, slightly uneven charcoal tone across body and sleeves", "cloth continuous with no fraying or damage"] }
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no repeating motif anywhere on body or sleeves outside the placed print"]
+        },
+        "graphic": {
+          "state": "OBSERVED",
+          "value": "Localized",
+          "region": "whole_garment",
+          "evidence": ["single placed print block on the front chest and torso only", "sleeves and side areas carry no print"]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["chest and lower front fully visible, no pocket opening or patch"]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no embroidery, beading, appliqué or applied cord trim; seam lines are plain stitching"]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no hardware, belt, tab or trim attached to the garment"]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["left and right sleeves, armholes and side seams mirror each other", "lower hem runs level across the front with no step or one-sided panel, tie or flap"]
+        },
+        "exposure_opening": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["body covered from neckband to hip, hem overlaps the trouser waistband with no skin gap", "no cutout in front torso, side or shoulder"]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["shoulder line reaches only to the wearer's own shoulder ends", "chest and waist carry visible room of their own without standing far away from the torso", "hem hangs near the hip rather than flaring off it"]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["worn on a standing body, hem visible and sitting just below the waist over the top of the trouser hip"]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Structured",
+          "region": "whole_garment",
+          "evidence": ["body keeps a squared shape at the hem yet yields into soft creases at the underarm and waist", "sleeves fold softly around the upper arm"]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Short",
+          "region": "upper",
+          "evidence": ["sleeve ends on the upper arm above the elbow"]
+        },
+        "sleeve_volume": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["sleeve envelope follows the upper arm with ordinary room, no gathered or expanded body"]
+        },
+        "cuff_type": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["sleeve end is a plain topstitched hem with no constructed band"]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["wearer's shoulder end reads at the outer edge of the deltoid; the garment forms a clear shoulder-to-sleeve endpoint at that point", "shoulder construction does not continue onto the upper arm before the sleeve begins"]
+        },
+        "neckline_shape": {
+          "state": "OBSERVED",
+          "value": "Round",
+          "region": "upper",
+          "evidence": ["shallow rounded opening edge close to the base of the neck"]
+        },
+        "neckline_position": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["neckband sits at the base of the neck, well above the chest"]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["neck finished only with a flat narrow rib band, no standing or folded collar piece"]
+        },
+        "collar_scale": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "upper",
+          "evidence": ["no collar present to measure"]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["lower edge is a plain self-fabric hem with contrast topstitching, no ribbed band"]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["continuous front with no placket, zip or split"]
+        }
+      },
+      "dm_designed_detail_evidence": {
+        "evidence": [
+          {
+            "evidence_id": "tee-front-print",
+            "evidence_family": "graphic",
+            "detail": "arched gradient wordmark above a full-colour photographic panel on the front torso",
+            "relative_size": { "state": "OBSERVED", "value": "large" },
+            "contrast": { "state": "OBSERVED", "value": "high" },
+            "spatial_position": { "state": "OBSERVED", "value": "localized" },
+            "source_observation_refs": ["observations.graphic"],
+            "m1_supporting_realization": {
+              "internal_chromatic_composition": { "state": "OBSERVED", "value": "multi_colour_compound" },
+              "internal_fill_realization": { "state": "OBSERVED", "value": "dense_varied" }
+            }
+          },
+          {
+            "evidence_id": "tee-washed-ground",
+            "evidence_family": "surface_treatment",
+            "detail": "washed-down, slightly uneven charcoal ground across body and sleeves",
+            "relative_size": { "state": "OBSERVED", "value": "large" },
+            "contrast": { "state": "OBSERVED", "value": "low" },
+            "spatial_position": { "state": "OBSERVED", "value": "whole_garment" },
+            "source_observation_refs": ["observations.surface"],
+            "m1_supporting_realization": {
+              "internal_chromatic_composition": { "state": "OBSERVED", "value": "limited_or_uniform" },
+              "internal_fill_realization": { "state": "OBSERVED", "value": "uniform_or_sparse" }
+            }
+          },
+          {
+            "evidence_id": "tee-contrast-stitch",
+            "evidence_family": "designed_color_contrast",
+            "detail": "lighter contrast stitching along shoulder, armhole, outer sleeve, sleeve ends and hem",
+            "relative_size": { "state": "OBSERVED", "value": "small" },
+            "contrast": { "state": "OBSERVED", "value": "medium" },
+            "spatial_position": { "state": "OBSERVED", "value": "distributed" },
+            "source_observation_refs": ["DM_SPECIFIC_OBSERVATION"]
+          }
+        ],
+        "excluded": [
+          { "item": "matte cotton jersey face", "reason": "natural_material" }
+        ]
+      }
+    },
+    {
+      "descriptor_need": "REQUIRED",
+      "reconstruction_gaps": ["RG-2", "RG-4"],
+      "descriptor": "Only the waist-to-upper-thigh section is in frame: a wide straight-cut waistband with evenly spaced belt loops, a centre-front fly seam, and curved hip pocket openings whose edges are pushed out of shape by both hands being inserted. Contrast lighter-orange topstitching runs along the waistband edges, the fly line and the pocket curves, and the yoke/side seams read as flat felled runs. The seat and hip carry loose fabric that breaks into large soft diagonal folds across the thigh, and the frame ends before any of the leg line, so how the leg falls below the thigh cannot be traced.",
+      "identity": { "value": true, "evidence": ["separate lower-body garment with its own waistband, fly and hip pockets, distinct from the tee hem above"] },
+      "readability": {
+        "value": false,
+        "basis": "NOT_RECONSTRUCTABLE",
+        "limitation": ["TERMINAL_REGION_CROPPED", "FRAGMENTARY_VISIBILITY"],
+        "evidence": ["frame ends at the upper thigh; the leg line, its volume to the hem and the hem itself are absent", "only the waist-and-hip assembly is visible, so whole-leg morphology cannot be reconstructed"]
+      },
+      "prominence": "secondary",
+      "category": {
+        "state": "OBSERVED",
+        "value": "Trouser",
+        "evidence": ["bottom garment with a constructed waistband and belt loops at the waist", "centre-front fly seam and curved hip pocket openings dividing into leg fabric"]
+      },
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["blue bottomweight cloth with visible twill body and heavy topstitched seams"],
+          "values": [
+            { "value": "Denim", "evidence": ["mid-blue twill face with white-flecked weave and flat felled seams"] }
+          ]
+        },
+        "surface": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["visible waist and thigh area reads as an even mid-blue with no whiskering, abrasion or coating"]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no repeating printed or woven motif on the visible panels"]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no placed print, logo or lettering on the visible area"]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "whole_garment",
+          "evidence": ["pocket openings at both front hips with hands inserted"],
+          "pockets": [
+            {
+              "location": "Lower Front",
+              "construction": { "state": "OBSERVED", "value": "Inset", "evidence": ["opening formed as a seamed curved edge within the hip panel, no patch outline"] },
+              "projection": { "state": "NOT_VISIBLE", "value": null, "evidence": ["hands inside both pockets fill and distort the bags, so stand-off cannot be seen"] }
+            }
+          ]
+        },
+        "decorative_detail": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no embroidery, beading, appliqué or applied cord; visible lines are stitching only"]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no belt worn, no visible studs, rivets or applied trim on the visible waist and hip"]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["waistband runs level across the front, belt loops and hip pockets mirror left to right", "no one-sided panel, flap, tie or extra closure on the visible section"]
+        },
+        "exposure_opening": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["waist, hip and thigh fully covered; no cutout or designed opening in the visible section"]
+        },
+        "trouser_distinction": {
+          "state": "OBSERVED",
+          "value": "Jeans",
+          "region": "whole_garment",
+          "evidence": ["non-elastic constructed waistband with belt loops", "centre-front fly seam and curved hip pockets on denim-type bottomweight, with contrast topstitching"]
+        },
+        "silhouette": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["legs cropped at the upper thigh, so directional geometry toward the hem cannot be read"]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Relaxed",
+          "region": "lower",
+          "evidence": ["waistband sits away from the body with visible slack at the front", "seat and thigh cloth stands off the leg in large loose folds across the visible section"]
+        },
+        "length": {
+          "state": "NOT_VISIBLE",
+          "value": null,
+          "region": "lower",
+          "evidence": ["hem out of frame below the thigh"]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Semi-Structured",
+          "region": "whole_garment",
+          "evidence": ["cloth holds a firm waistband and hip shape yet yields into broad soft diagonal creases over the thigh"]
+        }
+      },
+      "dm_designed_detail_evidence": {
+        "evidence": [
+          {
+            "evidence_id": "jean-contrast-stitch",
+            "evidence_family": "designed_color_contrast",
+            "detail": "lighter orange topstitching along waistband, fly and hip pocket curves against the blue ground",
+            "relative_size": { "state": "OBSERVED", "value": "small" },
+            "contrast": { "state": "OBSERVED", "value": "medium" },
+            "spatial_position": { "state": "OBSERVED", "value": "distributed" },
+            "source_observation_refs": ["DM_SPECIFIC_OBSERVATION"]
+          }
+        ],
+        "excluded": [
+          { "item": "blue denim twill body colour", "reason": "single_base_colour" },
+          { "item": "leg area below the thigh", "reason": "image_capture_condition" }
+        ]
+      }
+    }
+  ]
+}
+```

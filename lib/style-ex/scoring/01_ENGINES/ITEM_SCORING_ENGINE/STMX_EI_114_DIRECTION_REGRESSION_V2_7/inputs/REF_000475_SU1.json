@@ -1,0 +1,236 @@
+{
+  "unit_id": "REF_000475#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "5ccb4fe70e13054063a3d9833b91e56b7e8d82a6082c3419c41336fd57d9e118",
+  "projected_hash": "dbf46de0bce6debaf8cddf118aeb23037e431318867ebee4ec4a7110a3d1c316",
+  "input": {
+    "category": "Sweatshirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte cotton fleece appearance"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "soft matte fleece jersey texture on body and sleeves"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth fleece body with no distinct constructed or optical treatment"
+        ],
+        "values": []
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black cloth, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "small tonal 'VETEMENTS' lettering on chest"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "lower-front split kangaroo pocket openings flanking the zip"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping trim visible"
+        ],
+        "values": []
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "drawstrings and zipper only; no belt, hardware trim, fur or fringe"
+        ],
+        "values": []
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right halves mirror; hem, sleeves, pockets and zip symmetric"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "shoulder frame drafted well past wearer's shoulders",
+          "body stands wide away from torso",
+          "very low armhole junction and enlarged overall frame"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "hem falls well below the hip toward the upper thigh on the visible body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds a soft rounded volume yet folds and yields at sleeves and hem"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves run full length to the wrists"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "anatomical shoulder end sits well inboard of the sleeve junction",
+          "shoulder line continues onto upper arm before transitioning to sleeve"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Round",
+        "region": "upper",
+        "evidence": [
+          "rounded neck opening under the hood"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "neck finish sits high at base of neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "neck finished by hood opening, no distinct standing collar band"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "ribbed band at the lower hem of the sweatshirt"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "large hood with drawstrings behind neck"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "zipper runs full length from hem to hood opening"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "center-front two-way zipper with pull tabs visible"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Voluminous",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Ribbed",
+        "region": "upper",
+        "evidence": [
+          "elasticated ribbed knit bands at sleeve ends"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ribbed cuff depth is ordinary against sleeve width"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "silver",
+          "carrier_kind": "closure",
+          "carrier_ref": "Zipper"
+        }
+      ],
+      "evidence": {
+        "primary": "uniform black fleece body and sleeves",
+        "lightness": "deep black tone",
+        "usage": "single black color across garment",
+        "effect": "matte, no neon or metallic color"
+      },
+      "color_notes": null
+    }
+  }
+}

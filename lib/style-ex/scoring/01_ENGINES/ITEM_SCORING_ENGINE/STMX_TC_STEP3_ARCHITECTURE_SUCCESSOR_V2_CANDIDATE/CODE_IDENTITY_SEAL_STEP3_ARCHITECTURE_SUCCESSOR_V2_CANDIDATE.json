@@ -1,0 +1,26 @@
+{
+ "document": "CODE_IDENTITY_SEAL_STEP3_ARCHITECTURE_SUCCESSOR_V2_CANDIDATE",
+ "order": "STMX TC MAINLINE V2.3.66 (CEO D-65 APPROVED)",
+ "status": "CANDIDATE · SHADOW · NOT FROZEN · NOT PRODUCTION",
+ "package": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP3_ARCHITECTURE_SUCCESSOR_V2_CANDIDATE",
+ "predecessor": "STMX_TC_STEP3_ARCHITECTURE_FROZEN_BASELINE_V1 (2d7ec641… · byte-identical)",
+ "spec_sealed_at": "2026-09-26T02:51:41.195Z",
+ "source_sealed_at": "2026-09-26T03:00:39.465Z",
+ "gt_read": 0,
+ "files": [
+  {
+   "file": "STEP3_SUCCESSOR_V2_CONTRACT.json",
+   "sha256": "2ef19e15d5b23a5bb20921bd6342e7c1b17a8750ed6951d620aa5d9209ec372a"
+  },
+  {
+   "file": "README.md",
+   "sha256": "21731d05abf96f94427aff96c63cdc4e921e5020f96bb4dfaf609bff792cbb62"
+  },
+  {
+   "file": "src/step3_grammar_state_successor_v2.js",
+   "sha256": "28ecc3285b7e876a3b74647224610e19f40439674400a453c6bc61ab6d166442"
+  }
+ ],
+ "CODE_IDENTITY_AGGREGATE_SHA256": "2ab7f4ed05ac03ee02e2e78615b89f9613afa39f14d1fac5ddc6e09962ec73df",
+ "rule": "any byte change breaks identity; a post-GT change is a failed seal cycle → new candidate version"
+}

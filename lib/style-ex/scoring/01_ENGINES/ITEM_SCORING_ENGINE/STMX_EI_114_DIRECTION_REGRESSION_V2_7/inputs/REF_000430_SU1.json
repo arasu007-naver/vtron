@@ -1,0 +1,255 @@
+{
+  "unit_id": "REF_000430#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "e5ac774121cec82e8334b1d457a6810a0017c9f62256322d3edb54bc354964fb",
+  "projected_hash": "c776914a7630e7db7d9f12c9c0273a9b8e175fbc58136c0b6091f5f8001007d3",
+  "input": {
+    "category": "Sweater",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "visible knit loop structure",
+          "ribbed columns on body"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "chunky ribbed knit body and sleeves"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "pronounced vertical rib on body"
+        ],
+        "values": [
+          {
+            "value": "Textured Knit",
+            "evidence": [
+              "bold raised rib columns across body and sleeves"
+            ],
+            "locations": [
+              {
+                "component": "Body"
+              },
+              {
+                "component": "Sleeve"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, no repeating printed motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "front body plain ribbed, no pocket openings visible"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "metal zipper pulls and teeth"
+        ],
+        "values": [
+          {
+            "value": "Metal Hardware",
+            "evidence": [
+              "silver-tone two-way zipper sliders and metal teeth"
+            ],
+            "locations": [
+              {
+                "descriptor": "Edge"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "centre zip, hem and both sides mirror each other"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "upper",
+        "evidence": [
+          "shoulder reaches slightly past shoulder points",
+          "body stands away with generous room through chest and waist",
+          "sleeves full but frame not exceeding wearer"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "heavy knit holds soft shape but yields into folds at waist"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves reach the wrist"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "no clear shoulder endpoint at wearer's shoulder",
+          "shoulder line continues onto upper arm before sleeve transition"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder contour rounds continuously into sleeve, no endpoint break"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "distinct ribbed band standing up around the neck, separate collar piece"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "ribbed band at lower body edge"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "standing collar at neck, no hood"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "two-way zip runs full length of front from collar to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "metal two-way zipper with two sliders down centre front"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "chunky knit zip cardigan, no tailoring or utility construction"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Ribbed",
+        "region": "upper",
+        "evidence": [
+          "tight ribbed knit band at sleeve ends"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Enlarged",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Enlarged",
+        "region": "upper",
+        "evidence": [
+          "stand covers a large share of neck-to-chin span, tall and folding over"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Sweater",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Voluminous",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "silver",
+          "carrier_kind": "attachment",
+          "carrier_ref": "Metal Hardware"
+        }
+      ]
+    }
+  }
+}

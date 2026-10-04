@@ -1,0 +1,245 @@
+{
+  "unit_id": "REF_000791#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "7011e1b68be6c8253aaf30d5984d3d5bb6a273a2efadeaa356d6afa6ac4859a5",
+  "projected_hash": "c92a1f0cbd9fec416174e63ef700d67674af2273afaab52668f956bf1adb3e2d",
+  "input": {
+    "category": "Jumpsuit",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "dark indigo denim cloth",
+          "visible denim topstitch seams on bodice"
+        ],
+        "values": [
+          {
+            "value": "Denim",
+            "evidence": [
+              "indigo denim body",
+              "contrast topstitching along seams"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain denim weave, no constructed or optical surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid indigo, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, text or image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "front hip and leg surfaces show no pocket openings"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequins, appliqué or applied piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "wide matching belt with round buckle at natural waist"
+        ],
+        "values": [
+          {
+            "value": "Belt",
+            "evidence": [
+              "wide self-fabric belt at waist with circular buckle"
+            ],
+            "locations": [
+              {
+                "component": "Waistband"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "bodice, straps, waist and legs mirror side to side",
+          "no single-sided panel, tie or uneven hem"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "wide legs keep consistent width down to the hem, no flare or taper"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice follows the torso closely, waist nipped in"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Relaxed",
+            "evidence": [
+              "wide-leg trousers stand away from the legs with generous room"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Ankle Length",
+        "region": "lower",
+        "evidence": [
+          "trouser hem ends around the ankle above the sandals"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "bodice holds a shaped form but yields to body"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Semi-Structured",
+            "evidence": [
+              "legs hold a soft column with some body, soft vertical folds"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "bare shoulders and arms, wide straps only"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "straps sit on the shoulders with clear shoulder endpoint at the natural shoulder"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "soft rounded shoulder contour, no held or extended shoulder line"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "fabric edge angles down to a point at center chest"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "V opening sits at moderate depth on the chest"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare V neckline with no collar band or structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "denim body with no ribbed finish at any edge"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "no visible front placket or opening on the bodice"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "bare shoulders exposed by sleeveless strap construction"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulders visibly bare beside the wide straps"
+            ]
+          }
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "navy",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": []
+    }
+  }
+}

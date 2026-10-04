@@ -1,0 +1,151 @@
+{
+  "unit_id": "REF_000378#SU2",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "7ebe40fd7b2e0f56c0be0906d17bc94b03f7140173947c3eb0ac1aa9768b7748",
+  "projected_hash": "70e70387e4595a597cedc56674a17a2ec7683500ed0ac2350317b1bb5380fa27",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "matte suiting-type cloth"
+        ],
+        "values": [
+          {
+            "value": "Wool",
+            "evidence": [
+              "matte pinstripe tailoring cloth appearance"
+            ]
+          }
+        ],
+        "region": "whole_garment"
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "plain woven cloth, no constructed or optical treatment"
+        ],
+        "region": "whole_garment"
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Linear",
+        "region": "whole_garment",
+        "evidence": [
+          "repeating vertical pinstripes down legs"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "no placed graphic"
+        ],
+        "region": "whole_garment"
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "front hip pocket opening visible"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ],
+        "region": "whole_garment"
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+          "drawstring is closure not a canonical attachment; no belt/hardware"
+        ],
+        "region": "whole_garment"
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "legs and waistline mirror side to side"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "drawstring pull-on waistband, no fly, soft trouser build"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "leg keeps width to the hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "lower",
+        "evidence": [
+          "waist/hip seat with room, legs hang wide and straight away from leg"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem reaches the shoe/ankle on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth drapes softly following the leg with vertical folds"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "dark",
+      "color_usage": "subtle",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "white_family",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear"
+        }
+      ],
+      "evidence": {
+        "primary": "dark charcoal gray cloth",
+        "lightness": "dark base",
+        "usage": "light pinstripe over dark base",
+        "effect": "matte"
+      },
+      "color_notes": null
+    }
+  }
+}

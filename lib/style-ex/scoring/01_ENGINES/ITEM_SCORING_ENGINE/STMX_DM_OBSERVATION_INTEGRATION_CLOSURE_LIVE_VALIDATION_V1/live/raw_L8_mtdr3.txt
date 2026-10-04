@@ -1,0 +1,220 @@
+{
+  "targets": [
+    {
+      "descriptor_need": "REQUIRED",
+      "reconstruction_gaps": ["RG-2", "RG-3", "RG-1"],
+      "descriptor": "The sequin work is organised as a mapped geometric layout rather than an even scatter: broad matte self-fabric bands read as negative space between densely sequinned zones, so the motif appears as outlined rectangles and stepped bars across the bust and upper sleeves, resolving into stacked chevrons that point downward through the hip and lower skirt, with long vertical bars framing the centre front. Sequinned areas and matte bands alternate in the same tonal range, so the design reads mainly as a shift in light-return rather than a colour change, and the sequin discs sit in horizontal rows that catch light in visible strips. The sleeves carry the same banding continuing without interruption across the shoulder seam into the bodice, and the sleeve ends finish flush at the wrist with the sequin rows running to the very edge. The lower edge is a plain straight cut with no visible band or facing, and the surface between motifs appears to be a fine skin-tone ground through which the sequin lines are stitched.",
+      "identity": { "value": true, "evidence": ["single one-piece garment covering torso and hips", "worn as the body layer with no other garment over or under it"] },
+      "readability": {
+        "value": true,
+        "basis": "RECONSTRUCTABLE",
+        "limitation": ["CONTINUOUS_STRUCTURE_VISIBLE"],
+        "evidence": ["neckline, both shoulders, full front body and hem all in frame", "continuous run from neck opening to hem visible without occlusion", "silhouette traceable end to end on a standing body"]
+      },
+      "prominence": "dominant",
+      "category": {
+        "state": "OBSERVED",
+        "value": "Dress",
+        "evidence": ["one-piece garment joining bodice and skirt with no waist separation", "soft body-following cloth worn as the body layer, not as an outer layer over other clothes", "no front opening or outerwear shell construction"]
+      },
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["fine stretch ground carrying stitched discs"],
+          "values": [
+            { "value": "Synthetic", "evidence": ["smooth fine machine-made ground cloth supporting sequin rows", "uniform manufactured disc elements across body and sleeves"] }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["strong specular highlights across bust, hip and sleeves"],
+          "values": [
+            { "value": "Glossy", "coverage": "Dominant", "finish_realization": "Enhanced", "evidence": ["bright light-return along sequinned bands on bust and thigh", "highlight strips follow the disc rows across the torso"] }
+          ]
+        },
+        "pattern": {
+          "state": "OBSERVED",
+          "value": "Repeat",
+          "region": "whole_garment",
+          "visual_dominance": "Dominant",
+          "motif_complexity": "Compound",
+          "evidence": ["repeating geometric motif of outlined bars and stacked chevrons over the whole body", "same motif system continues onto both sleeves"]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no placed logo, slogan or single printed image anywhere on the garment"]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["front body surface unbroken by any welt, opening or patch"]
+        },
+        "decorative_detail": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["applied disc embellishment across the garment"],
+          "values": [
+            { "value": "Sequin-Beading", "coverage": "Dominant", "locations": [ { "component": "Bodice" }, { "component": "Skirt Body" }, { "component": "Sleeve" } ], "evidence": ["rows of small overlapping discs visible on bodice, skirt body and sleeves", "individual discs catch light separately along each row"] }
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["no belt, hardware, ribbon, fringe or trim attached to the garment"]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["hem runs level across both sides", "chevron bands mirror left and right of centre front", "no one-sided panel, tie, drape or edge found on sweep of the whole garment"]
+        },
+        "exposure_opening": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": ["deep front neck opening leaves the upper chest bare"],
+          "values": [
+            { "value": "Chest / Décolletage", "evidence": ["garment's own V opening leaves the upper chest and décolletage visibly bare down to below the collarbones"] }
+          ]
+        },
+        "silhouette": {
+          "state": "OBSERVED",
+          "value": "Straight",
+          "region": "whole_garment",
+          "evidence": ["side edges run essentially parallel from hip to hem with no outward expansion or inward contraction"]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": null,
+          "byRegion": {
+            "upper": { "state": "OBSERVED", "value": "Slim", "evidence": ["bodice outline reproduces the torso outline with no independent room at chest or ribcage", "sleeves follow the arm closely from shoulder to wrist"] },
+            "lower": { "state": "OBSERVED", "value": "Slim", "evidence": ["skirt body follows the hip and thigh contour with no standing-away room", "hip and thigh shape legible through the cloth"] }
+          },
+          "evidence": ["shoulder span, chest, waist and hip through hem all read close to the body"]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Mini",
+          "region": "whole_garment",
+          "evidence": ["worn on a standing body with the hem clearly visible on the thigh, well above the knee"]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": null,
+          "byRegion": {
+            "upper": { "state": "OBSERVED", "value": "Semi-Fluid", "evidence": ["bodice cloth follows the torso with soft small creases at the underbust and elbow", "no self-supported volume anywhere in the bodice"] },
+            "lower": { "state": "OBSERVED", "value": "Semi-Fluid", "evidence": ["skirt cloth conforms over hip and thigh with soft surface movement", "hem hangs against the body rather than standing out"] }
+          },
+          "evidence": ["cloth produces none of the garment's shape on its own"]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Long",
+          "region": "upper",
+          "evidence": ["sleeve on the lowered arm reaches the wrist bone"]
+        },
+        "sleeve_volume": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "upper",
+          "evidence": ["sleeve envelope follows the arm with ordinary width from cap to wrist, no enlarged or gathered body"]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["wearer's shoulder end read from the visible arm/shoulder junction", "garment forms a clear shoulder endpoint at that point before the sleeve begins"]
+        },
+        "shoulder_structure": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["shoulder line runs round and continuous into the sleeve with no held straight span or break on the line"]
+        },
+        "neckline_shape": {
+          "state": "OBSERVED",
+          "value": "V",
+          "region": "upper",
+          "evidence": ["complete uninterrupted fabric opening edge visible, two straight edges angling down to a point at centre front"]
+        },
+        "neckline_position": {
+          "state": "OBSERVED",
+          "value": "Low",
+          "region": "upper",
+          "evidence": ["point of the opening sits well down on the chest, below the collarbone level"]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["neck edge is a plain finished opening with no band or collar piece standing at the neck"]
+        },
+        "cuff_type": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["sleeve end at the wrist finishes as a plain edge with no constructed band"]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["lower edge is a plain straight cut with no ribbed band"]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": ["centre front is a continuous unbroken surface with no placket, zip or opening"]
+        },
+        "waist_definition": {
+          "state": "OBSERVED",
+          "value": "Undefined",
+          "region": "whole_garment",
+          "evidence": ["no waist seam, belt, tie or gathering present", "garment runs as one continuous column of cloth from bust to hem without constructed narrowing"]
+        },
+        "slit": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "lower",
+          "evidence": ["hem edge closed all the way round, no split visible at front or side"]
+        },
+        "ruffle": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": ["no gathered or tiered strip applied at any edge or panel"]
+        }
+      },
+      "dm_designed_detail_evidence": {
+        "evidence": [
+          {
+            "evidence_id": "dd-01",
+            "evidence_family": "surface_pattern",
+            "detail": "geometric sequin banding of outlined bars and stacked chevrons alternating with matte self-fabric ground",
+            "source_observation_refs": ["observations.pattern", "observations.decorative_detail", "observations.surface"],
+            "relative_size": { "state": "OBSERVED", "value": "large" },
+            "contrast": { "state": "OBSERVED", "value": "medium" },
+            "spatial_position": { "state": "OBSERVED", "value": "whole_garment" },
+            "m1_supporting_realization": {
+              "internal_chromatic_composition": "limited_or_uniform",
+              "internal_fill_realization": "dense_varied"
+            }
+          }
+        ],
+        "excluded": [
+          { "item": "overall blush tone of the ground cloth", "reason": "single_base_colour" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "unit_id": "REF_000575#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "5ed3b083633b6a2bfe20f0b134b84b10e1bb6e14aaa89602a6be64ba1817d8a9",
+  "projected_hash": "5e39c2a34e04cabc61f01f5f04e94309c26a7ac42c44ef47c89bcf2dd2ca8583",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte woven black cloth",
+          "soft folds, no denim texture or knit stretch"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "matte woven appearance consistent with cotton twill/canvas"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "values": [],
+        "evidence": [
+          "plain woven surface",
+          "no quilting, pleating construction, lace, mesh or gloss visible"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, text or printed image"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "hand inserted into front hip pocket, pocket opening visible at hip"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "drawstring cord with toggle-style end at waist"
+        ],
+        "values": [
+          {
+            "value": "Other",
+            "descriptor": "drawstring cord at waist",
+            "evidence": [
+              "cord ties hanging from waistband front"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "both legs mirror in width and length",
+          "hem even side to side, waistband level"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "elasticated/drawcord pull-on waistband with drawstring, no fly",
+          "soft cotton pull-on build with slant hip pocket"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Tapered",
+        "region": "whole_garment",
+        "evidence": [
+          "leg is very wide/balloon through thigh then contracts inward toward the cropped ankle hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "lower",
+        "evidence": [
+          "seat and thigh stand well away from body with large balloon volume",
+          "leg body far exceeds wearer's leg width through the whole upper leg"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Ankle Length",
+        "region": "lower",
+        "evidence": [
+          "hem falls at the ankle above the sneaker, sock visible below hem"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth holds a rounded balloon volume yet falls into soft folds",
+          "shape survives but is not stiffly self-supporting"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "uniform black cloth across waist and legs",
+        "lightness": "deep black in shadow and highlight",
+        "usage": "no distinct secondary color; drawstring same black",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

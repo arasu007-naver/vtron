@@ -1,0 +1,159 @@
+{
+  "unit_id": "REF_000846#SU2",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "f257d6dff1bb34bd11571529718626db8d6f8f0784a973116b21971efd363e76",
+  "projected_hash": "8fc342bd2e16ae033834b6554748b5295ed8214b3cb5f8845f6a8983fbe54e5e",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte woven cotton-like cargo fabric"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "matte substantial woven cargo cloth"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain woven cloth, seam paneling but no distinct surface treatment"
+        ],
+        "values": []
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "large flap cargo pockets on the legs"
+        ],
+        "pockets": [
+          {
+            "location": "Leg",
+            "construction": "Applied",
+            "projection": "Volumetric"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "hanging belt straps at the hip/leg"
+        ],
+        "values": [
+          {
+            "value": "Belt",
+            "evidence": [
+              "strap/belt element hanging at waist/hip"
+            ],
+            "locations": [
+              {
+                "component": "Waistband"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric left/right leg construction"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "cargo pockets and casual utility construction"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "wide leg keeps its width to the hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "lower",
+        "evidence": [
+          "wide loose leg with ample ease"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem reaches to the ankle/shoe"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "holds a wide shape with soft folds"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "solid black cargo cloth",
+        "lightness": "dark",
+        "usage": "one garment color",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

@@ -1,0 +1,423 @@
+{
+  "unit_id": "REF_000810#SU1",
+  "scoring_unit_type": "MATCHING_PAIR",
+  "member_count": 2,
+  "members": [
+    {
+      "member_id": "target_1",
+      "category": "Jacket",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "woven boucle/tweed texture on body"
+          ],
+          "values": [
+            {
+              "value": "Cotton",
+              "evidence": [
+                "matte woven tweed-like body cloth"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "raised braided trim and boucle weave"
+          ],
+          "values": [
+            {
+              "value": "Textured Knit",
+              "evidence": [
+                "pronounced boucle/tweed textured body surface"
+              ]
+            }
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "floral motifs are placed embroidery, not a repeating woven print",
+            "body cloth reads solid white"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no logo, slogan or placed printed image"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "front body shows no pocket openings or welts"
+          ]
+        },
+        "decorative_detail": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "multicolor floral motifs stitched across body and sleeves",
+            "braided cord trim along edges"
+          ],
+          "values": [
+            {
+              "value": "Embroidery",
+              "evidence": [
+                "threaded floral motifs on body and sleeves"
+              ],
+              "locations": [
+                {
+                  "component": "Body"
+                },
+                {
+                  "component": "Sleeve"
+                }
+              ]
+            },
+            {
+              "value": "Piping",
+              "evidence": [
+                "braided cord trim running along collar, front and hem edges"
+              ],
+              "locations": [
+                {
+                  "descriptor": "Edge"
+                }
+              ]
+            }
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no belt, fringe, fur, epaulette or hardware attachment beyond buttons"
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "front closure centered",
+            "hem and edges mirror side to side"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Slim",
+          "region": "upper",
+          "evidence": [
+            "body follows torso closely through chest and waist",
+            "swept shoulder/chest/waist: garment traces the wearer's outline"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Cropped",
+          "region": "upper",
+          "evidence": [
+            "hem sits at high waist, clearly above the waist zone, trouser/skirt waistband exposed below"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Structured",
+          "region": "whole_garment",
+          "evidence": [
+            "cloth holds a clean fitted shape with defined edges",
+            "silhouette stands on its own"
+          ]
+        },
+        "sleeve": {
+          "state": "OBSERVED",
+          "value": "Long",
+          "region": "upper",
+          "evidence": [
+            "sleeves run full length to the wrist"
+          ]
+        },
+        "shoulder_drop": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "shoulder forms a clear endpoint at the wearer's shoulder end before sleeve turns down"
+          ]
+        },
+        "shoulder_structure": {
+          "state": "OBSERVED",
+          "value": "Mild",
+          "region": "upper",
+          "evidence": [
+            "readable shoulder-line endpoint without sustained straight extension"
+          ]
+        },
+        "collar": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "collarless round neckline finished only with braided trim, no standing collar band"
+          ]
+        },
+        "rib_hem": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "upper",
+          "evidence": [
+            "lower edge finished with braided trim, no ribbed knit band"
+          ]
+        },
+        "hood": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "upper",
+          "evidence": [
+            "plain collarless neckline, no hood at neck or back"
+          ]
+        },
+        "front_opening_extent": {
+          "state": "OBSERVED",
+          "value": "Full",
+          "region": "upper",
+          "evidence": [
+            "button column runs full length of the front from neck to hem"
+          ]
+        },
+        "closure_type": {
+          "state": "OBSERVED",
+          "value": "Single Breasted Button",
+          "region": "upper",
+          "evidence": [
+            "single centered column of gold buttons"
+          ]
+        },
+        "grammar": {
+          "state": "OBSERVED",
+          "value": "Tailored",
+          "region": "whole_garment",
+          "evidence": [
+            "structured tweed jacket with braided trim and floral embroidery, dressy construction"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "white_family",
+        "color_lightness": "light",
+        "color_usage": "multi",
+        "multi_color": true,
+        "color_effect": "none",
+        "additional_colors": [
+          {
+            "color_family": "pink",
+            "carrier_kind": "material_component",
+            "carrier_ref": "Cotton"
+          },
+          {
+            "color_family": "green",
+            "carrier_kind": "material_component",
+            "carrier_ref": "Cotton"
+          },
+          {
+            "color_family": "yellow",
+            "carrier_kind": "material_component",
+            "carrier_ref": "Cotton"
+          },
+          {
+            "color_family": "gold",
+            "carrier_kind": "closure",
+            "carrier_ref": "Button"
+          }
+        ],
+        "evidence": {
+          "primary": "white tweed body cloth",
+          "lightness": "bright white base",
+          "usage": "floral embroidery in multiple co-equal colors across body and sleeves",
+          "effect": "no neon or metallic finish on body"
+        },
+        "color_notes": "multicolor floral embroidery (pink, yellow, green foliage) distributed over white body and sleeves"
+      }
+    },
+    {
+      "member_id": "target_2",
+      "category": "Skirt",
+      "observations": {
+        "material": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "matte woven tweed-like cloth matching jacket"
+          ],
+          "values": [
+            {
+              "value": "Cotton",
+              "evidence": [
+                "woven tweed body cloth"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "boucle/tweed texture on skirt body"
+          ],
+          "values": [
+            {
+              "value": "Textured Knit",
+              "evidence": [
+                "pronounced tweed/boucle textured surface on skirt body"
+              ]
+            }
+          ]
+        },
+        "pattern": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "solid white cloth with no repeating motif"
+          ]
+        },
+        "graphic": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no placed logo or printed image"
+          ]
+        },
+        "pocket": {
+          "state": "OBSERVED",
+          "value": "Present",
+          "region": "whole_garment",
+          "evidence": [
+            "two square patch pockets on the front with braided trim edges"
+          ],
+          "pockets": [
+            {
+              "location": "Lower Front",
+              "construction": "Applied",
+              "projection": "Flat"
+            }
+          ]
+        },
+        "decorative_detail": {
+          "state": "OBSERVED",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "braided cord trim along waistband and pocket edges"
+          ],
+          "values": [
+            {
+              "value": "Piping",
+              "evidence": [
+                "braided cord trim running along waistband and pocket openings"
+              ],
+              "locations": [
+                {
+                  "component": "Waistband"
+                },
+                {
+                  "component": "Pocket",
+                  "descriptor": "Edge"
+                }
+              ]
+            }
+          ]
+        },
+        "attachment": {
+          "state": "ABSENT",
+          "value": null,
+          "region": "whole_garment",
+          "evidence": [
+            "no belt, hardware, fringe or trim attachment"
+          ]
+        },
+        "asymmetry": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "whole_garment",
+          "evidence": [
+            "two symmetric front pockets, level hem and waistband"
+          ]
+        },
+        "silhouette": {
+          "state": "OBSERVED",
+          "value": "Straight",
+          "region": "whole_garment",
+          "evidence": [
+            "skirt keeps consistent width from waist to hem"
+          ]
+        },
+        "fit": {
+          "state": "OBSERVED",
+          "value": "Regular",
+          "region": "lower",
+          "evidence": [
+            "skirt sits with ordinary ease over the hips, not close-molded, not standing away"
+          ]
+        },
+        "length": {
+          "state": "OBSERVED",
+          "value": "Mini",
+          "region": "lower",
+          "evidence": [
+            "hem visible high on the thigh, cropped by frame but clearly a mini"
+          ]
+        },
+        "fabric_behavior": {
+          "state": "OBSERVED",
+          "value": "Structured",
+          "region": "whole_garment",
+          "evidence": [
+            "cloth holds a firm clean shape at waist and hem"
+          ]
+        },
+        "slit": {
+          "state": "OBSERVED",
+          "value": "None",
+          "region": "lower",
+          "evidence": [
+            "visible front shows no slit or split"
+          ]
+        }
+      },
+      "color_observation": {
+        "primary_color_family": "white_family",
+        "color_lightness": "light",
+        "color_usage": "single",
+        "multi_color": false,
+        "color_effect": "none",
+        "additional_colors": [],
+        "evidence": {
+          "primary": "white tweed cloth",
+          "lightness": "bright white",
+          "usage": "single uniform white with tonal braided trim",
+          "effect": "no metallic or neon"
+        },
+        "color_notes": null
+      }
+    }
+  ],
+  "note": "pair-level input — one scoring unit, every member materialized (order §6)"
+}

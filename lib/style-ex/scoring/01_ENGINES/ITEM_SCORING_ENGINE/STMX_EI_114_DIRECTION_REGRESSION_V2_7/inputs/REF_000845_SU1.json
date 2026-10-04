@@ -1,0 +1,244 @@
+{
+  "unit_id": "REF_000845#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "81d902aa6f5d563eb1bd81bd27ea39386cbbfcee97f97365e54799989098b3aa",
+  "projected_hash": "6e821b6415df45fe2110238222bc91494a6da295698b2b207c81e7177c779ce2",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte technical shell",
+          "down/quilted loft"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth matte technical outer shell"
+            ]
+          },
+          {
+            "value": "Padding",
+            "evidence": [
+              "lofted quilted baffles indicate down/insulation fill"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "horizontal stitched baffles across body"
+        ],
+        "values": [
+          {
+            "value": "Quilted",
+            "evidence": [
+              "horizontal channel baffles across chest and body"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid tonal color, quilt geometry owned by surface"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "small reflective bar at chest"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "zip openings at lower front sides"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, epaulette, fur or fringe"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front zip and baffles"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "voluminous body standing well away from torso",
+          "wide puffed sleeves"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Cropped",
+        "region": "upper",
+        "evidence": [
+          "hem ends clearly above waist zone, trouser waistband exposed below"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "padded shell holds its own volume away from body"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves reach the wrists"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits outboard on the upper arm"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "rounded continuous shoulder contour into sleeve"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "standing material at neck is the hood opening, no distinct collar band"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "hem is quilted self-fabric edge, not a ribbed band"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "large padded hood behind neck"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "zipper runs full length of front from hem to neck"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "central two-way zipper visible"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Utility",
+        "region": "whole_garment",
+        "evidence": [
+          "technical shell, functional zip, reflective tab"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary puffer sleeve envelope, thickness from padding only"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends in elasticated gather with snap tab, no constructed band"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "khaki",
+      "color_lightness": "normal",
+      "color_usage": "subtle",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "gray",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        },
+        {
+          "color_family": "khaki",
+          "carrier_kind": "closure",
+          "carrier_ref": "Zipper"
+        }
+      ],
+      "evidence": {
+        "primary": "muted taupe-khaki shell",
+        "lightness": "mid-tone",
+        "usage": "small reflective chest bar only",
+        "effect": "matte, no metallic/neon"
+      },
+      "color_notes": null
+    }
+  }
+}

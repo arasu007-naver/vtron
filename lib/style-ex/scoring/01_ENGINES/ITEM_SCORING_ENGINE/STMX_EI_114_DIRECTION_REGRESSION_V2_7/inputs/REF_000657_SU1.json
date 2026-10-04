@@ -1,0 +1,146 @@
+{
+  "unit_id": "REF_000657#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "32aa4c11166caa993944d39e7375f1bd0480f56ee9e047782161e0c698834a8c",
+  "projected_hash": "96be3ba4de2c10f779f3e3f3b529046887d634e9d1c48b16e830acfefbb44a7e",
+  "input": {
+    "category": "Skirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "light sheer tulle-like layers"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "airy tulle net skirt fabric"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "gathered fullness at waist"
+        ],
+        "values": [
+          {
+            "value": "Gathered",
+            "evidence": [
+              "fabric gathered into fullness from waistband"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Repeat",
+        "region": "whole_garment",
+        "evidence": [
+          "blue floral motif repeated over white ground"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "all-over floral is pattern, not placed graphic"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no visible pocket"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied decorative construction"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware or trim"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric hem and body"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "skirt flares outward from waist"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Voluminous",
+        "region": "lower",
+        "evidence": [
+          "full puffed body standing away from legs"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Mini",
+        "region": "lower",
+        "evidence": [
+          "hem sits high on the thigh"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "tulle holds its own puffed volume away from body"
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "full closed skirt, no slit"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "blue",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "light blue shirting",
+        "lightness": "pale tone",
+        "usage": "one color throughout",
+        "effect": "matte cloth"
+      },
+      "color_notes": null
+    }
+  }
+}

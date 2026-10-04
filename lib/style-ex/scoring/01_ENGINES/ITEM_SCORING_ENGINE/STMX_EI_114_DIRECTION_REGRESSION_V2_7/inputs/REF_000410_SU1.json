@@ -1,0 +1,216 @@
+{
+  "unit_id": "REF_000410#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "f1a1e0b23d1cebe75c9a5cfac8f3396a8c585196b05e66c35421fa93b7277f28",
+  "projected_hash": "a33c4f0f6e6aaacef43689a1c52e3aa91685ef97f7f61eaca328b876285a12c0",
+  "input": {
+    "category": "Sweater",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "fine uniform knit stitch across body and sleeves"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "visible fine knit gauge on body",
+              "ribbed knit hem and cuffs"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth plain fine knit body",
+          "no pronounced raised texture, no pleat/quilt/mesh/lace"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid light gray, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo, print or text"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "clean knit body front, no pocket opening or patch"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin-beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fringe, fur or ribbon"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "hem level side to side",
+          "placket centered",
+          "collar mirrors both sides"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Slim",
+        "region": "upper",
+        "evidence": [
+          "body follows torso closely through chest and waist",
+          "sleeves trace the arm",
+          "outline reproduces the wearer's shape"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ribbed hem sits at the hip level on the worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "fine knit follows the body with soft movement, no self-supporting volume"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to the wrist"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "clear shoulder endpoint formed at the wearer's natural shoulder end before sleeve begins"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "pointed knit polo collar with spread points, attached to a placket"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "distinct ribbed knit band at the lower body edge"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "plain collared neckline, no hood at neck or back"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Partial",
+        "region": "upper",
+        "evidence": [
+          "three-button placket opens partway down from the collar, closed body below"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Button",
+        "region": "upper",
+        "evidence": [
+          "three round buttons on the front placket"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, no puff or balloon"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Ribbed",
+        "region": "upper",
+        "evidence": [
+          "elasticated ribbed knit band at each sleeve end"
+        ]
+      },
+      "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ribbed band covers an ordinary fraction of the lower sleeve at the wrist"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "collar points reach an ordinary distance over the upper chest"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "light gray knit body, sleeves, collar and hem",
+        "lightness": "pale gray, light value",
+        "usage": "one uniform color with tonal buttons matching body",
+        "effect": "matte knit, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

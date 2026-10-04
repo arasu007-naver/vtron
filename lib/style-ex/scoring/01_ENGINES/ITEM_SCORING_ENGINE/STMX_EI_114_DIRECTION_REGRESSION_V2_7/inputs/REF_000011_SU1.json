@@ -1,0 +1,187 @@
+{
+  "unit_id": "REF_000011#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "155e6e2265304a37b888fc868206649b2602dd49935a7628f2bd13c940c4c32f",
+  "projected_hash": "0b27cb4dd90c15ef2adfce4b0038e172e87107a0d1aa588c87f6de4cd2ca9ce0",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "pebbled leather grain across body"
+        ],
+        "values": [
+          {
+            "value": "Leather",
+            "evidence": [
+              "pebbled grain, supple leather surface"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "natural leather grain only; no distinct constructed/optical treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid black, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic or logo"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "welt zip pocket on left chest/front"
+        ],
+        "count": 1
+      },
+      "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "snap-button hardware at collar/placket"
+        ],
+        "values": [
+          {
+            "value": "Metal Hardware",
+            "evidence": [
+              "metal snap studs at collar and front placket"
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetrical front and collar"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "voluminous body, dropped low-hanging sleeves, wide envelope"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "ribbed hem falls around the hip"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "evidence": [
+          "CEO adjudication"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to wrist"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "soft rounded shoulder, no built padding"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "ribbed upright standing collar"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "elasticated ribbed hem band at bottom"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Zipper",
+        "region": "upper",
+        "evidence": [
+          "front zipper teeth and pull visible"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "bomber-style leather jacket, ribbed collar and hem"
+        ]
+      },
+      "pocket_construction": {
+        "state": "OBSERVED",
+        "value": "Inset",
+        "region": "whole_garment",
+        "evidence": [
+          "welt/zippered set-in pocket"
+        ]
+      },
+      "pocket_projection": {
+        "state": "OBSERVED",
+        "value": "Flat",
+        "region": "whole_garment",
+        "evidence": [
+          "flush welt pocket, no projecting body"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam falls well below natural shoulder"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "black",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": []
+    }
+  }
+}

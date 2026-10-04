@@ -1,0 +1,196 @@
+{
+  "unit_id": "REF_000494#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "f5fd99082f9fc7e4003ee2cf58ef04b46be21e94bc00881b975a0f10277f2c8b",
+  "projected_hash": "8f120a0daad5a323d16afd770238b294fc1596712ae895e18e4c812e2c4ba329",
+  "input": {
+    "category": "Sweatshirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "heathered gray fleece jersey knit body"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "soft brushed fleece sweatshirt cloth, melange gray"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain smooth fleece body, no constructed surface treatment"
+        ],
+        "values": []
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid heather gray, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "small tonal chest logo only, no placed graphic motif reads"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "vertical zip-side hand pockets at lower front, hands inserted"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequin, appliqué or piping visible"
+        ],
+        "values": []
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware trim, fur or fringe"
+        ],
+        "values": []
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "hem level side to side, centre zip, sides mirror"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+          "shoulder line drops well past wearer shoulders, body stands far from torso, wide through chest and hem"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "hem sits at hip level on standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "heavy fleece holds soft shape, yields into folds"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves reach the wrists"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+          "shoulder end placed at anatomical shoulder end here: seam falls well onto upper arm, no clear normal shoulder endpoint"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Funnel",
+        "region": "upper",
+        "evidence": [
+          "high standing neck opening at zip top under hood"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "neckline sits high at base of neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "neck finish is the hood opening/zip guard, no distinct collar band"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "ribbed band at lower hem"
+        ]
+      },
+      "hood": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "drawstring hood built at neck"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "full-length zipper runs from hem to neck"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "light heather gray fleece body",
+        "lightness": "pale gray value",
+        "usage": "single uniform color, tonal zipper and logo",
+        "effect": "matte fleece, no metallic/neon"
+      },
+      "color_notes": null
+    }
+  }
+}

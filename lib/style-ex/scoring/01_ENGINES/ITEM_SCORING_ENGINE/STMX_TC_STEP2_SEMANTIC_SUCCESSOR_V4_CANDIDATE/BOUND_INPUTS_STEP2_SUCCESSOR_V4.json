@@ -1,0 +1,133 @@
+{
+ "artefact": "BOUND_INPUTS_STEP2_SUCCESSOR_V4",
+ "successor": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE",
+ "rule": "every input is read by path relative to the master root and must match its sha256 (BoundInputError, fail closed)",
+ "inputs": [
+  {
+   "role": "successor_v4_contract",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/STEP2_SUCCESSOR_V4_CONTRACT.json",
+   "note": "this successor's contract (written before the source)",
+   "sha256": "bad306ec6fed0f883d65fa7399bbc8279f88c6cb89a608a8a6873261b48ee615"
+  },
+  {
+   "role": "strong_shoulder_clarification_freeze",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_STRONG_SHOULDER_CLARIFICATION_FREEZE_V1.md",
+   "note": "FROZEN D-85-1 clarification",
+   "sha256": "3b111acf6f31d44101e08bb9381b46e056b142d7ee7b4f42a22a455933ec4885"
+  },
+  {
+   "role": "scoring_object_correction",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/SCORING_OBJECT_CORRECTION_V1.json",
+   "note": "D-85-3 scoring-object membership record",
+   "sha256": "10f53c472064472f67dcc9b70434309428b773122eed2801fe679292ca3f9a09"
+  },
+  {
+   "role": "scoring_object_correction_seal",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/SEAL_SCORING_OBJECT_CORRECTION_V1.json",
+   "note": "its seal",
+   "sha256": "03d814078b43aca8e229305ca6114e2b1e93a56ab0385079276b5d2d6a8d0b91"
+  },
+  {
+   "role": "successor_v3_contract",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V3_CANDIDATE/STEP2_SUCCESSOR_V3_CONTRACT.json",
+   "note": "V3 contract — GRC / WG / MC1 definitions read verbatim",
+   "sha256": "e849a3a2f46c314efb65793323c4eb61e16ace19ab046a22eb5c7996c6773dc9"
+  },
+  {
+   "role": "whole_garment_contract_freeze",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_WHOLE_GARMENT_DIRECTION_CONTRACT_FREEZE_V1.md",
+   "note": "FROZEN WG-1…WG-8 (D-83-1)",
+   "sha256": "294d903fd081af7142b643bb4dc9b31ee0b76d5199c0e44d2827f728d78d7c26"
+  },
+  {
+   "role": "successor_v2_contract",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/STEP2_SUCCESSOR_V2_CONTRACT.json",
+   "note": "V2 contract — frozen fit domain + V2 re-execution map, read verbatim",
+   "sha256": "5331cc2fb3beffe4bde878854a64511b419479b52e99556063bc177c0305a4e1"
+  },
+  {
+   "role": "supersession_registry_loader_v1",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/src/supersession_registry_v1.js",
+   "note": "V2 registry loader, reused unchanged",
+   "sha256": "e9943d6fed3b7a5dbc5c055db195daee4cb2a8c16cfe5545542357556106b5a4"
+  },
+  {
+   "role": "supersession_registry",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/SUPERSESSION_REGISTRY_V1.json",
+   "note": "V2 registry (SR-001 trouser fit), reused unchanged",
+   "sha256": "64468c92aeef00ad585df74f5845ec5df487ad2c715fd58c1f2853aa29aef4dd"
+  },
+  {
+   "role": "frozen_step2_predicates:evaluator_v2_3_2.js",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_3_2.js",
+   "note": "FROZEN Step 2 predicates (V2.3.21 FINAL FREEZE) — required read-only",
+   "sha256": "5832ae6dc14bfd93ffdf96f57a9f75e04b69667e69a7b142bb442bd7826219bd"
+  },
+  {
+   "role": "frozen_step2_predicates:evaluator_v2_2_1.js",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_2_1.js",
+   "note": "FROZEN — ladder silh (flare-scope reading)",
+   "sha256": "1c0697161975066d5a8aed302959478147671a35f8b7132661278bd1d2da3a1c"
+  },
+  {
+   "role": "frozen_step2_predicates:evaluator_v2_2_base.js",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_2_base.js",
+   "note": "FROZEN base",
+   "sha256": "662f5cbf8fdbe481dd644c09cdb26a4c3c34fca48c2bd6fe1d0861d7c5d80c9e"
+  },
+  {
+   "role": "frozen_observation_domain_source",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_VISION_EXTRACTION_SCHEMA_FROZEN_V1.md",
+   "note": "production Vision schema (frozen) — fit domain and Upper / Lower placement",
+   "sha256": "379c89a19b8098d3709d1db95233a9606561c2d13b0ef3fe497976dce4fcd31a"
+  },
+  {
+   "role": "mc1_length_token_compatibility",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+   "note": "OSF-7 approved spelling map (D-60) — MC-1",
+   "sha256": "c79af905e0e70861dcd24594433d25b14ef8cbab19e983b4742797373871f419"
+  },
+  {
+   "role": "mc1_length_token_compatibility_seal",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/SEAL_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+   "note": "its seal",
+   "sha256": "5fdef8038455b7341031a42a8f7974acefc407a0d278e92be3354bbe054c5dec"
+  },
+  {
+   "role": "projection_v5",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+   "note": "GT-free projection V5 (byRegion carried · 671 correction)",
+   "sha256": "8becb1b405e06d430514b64c432ea7965b53cd5e892173765c3fb1b895a093d8"
+  },
+  {
+   "role": "projection_v5_seal",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/SEAL_TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+   "note": "its seal",
+   "sha256": "4f82c9185f2493f11fb52da26f92a5c79d9560cd975587d7a8a6130e2508c433"
+  },
+  {
+   "role": "governed_correction:REF000671_CONSTRUCTION_REPRESENTATION_CORRECTION_V1",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_GOVERNED_REPRESENTATION_CORRECTION_V1_CANDIDATE/REF000671_CONSTRUCTION_REPRESENTATION_CORRECTION_V1.json",
+   "note": "D-82-1 governed correction record",
+   "sha256": "5b47e4410253c57a5f8e18f8f7ecd86c7069cf6521ce0855c6a70edf3f10df4f"
+  },
+  {
+   "role": "governed_correction_seal",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_GOVERNED_REPRESENTATION_CORRECTION_V1_CANDIDATE/SEAL_GOVERNED_REPRESENTATION_CORRECTION_V1.json",
+   "note": "its seal",
+   "sha256": "f87bd9e14cad383a38870bd5a35b4cec28354fbac819f06d697fd9dc34bd7e51"
+  },
+  {
+   "role": "historical_materialization_reader",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_binding_adapter_v3_3.js",
+   "note": "sealed V3.3 adapter (GT-stripping reader of the frozen ledgers); binding only",
+   "sha256": "35757d950320f94b743871031c1805e9db4e7e6453e2d8da12695d777cbb9217"
+  },
+  {
+   "role": "downstream_runtime_v3_4",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_runtime_v3_4.js",
+   "note": "sealed V3.4 orchestrator — shadow replay target, never modified",
+   "sha256": "d5c95184819608fe8a9580d1daa0795b600c027ec9371155581aaad86bb3b1b7"
+  }
+ ]
+}

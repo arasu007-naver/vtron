@@ -1,0 +1,33 @@
+{
+ "document": "CODE_IDENTITY_SEAL_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE",
+ "package": "STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE",
+ "sealed_at": "2026-09-27T13:31:17.197Z",
+ "order": "STMX ITEM SCORING ENGINE V1 — FOUR-AXIS PRODUCTION INTEGRATION SPRINT · Phase A (D3)",
+ "status": "CANDIDATE — EI-owned production integration successor (entry + mechanical Direction→Numeric bridge + structural Vision input projection); frozen EI Direction and Numeric unchanged; final production promotion NOT executed",
+ "gt_read_before_seal": false,
+ "model": "Opus 5.5 (claude-opus-5-5); Fable not used",
+ "rule": "CODE_IDENTITY_AGGREGATE_SHA256 = sha256 over [file, sha256] of the listed files in order (Clean Engine binding convention)",
+ "files": [
+  {
+   "file": "src/ei_production_integration_v1.js",
+   "bytes": 4579,
+   "sha256": "7ff05cbf5caeb30b43792adf37430753f8273aeb759427517ffd4b3cbbbb2215"
+  },
+  {
+   "file": "src/ei_direction_numeric_bridge_v1.js",
+   "bytes": 4516,
+   "sha256": "21116a4155ed6d0595dc38cde0f51cfcb1dc2ba1d551557fd16dac09c602fc44"
+  },
+  {
+   "file": "src/ei_vision_input_compatibility_v1.js",
+   "bytes": 3667,
+   "sha256": "d835df450b3efe48cc9f98dfeefa804e5f60d29d1777a9daef1ace7360e55759"
+  },
+  {
+   "file": "BOUND_INPUTS.json",
+   "bytes": 7205,
+   "sha256": "69abbb580e2326547c0f7628eb1d015adb31fdcd6146964760a6703ce0a785d1"
+  }
+ ],
+ "CODE_IDENTITY_AGGREGATE_SHA256": "fd1617037ce09fef6a05e2288e7584bdd92b26337a22ca44fc1cef37f3c0a401"
+}

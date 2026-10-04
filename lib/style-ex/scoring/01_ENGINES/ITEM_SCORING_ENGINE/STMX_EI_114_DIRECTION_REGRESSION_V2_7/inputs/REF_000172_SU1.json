@@ -1,0 +1,246 @@
+{
+  "unit_id": "REF_000172#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "f6b0a5fb9393cb6ee9a0abdde6f480e5c5a36193b01cd6738a3ab8a13415bef2",
+  "projected_hash": "d039ee9a7276276e895a9153b14473ea9b6b31cab6a7f379a1ea9f6415d9b5d8",
+  "input": {
+    "category": "Coat",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte tailoring cloth with firm body"
+        ],
+        "values": [
+          {
+            "value": "Wool",
+            "evidence": [
+              "matte, dense, structured tailoring cloth consistent with wool coating"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain matte cloth, no constructed or optical surface treatment"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid dark green, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed graphic or logo"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "welt slit visible at lower front hip level"
+        ],
+        "pockets": [
+          {
+            "location": "Lower Front",
+            "construction": "Inset",
+            "projection": "Flat"
+          }
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no applied embroidery, beading, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no waist belt, hardware, fur, fringe or epaulette on the coat"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "one side of the collar folds outward into a large drape with no counterpart on the other side",
+          "upper closure edge sits diagonally, one lapel folded open"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "shoulder sits near wearer's shoulder",
+          "torso follows body with ordinary room",
+          "body hangs straight to hem without standing far away"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Knee Length",
+        "region": "upper",
+        "evidence": [
+          "worn on standing body",
+          "hem falls at/around the knee"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "cloth holds a firm standing collar fold",
+          "silhouette stands away with its own body",
+          "clean unbroken vertical fall"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to the wrists"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "clear shoulder endpoint formed at wearer's own shoulder point",
+          "sleeve begins at natural shoulder end"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Mild",
+        "region": "upper",
+        "evidence": [
+          "readable shoulder-line endpoint before sleeve",
+          "contour not held straight nor strongly extended"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Stand",
+        "region": "upper",
+        "evidence": [
+          "distinct standing collar band rising at neck",
+          "one side folds outward into a wide lapel-like drape"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain self-fabric lower edge, no ribbed band"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": []
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "button closure runs the full length of the front from neck to hem"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Double Breasted Button",
+        "region": "upper",
+        "evidence": [
+          "two parallel columns of large round buttons with wide front overlap"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "structured coating, welt pockets, tailored collar and clean lines"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight column front",
+          "no inward waist shaping or belt at waist"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, no deliberate enlargement"
+        ]
+      },
+      "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends plainly with no constructed cuff band"
+        ]
+      },
+      "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Enlarged",
+        "region": "upper",
+        "evidence": [
+          "fold-over collar drape covers a large share of the upper chest panel"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "green",
+      "color_lightness": "dark",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "white_family",
+          "carrier_kind": "closure",
+          "carrier_ref": "Button"
+        }
+      ],
+      "evidence": {
+        "primary": "deep dark green coat body",
+        "lightness": "dark green value",
+        "usage": "white buttons form a distinct but limited contrast",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

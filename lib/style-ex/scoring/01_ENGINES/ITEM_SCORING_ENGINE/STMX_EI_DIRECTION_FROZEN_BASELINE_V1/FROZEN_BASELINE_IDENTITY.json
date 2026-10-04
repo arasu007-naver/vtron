@@ -1,0 +1,100 @@
+{
+  "document": "FROZEN_BASELINE_IDENTITY",
+  "date": "2026-09-07",
+  "frozen_baseline_identity": "STMX_EI_DIRECTION_FROZEN_BASELINE_V1",
+  "★_freeze_status": "FORMALLY FROZEN",
+  "★_runtime_version_is_unchanged": "STMX_EI_DIRECTION_RUNTIME_V1_2_7",
+  "note": "★ Runtime version and freeze status are SEPARATE concepts. The runtime is and remains V1.2.7; ⛔ it was NOT renamed because it is now frozen.",
+  "producer_version": "STMX_VISION_PRODUCER_V1_1",
+  "p3_version": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_6",
+  "neutral_registry": "STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V3_TABLE · 18 rows · gender-independent",
+  "parameters": 37,
+  "gender_scoring_ownership": 0,
+  "treated_surface": {
+    "Baseline": "NO EFFECT (GFR-S-FM4-V127-N1)",
+    "Distressed": "MEANINGFUL (GFR-S-FM4-V127-M1)",
+    "missing": "GFR-S-FM4-V126-U1 · INPUT_REPRESENTATION_GAP · GAP-08",
+    "status": "SCORED-PATH CLOSURE = PASS"
+  },
+  "pleated": "DEFERRED_GOVERNED_NON_BLOCKING_GAP",
+  "fringe": "DEFERRED_GOVERNED_AUTHORITY_GAP",
+  "freeze_date": "2026-09-07",
+  "candidate_manifest": {
+    "document": "STMX_EI_DIRECTION_FREEZE_CANDIDATE_MANIFEST_V2",
+    "file_count": 134,
+    "aggregate_sha256": "ba5f483002fdc912181714e7c6de8a4b37403198a6c936d264ef4f29f35b122d",
+    "independently_reviewed": "ChatGPT firsthand Independent Review of CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EI_DIRECTION_FINAL_FREEZE_GATE_V2.zip = PASS · APPROVED FOR FORMAL FREEZE",
+    "reverified_at_freeze_time": "134 / 134 exact"
+  },
+  "regression_state": {
+    "PASS_DIRECTION": 95,
+    "GT_AUTHORITY_REVIEW": 14,
+    "EXPLICIT_GOVERNED_UNRESOLVED": 5,
+    "TOTAL": 114,
+    "FIXABLE_DEFECTS": 0,
+    "resolved_provenance": "109 / 109",
+    "explicit_blockers": "5 / 5"
+  },
+  "governed_residue_count": 5,
+  "governed_residue": [
+    "REF_000001#SU1",
+    "REF_000378#SU2",
+    "REF_000598#SU1",
+    "REF_000810#SU1",
+    "REF_000851#SU1"
+  ],
+  "⛔_must_not_be_stated_as": [
+    "114 / 114 fully resolved",
+    "all canonical units PASS_DIRECTION"
+  ],
+  "historical_lineage": {
+    "sealed_v1_2_6": "STMX_EI_DIRECTION_RUNTIME_V1_2_6 → sealed Producer V1 → P3 V1.4 · 21/21 protected hashes · ⛔ untouched by this freeze",
+    "canonical_corpus_seal": "621d6b905fb71b0c265791ccd02d4a3a7e0339d129ff769cef5ccdbf4eace267"
+  },
+  "p3_v1_5_debt": {
+    "classification": "HISTORICAL_METADATA_HYGIENE_DEBT",
+    "blocking": false,
+    "detail": "P3 V1.5 carries contract_version V1.5 with document identity V1.4. is_current = false; it affects no routing, physics, regression, provenance or gate. ⛔ NOT modified by this order."
+  },
+  "future_change_rule": "⛔ Frozen V1.2.7 must never be modified in place. Any future approved change begins NON-DESTRUCTIVELY from this frozen checkpoint as a successor version.",
+  "formal_freeze": true,
+  "ei_direction_status": "CLOSED_AND_FROZEN (subject to the frozen clean run in this same order)",
+  "numeric_layer_started": false,
+  "tc_sr_dm_started": false,
+  "frozen_manifest": "STMX_EI_DIRECTION_FROZEN_BASELINE_MANIFEST_FINAL (supersedes V2 and V1)",
+  "★_packaging_correction_2026_09_07": {
+    "finding": "ChatGPT firsthand Independent Review of the Formal Freeze package reproduced every scoring and architecture result, but final machine QA returned 30/31 with `frozen file hash mismatch = 2`.",
+    "cause": "Two REGENERABLE TEST OUTPUTS were included in the immutable baseline. anchor_independence_v1.js rewrites STMX_EI_P3_ANCHOR_INDEPENDENCE_TEST_V1_1.json on every run, and that output serialises filesystem paths — so its bytes depend on the host OS separator, not on scoring semantics.",
+    "correction": "Both entries removed from the frozen baseline and classified REGENERABLE_TEST_OUTPUT · NOT_FROZEN_AUTHORITY. ⛔ The test is unchanged, still runs, and still writes its output — into the disposable run area.",
+    "scoring_impact": "NONE. ⛔ No scoring-bearing file was touched; the frozen scoring semantics are identical.",
+    "⛔_out_of_scope_finding": {
+      "finding": "10 further frozen manifest entries are ALSO rewritten by frozen suites — the same class, byte-stable only because they do not serialise paths.",
+      "entries": [
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DENIM_NEUTRAL_ELIGIBILITY_TESTS_V1.json",
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_RUNTIME_V1_2_6_NON_ANCHOR_TRANSITION_TESTS.json",
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_V1_2_MATCHING_PAIR_VALIDATION_V1.json",
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_DIRECTION_V1_2_TARGETED_REALIZATION_VALIDATION_V1.json",
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_6/STMX_EI_P3_NON_ANCHOR_GENERALIZATION_TEST_RESULTS_V1_1.json",
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DENIM_NEUTRAL_ELIGIBILITY_TESTS_V1.json",
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_RUNTIME_V1_2_6_NON_ANCHOR_TRANSITION_TESTS.json",
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_V1_2_MATCHING_PAIR_VALIDATION_V1.json",
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_DIRECTION_V1_2_TARGETED_REALIZATION_VALIDATION_V1.json",
+        "repo/01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/STMX_EI_P3_NON_ANCHOR_GENERALIZATION_TEST_RESULTS_V1_1.json"
+      ],
+      "ceo_decision_required": "YES — §4 and §6 scope this order to the two reported files, so ⛔ these were NOT removed."
+    }
+  },
+  "★_full_write_target_closure_2026_09_07": {
+    "finding": "A full write-target audit over the WHOLE manifest — static scan plus an instrumented full run — found 34 manifest entries that the workload rewrites. The earlier corrections had removed only the 2 whose bytes were platform-dependent.",
+    "method": "★ Byte-stability is not immutability. Every node process of the validation workload ran with an fs write-API interceptor, and every write call was intersected with the manifest. mtime deltas corroborated the same population independently.",
+    "classification": {
+      "REGRESSION_RESULT_OUTPUT": 6,
+      "REGENERABLE_DERIVED_INPUT": 18,
+      "REGENERABLE_TEST_OUTPUT": 10
+    },
+    "resolution": "All 34 are generated artifacts. Each was deleted from a disposable copy and the full workload re-run BEFORE the frozen baseline was touched: all 34 regenerated and every gate still passed. They are now generated only inside the disposable run area.",
+    "retained_entries_requiring_write_isolation": 0,
+    "permanent_guard": "governance/freeze_manifest_write_target_guard_v1.js — fails any future freeze whose manifest contains a write target.",
+    "scoring_impact": "NONE — semantic delta 0 / 114."
+  }
+}

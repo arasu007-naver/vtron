@@ -1,0 +1,212 @@
+{
+  "unit_id": "REF_000398#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "3944d92c12a744877a61632b2af44b42639e0942d0191efb72931926c9deee76",
+  "projected_hash": "3977f9c35596b7d7803e8505019489d3c7c82992d3386485c6c36d6a79e6c5eb",
+  "input": {
+    "category": "Sweater",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "fine even knit surface"
+        ],
+        "values": [
+          {
+            "value": "Knit",
+            "evidence": [
+              "visible knit stitch structure",
+              "ribbed cuffs and hem"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "smooth plain knit body",
+          "fine rib only at trims"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid gray body with no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffle elements"
+        ]
+      },
+      "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "thin white line along collar and placket edges"
+        ],
+        "values": [
+          {
+            "value": "Piping",
+            "evidence": [
+              "narrow white trim running along collar and placket edge"
+            ],
+            "locations": [
+              {
+                "component": "Collar",
+                "descriptor": "Edge"
+              }
+            ]
+          }
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front and collar"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "follows torso with moderate ease, not tight or oversized"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "hem sits at hip level on worn body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "knit follows the body with soft drape"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "upper",
+        "evidence": [
+          "sleeve ends around mid-upper-arm"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam sits at natural shoulder point"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "open placket forms a V-shaped fabric edge to a point"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "V opening sits mid-chest, not deep"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "folded pointed shirt-style collar with white tipping"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "upper",
+        "evidence": [
+          "wide ribbed knit band at bottom hem"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Partial",
+        "region": "upper",
+        "evidence": [
+          "open V-placket stops at mid-chest, no buttons"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Open",
+        "region": "upper",
+        "evidence": [
+          "placket opening with no visible fasteners"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary sleeve envelope, no enlargement"
+        ]
+      },
+      "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "normal",
+      "color_usage": "accent",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "white_family",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Piping"
+        }
+      ],
+      "evidence": {
+        "primary": "medium gray knit body",
+        "lightness": "mid-tone gray",
+        "usage": "white tipping limited to collar/placket edge",
+        "effect": "matte knit, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

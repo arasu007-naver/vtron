@@ -1,0 +1,90 @@
+{
+  "document": "CEO_NUMERIC_V1_GOVERNANCE_CLOSURE_DECISION",
+  "date": "2026-09-08",
+  "approval_anchor": {
+    "ceo_decision": "2026-09-08",
+    "reason": "The remaining HOLD on EI Numeric V1 was a GOVERNANCE question, not a newly discovered Direction or implementation defect. CEO resolves it by accepting REF_000616#SU2 as intentional fail-closed within-side residue, and by superseding the prior requirement that all seven CEO controls receive exact Numeric outputs.",
+    "affected_scope": "EI Numeric V1 closure status · CEO control closure requirement · residue taxonomy. ⛔ No scoring semantics changed."
+  },
+  "decision_1_ref_000616": {
+    "unit": "REF_000616#SU2",
+    "frozen_direction": "E",
+    "ceo_exact_tier_ground_truth": "EI7",
+    "runtime_numeric": null,
+    "numeric_status": "GOVERNED_WITHIN_SIDE_NUMERIC_RESIDUE",
+    "ruling": "ACCEPTED as intentional fail-closed behaviour. EI Numeric V1 correctly resolves the unit to the Expressive side; current legal governed EI-owned evidence is insufficient to assign an exact within-side tier generically without violating architecture.",
+    "⛔_do_not": [
+      "⛔ Do not force a numeric tier merely to match the historical CEO exact-tier GT",
+      "⛔ Do not convert to EI5 / EI6 / EI7 / EI8 unless future independent authority changes",
+      "⛔ Do not restore the deleted INHERENT_PERSISTENT → automatic EI7 rule"
+    ]
+  },
+  "decision_2_side_first": {
+    "principle": "PRIMARY = I / Neutral / E side correctness. SECONDARY = exact within-side ordinal calibration.",
+    "consequence": "GT EI7 with runtime Numeric null while frozen Direction = E is a bounded within-side calibration residue.",
+    "⛔_it_is_not": [
+      "⛔ NOT a Direction failure",
+      "⛔ NOT grounds to reopen EI Direction",
+      "⛔ NOT grounds to invent unsupported Numeric physics"
+    ]
+  },
+  "decision_3_supersession": {
+    "★_tension_resolved": "★ §3 — the previous closure order simultaneously allowed bounded within-side NUMERIC_UNRESOLVED residue and required all seven CEO controls to receive exact Numeric outputs. CEO resolves the conflict.",
+    "superseded_requirement": "all 7 CEO controls must receive exact Numeric outputs",
+    "final_requirement": {
+      "direction_side_correctness": "7 / 7",
+      "exact_numeric": "6 / 7",
+      "governed_within_side_numeric_residue": "1 / 7 — REF_000616#SU2"
+    },
+    "observed": {
+      "direction_side_correctness": "7 / 7",
+      "exact_numeric": "6 / 7",
+      "governed_within_side_numeric_residue": "1 / 7"
+    },
+    "requirement_met": true,
+    "⛔_no_history_rewriting": "⛔ Historical orders are NOT rewritten. This decision is recorded by additive supersession."
+  },
+  "decision_4_scope_lock": {
+    "⛔_authorized_change_counts": {
+      "numeric_resolver_semantic_changes": 0,
+      "new_numeric_rules": 0,
+      "removed_numeric_rules": 0,
+      "new_exposure_semantics": 0,
+      "new_parameters": 0,
+      "new_vision_fields": 0,
+      "new_gt_adjudications": 0
+    },
+    "observed_semantic_delta": 0,
+    "candidate_runtime_sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b",
+    "★_verification": "★ The candidate runtime is distributed byte-identically and its output over all 114 units is identical to the authority-correction build. The new residue status is a governance LABEL applied in the reporting layer, not a scoring change."
+  },
+  "decision_5_residue_taxonomy": {
+    "class_A": "Direction unresolved → ei_numeric null. The five frozen Direction residue units.",
+    "class_B": "Direction governed, exact within-side tier not legally resolvable → GOVERNED_WITHIN_SIDE_NUMERIC_RESIDUE",
+    "class_C": "historical Numeric GT incompatible with frozen Direction → NUMERIC_GT_RECONCILIATION_REQUIRED (520 / 521)",
+    "⛔_never_merged": "⛔ §10/§11 — the three classes are never merged.",
+    "governed_within_side_population": [
+      "REF_000616#SU2"
+    ],
+    "⛔_no_side_fallback": "⛔ §8 — no side fallback is permitted."
+  },
+  "side_lock_contract": {
+    "I": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "NEUTRAL": [
+      5
+    ],
+    "E": [
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "resulting_gate_verdict": "FREEZE_CANDIDATE",
+  "⛔_not_declared": "⛔ CLOSED_AND_FROZEN is NOT declared. Formal freeze remains CEO authority after ChatGPT Independent Review."
+}

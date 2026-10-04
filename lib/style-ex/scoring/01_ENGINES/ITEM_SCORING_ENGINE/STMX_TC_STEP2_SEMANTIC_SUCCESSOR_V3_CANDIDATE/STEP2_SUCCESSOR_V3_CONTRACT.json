@@ -1,0 +1,58 @@
+{
+ "document": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V3_CONTRACT",
+ "successor": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V3_CANDIDATE",
+ "status": "CANDIDATE · SHADOW · NOT FROZEN · NOT PRODUCTION",
+ "sprint": "V2.3.84",
+ "date": "2026-09-27",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-27 — D-82-1 APPROVED · D-83-1 APPROVED · D-83-2 IMPLEMENTATION AUTHORIZED · MC-1 AUTHORIZED (order V2.3.84 §2 / §3)",
+  "Reason": "versioned successor Step 2 input contract: (1) consume the governed REF_000671 representation correction; (2) consume lawful regional observations as evidence for ONE garment under the frozen Whole-Garment contract (WG-1…WG-8); (3) apply the already-approved Calf / Ankle spelling map on the Direction path. The frozen Departure predicates are required verbatim and never edited.",
+  "Affected Scope": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V3_CANDIDATE/ (new). Predecessor successor V2 and the frozen Step 2 evaluator stay byte-identical and executable."
+ },
+ "predecessor": {
+  "id": "STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE (V2.3.68)",
+  "relation": "V3 carries every V2 rule unchanged (registry selection O1 · O2 fail-closed · O3 refused · no tier emission · reproduction guard) and adds three input-contract rules. With no V3 rule active, V3 reproduces the V2 chain output exactly (equivalence proof in the V2.3.84 package)."
+ },
+ "frozen_whole_garment_contract": {
+  "file": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_WHOLE_GARMENT_DIRECTION_CONTRACT_FREEZE_V1.md",
+  "status": "FROZEN (D-83-1)"
+ },
+ "input_surfaces": {
+  "historical": "projection V4 via the sealed V3.3 adapter + the frozen member ledger (V2 rule; used ONLY for the reproduction guard)",
+  "successor": "projection V5 (sealed) — carries the governed 671 material token and fit.byRegion"
+ },
+ "rules": {
+  "GRC": {
+   "name": "governed representation correction",
+   "authority": "CEO D-82-1",
+   "rule": "for a member listed in a sealed governed correction record, the corrected field is taken from projection V5 (which must equal the record's projected `after` token byte-for-byte) and the channel that reads it is re-executed with the frozen predicate",
+   "fields": { "material": ["construction"] },
+   "never": ["a REF-specific rule or branch", "a Direction / label lookup", "evidence or descriptor text reaching a predicate"]
+  },
+  "WG": {
+   "name": "whole-garment regional fit (successor input contract)",
+   "authority": "CEO D-83-1 / D-83-2 · WG-1…WG-8",
+   "regional_keys": ["dress", "jumpsuit"],
+   "regional_keys_basis": "Vision placement authority: Dress / Jumpsuit fit is emitted upper / lower (frozen Vision schema — Fit Upper/Lower split; controller byRegion = Dress/Jumpsuit fabric_behavior / fit). A byRegion form on any other key is carried by projection V5 but not consumed here (its recorded scalar keeps governing, as before).",
+   "required_regions": ["upper", "lower"],
+   "fit_evidence": "every observed fit value of the one garment: the recorded scalar value (when one exists) and each regional value; region identity is location / provenance only",
+   "reading": "each value is presented, alone, as the garment's fit to the FROZEN silhouette predicate (with the frozen morphology / ladder / Q1 / Q3 order and the V2 O2 domain guard); the frozen verdicts are then read per WG-3 / WG-4: any TRUE → the channel is TRUE, located in the region(s) where observed; every required value observed and every verdict FALSE → FALSE; otherwise UNRESOLVED (the frozen unresolved verdict is carried)",
+   "missing_region": "a required region absent from the regional form → that region is presented as observed-without-value (the frozen predicate's own SIL-STATE outcome); the channel can then never read FALSE",
+   "flare_contrast_scope": "the frozen CEO §4.1 flare statement reads the upper-LEG fit with lower-leg geometry; on a one-piece the leg is realised by the lower region, so the upper (bodice) region is read by the frozen ladder only (V2.3.83 sealed WG-FIT design, authorized by D-83-2). No corpus unit is affected (no Flared jumpsuit exists).",
+   "output": "ONE garment-level silhouette verdict { v, rule, why, carrier: 'fit', strong, regional_evidence[] }; rule = the distinct frozen rule ids that decided, joined with '+' (the frozen composition convention of evaluator_v2_3_2 resolveMaterial); regional_evidence = [{ region, value, v, rule }] — metadata only",
+   "never": ["a regional Direction", "an either-region / both-region / priority / dominant / majority rule", "averaging or voting", "a synthetic whole-garment fit value", "SR upper / lower composition", "Classic from missing evidence"]
+  },
+  "MC1": {
+   "name": "Calf / Ankle mechanical closure",
+   "authority": "CEO D-60 (OSF-7, V2.3.61) · MC-1 AUTHORIZED (V2.3.84 §3)",
+   "source": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json (mapping + keys, read verbatim)",
+   "rule": "for the listed keys, a recorded length token in the approved map is presented to the frozen proportion predicate in the frozen envelope spelling of the same zone; the frozen prop() decides",
+   "never": ["any other token", "any other key", "a changed envelope", "a changed meaning of Calf / Ankle"]
+  }
+ },
+ "reproduction_guard": "a channel is re-executed for a member only after the frozen predicate REPRODUCES the member's frozen historical verdict from the historical token set (V2 rule, extended to construction and proportion); otherwise ReproductionError (fail closed)",
+ "reexecution_map_v3": { "fit": ["silhouette"], "material": ["construction"], "length": ["proportion"] },
+ "direction": "member Direction = frozen direction() over the Direction-path verdicts (re-executed where a rule applied, otherwise the frozen verdict); unit Direction = frozen Step 2 unit aggregation (single garment / §7 pair rule) — unchanged",
+ "output_member_extra_fields": ["direction_path (only where the Direction-path verdict differs from the carried channel object, e.g. an existing OSF-7 overlay object)"],
+ "not_responsibilities": ["Step 3 semantics", "Strength", "Score Physics", "tier / ordinal", "new Atomic / Vision field / Departure family / vocabulary / enum", "REF- or category-specific branching beyond the governed regional-key basis above", "production binding"]
+}

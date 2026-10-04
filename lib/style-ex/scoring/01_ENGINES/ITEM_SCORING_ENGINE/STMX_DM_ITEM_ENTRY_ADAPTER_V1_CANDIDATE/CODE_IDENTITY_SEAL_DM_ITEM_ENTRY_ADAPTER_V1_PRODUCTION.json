@@ -1,0 +1,29 @@
+{
+ "document": "CODE_IDENTITY_SEAL_DM_ITEM_ENTRY_ADAPTER_V1_PRODUCTION",
+ "package": "STMX_DM_ITEM_ENTRY_ADAPTER_V1_CANDIDATE",
+ "sealed_at": "2026-09-27T14:00:21.146Z",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-27",
+  "Order": "STMX ITEM SCORING ENGINE V1 — FINAL FREEZE + PRODUCTION PROMOTION + FINAL BACKUP PREPARATION · Decision 1 · §17",
+  "Reason": "promote the verified four-axis candidate composition to production; same code identity, no scoring change",
+  "Affected Scope": "this seal (new) · registry DM entry"
+ },
+ "status": "PRODUCTION — DM-local item entry adapter of STMX_DM_ENGINE_V1, delegation only (engine.evaluateDm at the generic binding call shape); STMX_DM_ENGINE_V1 unchanged; STMX ITEM SCORING ENGINE V1 Final Freeze",
+ "supersedes": "CODE_IDENTITY_SEAL_DM_ITEM_ENTRY_ADAPTER_V1_CANDIDATE.json — HISTORICAL candidate seal, byte-unchanged (same files, same identity)",
+ "gt_read_before_seal": false,
+ "model": "Opus 5.5 (claude-opus-5-5); Fable not used",
+ "rule": "CODE_IDENTITY_AGGREGATE_SHA256 = sha256 over [file, sha256] of the listed files in order (Clean Engine binding convention)",
+ "files": [
+  {
+   "file": "src/dm_item_entry_adapter_v1.js",
+   "bytes": 3369,
+   "sha256": "d7a31acad9c9197c4f924340a9464927a6a102218fb0a92cb55da5641b46aa57"
+  },
+  {
+   "file": "BOUND_INPUTS.json",
+   "bytes": 1377,
+   "sha256": "a8e7c3d8a8ca84c056ed679b4cbc70d0272e4c946c52fa8c5ad28b7c8f3f96c8"
+  }
+ ],
+ "CODE_IDENTITY_AGGREGATE_SHA256": "6f1e3b0d879a6f2b0fab32cea6bf1bdc5f908309be88f10e61a6373995bd0f81"
+}

@@ -1,0 +1,195 @@
+{
+  "unit_id": "REF_000323#SU1",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "b763e161b91c3e26a4d74bf3f304e82922673498535d6df84e124c16dc49a5e2",
+  "projected_hash": "972f54ee55ef861b92e26240e8c50c4de46253ab37d2904b3ff9e40bb1fe27be",
+  "input": {
+    "category": "T-Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "soft jersey knit",
+          "matte cotton-like drape"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "jersey knit T-shirt cloth"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "plain jersey, no constructed surface treatment on body"
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid charcoal ground, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "Nirvana wordmark and band photo print on chest area"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "plain front, no pocket visible"
+        ],
+        "pockets": []
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, sequins, appliqué or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fur or fringe"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "left and right hem and sleeves mirror each other"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "shoulder span near natural shoulders",
+          "body has ordinary ease at chest and waist without standing far away"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "lower hem cropped/covered near waistband, hem-on-body position not readable"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "soft jersey follows the body with soft folds"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Short",
+        "region": "upper",
+        "evidence": [
+          "sleeves end on upper arm"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam forms clear endpoint at natural shoulder"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "Round",
+        "region": "upper",
+        "evidence": [
+          "rounded crew opening close to base of neck"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "neckline sits at base of neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain ribbed crew neckband, no collar structure"
+        ]
+      },
+      "rib_hem": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "lower hem edge obscured by waistband/crop"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "pullover tee with no front opening"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "dark",
+      "color_usage": "multi",
+      "multi_color": true,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "red",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        },
+        {
+          "color_family": "yellow",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        },
+        {
+          "color_family": "blue",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        },
+        {
+          "color_family": "green",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        }
+      ]
+    }
+  }
+}

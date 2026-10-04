@@ -1,0 +1,155 @@
+{
+  "unit_id": "REF_000541#SU2",
+  "input_mode": "DIRECT_37",
+  "source_record_hash": "1ea157649eef7c9d1cd61ad68acd36a7394bca999a966d00e889b3d237610d75",
+  "projected_hash": "498b1fdaf1d419f414e324bfaeed6c206779ee17fadc2a2c8e2031b7bee6af1e",
+  "input": {
+    "category": "Trouser",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte tailoring cloth with soft drape",
+          "flannel-like appearance"
+        ],
+        "values": [
+          {
+            "value": "Wool",
+            "evidence": [
+              "matte suiting cloth typical of tailored flannel trouser"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "front pleats at waist creating vertical folds"
+        ],
+        "values": [
+          {
+            "value": "Pleated",
+            "evidence": [
+              "pressed pleats descending from waistband"
+            ],
+            "locations": [
+              {
+                "component": "Waistband"
+              }
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid charcoal, no repeating motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no print or logo"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no clearly visible pocket openings at front hip in this view"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no embroidery, beading, applique or piping"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "belt loops present but no belt worn; no hardware or trim"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "both legs mirror",
+          "even hemline",
+          "centered fly and pleats"
+        ]
+      },
+      "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+          "pressed crease, pleats, tailored waistband and belt loops"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+          "wide leg keeps its width to the hem, no flare or taper"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "lower",
+        "evidence": [
+          "wide leg stands away from the leg with generous room",
+          "high seat, full column of cloth to hem"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+          "hem reaches the top of the shoe / floor level"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Fluid",
+        "region": "whole_garment",
+        "evidence": [
+          "soft suiting cloth drapes and follows movement with vertical folds"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "dark",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "charcoal gray suiting",
+        "lightness": "dark charcoal tone",
+        "usage": "one color throughout",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "document": "STMX_EI_NUMERIC_OUTPUT_CONTRACT_V1",
+  "date": "2026-09-08",
+  "numeric_version": "STMX_EI_NUMERIC_LAYER_V1",
+  "build": "FINAL_AUTHORITY_CORRECTION",
+  "consumes": "STMX_EI_DIRECTION_RUNTIME_V1_2_7",
+  "fields": {
+    "ei_direction": "I | NEUTRAL | E | (frozen unresolved state) — copied through, never written by this layer",
+    "ei_numeric": "integer tier, or null when unresolved",
+    "numeric_rule": "the governed rule id that produced the tier or the block",
+    "numeric_status": "RESOLVED | UNRESOLVED",
+    "numeric_blocker": "governed blocker id or null",
+    "numeric_provenance": "direction, allowed side range, base tier, applied lifts with evidence",
+    "direction_version": "STMX_EI_DIRECTION_RUNTIME_V1_2_7",
+    "numeric_version": "STMX_EI_NUMERIC_LAYER_V1"
+  },
+  "side_invariant": {
+    "I": "EI1–EI4",
+    "NEUTRAL": "EI5",
+    "E": "EI6–EI9",
+    "★_law": "★ Numeric can never change Direction. A tier outside the resolved side is refused by NUM-FAILCLOSED-SIDE-LOCK."
+  },
+  "rules": {
+    "NUM-N-1": "Neutral → EI5",
+    "NUM-I-1": "I → EI4 (the calibrated I tier; EI1/EI2/EI3 reserved and uncalibrated)",
+    "NUM-E-BASE": "E → EI6 when no governed lift condition is satisfied",
+    "NUM-E-LIFT-1": "E → EI7 when a governed see-through realization S08 resolves STRONG and an independent admitted openwork realization S10 is present",
+    "NUM-E-LIFT-2": "E → EI7 on the governed semantic conjunction of strong admitted upper-body exposure with an INDEPENDENT strong admitted lower-body exposure",
+    "NUM-E-FAILCLOSED-1": "E → UNRESOLVED when an admitted lower-body exposure carries a realization other than the conditional case and no governed lift applies",
+    "NUM-FAILCLOSED-DIRECTION": "Direction unresolved → UNRESOLVED, no fallback",
+    "NUM-FAILCLOSED-SIDE-LOCK": "any tier outside the frozen side → UNRESOLVED (defensive; must never fire)"
+  },
+  "⛔_removed_in_this_build": {
+    "rule": "automatic INHERENT_PERSISTENT lower-body → EI7",
+    "reason": "⛔ CORRECTION A — Independent Review found this stronger than CEO authority. CEO authority states persistent realization is STRONGER EVIDENCE than the conditional case; it does not authorize a tier. The qualifier is governed semantic evidence, never an exact-tier lookup.",
+    "replaced_by": "NUM-E-LIFT-2, which reads only the region class and never reads the qualifier."
+  },
+  "not_emitted_by_v1": {
+    "EI1": "RESERVED / CURRENTLY UNCALIBRATED",
+    "EI2": "RESERVED / CURRENTLY UNCALIBRATED",
+    "EI3": "RESERVED / CURRENTLY UNCALIBRATED",
+    "EI8": "OBSERVED IN GROUND TRUTH · no governed condition in current EI authority separates it from EI7",
+    "EI9": "RESERVED / CURRENTLY UNCALIBRATED",
+    "⛔_rule": "⛔ Values are not invented to fill the scale. EI8 ground-truth units are reported as within-side exact-tier misses. ⛔ EI8 is NOT made RESERVED and its ground truth is NOT rewritten to EI7."
+  },
+  "⛔_prohibited_inputs": [
+    "REF id",
+    "ground truth value",
+    "category as a separator",
+    "Descriptor prose",
+    "length",
+    "slit",
+    "sleeve_volume",
+    "shoulder_span",
+    "silhouette",
+    "any TC / SR / DM field"
+  ],
+  "⛔_prohibited_forms": [
+    "weighted additive score",
+    "fitted coefficient",
+    "threshold tuned to ground truth",
+    "region count arithmetic",
+    "magnitude vocabulary",
+    "lookup table keyed by unit"
+  ]
+}

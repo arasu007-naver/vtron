@@ -1,0 +1,2942 @@
+{
+  "document": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_1",
+  "contract_version": "V1.1",
+  "status": "HISTORICAL — PRESERVED FOR PROVENANCE. ⛔ NOT CURRENT.",
+  "purpose": "Defines how ANY governed P3 observation (known or novel) resolves to WEAK / MEANINGFUL / STRONG / UNRESOLVED from its governed realization evidence alone. Calibration cases are never consulted at runtime; they are test oracles that must be reproduced by these rules.",
+  "authority_basis": {
+    "force_contract": {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_P3_FINAL_CLOSURE_V1_1/STMX_EI_P3_FORCE_CONTRACT_FINAL_V1_1_1.json",
+      "sha256": "b737bb3bb76f067eca493005ae3aca1e8389792bd5b8093aa9bba7b16b20afb9"
+    },
+    "resolution_matrix": {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_P3_FINAL_CLOSURE_V1_1/STMX_EI_P3_FORCE_RESOLUTION_MATRIX_V1_1.json",
+      "sha256": "cadcea76d852ae36245446988165f835e32385e042abc5c04b63c63af03a82bf"
+    },
+    "dedup_contract": {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_P3_FORCE_CONTRACT_FINAL_V1/STMX_EI_P3_PATHWAY_DEDUPLICATION_CONTRACT_V1.json",
+      "sha256": "ee164a1aeff12a682a09fd75f204a1f96650c100cdaba5a6261ce4616639c13d"
+    },
+    "independence_contract": {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_P3_FORCE_CONTRACT_FINAL_V1/STMX_EI_P3_INDEPENDENCE_CONTRACT_V1.json",
+      "sha256": "4c211b88b07583855cb4d8bffaed8a9b76f9488aa8abe9241ce93d38782510be"
+    },
+    "semantic_status": {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/PRE_IMPLEMENTATION_EI_SCORE_PHYSICS_SINGLE_AXIS_V1_2_1_REVIEW_READINESS_CORRECTION/STMX_EI_P3_SEMANTIC_STATUS_V1_2_1.json",
+      "sha256": "ae3390ef35327ffcc9945e9631d63c6ba0ce7b253f3ef492d8c42a6e5939877d"
+    },
+    "canonical": {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/PRE_IMPLEMENTATION_EI_CROSSOVER_PHYSICS_V1/CHATGPT_INDEPENDENT_REVIEW_PACKAGE_EI_CROSSOVER_V1/STMX_EI_SURFACE_MATERIAL_DECORATIVE_OBSERVATION_CANONICAL_V1.md",
+      "sha256": "5663eecf0f5b7c9e06fb713a7a858f732bf08ec63d464add56ab4894cb654dbf"
+    },
+    "coverage_mapping": {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_P3_COVERAGE_PRODUCTION_INTEGRATION_V1/STMX_EI_P3_CANONICAL_EVIDENCE_SOURCE_MAPPING_V1.json",
+      "sha256": "8a1256a2f9e4aeba6026b19c2f99de0393880050a19ecf8f8fa7e474d014bd58"
+    },
+    "colour_v1": {
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+      "sha256": "7957120d6a3ed981db5c7a23e9f6fcca29e4db51e2a5c668832d2050be14ac48"
+    },
+    "producer_rules": {
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/producer_rules_v1.js",
+      "sha256": "3e12d0a3745b7a31a3c6c5e5d7f77a22378637182598aa723af4919504a4e54e"
+    },
+    "frozen_decisions": {
+      "path": "00_STMX_CHATGPT_PROJECT_CONTEXT/01_STMX_FROZEN_DECISIONS.md",
+      "sha256": "68489d6aacb0986e2dcc0d9fc69a649fa16597aff1082d7a3aaa37d014e08676"
+    },
+    "formal_closure": {
+      "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_P3_FORMAL_CLOSURE_V1/STMX_EI_P3_FORMAL_CLOSURE_RECORD_V1.json",
+      "sha256": "2d6c7010ce0721647118e00e67dfb79b3cbf53fa3dcebf024faa6c9fb9c84726"
+    }
+  },
+  "frozen_definitions_quoted": {
+    "WEAK": "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+    "MEANINGFUL": "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+    "STRONG": "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\".",
+    "COLOUR": "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+    "COVERAGE": "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\".",
+    "USAGE": "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour.",
+    "D10": "EI-X-D10: force is never frozen from a token name; where current Vision evidence encodes extent · prominence · magnitude · contrast · coverage it is USED; where it cannot express the distinction → INPUT REPRESENTATION GAP, never a scoring hack.",
+    "D3": "EI-X-D3 / DR-7: Weak pathways never aggregate into Meaningful or Strong.",
+    "P3D1": "Frozen Decisions P3-D-1: EI consumes its own Colour V1 facts (additional_colors · carrier_kind · carrier_ref · color_usage) as governed P3 realization evidence; a carrier colour bound to a token is that token's realization detail, never a second pathway. Decision-matrix note: additional_colors = [] means tonal.",
+    "P3D3": "Frozen Decisions P3-D-3: pattern=Repeat is not a universal Weak/Strong token; force is judged from the actual realization + governed evidence."
+  },
+  "evidence_families": [
+    {
+      "family": "SURFACE_MATERIAL_EVIDENCE",
+      "canonical_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06/S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "source_parameters": [
+        "surface",
+        "material",
+        "attachment (Fur Trim)"
+      ]
+    },
+    {
+      "family": "DECORATIVE_EVIDENCE",
+      "canonical_ids": [
+        "D01",
+        "D02",
+        "D02/D03",
+        "D03",
+        "D04"
+      ],
+      "source_parameters": [
+        "attachment",
+        "decorative_detail"
+      ]
+    },
+    {
+      "family": "PATTERN_EVIDENCE",
+      "canonical_ids": [
+        "P3_PATTERN"
+      ],
+      "source_parameters": [
+        "pattern"
+      ],
+      "note": "EI evidence outside the S/D matrix (Formal Closure §3); S/D force-mode taxonomy NOT_APPLICABLE — this is not a new canonical class"
+    },
+    {
+      "family": "GRAPHIC_EVIDENCE",
+      "canonical_ids": [
+        "P3_GRAPHIC"
+      ],
+      "source_parameters": [
+        "graphic"
+      ],
+      "note": "as above"
+    },
+    {
+      "family": "P2_EXPOSURE",
+      "canonical_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05"
+      ],
+      "source_parameters": [
+        "exposure_opening"
+      ],
+      "note": "fixed by EI-X-D4; included so every EI evidence resolves through one inspectable path"
+    }
+  ],
+  "realization_inputs": {
+    "contrast_grade": {
+      "values": [
+        "TONAL",
+        "SUBTLE",
+        "DISTINCT"
+      ],
+      "derivation": "Colour V1 additional_colors entries attributed to THIS evidence whose color_family ≠ primary_color_family and ≠ uncertain. none → TONAL (P3-D-1: [] = tonal). ≥1 and color_usage = subtle → SUBTLE (Colour V1: minor, low-separation). ≥1 otherwise → DISTINCT (reads against the garment).",
+      "authority": [
+        "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+        "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour.",
+        "Frozen Decisions P3-D-1: EI consumes its own Colour V1 facts (additional_colors · carrier_kind · carrier_ref · color_usage) as governed P3 realization evidence; a carrier colour bound to a token is that token's realization detail, never a second pathway. Decision-matrix note: additional_colors = [] means tonal."
+      ]
+    },
+    "extent": {
+      "values": [
+        "LOCALIZED",
+        "PARTIAL",
+        "DOMINANT",
+        "NOT_GOVERNED"
+      ],
+      "derivation": "S/D evidence: the observation's coverage field (Localized/Partial/Dominant) else NOT_GOVERNED. graphic: the value itself is the extent split (Localized | Dominant — Semantic Status: \"the value set is itself the coverage split\"). pattern=Repeat: DOMINANT by the value's own admission gate (Semantic Status: \"all-over coverage is structural to the value\"). pattern=Linear / Grid: NOT_GOVERNED (no extent field; for Grid the missing extent/location is an explicit representation gap — GAP-12). Exposure: not applicable.",
+      "authority": [
+        "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\".",
+        "Semantic Status V1.2.1 values[graphic=Dominant].gate · values[pattern=Repeat].gate"
+      ]
+    },
+    "extent_source": {
+      "values": [
+        "coverage",
+        "value_gate",
+        "none"
+      ]
+    },
+    "composition": {
+      "values": [
+        "single",
+        "subtle",
+        "accent",
+        "multi",
+        "NOT_GOVERNED"
+      ],
+      "derivation": "Colour V1 color_usage of the garment.",
+      "authority": [
+        "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour."
+      ]
+    },
+    "contrast_family_count": {
+      "derivation": "number of DISTINCT color families ≠ primary among the carriers attributed to this evidence."
+    },
+    "absorbed": {
+      "derivation": "true when the Dedup stage absorbed this observation into another physical pathway (it then carries no force of its own).",
+      "authority": [
+        "Dedup Contract V1"
+      ]
+    },
+    "class_gate": {
+      "values": [
+        "HARD_OPTICAL",
+        "NONE"
+      ],
+      "derivation": "token-implied: surface=Transparent / Semi Transparent / Reflective are emitted only through the producer's HARD optical gate (Semantic Status gate column); all other values NONE."
+    },
+    "closure_accounting": {
+      "values": [
+        "INDEPENDENT",
+        "CLOSURE_ACCOUNTABLE",
+        "NOT_APPLICABLE"
+      ],
+      "applies_to": "attachment=Metal Hardware (D01) only; every other evidence carries NOT_APPLICABLE",
+      "derivation": "INDEPENDENT when governed evidence certifies that the hardware is not the garment's single functional closure: (i) extent PARTIAL or DOMINANT (canonical D01 \"multiple / repeated / oversized\" hardware is by definition more than one closure), or (ii) the contrasting carrier(s) attributed to this evidence are bound to another attachment carrier (carrier_ref ≠ \"Metal Hardware\", e.g. Belt — canonical \"prominent buckles\"; the colour fact is not the closure's colour), or (iii) closure_context = NONE (front_opening_extent = None, or closure_type = None | Open — the garment has no functional fastening hardware). CLOSURE_ACCOUNTABLE otherwise, i.e. closure_context PRESENT (closure_type OBSERVED with a fastening mechanism) or NOT_GOVERNED (Trouser/Skirt — closure_type is not a governed bottom observation; or closure_type UNKNOWN/NOT_VISIBLE/omitted) and extent LOCALIZED or NOT_GOVERNED with the contrast certified only by a carrier bound to the hardware itself (or no carrier). closure_context is read from the SAME governed observation set (front_opening_extent · closure_type) — never from prose, image, GT or case identity.",
+      "effect": "Only the DISTINCT contrast branch is affected (GFR-D01-U5 vs GFR-D01-M1). TONAL and SUBTLE hardware keep their WEAK resolution whatever the accounting: a Weak pathway never changes the top-level direction (EI-X-D3), so the closure ambiguity is direction-invariant there — the accounting is still recorded in the trace.",
+      "authority": [
+        "STMX_EI_SURFACE_MATERIAL_DECORATIVE_OBSERVATION_CANONICAL_V1.md §4 D01 — \"Pronounced Metal Hardware: multiple/prominent buckles·studs·spikes·chains·eyelets/grommets·prominent metal buttons·oversized/repeated zipper hardware. ⛔ 기능성 zipper 하나·기본 button·작은 functional buckle = 자동 Evidence 아님\" (one functional zipper · basic button · small functional buckle ≠ automatic evidence)",
+        "Semantic Status V1.2.1 values[attachment=Metal Hardware]: PROVISIONAL_DEFAULT_NONE — \"D01 Pronounced Metal Hardware is admitted, but [the exclusion clause applies] and the enum cannot certify prominence\"",
+        "Frozen Decisions EI-X-D2: UNKNOWN ≠ absence — an undecidable admission is reported as a representation gap, never defaulted",
+        "Producer-37 contract (producer_rules_v1.js / STMX_VISION_EXTRACTION_SCHEMA_FROZEN_V1): pattern is a SCALAR observation carrying region ∈ {whole_garment, upper, lower} only — no component/location field and no coverage field; closure_type is emitted on Jacket/Coat (Mandatory) and on TOP/Dress/Jumpsuit only when front_opening_extent ≠ None; ⛔ never on Trouser/Skirt (producer_prompt_v1.js L231)",
+        "Force Contract V1.1.1 prohibitions: ⛔ token name alone as a universal force assignment; resolution_model.inputs_permitted: \"canonical admission semantics (each class's ⛔ exclusion clause …)\" and \"other governed current observations of the same target\""
+      ]
+    }
+  },
+  "general_resolution_principles": [
+    {
+      "id": "GRP-1",
+      "principle": "GENERAL RULE → force; calibration case → validation. Production resolution never consults, matches, ranks or looks up a calibration case, reference id, image or fingerprint."
+    },
+    {
+      "id": "GRP-2",
+      "principle": "Two realization axes exist in governed input. CHROMATIC-CAPABLE evidence (hardware · applied objects · textures · quilting · exotic skin · pattern · graphic) resolves primarily on carrier-bound CONTRAST (tonal / subtle / distinct — P3-D-1, Force Contract colour role). NON-CHROMATIC optical evidence (gloss — same-family sheen suppressed by Colour V1) resolves on EXTENT. HARD-GATED optical evidence (see-through) resolves on its class gate. Which axis applies is fixed per evidence by the frozen row semantics, and each is validated by CEO cases in that family.",
+      "authority": [
+        "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+        "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\".",
+        "Force Resolution Matrix V1.1 required_realization_evidence per row"
+      ]
+    },
+    {
+      "id": "GRP-3",
+      "principle": "Coverage is an input, never the answer: no branch maps Localized → Weak, Partial → Meaningful or Dominant → Strong. Localized / Partial are used only for what their canonical definitions state (they exclude \"dominant character\"); Dominant is used only to raise the question the authority has or has not fixed.",
+      "authority": [
+        "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+      ]
+    },
+    {
+      "id": "GRP-4",
+      "principle": "Tonal ⇒ minor is a frozen WEAK descriptor; a contrasting carrier ⇒ legible gesture is the frozen MEANINGFUL semantics; STRONG is asserted only where a frozen row or CEO-fixed realization condition exists (see-through gate · multi-colour all-over repeat · P2 exposure). Nothing else is promoted to STRONG.",
+      "authority": [
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+        "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+        "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\"."
+      ]
+    },
+    {
+      "id": "GRP-5",
+      "principle": "Where the frozen definitions conflict for a realization the authority has not ranked (e.g. tonal + Dominant), or where a realization exceeds every CEO-fixed one (contrast + Dominant), the resolver reports UNRESOLVED with the authority gap named — never \"no matching case\", never a default force.",
+      "authority": [
+        "EI-X-D10: force is never frozen from a token name; where current Vision evidence encodes extent · prominence · magnitude · contrast · coverage it is USED; where it cannot express the distinction → INPUT REPRESENTATION GAP, never a scoring hack.",
+        "Force Contract V1.1.1 force_states.prohibition"
+      ]
+    },
+    {
+      "id": "GRP-6",
+      "principle": "No numeric physics: no weights, points, sums, thresholds or force ranks. Conditions are predicates over enumerated realization inputs; the contract QA proves the conditions of every rule are mutually exclusive over the finite input space, so precedence order is documentation, not physics."
+    },
+    {
+      "id": "GRP-7",
+      "principle": "Weak never aggregates (EI-X-D3); independence is semantic (Independence Contract V1); one physical phenomenon is one pathway (Dedup Contract V1)."
+    }
+  ],
+  "rule_precedence": [
+    "1. contract-invalid / not observed → no evidence (handled before resolution)",
+    "2. absorbed by dedup → no force of its own (handled before resolution)",
+    "3. authoritative STRONG condition",
+    "4. authoritative MEANINGFUL condition",
+    "5. authoritative WEAK condition",
+    "6. representation insufficient / authority not fixed → UNRESOLVED with root cause + gap id",
+    "note: per-rule condition lists are ordered this way and are mutually exclusive (contract QA), so evaluation order cannot change an outcome"
+  ],
+  "unresolved_policy": {
+    "root_causes": {
+      "INPUT_REPRESENTATION_GAP": "the realization distinction the frozen row needs is not present in the governed input (e.g. coverage absent where extent is the discriminator)",
+      "CEO_AUTHORITY_GAP": "the distinction is expressible, but no CEO decision / frozen row fixes the force (Force Contract V1.1.1 root cause)"
+    },
+    "prohibited_reasons": [
+      "\"no calibration case matched\"",
+      "\"no anchor\"",
+      "\"nearest case\"",
+      "\"unknown realization\""
+    ],
+    "representation": "force = null · resolution = UNRESOLVED · root_cause · gap_id · reason quoting the authority",
+    "never": "⛔ never substitute a default force for UNRESOLVED (Force Contract force_states.prohibition)"
+  },
+  "anchor_usage_policy": {
+    "production": "NONE — calibration cases, reference ids, image hashes, GT rows and case fingerprints are not loaded, matched, compared or branched on by the resolver; this contract carries no case identifier",
+    "tests": "the CEO calibration cases are EXPECTED TEST OUTCOMES only (regression oracle); the rule ↔ case validation map lives in the review-side rule matrix, outside the runtime"
+  },
+  "coverage_policy": {
+    "coverage_is_not_force": true,
+    "coverage_is_not_prominence": true,
+    "use": "ONE realization input (extent) — see GRP-3; NOT_GOVERNED is a first-class value and is never defaulted",
+    "prohibited_mappings": [
+      "Localized → Weak",
+      "Partial → Meaningful",
+      "Dominant → Strong"
+    ]
+  },
+  "colour_context_policy": {
+    "attribution": {
+      "attachment": "carrier_kind = attachment → the attachment evidence (belt-buckle hardware colour attaches to the Metal Hardware evidence)",
+      "graphic": "carrier_kind = graphic → the graphic evidence",
+      "pattern": "carrier_kind = pattern → the pattern evidence",
+      "material_component": "carrier_kind = material_component → a co-observed decorative_detail evidence when composition is accent | multi (canonical §4 D02: the applied embellishment carries the contrasting colour), else the surface evidence, else the material evidence (Fur), else unattributed",
+      "generic_descriptor": "carrier_kind = generic_descriptor (Piping · Collar · Cuff · Waistband · Panel · Strap) → UNATTRIBUTED: a structural component colour has no canonical P3 owner and is not evidence of any P3 phenomenon (recorded in trace; it still informs composition through color_usage)",
+      "closure": "carrier_kind = closure / pocket → UNATTRIBUTED (not P3 evidence)"
+    },
+    "fact_identity": "one carrier colour is ONE fact attributed to at most ONE evidence (P3-D-1); it is never a second pathway",
+    "tonal_rule": "no attributed contrasting carrier ⇒ TONAL (P3-D-1: additional_colors = [] means tonal)"
+  },
+  "location_policy": {
+    "role": "realization identity and physical-pathway deduplication only",
+    "prohibited": "⛔ no force from a location name (Force Contract locations_relationship)"
+  },
+  "dedup_policy": {
+    "order": "raw evidence → carrier attribution → PATHWAY NORMALIZATION (dedup) → FORCE. Authority: Force Contract resolution_model.pipeline \"Observed P3 Evidence → Governed Realization Evidence → Deduplicated Physical Pathway → Force Resolution\" and Dedup Contract \"deduplication happens here, at force resolution\". An absorbed observation never receives a force of its own; the surviving head of a dedup group is resolved once.",
+    "rules": [
+      "same dedup_key → one pathway",
+      "mesh_rule: Mesh absorbed when a see-through token is co-observed",
+      "Pleated re-describing a see-through cloth → absorbed (default)",
+      "tonal Linear co-observed with see-through → absorbed (produced by the structure); a contrasting stripe stays independent",
+      "Sequin-Beading + Reflective → one pathway when the reflectivity IS the embellishment",
+      "a carrier colour bound to a token = the same fact (P3-D-1)"
+    ]
+  },
+  "independence_boundary": {
+    "definition": "two pathways are independent only when they are different physical/design phenomena (Independence Contract V1 test order 1–4)",
+    "prohibitions": [
+      "parameter count ≠ pathway count",
+      "raw observation count never crosses",
+      "Weak pathways never aggregate"
+    ]
+  },
+  "rules": [
+    {
+      "evidence_rule_id": "GFR-D01",
+      "canonical_evidence_id": "D01",
+      "canonical_family": "DECORATIVE_EVIDENCE",
+      "source_parameter": "attachment",
+      "source_value": "Metal Hardware",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (FM2 · contrast axis · closure-accounting admission)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent",
+        "composition",
+        "contrast_family_count",
+        "closure_accounting"
+      ],
+      "rule_precedence": [
+        "GFR-D01-S1",
+        "GFR-D01-U5",
+        "GFR-D01-M1",
+        "GFR-D01-W1",
+        "GFR-D01-U2",
+        "GFR-D01-W2",
+        "GFR-D01-U3",
+        "GFR-D01-W4"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-D01-S1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-01",
+          "why": "a contrasting realization at DOMINANT extent (dominant character over most/all of the garment, reading against it) reaches beyond every realization CEO authority has fixed at MEANINGFUL; the frozen STRONG condition for this family is not written — resolving MEANINGFUL would silently cap a possibly Strong realization, resolving STRONG would invent physics",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-D01-U5",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "NOT_GOVERNED"
+              ]
+            },
+            {
+              "input": "closure_accounting",
+              "op": "eq",
+              "value": "CLOSURE_ACCOUNTABLE"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "INPUT_REPRESENTATION_GAP",
+          "gap_id": "GAP-13",
+          "why": "the only governed contrast certification is a metal-toned carrier bound to the hardware itself, on a garment whose functional closure is present or not governed, at an extent that does not certify multiplicity (Localized / not governed): the observation may be the single functional zipper / basic button / small functional buckle that the canonical D01 exclusion clause says is not automatic evidence, or it may be pronounced hardware — the current 37-parameter input cannot tell them apart. UNKNOWN ≠ absence (EI-X-D2): the realization is UNRESOLVED with an input-side root cause; it is neither promoted to MEANINGFUL nor silently excluded",
+          "authority": [
+            "STMX_EI_SURFACE_MATERIAL_DECORATIVE_OBSERVATION_CANONICAL_V1.md §4 D01 — \"Pronounced Metal Hardware: multiple/prominent buckles·studs·spikes·chains·eyelets/grommets·prominent metal buttons·oversized/repeated zipper hardware. ⛔ 기능성 zipper 하나·기본 button·작은 functional buckle = 자동 Evidence 아님\" (one functional zipper · basic button · small functional buckle ≠ automatic evidence)",
+            "Semantic Status V1.2.1 values[attachment=Metal Hardware]: PROVISIONAL_DEFAULT_NONE — \"D01 Pronounced Metal Hardware is admitted, but [the exclusion clause applies] and the enum cannot certify prominence\"",
+            "Frozen Decisions EI-X-D2: UNKNOWN ≠ absence — an undecidable admission is reported as a representation gap, never defaulted",
+            "Producer-37 contract (producer_rules_v1.js / STMX_VISION_EXTRACTION_SCHEMA_FROZEN_V1): pattern is a SCALAR observation carrying region ∈ {whole_garment, upper, lower} only — no component/location field and no coverage field; closure_type is emitted on Jacket/Coat (Mandatory) and on TOP/Dress/Jumpsuit only when front_opening_extent ≠ None; ⛔ never on Trouser/Skirt (producer_prompt_v1.js L231)",
+            "Force Contract V1.1.1 force_states.prohibition: ⛔ a consumer may NOT substitute a default force for UNRESOLVED"
+          ]
+        },
+        {
+          "condition_id": "GFR-D01-M1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            },
+            {
+              "input": "closure_accounting",
+              "op": "eq",
+              "value": "INDEPENDENT"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "MEANINGFUL",
+          "why": "a carrier-bound contrasting colour certifies that the evidence reads against the garment as a legible, intentional gesture; at Localized / Partial extent the canonical coverage definition itself excludes \"dominant character\", so the realization cannot carry the garment; with extent not governed the contrast axis resolves as CEO authority did for its validating cases; V1.1: the realization must be INDEPENDENT of the garment's functional closure (Partial/Dominant extent, a carrier bound to another attachment such as a belt buckle, or no functional closure) — otherwise the canonical D01 exclusion clause makes the contrast undecidable (GFR-D01-U5)",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+            "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\".",
+            "STMX_EI_SURFACE_MATERIAL_DECORATIVE_OBSERVATION_CANONICAL_V1.md §4 D01 — \"Pronounced Metal Hardware: multiple/prominent buckles·studs·spikes·chains·eyelets/grommets·prominent metal buttons·oversized/repeated zipper hardware. ⛔ 기능성 zipper 하나·기본 button·작은 functional buckle = 자동 Evidence 아님\" (one functional zipper · basic button · small functional buckle ≠ automatic evidence)"
+          ]
+        },
+        {
+          "condition_id": "GFR-D01-W1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "Colour V1 color_usage = subtle certifies the secondary colour as minor and low-separation — the frozen WEAK descriptor \"subtle\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour."
+          ]
+        },
+        {
+          "condition_id": "GFR-D01-U2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "a subtle (minor, low-separation) composition at DOMINANT extent: the frozen definitions conflict (subtle ⇒ minor vs Dominant ⇒ dominant character) and no CEO authority ranks them for this family",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-D01-W2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "no carrier-bound contrasting colour (additional_colors attributed to this evidence = none ⇒ tonal) and a non-dominant extent — the frozen WEAK descriptors \"tonal\" and \"small-scale\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Frozen Decisions P3-D-1: EI consumes its own Colour V1 facts (additional_colors · carrier_kind · carrier_ref · color_usage) as governed P3 realization evidence; a carrier colour bound to a token is that token's realization detail, never a second pathway. Decision-matrix note: additional_colors = [] means tonal."
+          ]
+        },
+        {
+          "condition_id": "GFR-D01-U3",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "tonal hardware at DOMINANT extent (e.g. an all-over same-colour stud field): frozen WEAK says \"tonal ⇒ minor\" while canonical Dominant says \"dominant character\"; no CEO decision ranks them for D01",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-D01-W4",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "NOT_GOVERNED"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "tonal hardware with extent not governed resolves on the contrast axis exactly as CEO authority resolved its validating case without any extent field; the closure-accounting admission gate (V1.1) reports the functional single-zip / basic-button ambiguity only where it could change direction (DISTINCT contrast → GFR-D01-U5); a tonal realization is direction-invariant and keeps WEAK",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §4 D01 exclusion clause",
+            "Semantic Status D01 authority text: seven sole-evidence units sit at their colour base"
+          ]
+        }
+      ],
+      "weak_conditions": [
+        "GFR-D01-W1",
+        "GFR-D01-W2",
+        "GFR-D01-W4"
+      ],
+      "meaningful_conditions": [
+        "GFR-D01-M1"
+      ],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-D01-S1",
+        "GFR-D01-U5",
+        "GFR-D01-U2",
+        "GFR-D01-U3"
+      ],
+      "coverage_role": "ONE realization input (extent); never force. Localized/Partial exclude dominance by definition; Dominant raises the unfixed elevation question (GAP-01 / GAP-02).",
+      "colour_context_role": "PRIMARY realization axis — carrier-bound contrast (attachment carriers, incl. belt-buckle hardware) certifies reads-against vs tonal.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "D01",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row D01 attachment=Metal Hardware (FM2)",
+        "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+        "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+        "Canonical §4 D01"
+      ],
+      "admission_gate": {
+        "input": "closure_accounting",
+        "rule": "DISTINCT contrast certified only by a self-bound carrier + closure PRESENT/NOT_GOVERNED + extent LOCALIZED/NOT_GOVERNED → GFR-D01-U5 (UNRESOLVED · GAP-13); every INDEPENDENT contrasting realization → GFR-D01-M1 / S1 as before; TONAL / SUBTLE unchanged",
+        "authority": [
+          "STMX_EI_SURFACE_MATERIAL_DECORATIVE_OBSERVATION_CANONICAL_V1.md §4 D01 — \"Pronounced Metal Hardware: multiple/prominent buckles·studs·spikes·chains·eyelets/grommets·prominent metal buttons·oversized/repeated zipper hardware. ⛔ 기능성 zipper 하나·기본 button·작은 functional buckle = 자동 Evidence 아님\" (one functional zipper · basic button · small functional buckle ≠ automatic evidence)",
+          "Semantic Status V1.2.1 values[attachment=Metal Hardware]: PROVISIONAL_DEFAULT_NONE — \"D01 Pronounced Metal Hardware is admitted, but [the exclusion clause applies] and the enum cannot certify prominence\""
+        ]
+      },
+      "correction_v1_1": {
+        "change": "closure_accounting realization input + GFR-D01-U5; GFR-D01-M1 now requires INDEPENDENT",
+        "reason": "Independent Review finding B — ordinary closure-colour evidence was admitted into the Metal Hardware expressive pathway (the V1 W4 text assumed the canonical exclusion clause had been applied at Vision emission; corpus records prove otherwise)",
+        "preserved_validated_realizations": [
+          "tonal hardware → WEAK (W2/W4)",
+          "Belt-bound contrasting buckle hardware → MEANINGFUL (M1, INDEPENDENT by carrier binding)",
+          "Partial contrasting hardware → MEANINGFUL (M1, INDEPENDENT by extent)",
+          "Dominant contrasting hardware → GAP-01 (S1)"
+        ]
+      }
+    },
+    {
+      "evidence_rule_id": "GFR-S01",
+      "canonical_evidence_id": "S01",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Textured Knit",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (FM2 · contrast axis)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent",
+        "composition",
+        "contrast_family_count"
+      ],
+      "rule_precedence": [
+        "GFR-S01-S1",
+        "GFR-S01-M1",
+        "GFR-S01-W1",
+        "GFR-S01-U2",
+        "GFR-S01-W2",
+        "GFR-S01-W3",
+        "GFR-S01-W4"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S01-S1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-01",
+          "why": "a contrasting realization at DOMINANT extent (dominant character over most/all of the garment, reading against it) reaches beyond every realization CEO authority has fixed at MEANINGFUL; the frozen STRONG condition for this family is not written — resolving MEANINGFUL would silently cap a possibly Strong realization, resolving STRONG would invent physics",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S01-M1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "MEANINGFUL",
+          "why": "a carrier-bound contrasting colour certifies that the evidence reads against the garment as a legible, intentional gesture; at Localized / Partial extent the canonical coverage definition itself excludes \"dominant character\", so the realization cannot carry the garment; with extent not governed the contrast axis resolves as CEO authority did for its validating cases",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+            "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S01-W1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "Colour V1 color_usage = subtle certifies the secondary colour as minor and low-separation — the frozen WEAK descriptor \"subtle\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour."
+          ]
+        },
+        {
+          "condition_id": "GFR-S01-U2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "a subtle (minor, low-separation) composition at DOMINANT extent: the frozen definitions conflict (subtle ⇒ minor vs Dominant ⇒ dominant character) and no CEO authority ranks them for this family",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S01-W2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "no carrier-bound contrasting colour (additional_colors attributed to this evidence = none ⇒ tonal) and a non-dominant extent — the frozen WEAK descriptors \"tonal\" and \"small-scale\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Frozen Decisions P3-D-1: EI consumes its own Colour V1 facts (additional_colors · carrier_kind · carrier_ref · color_usage) as governed P3 realization evidence; a carrier colour bound to a token is that token's realization detail, never a second pathway. Decision-matrix note: additional_colors = [] means tonal."
+          ]
+        },
+        {
+          "condition_id": "GFR-S01-W3",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "a tonal ground-cloth texture, even across the whole body, does not redirect the garment's read: CEO authority resolved whole-body cable / pile / rib textures WEAK (validating cases carry evidence text \"raised cable/aran texture on the body\", \"pile texture across body\", \"bold vertical rib across body\")",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Force Resolution Matrix V1.1 row S01 (case-semantics field: whole-body textures judged Weak at their own realization)"
+          ]
+        },
+        {
+          "condition_id": "GFR-S01-W4",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "NOT_GOVERNED"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "tonal texture with extent not governed resolves on the contrast axis exactly as CEO authority resolved its validating cases (none carried a coverage field)",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Force Resolution Matrix V1.1 row S01"
+          ]
+        }
+      ],
+      "weak_conditions": [
+        "GFR-S01-W1",
+        "GFR-S01-W2",
+        "GFR-S01-W3",
+        "GFR-S01-W4"
+      ],
+      "meaningful_conditions": [
+        "GFR-S01-M1"
+      ],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S01-S1",
+        "GFR-S01-U2"
+      ],
+      "coverage_role": "ONE realization input; for a tonal texture extent does not elevate (CEO-validated at whole-body realizations).",
+      "colour_context_role": "PRIMARY realization axis — a contrasting carrier attributed to the surface (e.g. a two-tone marled/bouclé component) certifies a legible gesture.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S01",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row S01 (FM2 · CORRECTION A: no universal Textured Knit = Weak)",
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+        "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+        "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\""
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S05",
+      "canonical_evidence_id": "S05",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Quilted",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (FM2 · contrast axis)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent",
+        "composition",
+        "contrast_family_count"
+      ],
+      "rule_precedence": [
+        "GFR-S05-S1",
+        "GFR-S05-M1",
+        "GFR-S05-W1",
+        "GFR-S05-U2",
+        "GFR-S05-W2",
+        "GFR-S05-W3",
+        "GFR-S05-W4"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S05-S1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-01",
+          "why": "a contrasting realization at DOMINANT extent (dominant character over most/all of the garment, reading against it) reaches beyond every realization CEO authority has fixed at MEANINGFUL; the frozen STRONG condition for this family is not written — resolving MEANINGFUL would silently cap a possibly Strong realization, resolving STRONG would invent physics",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S05-M1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "MEANINGFUL",
+          "why": "a carrier-bound contrasting colour certifies that the evidence reads against the garment as a legible, intentional gesture; at Localized / Partial extent the canonical coverage definition itself excludes \"dominant character\", so the realization cannot carry the garment; with extent not governed the contrast axis resolves as CEO authority did for its validating cases",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+            "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S05-W1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "Colour V1 color_usage = subtle certifies the secondary colour as minor and low-separation — the frozen WEAK descriptor \"subtle\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour."
+          ]
+        },
+        {
+          "condition_id": "GFR-S05-U2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "a subtle (minor, low-separation) composition at DOMINANT extent: the frozen definitions conflict (subtle ⇒ minor vs Dominant ⇒ dominant character) and no CEO authority ranks them for this family",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S05-W2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "no carrier-bound contrasting colour (additional_colors attributed to this evidence = none ⇒ tonal) and a non-dominant extent — the frozen WEAK descriptors \"tonal\" and \"small-scale\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Frozen Decisions P3-D-1: EI consumes its own Colour V1 facts (additional_colors · carrier_kind · carrier_ref · color_usage) as governed P3 realization evidence; a carrier colour bound to a token is that token's realization detail, never a second pathway. Decision-matrix note: additional_colors = [] means tonal."
+          ]
+        },
+        {
+          "condition_id": "GFR-S05-W3",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "tonal quilting over the whole garment is the ordinary puffer realization: canonical §5 \"Padded/Lofted 자체 = No Effect\", and Semantic Status records that the six sole-evidence quilted units sit exactly at their colour base",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §3 S05 boundary + §5",
+            "Semantic Status S05 authority text: six sole-evidence units sit exactly at their colour base"
+          ]
+        },
+        {
+          "condition_id": "GFR-S05-W4",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "NOT_GOVERNED"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "tonal quilting with extent not governed resolves on the contrast axis exactly as CEO authority resolved its validating case without a coverage field",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Force Resolution Matrix V1.1 row S05"
+          ]
+        }
+      ],
+      "weak_conditions": [
+        "GFR-S05-W1",
+        "GFR-S05-W2",
+        "GFR-S05-W3",
+        "GFR-S05-W4"
+      ],
+      "meaningful_conditions": [
+        "GFR-S05-M1"
+      ],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S05-S1",
+        "GFR-S05-U2"
+      ],
+      "coverage_role": "ONE realization input; for tonal quilting extent does not elevate (canonical §5 No-Effect for ordinary padding).",
+      "colour_context_role": "PRIMARY realization axis — a contrasting carrier attributed to the quilted surface certifies a legible gesture.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S05",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row S05 (FM2 · CORRECTION A: no universal Quilted = Weak)",
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+        "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\"."
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-D02D03",
+      "canonical_evidence_id": "D02/D03",
+      "canonical_family": "DECORATIVE_EVIDENCE",
+      "source_parameter": "decorative_detail",
+      "source_value": "Appliqué",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (FM2 · contrast axis)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent",
+        "composition",
+        "contrast_family_count"
+      ],
+      "rule_precedence": [
+        "GFR-D02D03-S1",
+        "GFR-D02D03-M1",
+        "GFR-D02D03-W1",
+        "GFR-D02D03-U2",
+        "GFR-D02D03-W2",
+        "GFR-D02D03-U3",
+        "GFR-D02D03-U4"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-D02D03-S1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-01",
+          "why": "a contrasting realization at DOMINANT extent (dominant character over most/all of the garment, reading against it) reaches beyond every realization CEO authority has fixed at MEANINGFUL; the frozen STRONG condition for this family is not written — resolving MEANINGFUL would silently cap a possibly Strong realization, resolving STRONG would invent physics",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-D02D03-M1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "MEANINGFUL",
+          "why": "a carrier-bound contrasting colour certifies that the evidence reads against the garment as a legible, intentional gesture; at Localized / Partial extent the canonical coverage definition itself excludes \"dominant character\", so the realization cannot carry the garment; with extent not governed the contrast axis resolves as CEO authority did for its validating cases",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+            "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-D02D03-W1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "Colour V1 color_usage = subtle certifies the secondary colour as minor and low-separation — the frozen WEAK descriptor \"subtle\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour."
+          ]
+        },
+        {
+          "condition_id": "GFR-D02D03-U2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "a subtle (minor, low-separation) composition at DOMINANT extent: the frozen definitions conflict (subtle ⇒ minor vs Dominant ⇒ dominant character) and no CEO authority ranks them for this family",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-D02D03-W2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "no carrier-bound contrasting colour (additional_colors attributed to this evidence = none ⇒ tonal) and a non-dominant extent — the frozen WEAK descriptors \"tonal\" and \"small-scale\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Frozen Decisions P3-D-1: EI consumes its own Colour V1 facts (additional_colors · carrier_kind · carrier_ref · color_usage) as governed P3 realization evidence; a carrier colour bound to a token is that token's realization detail, never a second pathway. Decision-matrix note: additional_colors = [] means tonal."
+          ]
+        },
+        {
+          "condition_id": "GFR-D02D03-U3",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "a tonal applied field at DOMINANT extent: frozen WEAK (\"tonal ⇒ minor\") and canonical Dominant (\"dominant character\") conflict and no CEO decision ranks them for D02/D03",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-D02D03-U4",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "NOT_GOVERNED"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "INPUT_REPRESENTATION_GAP",
+          "gap_id": "GAP-08",
+          "why": "the frozen row states that a realization differing from the CEO-validated contrasting one \"resolves on coverage extent, Colour V1 carrier contrast and the canonical admission gate\" and that when \"the distinguishing evidence is absent, resolution = UNRESOLVED · INPUT_REPRESENTATION_GAP\" — a tonal appliqué with no coverage field is exactly that case",
+          "authority": [
+            "Force Resolution Matrix V1.1 row D02/D03 required_realization_evidence + unresolved_condition"
+          ]
+        }
+      ],
+      "weak_conditions": [
+        "GFR-D02D03-W1",
+        "GFR-D02D03-W2"
+      ],
+      "meaningful_conditions": [
+        "GFR-D02D03-M1"
+      ],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-D02D03-S1",
+        "GFR-D02D03-U2",
+        "GFR-D02D03-U3",
+        "GFR-D02D03-U4"
+      ],
+      "coverage_role": "ONE realization input; REQUIRED to resolve a tonal realization (frozen row).",
+      "colour_context_role": "PRIMARY realization axis — an applied embellishment is what carries a contrasting colour (canonical §4 D02); material_component carriers under accent/multi composition attach here when co-observed.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "D02_D03",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 rows D02 / D03 decorative_detail=Appliqué (FM2)",
+        "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+        "Canonical §4 D02 · D03"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S02",
+      "canonical_evidence_id": "S02",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Exotic-Skin",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (FM2 · contrast axis · extent REQUIRED)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent",
+        "composition",
+        "contrast_family_count"
+      ],
+      "rule_precedence": [
+        "GFR-S02-S1",
+        "GFR-S02-M1",
+        "GFR-S02-W1",
+        "GFR-S02-U2",
+        "GFR-S02-W2",
+        "GFR-S02-U3",
+        "GFR-S02-U4"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S02-S1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-01",
+          "why": "a contrasting realization at DOMINANT extent (dominant character over most/all of the garment, reading against it) reaches beyond every realization CEO authority has fixed at MEANINGFUL; the frozen STRONG condition for this family is not written — resolving MEANINGFUL would silently cap a possibly Strong realization, resolving STRONG would invent physics",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S02-M1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "MEANINGFUL",
+          "why": "a carrier-bound contrasting colour certifies that the evidence reads against the garment as a legible, intentional gesture; at Localized / Partial extent the canonical coverage definition itself excludes \"dominant character\", so the realization cannot carry the garment; with extent not governed the contrast axis resolves as CEO authority did for its validating cases",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+            "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S02-W1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL",
+                "NOT_GOVERNED"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "Colour V1 color_usage = subtle certifies the secondary colour as minor and low-separation — the frozen WEAK descriptor \"subtle\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour."
+          ]
+        },
+        {
+          "condition_id": "GFR-S02-U2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "a subtle (minor, low-separation) composition at DOMINANT extent: the frozen definitions conflict (subtle ⇒ minor vs Dominant ⇒ dominant character) and no CEO authority ranks them for this family",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S02-W2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "in",
+              "value": [
+                "LOCALIZED",
+                "PARTIAL"
+              ]
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "no carrier-bound contrasting colour (additional_colors attributed to this evidence = none ⇒ tonal) and a non-dominant extent — the frozen WEAK descriptors \"tonal\" and \"small-scale\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Frozen Decisions P3-D-1: EI consumes its own Colour V1 facts (additional_colors · carrier_kind · carrier_ref · color_usage) as governed P3 realization evidence; a carrier colour bound to a token is that token's realization detail, never a second pathway. Decision-matrix note: additional_colors = [] means tonal."
+          ]
+        },
+        {
+          "condition_id": "GFR-S02-U3",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "a tonal pronounced exotic-skin surface over the whole garment: frozen WEAK (\"tonal ⇒ minor\") and canonical Dominant (\"dominant character\") conflict and no CEO decision ranks them for S02",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S02-U4",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            },
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "NOT_GOVERNED"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "INPUT_REPRESENTATION_GAP",
+          "gap_id": "GAP-08",
+          "why": "the frozen S02 row: \"If S02 is observed but no realization evidence distinguishes its force, resolution = UNRESOLVED · INPUT_REPRESENTATION_GAP\"; tonal with extent not governed carries no distinguishing realization evidence",
+          "authority": [
+            "Force Resolution Matrix V1.1 row S02 unresolved_condition (CORRECTION D)"
+          ]
+        }
+      ],
+      "weak_conditions": [
+        "GFR-S02-W1",
+        "GFR-S02-W2"
+      ],
+      "meaningful_conditions": [
+        "GFR-S02-M1"
+      ],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S02-S1",
+        "GFR-S02-U2",
+        "GFR-S02-U3",
+        "GFR-S02-U4"
+      ],
+      "coverage_role": "ONE realization input; REQUIRED to resolve a tonal realization (frozen S02 row).",
+      "colour_context_role": "PRIMARY realization axis — a contrasting carrier attributed to the exotic-skin surface certifies a legible gesture.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S02",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row S02 (FM2 · CORRECTION D: \"S02 = ALWAYS UNRESOLVED\" is NOT permanent architecture)",
+        "Force Contract V1.1.1 production_representation_status.S02",
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+        "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\"."
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S03-GLOSSY",
+      "canonical_evidence_id": "S03",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Glossy",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (FM2 · extent axis)",
+      "governed_realization_inputs": [
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S03-GLOSSY-W1",
+        "GFR-S03-GLOSSY-M1",
+        "GFR-S03-GLOSSY-U1",
+        "GFR-S03-GLOSSY-U2"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S03-GLOSSY-W1",
+          "when": [
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "LOCALIZED"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "gloss is a same-family optical realization (Colour V1 suppresses same-family surface differences, so no chromatic contrast axis exists); at Localized extent it is the frozen WEAK descriptor \"small-scale\" — trim-scale sheen",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\".",
+            "Colour V1 SUPPRESS rule: same-family region differing only by surface is not an additional colour"
+          ]
+        },
+        {
+          "condition_id": "GFR-S03-GLOSSY-M1",
+          "when": [
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "DOMINANT"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "MEANINGFUL",
+          "why": "whole-garment sheen is a legible intentional realization that does not by itself carry the garment (CEO authority resolved a whole-garment liquid satin sheen MEANINGFUL, not Strong)",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+            "Force Resolution Matrix V1.1 row S03 surface=Glossy (FM2)"
+          ]
+        },
+        {
+          "condition_id": "GFR-S03-GLOSSY-U1",
+          "when": [
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "PARTIAL"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-03",
+          "why": "a substantial-but-not-dominant sheen sits between the two CEO-fixed realizations (Localized = Weak · Dominant = Meaningful); no authority fixes it",
+          "authority": [
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-S03-GLOSSY-U2",
+          "when": [
+            {
+              "input": "extent",
+              "op": "eq",
+              "value": "NOT_GOVERNED"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "INPUT_REPRESENTATION_GAP",
+          "gap_id": "GAP-04",
+          "why": "extent is the only governed discriminator for gloss; without it Weak and Meaningful cannot be told apart",
+          "authority": [
+            "EI-X-D10: force is never frozen from a token name; where current Vision evidence encodes extent · prominence · magnitude · contrast · coverage it is USED; where it cannot express the distinction → INPUT REPRESENTATION GAP, never a scoring hack.",
+            "Force Resolution Matrix V1.1 row S03 surface=Glossy unresolved_condition",
+            "Frozen Decisions COVERAGE APPLICABILITY: \"coverage 가 missing 인데 force 판단에 realization extent 가 필요하면 … UNRESOLVED / INPUT REPRESENTATION GAP\""
+          ]
+        }
+      ],
+      "weak_conditions": [
+        "GFR-S03-GLOSSY-W1"
+      ],
+      "meaningful_conditions": [
+        "GFR-S03-GLOSSY-M1"
+      ],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S03-GLOSSY-U1",
+        "GFR-S03-GLOSSY-U2"
+      ],
+      "coverage_role": "PRIMARY realization axis (extent) — still never the force alone: the value's own gate (\"meaningful gloss actually visible\") + frozen force definitions supply the semantics.",
+      "colour_context_role": "not a realization axis for gloss (same-family sheen is suppressed by Colour V1); any attributed carrier is recorded in trace only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S03_LOW",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row S03 surface=Glossy (FM2)",
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+        "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+        "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S03-REFLECTIVE",
+      "canonical_evidence_id": "S03",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Reflective",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (FM2 gate evidenced · force tier not fixed)",
+      "governed_realization_inputs": [
+        "class_gate",
+        "extent",
+        "contrast_grade"
+      ],
+      "rule_precedence": [
+        "GFR-S03-REFLECTIVE-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S03-REFLECTIVE-U1",
+          "when": [
+            {
+              "input": "class_gate",
+              "op": "eq",
+              "value": "HARD_OPTICAL"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-05",
+          "why": "the HARD optical gate certifies observation-level pronouncement (\"stronger light-returning / mirror-like\", the tier above Glossy), but score_strength_status is PROPOSED — explicitly never frozen — and no CEO decision fixes whether the realization is Meaningful or Strong",
+          "authority": [
+            "Force Resolution Matrix V1.1 row S03 surface=Reflective (FM2 · TOKEN_CERTIFIES_STRONG · PROPOSED_SCORE_PHYSICS)",
+            "Force Contract V1.1.1 force_modes.FM1.finding (TOKEN_CERTIFIES_STRONG does not freeze a force)"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S03-REFLECTIVE-U1"
+      ],
+      "coverage_role": "recorded; cannot rank the tier without authority.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S03",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row S03 surface=Reflective"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S08-SEMITRANSPARENT",
+      "canonical_evidence_id": "S08",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Semi Transparent",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (FM2 · class gate)",
+      "governed_realization_inputs": [
+        "class_gate",
+        "absorbed",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S08-SEMITRANSPARENT-S1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S08-SEMITRANSPARENT-S1",
+          "when": [
+            {
+              "input": "class_gate",
+              "op": "eq",
+              "value": "HARD_OPTICAL"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "STRONG",
+          "why": "the token is emitted only through the HARD optical gate (\"visibly transmissive / clearly see-through\"), and the frozen row states the class-membership gate itself is the realization evidence; CEO authority resolved a visibly transmissive realization STRONG at Partial extent — Coverage ≠ Force",
+          "authority": [
+            "Force Resolution Matrix V1.1 rows S08 surface=Semi Transparent / Transparent (FM2 · required_realization_evidence = the class-membership gate)",
+            "Force Contract V1.1.1 force_definitions.STRONG (validating-case list) + coverage_relationship (disproof field: see-through at Partial extent = STRONG)",
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\"."
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [
+        "GFR-S08-SEMITRANSPARENT-S1"
+      ],
+      "unresolved_conditions": [],
+      "coverage_role": "recorded; does not reduce the force (Force Contract coverage_relationship).",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S08_SEE_THROUGH",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 rows S08",
+        "Dedup Contract V1 S08_SEE_THROUGH"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S08-TRANSPARENT",
+      "canonical_evidence_id": "S08",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Transparent",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (FM2 · class gate)",
+      "governed_realization_inputs": [
+        "class_gate",
+        "absorbed",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S08-TRANSPARENT-S1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S08-TRANSPARENT-S1",
+          "when": [
+            {
+              "input": "class_gate",
+              "op": "eq",
+              "value": "HARD_OPTICAL"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "STRONG",
+          "why": "the token is emitted only through the HARD optical gate (\"visibly transmissive / clearly see-through\"), and the frozen row states the class-membership gate itself is the realization evidence; CEO authority resolved a visibly transmissive realization STRONG at Partial extent — Coverage ≠ Force",
+          "authority": [
+            "Force Resolution Matrix V1.1 rows S08 surface=Semi Transparent / Transparent (FM2 · required_realization_evidence = the class-membership gate)",
+            "Force Contract V1.1.1 force_definitions.STRONG (validating-case list) + coverage_relationship (disproof field: see-through at Partial extent = STRONG)",
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\"."
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [
+        "GFR-S08-TRANSPARENT-S1"
+      ],
+      "unresolved_conditions": [],
+      "coverage_role": "recorded; does not reduce the force (Force Contract coverage_relationship).",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S08_SEE_THROUGH",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 rows S08",
+        "Dedup Contract V1 S08_SEE_THROUGH"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S08-MESH",
+      "canonical_evidence_id": "S08",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Mesh",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S08-MESH-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S08-MESH-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — Mesh alone carries NO transmission gate (\"Mesh is NOT automatically Transparent\"); PROVISIONAL_DEFAULT_MILD; when a see-through token is co-observed it is ABSORBED by dedup (mesh_rule) — standalone it is FM4. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row surface=Mesh (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S08-MESH-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S08_SEE_THROUGH",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row surface=Mesh"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S03D02-SEQUIN",
+      "canonical_evidence_id": "S03/D02",
+      "canonical_family": "DECORATIVE_EVIDENCE",
+      "source_parameter": "decorative_detail",
+      "source_value": "Sequin-Beading",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S03D02-SEQUIN-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S03D02-SEQUIN-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROPOSED_STRONG_SCORE_CLASS — proposed, never confirmed; ⛔ not promoted to Strong by the contract. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row decorative_detail=Sequin-Beading (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S03D02-SEQUIN-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S03_D02",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row decorative_detail=Sequin-Beading"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S04-FUR",
+      "canonical_evidence_id": "S04",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "material",
+      "source_value": "Fur",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S04-FUR-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S04-FUR-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROPOSED_STRONG_SCORE_CLASS — proposed, never confirmed. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row material=Fur (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S04-FUR-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S04",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row material=Fur"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S04-FURTRIM",
+      "canonical_evidence_id": "S04",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "attachment",
+      "source_value": "Fur Trim",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S04-FURTRIM-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S04-FURTRIM-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROVISIONAL_DEFAULT_MILD; no CEO decision exercises this evidence. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row attachment=Fur Trim (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S04-FURTRIM-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S04_TRIM",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row attachment=Fur Trim"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S06S07-TREATED",
+      "canonical_evidence_id": "S06/S07",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Treated Surface",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S06S07-TREATED-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S06S07-TREATED-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROVISIONAL_DEFAULT_MILD; enum cannot separate pronounced from ordinary wash. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row surface=Treated Surface (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S06S07-TREATED-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S06_S07",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row surface=Treated Surface"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S09-PLEATED",
+      "canonical_evidence_id": "S09",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Pleated",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S09-PLEATED-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S09-PLEATED-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROVISIONAL_DEFAULT_MILD; enum cannot certify dominance; when re-describing a see-through cloth it is ABSORBED by dedup. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row surface=Pleated (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S09-PLEATED-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S09",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row surface=Pleated"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-S10-LACE",
+      "canonical_evidence_id": "S10",
+      "canonical_family": "SURFACE_MATERIAL_EVIDENCE",
+      "source_parameter": "surface",
+      "source_value": "Lace",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-S10-LACE-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-S10-LACE-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROVISIONAL_DEFAULT_MILD; no CEO decision exercises this evidence. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row surface=Lace (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-S10-LACE-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "S10",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row surface=Lace"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-D02-JEWELRY",
+      "canonical_evidence_id": "D02",
+      "canonical_family": "DECORATIVE_EVIDENCE",
+      "source_parameter": "attachment",
+      "source_value": "Jewelry Attachment",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-D02-JEWELRY-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-D02-JEWELRY-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROPOSED_STRONG_SCORE_CLASS — proposed, never confirmed. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row attachment=Jewelry Attachment (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-D02-JEWELRY-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "D02",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row attachment=Jewelry Attachment"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-D03-FEATHER",
+      "canonical_evidence_id": "D03",
+      "canonical_family": "DECORATIVE_EVIDENCE",
+      "source_parameter": "attachment",
+      "source_value": "Feather",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-D03-FEATHER-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-D03-FEATHER-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROPOSED_STRONG_SCORE_CLASS — proposed, never confirmed. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row attachment=Feather (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-D03-FEATHER-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "D03",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row attachment=Feather"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-D03-RIBBON",
+      "canonical_evidence_id": "D03",
+      "canonical_family": "DECORATIVE_EVIDENCE",
+      "source_parameter": "attachment",
+      "source_value": "Ribbon",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-D03-RIBBON-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-D03-RIBBON-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROVISIONAL_DEFAULT_MILD; no CEO decision exercises this evidence. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row attachment=Ribbon (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-D03-RIBBON-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "D03",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row attachment=Ribbon"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-D04-FRINGE",
+      "canonical_evidence_id": "D04",
+      "canonical_family": "DECORATIVE_EVIDENCE",
+      "source_parameter": "attachment",
+      "source_value": "Fringe",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (frozen Force Resolution Matrix row = FM4)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-D04-FRINGE-U1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-D04-FRINGE-U1",
+          "when": [],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-06",
+          "why": "the frozen Force Resolution Matrix marks this row FM4: \"ALWAYS UNRESOLVED under the current authority · root_cause = CEO_AUTHORITY_GAP\" — PROVISIONAL_DEFAULT_MILD; no CEO decision exercises this evidence. This is an authority statement about the evidence class itself — the row is unresolved by declaration, independent of any calibration case.",
+          "authority": [
+            "Force Resolution Matrix V1.1 row attachment=Fringe (FM4)",
+            "Force Contract V1.1.1 force_modes.FM4"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-D04-FRINGE-U1"
+      ],
+      "coverage_role": "recorded; the authority row does not admit a force at any extent.",
+      "colour_context_role": "recorded only.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "D04",
+      "pathway_family": "P3_SURFACE_DECORATIVE",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Force Resolution Matrix V1.1 row attachment=Fringe"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-PAT-REPEAT",
+      "canonical_evidence_id": "P3_PATTERN",
+      "canonical_family": "PATTERN_EVIDENCE (EI evidence outside the S/D matrix — Formal Closure §3)",
+      "source_parameter": "pattern",
+      "source_value": "Repeat",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (contrast × composition; extent = DOMINANT by value gate)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "composition",
+        "contrast_family_count",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-PAT-REPEAT-S1",
+        "GFR-PAT-REPEAT-U1a",
+        "GFR-PAT-REPEAT-U1b",
+        "GFR-PAT-REPEAT-U2"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-PAT-REPEAT-S1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "composition",
+              "op": "eq",
+              "value": "multi"
+            },
+            {
+              "input": "contrast_family_count",
+              "op": "gte",
+              "value": 2
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "STRONG",
+          "why": "the CEO-fixed realization conditions for a STRONG repeat are all present in governed input: all-over realization (structural to the value), color_usage = multi (Colour V1: substantial / all-over multicolour composition — the conspicuous repeated field) and multiple pattern-bound colours (≥ 2 distinct contrasting families carried by the pattern)",
+          "authority": [
+            "Frozen Decisions CORRECTION C — required realization conditions: all-over repeating realization · color_usage = multi with multiple pattern-bound colours · conspicuous repeated motif",
+            "Frozen Decisions P3-D-3: pattern=Repeat is not a universal Weak/Strong token; force is judged from the actual realization + governed evidence.",
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-PAT-REPEAT-U1a",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "composition",
+              "op": "neq",
+              "value": "multi"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-01",
+          "why": "a contrasting all-over repeat whose garment composition is not multi (accent / single): the realization is legible (≥ Meaningful) but all-over by structure, and no authority fixes whether it carries the garment",
+          "authority": [
+            "Frozen Decisions P3-D-3: pattern=Repeat is not a universal Weak/Strong token; force is judged from the actual realization + governed evidence.",
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\".",
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-PAT-REPEAT-U1b",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            },
+            {
+              "input": "composition",
+              "op": "eq",
+              "value": "multi"
+            },
+            {
+              "input": "contrast_family_count",
+              "op": "lte",
+              "value": 1
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-01",
+          "why": "a contrasting all-over repeat under multi composition but with a single pattern-bound colour: the CEO-fixed STRONG realization requires multiple pattern-bound colours; no authority fixes this two-tone realization",
+          "authority": [
+            "Frozen Decisions P3-D-3: pattern=Repeat is not a universal Weak/Strong token; force is judged from the actual realization + governed evidence.",
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\".",
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-PAT-REPEAT-U2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "in",
+              "value": [
+                "TONAL",
+                "SUBTLE"
+              ]
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "a tonal / subtle all-over repeat: frozen WEAK (\"tonal / subtle ⇒ minor\") conflicts with the value's structural all-over extent; P3-D-3 forbids a universal Weak reading as much as a universal Strong one",
+          "authority": [
+            "Frozen Decisions P3-D-3: pattern=Repeat is not a universal Weak/Strong token; force is judged from the actual realization + governed evidence.",
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\"."
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [
+        "GFR-PAT-REPEAT-S1"
+      ],
+      "unresolved_conditions": [
+        "GFR-PAT-REPEAT-U1a",
+        "GFR-PAT-REPEAT-U1b",
+        "GFR-PAT-REPEAT-U2"
+      ],
+      "coverage_role": "extent = DOMINANT by the value's admission gate (Semantic Status: all-over coverage is structural to the value); the producer emits no coverage field on pattern.",
+      "colour_context_role": "PRIMARY realization axis — pattern-bound carriers (carrier_kind = pattern) and color_usage certify the chromatic composition of the repeated field.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "P3_PATTERN",
+      "pathway_family": "P3_PATTERN",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Frozen Decisions P3-D-3",
+        "Frozen Decisions / Force Contract V1.1.1 CORRECTION C",
+        "Semantic Status V1.2.1 values[pattern=Repeat]",
+        "Formal Closure §3 (pattern is EI evidence; S/D force-mode taxonomy NOT_APPLICABLE)"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-PAT-LINEAR",
+      "canonical_evidence_id": "P3_PATTERN",
+      "canonical_family": "PATTERN_EVIDENCE (EI evidence outside the S/D matrix — Formal Closure §3)",
+      "source_parameter": "pattern",
+      "source_value": "Linear",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (contrast axis; extent not governed)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "composition",
+        "contrast_family_count",
+        "absorbed"
+      ],
+      "rule_precedence": [
+        "GFR-PAT-LINEAR-M1",
+        "GFR-PAT-LINEAR-W1",
+        "GFR-PAT-LINEAR-W2"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-PAT-LINEAR-M1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "MEANINGFUL",
+          "why": "a printed / woven stripe carrying a contrasting pattern-bound colour is a legible intentional gesture that is its own phenomenon (not absorbed by a structural pleat/sheer reading); no authority fixes a STRONG condition for it",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+            "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+            "Dedup Contract V1: Linear independent when it is a printed/woven stripe distinct from the pleat structure"
+          ]
+        },
+        {
+          "condition_id": "GFR-PAT-LINEAR-W1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "Colour V1 subtle composition = minor, low-separation — the frozen WEAK descriptor \"subtle\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour."
+          ]
+        },
+        {
+          "condition_id": "GFR-PAT-LINEAR-W2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "a same-family (self-) stripe — the frozen WEAK descriptor \"tonal\"; the value carries no extent field, so no Dominant-extent conflict can be raised by governed input",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Frozen Decisions P3-D-1: EI consumes its own Colour V1 facts (additional_colors · carrier_kind · carrier_ref · color_usage) as governed P3 realization evidence; a carrier colour bound to a token is that token's realization detail, never a second pathway. Decision-matrix note: additional_colors = [] means tonal.",
+            "Semantic Status V1.2.1 values[pattern=Linear] (\"no extent field\")"
+          ]
+        }
+      ],
+      "weak_conditions": [
+        "GFR-PAT-LINEAR-W1",
+        "GFR-PAT-LINEAR-W2"
+      ],
+      "meaningful_conditions": [
+        "GFR-PAT-LINEAR-M1"
+      ],
+      "strong_conditions": [],
+      "unresolved_conditions": [],
+      "coverage_role": "not governed for pattern=Linear (no extent field); recorded as NOT_GOVERNED.",
+      "colour_context_role": "PRIMARY realization axis — pattern-bound carriers certify contrast vs tonal.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "P3_PATTERN",
+      "pathway_family": "P3_PATTERN",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Semantic Status V1.2.1 values[pattern=Linear]",
+        "Dedup Contract V1 pairs (Semi Transparent × Linear)",
+        "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\"."
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-PAT-GRID",
+      "canonical_evidence_id": "P3_PATTERN",
+      "canonical_family": "PATTERN_EVIDENCE (EI evidence outside the S/D matrix — Formal Closure §3)",
+      "source_parameter": "pattern",
+      "source_value": "Grid",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (contrast axis; extent and location not governed — a contrasting Grid is an explicit INPUT_REPRESENTATION_GAP)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "composition",
+        "contrast_family_count",
+        "absorbed"
+      ],
+      "rule_precedence": [
+        "GFR-PAT-GRID-U1",
+        "GFR-PAT-GRID-W1",
+        "GFR-PAT-GRID-W2"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-PAT-GRID-U1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "INPUT_REPRESENTATION_GAP",
+          "gap_id": "GAP-12",
+          "why": "a contrasting check/windowpane is a legible chromatic realization, but the governed pattern observation carries neither extent nor location: an exterior dominant check field, a partial check and a check confined to a lining / inner collar / secondary component are emitted identically (pattern=Grid + a pattern-bound carrier). No current authority fixes a force for contrasting Grid (Semantic Status: PROVISIONAL_DEFAULT_NONE) and the realization distinction that would decide expressive impact is not representable — so the force is UNRESOLVED with an input-side root cause, never defaulted to MEANINGFUL or WEAK",
+          "authority": [
+            "Semantic Status V1.2.1 values[pattern=Grid]: PROVISIONAL_DEFAULT_NONE (D) — \"check/windowpane ground; one CEO-calibrated corpus case (trench, lining check) at GT EI4\"; force_eligible false; corpus_n 2",
+            "Producer-37 contract (producer_rules_v1.js / STMX_VISION_EXTRACTION_SCHEMA_FROZEN_V1): pattern is a SCALAR observation carrying region ∈ {whole_garment, upper, lower} only — no component/location field and no coverage field; closure_type is emitted on Jacket/Coat (Mandatory) and on TOP/Dress/Jumpsuit only when front_opening_extent ≠ None; ⛔ never on Trouser/Skirt (producer_prompt_v1.js L231)",
+            "Frozen Decisions EI-X-D2: UNKNOWN ≠ absence — an undecidable admission is reported as a representation gap, never defaulted",
+            "Force Contract V1.1.1 force_states.prohibition: ⛔ a consumer may NOT substitute a default force for UNRESOLVED",
+            "Frozen Decisions: no universal token rule may be created from a provisional semantic status (provisional status ≠ frozen force authority — DR-8)"
+          ]
+        },
+        {
+          "condition_id": "GFR-PAT-GRID-W1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "Colour V1 subtle composition = minor, low-separation — the frozen WEAK descriptor \"subtle\"",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour."
+          ]
+        },
+        {
+          "condition_id": "GFR-PAT-GRID-W2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "a same-family (self-) check — the frozen WEAK descriptor \"tonal\"; the value carries no extent field, so no Dominant-extent conflict can be raised by governed input",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Frozen Decisions P3-D-1: EI consumes its own Colour V1 facts (additional_colors · carrier_kind · carrier_ref · color_usage) as governed P3 realization evidence; a carrier colour bound to a token is that token's realization detail, never a second pathway. Decision-matrix note: additional_colors = [] means tonal.",
+            "Semantic Status V1.2.1 values[pattern=Grid] (\"no extent field\")"
+          ]
+        }
+      ],
+      "weak_conditions": [
+        "GFR-PAT-GRID-W1",
+        "GFR-PAT-GRID-W2"
+      ],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-PAT-GRID-U1"
+      ],
+      "coverage_role": "not governed for pattern=Grid (no extent field) and no location field: recorded as NOT_GOVERNED; the absence is the discriminator that GAP-12 names",
+      "colour_context_role": "PRIMARY realization axis — pattern-bound carriers certify contrast vs tonal.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "P3_PATTERN",
+      "pathway_family": "P3_PATTERN",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Semantic Status V1.2.1 values[pattern=Grid]: PROVISIONAL_DEFAULT_NONE (D) — \"check/windowpane ground; one CEO-calibrated corpus case (trench, lining check) at GT EI4\"; force_eligible false; corpus_n 2",
+        "Producer-37 contract (producer_rules_v1.js / STMX_VISION_EXTRACTION_SCHEMA_FROZEN_V1): pattern is a SCALAR observation carrying region ∈ {whole_garment, upper, lower} only — no component/location field and no coverage field; closure_type is emitted on Jacket/Coat (Mandatory) and on TOP/Dress/Jumpsuit only when front_opening_extent ≠ None; ⛔ never on Trouser/Skirt (producer_prompt_v1.js L231)",
+        "Semantic Status V1.2.1 values[pattern=Grid]",
+        "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\"."
+      ],
+      "correction_v1_1": {
+        "removed_condition": {
+          "condition_id": "GFR-PAT-GRID-M1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "MEANINGFUL",
+          "why": "a printed / woven check carrying a contrasting pattern-bound colour is a legible intentional gesture that is its own phenomenon (not absorbed by a structural pleat/sheer reading); no authority fixes a STRONG condition for it",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.MEANINGFUL: \"a deliberate, visually legible design gesture that a viewer reads as intentional expression, yet does not on its own carry the garment\".",
+            "Force Contract V1.1.1 colour_v1_relationship.role: \"Colour V1 supplies contrast / chromatic-composition context for a carrier-bound evidence — e.g. silver@attachment:Belt certifies that the hardware reads against the garment rather than tonally with it. It informs an FM2 resolution; it never is the force.\"",
+            "Dedup Contract V1: Linear independent when it is a printed/woven stripe distinct from the pleat structure"
+          ]
+        },
+        "reason": "universal \"Grid + contrast → MEANINGFUL\" had no Grid-specific authority (its citations were the generic force definitions and the Linear dedup note); Independent Review finding A",
+        "replaced_by": "GFR-PAT-GRID-U1 (UNRESOLVED · INPUT_REPRESENTATION_GAP · GAP-12)",
+        "not_created": "no universal \"Grid = Weak\" token rule; no case exception",
+        "tonal_subtle_unchanged": "GFR-PAT-GRID-W1 / W2 — frozen WEAK descriptors \"subtle\" / \"tonal\" (direction-invariant)"
+      }
+    },
+    {
+      "evidence_rule_id": "GFR-GR-LOCALIZED",
+      "canonical_evidence_id": "P3_GRAPHIC",
+      "canonical_family": "GRAPHIC_EVIDENCE (EI evidence outside the S/D matrix — Formal Closure §3)",
+      "source_parameter": "graphic",
+      "source_value": "Localized",
+      "resolution_mode": "GENERAL_REALIZATION_RULE (contrast × extent; extent = LOCALIZED by value gate)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "composition",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-GR-LOCALIZED-W1",
+        "GFR-GR-LOCALIZED-W2",
+        "GFR-GR-LOCALIZED-W3"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-GR-LOCALIZED-W1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "TONAL"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "a same-family placed graphic (e.g. tone-on-tone logo) — the frozen WEAK descriptors \"tonal\" and \"small-scale\" (the value gate = chest-sized placement)",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Colour V1 carrier_ref rule: chest-sized logo = Localized"
+          ]
+        },
+        {
+          "condition_id": "GFR-GR-LOCALIZED-W2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "SUBTLE"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "subtle composition + small-scale placement",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Colour V1 color_usage: single = one garment colour · subtle = a secondary colour exists but is MINOR and LOW-SEPARATION · accent = limited in extent but visually DISTINCT · multi = substantial multicolour composition / all-over multicolour."
+          ]
+        },
+        {
+          "condition_id": "GFR-GR-LOCALIZED-W3",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            }
+          ],
+          "outcome": "RESOLVED",
+          "force": "WEAK",
+          "why": "a contrasting placed graphic at Localized (chest-sized) extent remains a small-scale realization that does not redirect the garment reading — CEO authority resolved contrasting localized logos WEAK under both accent and multi composition; ⛔ this is a realization rule over (contrast × extent), not a token assertion: a placed graphic large enough to form a legible gesture is emitted as graphic=Dominant by the producer",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Semantic Status V1.2.1 values[graphic=Localized] authority (\"CEO rationale … keeps a white localized logo at EI5\")",
+            "Colour V1 carrier_ref rule: an all-over/large front print = Dominant"
+          ]
+        }
+      ],
+      "weak_conditions": [
+        "GFR-GR-LOCALIZED-W1",
+        "GFR-GR-LOCALIZED-W2",
+        "GFR-GR-LOCALIZED-W3"
+      ],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [],
+      "coverage_role": "extent = LOCALIZED by the value gate (the graphic value set is itself the extent split).",
+      "colour_context_role": "graphic-bound carriers certify contrast vs tonal; at Localized extent contrast does not elevate (CEO-validated).",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "P3_GRAPHIC",
+      "pathway_family": "P3_GRAPHIC",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Semantic Status V1.2.1 values[graphic=Localized]",
+        "Formal Closure §3",
+        "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\"."
+      ],
+      "representation_note": "every realization the current governed input can express for graphic=Localized resolves WEAK; a Localized graphic that a viewer would read as Meaningful is not expressible (no boldness/size field beyond the Localized|Dominant split) — see GAP-07."
+    },
+    {
+      "evidence_rule_id": "GFR-GR-DOMINANT",
+      "canonical_evidence_id": "P3_GRAPHIC",
+      "canonical_family": "GRAPHIC_EVIDENCE (EI evidence outside the S/D matrix — Formal Closure §3)",
+      "source_parameter": "graphic",
+      "source_value": "Dominant",
+      "resolution_mode": "AUTHORITY_UNRESOLVED (observation-level pronouncement certified · force tier not fixed)",
+      "governed_realization_inputs": [
+        "contrast_grade",
+        "composition",
+        "extent"
+      ],
+      "rule_precedence": [
+        "GFR-GR-DOMINANT-U1",
+        "GFR-GR-DOMINANT-U2"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-GR-DOMINANT-U1",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "eq",
+              "value": "DISTINCT"
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-01",
+          "why": "a contrasting all-over / large front graphic: TOKEN_CERTIFIES_STRONG at observation level, but score_strength_status is PROPOSED (never frozen) and no CEO decision fixes Meaningful vs Strong",
+          "authority": [
+            "Semantic Status V1.2.1 values[graphic=Dominant]",
+            "Force Contract V1.1.1 force_modes.FM1.finding",
+            "Force Contract V1.1.1 force_definitions.STRONG: \"the realization dominates the garment's read — a single such evidence is sufficient to carry expressive direction on its own\". never: \"Strong is never assigned from a token name alone (EI-X-D10)\"."
+          ]
+        },
+        {
+          "condition_id": "GFR-GR-DOMINANT-U2",
+          "when": [
+            {
+              "input": "contrast_grade",
+              "op": "in",
+              "value": [
+                "TONAL",
+                "SUBTLE"
+              ]
+            }
+          ],
+          "outcome": "UNRESOLVED",
+          "force": null,
+          "root_cause": "CEO_AUTHORITY_GAP",
+          "gap_id": "GAP-02",
+          "why": "a tonal / subtle large graphic: frozen WEAK (\"tonal ⇒ minor\") conflicts with the value's Dominant extent; no authority ranks them",
+          "authority": [
+            "Force Contract V1.1.1 force_definitions.WEAK: \"genuinely observed, but its realization on this garment is minor — subtle, tonal, small-scale, or functionally motivated\". never: \"Weak is not small coverage\".",
+            "Canonical §6 (D6): Localized = limited part · Partial = substantial part but NOT the garment's dominant character · Dominant = dominant surface/decorative character over most/all of the garment. Force Contract coverage_relationship: coverage_is_not_force · coverage_is_not_prominence · \"may be ONE governed input to an FM2 realization rule … never the sole determinant\"."
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [],
+      "unresolved_conditions": [
+        "GFR-GR-DOMINANT-U1",
+        "GFR-GR-DOMINANT-U2"
+      ],
+      "coverage_role": "extent = DOMINANT by the value gate.",
+      "colour_context_role": "recorded; cannot fix the tier without authority.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "P3_GRAPHIC",
+      "pathway_family": "P3_GRAPHIC",
+      "token_name_alone_sufficient": false,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "Semantic Status V1.2.1 values[graphic=Dominant]",
+        "Formal Closure §3"
+      ]
+    },
+    {
+      "evidence_rule_id": "GFR-P2-EXPOSURE",
+      "canonical_evidence_id": "E01–E05",
+      "canonical_family": "P2_EXPOSURE",
+      "source_parameter": "exposure_opening",
+      "source_value": "(Class A region: Shoulder · Chest / Décolletage · Midriff / Waist · Back · Upper Thigh)",
+      "resolution_mode": "FIXED_BY_AUTHORITY (EI-X-D4 — P2, not P3)",
+      "governed_realization_inputs": [],
+      "rule_precedence": [
+        "GFR-P2-EXPOSURE-S1"
+      ],
+      "conditions": [
+        {
+          "condition_id": "GFR-P2-EXPOSURE-S1",
+          "when": [],
+          "outcome": "RESOLVED",
+          "force": "STRONG",
+          "why": "Valid Canonical Exposure = Strong E-force (EI-X-D4); Exposure architecture is CLOSED / LIVE-PROVEN",
+          "authority": [
+            "EI-X-D4",
+            "Force Contract V1.1.1 force_modes.FM1.only_ei_example_outside_p3"
+          ]
+        }
+      ],
+      "weak_conditions": [],
+      "meaningful_conditions": [],
+      "strong_conditions": [
+        "GFR-P2-EXPOSURE-S1"
+      ],
+      "unresolved_conditions": [],
+      "coverage_role": "not applicable (Exposure Canonical §9 excludes coverage).",
+      "colour_context_role": "not applicable.",
+      "locations_role": "realization identity and physical-pathway deduplication only; never a force source by name (Force Contract locations_relationship)",
+      "dedup_key": "P2_<E-id>",
+      "pathway_family": "P2_EXPOSURE",
+      "token_name_alone_sufficient": true,
+      "anchor_dependency": "NONE",
+      "authority_refs": [
+        "EI-X-D4",
+        "Exposure Canonical (Class A region = Valid Canonical Exposure)"
+      ]
+    }
+  ],
+  "gap_register_reference": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_GAP_REGISTER_V1_1.json",
+  "supersedes_v1": {
+    "file": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1.json",
+    "sha256": "ed0b02a8614a5b6fd886f86755be69dccb2b28c2b258dd28c32fcaa11d796d83",
+    "reason": "CLAUDE CODE TARGETED BLOCKER-RESOLUTION ORDER — EI 114 DIRECTION REGRESSION BLOCKER CORRECTION V1.1: (A) GFR-PAT-GRID-M1 \"contrasting Grid → MEANINGFUL\" removed — no current authority supports the universal generalization (Semantic Status: Grid = PROVISIONAL_DEFAULT_NONE); contrasting Grid is an explicit INPUT_REPRESENTATION_GAP (GAP-12). (B) GFR-D01 gains the closure_accounting realization input implementing the canonical D01 exclusion clause: a contrasting realization certified only by a carrier bound to the hardware itself on a garment whose functional closure is present or not governed is UNRESOLVED (GAP-13), never MEANINGFUL. Every other rule, input and policy is byte-identical to V1.",
+    "changed_rules": [
+      "GFR-PAT-GRID",
+      "GFR-D01"
+    ],
+    "unchanged_rules": [
+      "GFR-S01",
+      "GFR-S05",
+      "GFR-D02D03",
+      "GFR-S02",
+      "GFR-S03-GLOSSY",
+      "GFR-S03-REFLECTIVE",
+      "GFR-S08-SEMITRANSPARENT",
+      "GFR-S08-TRANSPARENT",
+      "GFR-S08-MESH",
+      "GFR-S03D02-SEQUIN",
+      "GFR-S04-FUR",
+      "GFR-S04-FURTRIM",
+      "GFR-S06S07-TREATED",
+      "GFR-S09-PLEATED",
+      "GFR-S10-LACE",
+      "GFR-D02-JEWELRY",
+      "GFR-D03-FEATHER",
+      "GFR-D03-RIBBON",
+      "GFR-D04-FRINGE",
+      "GFR-PAT-REPEAT",
+      "GFR-PAT-LINEAR",
+      "GFR-GR-LOCALIZED",
+      "GFR-GR-DOMINANT",
+      "GFR-P2-EXPOSURE"
+    ]
+  },
+  "admission_policy": {
+    "D01_metal_hardware": {
+      "principle": "A Colour V1 carrier describes the colour of something already observed; it never creates a P3 observation. carrier_kind = closure / pocket / generic_descriptor carriers are unattributed (colour_context_policy). A Vision-emitted attachment=Metal Hardware observation is structurally admitted, but the canonical D01 exclusion clause is enforced through closure_accounting: when the current governed input cannot tell a functional closure from pronounced hardware, the contrasting realization is UNRESOLVED (INPUT_REPRESENTATION_GAP · GAP-13) — not Meaningful, not silently dropped.",
+      "never": [
+        "closure carrier alone → D01 evidence",
+        "ordinary Zipper/Button presence alone → D01 evidence",
+        "Metal Hardware disabled globally",
+        "case / reference identity"
+      ],
+      "preserved": [
+        "tonal admitted hardware → WEAK (validated realization: minor, tonal)",
+        "Belt-bound contrasting hardware → MEANINGFUL (validated realization: buckle plate reading against the garment)",
+        "Partial / Dominant contrasting hardware → MEANINGFUL / GAP-01 (unchanged)"
+      ]
+    }
+  },
+  "is_current": false,
+  "superseded_by": {
+    "file": "STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_2.json",
+    "date": "2026-09-06",
+    "authority": "CEO 2026-09-06 §10 · §11"
+  },
+  "supersession_note": "This file is UNCHANGED in substance and is kept as historical provenance. Clauses in it that later CEO decisions superseded — Treated Surface / Pleated → GAP-06, the Pattern GAP-12 logic, the coverage-based Glossy rules — are NOT current. See STMX_EI_P3_CONTRACT_SUPERSESSION_MAP_V1.json for the clause-by-clause map. ⛔ Nothing was erased."
+}

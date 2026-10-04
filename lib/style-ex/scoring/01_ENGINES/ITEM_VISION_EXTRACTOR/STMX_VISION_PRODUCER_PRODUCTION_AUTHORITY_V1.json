@@ -1,0 +1,239 @@
+{
+  "document": "STMX_VISION_PRODUCER_PRODUCTION_AUTHORITY_V1",
+  "date": "2026-09-13",
+  "status": "CURRENT PRODUCTION AUTHORITY POINTER — CEO APPROVED",
+  "approval_anchor": {
+    "CEO Decision": "2026-09-13",
+    "Order": "STMX DM DIRECTION-BSC-1 OBSERVATION CONTRACT COVERAGE CORRECTION + FULL ENGINE FINAL FREEZE V1 §16 / §17 / §18 / §45 / §46",
+    "Reason": "DIRECTION-BSC-1: the V1_2 contract could not carry the bounded-support observation on three valid families. V1_3 lifts that container gate (Option A) with no new field, value, family, Primitive or parameter; validator and prompt updated consistently; every gate passed. V1_3 is promoted as the current production Vision Producer for the DM line.",
+    "Affected Scope": "this pointer (V1_2 promotion block preserved below) · STMX_VISION_PRODUCER_V1_3/ (new) · STMX_VISION_PRODUCER_V1_2/STMX_VISION_PRODUCER_CONTRACT_V1_2.json (supersession note only)"
+  },
+  "★_current_production_vision_producer": {
+    "id": "STMX_VISION_PRODUCER_V1_3",
+    "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3",
+    "promoted": "2026-09-13",
+    "carries": "the 37-parameter Producer closure of V1_1 UNCHANGED, plus the DM designed-detail observation layer of V1_2 with the realization container allowed on every controlled family (DIRECTION-BSC-1 coverage correction)",
+    "applies_to": "NEW forward Vision extraction on the DM line"
+  },
+  "★_resolution_rule": "⛔ BY NAME, through an explicit binding module, exactly as STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/producer_contract_binding_v1.js does. ⛔ NO directory scan, NO glob, NO mtime comparison, NO \"latest\" alias, NO environment-dependent routing, NO implicit fallback. A missing contract directory MUST throw PRODUCER_CONTRACT_UNRESOLVED and FAIL CLOSED — it must never silently resolve to another Producer.",
+  "★_this_pointer_does_not_rebind_any_existing_consumer": {
+    "why": "Every consumer in this repository names its own Producer explicitly. Promotion publishes which contract is CURRENT for forward work; it does NOT reach into a consumer and change what that consumer binds. Rebinding a frozen consumer would be an unapproved change to a frozen baseline.",
+    "consumers_verified": [
+      {
+        "consumer": "STMX_EI_DIRECTION_RUNTIME_V1_2_7",
+        "binds": "STMX_VISION_PRODUCER_V1_1",
+        "status": "⛔ UNCHANGED (frozen EI baseline)"
+      },
+      {
+        "consumer": "STMX_EI_DIRECTION_RUNTIME_V1_2_6",
+        "binds": "sealed Producer V1",
+        "status": "⛔ UNCHANGED (guard G52)"
+      },
+      {
+        "consumer": "STMX_DM_ENGINE_V1_PRODUCTION_CLOSURE (HOLD build)",
+        "binds": "STMX_VISION_PRODUCER_V1_2",
+        "status": "⛔ UNCHANGED — historical evidence / rollback entry point"
+      },
+      {
+        "consumer": "STMX_DM_ENGINE_V1_FINAL_FREEZE (current)",
+        "binds": "STMX_VISION_PRODUCER_V1_3",
+        "status": "★ the one consumer created for the successor"
+      },
+      {
+        "consumer": "01_ENGINES/ITEM_VISION_EXTRACTOR/index.js",
+        "binds": "sealed root Producer V1",
+        "status": "⛔ UNCHANGED"
+      }
+    ]
+  },
+  "★_rollback_pointer": {
+    "rollback_to": "STMX_VISION_PRODUCER_V1_2",
+    "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_2",
+    "how": "Set ★_current_production_vision_producer.id back to STMX_VISION_PRODUCER_V1_2 and point the DM engine at the HOLD-build binding. V1_2 is present, unmodified and byte-verified below.",
+    "why_this_is_a_clean_rollback": "V1_3 was branched from V1_2 non-destructively and changes only the realization coverage gate, one leak-rejection list and the DM prompt guide. Nothing in V1_2 or V1_1 was edited.",
+    "what_rollback_restores": "DIRECTION-BSC-1 open (the coverage hole). It does not touch the EI frozen baseline.",
+    "deeper_rollback": {
+      "rollback_to": "STMX_VISION_PRODUCER_V1_1",
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1",
+      "how": "Set this document's ★_current_production_vision_producer.id back to STMX_VISION_PRODUCER_V1_1 and re-point any binding module that names V1_2. V1_1 is present, unmodified and byte-verified in the hash manifest below.",
+      "why_this_is_a_clean_rollback": "V1_2 was branched from V1_1 non-destructively and adds only the DM layer. Rolling back removes the DM observation layer and restores the exact 37-parameter closure of the frozen EI baseline. ⛔ Nothing in V1_1 was edited by this order or by the three orders preceding it.",
+      "what_rollback_does_NOT_restore": "Rollback does not undo anything in the EI frozen baseline, because promotion never touched it."
+    }
+  },
+  "★_version_manifest": {
+    "line": [
+      {
+        "id": "Producer V1 (sealed)",
+        "status": "SEALED — guard G52 · immutable"
+      },
+      {
+        "id": "STMX_VISION_PRODUCER_V1_1",
+        "status": "FROZEN INPUT AUTHORITY of the EI Direction Baseline V1 · retained"
+      },
+      {
+        "id": "STMX_VISION_PRODUCER_V1_2",
+        "status": "HISTORICAL production baseline (2026-09-10 → 2026-09-13) · Producer of the frozen DM Direction baseline · rollback target"
+      },
+      {
+        "id": "STMX_VISION_PRODUCER_V1_3",
+        "status": "★ CURRENT PRODUCTION (promoted 2026-09-13) — DIRECTION-BSC-1 coverage correction"
+      }
+    ],
+    "⛔_supersession_is_narrow": "V1_3 becomes the CURRENT contract for forward DM work. It does NOT delete, rewrite or invalidate V1, V1_1 or V1_2."
+  },
+  "★_hash_manifest_at_promotion": {
+    "STMX_VISION_PRODUCER_V1_3": [
+      {
+        "file": "producer_rules_v1.js",
+        "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+        "bytes": 74550
+      },
+      {
+        "file": "producer_prompt_v1.js",
+        "sha256": "9779cc44716a241d23127bedf8ab9fb79ff7a3e73f2e2e642b6083779996f23f",
+        "bytes": 161641
+      },
+      {
+        "file": "producer_validator_v1.js",
+        "sha256": "26ad25a8a2b3477e83f4858ec5fe6450040025a26a2efab9bb4599d8416e2d81",
+        "bytes": 69678
+      },
+      {
+        "file": "producer_controller_v1.js",
+        "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b",
+        "bytes": 45575
+      },
+      {
+        "file": "producer_model_adapter_v1.js",
+        "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+        "bytes": 3881
+      }
+    ],
+    "STMX_VISION_PRODUCER_V1_2_rollback_target": [
+      {
+        "file": "producer_rules_v1.js",
+        "sha256": "3f6c5540b47eda6a282f582905bd0c562fba61c732f597d6b144b660f783af13",
+        "bytes": 71902
+      },
+      {
+        "file": "producer_prompt_v1.js",
+        "sha256": "230c6c57eb3d430b0cedd44012fb8c692b53a652f16ad067e2bb77d246968a9d",
+        "bytes": 160615
+      },
+      {
+        "file": "producer_validator_v1.js",
+        "sha256": "0d773394c1cbb06af9ebc63d3f15c71346c867e9bc77737e3026c50f86d34fbb",
+        "bytes": 68478
+      },
+      {
+        "file": "producer_controller_v1.js",
+        "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b",
+        "bytes": 45575
+      },
+      {
+        "file": "producer_model_adapter_v1.js",
+        "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+        "bytes": 3881
+      }
+    ],
+    "STMX_VISION_PRODUCER_V1_1_retained": [
+      {
+        "file": "producer_rules_v1.js",
+        "sha256": "c4190ece1408854d039eda4d9a1c3f4de2c5209ae1eefb7f8a461ba5825bf98f",
+        "bytes": 66546
+      },
+      {
+        "file": "producer_prompt_v1.js",
+        "sha256": "0d3016e084d5f6f0749bb1a87dda8eef2b9cf65579ceba06e1646ec46f996d84",
+        "bytes": 154376
+      },
+      {
+        "file": "producer_validator_v1.js",
+        "sha256": "c261d36b4905928efe7cda14c76194d13f0ac4cd357919f0e18faf27d01e2462",
+        "bytes": 56972
+      },
+      {
+        "file": "producer_controller_v1.js",
+        "sha256": "7a2aa66e2f278e22857b8de51bab467f2a221883734bf50d96dbd0308ab71944",
+        "bytes": 42326
+      },
+      {
+        "file": "producer_model_adapter_v1.js",
+        "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+        "bytes": 3881
+      }
+    ],
+    "note": "producer_controller_v1.js and producer_model_adapter_v1.js are byte-identical across V1_2 and V1_3; the adapter is byte-identical since V1_1."
+  },
+  "★_governed_residue_carried_into_production": [
+    {
+      "id": "R-1",
+      "what": "internal_fill_realization does not separate \"dense and uniform\" from \"dense and varied\". Live, both mtdr1 (CEO GT DM7) and mtdr3 (frozen DM8) returned dense_varied.",
+      "classification": "WITHIN_D_SIDE_EXACT_TIER_RESIDUE (order §14 / §15)",
+      "why_not_a_blocker": "Both garments are on the D side and both are STRONG — the CEO confirmed this from the images directly. The disagreement is confined to DM7 ↔ DM8, which order §10 rules a secondary representation.",
+      "⛔": "⛔ NOT patched. Changing what dense_varied means is an M1 semantic change and belongs to the CEO."
+    },
+    {
+      "id": "R-2",
+      "what": "A medium-size, high-contrast, distributed system is read as commanding the field. Live techybrid4 reported its contrasting trim as medium where the frozen record says small, which crosses the centre under the Direction rules.",
+      "classification": "UPSTREAM_OBSERVATION_BOUNDARY_RESIDUE · CEO decision ALREADY RESOLVED",
+      "why_not_a_blocker": "The same recorded tuple (medium/high/distributed) belongs to dmdbuk1 on the D side at DM7. The three frozen primitives cannot separate the two, so this is a limit of the frozen observation vocabulary rather than a defect introduced by the promoted layer.",
+      "★_RESOLVED": "★ RESOLVED — ⛔ NOT a pending CEO question. The canonical / frozen observation records the trim as SMALL, and that is the settled authority. The live V1_2 observation read it as MEDIUM; that difference is classified UPSTREAM_OBSERVATION_BOUNDARY_RESIDUE. ⛔ The Direction Engine must NOT be retuned to fit the live misread, and the canonical and live readings are reported separately.",
+      "★_superseded_hook_text": "★ HISTORICAL, retained so the record is not rewritten: this entry previously read — \"★ If the CEO judges that trim to be small — as the frozen record records it — then the live layer misread it, and that WOULD be a promotion-relevant observation defect. This is stated so the CEO can overturn the promotion on that single question.\" That framing is superseded; the question is closed."
+    }
+  ],
+  "★_history_2026-09-10_V1_2_promotion": {
+    "approval_anchor": {
+      "CEO Decision": "2026-09-10",
+      "Order": "STMX DM DIRECTION-FIRST CLOSURE + ENGINE IMPLEMENTATION V1 §16 / §17 / §18",
+      "Reason": "Phase A re-adjudicated the preceding live validation under the CEO Direction-First authority. All §16 hard blockers are clear: zero systematic DM block failure, zero schema/controller/validator integration defect, zero cross-side observation failure, zero individuation defect, zero score leakage, zero cross-axis leakage. The one open item (LF-4 / DM7 ↔ DM8) is ruled WITHIN_D_SIDE_EXACT_TIER_RESIDUE by order §14/§15 and is explicitly NOT a promotion blocker. The DM Observation Layer V1_2 is therefore promoted to the current production Vision Producer contract.",
+      "Affected Scope": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_PRODUCTION_AUTHORITY_V1.json (new) · STMX_VISION_PRODUCER_V1_2/STMX_VISION_PRODUCER_CONTRACT_V1_2.json (status + hashes) · Project Context sync"
+    },
+    "★_current_production_vision_producer": {
+      "id": "STMX_VISION_PRODUCER_V1_2",
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_2",
+      "promoted": "2026-09-10",
+      "carries": "the 37-parameter Producer closure of V1_1 UNCHANGED, plus the DM designed-detail observation layer (7 broad-controlled descriptors · 3 frozen primitives · M1-supporting realization · requiredness gate)",
+      "applies_to": "NEW forward Vision extraction on the DM line"
+    },
+    "★_rollback_pointer": {
+      "rollback_to": "STMX_VISION_PRODUCER_V1_1",
+      "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1",
+      "how": "Set this document's ★_current_production_vision_producer.id back to STMX_VISION_PRODUCER_V1_1 and re-point any binding module that names V1_2. V1_1 is present, unmodified and byte-verified in the hash manifest below.",
+      "why_this_is_a_clean_rollback": "V1_2 was branched from V1_1 non-destructively and adds only the DM layer. Rolling back removes the DM observation layer and restores the exact 37-parameter closure of the frozen EI baseline. ⛔ Nothing in V1_1 was edited by this order or by the three orders preceding it.",
+      "what_rollback_does_NOT_restore": "Rollback does not undo anything in the EI frozen baseline, because promotion never touched it."
+    },
+    "★_governed_residue_carried_into_production": [
+      {
+        "id": "R-1",
+        "what": "internal_fill_realization does not separate \"dense and uniform\" from \"dense and varied\". Live, both mtdr1 (CEO GT DM7) and mtdr3 (frozen DM8) returned dense_varied.",
+        "classification": "WITHIN_D_SIDE_EXACT_TIER_RESIDUE (order §14 / §15)",
+        "why_not_a_blocker": "Both garments are on the D side and both are STRONG — the CEO confirmed this from the images directly. The disagreement is confined to DM7 ↔ DM8, which order §10 rules a secondary representation.",
+        "⛔": "⛔ NOT patched. Changing what dense_varied means is an M1 semantic change and belongs to the CEO."
+      },
+      {
+        "id": "R-2",
+        "what": "A medium-size, high-contrast, distributed system is read as commanding the field. Live techybrid4 reported its contrasting trim as medium where the frozen record says small, which crosses the centre under the Direction rules.",
+        "classification": "UPSTREAM_OBSERVATION_BOUNDARY_RESIDUE · CEO decision ALREADY RESOLVED",
+        "why_not_a_blocker": "The same recorded tuple (medium/high/distributed) belongs to dmdbuk1 on the D side at DM7. The three frozen primitives cannot separate the two, so this is a limit of the frozen observation vocabulary rather than a defect introduced by the promoted layer.",
+        "★_RESOLVED": "★ RESOLVED — ⛔ NOT a pending CEO question. The canonical / frozen observation records the trim as SMALL, and that is the settled authority. The live V1_2 observation read it as MEDIUM; that difference is classified UPSTREAM_OBSERVATION_BOUNDARY_RESIDUE. ⛔ The Direction Engine must NOT be retuned to fit the live misread, and the canonical and live readings are reported separately.",
+        "★_superseded_hook_text": "★ HISTORICAL, retained so the record is not rewritten: this entry previously read — \"★ If the CEO judges that trim to be small — as the frozen record records it — then the live layer misread it, and that WOULD be a promotion-relevant observation defect. This is stated so the CEO can overturn the promotion on that single question.\" That framing is superseded; the question is closed."
+      }
+    ],
+    "★_what_is_promoted_and_what_is_not": {
+      "PROMOTED": "DM OBSERVATION LAYER V1_2 = PRODUCTION",
+      "NOT_PROMOTED_BY_THIS_ORDER": [
+        "STMX_DM_DIRECTION_FIRST_ENGINE_V1 — IMPLEMENTATION CANDIDATE, IMPLEMENTED_NOT_PROMOTED (order §39)",
+        "the full DM tier engine — NOT YET FROZEN"
+      ],
+      "⛔_forbidden_claims": [
+        "⛔ DM WORKSTREAM COMPLETE",
+        "⛔ DM ENGINE COMPLETE"
+      ],
+      "why": "order §18 — promoting the observation layer says the garment is now OBSERVED to the DM contract in production. It does not say DM is scored in production.",
+      "★_superseded_note_2026-09-11": "★ FORWARD POINTER (V4 GOV-2). The NOT_PROMOTED_BY_THIS_ORDER list above is a HISTORICAL record of what THIS order did and did not promote, and is preserved unchanged (§10). ⛔ It must not be read as current status: STMX_DM_DIRECTION_FIRST_ENGINE_V1 was promoted to PRODUCTION / FROZEN DIRECTION BASELINE on 2026-09-10. Current authority: 01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1.json."
+    },
+    "note": "the pointer as the 2026-09-10 promotion left it — preserved verbatim"
+  },
+  "⛔_no_credentials": "⛔ No API key, token or credential appears in this document or in any promoted artifact."
+}

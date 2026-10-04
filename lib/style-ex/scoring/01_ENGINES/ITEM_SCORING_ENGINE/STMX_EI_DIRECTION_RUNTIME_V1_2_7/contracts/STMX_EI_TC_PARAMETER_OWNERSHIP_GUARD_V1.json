@@ -1,0 +1,38 @@
+{
+  "document": "STMX_EI_TC_PARAMETER_OWNERSHIP_GUARD_V1",
+  "authority_status": "🔒 CEO Decision 2026-09-05",
+  "ceo_decision_date": "2026-09-05",
+  "approval_anchor": {
+    "ceo_decision": "2026-09-05",
+    "order": "CLAUDE CODE CORRECTION ORDER — EI DIRECTION POST-DENIM CONSOLIDATED CEO UPDATE V1",
+    "reason": "cuff_scale and sleeve_volume are valid Vision observations but represent proportion / construction-silhouette departure, which is TC-owned. EI must never consume them.",
+    "affected_scope": "this contract + the EI-owned parameter guard and its tests. ⛔ Vision observations are NOT deleted — they remain available to TC."
+  },
+  "ei_owned_parameters": [
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment",
+    "pattern",
+    "graphic",
+    "exposure_opening"
+  ],
+  "ei_consumed_context_parameters": [
+    "category",
+    "closure_type",
+    "front_opening_extent",
+    "grammar",
+    "trouser_distinction"
+  ],
+  "tc_owned_never_ei": [
+    "cuff_scale",
+    "sleeve_volume"
+  ],
+  "tc_owned_reason": {
+    "cuff_scale": "proportion departure — TC",
+    "sleeve_volume": "construction / silhouette departure — TC"
+  },
+  "guard": "⛔ EI must not consume cuff_scale or sleeve_volume as expressive evidence, in any pathway, under any realization.",
+  "vision_preservation": "Both observations remain in the governed representation and remain available to TC. ⛔ Do not delete them.",
+  "implementation_note": "Verified fact: the EI evidence collector already reads only the ei_owned_parameters listed above, so neither parameter has ever entered EI. This contract codifies that boundary and adds an executable guard + tests so it cannot regress; runtime Direction behaviour is unchanged by it."
+}

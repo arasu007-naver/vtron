@@ -1,0 +1,221 @@
+{
+  "unit_id": "REF_000198#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "3a0215005090b1dc31f61398dc71e60b8e80d87cde1eff5ab8ba0658ccbad724",
+  "projected_hash": "992ce1a595027b1cf85e87d2f09671cd4dcd7b7599c059b1fef04c55767f0e92",
+  "input": {
+    "category": "Shirt",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "matte woven oxford-type cloth",
+          "fine even weave"
+        ],
+        "values": [
+          {
+            "value": "Cotton",
+            "evidence": [
+              "matte woven shirting cloth",
+              "no sheen"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "ordinary woven cloth",
+          "no constructed or optical treatment"
+        ]
+      },
+      "pattern": {
+        "state": "OBSERVED",
+        "value": "Linear",
+        "region": "whole_garment",
+        "evidence": [
+          "repeating vertical blue-and-white stripes across body and sleeves"
+        ]
+      },
+      "graphic": {
+        "state": "OBSERVED",
+        "value": "Localized",
+        "region": "whole_garment",
+        "evidence": [
+          "small embroidered pony emblem at left chest"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no chest or front pocket visible"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "no ruffle present"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no piping, sequin, appliqué or applied trim"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no belt, hardware, fur or fringe"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetrical construction"
+        ]
+      },
+      "fit": {
+        "state": "UNKNOWN",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "garment laid flat, 3-D ease not reliably assessable"
+        ]
+      },
+      "length": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "flat product image, no body to measure hem against"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "UNKNOWN",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "flat lay, cloth drape not assessable"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "full-length sleeves reaching buttoned cuffs"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "shoulder seam at natural shoulder point"
+        ]
+      },
+      "neckline_shape": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "neckline covered by buttoned collar"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "High",
+        "region": "upper",
+        "evidence": [
+          "closed collar at base of neck"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "pointed shirt collar with button-down tabs"
+        ]
+      },
+      "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "plain curved shirt-tail hem"
+        ]
+      },
+      "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+          "button placket runs full length of front"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Button",
+        "region": "upper",
+        "evidence": [
+          "row of round buttons down front placket"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "ordinary straight sleeve envelope"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "blue",
+      "color_lightness": "light",
+      "color_usage": "multi",
+      "multi_color": true,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "white_family",
+          "carrier_kind": "pattern",
+          "carrier_ref": "Linear"
+        },
+        {
+          "color_family": "white_family",
+          "carrier_kind": "closure",
+          "carrier_ref": "Button"
+        },
+        {
+          "color_family": "brown",
+          "carrier_kind": "graphic",
+          "carrier_ref": "Localized"
+        }
+      ],
+      "evidence": {
+        "primary": "light blue stripe dominant against white ground",
+        "lightness": "pale blue and white overall",
+        "usage": "two-color stripe composition",
+        "effect": "matte, no metallic or neon"
+      },
+      "color_notes": null
+    }
+  }
+}

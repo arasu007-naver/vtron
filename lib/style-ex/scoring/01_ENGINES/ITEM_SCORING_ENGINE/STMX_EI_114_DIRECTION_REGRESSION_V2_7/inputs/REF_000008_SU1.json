@@ -1,0 +1,219 @@
+{
+  "unit_id": "REF_000008#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "9a52e37ce876b91d22d2ef853f2281a83642d5058e1d9c8c99e4f9d5762838c8",
+  "projected_hash": "0718693b03c57762e3442acff8bada128262f1df57a8dd7a43cd7992af88d1f2",
+  "input": {
+    "category": "Jacket",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "glossy nylon-like quilted shell",
+          "corduroy collar"
+        ],
+        "values": [
+          {
+            "value": "Synthetic",
+            "evidence": [
+              "smooth quilted nylon shell"
+            ]
+          },
+          {
+            "value": "Padding",
+            "evidence": [
+              "quilted channels indicate light fill"
+            ]
+          },
+          {
+            "value": "Cotton",
+            "evidence": [
+              "ribbed corduroy collar"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "diamond-stitched quilting across body and sleeves"
+        ],
+        "values": [
+          {
+            "value": "Quilted",
+            "evidence": [
+              "diamond quilt pattern stitched over whole shell"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "solid green shell, no repeating printed motif"
+        ]
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "no placed logo or print visible"
+        ]
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+          "hand pockets at lower front where hands are inserted"
+        ],
+        "count": 2
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric front and sleeves"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "skims torso with moderate ease, not tight or oversized"
+        ]
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+          "hem falls at hip level"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+          "quilted shell holds shape with slight give"
+        ]
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+          "sleeves extend to wrists"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "soft natural shoulder, no built padding"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "Shirt",
+        "region": "upper",
+        "evidence": [
+          "corduroy shirt-style pointed collar"
+        ]
+      },
+      "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+          "shirt collar, no hood"
+        ]
+      },
+      "closure_type": {
+        "state": "OBSERVED",
+        "value": "Snap Button",
+        "region": "upper",
+        "evidence": [
+          "single centre column of round snap studs down front"
+        ]
+      },
+      "grammar": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+          "quilted country jacket construction, snap front, cord collar"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "straight body, no waist shaping"
+        ]
+      },
+      "pocket_construction": {
+        "state": "OBSERVED",
+        "value": "Inset",
+        "region": "whole_garment",
+        "evidence": [
+          "set-in side pockets, no patch outline"
+        ]
+      },
+      "pocket_projection": {
+        "state": "OBSERVED",
+        "value": "Flat",
+        "region": "whole_garment",
+        "evidence": [
+          "pockets sit flush to body"
+        ]
+      },
+      "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+          "sleeve body within ordinary envelope"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "green",
+      "color_lightness": "dark",
+      "color_usage": "subtle",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [
+        {
+          "color_family": "brown",
+          "carrier_kind": "generic_descriptor",
+          "carrier_ref": "Collar"
+        },
+        {
+          "color_family": "gold",
+          "carrier_kind": "closure",
+          "carrier_ref": "Snap Button"
+        }
+      ],
+      "evidence": {
+        "primary": "dark olive-green quilted shell",
+        "lightness": "deep dark green tone",
+        "usage": "green body with minor brown collar and low-contrast snaps",
+        "effect": "matte shell, no neon or metallic body color"
+      },
+      "color_notes": null
+    }
+  }
+}

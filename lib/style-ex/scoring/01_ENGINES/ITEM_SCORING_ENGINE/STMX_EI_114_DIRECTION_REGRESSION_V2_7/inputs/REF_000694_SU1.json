@@ -1,0 +1,262 @@
+{
+  "unit_id": "REF_000694#SU1",
+  "input_mode": "PROJECTED_36",
+  "source_record_hash": "b81abe32a8eba0d8f03b194baa3ac72a7e6cc2c622e6395a16d75dfdf0cd896e",
+  "projected_hash": "447308e1a0a30ef0fe0e106282592adb4ffac6ad4416fe239d4648866fb77a5b",
+  "input": {
+    "category": "Dress",
+    "observations": {
+      "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "fluid lustrous satin drape"
+        ],
+        "values": [
+          {
+            "value": "Silk",
+            "evidence": [
+              "smooth liquid satin sheen consistent with silk/satin slip"
+            ]
+          }
+        ]
+      },
+      "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "visible high-luster shiny finish across the cloth"
+        ],
+        "values": [
+          {
+            "value": "Glossy",
+            "evidence": [
+              "strong reflective satin sheen with bright highlights on the drape"
+            ]
+          }
+        ]
+      },
+      "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": []
+      },
+      "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": []
+      },
+      "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "smooth slip front, no pocket openings"
+        ]
+      },
+      "ruffle": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "clean edges throughout"
+        ]
+      },
+      "decorative_detail": {
+        "state": "ABSENT",
+        "values": [],
+        "evidence": [
+          "no applied embroidery, beading, appliqué or piping visible"
+        ]
+      },
+      "attachment": {
+        "state": "ABSENT",
+        "values": [],
+        "evidence": [
+          "no belt, hardware or trim on the garment"
+        ]
+      },
+      "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+          "symmetric neckline and straps"
+        ]
+      },
+      "silhouette": {
+        "state": "OBSERVED",
+        "value": "Widening",
+        "region": "whole_garment",
+        "evidence": [
+          "bias slip gently widens toward the hem"
+        ]
+      },
+      "fit": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "close through torso, softly skimming below"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Slim",
+            "evidence": [
+              "bodice sits close to the torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Regular",
+            "evidence": [
+              "skirt skims with modest ease toward hem"
+            ]
+          }
+        }
+      },
+      "length": {
+        "state": "OBSERVED",
+        "value": "Midi",
+        "region": "whole_garment",
+        "evidence": [
+          "hem falls at mid-to-lower calf on the standing body"
+        ]
+      },
+      "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": null,
+        "evidence": [
+          "cloth drapes and falls softly following the body"
+        ],
+        "byRegion": {
+          "upper": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "satin clings and drapes over torso"
+            ]
+          },
+          "lower": {
+            "state": "OBSERVED",
+            "value": "Fluid",
+            "evidence": [
+              "skirt falls in soft liquid folds"
+            ]
+          }
+        }
+      },
+      "sleeve": {
+        "state": "OBSERVED",
+        "value": "Sleeveless",
+        "region": "upper",
+        "evidence": [
+          "thin straps only, no sleeve"
+        ]
+      },
+      "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "straps sit at natural shoulder point"
+        ]
+      },
+      "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "soft unstructured strap shoulder, no built contour"
+        ]
+      },
+      "neckline_shape": {
+        "state": "OBSERVED",
+        "value": "V",
+        "region": "upper",
+        "evidence": [
+          "fabric edge angles down to a point at center front"
+        ]
+      },
+      "neckline_position": {
+        "state": "OBSERVED",
+        "value": "Low",
+        "region": "upper",
+        "evidence": [
+          "V descends onto the upper chest"
+        ]
+      },
+      "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+          "bare V-neckline with no collar structure"
+        ]
+      },
+      "exposure_opening": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+          "thin straps bare the shoulders; upper chest visible above V-neck"
+        ],
+        "values": [
+          {
+            "value": "Shoulder",
+            "evidence": [
+              "shoulders fully bare between thin straps"
+            ]
+          },
+          {
+            "value": "Chest / Décolletage",
+            "evidence": [
+              "V-neck opens onto upper chest"
+            ]
+          }
+        ]
+      },
+      "slit": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "lower",
+        "evidence": [
+          "continuous hem, no visible slit"
+        ]
+      },
+      "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+          "bias-cut column skims the body with no waist shaping or belt"
+        ]
+      },
+      "shoulder_connection": {
+        "state": "OBSERVED",
+        "value": "Strap",
+        "region": "upper",
+        "evidence": [
+          "narrow spaghetti straps over shoulders"
+        ]
+      }
+    },
+    "color_observation": {
+      "primary_color_family": "gray",
+      "color_lightness": "light",
+      "color_usage": "single",
+      "multi_color": false,
+      "color_effect": "none",
+      "additional_colors": [],
+      "evidence": {
+        "primary": "pale silver-gray satin across whole dress",
+        "lightness": "bright light-toned surface with highlights",
+        "usage": "one continuous color, no distinct secondary",
+        "effect": "sheen is satin finish, not a metallic color family"
+      },
+      "color_notes": "high satin luster gives strong bright highlights but color reads as light silver-gray"
+    }
+  }
+}
