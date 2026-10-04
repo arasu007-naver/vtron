@@ -3,10 +3,9 @@
 /* Style ID (/style-ex)
    이미지 한 장을 골라 의류 스타일 추출(lib/style-ex)을 호출하고 결과를 본다.
 
-   ┌ 버튼 그룹 ─────────────────────────────── [이미지] ┐
-   ├ 이미지 미리보기  [추출] ┬ 프롬프트 [관찰|판정]       ┤
-   │                        ├ 호출 결과 (스타일 아이디 + JSON)│
-   └────────────────────────┴────────────────────────────┘
+   ┌ 이미지 미리보기  [이미지] [추출] ┬ 프롬프트 [관찰|판정]       ┤
+   │                                ├ 호출 결과 (스타일 아이디 + JSON)│
+   └────────────────────────────────┴────────────────────────────┘
 
    추출은 두 단계다 — 관찰(이미지 → 37개 파라미터) → 판정(관찰값 → 스타일 아이디).
    두 프롬프트 모두 기본값을 불러와 채운다. 수정하면 수정한 내용으로 호출하고,
@@ -201,27 +200,13 @@ export default function StyleExPage() {
 
   return (
     <div className="h-full flex flex-col bg-[var(--color-bg)] select-text">
-      {/* 상단 버튼 그룹 */}
-      <div className="flex-none flex items-center gap-2 px-4 py-2 border-b border-[var(--color-divider)] bg-[var(--color-panel)]">
-        <span className="text-sm text-black/60 truncate">
-          {file ? `${file.name} · ${(file.size / 1024).toFixed(0)} KB` : "이미지를 선택하세요"}
-        </span>
-        <button
-          type="button"
-          onClick={() => fileRef.current?.click()}
-          className="ml-auto btn btn-secondary px-3 py-1.5 rounded-full flex items-center gap-1.5 text-sm"
-        >
-          <ImagePlus className="w-4 h-4 text-[var(--color-accent-700)]" />
-          이미지
-        </button>
-        <input
-          ref={fileRef}
-          type="file"
-          accept="image/jpeg,image/png,image/webp,image/gif"
-          className="hidden"
-          onChange={handlePick}
-        />
-      </div>
+      <input
+        ref={fileRef}
+        type="file"
+        accept="image/jpeg,image/png,image/webp,image/gif"
+        className="hidden"
+        onChange={handlePick}
+      />
 
       {/* 본문: 좌 미리보기 / 우 프롬프트 + 결과 */}
       <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2">
@@ -242,21 +227,32 @@ export default function StyleExPage() {
             </button>
           )}
 
-          {/* 추출 FAB — 미리보기 영역 오른쪽 위 */}
-          <button
-            type="button"
-            onClick={handleExtract}
-            disabled={!file || status === "running"}
-            title={file ? "의류 스타일 추출" : "먼저 이미지를 선택하세요"}
-            className="absolute top-4 right-4 btn btn-primary rounded-full shadow-lg px-5 py-3 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {status === "running" ? (
-              <Loader2 className="w-5 h-5 animate-spin" />
-            ) : (
-              <ScanSearch className="w-5 h-5" />
-            )}
-            {status === "running" ? "추출 중…" : "추출"}
-          </button>
+          {/* 상단 FAB 그룹 (이미지 선택 + 스타일 추출) */}
+          <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+            <button
+              type="button"
+              onClick={() => fileRef.current?.click()}
+              title={file ? `${file.name} · ${(file.size / 1024).toFixed(0)} KB (클릭하여 변경)` : "이미지 선택"}
+              className="btn btn-secondary bg-white/95 hover:bg-white rounded-full shadow-lg px-4 py-3 flex items-center gap-2 text-sm"
+            >
+              <ImagePlus className="w-5 h-5 text-[var(--color-accent-700)]" />
+              <span>이미지</span>
+            </button>
+            <button
+              type="button"
+              onClick={handleExtract}
+              disabled={!file || status === "running"}
+              title={file ? "의류 스타일 추출" : "먼저 이미지를 선택하세요"}
+              className="btn btn-primary rounded-full shadow-lg px-5 py-3 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {status === "running" ? (
+                <Loader2 className="w-5 h-5 animate-spin" />
+              ) : (
+                <ScanSearch className="w-5 h-5" />
+              )}
+              {status === "running" ? "추출 중…" : "추출"}
+            </button>
+          </div>
         </section>
 
         {/* 오른쪽 — 위: 프롬프트 / 아래: 결과 */}
