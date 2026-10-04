@@ -13,6 +13,9 @@ const eslintConfig = [
       "ds-base.js",
       "image-slot.js",
       "support.js",
+      // 의류 비전 추출 엔진 스냅샷 — 원본(SHA-256 매니페스트)과 동일하게 유지하므로 린트하지 않는다
+      "lib/style-ex/engine/**",
+      "lib/style-ex/scoring/**",
     ],
   },
   ...nextCoreWebVitals,

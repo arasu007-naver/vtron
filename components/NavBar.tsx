@@ -10,6 +10,7 @@ import {
   LayoutDashboard,
   Link2,
   LogOut,
+  ScanSearch,
   ShoppingBag,
   Shirt,
   Sparkles,
@@ -48,6 +49,12 @@ const LINKS = [
     label: "Portrait Studio",
     icon: Film,
     title: "배경 애니메이션 + 캐릭터 등장 영상",
+  },
+  {
+    href: "/style-ex",
+    label: "Style EX",
+    icon: ScanSearch,
+    title: "이미지 속 의복을 Vision 모델로 관찰해 37개 파라미터를 추출",
   },
   {
     href: "/api-playground",
