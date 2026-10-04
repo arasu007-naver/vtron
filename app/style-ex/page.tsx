@@ -1,6 +1,6 @@
 "use client";
 
-/* Style EX (/style-ex)
+/* Style ID (/style-ex)
    이미지 한 장을 골라 의류 스타일 추출(lib/style-ex)을 호출하고 결과를 본다.
 
    ┌ 버튼 그룹 ─────────────────────────────── [이미지] ┐

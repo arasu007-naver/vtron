@@ -52,7 +52,7 @@ const LINKS = [
   },
   {
     href: "/style-ex",
-    label: "Style EX",
+    label: "Style ID",
     icon: ScanSearch,
     title: "이미지 속 의복을 Vision 모델로 관찰해 37개 파라미터를 추출",
   },

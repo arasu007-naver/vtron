@@ -162,7 +162,7 @@ export async function extractStyle({ image, fileName, prompt, judgePrompt }: Ext
   const built = eligible.map((t) => scoringRequestOf(t, fileName));
   let scoring: Obj[] | { error: string };
   try {
-    const results = await runScoring(built.map((b) => b.request));
+    const results = runScoring(built.map((b) => b.request));
     scoring = eligible.map((t, i) => ({
       target_id: t.target_id,
       category: (t.record as Obj).category,

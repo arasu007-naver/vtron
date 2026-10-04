@@ -1,12 +1,11 @@
 import "server-only";
-import { spawn } from "node:child_process";
 import path from "node:path";
 
 /**
  * 4개 축 스코어링 (style-ex 2단계 · 엔진).
  *
  * 관찰 결과(V1_3 envelope)에서 축별 입력을 만들어 STMX ITEM SCORING ENGINE V1 의 Item Entry 에 넘긴다.
- * 엔진은 lib/style-ex/scoring/ 에 원본 그대로 있고, 자식 프로세스(scoring-runner.cjs)에서 실행된다.
+ * 엔진은 lib/style-ex/scoring/ 에 원본 그대로 있고, vton 서버 프로세스 안에서 실행된다 (아래 loadItemEntry).
  *
  *   EI : { category, observations, color_observation }        → EI1–EI9
  *   SR : { record, meta: { sr_evidence_eligibility } }         → SR1–SR9
@@ -97,28 +96,35 @@ export function scoringRequestOf(target: Obj, imageId: string) {
   };
 }
 
-const RUNNER = path.join(process.cwd(), "lib", "style-ex", "scoring-runner.cjs");
+// ── 엔진 로드 ──────────────────────────────────────────────────────────────────────────
+// 엔진은 자기 위치(__dirname) 기준으로 파일을 읽고, 로드할 때 묶인 파일의 SHA-256 을 다시 검사한다.
+// Next 번들러(Turbopack)가 엔진을 번들하면 __dirname 이 바뀌어 동작하지 않는다.
+// 그래서 Node 의 require 를 런타임에 얻어(process.getBuiltinModule — 번들러가 정적으로 분석하지 않는다)
+// 디스크의 원본 파일을 그대로 로드한다. 같은 서버 프로세스 안에서 돌고, Node 모듈 캐시로 한 번만 로드된다.
+const ITEM_ENTRY = path.join(
+  process.cwd(), "lib", "style-ex", "scoring", "01_ENGINES", "ITEM_SCORING_ENGINE",
+  "STMX_CLEAN_ENGINE", "04_CLEAN_ENGINE_CODE", "src", "item", "item_entry_v1.js"
+);
 
-/** Item Entry 를 자식 프로세스에서 실행한다 */
-export function runScoring(requests: Obj[]): Promise<Obj[]> {
-  return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, [RUNNER], { stdio: ["pipe", "pipe", "pipe"] });
-    let out = "";
-    let err = "";
-    child.stdout.setEncoding("utf8").on("data", (d) => (out += d));
-    child.stderr.setEncoding("utf8").on("data", (d) => (err += d));
-    child.on("error", reject);
-    child.on("close", () => {
-      try {
-        const parsed = JSON.parse(out);
-        if (parsed.error) reject(new Error(`스코어링 엔진 오류: ${parsed.error}`));
-        else resolve(parsed.results);
-      } catch {
-        reject(new Error(`스코어링 러너 출력 해석 실패: ${err || out}`.slice(0, 1000)));
-      }
-    });
-    child.stdin.end(JSON.stringify({ requests }));
-  });
+type ScoreItem = (request: Obj) => Obj;
+let scoreItem: ScoreItem | null = null;
+
+function loadItemEntry(): ScoreItem {
+  if (!scoreItem) {
+    const { createRequire } = process.getBuiltinModule("module") as typeof import("node:module");
+    const nodeRequire = createRequire(path.join(process.cwd(), "package.json"));
+    scoreItem = (nodeRequire(ITEM_ENTRY) as { scoreItem: ScoreItem }).scoreItem;
+  }
+  return scoreItem;
+}
+
+/**
+ * Item Entry 실행 — vton 서버 프로세스 안에서 동기로 돈다.
+ * 처음 호출할 때 엔진을 로드하며 묶인 파일의 SHA-256 을 한 번 검사하고(어긋나면 예외), 이후에는 캐시된 엔진을 쓴다.
+ */
+export function runScoring(requests: Obj[]): Obj[] {
+  const score = loadItemEntry();
+  return requests.map((r) => score(r));
 }
 
 /** Item Entry 결과에서 축별 점수와 상태를 꺼낸다 */
