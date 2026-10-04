@@ -1,0 +1,239 @@
+{
+  "document": "GARMENT_VISION_EXTRACTION_ENGINE_PACKAGE_MANIFEST",
+  "date": "2026-09-07",
+  "status": "CURRENT DEVELOPER SNAPSHOT",
+  "producer_version": "STMX_VISION_PRODUCER_V1_1",
+  "file_count": 23,
+  "items": [
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_rules_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_rules_v1.js",
+      "purpose": "CURRENT Producer closure module — the complete self-contained set the frozen V1.2.7 line binds.",
+      "folder": "18",
+      "size": 66546,
+      "source_sha256": "c4190ece1408854d039eda4d9a1c3f4de2c5209ae1eefb7f8a461ba5825bf98f",
+      "export_sha256": "c4190ece1408854d039eda4d9a1c3f4de2c5209ae1eefb7f8a461ba5825bf98f",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_prompt_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_prompt_v1.js",
+      "purpose": "CURRENT Producer closure module — the complete self-contained set the frozen V1.2.7 line binds.",
+      "folder": "18",
+      "size": 154376,
+      "source_sha256": "0d3016e084d5f6f0749bb1a87dda8eef2b9cf65579ceba06e1646ec46f996d84",
+      "export_sha256": "0d3016e084d5f6f0749bb1a87dda8eef2b9cf65579ceba06e1646ec46f996d84",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_validator_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_validator_v1.js",
+      "purpose": "CURRENT Producer closure module — the complete self-contained set the frozen V1.2.7 line binds.",
+      "folder": "18",
+      "size": 56972,
+      "source_sha256": "c261d36b4905928efe7cda14c76194d13f0ac4cd357919f0e18faf27d01e2462",
+      "export_sha256": "c261d36b4905928efe7cda14c76194d13f0ac4cd357919f0e18faf27d01e2462",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_controller_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_controller_v1.js",
+      "purpose": "CURRENT Producer closure module — the complete self-contained set the frozen V1.2.7 line binds.",
+      "folder": "18",
+      "size": 42326,
+      "source_sha256": "7a2aa66e2f278e22857b8de51bab467f2a221883734bf50d96dbd0308ab71944",
+      "export_sha256": "7a2aa66e2f278e22857b8de51bab467f2a221883734bf50d96dbd0308ab71944",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_model_adapter_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_model_adapter_v1.js",
+      "purpose": "CURRENT Producer closure module — the complete self-contained set the frozen V1.2.7 line binds.",
+      "folder": "18",
+      "size": 3881,
+      "source_sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+      "export_sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/STMX_VISION_PRODUCER_CONTRACT_V1_1.json",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/STMX_VISION_PRODUCER_CONTRACT_V1_1.json",
+      "purpose": "the Producer V1.1 contract: module closure, delta vs Producer V1 and the treated_surface_realization observation.",
+      "folder": "18",
+      "size": 3736,
+      "source_sha256": "f0a119f75b0245f8938f72e7c39694668eafe6b67a8e07a056e7e47be4685576",
+      "export_sha256": "f0a119f75b0245f8938f72e7c39694668eafe6b67a8e07a056e7e47be4685576",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+      "purpose": "Colour V1 authority — shared by both Producer lines and consumed by EI Direction.",
+      "folder": "18",
+      "size": 20327,
+      "source_sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+      "export_sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/run/anthropic_vision_fn.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/anthropic_vision_fn.js",
+      "purpose": "the model-invocation function injected as opts.visionFn. ⛔ Reads its credential from the environment; no key is stored here.",
+      "folder": "18",
+      "size": 5565,
+      "source_sha256": "620c8f9e2d81d9de74a4a26ed1c1ca23df694081a2855057aa18f37ce07cc4d8",
+      "export_sha256": "620c8f9e2d81d9de74a4a26ed1c1ca23df694081a2855057aa18f37ce07cc4d8",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/index.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/index.js",
+      "purpose": "the public entry point (runProducer / governTarget / validateRecord / buildPrompt / runOneCall).",
+      "folder": "18",
+      "size": 741,
+      "source_sha256": "9da5afee5364381c0e9022456119e82c924195cef986bf0fdccc7eda590d49e6",
+      "export_sha256": "9da5afee5364381c0e9022456119e82c924195cef986bf0fdccc7eda590d49e6",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/producer_rules_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/producer_rules_v1.js",
+      "purpose": "the SEALED Producer V1 the V1.2.6 baseline binds, kept at its real sibling path so index.js resolves. Included because current version routing resolves BOTH lines; ⛔ not an obsolete snapshot.",
+      "folder": "18",
+      "size": 63810,
+      "source_sha256": "588da46bd0242e5a0c35dd5017c6ba570499968efacdc0a3387e57e76f14c6cf",
+      "export_sha256": "588da46bd0242e5a0c35dd5017c6ba570499968efacdc0a3387e57e76f14c6cf",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/producer_prompt_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/producer_prompt_v1.js",
+      "purpose": "the SEALED Producer V1 the V1.2.6 baseline binds, kept at its real sibling path so index.js resolves. Included because current version routing resolves BOTH lines; ⛔ not an obsolete snapshot.",
+      "folder": "18",
+      "size": 152883,
+      "source_sha256": "f0684013abad48455cf3973b22ee9bd9528675a088fb1766419ba8e245bbdd05",
+      "export_sha256": "f0684013abad48455cf3973b22ee9bd9528675a088fb1766419ba8e245bbdd05",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/producer_validator_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/producer_validator_v1.js",
+      "purpose": "the SEALED Producer V1 the V1.2.6 baseline binds, kept at its real sibling path so index.js resolves. Included because current version routing resolves BOTH lines; ⛔ not an obsolete snapshot.",
+      "folder": "18",
+      "size": 55806,
+      "source_sha256": "63fb0b809d4db7673bdbe659345214ba2c7074e20fe22f6513175c3176990a6a",
+      "export_sha256": "63fb0b809d4db7673bdbe659345214ba2c7074e20fe22f6513175c3176990a6a",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/producer_controller_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/producer_controller_v1.js",
+      "purpose": "the SEALED Producer V1 the V1.2.6 baseline binds, kept at its real sibling path so index.js resolves. Included because current version routing resolves BOTH lines; ⛔ not an obsolete snapshot.",
+      "folder": "18",
+      "size": 41902,
+      "source_sha256": "a0ea904b1308ac6ad3838a3cff22d945a0bc65080c75fd895ffb8bf4953a849d",
+      "export_sha256": "a0ea904b1308ac6ad3838a3cff22d945a0bc65080c75fd895ffb8bf4953a849d",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/producer_model_adapter_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/producer_model_adapter_v1.js",
+      "purpose": "the SEALED Producer V1 the V1.2.6 baseline binds, kept at its real sibling path so index.js resolves. Included because current version routing resolves BOTH lines; ⛔ not an obsolete snapshot.",
+      "folder": "18",
+      "size": 3881,
+      "source_sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+      "export_sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/run/onecall_prototype/onecall_prototype_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/onecall_prototype/onecall_prototype_v1.js",
+      "purpose": "the one-call prototype module the legacy producer requires — included to close the require graph.",
+      "folder": "18",
+      "size": 12830,
+      "source_sha256": "a909887f5b456b092c4d9e056beb3cf51d8b62cf9eb8b5cf5a6ba6421974343b",
+      "export_sha256": "a909887f5b456b092c4d9e056beb3cf51d8b62cf9eb8b5cf5a6ba6421974343b",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/stmx_vision_extraction_producer_v1.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/stmx_vision_extraction_producer_v1.js",
+      "purpose": "the legacy producer module a sibling exported test requires — included so that test resolves.",
+      "folder": "18",
+      "size": 7091,
+      "source_sha256": "579a44dceecc7793b3828f25ff26102a0eefb1c5155f8cd4476338edda6b025d",
+      "export_sha256": "579a44dceecc7793b3828f25ff26102a0eefb1c5155f8cd4476338edda6b025d",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/tests/exposure_category_applicability_v1.test.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/tests/exposure_category_applicability_v1.test.js",
+      "purpose": "Producer-relevant test suite, at its real path so its ../ requires resolve.",
+      "folder": "18",
+      "size": 15067,
+      "source_sha256": "d58f8638cf7630a0d5f7749f2d9dd5070f0eed03a403163c598f5de460e1d733",
+      "export_sha256": "d58f8638cf7630a0d5f7749f2d9dd5070f0eed03a403163c598f5de460e1d733",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/tests/exposure_e05_shoulder_v1.test.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/tests/exposure_e05_shoulder_v1.test.js",
+      "purpose": "Producer-relevant test suite, at its real path so its ../ requires resolve.",
+      "folder": "18",
+      "size": 11470,
+      "source_sha256": "af17e184b9115feca9674134b8c2788133e0b2b060256d3564525a4bb4fd1644",
+      "export_sha256": "af17e184b9115feca9674134b8c2788133e0b2b060256d3564525a4bb4fd1644",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/tests/exposure_state_precedence_v1.test.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/tests/exposure_state_precedence_v1.test.js",
+      "purpose": "Producer-relevant test suite, at its real path so its ../ requires resolve.",
+      "folder": "18",
+      "size": 14258,
+      "source_sha256": "1ac24ae2b6028a6e5a39bd4b3484e0ef4943cbb25dc3edee905a8be2ce481396",
+      "export_sha256": "1ac24ae2b6028a6e5a39bd4b3484e0ef4943cbb25dc3edee905a8be2ce481396",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/tests/exposure_styling_state_v1.test.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/tests/exposure_styling_state_v1.test.js",
+      "purpose": "Producer-relevant test suite, at its real path so its ../ requires resolve.",
+      "folder": "18",
+      "size": 9646,
+      "source_sha256": "5737f545ec921d03194cf0c56ac7902cfe2031519c0c0cffeea4d5f04e7ff058",
+      "export_sha256": "5737f545ec921d03194cf0c56ac7902cfe2031519c0c0cffeea4d5f04e7ff058",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT/ITEM_VISION_EXTRACTOR/tests/stmx_vision_extraction_producer_v1.test.js",
+      "source_authoritative_path": "01_ENGINES/ITEM_VISION_EXTRACTOR/tests/stmx_vision_extraction_producer_v1.test.js",
+      "purpose": "Producer-relevant test suite, at its real path so its ../ requires resolve.",
+      "folder": "18",
+      "size": 20800,
+      "source_sha256": "d51f8b8e865a56bc1dcee6f3f1bfd873500bccef1c86b376881a8153ffa1eea6",
+      "export_sha256": "d51f8b8e865a56bc1dcee6f3f1bfd873500bccef1c86b376881a8153ffa1eea6",
+      "status": "AUTHORITATIVE_COPY"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/README_CURRENT.md",
+      "source_authoritative_path": null,
+      "purpose": "folder 18 README — current status, Producer version, closure, run/test instructions and original paths.",
+      "folder": "18",
+      "size": 4849,
+      "source_sha256": null,
+      "export_sha256": "22df60cfc009da51b9d38b6e889f69a3d934596adc24165ed4a1939112188346",
+      "status": "EXPORT_DOCUMENTATION"
+    },
+    {
+      "export_path": "18_GARMENT_VISION_EXTRACTION_ENGINE/CURRENT_VERSION.json",
+      "source_authoritative_path": null,
+      "purpose": "folder 18 machine-readable version snapshot.",
+      "folder": "18",
+      "size": 2476,
+      "source_sha256": null,
+      "export_sha256": "640b7843106eeae6249c4b5281a1084a7549f3c23897f0dffd080c78ed0fc743",
+      "status": "EXPORT_DOCUMENTATION"
+    }
+  ]
+}

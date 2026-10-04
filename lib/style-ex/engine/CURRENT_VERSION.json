@@ -1,0 +1,65 @@
+{
+  "document": "GARMENT_VISION_EXTRACTION_ENGINE_CURRENT_VERSION",
+  "status": "CURRENT DEVELOPER SNAPSHOT",
+  "snapshot_date": "2026-09-07",
+  "producer_version": "STMX_VISION_PRODUCER_V1_1",
+  "entry_point": {
+    "current_line": "CURRENT/STMX_VISION_PRODUCER_V1_1/src/producer_controller_v1.js (runProducer)",
+    "producer_v1_line": "CURRENT/ITEM_VISION_EXTRACTOR/index.js"
+  },
+  "current_contracts": [
+    "STMX_VISION_PRODUCER_CONTRACT_V1_1.json",
+    "color_contract_v1.js (Colour V1 authority)"
+  ],
+  "governed_observation_added_in_v1_1": {
+    "field": "treated_surface_realization",
+    "domain": [
+      "Baseline",
+      "Distressed"
+    ],
+    "carrier": {
+      "surface": [
+        "Treated Surface"
+      ]
+    },
+    "parameters_added": 0,
+    "parameter_count": 37,
+    "missing_value_semantics": "NOT_GOVERNED — never silently Baseline"
+  },
+  "current_tests": [
+    "exposure_category_applicability_v1.test.js",
+    "exposure_e05_shoulder_v1.test.js",
+    "exposure_state_precedence_v1.test.js",
+    "exposure_styling_state_v1.test.js",
+    "producer_v1.test.js",
+    "stmx_vision_extraction_producer_v1.test.js"
+  ],
+  "module_closure": [
+    "producer_rules_v1.js",
+    "producer_prompt_v1.js",
+    "producer_validator_v1.js",
+    "producer_controller_v1.js",
+    "producer_model_adapter_v1.js"
+  ],
+  "dependency_closure": {
+    "local_modules": 5,
+    "external_dependencies": "Node built-ins only (fs, path)",
+    "missing": 0,
+    "declared_but_unreached": 0,
+    "reached_but_undeclared": 0
+  },
+  "two_producer_lines": {
+    "sealed_producer_v1": "bound by EI Direction runtime V1.2.6 (sealed)",
+    "producer_v1_1": "bound by EI Direction runtime V1.2.7 (frozen)",
+    "note": "The V1.1 contract explicitly does not supersede the sealed Producer V1. Routing is deterministic and fail-closed."
+  },
+  "source_repository_paths": [
+    "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/",
+    "01_ENGINES/ITEM_VISION_EXTRACTOR/index.js",
+    "01_ENGINES/ITEM_VISION_EXTRACTOR/producer_*_v1.js",
+    "01_ENGINES/ITEM_VISION_EXTRACTOR/run/anthropic_vision_fn.js",
+    "01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+    "01_ENGINES/ITEM_VISION_EXTRACTOR/tests/"
+  ],
+  "⛔_authority": "The authoritative engineering Source of Truth remains the governed STMX repository and project context. This Google Drive export is a **developer share and safety snapshot** — a copy, not a new mutable authority root."
+}
