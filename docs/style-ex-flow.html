@@ -93,7 +93,7 @@
   .prompt { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
   .prompt-head { padding: 8px 14px; font-size: 13px; border-bottom: 1px solid var(--line); background: var(--server-bg); }
   .prompt-head span { color: var(--muted); }
-  .prompt pre { margin: 0; max-height: 420px; overflow: auto; padding: 12px 14px; }
+  .prompt pre { margin: 0; max-height: 420px; overflow: auto; padding: 12px 14px; font-size: 12px; line-height: 1.5; }
   .prompt pre code { background: none; padding: 0; font-size: 12px; line-height: 1.5; white-space: pre; word-break: normal; }
   .info { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
   .params { margin: 0; padding: 6px 14px 10px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; }
@@ -104,6 +104,17 @@
   .params dd { margin: 2px 0 0; color: var(--muted); }
   .params dd i { font-style: normal; color: var(--text); }
   .info-note { margin: 0; padding: 8px 14px 12px; font-size: 13px; color: var(--muted); }
+  @media print {
+    @page { size: A4; margin: 14mm 12mm; }
+    :root { color-scheme: light; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    main { max-width: none; padding: 0; }
+    /* 화면에서는 420px 로 잘라 스크롤하던 프롬프트를 인쇄에서는 전문 펼쳐 줄바꿈한다 */
+    .prompt pre { max-height: none; overflow: visible; font-size: 8.5px; line-height: 1.4; }
+    .prompt pre code { white-space: pre-wrap; word-break: break-word; font-size: 8.5px; line-height: 1.4; }
+    .node, .decision, .params > div, tr, .phase { break-inside: avoid; }
+    .phase { break-after: avoid; }
+  }
   footer { margin-top: 40px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
 </style>
 </head>
