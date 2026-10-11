@@ -42,6 +42,9 @@ import {
  * 모바일 앱과 갈리는 곳은 담는 방식이다. 저쪽은 한 벌의 룩에 옷을 여럿 담아 목록으로 쌓지만,
  * 여기서는 **자리(상의 · 하의 · 원피스)마다 사진 한 장**이라 고르면 그 자리의 것이 바뀐다.
  * 그래서 '담은 상품' 목록이 없고, 지금 어느 자리에 담기는지를 칸 아래가 알려 준다.
+ *
+ * /style-ex 의 상품 검색 모달([[ProductPickModal]])도 이것을 쓴다 — 자리 없이 한 장만 고르므로
+ * `slotButtons={false}` 로 자리 단추를 끈다.
  */
 
 /** 브랜드 · 상품명 검색을 시작하는 글자 수. 카테고리 칩은 쳐야 나오는 것이 아니라 처음부터 있다. */
@@ -62,8 +65,13 @@ const SLOT_BUTTONS: { id: GarmentSlot; label: string }[] = [
 ];
 
 export interface ProductSearchProps {
-  /** 줄을 눌렀을 때 담길 자리 — "상의" 처럼 사람이 읽는 말. */
-  targetLabel: string;
+  /** 줄을 눌렀을 때 담길 자리 — "상의" 처럼 사람이 읽는 말. 없으면 안내 줄을 두지 않는다. */
+  targetLabel?: string;
+  /**
+   * 상품 줄마다 상의 · 하의 · 원피스 단추를 세울지. 기본은 세운다(피팅 화면).
+   * 자리 없이 한 장만 고르는 곳(/style-ex)은 끈다 — 줄을 누르면 곧바로 `onPick` 이다.
+   */
+  slotButtons?: boolean;
   /** 자리마다 지금 담긴 상품. 목록 맨 위에 붙어 있고, 그 자리 단추를 채워 표시한다. */
   picked?: Partial<Record<GarmentSlot, CatalogProduct | null>>;
   /**
@@ -71,8 +79,8 @@ export interface ProductSearchProps {
    * 사진은 이것으로 바뀐다.
    */
   onPick: (product: CatalogProduct, slot?: GarmentSlot) => void;
-  /** 한 자리를 비운다. */
-  onRemove: (slot: GarmentSlot) => void;
+  /** 한 자리를 비운다. `picked` 를 넘기지 않으면 쓸 일이 없다. */
+  onRemove?: (slot: GarmentSlot) => void;
 }
 
 /** 초성 · 별칭까지 훑어 좁힌다. 앞에서 맞을수록 위. */
@@ -103,6 +111,7 @@ const message = (cause: unknown, fallback: string) =>
 
 export default function ProductSearch({
   targetLabel,
+  slotButtons = true,
   picked,
   onPick,
   onRemove,
@@ -399,11 +408,13 @@ export default function ProductSearch({
             <span>카테고리부터 다시 고르기</span>
           </button>
 
-          <span className="text-[12px] text-gray-500 dark:text-gray-400 truncate">
-            고른 상품은{' '}
-            <span className="font-semibold text-gray-900 dark:text-gray-100">{targetLabel}</span>
-            에 담깁니다
-          </span>
+          {targetLabel && (
+            <span className="text-[12px] text-gray-500 dark:text-gray-400 truncate">
+              고른 상품은{' '}
+              <span className="font-semibold text-gray-900 dark:text-gray-100">{targetLabel}</span>
+              에 담깁니다
+            </span>
+          )}
         </div>
       </div>
 
@@ -470,9 +481,9 @@ export default function ProductSearch({
               thumb={product.imageUrl}
               pickedSlots={slots}
               onPick={() => onPick(product)}
-              onPickSlot={(slot) => onPick(product, slot)}
+              onPickSlot={slotButtons ? (slot) => onPick(product, slot) : undefined}
               onPreview={() => setPreviewUrl(product.originalImageUrl ?? product.imageUrl)}
-              onRemove={() => slots.forEach(onRemove)}
+              onRemove={onRemove && (() => slots.forEach(onRemove))}
             />
           ))}
         </div>
@@ -527,7 +538,7 @@ export default function ProductSearch({
             // 사진이 없으면 피팅에 넣을 것이 없다. 줄은 두되 고르지 못하게 막는다.
             disabled={!row.originalImageUrl}
             onPick={() => onPick(row)}
-            onPickSlot={(slot) => onPick(row, slot)}
+            onPickSlot={slotButtons ? (slot) => onPick(row, slot) : undefined}
             onPreview={() => setPreviewUrl(row.originalImageUrl ?? row.imageUrl)}
           />
         ))}

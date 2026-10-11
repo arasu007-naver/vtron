@@ -43,6 +43,9 @@ const VISION_MAX_TOKENS = 32_000;
 /** 엔진 anthropic_vision_fn 의 기본 모델과 같다 (precision-first) */
 const DEFAULT_VISION_MODEL = "claude-opus-4-8";
 
+/** 관찰에 쓰는 Vision 모델 */
+export const visionModel = (): string => process.env.STYLE_EX_MODEL || DEFAULT_VISION_MODEL;
+
 // 색상 관찰 지시문 — onecall 프로토타입의 Sequential One-Call V2 추가 지시를 그대로 떼어 쓴다.
 // (결합 프롬프트 = 루트 Producer 프롬프트 + 추가 지시. 앞부분을 잘라내면 추가 지시만 남는다.)
 const COLOUR_ADDENDUM = (() => {
@@ -81,7 +84,7 @@ export interface ExtractInput {
 
 /** Vision 호출 → 관찰 envelope (+ 대상별 색상 · 연출 유형) */
 async function observe(image: Buffer, fileName: string, prompt: string) {
-  const model = process.env.STYLE_EX_MODEL || DEFAULT_VISION_MODEL;
+  const model = visionModel();
   const client = new Anthropic(anthropicClientOptions());
   // 엔진의 주입 지점(visionFn). 엔진 anthropic_vision_fn 과 같은 요청(이미지 + 프롬프트, 1회)을 SDK 로 보낸다 —
   // 워크스페이스 헤더(anthropic-workspace-id)를 붙일 수 있게 하기 위해서다. 이미지 블록은 엔진의

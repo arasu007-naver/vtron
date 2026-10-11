@@ -3,17 +3,22 @@
 /* Style ID (/style-ex)
    이미지 한 장을 골라 의류 스타일 추출(lib/style-ex)을 호출하고 결과를 본다.
 
-   ┌ 이미지 미리보기  [이미지] [추출] ┬ 프롬프트 [관찰|판정]       ┤
+   ┌ 이미지 미리보기  [상품 Style ID 추출] [이미지] [추출] ┬ 프롬프트 [관찰|판정] ┤
    │                                ├ 호출 결과 (스타일 아이디 + JSON)│
    └────────────────────────────────┴────────────────────────────┘
 
    추출은 두 단계다 — 관찰(이미지 → 37개 파라미터) → 판정(관찰값 → 스타일 아이디).
    두 프롬프트 모두 기본값을 불러와 채운다. 수정하면 수정한 내용으로 호출하고,
-   그대로면 서버가 기본 프롬프트를 쓴다. */
+   그대로면 서버가 기본 프롬프트를 쓴다.
 
-import { useEffect, useRef, useState } from "react";
-import { Crop, ImagePlus, Loader2, RotateCcw, ScanSearch } from "lucide-react";
+   입력 이미지는 파일로 고르거나, [상품 Style ID 추출] 모달(ProductPickModal)에서 등록된 상품을
+   찾아 그 상품의 원본 사진을 쓴다. */
+
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Crop, ImagePlus, Loader2, RotateCcw, ScanSearch, ShoppingBag } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
+import ProductPickModal from "@/components/style-ex/ProductPickModal";
+import type { CatalogProduct } from "@/lib/tryon/product-catalog";
 
 type Status = "idle" | "running" | "done" | "error";
 type PromptKey = "prompt" | "judgePrompt";
@@ -90,6 +95,11 @@ interface Summary {
 
 const EMPTY_PROMPTS: Record<PromptKey, string> = { prompt: "", judgePrompt: "" };
 
+/** 서버(/api/style-ex)의 이미지 한도와 같다 — Anthropic 이미지 입력 한도 */
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+
+const EXTENSION: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif" };
+
 export default function StyleExPage() {
   const fileRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -105,6 +115,13 @@ export default function StyleExPage() {
   const [envelope, setEnvelope] = useState<unknown>(null);
   const [cropping, setCropping] = useState(false);
   const [crops, setCrops] = useState<CropResult | null>(null);
+  // 상품 Style ID 추출 — 고른 상품의 사진이 입력 이미지가 된다
+  const [productModal, setProductModal] = useState(false);
+  const [productLoading, setProductLoading] = useState<string | null>(null);
+  const [productError, setProductError] = useState<string | null>(null);
+  const [product, setProduct] = useState<CatalogProduct | null>(null);
+  /** 상품 사진으로 추출했을 때 product_style 저장 결과 */
+  const [saved, setSaved] = useState<{ id: string } | { error: string } | null>(null);
 
   // 기본 프롬프트 (관찰 · 판정)
   useEffect(() => {
@@ -132,21 +149,65 @@ export default function StyleExPage() {
     []
   );
 
-  const handlePick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const picked = e.target.files?.[0];
-    e.target.value = ""; // 같은 파일을 다시 골라도 change 가 뜨도록
-    if (!picked) return;
+  /** 새 입력 이미지 — 파일 선택과 상품 선택이 같이 쓴다. 이전 결과는 모두 비운다. */
+  const applyImage = useCallback((picked: File, from: CatalogProduct | null) => {
     if (previewUrlRef.current) URL.revokeObjectURL(previewUrlRef.current);
     previewUrlRef.current = URL.createObjectURL(picked);
     setPreviewUrl(previewUrlRef.current);
     setFile(picked);
+    setProduct(from);
+    setSaved(null);
     setResult("");
     setSummary(null);
     setEnvelope(null);
     setCrops(null);
     setStatus("idle");
     setElapsed(null);
+  }, []);
+
+  const handlePick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const picked = e.target.files?.[0];
+    e.target.value = ""; // 같은 파일을 다시 골라도 change 가 뜨도록
+    if (picked) applyImage(picked, null);
   };
+
+  /**
+   * 상품을 고르면 그 상품의 원본 사진을 받아 입력 이미지로 쓴다.
+   * 목록의 사진은 200px 축소본이라 관찰에 쓰면 디테일이 뭉개진다 — 원본(originalImageUrl)을 받는다.
+   */
+  const pickProduct = useCallback(
+    async (picked: CatalogProduct) => {
+      const url = picked.originalImageUrl ?? picked.imageUrl;
+      if (!url) {
+        setProductError("이 상품에는 등록된 사진이 없습니다.");
+        return;
+      }
+      setProductLoading(picked.name);
+      setProductError(null);
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`상품 사진을 내려받지 못했습니다 (HTTP ${res.status}).`);
+        const blob = await res.blob();
+        const type = blob.type || "image/jpeg";
+        if (!EXTENSION[type]) throw new Error(`지원하지 않는 이미지 형식입니다 (${type}).`);
+        if (blob.size > MAX_IMAGE_BYTES) {
+          throw new Error(`상품 사진이 5MB 를 넘습니다 (${(blob.size / 1024 / 1024).toFixed(1)}MB).`);
+        }
+        applyImage(new File([blob], `${picked.id}.${EXTENSION[type]}`, { type }), picked);
+        setProductModal(false);
+      } catch (e) {
+        setProductError(e instanceof Error ? e.message : String(e));
+      } finally {
+        setProductLoading(null);
+      }
+    },
+    [applyImage]
+  );
+
+  const closeProductModal = useCallback(() => {
+    setProductModal(false);
+    setProductError(null);
+  }, []);
 
   const handleExtract = async () => {
     if (!file || status === "running") return;
@@ -155,12 +216,19 @@ export default function StyleExPage() {
     setSummary(null);
     setEnvelope(null);
     setCrops(null);
+    setSaved(null);
     const started = performance.now();
 
     const body = new FormData();
     body.append("image", file);
     for (const { key } of PROMPT_TABS) {
       if (prompts[key] !== defaults[key]) body.append(key, prompts[key]);
+    }
+    // 상품 사진이면 서버가 결과를 product_style 에 저장한다
+    const productImageUrl = product && (product.originalImageUrl ?? product.imageUrl);
+    if (product && productImageUrl) {
+      body.append("modelId", product.id);
+      body.append("imageUrl", productImageUrl);
     }
 
     try {
@@ -169,6 +237,7 @@ export default function StyleExPage() {
       setResult(JSON.stringify(data, null, 2));
       setSummary({ styleId: data.styleId ?? null, judgement: data.judgement ?? null });
       setEnvelope(data.observation?.ok ? data.observation.envelope : null);
+      setSaved(data.saved ?? null);
       setStatus(res.ok && data.observation?.ok !== false && data.styleId?.ok ? "done" : "error");
     } catch (e) {
       setResult(e instanceof Error ? e.message : String(e));
@@ -227,8 +296,27 @@ export default function StyleExPage() {
             </button>
           )}
 
-          {/* 상단 FAB 그룹 (이미지 선택 + 스타일 추출) */}
-          <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+          {/* 고른 상품 — 입력 이미지가 상품 사진일 때 */}
+          {product && file && (
+            <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
+              <span className="max-w-full truncate rounded-full bg-white/95 shadow px-3 py-1 text-xs text-black/70">
+                {[product.brandName, product.name].filter(Boolean).join(" · ")}
+              </span>
+            </div>
+          )}
+
+          {/* 상단 FAB 그룹 (상품 선택 + 이미지 선택 + 스타일 추출) */}
+          <div className="absolute top-4 right-4 flex flex-wrap justify-end items-center gap-2 z-10">
+            <button
+              type="button"
+              onClick={() => setProductModal(true)}
+              disabled={status === "running"}
+              title="등록된 상품을 찾아 그 상품 사진으로 Style ID 를 추출"
+              className="btn btn-secondary bg-white/95 hover:bg-white rounded-full shadow-lg px-4 py-3 flex items-center gap-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ShoppingBag className="w-5 h-5 text-[var(--color-accent-700)]" />
+              <span>상품 Style ID 추출</span>
+            </button>
             <button
               type="button"
               onClick={() => fileRef.current?.click()}
@@ -307,6 +395,16 @@ export default function StyleExPage() {
               {status === "error" && (
                 <span className="text-xs font-normal text-[var(--color-danger)]">실패</span>
               )}
+              {saved &&
+                ("id" in saved ? (
+                  <span className="text-xs font-normal text-emerald-700" title={`product_style.id = ${saved.id}`}>
+                    DB 저장됨
+                  </span>
+                ) : (
+                  <span className="text-xs font-normal text-[var(--color-danger)] truncate" title={saved.error}>
+                    DB 저장 실패
+                  </span>
+                ))}
               <button
                 type="button"
                 onClick={handleCrop}
@@ -330,6 +428,14 @@ export default function StyleExPage() {
           </div>
         </section>
       </div>
+
+      <ProductPickModal
+        open={productModal}
+        loading={productLoading}
+        error={productError}
+        onPick={pickProduct}
+        onClose={closeProductModal}
+      />
     </div>
   );
 }
