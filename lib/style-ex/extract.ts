@@ -90,6 +90,10 @@ async function observe(image: Buffer, fileName: string, prompt: string) {
   // 워크스페이스 헤더(anthropic-workspace-id)를 붙일 수 있게 하기 위해서다. 이미지 블록은 엔진의
   // imageToBlock 이 파일 바이트로 미디어 타입을 판별해 만든다. 프롬프트는 엔진 것 대신 style-ex 프롬프트를 쓴다.
   // 출력이 길어 스트리밍으로 받는다 (긴 비스트리밍 요청은 HTTP 타임아웃 위험).
+  //
+  // 프롬프트 캐싱: 관찰 프롬프트(약 68,000 토큰)는 요청마다 같고 입력 비용의 대부분이다. 캐시는 요청 앞부분이
+  // 같을 때만 맞으므로 프롬프트를 이미지 **앞에** 두고 거기에 cache_control 을 단다 — 5분 안의 다음 추출은
+  // 이 부분을 캐시 읽기(정가의 0.1배)로 낸다. (docs/product-style-id-extraction-price.md)
   const visionFn = async (_enginePrompt: string, img: unknown) => {
     const message = await client.messages
       .stream({
@@ -98,12 +102,20 @@ async function observe(image: Buffer, fileName: string, prompt: string) {
         messages: [
           {
             role: "user",
-            // imageToBlock 은 JS 라 타입이 넓게 추론된다 — 실제 모양은 { type: "image", source: { type: "base64", … } }
-            content: [imageToBlock(img) as Anthropic.ImageBlockParam, { type: "text", text: prompt }],
+            content: [
+              { type: "text", text: prompt, cache_control: { type: "ephemeral" } },
+              // imageToBlock 은 JS 라 타입이 넓게 추론된다 — 실제 모양은 { type: "image", source: { type: "base64", … } }
+              imageToBlock(img) as Anthropic.ImageBlockParam,
+            ],
           },
         ],
       })
       .finalMessage();
+    const { input_tokens, cache_creation_input_tokens, cache_read_input_tokens, output_tokens } = message.usage;
+    console.info(
+      `[style-ex] 관찰 usage — 입력 ${input_tokens} · 캐시 쓰기 ${cache_creation_input_tokens ?? 0} · ` +
+        `캐시 읽기 ${cache_read_input_tokens ?? 0} · 출력 ${output_tokens}`
+    );
     if (message.stop_reason === "max_tokens") throw new Error("관찰 출력이 max_tokens 에서 잘렸습니다.");
     return message.content.flatMap((b) => (b.type === "text" ? [b.text] : [])).join("\n");
   };
