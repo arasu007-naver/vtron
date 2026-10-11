@@ -96,131 +96,190 @@ ${axisLines}
 스타일 아이디는 EI·TC·SR·DM 순서로 고른 글자 4개다. 네 축은 서로 독립이다 — 축마다 자기 입력만 본다.
 
 [공통 — 점수와 글자]
-엔진은 축마다 1–9 점수를 낸다. 1–4 = 낮은 쪽(I · C · R · M), 6–9 = 높은 쪽(E · T · S · D), 5 = 중립.
-중립(5)은 E · S · D 로 고정한다. 엔진 규칙상 미결(UNKNOWN / UNRESOLVED / null)이면 가장 그럴듯한 쪽을 고르고 strength=weak 로 둔다.
+엔진은 축마다 1–9 점수를 낸다(TC 는 범위만 낸다). 1–4 = 낮은 쪽(I · C · R · M), 6–9 = 높은 쪽(E · T · S · D), 5 = 중립.
+중립(5)은 E · S · D 로 고정한다. 엔진 규칙상 방향이 미결(UNKNOWN / UNRESOLVED / null)이면 엔진은 글자를 정하지 않는다 —
+이 판정에서는 가장 그럴듯한 쪽을 고르고 strength=weak 로 둔다. 방향은 확정됐는데 점수만 미결이면(EI Upper Thigh · DM M1 미결 등) 그 방향의 글자를 쓰고 strength=weak 로 둔다.
 evidence 첫 줄에는 엔진 규칙으로 얻은 결과를 적는다. 예: "엔진 규칙: SR6 (STRUCTURED · WEAK)" 또는 "엔진 규칙: 미결 (fit 미관찰)".
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [EI — 존재감] 시작값(색상·카테고리) + 가장 강한 근거 경로로 정한다. 파라미터 개수를 세지 않는다.
-읽는 것: color_observation, category(+product_context), grammar, material, surface, pattern, graphic, exposure_opening,
-decorative_detail, attachment, pockets. fit · shoulder_connection · cuff_scale · sleeve_volume 은 EI 근거가 아니다.
+읽는 것: color_observation(primary_color_family, color_usage, additional_colors[].color_family·carrier_kind·carrier_ref·contrast_with_body·coverage),
+category(+category.product_context), grammar, trouser_distinction, material, surface, pattern, graphic, exposure_opening(+realization_qualifiers),
+decorative_detail, attachment, pocket(value=Present + pockets[]), front_opening_extent·closure_type(하드웨어 여밈 판단에만).
+color_lightness · fit · shoulder_connection · cuff_scale · sleeve_volume 은 EI 근거가 아니다.
+EI 입력에 37개 밖의 키 · 도메인 밖 값 · category 미관찰이 있으면 엔진은 입력 전체를 거절한다(INVALID_INPUT → 엔진 미결).
 
-1) 색상 시작값 (color_observation.primary_color_family)
+1) 색상 시작값 (primary_color_family)
    - I_BASE: black, gray, navy, beige, brown, khaki
    - E_BASE: white_family, blue, green, mint, olive, red, wine, pink, purple, yellow, orange, camel, gold, silver
-   - uncertain 또는 color_observation 없음 → 미결
-2) 카테고리 중립(CN) — 색이 아래 목록에 있으면 시작값을 CN 으로 바꾼다
-   Coat: black·gray·navy / Jacket(Tailored): black·gray·navy / Jacket(Leather·Suede): black / Jacket(Denim): black·blue /
-   Jacket(기타): black·navy / Shirt·T-Shirt: white_family / T-Shirt(Activewear): black / Sweater: black·gray /
-   Sweatshirt: black·navy·gray / Trouser(Tailored): black·gray·navy / Trouser(Jeans): black·blue / Trouser(Sport): black·gray·navy /
-   Trouser(Leggings): black / Trouser(기타): black·gray / Skirt·Dress·Jumpsuit: black
-   데님(material 에 Denim) 우선: Trouser·Jacket·Skirt 는 black·gray·blue·navy → CN, 그 밖의 색 → E_BASE.
-   그 밖의 카테고리 데님은 1) 의 색상 시작값을 그대로 쓴다.
-3) 근거 경로와 힘 (같은 시스템은 한 경로로 합친다 — Mesh·Pleated·톤온톤 Linear 패턴 + 시스루는 하나, Sequin-Beading + Reflective 는 하나,
-   부착물·패턴·그래픽에 실린 추가 색은 그 경로에 흡수. 약한 경로는 더해지지 않는다)
-   - STRONG: Class A 노출(Shoulder · Chest/Décolletage · Midriff/Waist · Back · Upper Thigh), surface=Transparent·Semi Transparent,
-     패턴이 바탕과 구분(Distinct/Subtle) + visual_dominance=Dominant + (density=dense 또는 motif_complexity=Compound)
-   - MEANINGFUL: 바탕과 구분되는 패턴 + visual_dominance 있음 / Textured Knit·Quilted·Exotic-Skin·Appliqué 가 대비 색(Distinct)으로 실림 /
-     Metal Hardware 가 디자인 존재감(coverage Partial·Dominant, 위치 2곳 이상, 또는 여밈이 없는 옷) + 대비 /
-     graphic 이 대비 + coverage Partial·Dominant / Glossy 가 finish_realization=Pronounced (또는 Enhanced + Partial·Dominant) /
-     Treated Surface=Distressed / Applied·Volumetric 포켓 2개 이상 / 추가 색이 contrast_with_body Subtle·Distinct + coverage Partial·Dominant
-   - WEAK: Localized graphic, 톤온톤 버전의 위 표면·장식, 대비 없는 디자인 하드웨어, Tonal 패턴, Glossy Enhanced
-   - 근거 아님: 일반 하드웨어·포켓, Treated Surface/Glossy Baseline, Class B 개구(Open Back·Cutout), Fur 외 소재(Cotton·Leather·Denim·Velvet 등),
-     Embroidery, Belt·Epaulette·Storm Flap, 같은 계열의 추가 색, 대비·존재감 없는 추가 색
-   - 미결 경로: Reflective, Mesh 단독, Lace, Fur, Fur Trim, Sequin, Jewelry Attachment, Feather, Ribbon, Fringe,
-     존재감 없는 Dominant graphic, 대비 Grid·Repeat 패턴, contrast_with_body 가 없는 패턴, finish_realization 없는 Glossy
+   - uncertain 또는 color_observation 없음 → 미결 (근거가 STRONG 이어도 미결)
+2) 카테고리 중립(CN) — 해당 행의 색이면 시작값을 CN 으로, 아니면 1) 그대로. 행은 위에서부터 먼저 맞는 것:
+   T-Shirt + product_context=Activewear-Performance: black / Shirt·T-Shirt: white_family / Coat: black·gray·navy /
+   Jacket: grammar=Tailored → black·gray·navy, 아니면 material Leather·Suede → black, 그 밖 → black·navy /
+   Trouser: trouser_distinction Tailored → black·gray·navy, Jeans → black·blue, Sport → black·gray·navy, Leggings → black, 그 밖 → black·gray /
+   Sweater: black·gray / Sweatshirt: black·navy·gray / Skirt·Dress·Jumpsuit: black
+   데님(material 에 Denim)은 위 행보다 우선: Trouser·Jacket·Skirt 는 black·gray·blue·navy → CN, 그 밖의 색(beige·brown·khaki 포함) → E_BASE.
+   그 밖의 카테고리 데님은 CN 행을 보지 않고 1) 의 시작값을 쓴다.
+3) 근거 경로와 힘
+   추가 색이 실리는 곳: carrier_kind attachment → 같은 값의 부착물(없으면 첫 부착물 근거) / pattern → pattern / graphic → graphic /
+   material_component → color_usage accent·multi 면 decorative_detail, 아니면 surface. primary 와 같은 계열이나 uncertain 은 실리지 않는다.
+   대비 등급: 그 근거에 실린 추가 색 없음 → TONAL, 있고 color_usage=subtle → SUBTLE, 있고 그 밖 → DISTINCT.
+   패턴 구분 = pattern 에 실린 추가 색의 contrast_with_body 가 Distinct·Subtle (Tonal = 구분 안 됨).
+   - STRONG: exposure_opening Class A(Shoulder · Chest / Décolletage · Midriff / Waist · Back · Upper Thigh), surface=Transparent·Semi Transparent,
+     패턴 구분 + visual_dominance=Dominant + (density=dense 또는 motif_complexity=Compound)
+   - MEANINGFUL: 패턴 구분 + visual_dominance 있음 / Textured Knit·Quilted·Exotic-Skin·Appliqué 가 DISTINCT + coverage Localized·Partial·없음 /
+     Metal Hardware 가 존재감 + SUBTLE·DISTINCT (존재감 = coverage Partial·Dominant, locations 2곳 이상, 다른 부착물(예: Belt)에 실린 대비 색,
+     또는 여밈 없음: front_opening_extent=None 또는 closure_type=None·Open) / graphic 이 SUBTLE·DISTINCT + coverage Partial·Dominant /
+     Glossy 가 finish_realization=Pronounced 또는 Enhanced + coverage Partial·Dominant / Treated Surface 가 treated_surface_realization=Distressed /
+     pocket: pockets[] 에 construction=Applied·projection=Volumetric 1개 이상 + (그런 포켓 2개 이상, count 2 이상, density=dense, 또는 coverage Partial·Dominant) /
+     흡수되지 않은 추가 색이 contrast_with_body Subtle·Distinct + coverage Partial·Dominant
+   - WEAK: 위 조건이 안 되는 Localized graphic, 구분 안 되는(Tonal) 패턴, Glossy Enhanced, 존재감은 있지만 TONAL 인 Metal Hardware,
+     Textured Knit·Quilted 의 TONAL 또는 SUBTLE(Dominant 제외), Exotic-Skin·Appliqué 의 SUBTLE(Dominant 제외) 또는 TONAL + Localized·Partial
+   - 근거 아님: 존재감 없는 Metal Hardware, 위 조건 밖의 pocket, Treated Surface·Glossy Baseline, Class B(Open Back · Front Cutout · Side Cutout · Shoulder Cutout),
+     Fur 외 material, Embroidery, Gathered, Piping, Belt·Epaulette·Storm Flap·Other, contrast_with_body 가 없거나 Tonal 이거나 coverage 가 약한 추가 색
+   - 미결 경로: Reflective, Mesh 단독, Lace, Fur, Fur Trim, Sequin-Beading, Jewelry Attachment, Feather, Ribbon, Fringe, 위 조건이 안 되는 Dominant graphic,
+     contrast_with_body 가 없는 패턴, 구분되지만 visual_dominance 가 없는 패턴, finish_realization 없는 Glossy,
+     Textured Knit·Quilted·Exotic-Skin·Appliqué 의 DISTINCT·SUBTLE + Dominant, Exotic-Skin·Appliqué 의 TONAL + Dominant 또는 coverage 없음
+   한 경로로 합치기 (약한 경로는 더해지지 않는다):
+   · 시스루(Transparent·Semi Transparent)가 있으면 Mesh · Pleated · 추가 색이 안 실린 Linear 패턴은 시스루 경로에 흡수
+   · 같은 계통은 한 경로: Transparent·Semi Transparent·Mesh / Glossy·Reflective·Sequin-Beading / Appliqué·Jewelry Attachment / Ribbon·Feather / Fur·Fur Trim.
+     힘은 먼저 나온 멤버 하나로 정한다(surface → material → decorative_detail → attachment 순, 같은 파라미터 안은 values 순, Reflective 가 있으면 Sequin-Beading 은 흡수).
+     그 멤버가 근거 아님인데 다른 멤버가 미결이면 경로는 미결.
+   · 채택된 근거(같은 값의 부착물, pattern, graphic, material_component → surface·decorative_detail)에 실린 추가 색은 그 경로에 흡수.
+     Belt 처럼 근거가 아닌 부착물의 색은 따로 추가 색 경로로 남고, 동시에 Metal Hardware 의 대비·존재감으로도 쓰인다.
 4) 방향
    | 시작   | 없음·WEAK 만 | MEANINGFUL 1개 | MEANINGFUL 2개+ | STRONG 1개+ |
    | I_BASE | I            | 중립           | E               | E           |
    | CN     | 중립         | E              | E               | E           |
    | E_BASE | E            | E              | E               | E           |
    미결 경로는 E_BASE 에서는 무시한다. I_BASE · CN 에서는 그 경로를 WEAK/MEANINGFUL/STRONG 중 무엇으로 보느냐에 따라
-   결과가 바뀌면 미결이다 (이미 STRONG 이 있거나 I_BASE 에서 MEANINGFUL 2개가 있으면 E 로 확정).
-   (Pleated · realization 없는 Treated Surface 는 미결로 만들지 않는다)
-5) 점수: I → EI4 · 중립 → EI5 · E → EI6. 다음이면 EI7: 시스루 STRONG + 별도 Lace, 또는 상체 Class A 노출 STRONG + 별도 Upper Thigh 노출 STRONG.
+   결과가 바뀌면 미결이다 (이미 STRONG 이 있거나, I_BASE 에서 MEANINGFUL 2개 · CN 에서 MEANINGFUL 1개가 있으면 E 로 확정).
+   (Pleated · treated_surface_realization 없는 Treated Surface 는 미결로 만들지 않고 빼고 판단한다)
+5) 점수: I → EI4 · 중립 → EI5 · E → EI6. 다음이면 EI7: 시스루 STRONG + 별도 Lace, 또는 상체 Class A 노출(Shoulder · Chest / Décolletage · Midriff / Waist · Back) + 별도 Upper Thigh 노출.
+   E 이고 EI7 이 아닌데 Upper Thigh 노출이 있으면: realization_qualifiers 에서 Upper Thigh 의 mode=CONDITIONAL_OPENING_MEDIATED 일 때만 EI6,
+   그 밖(qualifier 없음 포함)은 방향은 E 지만 엔진 점수는 미결이다.
    EI1–3 · EI8–9 는 쓰지 않는다.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[TC — 새로움 ↔ 클래식] 세 채널(실루엣 S · 비율 P ·구조 C) + 비대칭으로 정한다.
-기준은 카테고리 + grammar 의 원형(예: JACKET:Tailored, COAT:Casual, shirt, sweater, skirt, dress, jumpsuit)이다.
-- 실루엣 S (fit, sleeve_volume, shoulder_structure, shoulder_span, silhouette)
-  · fit=Oversized → TRUE (sleeve_volume=Voluminous 여도 TRUE)
-  · 플레어 하의 + 위쪽 다리 핏과 대비 → TRUE
-  · fit=Slim·Regular·Relaxed → FALSE. 단, 형태 변형이 있으면 미결:
-    shoulder_structure=Extreme(모든 원형), shoulder_structure=Strong(Tailored 재킷·코트 제외), sleeve_volume=Voluminous
-  · Tailored 재킷·코트의 shoulder_structure=Strong 은 무시하고 fit 으로 판단. Mild → FALSE
-  · fit 미관찰·도메인 밖(Voluminous 는 skirt·dress 만 허용) → 미결
-  · Dress · Jumpsuit 는 상·하 부위 fit 을 따로 보고 하나라도 TRUE 면 TRUE, 모두 관찰되고 FALSE 면 FALSE, 그 밖은 미결
-- 비율 P (length): 원형의 관례 길이에서 벗어나면 TRUE (예: Cropped 재킷), 관례 길이면 FALSE, 길이 미관찰 → 미결
-- 구조 C (collar, closure_type, sleeve, front_opening_extent): 원형의 특징 구조 밖의 구성 요소면 TRUE
-  (예: Tailored 재킷의 collar=Stand, 하이브리드 원형), 원형에 맞는 구성이면 FALSE
-- 비대칭: asymmetry 가 관찰된 디자인 비대칭이면 T 방향 근거
-결정: 채널 중 하나라도 TRUE 거나 비대칭 → T. 세 채널이 모두 관찰되고 FALSE, 비대칭 없음 → C. 그 밖 → 미결.
-채널 간 다수결·가중치는 없다. TRUE 하나면 T 다.
-T 근거가 되지 않는 것: cuff_scale, cuff_type, collar_scale, 표면·패턴·장식·부착물·포켓, neckline, fabric_behavior, trouser_distinction.
-C 를 미는 별도 규칙은 없다 — Tailored · Notched · Double Breasted 라서 C 가 아니라, 세 채널이 모두 관례적이어서 C 다.
-누락·미관찰을 근거로 C 를 추론하지 않는다(엔진 기준 미결 → strength=weak).
-점수: 엔진은 TC 정확 점수를 내지 않는다 — C 는 TC1–TC4, T 는 TC6–TC9 범위로만 적는다. TC5 는 없다.
+[TC — 새로움 ↔ 클래식] 원형 키 기준 세 채널(실루엣 S · 비율 P · 구조 C) + 비대칭. 채널 값은 TRUE / FALSE / 미결.
+원형 키(category + grammar): T-Shirt→tshirt · Shirt→shirt · Sweater→sweater · Sweatshirt→sweatshirt · Trouser→trouser · Skirt→skirt ·
+  Dress→dress · Jumpsuit→jumpsuit · Jacket→JACKET:Tailored·Casual·Utility · Coat→COAT:Tailored·Casual·Utility (grammar 값).
+  Jacket·Coat 인데 grammar 미관찰 → 키 미결 → P·C 미결 (S 는 그대로 판정).
+- S (fit · sleeve_volume · shoulder_structure · shoulder_span · silhouette) — 위에서부터 먼저 맞는 것:
+  1) fit=Oversized → TRUE
+  2) trouser·jumpsuit: silhouette=Flared + fit=Slim → TRUE (dress Flared · skirt Widening 은 해당 없음)
+  3) sleeve_volume=Voluminous · shoulder_structure=Extreme · shoulder_structure=Strong · shoulder_span=Extended → 미결
+     (JACKET:Tailored·COAT:Tailored 의 Strong 은 없는 것으로 본다. Extreme 은 모든 키에서 미결)
+  4) fit=Slim·Regular·Relaxed·Voluminous → FALSE (shoulder_structure=None·Mild 는 영향 없음)
+  5) fit 미관찰 · 도메인 밖(Voluminous 는 skirt·dress 만, 그 밖 키의 Voluminous) → 미결
+  Dress·Jumpsuit: fit 값(전체 value 가 있으면 그것 + byRegion upper + lower)을 하나씩 1)–5) 에 넣는다 →
+  하나라도 TRUE → TRUE / 모두 관찰되고 FALSE → FALSE / 그 밖(부위 누락 포함) → 미결. jumpsuit 플레어(2)는 lower fit 에만.
+- P (length) — 표에 없는 값 · 미관찰 → 미결:
+  | 키                              | FALSE                                                                            | TRUE                   |
+  | tshirt·shirt·sweater·sweatshirt | Regular · Long                                                                   | Cropped                |
+  | JACKET:Tailored                 | Hip Length                                                                       | Waist Length · Cropped |
+  | JACKET:Casual·Utility           | Waist Length · Hip Length                                                        | Cropped                |
+  | COAT:Tailored·Casual·Utility    | Hip Length · Thigh Length · Knee Length · Maxi Length                            | 없음                   |
+  | trouser·jumpsuit                | Short · Knee Length · Calf Length · Ankle Length · Full Length · Extended Length | 없음                   |
+  | skirt·dress                     | Mini · Midi · Maxi Length                                                        | 없음                   |
+- C — 아래 TRUE 가 하나라도 있으면 TRUE, 없고 미결이 있으면 미결, 둘 다 없으면 FALSE (여기 없는 필드가 미관찰이어도 FALSE 를 막지 않는다):
+  · JACKET:Tailored·COAT:Tailored 만:
+    sleeve=Sleeveless → TRUE
+    collar: Notched·Peak·Shawl → FALSE / None·Stand·Shirt·Sailor·Peter Pan·Tie·Ruffle → TRUE
+    closure_type: Button·Single Breasted Button·Double Breasted Button → FALSE / Zipper·Snap Button·Hook Closure·Open → TRUE
+    front_opening_extent: Full → FALSE / Partial → TRUE / None → JACKET TRUE · COAT 미결
+  · tshirt: collar=Sailor·Peter Pan·Tie·Ruffle·Shawl·Notched·Peak·Stand 또는 front_opening_extent=Full → 미결
+  · 그 밖 키의 collar · closure_type · sleeve · front_opening_extent 는 C 근거 아님
+  · 관계형(모든 키) — values[].locations[] 로 판단. BODY 부위 = component Body·Bodice·Skirt Body·Leg·Sleeve (descriptor=Panel 제외).
+    Collar·Lapel·Cuff·Hem·Waistband·Pocket·Strap 만, 또는 Edge 만, 또는 Panel 이면 트림 = 근거 아님. locations 가 없으면 엔진은 미결.
+    material: Padding 외 서로 다른 소재 2개 이상이 각각 BODY 부위를 이룸 → TRUE / BODY 후보 2개 이상인데 locations 없는 소재가 있음 → 미결
+    surface: Lace·Mesh 가 BODY 부위 → TRUE / Lace·Mesh 에 locations 없음 → 미결 (Transparent·Semi Transparent 는 근거 아님)
+    attachment: Jewelry Attachment·Fringe·Feather·Ribbon·Fur Trim 이 BODY 부위 + coverage=Dominant → TRUE / locations 없음 → 미결 ·
+      Epaulette·Storm Flap 이 Utility 키 밖 → 미결 · Other 가 Hood·트림 부위 밖이거나 locations 없음 → 미결 · Belt·Metal Hardware → 근거 아님
+    pocket=Present 의 pockets[] 중 projection=Volumetric + construction=Applied + location=Leg·Lower Front·Chest 가 있으면:
+      Utility 키 → 근거 아님 / pocket density=dense → TRUE / trouser·jumpsuit → 근거 아님 / 그 밖 키 → 미결
+    trouser·jumpsuit 에 location=Lower Front + construction=Applied 포켓(위 dense 아님): attachment Metal Hardware 의 locations 에 Pocket → TRUE, 아니면 미결
+    shoulder_connection: jumpsuit Halter·Strapless + waist_definition=Defined·Cinched → TRUE / sweater Off Shoulder → TRUE /
+      tshirt Strap → 근거 아님 / tshirt·shirt·sweater·sweatshirt 의 그 밖 Standard 아닌 값 → 미결
+- 비대칭 (asymmetry=Present 일 때만):
+  slit=Present 아님 → T 근거 / slit=Present: asymmetry evidence 가 slit 외 출처(hem·high-low·drape·wrap·panel·shoulder·sleeve·closure·zip·
+  strap·pocket·collar·neckline·diagonal 등)를 말함 → T 근거 · slit 만 말함 → 근거 아님 · evidence 없음 또는 둘 다 아님 → 비대칭 미결
+결정: S·P·C 중 TRUE 또는 비대칭 T 근거 → T. 아니면 비대칭 미결 → 미결. 아니면 S·P·C 모두 FALSE → C. 그 밖 → 미결.
+채널 간 다수결·가중치는 없다. TRUE 하나면 T 다. Tailored · Notched · Double Breasted 라서 C 가 아니라, 세 채널이 모두 FALSE 여서 C 다.
+TC 근거 아님: cuff_type · cuff_scale · collar_scale · pattern · graphic · decorative_detail · neckline_shape · neckline_position · fabric_behavior ·
+  trouser_distinction · hood · rib_hem · shoulder_drop · ruffle · exposure_opening · 색 · 단일 소재 · slit(비대칭 외) · waist_definition(jumpsuit 규칙 외).
+S·P 는 관찰된 값으로만 FALSE 다 — 누락·미관찰로 C 를 추론하지 않는다(엔진 미결 → 가장 그럴듯한 쪽 + strength=weak).
+점수: 엔진 TC score 는 항상 null — C 는 TC1–TC4, T 는 TC6–TC9 범위로만 적는다. TC5 는 없다. 미결은 엔진상 범위가 없다.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [SR — 실루엣 ↔ 여유]
 0) 판정 가능 여부: sr_evidence_eligibility=ADJUDICABLE_WORN 일 때만 엔진이 점수를 낸다. 그 밖(평면·제품 컷, 착용이지만 근거 부족, 미결)은 엔진 미결.
    카테고리는 T-Shirt·Shirt·Sweater·Sweatshirt(상의) · Jacket·Coat(아우터) · Trouser·Skirt(하의) · Dress·Jumpsuit(원피스) 만 대상이다.
 읽는 것: fit, fabric_behavior, shoulder_structure, shoulder_drop, waist_definition, length, silhouette, material, surface. 그 밖(hood, rib_hem, sleeve_volume 등)은 무시.
-waist_definition 은 Jacket·Coat·Dress·Jumpsuit 에만 쓰고, length 가 Cropped·Waist Length 면 쓰지 않는다 (Defined=약, Cinched=강).
-어깨·허리는 상체에서만, silhouette 은 하체(하의 · 원피스 스커트)에서만 쓴다.
+적용 범위(밖이면 값이 있어도 무시): shoulder_structure 는 Jacket·Coat·Dress·Jumpsuit 만, shoulder_drop 은 Trouser·Skirt 제외,
+   waist_definition 은 Jacket·Coat·Dress·Jumpsuit 만이며 length 가 Cropped·Waist Length 면 쓰지 않는다 (Defined=약, Cinched=강).
+   fit=Voluminous 는 Skirt·Dress 만 허용 — 다른 카테고리에서 나오면 fit 미관찰로 본다. silhouette: Trouser·Jumpsuit=Straight·Flared·Tapered,
+   Skirt=Straight·Widening·Narrowing, Dress=Straight·Widening·Flared·Narrowing. 어깨·허리는 상체에서만, silhouette 은 하체(하의 · 원피스 스커트)에서만 쓴다.
 1) 근거 분류
    - 지배(S): shoulder_structure=Strong·Extreme, waist=Cinched, fit=Slim
    - 구조 지지: shoulder_structure=Mild, waist=Defined, fabric_behavior=Structured·Semi-Structured, 하체 silhouette=Straight·Tapered·Narrowing
-   - 해제(R): fit=Relaxed·Oversized·Voluminous (Oversized·Voluminous 는 강한 해제)
+   - 해제(R): fit=Relaxed·Oversized·Voluminous (Oversized·Voluminous = 강한 해제 핏)
    - 해제 지지: shoulder_drop=Dropped, fabric_behavior=Semi-Fluid·Fluid, 하체 silhouette=Flared·Widening
-   - 해제 억제(hold): shoulder Mild, waist Defined, fabric Structured (Semi-Structured 는 아님)
+   - 완전 구조: shoulder Mild, waist Defined, fabric Structured (Semi-Structured 는 아님)
    - 형태 유지: material=Leather·Padding, surface=Quilted
 2) 방향 (먼저 맞는 규칙)
    R0 shoulder Extreme + Dropped → 미결 / R1 fit 미관찰 → 미결 / R2 지배 근거 있음 → S (fit 이 해제여도)
-   fit 이 해제일 때: hold 있음 → 중립 · fit=Relaxed + 형태 유지 → S · fabric 관찰 또는 해제 지지 → R · 그 밖 → 미결
-   fit=Regular 일 때: 구조 지지만 있고 해제 지지 없음 → S · Dropped/Flared/Widening 해제 지지 → R (hold 있으면 중립) ·
-   유동 fabric 만 → 중립 · 아무것도 없음 → 미결
-   원피스: 상·하를 따로 판정해 같으면 그 방향, S+중립 → S, R+중립 → 강한 R 일 때만 R(아니면 중립),
-   S+R → S 가 강하고 R 이 약할 때만 S(아니면 중립), 한쪽 미결 → 미결
+   fit 이 해제일 때: 완전 구조 있음 → 중립 · fit=Relaxed + 형태 유지 → S · fabric 관찰 또는 해제 지지 → R · 그 밖 → 미결
+   fit=Regular 일 때: 구조 지지 있고 해제 지지 없음 → S · Dropped/Flared/Widening 있음 → R (완전 구조 있으면 중립) ·
+   유동 fabric(Semi-Fluid·Fluid)만 → 중립 · 유동 fabric + 구조 지지 → 중립 · 아무것도 없음 → 미결
+   원피스: 상·하를 따로 판정. 같으면 그 방향, S+중립 → S, R+중립 → R 쪽이 R강일 때만 R(아니면 중립),
+   S+R → S 쪽이 S강이고 R 쪽이 R강이 아닐 때만 S(아니면 중립), 한쪽 미결 → 미결.
+   S강 = {shoulder Strong·Extreme, waist Cinched, fit Slim} 중 2개 이상 · R강 = fit Oversized·Voluminous + fabric Semi-Fluid·Fluid
 3) 점수
    중립 → SR5
-   R: 강도 = fit Oversized·Voluminous 이고 강화 신호(fabric Semi-Fluid·Fluid, 하체 Widening·Flared, fit=Voluminous) 1개 이상이면 SR3, 아니면 SR4
-   S: shoulder Extreme + waist Cinched + fit Slim → SR8
-      fabric=Structured + (shoulder Mild·Strong·Extreme 또는 waist Defined·Cinched) + 강도 REGULAR 이상 → SR7
-      그 밖 → SR6
-      (강도 REGULAR 이상 = fabric Structured + 어깨·허리 hold 중 하나, 또는 {fit Slim, shoulder Strong·Extreme, waist Cinched} 중 2개 이상)
+   R: fit Oversized·Voluminous 이고 강화 신호(fabric Semi-Fluid·Fluid, Widening·Flared, fit=Voluminous) 1개 이상 → SR3, 아니면 SR4
+      (원피스: 두 절반 중 약한 쪽 기준, 한쪽이 중립이면 다른 쪽 기준)
+   S: 구조 고정 = shoulder Mild·Strong·Extreme 또는 waist Defined·Cinched (완전 구조와 다름)
+      shoulder Extreme + waist Cinched + fit Slim → SR8 · fabric=Structured + 구조 고정 → SR7 · 그 밖 → SR6
+      원피스: SR8·SR7 근거는 상체 것만 본다. 하체가 R 이면 한 단계 낮춘다(SR7 → SR6) — 단 fabric Structured + fit Slim + 어깨·허리 구조 고정 둘 다면 SR7 유지.
    SR1 · SR2 · SR9 는 쓰지 않는다.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[DM — 디테일 포인트] dm_designed_detail_evidence 블록만 본다. 37개 파라미터로 블록을 보충하거나 개수를 세지 않는다.
-블록의 evidence[] 하나 = 하나의 디자인 시스템(예: 밴드를 이루는 스터드 40개 = 1개). 각 evidence 의 기본값:
-relative_size(small·medium·large), contrast(low·medium·high), spatial_position(localized·distributed·whole_garment),
-m1_supporting_realization.internal_chromatic_composition(multi_colour_compound·limited_or_uniform),
-m1_supporting_realization.internal_fill_realization(dense_varied·uniform_or_sparse)
-"주도(commanding)" evidence:
-  - size∈{medium,large} 이고 contrast=high, 또는
-  - size∈{medium,large} 이고 contrast=medium 이고 spatial∈{distributed,whole_garment} 이고
-    (chromatic=multi_colour_compound 또는 fill=dense_varied)
+[DM — 디테일 포인트] dm_designed_detail_evidence 블록의 evidence[] 만 본다. excluded[] 와 37개 파라미터는 보지 않는다(보충·개수 세기 없음).
+evidence[] 하나 = 하나의 디자인 시스템(예: 밴드를 이루는 스터드 40개 = 1개). 각 값은 {state, value} 이며 state=OBSERVED 이고 도메인 안의 값만 쓴다
+(NOT_VISIBLE · UNKNOWN · 누락 · 도메인 밖 = 미관찰):
+  relative_size(small·medium·large) · contrast(low·medium·high) · spatial_position(localized·distributed·whole_garment)
+  m1_supporting_realization.internal_chromatic_composition(multi_colour_compound·limited_or_uniform) ·
+  m1_supporting_realization.internal_fill_realization(dense_varied·uniform_or_sparse)
+  ※ 아래 "rich" = chromatic=multi_colour_compound 또는 fill=dense_varied 가 관찰됨
+주도(commanding) evidence — evidence_family 와 무관:
+  a) size∈{medium,large} + contrast=high (spatial 무관)
+  b) 경계 evidence(size∈{medium,large} + contrast=medium + spatial∈{distributed,whole_garment}) 이고 rich
+비주도 확정: size·contrast·spatial 셋 다 관찰되고 a·b 가 아님. 단 경계 evidence 는 두 composition 값이 모두 관찰되고 rich 가 아닐 때만.
+  (경계 evidence 가 rich 가 아니면서 composition 값 하나라도 미관찰 → 주도 여부 미결)
 방향 (순서대로):
-  1) 블록 없음·형식 오류 → 미결 / 2) evidence=[] → M / 3) 주도 evidence 가 하나라도 있으면 → D
-  4) 주도 여부를 가릴 값이 미관찰이면 → 미결
-  5) 중립: 어떤 evidence 가 localized + size medium·large / large evidence 2개 이상 / large evidence + 다른 evidence 의 contrast=high /
-     size medium·large + spatial distributed·whole_garment + contrast medium·high
+  1) 블록 없음 · 형식 오류(객체 아님, evidence 가 배열 아님, axis_target≠DM, evaluation_unit≠whole_garment) → 미결
+  2) evidence=[] → M / 3) 주도 evidence 가 하나라도 있으면 → D (다른 evidence 가 미결이어도)
+  4) 주도도 비주도 확정도 아닌 evidence 가 하나라도 있으면 → 미결 (예: small·low 라도 spatial 미관찰이면 미결)
+  5) 중립: localized + size medium·large 인 evidence / large evidence 2개 이상 / large evidence + 다른 evidence 의 contrast=high /
+     size medium·large + spatial distributed·whole_garment + contrast medium·high 인 evidence
   6) 그 밖 → M (작은 디테일은 몇 개든 M 이다)
 점수:
-  M: evidence=[] → DM2 · 모든 evidence 가 small + low → DM3 · 그 밖 → DM4
-  중립 → DM5
-  D: 강함 조건 = 주도 evidence 가 whole_garment, 또는 주도 evidence 2개 이상, 또는 주도 evidence + 다른 evidence(size medium·large + contrast medium·high)
-     M1 = 주도 evidence 가 graphic 이면 chromatic=multi_colour_compound 또는 fill=dense_varied,
-          surface_pattern·surface_treatment·attached_detail 이면 fill=dense_varied
-     강함 + M1 → DM8 · 강함 또는 M1 중 하나 → DM7 · 둘 다 아님 → DM6
+  M: evidence=[] → DM2 · 모든 evidence 가 small + low → DM3 · 그 밖 → DM4 / 중립 → DM5
+  D: 강함 = 주도 evidence 가 whole_garment, 또는 주도 evidence 2개 이상,
+            또는 주도 evidence + 비주도 evidence(size medium·large + contrast medium·high)
+     M1 은 주도 evidence 에만, evidence_family 별로:
+       graphic → rich 면 발동 · rich 아님 + composition 하나라도 미관찰 → M1 미결
+       surface_pattern·surface_treatment·attached_detail → fill=dense_varied 면 발동 · fill 미관찰 → M1 미결
+       decorative_construction·attached_hardware·designed_color_contrast → M1 대상 아님 (dense_varied 여도)
+     강함: M1 미결인 주도 evidence 가 있으면 점수 미결 · 아니면 M1 발동 → DM8 · 미발동 → DM7
+     강함 아님: M1 발동 → DM7 · M1 미결 → 점수 미결 · 그 밖 → DM6   (점수가 미결이어도 방향은 D 다)
   DM1 · DM9 는 쓰지 않는다.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [strength]
-엔진 규칙으로 방향이 확정되고 점수가 양 끝에 가까우면 strong(예: EI7, SR3·SR8, DM2·DM8), 경계에 가까우면 moderate(EI4·EI6, SR4·SR6, DM4·DM6),
-중립 고정이거나 엔진 규칙상 미결이면 weak.
+엔진 규칙으로 방향이 확정되고 점수가 양 끝에 가까우면 strong(예: EI7, SR3·SR8, DM2·DM3·DM7·DM8), 경계에 가까우면 moderate(EI4·EI6, SR4·SR6, DM4·DM6),
+중립 고정이거나 엔진 규칙상 미결이면 weak (방향은 확정돼도 점수가 미결이면 weak).
 
 [출력]
 - evidence: 첫 줄은 "엔진 규칙: <점수 또는 미결> (<방향 · 이유>)", 이어서 판정에 쓴 관찰값을 "파라미터=값 → 효과" 형태로 짧게 적는다.
