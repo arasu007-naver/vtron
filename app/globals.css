@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/*
+ * dark: 는 OS 다크 모드를 따른다. 단 .light-scope 안은 예외 — 늘 흰 바탕인 창(예: /style-ex 의
+ * 상품 고르기 모달)에 다크 모드용 부품을 넣으면 밝은 글자가 흰 바탕에 묻힌다.
+ * :where() 로 감싸 dark: 유틸의 우선순위는 그대로 둔다.
+ */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:where(:not(.light-scope, .light-scope *)) {
+      @slot;
+    }
+  }
+}
+
 @layer base {
   :root {
     --color-bg: #f3f2f2;

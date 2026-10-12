@@ -47,7 +47,7 @@ export default function ProductPickModal({
         role="dialog"
         aria-modal="true"
         aria-label="상품 Style ID 추출"
-        className="relative w-[520px] max-w-full h-[min(720px,85vh)] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden border border-[rgba(32,31,29,0.14)]"
+        className="light-scope relative w-[520px] max-w-full h-[min(720px,85vh)] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden border border-[rgba(32,31,29,0.14)]"
         onClick={(e) => e.stopPropagation()}
       >
         <header className="flex-none flex items-center justify-between gap-3 px-5 py-3 border-b border-[var(--color-divider)] bg-[var(--color-panel)]">
