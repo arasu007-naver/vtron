@@ -4,6 +4,7 @@
    이미지 한 장을 골라 의류 스타일 추출(lib/style-ex)을 호출하고 결과를 본다.
 
    ┌ 이미지 미리보기  [상품 Style ID 추출] [이미지] [추출] ┬ 프롬프트 [관찰|판정] ┤
+   │                                ├ 상품 정보      [PDF 작성] ┤ ← 상품으로 추출했을 때
    │                                ├ 호출 결과 (스타일 아이디 + JSON)│
    └────────────────────────────────┴────────────────────────────┘
 
@@ -12,13 +13,15 @@
    그대로면 서버가 기본 프롬프트를 쓴다.
 
    입력 이미지는 파일로 고르거나, [상품 Style ID 추출] 모달(ProductPickModal)에서 등록된 상품을
-   찾아 그 상품의 원본 사진을 쓴다. */
+   찾아 그 상품의 원본 사진을 쓴다. 상품으로 추출하면 프롬프트 아래에 상품 정보가 서고, [PDF 작성] 이
+   상품 사진 · 상품 정보 · 호출 결과를 위에서 아래로 담은 PDF 를 내려받게 한다(lib/style-ex/report-pdf). */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Crop, ImagePlus, Loader2, RotateCcw, ScanSearch, ShoppingBag } from "lucide-react";
+import { Crop, ExternalLink, FileDown, ImagePlus, Loader2, RotateCcw, ScanSearch, ShoppingBag } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
 import ProductPickModal from "@/components/style-ex/ProductPickModal";
-import type { CatalogProduct } from "@/lib/tryon/product-catalog";
+import type { CatalogKind, CatalogProduct } from "@/lib/tryon/product-catalog";
+import { downloadReportPdf, type ReportBlock } from "@/lib/style-ex/report-pdf";
 
 type Status = "idle" | "running" | "done" | "error";
 type PromptKey = "prompt" | "judgePrompt";
@@ -98,6 +101,20 @@ const EMPTY_PROMPTS: Record<PromptKey, string> = { prompt: "", judgePrompt: "" }
 /** 서버(/api/style-ex)의 이미지 한도와 같다 — Anthropic 이미지 입력 한도 */
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
+const KIND_LABEL: Record<CatalogKind, string> = { top: "상의", bottom: "하의", etc: "기타" };
+
+/** 상품 정보 — 화면의 상품 정보 칸과 PDF 가 같이 쓴다. 사진은 뺀다. */
+function productRows(product: CatalogProduct): [string, string][] {
+  return [
+    ["브랜드", product.brandName ?? "브랜드 미상"],
+    ["상품명", product.name],
+    ["분류", `${KIND_LABEL[product.kind] ?? product.kind} · ${product.path}`],
+    ["상품 ID", product.id],
+    ["카테고리 ID", product.categoryId],
+    ["판매 페이지", product.catalogUrl],
+  ];
+}
+
 const EXTENSION: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif" };
 
 export default function StyleExPage() {
@@ -122,6 +139,8 @@ export default function StyleExPage() {
   const [product, setProduct] = useState<CatalogProduct | null>(null);
   /** 상품 사진으로 추출했을 때 product_style 저장 결과 */
   const [saved, setSaved] = useState<{ id: string } | { error: string } | null>(null);
+  const [pdfBusy, setPdfBusy] = useState(false);
+  const [pdfError, setPdfError] = useState<string | null>(null);
 
   // 기본 프롬프트 (관찰 · 판정)
   useEffect(() => {
@@ -163,6 +182,7 @@ export default function StyleExPage() {
     setCrops(null);
     setStatus("idle");
     setElapsed(null);
+    setPdfError(null);
   }, []);
 
   const handlePick = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -264,6 +284,42 @@ export default function StyleExPage() {
     }
   };
 
+  /** 상품 사진 → 상품 정보 → 호출 결과 순서의 PDF 를 내려받는다. */
+  const handlePdf = async () => {
+    if (!product || !file || !result || pdfBusy) return;
+    setPdfBusy(true);
+    setPdfError(null);
+    try {
+      const now = new Date();
+      const stamp = now.toLocaleString("ko-KR", { hour12: false });
+      const callRows: [string, string][] = [
+        ["상태", status === "done" ? "성공" : "실패"],
+        ...(elapsed !== null ? [["소요 시간", `${elapsed.toFixed(1)}초`] as [string, string]] : []),
+        ["프롬프트", PROMPT_TABS.map(({ key, label }) => `${label} ${isEdited(key) ? "수정함" : "기본값"}`).join(" · ")],
+      ];
+      const blocks: ReportBlock[] = [
+        { kind: "title", text: "상품 Style ID 추출 결과", sub: stamp },
+        { kind: "image", src: await readAsDataUrl(file), alt: product.name },
+        { kind: "heading", text: "상품 정보" },
+        { kind: "rows", rows: productRows(product) },
+        { kind: "pageBreak" },
+        { kind: "heading", text: "호출 결과" },
+        { kind: "rows", rows: callRows },
+        ...(summary ? summaryBlocks(summary) : []),
+        { kind: "pageBreak" },
+        { kind: "code", text: withoutSaved(result) },
+      ];
+      const pad = (n: number) => String(n).padStart(2, "0");
+      const day = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}`;
+      const name = [product.brandName, product.name].filter(Boolean).join("_").replace(/[\\/:*?"<>|\s]+/g, "_").slice(0, 60);
+      await downloadReportPdf(blocks, `style-id_${name}_${day}.pdf`);
+    } catch (e) {
+      setPdfError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setPdfBusy(false);
+    }
+  };
+
   const prompt = prompts[tab];
   const isEdited = (key: PromptKey) => defaults[key] !== "" && prompts[key] !== defaults[key];
 
@@ -343,8 +399,8 @@ export default function StyleExPage() {
           </div>
         </section>
 
-        {/* 오른쪽 — 위: 프롬프트 / 아래: 결과 */}
-        <section className="min-h-0 grid grid-rows-2">
+        {/* 오른쪽 — 위: 프롬프트 / 가운데: 상품 정보(상품으로 추출했을 때) / 아래: 결과 */}
+        <section className="min-h-0 grid grid-rows-[1fr_auto_1fr]">
           <div className="min-h-0 flex flex-col border-b border-[var(--color-divider)]">
             <div className="flex-none flex items-center gap-1 px-4 py-2 text-sm">
               {PROMPT_TABS.map(({ key, label }) => (
@@ -385,6 +441,53 @@ export default function StyleExPage() {
                 : "관찰값 JSON 이 이 프롬프트 뒤에 자동으로 붙어 판정 모델에 보내집니다."}
             </p>
           </div>
+
+          {/* 상품 정보 — 상품을 고르고 추출을 누른 뒤에 선다. 사진은 왼쪽에 있으니 뺀다. */}
+          {product && status !== "idle" ? (
+            <div className="flex items-start gap-3 px-4 py-3 border-b border-[var(--color-divider)] bg-[var(--color-panel)]">
+              <dl className="flex-1 min-w-0 grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-xs m-0">
+                {productRows(product).map(([label, value]) => (
+                  <div key={label} className="contents">
+                    <dt className="text-black/50">{label}</dt>
+                    <dd className="m-0 min-w-0 truncate text-black" title={value}>
+                      {label === "판매 페이지" ? (
+                        <a
+                          href={value}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[var(--color-accent-700)] hover:underline"
+                        >
+                          <ExternalLink className="w-3 h-3 flex-none" />
+                          <span className="truncate">{value}</span>
+                        </a>
+                      ) : (
+                        value
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="flex-none flex flex-col items-end gap-1">
+                <button
+                  type="button"
+                  onClick={handlePdf}
+                  disabled={!result || status === "running" || pdfBusy}
+                  title={status === "running" ? "추출이 끝나면 만들 수 있습니다" : "상품 사진 · 상품 정보 · 호출 결과를 PDF 로"}
+                  className="btn btn-primary px-4 py-2 rounded-full flex items-center gap-1.5 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {pdfBusy ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileDown className="w-4 h-4" />}
+                  {pdfBusy ? "작성 중…" : "PDF 작성"}
+                </button>
+                {pdfError && (
+                  <span className="max-w-[160px] truncate text-xs text-[var(--color-danger)]" title={pdfError}>
+                    {pdfError}
+                  </span>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div />
+          )}
 
           <div className="min-h-0 flex flex-col">
             <div className="flex-none flex items-center gap-2 px-4 py-2 text-sm font-semibold">
@@ -440,6 +543,59 @@ export default function StyleExPage() {
   );
 }
 
+
+/** PDF 에는 DB 저장 결과를 넣지 않는다 — 결과 JSON 에서 saved 를 뺀다. JSON 이 아니면 그대로. */
+function withoutSaved(json: string): string {
+  try {
+    const data = JSON.parse(json);
+    if (!data || typeof data !== "object" || !("saved" in data)) return json;
+    delete data.saved;
+    return JSON.stringify(data, null, 2);
+  } catch {
+    return json;
+  }
+}
+
+function readAsDataUrl(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.onerror = () => reject(reader.error ?? new Error("이미지를 읽지 못했습니다."));
+    reader.readAsDataURL(blob);
+  });
+}
+
+/** [[StyleIdCard]] 를 PDF 조각으로 — 같은 내용을 글로 옮긴다. */
+function summaryBlocks({ styleId, judgement }: Summary): ReportBlock[] {
+  if (!styleId) return [];
+  if (!styleId.ok) return [{ kind: "text", tone: "danger", text: `스타일 아이디를 정하지 못했습니다: ${styleId.error ?? ""}` }];
+  const llm = judgement?.ok ? judgement.axes : undefined;
+  const blocks: ReportBlock[] = [{ kind: "text", tone: "accent", text: styleId.style_id ?? "" }];
+  if (styleId.style) {
+    blocks.push({ kind: "text", text: `${styleId.style.name}  ${styleId.style.subTitle}` });
+    blocks.push({ kind: "text", tone: "muted", text: styleId.style.definition });
+  }
+  if (styleId.target_id) blocks.push({ kind: "text", tone: "muted", text: `기준 의복: ${styleId.target_id}` });
+  if (styleId.axes) {
+    blocks.push({
+      kind: "rows",
+      rows: AXIS_ORDER.map((key) => {
+        const a = styleId.axes![key];
+        const l = llm?.[key];
+        const usesLlm = a.source === "LLM" || a.source === "LLM_FALLBACK";
+        const lines = [
+          a.source ? `[${SOURCE_LABEL[a.source]}${a.label ? ` ${a.label}` : ""}]` : "[판정 없음]",
+          usesLlm && l ? `${l.rationale} (${STRENGTH_LABEL[l.strength]})` : "",
+          a.detail ?? "",
+          usesLlm && l && l.evidence.length > 0 ? l.evidence.join(" · ") : "",
+        ].filter(Boolean);
+        return [`${key}  ${a.letter ?? "?"}`, lines.join("\n")];
+      }),
+    });
+  }
+  if (judgement && !judgement.ok) blocks.push({ kind: "text", tone: "danger", text: `LLM 판정 실패: ${judgement.error ?? ""}` });
+  return blocks;
+}
 
 /** 스타일 아이디 요약 — 결과 JSON 위에 보인다. 축마다 글자의 출처(엔진 · LLM)를 함께 표시한다. */
 function StyleIdCard({ summary }: { summary: Summary }) {
