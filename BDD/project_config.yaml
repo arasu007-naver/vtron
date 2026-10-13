@@ -1,0 +1,93 @@
+# BDD project config — meirm/reverse-engineering-skill 의 tailor 단계 산출물
+# 대상: STMX 서비스 = stmx-web-phase2 (apps/web + apps/mobile, 현행 main) + vton (내부 운영 도구)
+# 두 앱은 같은 Supabase 프로젝트(ref ttcb…)를 공유한다.
+
+bl_output:
+  root: "business_logic"
+  subdirs:
+    current: "current"
+    proposal: "proposal"
+    under_development: "under_development"
+    historical: "historical"
+  categories:
+    - endpoints
+    - models
+    - workflows
+    - billing
+    - research          # 외부 서비스(블랙박스) 관찰 증거
+  index_file: "index.md"
+  glossary_file: "glossary.md"
+  discovery_file: "DISCOVERY.md"
+
+terminology:
+  terms:
+    - term: "크리에이터 (creator)"
+      definition: "Loox 게시물을 올리고 상품 링크를 발행해 커미션을 받는 사용자. user_biz_request code='CR' 승인 사용자"
+      technical_alias: "profiles(id), influencer"
+    - term: "Loox"
+      definition: "크리에이터가 올리는 착장 게시물"
+      technical_alias: "posts, post_images"
+    - term: "상품 (product)"
+      definition: "Loox 에 붙는 판매 상품. 현재는 네이버 쇼핑 카탈로그 상품"
+      technical_alias: "products, brand_catalog_models"
+    - term: "브랜드 (brand)"
+      definition: "커미션을 지급하는 판매자. public.brands 가 유일한 소유 테이블"
+      technical_alias: "brands (commerce_brands 는 쓰지 않음)"
+    - term: "제휴 링크 (affiliate link)"
+      definition: "크리에이터 × 상품(× 발행 맥락) 마다 발행되는 추적용 단축 링크"
+      technical_alias: "affiliate_links, tracking_code, ShopMy pin / quick link"
+    - term: "클릭 (click)"
+      definition: "제휴 링크가 열려 리다이렉터를 거친 1회 방문"
+      technical_alias: "affiliate_link_clicks"
+    - term: "어트리뷰션 (attribution)"
+      definition: "주문을 특정 클릭/링크/크리에이터에 귀속시키는 판정"
+      technical_alias: "attributed_click_id, last-click"
+    - term: "제휴 주문 (affiliate order)"
+      definition: "브랜드가 보고(웹훅/정산 파일)한, 링크에 귀속된 구매"
+      technical_alias: "affiliate_orders"
+    - term: "커미션 (commission)"
+      definition: "제휴 주문 1건에서 발생한 크리에이터 몫. pending→locked→paid|reversed"
+      technical_alias: "commissions"
+    - term: "페이아웃 (payout)"
+      definition: "locked 커미션을 묶어 지급하는 주간 배치"
+      technical_alias: "payouts, payout_items"
+    - term: "bps"
+      definition: "만분율. 1500 = 15.00%"
+
+entry_points:
+  framework: "Next.js 16 App Router + Supabase (Postgres, RLS, RPC) + Expo Router"
+  endpoints:
+    description: "Next API routes"
+    path_patterns:
+      - "../stmx-web-phase2/apps/web/app/api/**/route.ts"
+      - "app/api/**/route.ts"
+    grep_patterns:
+      - "export async function (GET|POST|PUT|PATCH|DELETE)"
+    bl_category: "endpoints"
+  models:
+    description: "SQL 스키마"
+    path_patterns:
+      - "supabase/migrations/*.sql"
+      - "../stmx-web-phase2/supabase/migrations/*.sql"
+      - "../stmx-web-phase2/sqls/phase2/*.sql"
+    grep_patterns:
+      - "create table"
+      - "create type"
+    bl_category: "models"
+  workflows:
+    description: "서버 로직, 스크립트, 모바일 아웃바운드"
+    path_patterns:
+      - "../stmx-web-phase2/apps/web/lib/server/*.ts"
+      - "../stmx-web-phase2/apps/mobile/src/lib/*.ts"
+      - "scripts/*.mjs"
+    grep_patterns:
+      - "openURL|naver_url|redirect"
+    bl_category: "workflows"
+  billing:
+    description: "커미션·페이아웃"
+    path_patterns:
+      - "supabase/migrations/0008_brands_shopmy.sql"
+      - "supabase/migrations/0012_affiliate_commissions_payouts.sql"
+    grep_patterns:
+      - "commission|payout|bps"
+    bl_category: "billing"
