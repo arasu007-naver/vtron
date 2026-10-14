@@ -4,6 +4,7 @@ import React, { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Sparkles, Eye, EyeOff, LogIn, AlertCircle } from "lucide-react";
 import { login } from "@/lib/auth-client";
+import { NOT_ADMIN_ERROR, NOT_ADMIN_MESSAGE } from "@/lib/supabase/admin-gate";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 
 /**
@@ -26,7 +27,10 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  // proxy 가 비관리자 세션을 지우고 `?error=forbidden` 으로 보낸 경우 그 이유를 먼저 보여 준다.
+  const [error, setError] = useState<string | null>(
+    searchParams.get("error") === NOT_ADMIN_ERROR ? NOT_ADMIN_MESSAGE : null
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

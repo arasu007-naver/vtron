@@ -57,7 +57,7 @@ function parseQueryAndLimit(req: NextRequest, bodyJson?: Record<string, unknown>
 }
 
 export async function GET(req: NextRequest) {
-  const auth = await authenticate(req);
+  const auth = await authenticate(req, { allowNonAdmin: true });
   if (!auth) return unauthorized();
 
   try {
@@ -93,7 +93,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const auth = await authenticate(req);
+  const auth = await authenticate(req, { allowNonAdmin: true });
   if (!auth) return unauthorized();
 
   try {
