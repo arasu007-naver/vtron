@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { NOT_ADMIN_ERROR, isAdmin } from "@/lib/supabase/admin-gate";
 import {
   SUPABASE_PUBLIC_KEY,
   SUPABASE_URL,
@@ -12,6 +13,11 @@ import {
  * `/login` 을 제외한 모든 페이지는 유효한 Supabase 세션이 있어야 접근할 수 있고,
  * 없으면 `/login` 으로 리다이렉트한다. 반대로 이미 로그인한 사용자가 `/login`
  * 에 오면 스튜디오로 돌려보낸다.
+ *
+ * 세션이 있어도 **관리자(`profiles.is_admin`)가 아니면** 들이지 않는다 — stmx-web 과 같은
+ * Supabase 프로젝트라 앱 사용자도 같은 계정으로 로그인할 수 있기 때문이다([[isAdmin]]).
+ * 비관리자 세션은 이 브라우저에서만 로그아웃시키고(`scope: "local"` — 앱의 세션은 건드리지 않는다)
+ * `/login?error=forbidden` 으로 보낸다.
  *
  * Next 16 에서 `middleware.ts` 는 deprecated 이므로 `proxy.ts` 규약을 쓴다.
  */
@@ -76,6 +82,14 @@ export async function proxy(request: NextRequest) {
       "/login",
       pathname === "/" ? undefined : { next: `${pathname}${search}` }
     );
+  }
+
+  if (user && !(await isAdmin(supabase, user.id))) {
+    await supabase.auth.signOut({ scope: "local" });
+    // signOut 이 setAll 로 `response` 에 지운 쿠키를 실었다. 리다이렉트 응답에 옮겨야 브라우저에 반영된다.
+    const redirect = redirectTo(request, "/login", { error: NOT_ADMIN_ERROR });
+    response.cookies.getAll().forEach((cookie) => redirect.cookies.set(cookie));
+    return redirect;
   }
 
   if (user && isPublic) {

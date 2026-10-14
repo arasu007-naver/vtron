@@ -2,6 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { createClient, type User } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { isAdmin } from "./admin-gate";
 import { SUPABASE_PUBLIC_KEY, SUPABASE_URL } from "./env";
 
 /**
@@ -45,12 +46,26 @@ export interface AuthContext {
   token: string;
 }
 
+export interface AuthenticateOptions {
+  /**
+   * 관리자가 아닌 사용자 토큰도 받는다. stmx-web 이 앱 사용자의 토큰을 그대로 실어 부르는
+   * 라우트(`/api/brand-search`, `/api/search-brand-count`)만 켠다.
+   */
+  allowNonAdmin?: boolean;
+}
+
 /**
  * Bearer 토큰을 Auth 서버에 검증시킨다.
  * 토큰이 없거나 유효하지 않으면 null.
  * 서비스 롤 키(서버 간 통신) 또는 사용자 Access Token(Bearer JWT) 모두 검증한다.
+ *
+ * 사용자 토큰은 관리자(`profiles.is_admin`)여야 통과한다([[isAdmin]]). 아니면 null —
+ * 라우트는 그대로 401 을 주고, 클라이언트는 로그인 화면으로 가서 proxy 가 세션을 정리한다.
  */
-export async function authenticate(req: Request): Promise<AuthContext | null> {
+export async function authenticate(
+  req: Request,
+  { allowNonAdmin = false }: AuthenticateOptions = {}
+): Promise<AuthContext | null> {
   const token = getBearerToken(req);
   if (!token) return null;
 
@@ -98,6 +113,15 @@ export async function authenticate(req: Request): Promise<AuthContext | null> {
 
   const { data, error } = await client.auth.getUser(token);
   if (error || !data.user) return null;
+
+  if (!allowNonAdmin) {
+    // 본인 profiles 행은 사용자 권한(RLS)으로 읽힌다. 토큰을 실은 클라이언트로 읽는다.
+    const userClient = createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY, {
+      auth: { persistSession: false, autoRefreshToken: false },
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
+    if (!(await isAdmin(userClient, data.user.id))) return null;
+  }
 
   return { user: data.user, token };
 }
