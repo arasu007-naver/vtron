@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
+import ChatAgent from "@/components/ChatAgent";
 
 export const metadata: Metadata = {
   title: "VTON Studio — Virtual Try-On Platform",
@@ -33,6 +34,8 @@ export default function RootLayout({
           <NavBar />
           <div className="flex-1 min-h-0 overflow-auto vt-scroll">{children}</div>
         </div>
+        {/* 전역 채팅 도우미 — 오른쪽 아래 고정 토글 버튼 */}
+        <ChatAgent />
       </body>
     </html>
   );
