@@ -12,9 +12,10 @@ import { AXES, STYLE_IDS, type AxisKey } from "./style-ids";
  * 관찰(Observation)과 소비(Consumption)를 나눈 엔진 원칙을 그대로 따른다.
  * 판정 규칙(DEFAULT_JUDGE_PROMPT)은 각 축 최종 스코어링 엔진의 규칙을 옮긴 것이다.
  *
- * 쓰임 (extract.ts):
- *   TC        — 항상 이 판정을 쓴다. TC 엔진은 학습 코퍼스의 anchor_id 만 받아 새 사진에 쓸 수 없다.
- *   EI·SR·DM — 스코어링 엔진이 점수를 내지 못했을 때만 대신 쓴다.
+ * 지금은 추출(extract.ts)에서 부르지 않는다 — 추출은 Claude API 를 관찰에서 한 번만 부르고, 판정은
+ * 판정 함수 judgeStyleIdByRules(엔진 EI · SR · DM + tc-rules.ts TC)가 코드로 한다. 엔진 · 규칙이 미결로 남긴
+ * 축은 LLM 대신 엔진 방향 또는 기본 글자(RULE_DEFAULT)로 채운다. 이 파일과 판정 프롬프트 버전은 LLM 판정을
+ * 다시 켤 때를 위해 남겨 둔다. DEFAULT_JUDGE_PROMPT 는 규칙 문서로도 읽힌다(tc-rules.ts 가 [TC] 절을 옮겼다).
  */
 
 const MODEL = process.env.STYLE_EX_JUDGE_MODEL || "claude-opus-5-5";

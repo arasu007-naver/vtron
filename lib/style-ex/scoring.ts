@@ -10,7 +10,7 @@ import path from "node:path";
  *   EI : { category, observations, color_observation }        → EI1–EI9
  *   SR : { record, meta: { sr_evidence_eligibility } }         → SR1–SR9
  *   DM : record.dm_designed_detail_evidence                    → DM1–DM9
- *   TC : 엔진이 코퍼스 anchor_id 만 받으므로 새 사진에는 쓸 수 없다 → LLM 판정(judge.ts)이 맡는다.
+ *   TC : 엔진이 코퍼스 anchor_id 만 받으므로 새 사진에는 쓸 수 없다 → 규칙 판정(tc-rules.ts)이 맡는다.
  *
  * 점수 → 글자: 1–4 낮은 쪽(I · R · M), 6–9 높은 쪽(E · S · D).
  * 중립 5 는 E · S · D 로 고정한다 (2026-10-04 결정).
@@ -151,5 +151,27 @@ export function axisScoreOf(result: Obj, axis: EngineAxis) {
     (semantic?.reason as string | undefined) ??
     (ar?.detail as string | undefined) ??
     null;
-  return { score, label: score == null ? null : `${axis}${score}`, outcome: ar?.axis_outcome ?? null, status, reason };
+  return {
+    score,
+    label: score == null ? null : `${axis}${score}`,
+    outcome: ar?.axis_outcome ?? null,
+    status,
+    reason,
+    /** 엔진의 방향 (SR: STRUCTURED · RELAXED · NEUTRAL · UNKNOWN, DM: D · M · NEUTRAL · UNKNOWN) — 없으면 null */
+    direction: typeof semantic?.direction === "string" ? semantic.direction : null,
+  };
+}
+
+// 엔진 방향 → 글자. 점수는 미결이어도 방향이 확정됐으면 그 방향의 글자를 쓴다 (판정 프롬프트 [공통] 규칙).
+const DIRECTION_LETTER: Record<string, "low" | "high" | "neutral"> = {
+  I: "low", E: "high", INTROVERTED: "low", EXPRESSIVE: "high",
+  R: "low", S: "high", RELAXED: "low", STRUCTURED: "high",
+  M: "low", D: "high",
+  NEUTRAL: "neutral",
+};
+
+/** 엔진 방향만으로 정한 글자. 방향이 미결(UNKNOWN 등)이거나 없으면 null. */
+export function letterOfDirection(axis: EngineAxis, direction: string | null) {
+  const side = direction ? DIRECTION_LETTER[direction.toUpperCase()] : undefined;
+  return side ? LETTERS[axis][side] : null;
 }
