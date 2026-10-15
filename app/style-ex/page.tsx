@@ -5,73 +5,59 @@
 
    ┌ 이미지 미리보기  [상품 Style ID 추출] [이미지] [추출] ┬ 프롬프트 [관찰|판정] ┤
    │                                ├ 상품 정보      [PDF 작성] ┤ ← 상품으로 추출했을 때
-   │                                ├ 호출 결과 (스타일 아이디 + JSON)│
+   │                                ├ 호출 결과 [관찰|판정]          │
    └────────────────────────────────┴────────────────────────────┘
 
    추출은 두 단계다 — 관찰(이미지 → 37개 파라미터) → 판정(관찰값 → 스타일 아이디).
-   두 프롬프트 모두 기본값을 불러와 채운다. 수정하면 수정한 내용으로 호출하고,
-   그대로면 서버가 기본 프롬프트를 쓴다.
+   두 프롬프트 모두 DB 에 버전으로 쌓인다(style_ex_prompt_versions, lib/style-ex/prompt-versions).
+   처음에는 활성 버전을 불러와 채운다. 수정하면 수정한 내용으로 호출하고, 그대로면 서버가 활성 버전을 쓴다.
+   버전 목록에서 지난 버전을 불러오거나, 고친 내용을 새 버전으로 저장하거나, 버전을 활성화(롤백)할 수 있다.
 
    입력 이미지는 파일로 고르거나, [상품 Style ID 추출] 모달(ProductPickModal)에서 등록된 상품을
    찾아 그 상품의 원본 사진을 쓴다. 상품으로 추출하면 프롬프트 아래에 상품 정보가 서고, [PDF 작성] 이
    상품 사진 · 상품 정보 · 호출 결과를 위에서 아래로 담은 PDF 를 내려받게 한다(lib/style-ex/report-pdf). */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Crop, ExternalLink, FileDown, ImagePlus, Loader2, RotateCcw, ScanSearch, ShoppingBag } from "lucide-react";
+import { Check, Crop, ExternalLink, FileDown, ImagePlus, Loader2, RotateCcw, Save, ScanSearch, ShoppingBag } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
 import ProductPickModal from "@/components/style-ex/ProductPickModal";
-import type { CatalogKind, CatalogProduct } from "@/lib/tryon/product-catalog";
+import type { CatalogProduct } from "@/lib/tryon/product-catalog";
 import { downloadReportPdf, type ReportBlock } from "@/lib/style-ex/report-pdf";
+import {
+  AXIS_ORDER,
+  SOURCE_LABEL,
+  STRENGTH_LABEL,
+  StyleIdCard,
+  productRows,
+  type Summary,
+} from "@/components/style-ex/result-cards";
 
 type Status = "idle" | "running" | "done" | "error";
 type PromptKey = "prompt" | "judgePrompt";
 
-const PROMPT_TABS: { key: PromptKey; label: string }[] = [
-  { key: "prompt", label: "관찰 프롬프트" },
-  { key: "judgePrompt", label: "판정 프롬프트" },
+// 판정은 코드(엔진 · tc-rules)가 하므로 판정 프롬프트 탭은 두지 않는다. judgePrompt 키는 판정 프롬프트 버전을
+// 다시 쓸 때를 위해 남겨 둔다 (LLM 판정 judge.ts · 버전 표는 그대로 있다).
+const PROMPT_TABS: { key: PromptKey; label: string }[] = [{ key: "prompt", label: "관찰 프롬프트" }];
+
+/** 호출 결과 탭 — 관찰 프롬프트의 결과 / 판정 프롬프트의 결과 */
+type ResultKey = "observe" | "judge";
+const RESULT_TABS: { key: ResultKey; label: string }[] = [
+  { key: "observe", label: "관찰 결과" },
+  { key: "judge", label: "판정 결과" },
 ];
 
-const AXIS_ORDER = ["EI", "TC", "SR", "DM"] as const;
-type AxisKey = (typeof AXIS_ORDER)[number];
+/** 화면의 프롬프트 칸 → DB 의 프롬프트 종류 (style_ex_prompt_versions.kind) */
+const PROMPT_KIND: Record<PromptKey, "observe" | "judge"> = { prompt: "observe", judgePrompt: "judge" };
 
-/** 축별 글자의 출처 */
-type Source = "ENGINE" | "ENGINE_NEUTRAL_FIXED" | "LLM" | "LLM_FALLBACK";
-
-interface AxisResult {
-  letter: string | null;
-  source: Source | null;
-  label: string | null; // 엔진 점수 (예: EI4)
-  detail: string | null;
+/** /api/style-ex/prompts 의 프롬프트 버전 */
+interface PromptVersion {
+  id: string;
+  version: number;
+  content: string;
+  note: string | null;
+  is_active: boolean;
+  created_at: string;
 }
-
-/** 서버의 styleId — 대표 의복의 네 글자 조합 */
-interface StyleIdResult {
-  ok: boolean;
-  style_id?: string;
-  style?: { name: string; subTitle: string; definition: string } | null;
-  target_id?: string;
-  axes?: Record<AxisKey, AxisResult>;
-  error?: string;
-}
-
-/** 서버의 LLM 판정 — 축별 근거를 보여 줄 때 쓴다 */
-interface LlmJudgement {
-  ok: boolean;
-  axes?: Record<AxisKey, { letter: string; strength: Strength; evidence: string[]; rationale: string }> & {
-    summary: string;
-  };
-  error?: string;
-}
-
-type Strength = "strong" | "moderate" | "weak";
-const STRENGTH_LABEL: Record<Strength, string> = { strong: "강", moderate: "중", weak: "약" };
-
-const SOURCE_LABEL: Record<Source, string> = {
-  ENGINE: "엔진",
-  ENGINE_NEUTRAL_FIXED: "엔진 · 중립 고정",
-  LLM: "LLM",
-  LLM_FALLBACK: "LLM 대체",
-};
 
 /** 부위 크롭 결과 (/api/style-ex/crops) */
 interface CropResult {
@@ -91,29 +77,17 @@ interface CropResult {
   skipped?: Array<{ param: string; value: string; reason: string }>;
 }
 
-interface Summary {
-  styleId: StyleIdResult | null;
-  judgement: LlmJudgement | null;
-}
 
 const EMPTY_PROMPTS: Record<PromptKey, string> = { prompt: "", judgePrompt: "" };
+const EMPTY_VERSIONS: Record<PromptKey, PromptVersion[]> = { prompt: [], judgePrompt: [] };
+
+const shortDate = (iso: string) =>
+  new Date(iso).toLocaleString("ko-KR", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
 
 /** 서버(/api/style-ex)의 이미지 한도와 같다 — Anthropic 이미지 입력 한도 */
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
-const KIND_LABEL: Record<CatalogKind, string> = { top: "상의", bottom: "하의", etc: "기타" };
 
-/** 상품 정보 — 화면의 상품 정보 칸과 PDF 가 같이 쓴다. 사진은 뺀다. */
-function productRows(product: CatalogProduct): [string, string][] {
-  return [
-    ["브랜드", product.brandName ?? "브랜드 미상"],
-    ["상품명", product.name],
-    ["분류", `${KIND_LABEL[product.kind] ?? product.kind} · ${product.path}`],
-    ["상품 ID", product.id],
-    ["카테고리 ID", product.categoryId],
-    ["판매 페이지", product.catalogUrl],
-  ];
-}
 
 const EXTENSION: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif" };
 
@@ -124,8 +98,15 @@ export default function StyleExPage() {
   const [defaults, setDefaults] = useState(EMPTY_PROMPTS);
   const [prompts, setPrompts] = useState(EMPTY_PROMPTS);
   const [tab, setTab] = useState<PromptKey>("prompt");
+  const [versions, setVersions] = useState(EMPTY_VERSIONS);
+  const [versionNote, setVersionNote] = useState("");
+  const [versionBusy, setVersionBusy] = useState(false);
+  const [versionError, setVersionError] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [result, setResult] = useState("");
+  /** 호출 결과를 단계별로 나눈 것 — 관찰 envelope / 그 밖(판정 · 스코어링 · 스타일 아이디) */
+  const [resultParts, setResultParts] = useState<{ observe: string; judge: string } | null>(null);
+  const [resultTab, setResultTab] = useState<ResultKey>("judge");
   const [summary, setSummary] = useState<Summary | null>(null);
   const [elapsed, setElapsed] = useState<number | null>(null);
   // 부위 크롭 — 추출 결과의 관찰 envelope 가 있어야 할 수 있다
@@ -142,22 +123,43 @@ export default function StyleExPage() {
   const [pdfBusy, setPdfBusy] = useState(false);
   const [pdfError, setPdfError] = useState<string | null>(null);
 
-  // 기본 프롬프트 (관찰 · 판정)
+  /** 한 종류의 버전 목록을 다시 읽는다 */
+  const loadVersions = useCallback(async (key: PromptKey) => {
+    const res = await authFetch(`/api/style-ex/prompts?kind=${PROMPT_KIND[key]}`);
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error ?? `버전 목록을 읽지 못했습니다 (${res.status})`);
+    setVersions((v) => ({ ...v, [key]: data.versions ?? [] }));
+  }, []);
+
+  // 기본 프롬프트 (관찰 · 판정) = 활성 버전. 버전 목록은 그 뒤에 읽는다 — 첫 호출이 v1 을 등록할 수 있다.
+  // 기본 프롬프트를 못 받아도 버전 목록은 읽고, 실패는 화면에 보인다.
   useEffect(() => {
     let cancelled = false;
-    authFetch("/api/style-ex")
-      .then((res) => res.json())
-      .then((data) => {
-        if (cancelled || typeof data.prompt !== "string") return;
+    const fail = (e: unknown) => {
+      if (!cancelled) setVersionError(e instanceof Error ? e.message : String(e));
+    };
+    (async () => {
+      try {
+        const res = await authFetch("/api/style-ex");
+        const data = await res.json().catch(() => ({}));
+        if (cancelled) return;
+        if (typeof data.prompt !== "string") throw new Error(data.error ?? `기본 프롬프트를 받지 못했습니다 (${res.status})`);
         const loaded = { prompt: data.prompt, judgePrompt: data.judgePrompt ?? "" };
         setDefaults(loaded);
         setPrompts(loaded);
-      })
-      .catch(() => {});
+        if (!data.versions?.prompt) {
+          fail(new Error("프롬프트 버전 표를 읽지 못해 코드 기본 프롬프트를 불러왔습니다. 서버 로그의 [style-ex] 경고를 확인하세요."));
+        }
+      } catch (e) {
+        fail(e);
+      }
+      if (cancelled) return;
+      await Promise.all(PROMPT_TABS.map(({ key }) => loadVersions(key))).catch(fail);
+    })();
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [loadVersions]);
 
   // 미리보기 URL 은 새 파일을 고를 때와 페이지를 떠날 때 해제한다
   const previewUrlRef = useRef<string | null>(null);
@@ -177,6 +179,7 @@ export default function StyleExPage() {
     setProduct(from);
     setSaved(null);
     setResult("");
+    setResultParts(null);
     setSummary(null);
     setEnvelope(null);
     setCrops(null);
@@ -233,6 +236,7 @@ export default function StyleExPage() {
     if (!file || status === "running") return;
     setStatus("running");
     setResult("");
+    setResultParts(null);
     setSummary(null);
     setEnvelope(null);
     setCrops(null);
@@ -255,6 +259,12 @@ export default function StyleExPage() {
       const res = await authFetch("/api/style-ex", { method: "POST", body });
       const data = await res.json();
       setResult(JSON.stringify(data, null, 2));
+      if (data.observation) {
+        const { observation, ...judged } = data;
+        setResultParts({ observe: JSON.stringify(observation, null, 2), judge: JSON.stringify(judged, null, 2) });
+        // 관찰이 실패하면 판정은 없다 — 관찰 결과를 먼저 보인다
+        setResultTab(observation.ok === false ? "observe" : "judge");
+      }
       setSummary({ styleId: data.styleId ?? null, judgement: data.judgement ?? null });
       setEnvelope(data.observation?.ok ? data.observation.envelope : null);
       setSaved(data.saved ?? null);
@@ -295,7 +305,13 @@ export default function StyleExPage() {
       const callRows: [string, string][] = [
         ["상태", status === "done" ? "성공" : "실패"],
         ...(elapsed !== null ? [["소요 시간", `${elapsed.toFixed(1)}초`] as [string, string]] : []),
-        ["프롬프트", PROMPT_TABS.map(({ key, label }) => `${label} ${isEdited(key) ? "수정함" : "기본값"}`).join(" · ")],
+        [
+          "프롬프트",
+          PROMPT_TABS.map(({ key, label }) => {
+            const v = versionOf(key);
+            return `${label} ${v ? `v${v.version}` : "저장 안 한 내용"}`;
+          }).join(" · "),
+        ],
       ];
       const blocks: ReportBlock[] = [
         { kind: "title", text: "상품 Style ID 추출 결과", sub: stamp },
@@ -322,6 +338,52 @@ export default function StyleExPage() {
 
   const prompt = prompts[tab];
   const isEdited = (key: PromptKey) => defaults[key] !== "" && prompts[key] !== defaults[key];
+  const versionOf = (key: PromptKey) => versions[key].find((v) => v.content === prompts[key]) ?? null;
+  const currentVersion = versionOf(tab);
+  const activeVersion = versions[tab].find((v) => v.is_active) ?? null;
+
+  /** 버전 API 호출 — 실패하면 오류를 보여 주고, 성공하면 그 종류의 목록을 다시 읽는다 */
+  const versionRequest = async (url: string, method: "POST" | "PATCH", payload: unknown, onDone: () => void) => {
+    if (versionBusy) return;
+    setVersionBusy(true);
+    setVersionError(null);
+    try {
+      const res = await authFetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error ?? `요청이 실패했습니다 (${res.status})`);
+      onDone();
+      await loadVersions(tab);
+    } catch (e) {
+      setVersionError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setVersionBusy(false);
+    }
+  };
+
+  /** 지금 칸의 내용을 새 버전으로 저장한다 (activate 면 바로 활성화) */
+  const handleSaveVersion = (activate: boolean) => {
+    if (!prompt.trim()) return;
+    const content = prompt;
+    return versionRequest(
+      "/api/style-ex/prompts",
+      "POST",
+      { kind: PROMPT_KIND[tab], content, note: versionNote, activate },
+      () => {
+        if (activate) setDefaults((d) => ({ ...d, [tab]: content }));
+        setVersionNote("");
+      }
+    );
+  };
+
+  /** 버전을 활성화한다 — 이후 추출의 기본 프롬프트가 된다 (지난 버전이면 롤백) */
+  const handleActivate = (v: PromptVersion) =>
+    versionRequest(`/api/style-ex/prompts/${v.id}`, "PATCH", { active: true }, () =>
+      setDefaults((d) => ({ ...d, [tab]: v.content }))
+    );
 
   return (
     <div className="h-full flex flex-col bg-[var(--color-bg)] select-text">
@@ -417,14 +479,31 @@ export default function StyleExPage() {
                 </button>
               ))}
               <span className="ml-2 text-xs text-black/50">{prompt.length.toLocaleString()}자</span>
+              <select
+                value={currentVersion?.id ?? ""}
+                onChange={(e) => {
+                  const v = versions[tab].find((x) => x.id === e.target.value);
+                  if (v) setPrompts((p) => ({ ...p, [tab]: v.content }));
+                }}
+                disabled={!versions[tab].length}
+                title="버전을 고르면 그 내용을 불러옵니다"
+                className="ml-auto max-w-[16rem] truncate rounded border border-[var(--color-divider)] bg-white px-2 py-0.5 text-xs"
+              >
+                {!currentVersion && <option value="">{versions[tab].length ? "저장 안 한 내용" : "버전 없음"}</option>}
+                {versions[tab].map((v) => (
+                  <option key={v.id} value={v.id}>
+                    {`v${v.version}${v.is_active ? " (활성)" : ""} · ${shortDate(v.created_at)}${v.note ? ` · ${v.note}` : ""}`}
+                  </option>
+                ))}
+              </select>
               {isEdited(tab) && (
                 <button
                   type="button"
                   onClick={() => setPrompts((p) => ({ ...p, [tab]: defaults[tab] }))}
-                  className="ml-auto flex items-center gap-1 text-xs text-black/60 hover:text-black"
+                  className="flex items-center gap-1 text-xs text-black/60 hover:text-black"
                 >
                   <RotateCcw className="w-3 h-3" />
-                  기본값 복원
+                  활성 버전 복원
                 </button>
               )}
             </div>
@@ -435,11 +514,64 @@ export default function StyleExPage() {
               placeholder="프롬프트를 불러오는 중…"
               className="flex-1 min-h-0 mx-4 mb-1 p-3 resize-none rounded border border-[var(--color-divider)] bg-white font-[family-name:var(--font-mono)] text-xs leading-relaxed vt-scroll"
             />
-            <p className="flex-none mx-4 mb-3 text-xs text-black/50">
+            <p className="flex-none mx-4 mb-1 text-xs text-black/50">
               {tab === "prompt"
                 ? "이미지와 함께 Vision 모델에 보냅니다."
                 : "관찰값 JSON 이 이 프롬프트 뒤에 자동으로 붙어 판정 모델에 보내집니다."}
             </p>
+            {/* 버전 관리 — 저장 안 한 내용이면 새 버전으로 저장, 활성이 아닌 버전이면 활성화 */}
+            <div className="flex-none flex items-center gap-2 mx-4 mb-3 text-xs">
+              {currentVersion ? (
+                <>
+                  <span className="text-black/60">
+                    v{currentVersion.version}
+                    {currentVersion.is_active
+                      ? " · 활성 버전"
+                      : activeVersion
+                        ? ` · 활성 버전은 v${activeVersion.version}`
+                        : ""}
+                  </span>
+                  {!currentVersion.is_active && (
+                    <button
+                      type="button"
+                      onClick={() => handleActivate(currentVersion)}
+                      disabled={versionBusy}
+                      className="ml-auto flex items-center gap-1 px-2 py-1 rounded border border-[var(--color-divider)] hover:bg-black/5 disabled:opacity-50"
+                    >
+                      <Check className="w-3 h-3" />v{currentVersion.version} 활성화
+                    </button>
+                  )}
+                </>
+              ) : (
+                <>
+                  <input
+                    value={versionNote}
+                    onChange={(e) => setVersionNote(e.target.value)}
+                    placeholder="변경 메모 (무엇을 왜 바꿨는지)"
+                    className="flex-1 min-w-0 rounded border border-[var(--color-divider)] bg-white px-2 py-1"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveVersion(false)}
+                    disabled={versionBusy || !prompt.trim()}
+                    className="flex items-center gap-1 px-2 py-1 rounded border border-[var(--color-divider)] hover:bg-black/5 disabled:opacity-50"
+                  >
+                    <Save className="w-3 h-3" />새 버전 저장
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSaveVersion(true)}
+                    disabled={versionBusy || !prompt.trim()}
+                    className="flex items-center gap-1 px-2 py-1 rounded bg-[rgba(182,130,53,0.16)] font-semibold hover:bg-[rgba(182,130,53,0.26)] disabled:opacity-50"
+                  >
+                    <Check className="w-3 h-3" />
+                    저장 후 활성화
+                  </button>
+                </>
+              )}
+              {versionBusy && <Loader2 className="w-3 h-3 animate-spin" />}
+            </div>
+            {versionError && <p className="flex-none mx-4 -mt-2 mb-2 text-xs text-red-600">{versionError}</p>}
           </div>
 
           {/* 상품 정보 — 상품을 고르고 추출을 누른 뒤에 선다. 사진은 왼쪽에 있으니 뺀다. */}
@@ -492,6 +624,20 @@ export default function StyleExPage() {
           <div className="min-h-0 flex flex-col">
             <div className="flex-none flex items-center gap-2 px-4 py-2 text-sm font-semibold">
               호출 결과
+              <span className="flex items-center gap-1 font-normal">
+                {RESULT_TABS.map(({ key, label }) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setResultTab(key)}
+                    className={`px-3 py-1 rounded-full ${
+                      resultTab === key ? "bg-[rgba(182,130,53,0.16)] font-semibold" : "hover:bg-black/5"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </span>
               {elapsed !== null && (
                 <span className="text-xs font-normal text-black/50">{elapsed.toFixed(1)}초</span>
               )}
@@ -520,12 +666,16 @@ export default function StyleExPage() {
               </button>
             </div>
             <div className="flex-1 min-h-0 mx-4 mb-4 overflow-auto rounded border border-[var(--color-divider)] bg-white vt-scroll">
-              {summary?.styleId && <StyleIdCard summary={summary} />}
-              {crops && <CropGrid result={crops} />}
+              {/* 관찰 결과 = 관찰 envelope (+ 그 관찰값으로 만든 부위 크롭) · 판정 결과 = 스타일 아이디 · 판정 · 스코어링 */}
+              {resultTab === "judge" && summary?.styleId && <StyleIdCard summary={summary} />}
+              {resultTab === "observe" && crops && <CropGrid result={crops} />}
               <pre className="p-3 font-[family-name:var(--font-mono)] text-xs leading-relaxed whitespace-pre-wrap break-all">
                 {status === "running"
                   ? "관찰 → 스코어링 → 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
-                  : result || "추출 결과가 여기에 표시됩니다."}
+                  : (resultParts?.[resultTab] ?? result) ||
+                    (resultTab === "observe"
+                      ? "관찰 프롬프트의 결과(관찰 envelope)가 여기에 표시됩니다."
+                      : "판정 프롬프트의 결과(스타일 아이디 · 판정 · 스코어링)가 여기에 표시됩니다.")}
               </pre>
             </div>
           </div>
@@ -595,81 +745,6 @@ function summaryBlocks({ styleId, judgement }: Summary): ReportBlock[] {
   }
   if (judgement && !judgement.ok) blocks.push({ kind: "text", tone: "danger", text: `LLM 판정 실패: ${judgement.error ?? ""}` });
   return blocks;
-}
-
-/** 스타일 아이디 요약 — 결과 JSON 위에 보인다. 축마다 글자의 출처(엔진 · LLM)를 함께 표시한다. */
-function StyleIdCard({ summary }: { summary: Summary }) {
-  const { styleId, judgement } = summary;
-  if (!styleId) return null;
-  const llm = judgement?.ok ? judgement.axes : undefined;
-
-  return (
-    <div className="p-3 border-b border-[var(--color-divider)] text-sm space-y-2">
-      {styleId.ok ? (
-        <div className="flex items-baseline gap-3 flex-wrap">
-          <span className="font-[family-name:var(--font-heading)] text-3xl font-semibold tracking-[0.2em] text-[var(--color-accent-700)]">
-            {styleId.style_id}
-          </span>
-          {styleId.style && (
-            <span>
-              <span className="font-semibold">{styleId.style.name}</span>
-              <span className="ml-2 text-black/60">{styleId.style.subTitle}</span>
-            </span>
-          )}
-          {styleId.target_id && <span className="text-xs text-black/50">기준: {styleId.target_id}</span>}
-        </div>
-      ) : (
-        <p className="text-[var(--color-danger)]">스타일 아이디를 정하지 못했습니다: {styleId.error}</p>
-      )}
-      {styleId.ok && styleId.style && <p className="text-black/80">{styleId.style.definition}</p>}
-
-      {styleId.axes && (
-        <ul className="space-y-1.5">
-          {AXIS_ORDER.map((key) => {
-            const a = styleId.axes![key];
-            const l = llm?.[key];
-            const usesLlm = a.source === "LLM" || a.source === "LLM_FALLBACK";
-            return (
-              <li key={key} className="flex gap-2">
-                <span className="flex-none w-10 font-[family-name:var(--font-mono)]">
-                  {key} <b>{a.letter ?? "?"}</b>
-                </span>
-                <span className="flex-none w-32 text-xs pt-0.5">
-                  {a.source ? (
-                    <span
-                      className={`px-1.5 py-0.5 rounded ${
-                        usesLlm ? "bg-black/5 text-black/70" : "bg-[rgba(182,130,53,0.16)] text-[var(--color-accent-800)]"
-                      }`}
-                    >
-                      {SOURCE_LABEL[a.source]}
-                      {a.label && ` ${a.label}`}
-                    </span>
-                  ) : (
-                    <span className="text-[var(--color-danger)]">판정 없음</span>
-                  )}
-                </span>
-                <span className="text-black/80">
-                  {usesLlm && l ? (
-                    <>
-                      {l.rationale}
-                      <span className="ml-1 text-xs text-black/50">({STRENGTH_LABEL[l.strength]})</span>
-                    </>
-                  ) : null}
-                  {a.detail && <span className="block text-xs text-black/50">{a.detail}</span>}
-                  {usesLlm && l && l.evidence.length > 0 && (
-                    <span className="block text-xs text-black/50">{l.evidence.join(" · ")}</span>
-                  )}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-      {judgement && !judgement.ok && (
-        <p className="text-xs text-[var(--color-danger)]">LLM 판정 실패: {judgement.error}</p>
-      )}
-    </div>
-  );
 }
 
 /** 부위 크롭 썸네일 — 각 크롭이 어느 관찰값에서 나왔는지 함께 보여 준다 */

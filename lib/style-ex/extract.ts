@@ -16,24 +16,28 @@ import { buildCombinedPromptV2 } from "./engine/run/onecall_prototype/onecall_pr
 import { buildPrompt as buildRootPrompt } from "./engine/producer_prompt_v1.js";
 import { imageToBlock } from "./engine/run/anthropic_vision_fn.js";
 import { anthropicClientOptions } from "./api-key";
-import { judgeStyleId } from "./judge";
 import {
   ENGINE_AXES,
   axisScoreOf,
   letterOf,
+  letterOfDirection,
   runScoring,
   scoringRequestOf,
   type EngineAxis,
 } from "./scoring";
 import { STYLE_IDS } from "./style-ids";
+import { judgeTcRules, tcSummaryOf, type TcRuleResult } from "./tc-rules";
 
 /**
  * 의류 스타일 추출 (style-ex).
  *
  * 1. 관찰  : 이미지 1장 → Vision 호출 1회 → 의복별 37개 파라미터 + DM 디테일 + 색상 + 연출 유형
- * 2. 스코어링: EI · SR · DM 은 STMX ITEM SCORING ENGINE V1 (scoring.ts)
- * 3. 판정  : TC 와 엔진 점수가 없는 축은 LLM 판정 (judge.ts)
+ * 2. 스코어링: EI · SR · DM 은 STMX ITEM SCORING ENGINE V1 (scoring.ts), TC 는 규칙 판정 (tc-rules.ts)
+ * 3. 미결  : 엔진 · 규칙이 글자를 정하지 못한 축은 엔진 방향이 있으면 그 글자, 없으면 기본 글자(DEFAULT_LETTER)
  * 4. 조합  : 대표 의복의 네 글자 → 스타일 아이디
+ *
+ * Claude API 는 1. 관찰에서 한 번만 부른다. LLM 판정(judge.ts)은 부르지 않는다 — 판정 프롬프트의 규칙은
+ * 2. 의 엔진(EI · SR · DM)과 tc-rules.ts(TC)가 코드로 갖고 있다.
  */
 
 /** Vision 호출 제한 시간 — 프롬프트가 크고 출력(관찰 + DM + 색상)도 길다 */
@@ -70,20 +74,48 @@ Choose exactly one token.`;
 /** Vision 모델에 보내는 기본 관찰 프롬프트 */
 export const defaultPrompt = (): string => buildProducerPrompt() + COLOUR_ADDENDUM + PRESENTATION_ADDENDUM;
 
+/** 상품 사진으로 추출할 때 그 상품의 카탈로그 정보 — 대표 의복(primary)을 고르는 데만 쓴다 */
+export interface ProductContext {
+  name: string;
+  /** brand_catalog_models.whole_category_name (예: 패션의류>여성의류>아우터>재킷) */
+  category: string | null;
+}
+
+// 상품 정보로 대표 의복을 고정하는 지시. 상품마다 다르므로 버전 관리되는 관찰 프롬프트(캐시 블록)에 넣지 않고
+// 그 뒤에 따로 붙인다 — 캐시 prefix 는 그대로 맞는다. 관찰값 자체는 바꾸지 못하게 막는다.
+const productAddendum = ({ name, category }: ProductContext) => `
+═══════════════════════════════════════════════════════════════
+PRODUCT CONTEXT (catalog metadata for THIS image — NOT an observation).
+This photo is the listing image of one catalog product:
+  product name : ${name.slice(0, 200)}
+  category     : ${category?.slice(0, 200) || "(unknown)"}
+If the product name and category let you tell WHICH visible garment is the product being sold, that garment is FIXED as the primary target:
+  - give it "prominence": "dominant" and give every other garment "secondary" or "minor", even when another garment is larger or more eye-catching;
+  - ALSO add "product_match": true as a sibling of "observations" on that one garment, and on no other garment.
+If they do not let you tell (no visible garment matches, or more than one could), set prominence from the image as usual and add "product_match" to no garment.
+⛔ This context only chooses the primary garment. It must not change any observation, category, eligibility, colour or presentation type — observe every garment exactly as you see it.`;
+
 type Obj = Record<string, unknown>;
-type Source = "ENGINE" | "ENGINE_NEUTRAL_FIXED" | "LLM" | "LLM_FALLBACK";
+type Source = "ENGINE" | "ENGINE_NEUTRAL_FIXED" | "ENGINE_DIRECTION" | "RULE_DEFAULT" | "LLM" | "LLM_FALLBACK";
+
+/**
+ * 엔진 · 규칙이 미결로 남긴 축의 기본 글자. 판정 프롬프트는 미결이면 "가장 그럴듯한 쪽"을 고르게 했는데(LLM),
+ * 코드에서는 중립 고정 글자(E · S · D)와 같은 쪽으로 둔다. TC 는 중립이 없고, 미결은 T 근거(TRUE)를 찾지 못한
+ * 경우라 C 로 둔다. 출처는 RULE_DEFAULT("규칙 기본값")로 남겨 엔진이 정한 글자와 구분한다.
+ */
+const DEFAULT_LETTER = { EI: "E", TC: "C", SR: "S", DM: "D" } as const;
 
 export interface ExtractInput {
   image: Buffer;
   fileName: string;
-  /** 비어 있으면 기본 관찰 프롬프트를 쓴다 */
+  /** 관찰 프롬프트 — 버전 관리(prompt-versions.ts)가 정한 내용. 비어 있으면 코드 기본값 */
   prompt?: string;
-  /** 비어 있으면 판정 기본 프롬프트를 쓴다 */
-  judgePrompt?: string;
+  /** 상품 사진이면 그 상품의 이름 · 분류 — 있으면 맞는 의복을 대표 의복으로 고정한다 */
+  product?: ProductContext | null;
 }
 
 /** Vision 호출 → 관찰 envelope (+ 대상별 색상 · 연출 유형) */
-async function observe(image: Buffer, fileName: string, prompt: string) {
+async function observe(image: Buffer, fileName: string, prompt: string, product: ProductContext | null) {
   const model = visionModel();
   const client = new Anthropic(anthropicClientOptions());
   // 엔진의 주입 지점(visionFn). 엔진 anthropic_vision_fn 과 같은 요청(이미지 + 프롬프트, 1회)을 SDK 로 보낸다 —
@@ -104,6 +136,7 @@ async function observe(image: Buffer, fileName: string, prompt: string) {
             role: "user",
             content: [
               { type: "text", text: prompt, cache_control: { type: "ephemeral" } },
+              ...(product ? [{ type: "text" as const, text: productAddendum(product) }] : []),
               // imageToBlock 은 JS 라 타입이 넓게 추론된다 — 실제 모양은 { type: "image", source: { type: "base64", … } }
               imageToBlock(img) as Anthropic.ImageBlockParam,
             ],
@@ -145,32 +178,45 @@ async function observe(image: Buffer, fileName: string, prompt: string) {
     t.color_observation = colour;
     t.color_validation = colour ? validateColorObservation(colour) : { contract_errors: ["COLOR_MISSING"] };
     t.presentation_type = cand.presentation_type ?? null;
+    if (product) t.product_match = cand.product_match === true;
   });
   return { ok: true as const, envelope, contract_valid: governed.contract_valid };
 }
 
-/** 스타일 아이디를 정할 대표 의복 — prominence 가 dominant 인 첫 의복, 없으면 첫 적격 의복 */
+/**
+ * 스타일 아이디를 정할 대표 의복 — 상품 정보로 고정된 의복(product_match), 없으면 prominence 가 dominant 인
+ * 첫 의복, 그것도 없으면 첫 적격 의복
+ */
 function representativeOf(targets: Obj[]) {
   const eligible = targets.filter((t) => t.eligible && t.record);
-  return eligible.find((t) => t.prominence === "dominant") ?? eligible[0] ?? null;
+  return (
+    eligible.find((t) => t.product_match === true) ??
+    eligible.find((t) => t.prominence === "dominant") ??
+    eligible[0] ??
+    null
+  );
 }
 
-export async function extractStyle({ image, fileName, prompt, judgePrompt }: ExtractInput) {
-  const custom = prompt?.trim() ? prompt : null;
-  const observation = await observe(image, fileName, custom ?? defaultPrompt());
-  if (!observation.ok) return { customPrompt: custom !== null, styleId: null, scoring: null, judgement: null, observation };
+/**
+ * 추출 = 관찰(Claude API 1회) → 판정 함수(judgeStyleIdByRules, API 호출 없음).
+ * judgement 는 LLM 판정을 하지 않으므로 늘 null — 응답 · product_style 모양을 지키려고 남겨 둔다.
+ */
+export async function extractStyle({ image, fileName, prompt, product }: ExtractInput) {
+  const observation = await observe(image, fileName, prompt?.trim() ? prompt : defaultPrompt(), product ?? null);
+  if (!observation.ok) return { styleId: null, scoring: null, judgement: null, observation };
+  const { styleId, scoring } = judgeStyleIdByRules(observation.envelope.targets, fileName);
+  return { styleId, scoring, judgement: null, observation };
+}
 
-  const targets = observation.envelope.targets;
+/**
+ * 판정 함수 — 관찰 envelope 의 targets 만으로 스타일 아이디를 정한다. Claude API 를 부르지 않는다.
+ * 판정 프롬프트(judge.ts DEFAULT_JUDGE_PROMPT)의 축별 규칙을 코드로 가진 것:
+ *   EI · SR · DM = STMX ITEM SCORING ENGINE V1 (scoring.ts) · TC = tc-rules.ts
+ * 저장된 관찰(product_style.observation.envelope.targets)로 다시 판정할 때도 이것을 부른다.
+ */
+export function judgeStyleIdByRules(targets: Obj[], fileName: string) {
   const rep = representativeOf(targets);
-  if (!rep) {
-    return {
-      customPrompt: custom !== null,
-      styleId: { ok: false, error: "판정할 의복이 없습니다 (적격 target 0개)." },
-      scoring: null,
-      judgement: null,
-      observation,
-    };
-  }
+  if (!rep) return { styleId: { ok: false, error: "판정할 의복이 없습니다 (적격 target 0개)." }, scoring: null };
 
   // 엔진 스코어링 — 적격 의복 전부 (대표 의복만 스타일 아이디에 쓰고, 나머지는 참고로 보여 준다)
   const eligible = targets.filter((t) => t.eligible && t.record);
@@ -190,34 +236,48 @@ export async function extractStyle({ image, fileName, prompt, judgePrompt }: Ext
     scoring = { error: e instanceof Error ? e.message : String(e) };
   }
 
-  // LLM 판정 — 대표 의복의 관찰값만 본다. TC 는 항상, 나머지 축은 엔진 점수가 없을 때만 쓴다.
-  const judgement = await judgeStyleId({ targets: [rep], prompt: judgePrompt });
-
+  // 판정 — EI · SR · DM 은 스코어링 엔진 점수, TC 는 규칙 판정(tc-rules.ts). 대표 의복만 본다. API 호출 없음.
   const repScore = Array.isArray(scoring) ? scoring.find((s) => s.target_id === rep.target_id) : null;
-  const axes: Record<string, { letter: string | null; source: Source | null; label: string | null; detail: string | null }> = {};
+  const tcRules = judgeTcRules(rep);
+  const fromEngine = Object.fromEntries(
+    ENGINE_AXES.map((axis) => {
+      const s = (repScore?.axes as Record<EngineAxis, ReturnType<typeof axisScoreOf>> | undefined)?.[axis];
+      return [axis, { s, letter: letterOf(axis, s?.score ?? null) }];
+    })
+  ) as Record<EngineAxis, { s: ReturnType<typeof axisScoreOf> | undefined; letter: ReturnType<typeof letterOf> }>;
+
+  const axes: Record<
+    string,
+    { letter: string | null; source: Source | null; label: string | null; detail: string | null; rules?: TcRuleResult }
+  > = {};
   for (const axis of ["EI", "TC", "SR", "DM"] as const) {
-    const llm = judgement.ok ? judgement.axes[axis] : null;
     if (axis === "TC") {
-      axes.TC = { letter: llm?.letter ?? null, source: llm ? "LLM" : null, label: null, detail: llm?.rationale ?? null };
+      axes.TC = tcRules.letter
+        ? { letter: tcRules.letter, source: "ENGINE", label: tcRules.range, detail: tcSummaryOf(tcRules), rules: tcRules }
+        : {
+            letter: DEFAULT_LETTER.TC,
+            source: "RULE_DEFAULT",
+            label: null,
+            detail: `규칙 미결 (${tcSummaryOf(tcRules)}) → 기본값 ${DEFAULT_LETTER.TC}`,
+            rules: tcRules,
+          };
       continue;
     }
-    const s = (repScore?.axes as Record<EngineAxis, ReturnType<typeof axisScoreOf>> | undefined)?.[axis];
-    const fromEngine = letterOf(axis, s?.score ?? null);
-    if (fromEngine) {
+    const { s, letter } = fromEngine[axis];
+    if (letter) {
       axes[axis] = {
-        letter: fromEngine.letter,
-        source: fromEngine.neutralFixed ? "ENGINE_NEUTRAL_FIXED" : "ENGINE",
+        letter: letter.letter,
+        source: letter.neutralFixed ? "ENGINE_NEUTRAL_FIXED" : "ENGINE",
         label: s?.label ?? null,
-        detail: fromEngine.neutralFixed ? `${s?.label} 중립 → ${fromEngine.letter} 로 고정` : null,
+        detail: letter.neutralFixed ? `${s?.label} 중립 → ${letter.letter} 로 고정` : null,
       };
     } else {
-      // 엔진이 점수를 내지 못한 축(입력 부족 · 판정 불가 등)은 LLM 판정으로 메운다
-      axes[axis] = {
-        letter: llm?.letter ?? null,
-        source: llm ? "LLM_FALLBACK" : null,
-        label: null,
-        detail: `엔진 점수 없음 (${[s?.status, s?.reason].filter(Boolean).join(" · ") || "스코어링 실패"})`,
-      };
+      // 엔진이 점수를 내지 못한 축(입력 부족 · 판정 불가 등) — 방향이 확정됐으면 그 글자, 아니면 기본 글자
+      const why = `엔진 점수 없음 (${[s?.status, s?.reason].filter(Boolean).join(" · ") || "스코어링 실패"})`;
+      const byDirection = letterOfDirection(axis, s?.direction ?? null);
+      axes[axis] = byDirection
+        ? { letter: byDirection, source: "ENGINE_DIRECTION", label: null, detail: `${why} → 방향 ${s?.direction}` }
+        : { letter: DEFAULT_LETTER[axis], source: "RULE_DEFAULT", label: null, detail: `${why} → 기본값 ${DEFAULT_LETTER[axis]}` };
     }
   }
 
@@ -227,5 +287,5 @@ export async function extractStyle({ image, fileName, prompt, judgePrompt }: Ext
     ? { ok: true, style_id: id, style: STYLE_IDS[id] ?? null, target_id: rep.target_id, axes }
     : { ok: false, error: "네 축 중 글자를 정하지 못한 축이 있습니다.", target_id: rep.target_id, axes };
 
-  return { customPrompt: custom !== null, styleId, scoring, judgement, observation };
+  return { styleId, scoring };
 }
