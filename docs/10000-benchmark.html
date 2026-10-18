@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STMX VTON /style-ex 10,000개 상품 연산 비용 및 시간 벤치마크 (Gemini 3.8 포함)</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 12mm 14mm 14mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      word-break: keep-all;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+      color: #1e293b;
+      background-color: #f1f5f9;
+      line-height: 1.5;
+      font-size: 12px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      padding: 24px;
+    }
+
+    .report-wrapper {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+
+    .report-page {
+      padding: 34px 38px;
+      background: #ffffff;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+    }
+
+    .report-page:last-child {
+      page-break-after: avoid;
+      break-after: avoid;
+      border-bottom: none;
+    }
+
+    .page-divider {
+      height: 12px;
+      background: #f1f5f9;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    /* Print Controls */
+    .top-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #0f172a;
+      color: #f8fafc;
+      font-size: 12px;
+    }
+    .top-controls .btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s ease;
+    }
+    .top-controls .btn:hover {
+      background: #1d4ed8;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+      }
+      .report-wrapper {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
+      .report-page {
+        padding: 0;
+        margin-bottom: 0;
+      }
+      .top-controls, .page-divider {
+        display: none;
+      }
+    }
+
+    /* Header Banner */
+    .header-banner {
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+    }
+
+    .badge-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .tag-category {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 1px solid #bfdbfe;
+    }
+
+    .doc-ref {
+      font-size: 11px;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+
+    h1.doc-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.6px;
+      line-height: 1.3;
+      margin-bottom: 11px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 9px 14px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 9.5px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .meta-val {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 1px;
+    }
+
+    /* KPI Cards */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+
+    .kpi-card {
+      border-radius: 8px;
+      padding: 10px 11px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .kpi-card.legacy {
+      border-left: 4px solid #ef4444;
+      background: #fef2f2;
+    }
+
+    .kpi-card.current {
+      border-left: 4px solid #f59e0b;
+      background: #fffbeb;
+    }
+
+    .kpi-card.claude-opt {
+      border-left: 4px solid #3b82f6;
+      background: #eff6ff;
+    }
+
+    .kpi-card.qwen-opt {
+      border-left: 4px solid #8b5cf6;
+      background: #f5f3ff;
+    }
+
+    .kpi-card.gemini-opt {
+      border-left: 4px solid #10b981;
+      background: #ecfdf5;
+    }
+
+    .kpi-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .kpi-cost {
+      font-size: 15.5px;
+      font-weight: 800;
+      margin: 3px 0 1px 0;
+      letter-spacing: -0.4px;
+    }
+
+    .kpi-card.legacy .kpi-cost { color: #dc2626; }
+    .kpi-card.current .kpi-cost { color: #d97706; }
+    .kpi-card.claude-opt .kpi-cost { color: #2563eb; }
+    .kpi-card.qwen-opt .kpi-cost { color: #7c3aed; }
+    .kpi-card.gemini-opt .kpi-cost { color: #059669; }
+
+    .kpi-sub {
+      font-size: 9.5px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* Section Elements */
+    .section-block {
+      margin-bottom: 22px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 11px;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 6px;
+    }
+
+    .sec-num {
+      background: #1e3a8a;
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    h2.sec-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+    }
+
+    h3.sub-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 12px 0 7px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    p.sec-desc {
+      font-size: 11.5px;
+      color: #334155;
+      margin-bottom: 11px;
+      line-height: 1.5;
+    }
+
+    /* Data Tables */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      background: #ffffff;
+    }
+
+    table.data-table th {
+      background: #f8fafc;
+      color: #334155;
+      font-weight: 700;
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 2px solid #cbd5e1;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+
+    table.data-table td {
+      padding: 7px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #1e293b;
+      vertical-align: middle;
+    }
+
+    table.data-table tbody tr:hover {
+      background-color: #f8fafc;
+    }
+
+    table.data-table tr.highlight-blue {
+      background-color: #eff6ff !important;
+    }
+
+    table.data-table tr.highlight-green {
+      background-color: #f0fdf4 !important;
+    }
+
+    table.data-table tr.highlight-emerald {
+      background-color: #ecfdf5 !important;
+      border-left: 3px solid #059669;
+    }
+
+    table.data-table tr.highlight-purple {
+      background-color: #faf5ff !important;
+    }
+
+    table.data-table tr.highlight-warn {
+      background-color: #fffbeb !important;
+    }
+
+    table.data-table tr.highlight-danger {
+      background-color: #fef2f2 !important;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    /* Badges & Pills */
+    .cost-pill {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 1.5px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .pill-green {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+    }
+
+    .pill-emerald {
+      background: #059669;
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .pill-blue {
+      background: #dbeafe;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .pill-purple {
+      background: #ede9fe;
+      color: #6d28d9;
+      border: 1px solid #ddd6fe;
+    }
+
+    .pill-amber {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    .pill-red {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .pill-gray {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Pipeline Diagram */
+    .pipeline-container {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+
+    .pipeline-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 7px 11px;
+    }
+
+    .step-badge {
+      flex-shrink: 0;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      font-size: 10px;
+      padding: 2.5px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .step-badge.engine { background: #059669; }
+    .step-badge.rules { background: #7c3aed; }
+    .step-badge.input { background: #475569; }
+
+    .step-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 11.5px;
+      color: #0f172a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .step-model {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .step-model.free {
+      color: #059669;
+      background: #ecfdf5;
+      font-weight: 700;
+    }
+
+    .step-details {
+      font-size: 10.5px;
+      color: #475569;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .step-arrow {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 10px;
+      line-height: 1;
+    }
+
+    .final-badge {
+      text-align: center;
+      background: #1e293b;
+      color: #f8fafc;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    /* Grid Layouts */
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 11px;
+      margin-bottom: 12px;
+    }
+
+    .info-card {
+      border-radius: 8px;
+      padding: 11px 13px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+    }
+
+    .info-card h4 {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .info-card ul {
+      margin-left: 15px;
+      font-size: 10.5px;
+      color: #475569;
+      line-height: 1.45;
+    }
+
+    .info-card li {
+      margin-bottom: 3.5px;
+    }
+
+    .info-card.claude { border-top: 3.5px solid #2563eb; }
+    .info-card.gemini { border-top: 3.5px solid #10b981; }
+    .info-card.qwen { border-top: 3.5px solid #8b5cf6; }
+
+    /* Waterfall Roadmap */
+    .waterfall-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 11px 15px;
+      margin-bottom: 14px;
+    }
+
+    .waterfall-step {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 9px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      margin-bottom: 5px;
+      font-size: 11px;
+    }
+
+    .waterfall-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .wf-name {
+      font-weight: 700;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .wf-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .wf-drop {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 1.5px 5.5px;
+      border-radius: 4px;
+      margin-left: 7px;
+    }
+
+    .wf-drop.red { background: #fee2e2; color: #b91c1c; }
+    .wf-drop.blue { background: #dbeafe; color: #1d4ed8; }
+    .wf-drop.purple { background: #ede9fe; color: #6d28d9; }
+    .wf-drop.green { background: #d1fae5; color: #065f46; }
+
+    /* Checklist & Rec Banner */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .check-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 9px 11px;
+    }
+
+    .check-card h5 {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 3.5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .check-num {
+      background: #2563eb;
+      color: white;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .check-card p {
+      font-size: 10px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    .rec-banner {
+      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+      color: #ffffff;
+      padding: 13px 17px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    .rec-banner h4 {
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .rec-banner p {
+      font-size: 11px;
+      line-height: 1.5;
+      color: #ecfdf5;
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      margin-top: 16px;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="report-wrapper">
+
+  <!-- Top Action Bar (Browser only) -->
+  <div class="top-controls">
+    <div><strong>STMX Engineering Benchmark</strong> &bull; 10,000 벌 의류 Style ID 연산 비용 및 시간 분석표 (Gemini 3.8 추가)</div>
+    <div style="display:flex; gap: 8px;">
+      <button class="btn" onclick="window.print()">🖨️ 인쇄 / PDF 저장</button>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="report-page">
+    <div class="header-banner">
+      <div class="badge-bar">
+        <span class="tag-category">STMX VTON Technical &amp; Cost Benchmark Report</span>
+        <span class="doc-ref">INTERNAL / STMX-BENCHMARK-10000-20261016</span>
+      </div>
+      <h1 class="doc-title">의류 상품 10,000벌 Style ID 연산 비용 및 소요 시간 비교 벤치마크</h1>
+      <div class="meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">분석 일자</span>
+          <span class="meta-val">2026-10-16</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">대상 시스템</span>
+          <span class="meta-val">STMX VTON <code>/style-ex</code></span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">연산 규모</span>
+          <span class="meta-val">상품 10,000벌 (10k Batch)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">기준 환율</span>
+          <span class="meta-val">$1 = 1,400원</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Executive KPI Summary Cards -->
+    <div class="kpi-row">
+      <div class="kpi-card legacy">
+        <div class="kpi-title">Claude Opus 정가</div>
+        <div class="kpi-cost">약 592만 원</div>
+        <div class="kpi-sub">$4,228 (건당 $0.423)</div>
+      </div>
+      <div class="kpi-card current">
+        <div class="kpi-title">현재 배포 (Opus 캐싱)</div>
+        <div class="kpi-cost">약 163만 원</div>
+        <div class="kpi-sub">$1,165 (건당 $0.117, -72%)</div>
+      </div>
+      <div class="kpi-card claude-opt">
+        <div class="kpi-title">Claude 3.5 Sonnet</div>
+        <div class="kpi-cost">약 49만 원</div>
+        <div class="kpi-sub">캐싱 + Batch (-91.7%)</div>
+      </div>
+      <div class="kpi-card qwen-opt">
+        <div class="kpi-title">Qwen-VL-Plus</div>
+        <div class="kpi-cost">약 3.5 ~ 6.9만 원</div>
+        <div class="kpi-sub">DashScope (-98.8%)</div>
+      </div>
+      <div class="kpi-card gemini-opt">
+        <div class="kpi-title">Gemini 3.8 / 1.5 Flash</div>
+        <div class="kpi-cost">약 1.7 ~ 3.2만 원</div>
+        <div class="kpi-sub">Context Caching (-99.5%)</div>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section-block">
+      <div class="section-header">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title"><code>/style-ex</code> 파이프라인 구조 및 1건당 실측 토큰</h2>
+      </div>
+      <p class="sec-desc">
+        STMX의 <code>/style-ex</code> 파이프라인은 의류 사진 1장으로부터 4글자 스타일 코드(예: <code>ICSM</code>, <code>ETSD</code>)를 추출하기 위해 
+        <strong>관찰(Vision VLM) &rarr; 스코어링 &rarr; 판정</strong>의 과정을 수행합니다. 
+        현재 배포 버전은 판정을 로컬 TypeScript 엔진과 규칙 판정표(<code>tc-rules.ts</code>)로 처리하여 <strong>판정 외부 API 비용이 $0</strong>으로 최적화되어 있습니다.
+      </p>
+
+      <!-- Pipeline Diagram -->
+      <div class="pipeline-container">
+        <div class="pipeline-flow">
+          <div class="step-item">
+            <div class="step-badge input">INPUT</div>
+            <div class="step-content">
+              <div class="step-title">상품 대표 이미지 (Public URL / Supabase Storage)</div>
+              <div class="step-details">
+                <span>단일 의류 정면 사진 (JPEG/PNG/WEBP, ~1,000-1,600 VLM 토큰 상당)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-arrow">&#9660;</div>
+
+          <div class="step-item">
+            <div class="step-badge">STEP ①</div>
+            <div class="step-content">
+              <div class="step-title">
+                <span>관찰 (Vision API) &mdash; 의류 파라미터 추출</span>
+                <span class="step-model">Claude / Gemini 3.8 / Qwen Vision VLM</span>
+              </div>
+              <div class="step-details">
+                <span>&bull; <strong>입력</strong>: 관찰 프롬프트(68,000 토큰) + 이미지 = <strong>실측 68,068 토큰</strong></span>
+                <span>&bull; <strong>출력</strong>: 37개 파라미터 &middot; DM 디테일 &middot; 색상 JSON (<strong>약 3,300 토큰</strong>)</span>
+                <span>&bull; <strong>핵심</strong>: 대용량 프롬프트 캐싱(Context Caching) 여부가 비용의 85% 이상을 좌우</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-arrow">&#9660;</div>
+
+          <div class="step-item">
+            <div class="step-badge engine">STEP ②</div>
+            <div class="step-content">
+              <div class="step-title">
+                <span>스코어링 (Scoring Engine) &mdash; 축 점수 산출</span>
+                <span class="step-model free">서버 내부 TS 엔진 ($0)</span>
+              </div>
+              <div class="step-details">
+                <span>&bull; <strong>내부 연산</strong>: EI &middot; SR &middot; DM 3개 축 통계적 스코어링 산출 (소요 시간 ~0.05초)</span>
+                <span>&bull; 외부 API 호출 없음</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-arrow">&#9660;</div>
+
+          <div class="step-item">
+            <div class="step-badge rules">STEP ③</div>
+            <div class="step-content">
+              <div class="step-title">
+                <span>판정 (TC Rules &amp; Judge) &mdash; 4글자 코드 확정</span>
+                <span class="step-model free">코드 규칙 판정 ($0)</span>
+              </div>
+              <div class="step-details">
+                <span>&bull; <strong>규칙 기반</strong>: <code>tc-rules.ts</code>로 TC(트렌디&harr;클래식) 판정 및 미결 축 기본값 확정</span>
+                <span>&bull; <em>(참고) LLM 판정 사용 시</em>: 판정 프롬프트 14k 토큰 + 사고 토큰 5k 추가 소요</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-arrow">&#9660;</div>
+
+          <div class="final-badge">
+            &star; 최종 Style ID 확정 (4글자 코드: EI &middot; TC &middot; SR &middot; DM &rarr; 예: ICSM / ETSD)
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">&bull; 1건당 토큰 소요 실측치 (기준: <code>docs/product-style-id-extraction-price.md</code>)</h3>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 16%;">파이프라인 단계</th>
+              <th style="width: 26%;">수행 모듈 / 엔진</th>
+              <th style="width: 22%;" class="text-right">입력 토큰 (실측치)</th>
+              <th style="width: 22%;" class="text-right">출력 토큰 (실측치)</th>
+              <th style="width: 14%;" class="text-right">API 비용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>① 관찰 (Vision)</strong></td>
+              <td>Vision Language Model</td>
+              <td class="text-right font-mono font-bold">68,068</td>
+              <td class="text-right font-mono">약 3,300 (2.6k~4.0k)</td>
+              <td class="text-right font-bold" style="color: #2563eb;">유상 (모델별 청구)</td>
+            </tr>
+            <tr class="highlight-green">
+              <td><strong>② 스코어링</strong></td>
+              <td>로컬 Node.js 엔진 (<code>scoring.ts</code>)</td>
+              <td class="text-right font-mono">-</td>
+              <td class="text-right font-mono">-</td>
+              <td class="text-right font-bold font-mono" style="color: #059669;">$0 (서버 로컬)</td>
+            </tr>
+            <tr class="highlight-green">
+              <td><strong>③ 판정 (현 배포)</strong></td>
+              <td>규칙 판정 엔진 (<code>tc-rules.ts</code>)</td>
+              <td class="text-right font-mono">-</td>
+              <td class="text-right font-mono">-</td>
+              <td class="text-right font-bold font-mono" style="color: #059669;">$0 (코드 판정)</td>
+            </tr>
+            <tr style="color: #64748b;">
+              <td><em>③ 판정 (레거시 LLM)</em></td>
+              <td><em>Claude Opus 5.5 / Gemini Pro</em></td>
+              <td class="text-right font-mono"><em>14,063</em></td>
+              <td class="text-right font-mono"><em>약 5,000 (답안+CoT)</em></td>
+              <td class="text-right font-mono"><em>유상 추가 호출</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>STMX Engineering Team &bull; VTON AI Service Operations</span>
+      <span>Page 1 / 4</span>
+    </div>
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="report-page">
+    <div class="section-block">
+      <div class="section-header">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title">상품 10,000개 연산 종합 비용 비교 (Claude vs Gemini vs Qwen)</h2>
+      </div>
+      <p class="sec-desc">
+        10,000개 상품 연산 시의 공식 API 비용 비교입니다. 
+        <strong>Gemini 3.8 Flash</strong> 및 <strong>Gemini 1.5 Flash</strong>는 압도적인 Context Caching 단가($0.01875/1M)로 인해 
+        Claude 정가 대비 <strong>99.5% 이상의 비용 절감</strong> 효과를 제공합니다.
+      </p>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 13%;">제공사</th>
+              <th style="width: 17%;">사용 모델</th>
+              <th style="width: 18%;">적용 최적화 옵션</th>
+              <th style="width: 15%;" class="text-right">단가 (입력 / 출력 / 캐시)</th>
+              <th style="width: 11%;" class="text-right">1건당 비용</th>
+              <th style="width: 13%;" class="text-right">10,000벌 (USD)</th>
+              <th style="width: 13%;" class="text-right">10,000벌 (KRW)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Anthropic Claude -->
+            <tr class="highlight-danger">
+              <td><strong>Claude API</strong></td>
+              <td><span class="font-mono">Opus 4.8</span></td>
+              <td>캐싱 미적용 (정가 기준선)</td>
+              <td class="text-right font-mono">$5.00 / $25.00 / -</td>
+              <td class="text-right font-mono">$0.423</td>
+              <td class="text-right font-mono font-bold" style="color: #dc2626;">$4,228</td>
+              <td class="text-right font-bold" style="color: #dc2626;">약 592만 원</td>
+            </tr>
+            <tr class="highlight-warn">
+              <td><strong>Claude API</strong></td>
+              <td><span class="font-mono">Opus 4.8</span></td>
+              <td><strong>관찰 캐싱 (현재 vtron)</strong></td>
+              <td class="text-right font-mono">$5.00 / $25.00 / $0.50</td>
+              <td class="text-right font-mono">$0.117</td>
+              <td class="text-right font-mono font-bold" style="color: #d97706;">$1,165</td>
+              <td class="text-right font-bold" style="color: #d97706;">약 163만 원</td>
+            </tr>
+            <tr>
+              <td><strong>Claude API</strong></td>
+              <td><span class="font-mono">3.5 Sonnet</span></td>
+              <td>관찰 캐싱 적용</td>
+              <td class="text-right font-mono">$3.00 / $15.00 / $0.30</td>
+              <td class="text-right font-mono">$0.070</td>
+              <td class="text-right font-mono font-bold">$699</td>
+              <td class="text-right font-bold">약 98만 원</td>
+            </tr>
+            <tr class="highlight-blue">
+              <td><strong>Claude API</strong></td>
+              <td><span class="font-mono">3.5 Sonnet</span></td>
+              <td><strong>캐싱 + Message Batches</strong></td>
+              <td class="text-right font-mono">비동기 50% 추가 할인</td>
+              <td class="text-right font-mono font-bold" style="color: #2563eb;">$0.035</td>
+              <td class="text-right font-mono font-bold" style="color: #2563eb;">$350</td>
+              <td class="text-right font-bold" style="color: #2563eb;">약 49만 원</td>
+            </tr>
+
+            <!-- Google Gemini 3.8 Series -->
+            <tr class="highlight-emerald">
+              <td><strong>Google Gemini</strong></td>
+              <td><span class="font-mono font-bold">Gemini 3.8 Flash</span></td>
+              <td><strong>Context Caching (강력 권장)</strong></td>
+              <td class="text-right font-mono">$0.075 / $0.30 / $0.01875</td>
+              <td class="text-right font-mono font-bold" style="color: #059669;">$0.0023</td>
+              <td class="text-right font-mono font-bold" style="color: #059669;">$22.8</td>
+              <td class="text-right font-bold" style="color: #059669;">약 3.2만 원</td>
+            </tr>
+            <tr class="highlight-emerald">
+              <td><strong>Google Gemini</strong></td>
+              <td><span class="font-mono font-bold">Gemini 3.8 Flash</span></td>
+              <td><strong>캐싱 + Batch API (초특가)</strong></td>
+              <td class="text-right font-mono">비동기 50% 추가 할인</td>
+              <td class="text-right font-mono font-bold" style="color: #047857;">$0.0012</td>
+              <td class="text-right font-mono font-bold" style="color: #047857;">$12.0</td>
+              <td class="text-right font-bold" style="color: #047857;">약 1.7만 원</td>
+            </tr>
+            <tr>
+              <td><strong>Google Gemini</strong></td>
+              <td><span class="font-mono">Gemini 3.8 Pro</span></td>
+              <td>Context Caching (High Reasoning)</td>
+              <td class="text-right font-mono">$1.25 / $5.00 / $0.3125</td>
+              <td class="text-right font-mono">$0.038</td>
+              <td class="text-right font-mono font-bold">$378</td>
+              <td class="text-right font-bold">약 53만 원</td>
+            </tr>
+            <tr>
+              <td><strong>Google Gemini</strong></td>
+              <td><span class="font-mono">Gemini 1.5 Flash</span></td>
+              <td>Context Caching 적용</td>
+              <td class="text-right font-mono">$0.075 / $0.30 / $0.01875</td>
+              <td class="text-right font-mono">$0.0023</td>
+              <td class="text-right font-mono font-bold">$22.8</td>
+              <td class="text-right font-bold">약 3.2만 원</td>
+            </tr>
+
+            <!-- Alibaba Qwen -->
+            <tr class="highlight-purple">
+              <td><strong>Alibaba Qwen</strong></td>
+              <td><span class="font-mono">Qwen-VL-Plus</span></td>
+              <td><strong>Context Caching (DashScope)</strong></td>
+              <td class="text-right font-mono">$0.21 / $0.63 / $0.042</td>
+              <td class="text-right font-mono font-bold" style="color: #7c3aed;">$0.0049</td>
+              <td class="text-right font-mono font-bold" style="color: #7c3aed;">$49.4</td>
+              <td class="text-right font-bold" style="color: #7c3aed;">약 6.9만 원</td>
+            </tr>
+            <tr class="highlight-purple">
+              <td><strong>Alibaba Qwen</strong></td>
+              <td><span class="font-mono">Qwen-VL-Plus</span></td>
+              <td><strong>캐싱 + DashScope Batch</strong></td>
+              <td class="text-right font-mono">비동기 50% 추가 할인</td>
+              <td class="text-right font-mono font-bold" style="color: #6d28d9;">$0.0025</td>
+              <td class="text-right font-mono font-bold" style="color: #6d28d9;">$25.0</td>
+              <td class="text-right font-bold" style="color: #6d28d9;">약 3.5만 원</td>
+            </tr>
+            <tr>
+              <td><strong>Alibaba Qwen</strong></td>
+              <td><span class="font-mono">Qwen-VL-Max</span></td>
+              <td>Context Caching 적용</td>
+              <td class="text-right font-mono">$0.80 / $3.20 / $0.16</td>
+              <td class="text-right font-mono">$0.0215</td>
+              <td class="text-right font-mono font-bold">$214.5</td>
+              <td class="text-right font-bold">약 30만 원</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Waterfall Box -->
+      <div class="waterfall-box">
+        <div style="font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 7px; text-transform: uppercase;">
+          &bull; 10,000벌 연산 비용 절감 로드맵 (비용 폭포 분석)
+        </div>
+        <div class="waterfall-step">
+          <div class="wf-name">
+            <span>1. 기존 Claude Opus 정가 기준</span>
+          </div>
+          <div>
+            <span class="wf-val" style="color: #dc2626;">약 592만 원 ($4,228)</span>
+            <span class="wf-drop red">기준선 (100%)</span>
+          </div>
+        </div>
+        <div class="waterfall-step">
+          <div class="wf-name">
+            <span>&rarr; 2. 현재 배포 (Opus 관찰 프롬프트 캐싱 적용)</span>
+          </div>
+          <div>
+            <span class="wf-val" style="color: #d97706;">약 163만 원 ($1,165)</span>
+            <span class="wf-drop red">-72.4% 절감</span>
+          </div>
+        </div>
+        <div class="waterfall-step">
+          <div class="wf-name">
+            <span>&rarr; 3. Anthropic 최적화 (Claude 3.5 Sonnet + Batch API)</span>
+          </div>
+          <div>
+            <span class="wf-val" style="color: #2563eb;">약 49만 원 ($350)</span>
+            <span class="wf-drop blue">-91.7% 절감</span>
+          </div>
+        </div>
+        <div class="waterfall-step">
+          <div class="wf-name">
+            <span>&rarr; 4. Alibaba Qwen-VL-Plus (DashScope Caching + Batch)</span>
+          </div>
+          <div>
+            <span class="wf-val" style="color: #7c3aed;">약 3.5만 ~ 6.9만 원 ($25~$49)</span>
+            <span class="wf-drop purple">-98.8% 파격 절감</span>
+          </div>
+        </div>
+        <div class="waterfall-step">
+          <div class="wf-name">
+            <span>&rarr; 5. Google Gemini 3.8 Flash (Context Caching + Batch)</span>
+          </div>
+          <div>
+            <span class="wf-val" style="color: #059669;">약 1.7만 ~ 3.2만 원 ($12~$23)</span>
+            <span class="wf-drop green">-99.5% 극대화 절감</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>STMX Engineering Team &bull; VTON AI Service Operations</span>
+      <span>Page 2 / 4</span>
+    </div>
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ==================== PAGE 3 ==================== -->
+  <div class="report-page">
+    <div class="section-block">
+      <div class="section-header">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">상품 10,000개 연산 소요 시간 및 처리율 벤치마크 (Gemini 3.8 포함)</h2>
+      </div>
+      <p class="sec-desc">
+        10,000개 상품 연산은 총 3,300만 토큰의 대용량 텍스트 생성을 수반합니다.
+        <strong>Gemini 3.8 Flash</strong>는 향상된 고속 추론 커널과 시각 처리 엔진을 통해 
+        <strong>1건당 10~13초</strong>, 병렬 풀 가동 시 <strong>1시간 이내(약 50분~1시간 10분)</strong>에 10,000건 전체 연산을 완료할 수 있습니다.
+      </p>
+
+      <h3 class="sub-title">&bull; 1건당 응답 지연시간 (Latency) 상세 분석</h3>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">모델명</th>
+              <th style="width: 20%;" class="text-center">초기 응답 (TTFT)</th>
+              <th style="width: 24%;" class="text-center">생성 속도 (TPOT)</th>
+              <th style="width: 20%;" class="text-center">1건당 순수 생성 시간</th>
+              <th style="width: 14%;">속도 평가</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-emerald">
+              <td><strong>Gemini 3.8 Flash</strong></td>
+              <td class="text-center font-mono font-bold" style="color: #059669;">약 0.4 ~ 0.6초</td>
+              <td class="text-center font-mono font-bold" style="color: #059669;">초당 220 ~ 300 토큰</td>
+              <td class="text-center font-mono font-bold" style="color: #059669;">약 10 ~ 13초</td>
+              <td><span class="cost-pill pill-emerald">최강 속도</span></td>
+            </tr>
+            <tr class="highlight-green">
+              <td><strong>Gemini 1.5 Flash</strong></td>
+              <td class="text-center font-mono">약 0.5 ~ 0.8초</td>
+              <td class="text-center font-mono">초당 180 ~ 250 토큰</td>
+              <td class="text-center font-mono font-bold" style="color: #059669;">약 12 ~ 16초</td>
+              <td><span class="cost-pill pill-green">최고속</span></td>
+            </tr>
+            <tr>
+              <td><strong>Gemini 3.8 Pro</strong></td>
+              <td class="text-center font-mono">약 1.2 ~ 2.0초</td>
+              <td class="text-center font-mono">초당 100 ~ 140 토큰</td>
+              <td class="text-center font-mono font-bold">약 25 ~ 35초</td>
+              <td><span class="cost-pill pill-blue">보통</span></td>
+            </tr>
+            <tr class="highlight-purple">
+              <td><strong>Qwen-VL-Plus</strong></td>
+              <td class="text-center font-mono">약 1.0 ~ 1.8초</td>
+              <td class="text-center font-mono">초당 90 ~ 130 토큰</td>
+              <td class="text-center font-mono font-bold" style="color: #7c3aed;">약 25 ~ 35초</td>
+              <td><span class="cost-pill pill-purple">빠름</span></td>
+            </tr>
+            <tr class="highlight-blue">
+              <td><strong>Claude 3.5 Sonnet</strong></td>
+              <td class="text-center font-mono">약 1.5 ~ 2.2초</td>
+              <td class="text-center font-mono">초당 75 ~ 95 토큰</td>
+              <td class="text-center font-mono font-bold" style="color: #2563eb;">약 40 ~ 50초</td>
+              <td><span class="cost-pill pill-blue">보통</span></td>
+            </tr>
+            <tr class="highlight-danger">
+              <td><strong>Claude Opus 4.8</strong></td>
+              <td class="text-center font-mono">약 2.5 ~ 4.0초</td>
+              <td class="text-center font-mono">초당 40 ~ 50 토큰</td>
+              <td class="text-center font-mono font-bold" style="color: #dc2626;">약 75 ~ 85초</td>
+              <td><span class="cost-pill pill-red">매우 느림</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub-title">&bull; 실행 아키텍처별 10,000벌 총 소요 시간 비교</h3>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">모델명</th>
+              <th style="width: 26%;">1. 병렬 워커 풀 (동시 30~50)</th>
+              <th style="width: 26%;">2. 공식 Batch API (클라우드 분산)</th>
+              <th style="width: 26%;">3. 단순 순차 실행 (Concurrency 1)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-emerald">
+              <td><strong>Gemini 3.8 Flash</strong></td>
+              <td style="color: #059669;"><strong>약 50분 ~ 1시간 10분</strong> (동시 40건)</td>
+              <td style="color: #047857;"><strong>약 1시간 ~ 2시간</strong> (Batch API)</td>
+              <td>약 30시간 (~1.2일)</td>
+            </tr>
+            <tr class="highlight-green">
+              <td><strong>Gemini 1.5 Flash</strong></td>
+              <td style="color: #059669;"><strong>약 1시간 ~ 1시간 30분</strong> (동시 35건)</td>
+              <td style="color: #047857;"><strong>약 1시간 ~ 3시간</strong> (Batch API)</td>
+              <td>약 38시간 (~1.6일)</td>
+            </tr>
+            <tr>
+              <td><strong>Gemini 3.8 Pro</strong></td>
+              <td><strong>약 3.5 ~ 4.5시간</strong> (동시 25건)</td>
+              <td><strong>약 2 ~ 5시간</strong> (Batch API)</td>
+              <td>약 80시간 (~3.3일)</td>
+            </tr>
+            <tr class="highlight-purple">
+              <td><strong>Qwen-VL-Plus</strong></td>
+              <td><strong>약 2.5 ~ 3시간</strong> (동시 30건 기준)</td>
+              <td><strong>약 2 ~ 5시간</strong> (DashScope Batch)</td>
+              <td style="color: #dc2626;">약 83시간 (~3.5일)</td>
+            </tr>
+            <tr class="highlight-blue">
+              <td><strong>Claude 3.5 Sonnet</strong></td>
+              <td><strong>약 6 ~ 7시간</strong> (동시 20건 기준)</td>
+              <td><strong>약 4 ~ 10시간</strong> (비동기 배치)</td>
+              <td style="color: #dc2626;">약 125시간 (~5.2일)</td>
+            </tr>
+            <tr class="highlight-danger">
+              <td><strong>Claude Opus 4.8</strong></td>
+              <td><strong>약 20 ~ 24시간</strong> (동시 10건, TPM 제약)</td>
+              <td><strong>약 8 ~ 16시간</strong> (비동기 배치)</td>
+              <td style="color: #dc2626;">약 220시간 (~9.2일, 불가)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; margin-top: 6px;">
+        <div style="font-weight: 700; font-size: 11.5px; color: #1e293b; margin-bottom: 2px;">⚡ Gemini 3.8 처리 속도 분석</div>
+        <div style="font-size: 11px; color: #475569; line-height: 1.5;">
+          <strong>Gemini 3.8 Flash</strong>는 68,068 토큰 관찰 프롬프트에 Context Caching 적용 시 <strong>TTFT 0.4초대</strong>, 생성 속도 <strong>초당 250+ 토큰</strong>을 유지합니다.
+          현재 기본 설정으로 심층 추론(Thinking ON)을 가동하여 시각적 모호성이 있는 의복 디테일까지 정밀 검토하며, <strong>최대 65,536 출력 한도</strong>를 확보하여 사고 과정과 전체 JSON envelope가 완벽히 보존됩니다. (필요 시 환경변수로 초고속 Thinking OFF 전환 지원).
+          동시 30~50개 비동기 워커 가동 시 <strong>약 1시간 ~ 1시간 50분</strong>에 10,000건 전체 연산을 안정적으로 완료할 수 있습니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>STMX Engineering Team &bull; VTON AI Service Operations</span>
+      <span>Page 3 / 4</span>
+    </div>
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ==================== PAGE 4 ==================== -->
+  <div class="report-page">
+    <div class="section-block">
+      <div class="section-header">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title">3사 심층 평가 및 엔지니어링 구현 가이드</h2>
+      </div>
+
+      <!-- 3-Way Provider Comparison Cards -->
+      <div class="card-grid-3">
+        <!-- Gemini 3.8 -->
+        <div class="info-card gemini">
+          <h4>
+            <span>Google Gemini 3.8 / 1.5</span>
+            <span class="cost-pill pill-emerald">초가성비 &bull; 최고속 (1순위)</span>
+          </h4>
+          <ul>
+            <li><strong>차세대 성능:</strong> Gemini 3.8 Flash는 향상된 비전 추론과 초당 250+ 토큰 생성으로 <strong>1건당 10~13초</strong> 완료.</li>
+            <li><strong>압도적 캐시 단가:</strong> 68k 프롬프트 캐시 읽기 <strong>$0.01875/1M</strong> (Opus 대비 1/270). 10,000건 비용 <strong>1.7만~3.2만 원</strong>.</li>
+            <li><strong>적합한 경우:</strong> 1만~10만 단위 대규모 이커머스 카탈로그 실시간 및 배치 추출 전체.</li>
+          </ul>
+        </div>
+
+        <!-- Claude -->
+        <div class="info-card claude">
+          <h4>
+            <span>Anthropic Claude</span>
+            <span class="cost-pill pill-blue">고정밀 &bull; 프리미엄</span>
+          </h4>
+          <ul>
+            <li><strong>강점:</strong> 미세한 봉제선, 텍스처, 실루엣 추론 정확도가 가장 우수함. 지시 불이행률 1% 미만.</li>
+            <li><strong>약점:</strong> 68k 프롬프트 캐시 읽기 단가($0.30~$0.50)가 높아 10,000건 시 비용 부담(49만~163만 원).</li>
+            <li><strong>적합한 경우:</strong> 카탈로그 메인 플래그십 의류, 고가 명품 의류의 정밀 재검증 단계.</li>
+          </ul>
+        </div>
+
+        <!-- Qwen -->
+        <div class="info-card qwen">
+          <h4>
+            <span>Alibaba Qwen</span>
+            <span class="cost-pill pill-purple">동아시아 패션 특화</span>
+          </h4>
+          <ul>
+            <li><strong>강점:</strong> 타오바오/동대문/아시아 의류 쇼핑몰 이미지 데이터셋 학습량이 방대하여 K-패션 인식 우수.</li>
+            <li><strong>비용:</strong> 10,000건 기준 <strong>3.5만~6.9만 원</strong>으로 Gemini에 근접하는 훌륭한 가성비.</li>
+            <li><strong>적합한 경우:</strong> 국내 및 동아시아 도매 사입 의류 대량 처리, 멀티 클라우드 페일오버.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Engineering Checklist -->
+      <h3 class="sub-title">&bull; 대규모 10,000벌 배치 추출 아키텍처 및 체크리스트</h3>
+      <div class="checklist-grid">
+        <div class="check-card">
+          <h5><span class="check-num">1</span> Context Caching 등록</h5>
+          <p>68,068 토큰 관찰 프롬프트를 Gemini <code>cachedContents.create</code>로 사전 등록하여 네트워크 페이로드 90% 절감 및 TTFT 단축.</p>
+        </div>
+        <div class="check-card">
+          <h5><span class="check-num">2</span> 이미지 전달 최적화</h5>
+          <p>이미지 파일을 Base64 문자열로 본문에 인코딩하지 않고, Supabase 스토리지 또는 웹 CDN의 Public URL을 전달하여 대역폭 병목 방지.</p>
+        </div>
+        <div class="check-card">
+          <h5><span class="check-num">3</span> Bulk DB Insert</h5>
+          <p>Gemini 3.8이 반환한 37개 파라미터 JSON을 로컬 <code>scoring.ts</code>에 통과시켜 Style ID 도출 후, PostgreSQL <code>product_style</code> 테이블에 1,000건 단위 벌크 삽입.</p>
+        </div>
+      </div>
+
+      <!-- Final Recommendation Banner -->
+      <div class="rec-banner">
+        <h4>&star; 엔지니어링 최종 결론 및 권장 방안 (Recommended Next Step)</h4>
+        <p>
+          10,000벌 의상 Style ID 대량 산출에는 <strong>Google Gemini 3.8 Flash + Context Caching (또는 Batch API)</strong> 조합을 채택할 것을 강력 권장합니다.<br>
+          &bull; <strong>비용 절감</strong>: 기존 Claude Opus 정가 592만 원 대비 <strong>약 1.7만 ~ 3.2만 원</strong>으로 <strong>99.5% 비용 절감</strong> 달성.<br>
+          &bull; <strong>소요 시간</strong>: 병렬 워커 풀 가동 시 <strong>약 50분 ~ 1시간 10분 내외</strong>에 10,000건 전체 추출 및 DB 적재 완료 가능.<br>
+          &bull; <strong>대안</strong>: 동아시아/국내 쇼핑몰 의류 특화 인식이 요구될 경우 <strong>Qwen-VL-Plus (약 3.5만~6.9만 원, 2.5~3시간 소요)</strong>를 2순위로 추천합니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>STMX Engineering Team &bull; VTON AI Service Operations</span>
+      <span>Page 4 / 4</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

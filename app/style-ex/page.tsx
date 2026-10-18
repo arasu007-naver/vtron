@@ -103,6 +103,8 @@ export default function StyleExPage() {
   const [versionBusy, setVersionBusy] = useState(false);
   const [versionError, setVersionError] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>("idle");
+  const [provider, setProvider] = useState<"claude" | "gemini">("claude");
+  const [usedModel, setUsedModel] = useState<string | null>(null);
   const [result, setResult] = useState("");
   /** 호출 결과를 단계별로 나눈 것 — 관찰 envelope / 그 밖(판정 · 스코어링 · 스타일 아이디) */
   const [resultParts, setResultParts] = useState<{ observe: string; judge: string } | null>(null);
@@ -236,6 +238,7 @@ export default function StyleExPage() {
     if (!file || status === "running") return;
     setStatus("running");
     setResult("");
+    setUsedModel(null);
     setResultParts(null);
     setSummary(null);
     setEnvelope(null);
@@ -245,6 +248,7 @@ export default function StyleExPage() {
 
     const body = new FormData();
     body.append("image", file);
+    body.append("provider", provider);
     for (const { key } of PROMPT_TABS) {
       if (prompts[key] !== defaults[key]) body.append(key, prompts[key]);
     }
@@ -259,6 +263,7 @@ export default function StyleExPage() {
       const res = await authFetch("/api/style-ex", { method: "POST", body });
       const data = await res.json();
       setResult(JSON.stringify(data, null, 2));
+      setUsedModel(data.visionModel ?? (provider === "gemini" ? "gemini 3.8 flash" : "Claude"));
       if (data.observation) {
         const { observation, ...judged } = data;
         setResultParts({ observe: JSON.stringify(observation, null, 2), judge: JSON.stringify(judged, null, 2) });
@@ -479,6 +484,33 @@ export default function StyleExPage() {
                 </button>
               ))}
               <span className="ml-2 text-xs text-black/50">{prompt.length.toLocaleString()}자</span>
+              {/* 모델 선택 토글 (클로드 / gemini) — 관찰프롬프트 선택 인풋 바로 왼쪽 */}
+              <div className="ml-auto flex items-center rounded-lg border border-[var(--color-divider)] bg-black/5 p-0.5 text-xs">
+                <button
+                  type="button"
+                  onClick={() => setProvider("claude")}
+                  className={`rounded-md px-2.5 py-0.5 font-medium transition-colors ${
+                    provider === "claude"
+                      ? "bg-white font-semibold text-[var(--color-accent-700)] shadow-sm"
+                      : "text-black/60 hover:text-black"
+                  }`}
+                  title="Claude (기본: claude-opus-4-8)"
+                >
+                  클로드
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setProvider("gemini")}
+                  className={`rounded-md px-2.5 py-0.5 font-medium transition-colors ${
+                    provider === "gemini"
+                      ? "bg-white font-semibold text-emerald-600 shadow-sm"
+                      : "text-black/60 hover:text-black"
+                  }`}
+                  title="Google Gemini (gemini 3.8 flash)"
+                >
+                  gemini
+                </button>
+              </div>
               <select
                 value={currentVersion?.id ?? ""}
                 onChange={(e) => {
@@ -487,7 +519,7 @@ export default function StyleExPage() {
                 }}
                 disabled={!versions[tab].length}
                 title="버전을 고르면 그 내용을 불러옵니다"
-                className="ml-auto max-w-[16rem] truncate rounded border border-[var(--color-divider)] bg-white px-2 py-0.5 text-xs"
+                className="max-w-[16rem] truncate rounded border border-[var(--color-divider)] bg-white px-2 py-0.5 text-xs"
               >
                 {!currentVersion && <option value="">{versions[tab].length ? "저장 안 한 내용" : "버전 없음"}</option>}
                 {versions[tab].map((v) => (
@@ -516,7 +548,7 @@ export default function StyleExPage() {
             />
             <p className="flex-none mx-4 mb-1 text-xs text-black/50">
               {tab === "prompt"
-                ? "이미지와 함께 Vision 모델에 보냅니다."
+                ? `이미지와 함께 Vision 모델(${provider === "gemini" ? "gemini 3.8 flash" : "클로드 Opus"})에 보냅니다.`
                 : "관찰값 JSON 이 이 프롬프트 뒤에 자동으로 붙어 판정 모델에 보내집니다."}
             </p>
             {/* 버전 관리 — 저장 안 한 내용이면 새 버전으로 저장, 활성이 아닌 버전이면 활성화 */}
@@ -640,6 +672,11 @@ export default function StyleExPage() {
               </span>
               {elapsed !== null && (
                 <span className="text-xs font-normal text-black/50">{elapsed.toFixed(1)}초</span>
+              )}
+              {usedModel && (
+                <span className="text-xs font-normal px-2 py-0.5 rounded-full bg-black/5 text-black/70">
+                  {usedModel}
+                </span>
               )}
               {status === "error" && (
                 <span className="text-xs font-normal text-[var(--color-danger)]">실패</span>

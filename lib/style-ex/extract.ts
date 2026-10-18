@@ -15,7 +15,12 @@ import { validateColorObservation } from "./engine/run/color_recovery/color_cont
 import { buildCombinedPromptV2 } from "./engine/run/onecall_prototype/onecall_prototype_v1.js";
 import { buildPrompt as buildRootPrompt } from "./engine/producer_prompt_v1.js";
 import { imageToBlock } from "./engine/run/anthropic_vision_fn.js";
-import { anthropicClientOptions } from "./api-key";
+import {
+  anthropicApiKey,
+  anthropicClientOptions,
+  geminiApiKey,
+  MISSING_GEMINI_KEY_MESSAGE,
+} from "./api-key";
 import {
   ENGINE_AXES,
   axisScoreOf,
@@ -31,14 +36,16 @@ import { judgeTcRules, tcSummaryOf, type TcRuleResult } from "./tc-rules";
 /**
  * 의류 스타일 추출 (style-ex).
  *
- * 1. 관찰  : 이미지 1장 → Vision 호출 1회 → 의복별 37개 파라미터 + DM 디테일 + 색상 + 연출 유형
+ * 1. 관찰  : 이미지 1장 → Vision 호출 1회(Claude 또는 Gemini 3.8 Flash) → 의복별 37개 파라미터 + DM 디테일 + 색상 + 연출 유형
  * 2. 스코어링: EI · SR · DM 은 STMX ITEM SCORING ENGINE V1 (scoring.ts), TC 는 규칙 판정 (tc-rules.ts)
  * 3. 미결  : 엔진 · 규칙이 글자를 정하지 못한 축은 엔진 방향이 있으면 그 글자, 없으면 기본 글자(DEFAULT_LETTER)
  * 4. 조합  : 대표 의복의 네 글자 → 스타일 아이디
  *
- * Claude API 는 1. 관찰에서 한 번만 부른다. LLM 판정(judge.ts)은 부르지 않는다 — 판정 프롬프트의 규칙은
+ * LLM 판정(judge.ts)은 부르지 않는다 — 판정 프롬프트의 규칙은
  * 2. 의 엔진(EI · SR · DM)과 tc-rules.ts(TC)가 코드로 갖고 있다.
  */
+
+export type StyleExProvider = "claude" | "gemini";
 
 /** Vision 호출 제한 시간 — 프롬프트가 크고 출력(관찰 + DM + 색상)도 길다 */
 const TIMEOUT_MS = 300_000;
@@ -46,9 +53,32 @@ const TIMEOUT_MS = 300_000;
 const VISION_MAX_TOKENS = 32_000;
 /** 엔진 anthropic_vision_fn 의 기본 모델과 같다 (precision-first) */
 const DEFAULT_VISION_MODEL = "claude-opus-4-8";
+/** Gemini 선택 시 사용할 기본 모델 */
+const DEFAULT_GEMINI_VISION_MODEL = "gemini-3.8-flash";
 
-/** 관찰에 쓰는 Vision 모델 */
+/** 관찰에 쓰는 Claude Vision 모델 */
 export const visionModel = (): string => process.env.STYLE_EX_MODEL || DEFAULT_VISION_MODEL;
+
+/** 관찰에 쓰는 Gemini Vision 모델 */
+export const geminiVisionModel = (): string =>
+  process.env.STYLE_EX_GEMINI_MODEL || DEFAULT_GEMINI_VISION_MODEL;
+
+/**
+ * 관찰 단계의 Gemini 추론(Thinking) 설정.
+ * 사용자의 지시에 따라 추론(Thinking) 모드를 기본 활성화합니다.
+ * (환경변수 STYLE_EX_GEMINI_THINKING_BUDGET=0 으로 명시 지정된 경우에만 비활성화)
+ */
+export const geminiThinkingConfig = (): { thinkingBudget?: number } | undefined => {
+  const envVal = process.env.STYLE_EX_GEMINI_THINKING_BUDGET;
+  if (envVal === "0") {
+    return { thinkingBudget: 0 };
+  }
+  if (envVal !== undefined && envVal !== "" && Number.isFinite(parseInt(envVal, 10))) {
+    return { thinkingBudget: parseInt(envVal, 10) };
+  }
+  // 기본값: 추론(Thinking) 켬 (thinkingConfig 미지정 시 Gemini 네이티브 CoT 추론 모드 가동)
+  return undefined;
+};
 
 // 색상 관찰 지시문 — onecall 프로토타입의 Sequential One-Call V2 추가 지시를 그대로 떼어 쓴다.
 // (결합 프롬프트 = 루트 Producer 프롬프트 + 추가 지시. 앞부분을 잘라내면 추가 지시만 남는다.)
@@ -112,24 +142,30 @@ export interface ExtractInput {
   prompt?: string;
   /** 상품 사진이면 그 상품의 이름 · 분류 — 있으면 맞는 의복을 대표 의복으로 고정한다 */
   product?: ProductContext | null;
+  /** 사용할 Vision 모델 공급자 ('claude' | 'gemini', 기본값 'claude') */
+  provider?: StyleExProvider;
 }
 
+/** Gemini 모델은 최대 65,536 출력 토큰 및 1,048,576 입력 컨텍스트 윈도우를 지원한다 */
+const GEMINI_MAX_OUTPUT_TOKENS = 65_536;
+
 /** Vision 호출 → 관찰 envelope (+ 대상별 색상 · 연출 유형) */
-async function observe(image: Buffer, fileName: string, prompt: string, product: ProductContext | null) {
-  const model = visionModel();
-  const client = new Anthropic(anthropicClientOptions());
-  // 엔진의 주입 지점(visionFn). 엔진 anthropic_vision_fn 과 같은 요청(이미지 + 프롬프트, 1회)을 SDK 로 보낸다 —
-  // 워크스페이스 헤더(anthropic-workspace-id)를 붙일 수 있게 하기 위해서다. 이미지 블록은 엔진의
-  // imageToBlock 이 파일 바이트로 미디어 타입을 판별해 만든다. 프롬프트는 엔진 것 대신 style-ex 프롬프트를 쓴다.
-  // 출력이 길어 스트리밍으로 받는다 (긴 비스트리밍 요청은 HTTP 타임아웃 위험).
-  //
-  // 프롬프트 캐싱: 관찰 프롬프트(약 68,000 토큰)는 요청마다 같고 입력 비용의 대부분이다. 캐시는 요청 앞부분이
-  // 같을 때만 맞으므로 프롬프트를 이미지 **앞에** 두고 거기에 cache_control 을 단다 — 5분 안의 다음 추출은
-  // 이 부분을 캐시 읽기(정가의 0.1배)로 낸다. (docs/product-style-id-extraction-price.md)
-  const visionFn = async (_enginePrompt: string, img: unknown) => {
+async function observe(
+  image: Buffer,
+  fileName: string,
+  prompt: string,
+  product: ProductContext | null,
+  provider: StyleExProvider = "claude"
+) {
+  const isGemini = provider === "gemini";
+  let activeModel = isGemini ? geminiVisionModel() : visionModel();
+
+  // 1) Claude Vision 호출 함수
+  const claudeVisionFn = async (_enginePrompt: string, img: unknown) => {
+    const client = new Anthropic(anthropicClientOptions());
     const message = await client.messages
       .stream({
-        model,
+        model: activeModel,
         max_tokens: VISION_MAX_TOKENS,
         messages: [
           {
@@ -137,7 +173,6 @@ async function observe(image: Buffer, fileName: string, prompt: string, product:
             content: [
               { type: "text", text: prompt, cache_control: { type: "ephemeral" } },
               ...(product ? [{ type: "text" as const, text: productAddendum(product) }] : []),
-              // imageToBlock 은 JS 라 타입이 넓게 추론된다 — 실제 모양은 { type: "image", source: { type: "base64", … } }
               imageToBlock(img) as Anthropic.ImageBlockParam,
             ],
           },
@@ -146,12 +181,131 @@ async function observe(image: Buffer, fileName: string, prompt: string, product:
       .finalMessage();
     const { input_tokens, cache_creation_input_tokens, cache_read_input_tokens, output_tokens } = message.usage;
     console.info(
-      `[style-ex] 관찰 usage — 입력 ${input_tokens} · 캐시 쓰기 ${cache_creation_input_tokens ?? 0} · ` +
+      `[style-ex] Claude 관찰 usage — 입력 ${input_tokens} · 캐시 쓰기 ${cache_creation_input_tokens ?? 0} · ` +
         `캐시 읽기 ${cache_read_input_tokens ?? 0} · 출력 ${output_tokens}`
     );
     if (message.stop_reason === "max_tokens") throw new Error("관찰 출력이 max_tokens 에서 잘렸습니다.");
     return message.content.flatMap((b) => (b.type === "text" ? [b.text] : [])).join("\n");
   };
+
+  // 2) Google Gemini Vision 호출 함수 (gemini-3.8-flash, 1M 입력/65k 출력 Context Window)
+  //   - 방대한 37개 파라미터 관찰 프롬프트(4만+ 토큰)는 systemInstruction 블록에 배치하여
+  //     어텐션 유실(Lost-in-the-middle) 없이 지시사항 전체를 100% 소화하도록 보장합니다.
+  //   - maxOutputTokens 는 Gemini 최대 한도인 65,536으로 확장하여 thinking 및 대용량 JSON 출력이 잘리지 않게 합니다.
+  const geminiVisionFn = async (_enginePrompt: string, img: unknown) => {
+    const apiKey = geminiApiKey();
+    if (!apiKey) throw new Error(MISSING_GEMINI_KEY_MESSAGE);
+
+    const block = imageToBlock(img) as {
+      type: "image";
+      source: { type: "base64"; media_type: string; data: string };
+    };
+
+    const payload = {
+      systemInstruction: {
+        parts: [{ text: prompt }],
+      },
+      contents: [
+        {
+          role: "user",
+          parts: [
+            {
+              inline_data: {
+                mime_type: block.source.media_type,
+                data: block.source.data,
+              },
+            },
+            ...(product
+              ? [{ text: productAddendum(product) }]
+              : [
+                  {
+                    text: "Observe all visible garments in this image and output the complete JSON targets package strictly adhering to all 37 parameters in the system instructions. Do not omit any parameters.",
+                  },
+                ]),
+          ],
+        },
+      ],
+      generationConfig: {
+        temperature: 0.0,
+        maxOutputTokens: GEMINI_MAX_OUTPUT_TOKENS,
+        responseMimeType: "application/json",
+        ...(geminiThinkingConfig() ? { thinkingConfig: geminiThinkingConfig() } : {}),
+      },
+    };
+
+    let res: Response | null = null;
+    const maxAttempts = 3;
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(activeModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+      res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(TIMEOUT_MS),
+      });
+
+      if (res.ok) break;
+
+      // 503 (High Demand) 또는 429 시 지수 백오프로 재시도
+      if ((res.status === 503 || res.status === 429) && attempt < maxAttempts) {
+        console.warn(
+          `[style-ex] Gemini ${activeModel} HTTP ${res.status} (고부하 발생), 2초 후 재시도 (${attempt}/${maxAttempts})...`
+        );
+        await new Promise((r) => setTimeout(r, 2000));
+        continue;
+      }
+
+      // 503 지속 시 안정적인 최신 Flash 모델(gemini-2.5-flash)로 1회 전환 폴백
+      if (res.status === 503 && activeModel === "gemini-3.8-flash") {
+        console.warn(`[style-ex] gemini-3.8-flash 503 지속으로 안정적인 gemini-2.5-flash로 전환 폴백합니다.`);
+        activeModel = "gemini-2.5-flash";
+        const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(activeModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+        res = await fetch(fallbackUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          signal: AbortSignal.timeout(TIMEOUT_MS),
+        });
+        if (res.ok) break;
+      }
+
+      const errBody = await res.text().catch(() => "");
+      throw new Error(`Gemini API 호출 실패 (${activeModel}, HTTP ${res.status}): ${errBody}`);
+    }
+
+    if (!res || !res.ok) {
+      throw new Error(`Gemini API 호출 응답을 받지 못했습니다.`);
+    }
+
+    const data = (await res.json()) as {
+      candidates?: Array<{
+        content?: {
+          parts?: Array<{ text?: string }>;
+        };
+        finishReason?: string;
+      }>;
+      usageMetadata?: {
+        promptTokenCount?: number;
+        candidatesTokenCount?: number;
+        totalTokenCount?: number;
+        thoughtsTokenCount?: number;
+      };
+    };
+
+    const usage = data.usageMetadata;
+    console.info(
+      `[style-ex] Gemini (${activeModel}) 관찰 usage — 입력 ${usage?.promptTokenCount ?? 0} · 출력 ${usage?.candidatesTokenCount ?? 0} · 사고 ${usage?.thoughtsTokenCount ?? 0}`
+    );
+
+    const candidate = data.candidates?.[0];
+    const text = candidate?.content?.parts?.map((p) => p.text || "").join("\n") || "";
+    if (!text.trim()) {
+      throw new Error(`Gemini API가 빈 응답을 반환했습니다. finishReason=${candidate?.finishReason}`);
+    }
+    return text;
+  };
+
+  const visionFn = isGemini ? geminiVisionFn : claudeVisionFn;
 
   // 미디어 타입은 확장자가 아니라 파일 바이트로 판별한다(엔진 D5 규칙).
   // 엔진의 판별기는 파일 경로 입력에서만 동작하므로 임시 파일로 넘긴다.
@@ -166,7 +320,7 @@ async function observe(image: Buffer, fileName: string, prompt: string, product:
   if (!call.ok) return { ok: false as const, error: { stage: "model_call", code: call.code, detail: call.detail, attempts: call.attempts }, raw: call.raw };
 
   // role · extraction_depth · 검증은 엔진의 단일 권위(governEnvelope)가 정한다.
-  const governed = governEnvelope(call.pkg, { imageId: fileName, model, visionCalls: call.attempts });
+  const governed = governEnvelope(call.pkg, { imageId: fileName, model: activeModel, visionCalls: call.attempts });
   const envelope = governed.envelope as { targets: Obj[] };
   // 대상별 형제 메타데이터만 덧붙인다 (onecall 프로토타입의 governCombinedPackage 와 같은 방식).
   // governEnvelope 는 candidates 순서대로 target 을 하나씩 만들므로 인덱스가 맞는다.
@@ -180,7 +334,7 @@ async function observe(image: Buffer, fileName: string, prompt: string, product:
     t.presentation_type = cand.presentation_type ?? null;
     if (product) t.product_match = cand.product_match === true;
   });
-  return { ok: true as const, envelope, contract_valid: governed.contract_valid };
+  return { ok: true as const, envelope, contract_valid: governed.contract_valid, visionModel: activeModel };
 }
 
 /**
@@ -198,14 +352,21 @@ function representativeOf(targets: Obj[]) {
 }
 
 /**
- * 추출 = 관찰(Claude API 1회) → 판정 함수(judgeStyleIdByRules, API 호출 없음).
+ * 추출 = 관찰(Claude 또는 Gemini 3.8 Flash) → 판정 함수(judgeStyleIdByRules, API 호출 없음).
  * judgement 는 LLM 판정을 하지 않으므로 늘 null — 응답 · product_style 모양을 지키려고 남겨 둔다.
  */
-export async function extractStyle({ image, fileName, prompt, product }: ExtractInput) {
-  const observation = await observe(image, fileName, prompt?.trim() ? prompt : defaultPrompt(), product ?? null);
-  if (!observation.ok) return { styleId: null, scoring: null, judgement: null, observation };
+export async function extractStyle({ image, fileName, prompt, product, provider = "claude" }: ExtractInput) {
+  const observation = await observe(
+    image,
+    fileName,
+    prompt?.trim() ? prompt : defaultPrompt(),
+    product ?? null,
+    provider
+  );
+  const activeModel = observation.visionModel || (provider === "gemini" ? geminiVisionModel() : visionModel());
+  if (!observation.ok) return { styleId: null, scoring: null, judgement: null, observation, provider, visionModel: activeModel };
   const { styleId, scoring } = judgeStyleIdByRules(observation.envelope.targets, fileName);
-  return { styleId, scoring, judgement: null, observation };
+  return { styleId, scoring, judgement: null, observation, provider, visionModel: activeModel };
 }
 
 /**
