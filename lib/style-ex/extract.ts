@@ -31,6 +31,7 @@ import {
   type EngineAxis,
 } from "./scoring";
 import { STYLE_IDS, styleIdCandidates } from "./style-ids";
+import { splitProductContext } from "./product-context";
 import { judgeTcRules, tcSummaryOf, type TcRuleResult } from "./tc-rules";
 
 /**
@@ -104,27 +105,6 @@ Choose exactly one token.`;
 /** Vision 모델에 보내는 기본 관찰 프롬프트 */
 export const defaultPrompt = (): string => buildProducerPrompt() + COLOUR_ADDENDUM + PRESENTATION_ADDENDUM;
 
-/** 상품 사진으로 추출할 때 그 상품의 카탈로그 정보 — 대표 의복(primary)을 고르는 데만 쓴다 */
-export interface ProductContext {
-  name: string;
-  /** brand_catalog_models.whole_category_name (예: 패션의류>여성의류>아우터>재킷) */
-  category: string | null;
-}
-
-// 상품 정보로 대표 의복을 고정하는 지시. 상품마다 다르므로 버전 관리되는 관찰 프롬프트(캐시 블록)에 넣지 않고
-// 그 뒤에 따로 붙인다 — 캐시 prefix 는 그대로 맞는다. 관찰값 자체는 바꾸지 못하게 막는다.
-const productAddendum = ({ name, category }: ProductContext) => `
-═══════════════════════════════════════════════════════════════
-PRODUCT CONTEXT (catalog metadata for THIS image — NOT an observation).
-This photo is the listing image of one catalog product:
-  product name : ${name.slice(0, 200)}
-  category     : ${category?.slice(0, 200) || "(unknown)"}
-If the product name and category let you tell WHICH visible garment is the product being sold, that garment is FIXED as the primary target:
-  - give it "prominence": "dominant" and give every other garment "secondary" or "minor", even when another garment is larger or more eye-catching;
-  - ALSO add "product_match": true as a sibling of "observations" on that one garment, and on no other garment.
-If they do not let you tell (no visible garment matches, or more than one could), set prominence from the image as usual and add "product_match" to no garment.
-⛔ This context only chooses the primary garment. It must not change any observation, category, eligibility, colour or presentation type — observe every garment exactly as you see it.`;
-
 type Obj = Record<string, unknown>;
 type Source = "ENGINE" | "ENGINE_NEUTRAL" | "ENGINE_NEUTRAL_FIXED" | "ENGINE_DIRECTION" | "RULE_DEFAULT" | "LLM" | "LLM_FALLBACK";
 
@@ -138,10 +118,11 @@ const DEFAULT_LETTER = { EI: "E", TC: "C", SR: "S", DM: "D" } as const;
 export interface ExtractInput {
   image: Buffer;
   fileName: string;
-  /** 관찰 프롬프트 — 버전 관리(prompt-versions.ts)가 정한 내용. 비어 있으면 코드 기본값 */
+  /**
+   * 관찰 프롬프트 — 버전 관리(prompt-versions.ts)가 정한 내용. 비어 있으면 코드 기본값.
+   * 끝에 상품 정보(product-context.ts)가 붙어 있으면 떼어 캐시 블록 뒤에 따로 보내고, 그 상품인 의복을 대표 의복으로 고정한다.
+   */
   prompt?: string;
-  /** 상품 사진이면 그 상품의 이름 · 분류 — 있으면 맞는 의복을 대표 의복으로 고정한다 */
-  product?: ProductContext | null;
   /** 사용할 Vision 모델 공급자 ('claude' | 'gemini', 기본값 'claude') */
   provider?: StyleExProvider;
 }
@@ -154,7 +135,7 @@ async function observe(
   image: Buffer,
   fileName: string,
   prompt: string,
-  product: ProductContext | null,
+  productContext: string | null,
   provider: StyleExProvider = "claude"
 ) {
   const isGemini = provider === "gemini";
@@ -172,7 +153,7 @@ async function observe(
             role: "user",
             content: [
               { type: "text", text: prompt, cache_control: { type: "ephemeral" } },
-              ...(product ? [{ type: "text" as const, text: productAddendum(product) }] : []),
+              ...(productContext ? [{ type: "text" as const, text: productContext }] : []),
               imageToBlock(img) as Anthropic.ImageBlockParam,
             ],
           },
@@ -215,8 +196,8 @@ async function observe(
                 data: block.source.data,
               },
             },
-            ...(product
-              ? [{ text: productAddendum(product) }]
+            ...(productContext
+              ? [{ text: productContext }]
               : [
                   {
                     text: "Observe all visible garments in this image and output the complete JSON targets package strictly adhering to all 37 parameters in the system instructions. Do not omit any parameters.",
@@ -332,7 +313,7 @@ async function observe(
     t.color_observation = colour;
     t.color_validation = colour ? validateColorObservation(colour) : { contract_errors: ["COLOR_MISSING"] };
     t.presentation_type = cand.presentation_type ?? null;
-    if (product) t.product_match = cand.product_match === true;
+    if (productContext) t.product_match = cand.product_match === true;
   });
   return { ok: true as const, envelope, contract_valid: governed.contract_valid, visionModel: activeModel };
 }
@@ -355,14 +336,9 @@ function representativeOf(targets: Obj[]) {
  * 추출 = 관찰(Claude 또는 Gemini 3.8 Flash) → 판정 함수(judgeStyleIdByRules, API 호출 없음).
  * judgement 는 LLM 판정을 하지 않으므로 늘 null — 응답 · product_style 모양을 지키려고 남겨 둔다.
  */
-export async function extractStyle({ image, fileName, prompt, product, provider = "claude" }: ExtractInput) {
-  const observation = await observe(
-    image,
-    fileName,
-    prompt?.trim() ? prompt : defaultPrompt(),
-    product ?? null,
-    provider
-  );
+export async function extractStyle({ image, fileName, prompt, provider = "claude" }: ExtractInput) {
+  const { base, addendum } = splitProductContext(prompt ?? "");
+  const observation = await observe(image, fileName, base.trim() ? base : defaultPrompt(), addendum, provider);
   const activeModel = observation.visionModel || (provider === "gemini" ? geminiVisionModel() : visionModel());
   if (!observation.ok) return { styleId: null, scoring: null, judgement: null, observation, provider, visionModel: activeModel };
   const { styleId, scoring } = judgeStyleIdByRules(observation.envelope.targets, fileName);

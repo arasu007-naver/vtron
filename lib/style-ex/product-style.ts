@@ -1,6 +1,6 @@
 import "server-only";
 import { getAdminSupabase } from "@/lib/supabase/server";
-import type { ProductContext } from "./extract";
+import type { ProductContext } from "./product-context";
 
 /**
  * 상품 Style ID 저장 (supabase/migrations/0014_product_style.sql).
@@ -33,7 +33,7 @@ export interface ProductStyleInput {
 }
 
 /**
- * 카탈로그 모델 id → 관찰에 넘길 상품 이름 · 분류 (brand_catalog_models).
+ * 카탈로그 모델 id → 관찰 프롬프트에 붙일 상품 이름 · 분류 (brand_catalog_models).
  * 못 찾거나 읽지 못하면 null — 상품 정보 없이 이미지만으로 대표 의복을 고른다.
  */
 export async function productContextOf(modelId: string): Promise<ProductContext | null> {
