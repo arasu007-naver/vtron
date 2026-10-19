@@ -14,7 +14,8 @@
    버전 목록에서 지난 버전을 불러오거나, 고친 내용을 새 버전으로 저장하거나, 버전을 활성화(롤백)할 수 있다.
 
    입력 이미지는 파일로 고르거나, [상품 Style ID 추출] 모달(ProductPickModal)에서 등록된 상품을
-   찾아 그 상품의 원본 사진을 쓴다. 상품으로 추출하면 프롬프트 아래에 상품 정보가 서고, [PDF 작성] 이
+   찾아 그 상품의 원본 사진을 쓴다. 상품을 고르면 그 상품 정보(PRODUCT CONTEXT, lib/style-ex/product-context)가
+   관찰 프롬프트 끝에 붙어 보이고(버전에는 저장되지 않는다), 상품으로 추출하면 프롬프트 아래에 상품 정보가 서고, [PDF 작성] 이
    상품 사진 · 상품 정보 · 호출 결과를 위에서 아래로 담은 PDF 를 내려받게 한다(lib/style-ex/report-pdf). */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -23,6 +24,7 @@ import { authFetch } from "@/lib/auth-client";
 import ProductPickModal from "@/components/style-ex/ProductPickModal";
 import type { CatalogProduct } from "@/lib/tryon/product-catalog";
 import { downloadReportPdf, type ReportBlock } from "@/lib/style-ex/report-pdf";
+import { splitProductContext, withProductContext } from "@/lib/style-ex/product-context";
 import {
   AXIS_ORDER,
   SOURCE_LABEL,
@@ -93,6 +95,7 @@ const EXTENSION: Record<string, string> = { "image/jpeg": "jpg", "image/png": "p
 
 export default function StyleExPage() {
   const fileRef = useRef<HTMLInputElement>(null);
+  const promptRef = useRef<HTMLTextAreaElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [defaults, setDefaults] = useState(EMPTY_PROMPTS);
@@ -193,12 +196,17 @@ export default function StyleExPage() {
   const handlePick = (e: React.ChangeEvent<HTMLInputElement>) => {
     const picked = e.target.files?.[0];
     e.target.value = ""; // 같은 파일을 다시 골라도 change 가 뜨도록
-    if (picked) applyImage(picked, null);
+    if (picked) {
+      applyImage(picked, null);
+      // 파일로 고른 사진은 상품이 아니다 — 관찰 프롬프트에 붙었던 상품 정보를 뗀다
+      setPrompts((p) => ({ ...p, prompt: withProductContext(p.prompt, null) }));
+    }
   };
 
   /**
    * 상품을 고르면 그 상품의 원본 사진을 받아 입력 이미지로 쓴다.
    * 목록의 사진은 200px 축소본이라 관찰에 쓰면 디테일이 뭉개진다 — 원본(originalImageUrl)을 받는다.
+   * 그 상품의 상품 정보(대표 의복을 고정하는 지시)를 관찰 프롬프트 끝에 붙여 칸에 보인다 — 추출은 칸의 내용 그대로 보낸다.
    */
   const pickProduct = useCallback(
     async (picked: CatalogProduct) => {
@@ -210,8 +218,13 @@ export default function StyleExPage() {
       setProductLoading(picked.name);
       setProductError(null);
       try {
-        const res = await fetch(url);
+        const [res, contextRes] = await Promise.all([
+          fetch(url),
+          authFetch(`/api/style-ex?modelId=${encodeURIComponent(picked.id)}`),
+        ]);
         if (!res.ok) throw new Error(`상품 사진을 내려받지 못했습니다 (HTTP ${res.status}).`);
+        const context = await contextRes.json().catch(() => ({}));
+        if (!contextRes.ok) throw new Error(context.error ?? `상품 정보를 받지 못했습니다 (${contextRes.status}).`);
         const blob = await res.blob();
         const type = blob.type || "image/jpeg";
         if (!EXTENSION[type]) throw new Error(`지원하지 않는 이미지 형식입니다 (${type}).`);
@@ -219,7 +232,18 @@ export default function StyleExPage() {
           throw new Error(`상품 사진이 5MB 를 넘습니다 (${(blob.size / 1024 / 1024).toFixed(1)}MB).`);
         }
         applyImage(new File([blob], `${picked.id}.${EXTENSION[type]}`, { type }), picked);
+        // 카탈로그에서 상품을 못 찾으면(null) 상품 정보 없이 이미지만으로 대표 의복을 고른다
+        const addendum = typeof context.productContext === "string" ? context.productContext : null;
+        setPrompts((p) => ({ ...p, prompt: withProductContext(p.prompt, addendum) }));
+        setTab("prompt");
         setProductModal(false);
+        // 상품 정보는 긴 프롬프트의 맨 끝에 붙는다 — 칸을 끝으로 내려 보이게 한다
+        if (addendum) {
+          setTimeout(() => {
+            const el = promptRef.current;
+            if (el) el.scrollTop = el.scrollHeight;
+          });
+        }
       } catch (e) {
         setProductError(e instanceof Error ? e.message : String(e));
       } finally {
@@ -249,8 +273,11 @@ export default function StyleExPage() {
     const body = new FormData();
     body.append("image", file);
     body.append("provider", provider);
+    // 관찰 프롬프트는 고친 경우에만 보낸다. 상품 정보는 늘 보낸다 — 서버가 떼어 내 버전 찾기 · 캐시 밖에서 쓴다.
     for (const { key } of PROMPT_TABS) {
-      if (prompts[key] !== defaults[key]) body.append(key, prompts[key]);
+      const { base, addendum } = splitProductContext(prompts[key]);
+      const sent = (base !== defaults[key] ? base : "") + (addendum ?? "");
+      if (sent) body.append(key, sent);
     }
     // 상품 사진이면 서버가 결과를 product_style 에 저장한다
     const productImageUrl = product && (product.originalImageUrl ?? product.imageUrl);
@@ -342,8 +369,14 @@ export default function StyleExPage() {
   };
 
   const prompt = prompts[tab];
-  const isEdited = (key: PromptKey) => defaults[key] !== "" && prompts[key] !== defaults[key];
-  const versionOf = (key: PromptKey) => versions[key].find((v) => v.content === prompts[key]) ?? null;
+  // 버전 · 고침 여부는 상품 정보를 뺀 앞부분(base)으로 본다 — 상품 정보는 버전에 들어가지 않는다
+  const { base: promptBase, addendum: productContext } = splitProductContext(prompt);
+  const baseOf = (key: PromptKey) => splitProductContext(prompts[key]).base;
+  const isEdited = (key: PromptKey) => defaults[key] !== "" && baseOf(key) !== defaults[key];
+  const versionOf = (key: PromptKey) => versions[key].find((v) => v.content === baseOf(key)) ?? null;
+  /** 관찰 프롬프트를 갈아 끼운다 — 붙어 있던 상품 정보는 그대로 둔다 */
+  const replaceBase = (key: PromptKey, base: string) =>
+    setPrompts((p) => ({ ...p, [key]: base + (splitProductContext(p[key]).addendum ?? "") }));
   const currentVersion = versionOf(tab);
   const activeVersion = versions[tab].find((v) => v.is_active) ?? null;
 
@@ -371,8 +404,8 @@ export default function StyleExPage() {
 
   /** 지금 칸의 내용을 새 버전으로 저장한다 (activate 면 바로 활성화) */
   const handleSaveVersion = (activate: boolean) => {
-    if (!prompt.trim()) return;
-    const content = prompt;
+    if (!promptBase.trim()) return;
+    const content = promptBase;
     return versionRequest(
       "/api/style-ex/prompts",
       "POST",
@@ -515,7 +548,7 @@ export default function StyleExPage() {
                 value={currentVersion?.id ?? ""}
                 onChange={(e) => {
                   const v = versions[tab].find((x) => x.id === e.target.value);
-                  if (v) setPrompts((p) => ({ ...p, [tab]: v.content }));
+                  if (v) replaceBase(tab, v.content);
                 }}
                 disabled={!versions[tab].length}
                 title="버전을 고르면 그 내용을 불러옵니다"
@@ -531,7 +564,7 @@ export default function StyleExPage() {
               {isEdited(tab) && (
                 <button
                   type="button"
-                  onClick={() => setPrompts((p) => ({ ...p, [tab]: defaults[tab] }))}
+                  onClick={() => replaceBase(tab, defaults[tab])}
                   className="flex items-center gap-1 text-xs text-black/60 hover:text-black"
                 >
                   <RotateCcw className="w-3 h-3" />
@@ -540,6 +573,7 @@ export default function StyleExPage() {
               )}
             </div>
             <textarea
+              ref={promptRef}
               value={prompt}
               onChange={(e) => setPrompts((p) => ({ ...p, [tab]: e.target.value }))}
               spellCheck={false}
@@ -548,7 +582,10 @@ export default function StyleExPage() {
             />
             <p className="flex-none mx-4 mb-1 text-xs text-black/50">
               {tab === "prompt"
-                ? `이미지와 함께 Vision 모델(${provider === "gemini" ? "gemini 3.8 flash" : "클로드 Opus"})에 보냅니다.`
+                ? `이미지와 함께 Vision 모델(${provider === "gemini" ? "gemini 3.8 flash" : "클로드 Opus"})에 보냅니다.` +
+                  (productContext
+                    ? " 끝의 PRODUCT CONTEXT 는 고른 상품의 정보로, 그 상품인 의복을 대표 의복으로 고정합니다 — 버전에는 저장되지 않습니다."
+                    : "")
                 : "관찰값 JSON 이 이 프롬프트 뒤에 자동으로 붙어 판정 모델에 보내집니다."}
             </p>
             {/* 버전 관리 — 저장 안 한 내용이면 새 버전으로 저장, 활성이 아닌 버전이면 활성화 */}
@@ -585,7 +622,7 @@ export default function StyleExPage() {
                   <button
                     type="button"
                     onClick={() => handleSaveVersion(false)}
-                    disabled={versionBusy || !prompt.trim()}
+                    disabled={versionBusy || !promptBase.trim()}
                     className="flex items-center gap-1 px-2 py-1 rounded border border-[var(--color-divider)] hover:bg-black/5 disabled:opacity-50"
                   >
                     <Save className="w-3 h-3" />새 버전 저장
@@ -593,7 +630,7 @@ export default function StyleExPage() {
                   <button
                     type="button"
                     onClick={() => handleSaveVersion(true)}
-                    disabled={versionBusy || !prompt.trim()}
+                    disabled={versionBusy || !promptBase.trim()}
                     className="flex items-center gap-1 px-2 py-1 rounded bg-[rgba(182,130,53,0.16)] font-semibold hover:bg-[rgba(182,130,53,0.26)] disabled:opacity-50"
                   >
                     <Check className="w-3 h-3" />
