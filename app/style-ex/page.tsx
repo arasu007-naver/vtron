@@ -28,6 +28,8 @@ import {
   SOURCE_LABEL,
   STRENGTH_LABEL,
   StyleIdCard,
+  axisLettersText,
+  multipleCandidates,
   productRows,
   type Summary,
 } from "@/components/style-ex/result-cards";
@@ -762,6 +764,14 @@ function summaryBlocks({ styleId, judgement }: Summary): ReportBlock[] {
     blocks.push({ kind: "text", text: `${styleId.style.name}  ${styleId.style.subTitle}` });
     blocks.push({ kind: "text", tone: "muted", text: styleId.style.definition });
   }
+  if (multipleCandidates(styleId)) {
+    blocks.push({
+      kind: "text",
+      text: `중립 축 → 스타일 아이디 후보 (OR): ${styleId.candidates!
+        .map((c) => (c.style ? `${c.style_id} ${c.style.name}` : c.style_id))
+        .join(" · ")}`,
+    });
+  }
   if (styleId.target_id) blocks.push({ kind: "text", tone: "muted", text: `기준 의복: ${styleId.target_id}` });
   if (styleId.axes) {
     blocks.push({
@@ -776,7 +786,7 @@ function summaryBlocks({ styleId, judgement }: Summary): ReportBlock[] {
           a.detail ?? "",
           usesLlm && l && l.evidence.length > 0 ? l.evidence.join(" · ") : "",
         ].filter(Boolean);
-        return [`${key}  ${a.letter ?? "?"}`, lines.join("\n")];
+        return [`${key}  ${axisLettersText(a)}`, lines.join("\n")];
       }),
     });
   }

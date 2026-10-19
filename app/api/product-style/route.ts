@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminSupabase } from "@/lib/supabase/server";
 import { authenticate, unauthorized } from "@/lib/supabase/route";
-import { STYLE_IDS } from "@/lib/style-ex/style-ids";
+import { STYLE_IDS, styleIdCandidates } from "@/lib/style-ex/style-ids";
 import { catalogPath, isCatalogKind, type CatalogProduct } from "@/lib/tryon/product-catalog";
 
 export const runtime = "nodejs";
@@ -77,7 +77,15 @@ export async function GET(req: NextRequest) {
       model_id: r.model_id,
       image_url: r.image_url,
       styleId: r.ok
-        ? { ok: true, style_id: r.style_id, style: STYLE_IDS[r.style_id] ?? null, target_id: r.target_id, axes: r.axes }
+        ? {
+            ok: true,
+            style_id: r.style_id,
+            style: STYLE_IDS[r.style_id] ?? null,
+            // 중립 축의 양쪽 글자를 조합한 후보 — axes 에서 되살린다 (예전 저장분의 중립 고정도 양쪽으로)
+            candidates: styleIdCandidates(r.axes),
+            target_id: r.target_id,
+            axes: r.axes,
+          }
         : { ok: false, error: r.error, target_id: r.target_id, axes: r.axes ?? undefined },
       judgement: r.judgement,
       scoring: r.scoring,

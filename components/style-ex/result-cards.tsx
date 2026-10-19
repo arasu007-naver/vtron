@@ -7,10 +7,12 @@ export const AXIS_ORDER = ["EI", "TC", "SR", "DM"] as const;
 export type AxisKey = (typeof AXIS_ORDER)[number];
 
 /** 축별 글자의 출처 */
-export type Source = "ENGINE" | "ENGINE_NEUTRAL_FIXED" | "ENGINE_DIRECTION" | "RULE_DEFAULT" | "LLM" | "LLM_FALLBACK";
+export type Source = "ENGINE" | "ENGINE_NEUTRAL" | "ENGINE_NEUTRAL_FIXED" | "ENGINE_DIRECTION" | "RULE_DEFAULT" | "LLM" | "LLM_FALLBACK";
 
 export interface AxisResult {
   letter: string | null;
+  /** 이 축이 가질 수 있는 글자 전부 — 중립이면 양쪽 두 글자(OR). 예전 결과에는 없다 */
+  letters?: string[];
   source: Source | null;
   label: string | null; // 엔진 점수 (예: EI4)
   detail: string | null;
@@ -21,6 +23,8 @@ export interface StyleIdResult {
   ok: boolean;
   style_id?: string;
   style?: { name: string; subTitle: string; definition: string } | null;
+  /** 중립 축의 양쪽 글자를 다른 축과 조합한 후보 전부 (첫 후보 = style_id) */
+  candidates?: { style_id: string; style: { name: string; subTitle: string; definition: string } | null }[];
   target_id?: string;
   axes?: Record<AxisKey, AxisResult>;
   error?: string;
@@ -40,6 +44,7 @@ export const STRENGTH_LABEL: Record<Strength, string> = { strong: "강", moderat
 
 export const SOURCE_LABEL: Record<Source, string> = {
   ENGINE: "엔진",
+  ENGINE_NEUTRAL: "엔진 · 중립 (양쪽)",
   ENGINE_NEUTRAL_FIXED: "엔진 · 중립 고정",
   ENGINE_DIRECTION: "엔진 방향",
   RULE_DEFAULT: "규칙 기본값",
@@ -66,6 +71,12 @@ export function productRows(product: CatalogProduct): [string, string][] {
   ];
 }
 
+/** 축 글자 표시 — 중립이면 "E/I" */
+export const axisLettersText = (a: AxisResult) => (a.letters?.length ? a.letters.join("/") : (a.letter ?? "?"));
+
+/** 스타일 아이디 후보가 여럿인지 (중립 축이 있으면 OR 조합) */
+export const multipleCandidates = (s: StyleIdResult) => (s.candidates?.length ?? 0) > 1;
+
 /** 스타일 아이디 요약 — 결과 JSON 위에 보인다. 축마다 글자의 출처(엔진 · LLM)를 함께 표시한다. */
 export function StyleIdCard({ summary }: { summary: Summary }) {
   const { styleId, judgement } = summary;
@@ -91,6 +102,24 @@ export function StyleIdCard({ summary }: { summary: Summary }) {
         <p className="text-[var(--color-danger)]">스타일 아이디를 정하지 못했습니다: {styleId.error}</p>
       )}
       {styleId.ok && styleId.style && <p className="text-black/80">{styleId.style.definition}</p>}
+      {styleId.ok && multipleCandidates(styleId) && (
+        <div className="space-y-1">
+          <p className="text-xs text-black/60">
+            중립 축이 있어 아래 {styleId.candidates!.length}개 스타일 아이디 모두에 해당합니다 (OR)
+          </p>
+          <ul className="flex flex-wrap gap-1.5">
+            {styleId.candidates!.map((c) => (
+              <li
+                key={c.style_id}
+                className="px-2 py-0.5 rounded bg-[rgba(182,130,53,0.16)] text-[var(--color-accent-800)]"
+              >
+                <span className="font-[family-name:var(--font-mono)] font-semibold tracking-wider">{c.style_id}</span>
+                {c.style && <span className="ml-1.5 text-xs">{c.style.name}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {styleId.axes && (
         <ul className="space-y-1.5">
@@ -100,8 +129,8 @@ export function StyleIdCard({ summary }: { summary: Summary }) {
             const usesLlm = a.source === "LLM" || a.source === "LLM_FALLBACK";
             return (
               <li key={key} className="flex gap-2">
-                <span className="flex-none w-10 font-[family-name:var(--font-mono)]">
-                  {key} <b>{a.letter ?? "?"}</b>
+                <span className="flex-none w-12 font-[family-name:var(--font-mono)]">
+                  {key} <b>{axisLettersText(a)}</b>
                 </span>
                 <span className="flex-none w-32 text-xs pt-0.5">
                   {a.source ? (

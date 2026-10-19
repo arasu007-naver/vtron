@@ -30,7 +30,7 @@ import {
   scoringRequestOf,
   type EngineAxis,
 } from "./scoring";
-import { STYLE_IDS } from "./style-ids";
+import { STYLE_IDS, styleIdCandidates } from "./style-ids";
 import { judgeTcRules, tcSummaryOf, type TcRuleResult } from "./tc-rules";
 
 /**
@@ -126,7 +126,7 @@ If they do not let you tell (no visible garment matches, or more than one could)
 ⛔ This context only chooses the primary garment. It must not change any observation, category, eligibility, colour or presentation type — observe every garment exactly as you see it.`;
 
 type Obj = Record<string, unknown>;
-type Source = "ENGINE" | "ENGINE_NEUTRAL_FIXED" | "ENGINE_DIRECTION" | "RULE_DEFAULT" | "LLM" | "LLM_FALLBACK";
+type Source = "ENGINE" | "ENGINE_NEUTRAL" | "ENGINE_NEUTRAL_FIXED" | "ENGINE_DIRECTION" | "RULE_DEFAULT" | "LLM" | "LLM_FALLBACK";
 
 /**
  * 엔진 · 규칙이 미결로 남긴 축의 기본 글자. 판정 프롬프트는 미결이면 "가장 그럴듯한 쪽"을 고르게 했는데(LLM),
@@ -407,16 +407,32 @@ export function judgeStyleIdByRules(targets: Obj[], fileName: string) {
     })
   ) as Record<EngineAxis, { s: ReturnType<typeof axisScoreOf> | undefined; letter: ReturnType<typeof letterOf> }>;
 
+  // letters = 이 축이 가질 수 있는 글자 전부 (중립이면 양쪽 두 글자 · OR). letter = 대표 글자.
   const axes: Record<
     string,
-    { letter: string | null; source: Source | null; label: string | null; detail: string | null; rules?: TcRuleResult }
+    {
+      letter: string | null;
+      letters: string[];
+      source: Source | null;
+      label: string | null;
+      detail: string | null;
+      rules?: TcRuleResult;
+    }
   > = {};
   for (const axis of ["EI", "TC", "SR", "DM"] as const) {
     if (axis === "TC") {
       axes.TC = tcRules.letter
-        ? { letter: tcRules.letter, source: "ENGINE", label: tcRules.range, detail: tcSummaryOf(tcRules), rules: tcRules }
+        ? {
+            letter: tcRules.letter,
+            letters: [tcRules.letter],
+            source: "ENGINE",
+            label: tcRules.range,
+            detail: tcSummaryOf(tcRules),
+            rules: tcRules,
+          }
         : {
             letter: DEFAULT_LETTER.TC,
+            letters: [DEFAULT_LETTER.TC],
             source: "RULE_DEFAULT",
             label: null,
             detail: `규칙 미결 (${tcSummaryOf(tcRules)}) → 기본값 ${DEFAULT_LETTER.TC}`,
@@ -428,24 +444,38 @@ export function judgeStyleIdByRules(targets: Obj[], fileName: string) {
     if (letter) {
       axes[axis] = {
         letter: letter.letter,
-        source: letter.neutralFixed ? "ENGINE_NEUTRAL_FIXED" : "ENGINE",
+        letters: letter.letters,
+        source: letter.neutral ? "ENGINE_NEUTRAL" : "ENGINE",
         label: s?.label ?? null,
-        detail: letter.neutralFixed ? `${s?.label} 중립 → ${letter.letter} 로 고정` : null,
+        detail: letter.neutral ? `${s?.label} 중립 → ${letter.letters.join(" 또는 ")} (양쪽 모두)` : null,
       };
     } else {
       // 엔진이 점수를 내지 못한 축(입력 부족 · 판정 불가 등) — 방향이 확정됐으면 그 글자, 아니면 기본 글자
       const why = `엔진 점수 없음 (${[s?.status, s?.reason].filter(Boolean).join(" · ") || "스코어링 실패"})`;
       const byDirection = letterOfDirection(axis, s?.direction ?? null);
       axes[axis] = byDirection
-        ? { letter: byDirection, source: "ENGINE_DIRECTION", label: null, detail: `${why} → 방향 ${s?.direction}` }
-        : { letter: DEFAULT_LETTER[axis], source: "RULE_DEFAULT", label: null, detail: `${why} → 기본값 ${DEFAULT_LETTER[axis]}` };
+        ? {
+            letter: byDirection.letter,
+            letters: byDirection.letters,
+            source: "ENGINE_DIRECTION",
+            label: null,
+            detail: `${why} → 방향 ${s?.direction}${byDirection.neutral ? ` → ${byDirection.letters.join(" 또는 ")} (양쪽 모두)` : ""}`,
+          }
+        : {
+            letter: DEFAULT_LETTER[axis],
+            letters: [DEFAULT_LETTER[axis]],
+            source: "RULE_DEFAULT",
+            label: null,
+            detail: `${why} → 기본값 ${DEFAULT_LETTER[axis]}`,
+          };
     }
   }
 
+  // style_id = 대표 글자 조합 하나 (예전과 같음). candidates = 중립 축의 양쪽 글자를 다른 축과 조합한 후보 전부.
   const letters = ["EI", "TC", "SR", "DM"].map((a) => axes[a].letter);
   const id = letters.every(Boolean) ? letters.join("") : null;
   const styleId = id
-    ? { ok: true, style_id: id, style: STYLE_IDS[id] ?? null, target_id: rep.target_id, axes }
+    ? { ok: true, style_id: id, style: STYLE_IDS[id] ?? null, candidates: styleIdCandidates(axes), target_id: rep.target_id, axes }
     : { ok: false, error: "네 축 중 글자를 정하지 못한 축이 있습니다.", target_id: rep.target_id, axes };
 
   return { styleId, scoring };

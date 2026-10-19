@@ -13,7 +13,8 @@ import path from "node:path";
  *   TC : 엔진이 코퍼스 anchor_id 만 받으므로 새 사진에는 쓸 수 없다 → 규칙 판정(tc-rules.ts)이 맡는다.
  *
  * 점수 → 글자: 1–4 낮은 쪽(I · R · M), 6–9 높은 쪽(E · S · D).
- * 중립 5 는 E · S · D 로 고정한다 (2026-10-04 결정).
+ * 중립 5 는 양쪽 글자를 모두 가진다(OR) — 스타일 아이디는 다른 축과 조합한 후보 전부가 된다 (2026-10-19 결정).
+ * 대표 글자(letter)는 예전처럼 E · S · D 로 둔다 (2026-10-04 결정) — style_id 한 개만 쓰는 곳을 위해.
  */
 
 export const ENGINE_AXES = ["EI", "SR", "DM"] as const;
@@ -25,11 +26,21 @@ const LETTERS: Record<EngineAxis, { low: string; high: string; neutral: string }
   DM: { low: "M", high: "D", neutral: "D" },
 };
 
-/** 엔진 점수 → 스타일 아이디 글자. 점수가 없으면 null. */
+/** 중립 축의 글자들 — 대표 글자(neutral)를 앞에 둔다 (예: EI → ["E", "I"]) */
+const neutralLetters = (axis: EngineAxis) => {
+  const { low, high, neutral } = LETTERS[axis];
+  return neutral === high ? [high, low] : [low, high];
+};
+
+/**
+ * 엔진 점수 → 스타일 아이디 글자. 점수가 없으면 null.
+ * letters 는 이 축이 가질 수 있는 글자 전부 — 중립(5)이면 양쪽 두 글자, 아니면 letter 하나.
+ */
 export function letterOf(axis: EngineAxis, score: number | null) {
   if (score == null) return null;
-  if (score === 5) return { letter: LETTERS[axis].neutral, neutralFixed: true };
-  return { letter: score < 5 ? LETTERS[axis].low : LETTERS[axis].high, neutralFixed: false };
+  if (score === 5) return { letter: LETTERS[axis].neutral, letters: neutralLetters(axis), neutral: true };
+  const letter = score < 5 ? LETTERS[axis].low : LETTERS[axis].high;
+  return { letter, letters: [letter], neutral: false };
 }
 
 type Obj = Record<string, unknown>;
@@ -170,8 +181,12 @@ const DIRECTION_LETTER: Record<string, "low" | "high" | "neutral"> = {
   NEUTRAL: "neutral",
 };
 
-/** 엔진 방향만으로 정한 글자. 방향이 미결(UNKNOWN 등)이거나 없으면 null. */
+/** 엔진 방향만으로 정한 글자. 방향이 미결(UNKNOWN 등)이거나 없으면 null. 방향이 NEUTRAL 이면 점수 5 처럼 양쪽 글자. */
 export function letterOfDirection(axis: EngineAxis, direction: string | null) {
   const side = direction ? DIRECTION_LETTER[direction.toUpperCase()] : undefined;
-  return side ? LETTERS[axis][side] : null;
+  if (!side) return null;
+  const letter = LETTERS[axis][side];
+  return side === "neutral"
+    ? { letter, letters: neutralLetters(axis), neutral: true }
+    : { letter, letters: [letter], neutral: false };
 }
