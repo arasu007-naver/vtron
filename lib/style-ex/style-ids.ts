@@ -62,3 +62,40 @@ export const STYLE_IDS: Record<string, StyleIdInfo> = {
   "ICRM": { name: "Comfort Finder", subTitle: "나한텐 이게 제일 편하고 좋더라.", definition: "편안함 속에서 절제된 멋을 찾는 타입입니다.\n기본에 충실한 디자인과 자연스럽고 단정한 스타일을 선호합니다." },
   "ITRM": { name: "Modern Flow", subTitle: "새로운 건 좋아, 과한 건 싫어.", definition: "기본적으로 편안하고 심플한 스타일을 좋아하지만, 지루한 옷은 별로라서 독특하고 새로운 디자인에 매력을 느끼곤 합니다. 새로운 디자인도 과하게 보이지 않도록 자신만의 방식으로 자연스럽게 풀어내는 감각이 있는 타입입니다." },
 };
+
+/** 축별 판정 중 조합에 쓰는 부분 */
+type AxisLetters = { letter: string | null; letters?: string[] | null; source?: string | null };
+
+/**
+ * 축이 가질 수 있는 글자들. letters 가 없는 예전 결과(2026-10-19 전 저장분)는 letter 하나로 보되,
+ * 중립을 한쪽으로 고정했던 결과(ENGINE_NEUTRAL_FIXED)는 지금 규칙대로 양쪽 글자로 되살린다.
+ */
+function lettersOf(key: AxisKey, a: AxisLetters | undefined): string[] {
+  if (a?.letters?.length) return a.letters;
+  if (!a?.letter) return [];
+  if (a.source === "ENGINE_NEUTRAL_FIXED") {
+    const poles = Object.keys(AXES.find((x) => x.key === key)!.poles);
+    return [a.letter, ...poles.filter((p) => p !== a.letter)];
+  }
+  return [a.letter];
+}
+
+/**
+ * 중립 축(양쪽 글자 OR)을 다른 축과 조합한 스타일 아이디 후보 전부.
+ * 예: EI 중립 · TC=C · SR=S · DM 중립 → ECSD · ECSM · ICSD · ICSM. 글자를 정하지 못한 축이 있으면 [].
+ * 순서는 각 축의 letters 순서(대표 글자 먼저)를 따르므로 첫 후보가 대표 style_id 와 같다.
+ */
+export function styleIdCombos(axes: Partial<Record<string, AxisLetters>> | null | undefined): string[] {
+  if (!axes) return [];
+  let combos = [""];
+  for (const { key } of AXES) {
+    const letters = lettersOf(key, axes[key]);
+    if (!letters.length) return [];
+    combos = combos.flatMap((prefix) => letters.map((l) => prefix + l));
+  }
+  return combos;
+}
+
+/** 후보마다 정의를 붙인다 — 화면 · API 가 같이 쓴다 */
+export const styleIdCandidates = (axes: Parameters<typeof styleIdCombos>[0]) =>
+  styleIdCombos(axes).map((id) => ({ style_id: id, style: STYLE_IDS[id] ?? null }));
