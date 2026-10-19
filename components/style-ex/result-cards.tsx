@@ -18,6 +18,16 @@ export interface AxisResult {
   detail: string | null;
 }
 
+/** 대표 의복을 고른 근거 — 상품 정보로 고정 · 가장 두드러진 의복 · 첫 적격 의복 */
+export type TargetBasis = "PRODUCT_MATCH" | "DOMINANT" | "FIRST_ELIGIBLE";
+export const TARGET_BASIS_LABEL: Record<TargetBasis, string> = {
+  PRODUCT_MATCH: "상품 정보로 고정",
+  DOMINANT: "이미지에서 가장 두드러진 의복",
+  FIRST_ELIGIBLE: "첫 적격 의복",
+};
+export const targetText = (s: { target_id?: string; target_basis?: TargetBasis }) =>
+  s.target_id ? `${s.target_id}${s.target_basis ? ` · ${TARGET_BASIS_LABEL[s.target_basis]}` : ""}` : "";
+
 /** 서버의 styleId — 대표 의복의 네 글자 조합 */
 export interface StyleIdResult {
   ok: boolean;
@@ -26,6 +36,8 @@ export interface StyleIdResult {
   /** 중립 축의 양쪽 글자를 다른 축과 조합한 후보 전부 (첫 후보 = style_id) */
   candidates?: { style_id: string; style: { name: string; subTitle: string; definition: string } | null }[];
   target_id?: string;
+  /** 대표 의복을 고른 근거 */
+  target_basis?: TargetBasis;
   axes?: Record<AxisKey, AxisResult>;
   error?: string;
 }
@@ -96,7 +108,13 @@ export function StyleIdCard({ summary }: { summary: Summary }) {
               <span className="ml-2 text-black/60">{styleId.style.subTitle}</span>
             </span>
           )}
-          {styleId.target_id && <span className="text-xs text-black/50">기준: {styleId.target_id}</span>}
+          {styleId.target_id && (
+            <span
+              className={`text-xs ${styleId.target_basis === "PRODUCT_MATCH" ? "text-[var(--color-accent-800)]" : "text-black/50"}`}
+            >
+              기준: {targetText(styleId)}
+            </span>
+          )}
         </div>
       ) : (
         <p className="text-[var(--color-danger)]">스타일 아이디를 정하지 못했습니다: {styleId.error}</p>
