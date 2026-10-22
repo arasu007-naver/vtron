@@ -67,6 +67,14 @@ export async function GET(req: NextRequest) {
     }
   }
 
+  // 대표 의복을 고른 근거 — 저장된 관찰(envelope.targets)에서 그 의복의 product_match · prominence 로 되살린다
+  const basisOf = (r: (typeof rows)[number]) => {
+    const targets = (r.observation as { envelope?: { targets?: Record<string, unknown>[] } } | null)?.envelope?.targets;
+    const t = targets?.find((x) => x.target_id === r.target_id);
+    if (!t) return undefined;
+    return t.product_match === true ? "PRODUCT_MATCH" : t.prominence === "dominant" ? "DOMINANT" : "FIRST_ELIGIBLE";
+  };
+
   return NextResponse.json({
     page,
     pageSize,
@@ -84,9 +92,10 @@ export async function GET(req: NextRequest) {
             // 중립 축의 양쪽 글자를 조합한 후보 — axes 에서 되살린다 (예전 저장분의 중립 고정도 양쪽으로)
             candidates: styleIdCandidates(r.axes),
             target_id: r.target_id,
+            target_basis: basisOf(r),
             axes: r.axes,
           }
-        : { ok: false, error: r.error, target_id: r.target_id, axes: r.axes ?? undefined },
+        : { ok: false, error: r.error, target_id: r.target_id, target_basis: basisOf(r), axes: r.axes ?? undefined },
       judgement: r.judgement,
       scoring: r.scoring,
       observation: r.observation,
