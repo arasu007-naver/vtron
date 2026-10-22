@@ -11,6 +11,7 @@ import {
   Link2,
   ScanSearch,
   ScanEye,
+  PackageSearch,
   ShoppingBag,
   Shirt,
   TerminalSquare,
@@ -49,6 +50,12 @@ export const NAV_LINKS = [
     label: "상품 Style ID",
     icon: ScanEye,
     title: "상품 사진으로 추출해 저장한 Style ID(product_style)를 12개씩 쪽으로 넘겨 본다",
+  },
+  {
+    href: "/product-details",
+    label: "상품 상세",
+    icon: PackageSearch,
+    title: "161개 브랜드의 상품을 네이버 카탈로그에서 고르면 그 브랜드 공식 사이트(brands.api)에서 같은 상품을 찾아 보여 준다",
   },
   {
     href: "/api-playground",
