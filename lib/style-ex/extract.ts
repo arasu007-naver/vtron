@@ -286,7 +286,16 @@ async function observe(
     return text;
   };
 
-  const visionFn = isGemini ? geminiVisionFn : claudeVisionFn;
+  // 엔진 runOneCall 은 던져진 오류를 문자열(detail)로만 남긴다 — 재시도 판단(429 · 5xx · retry-after)에 쓰도록 마지막 오류를 따로 잡아 둔다.
+  let lastCallError: unknown = null;
+  const visionFn = async (enginePrompt: string, img: unknown) => {
+    try {
+      return await (isGemini ? geminiVisionFn : claudeVisionFn)(enginePrompt, img);
+    } catch (e) {
+      lastCallError = e;
+      throw e;
+    }
+  };
 
   // 미디어 타입은 확장자가 아니라 파일 바이트로 판별한다(엔진 D5 규칙).
   // 엔진의 판별기는 파일 경로 입력에서만 동작하므로 임시 파일로 넘긴다.
@@ -298,7 +307,13 @@ async function observe(
   } finally {
     await unlink(tmp).catch(() => {});
   }
-  if (!call.ok) return { ok: false as const, error: { stage: "model_call", code: call.code, detail: call.detail, attempts: call.attempts }, raw: call.raw };
+  if (!call.ok) {
+    return {
+      ok: false as const,
+      error: { stage: "model_call", code: call.code, detail: call.detail, attempts: call.attempts, upstream: upstreamOf(lastCallError) },
+      raw: call.raw,
+    };
+  }
 
   // role · extraction_depth · 검증은 엔진의 단일 권위(governEnvelope)가 정한다.
   const governed = governEnvelope(call.pkg, { imageId: fileName, model: activeModel, visionCalls: call.attempts });
@@ -316,6 +331,19 @@ async function observe(
     if (productContext) t.product_match = cand.product_match === true;
   });
   return { ok: true as const, envelope, contract_valid: governed.contract_valid, visionModel: activeModel };
+}
+
+/** Vision 호출 오류의 HTTP 상태 · retry-after (Anthropic APIError 는 status · headers 를 갖는다). 직렬화할 수 있는 값만. */
+function upstreamOf(e: unknown) {
+  if (!e || typeof e !== "object") return null;
+  const err = e as { status?: unknown; headers?: { get?: (k: string) => string | null }; constructor?: { name?: string } };
+  const header = (k: string) => (typeof err.headers?.get === "function" ? err.headers.get(k) : null);
+  return {
+    status: typeof err.status === "number" ? err.status : null,
+    error_type: err.constructor?.name ?? null,
+    retry_after: header("retry-after"),
+    retry_after_ms: header("retry-after-ms"),
+  };
 }
 
 /**
