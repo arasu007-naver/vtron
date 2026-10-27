@@ -1,0 +1,165 @@
+{
+ "document": "TROUSER_FIT_EXPANDED_DOMAIN_REOBSERVATION_PROTOCOL_V1",
+ "sprint": "V2.3.61",
+ "date": "2026-09-26",
+ "authority": "CEO order STMX TC MAINLINE V2.3.61 §17 / §18 / §41 (D-60.5 APPROVED)",
+ "observer": "Claude (Opus 5.5) · firsthand in-session visual observation of governed source image bytes (G53: no API · no key · no Producer visionFn)",
+ "producer_contract": "STMX_VISION_PRODUCER_V1_6_TROUSER_VOLUMINOUS_CANDIDATE (CANDIDATE) — production STMX_VISION_PRODUCER_V1_3 unchanged",
+ "field": {
+  "name": "fit",
+  "region": "LOWER (Trouser)",
+  "domain": [
+   "Slim",
+   "Regular",
+   "Relaxed",
+   "Oversized",
+   "Voluminous"
+  ],
+  "definition_verbatim": [
+   "- fit (Slim/Regular/Relaxed/Oversized) is a BODY-RELATIVE ease judgment based on the garment's overall three-dimensional silhouette (its shape/ease relative to the body). Fit readability is EVIDENCE-BASED, not image-type-based: fit CAN be OBSERVED whenever the garment's overall silhouette, volume and ease are clearly assessable — whether worn on a body OR shown unworn / product / on a form / laid out, as long as the piece still holds a readable 3-D shape (e.g. a structured coat, jacket, or dress photographed off-body). Set fit to UNKNOWN ONLY when the evidence is genuinely insufficient — the garment is pressed completely flat so volume/ease cannot be reliably judged, or pose / crop / occlusion hides the relevant silhouette — and NOT_VISIBLE if the fit region is cropped out of frame. Two guards, both required: do NOT infer fit from garment width alone in a flat image; and do NOT force UNKNOWN merely because no person is wearing the garment. When the shape is assessable, report the ACTUAL magnitude on the full canonical scale — do not default to the middle value; a visibly close-fitting garment is Slim (not Regular); use the exact canonical distinctions; do not compress magnitude.  [Run-3 magnitude + evidence-based readability]",
+   "- ⛔ FIT CONFOUND FIREWALL — fit reads the EASE OF THE GARMENT BODY AGAINST THE WEARER'S BODY, and nothing else may decide it. Ask one question: how much room is there between the garment body and the body inside it, and how far does the garment body stand away from it? BULK IS NOT EASE. None of the following is, on its own, evidence for Slim, Relaxed or Oversized: fabric thickness, weight or loft · padding, down fill, insulation or quilting · a stiff or self-supporting cloth · sleeve volume, or a puff/balloon/enlarged sleeve · a widening, flared or voluminous LOWER geometry · a large collar, lapel or cuff · a generally heavy or bulky overall impression. Every one of those is already carried by its own parameter — cloth thickness and self-support are fabric_behavior, sleeve volume is sleeve_volume, lower geometry is silhouette, component size is collar_scale / cuff_scale — and the SAME evidence may never be spent twice by also reading it as fit.",
+   "(c) Relaxed ↔ Oversized — ★ THE DECIDING TEST IS FRAME, NOT ROOM. Relaxed = generous ease INSIDE the wearer's own frame. Oversized = the garment's CONSTRUCTED FRAME IS ITSELF LARGER THAN THE WEARER'S — read it from where the garment is built, not from how much cloth there is: the shoulder line is drafted out past the wearer's shoulder points, the armhole/sleeve junction sits low on the upper arm, and the body is cut wider than its ease requires, so the garment reads as a larger garment placed on this body. When the frame exceeds the wearer, the answer is Oversized even if the ease elsewhere looks merely generous."
+  ],
+  "voluminous": "NO NEW DEFINITION IS AUTHORED (order §15). Voluminous is the existing top value of the same body-relative ease scale, governed today on Skirt / Dress-Lower (Vision Schema fit row \"(+Voluminous Skirt/Dress-Lower)\"; CA#41 extends its applicability to Trouser). The observer uses it only where the ease of the trouser body clearly exceeds what Oversized denotes on that same scale; otherwise the ordinary values apply."
+ },
+ "states": [
+  "OBSERVED (value in the Trouser domain above)",
+  "NOT_VISIBLE",
+  "UNKNOWN"
+ ],
+ "fail_closed": "no default · UNKNOWN / NOT_VISIBLE never replaced · the actual magnitude on the full scale, never compressed and never stretched",
+ "residual_note": "free text `residual_visual_fact` may record what the fit scale cannot carry (e.g. whether the two legs remain legible). Not an observation value, not canonical, not consumed by any runtime.",
+ "hidden_from_the_observer": [
+  "REF / anchor identity (images copied under new random codes; salt not recorded in the worksheet)",
+  "TC tier · CEO GT · CEO rationale · prior TC reasoning",
+  "the governed prior fit value",
+  "the V2.3.60 blind fit value",
+  "source file names"
+ ],
+ "migration_rule": "no mechanical Oversized → Voluminous migration: every value comes from this observation of the image; prior values are joined only after the batch is sealed",
+ "disclosure": "the observer (the same assistant lineage) re-observed 16 of these 20 trouser members blind in V2.3.60 and has read the CEO rationale for one suit in earlier sprints. New random codes, the full 20-member population, a hashed protocol and a sealed batch mitigate but do not remove that exposure.",
+ "targets": 20,
+ "worksheet": [
+  {
+   "code": "TF1_05BECAFC",
+   "file": "TF1_05BECAFC.png",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_1EE1A35E",
+   "file": "TF1_1EE1A35E.jpeg",
+   "garment": "the trousers in this image (the primary garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_2042613E",
+   "file": "TF1_2042613E.jpg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_23889A39",
+   "file": "TF1_23889A39.jpeg",
+   "garment": "the trousers in this image (the primary garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_2EB35551",
+   "file": "TF1_2EB35551.jpeg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_3778B596",
+   "file": "TF1_3778B596.png",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_3DFC3FC2",
+   "file": "TF1_3DFC3FC2.jpeg",
+   "garment": "the trousers in this image (the primary garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_49F78C35",
+   "file": "TF1_49F78C35.jpeg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_52AD474F",
+   "file": "TF1_52AD474F.jpeg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_5556BDB5",
+   "file": "TF1_5556BDB5.jpg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_5BF10CE2",
+   "file": "TF1_5BF10CE2.jpeg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_5FA4D836",
+   "file": "TF1_5FA4D836.jpeg",
+   "garment": "the trousers in this image (the primary garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_6FD7FA7F",
+   "file": "TF1_6FD7FA7F.jpg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_B10541F7",
+   "file": "TF1_B10541F7.jpeg",
+   "garment": "the trousers in this image (the primary garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_BA2AFB23",
+   "file": "TF1_BA2AFB23.jpeg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_BC66F54C",
+   "file": "TF1_BC66F54C.jpg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_C23D159C",
+   "file": "TF1_C23D159C.jpeg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_CAF67F34",
+   "file": "TF1_CAF67F34.jpeg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_DE11EB12",
+   "file": "TF1_DE11EB12.jpeg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  },
+  {
+   "code": "TF1_EEA331EA",
+   "file": "TF1_EEA331EA.jpg",
+   "garment": "the trousers in this image (worn with an upper garment)",
+   "field": "fit"
+  }
+ ],
+ "member_map_sha256": "e32f6287769bbc95cdc3b4192a623c4cbc46a01e350b41e4b80a6ae180b6a883"
+}

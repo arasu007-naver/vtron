@@ -1,0 +1,29 @@
+{
+ "document": "INTEGRATED_PROMPT_V2_DIFF_MANIFEST",
+ "source": {
+  "path": "prompts/STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V1.txt",
+  "sha256": "0eb3e6d9bd76c97f8f8153150d105faf092698421c2652fd902ec5111c973d40"
+ },
+ "output": {
+  "path": "prompts/STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2.txt",
+  "sha256": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
+  "bytes": 40228
+ },
+ "lines_total": 151,
+ "lines_changed": [
+  {
+   "line": 2,
+   "why": "identity line only",
+   "before": "prompt_version: STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V1 (successor of STMX_FULL_LOOK_STYLE_VISION_PHASE1_EXTRACTION_PROMPT_V1_2 + V1.4 FORM C; sections reused verbatim except those listed in INTEGRATED_PROMPT_DIFF_MANIFEST.json)",
+   "after": "prompt_version: STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2 (successor of STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V1; one §9 line changed — DM Evidence Transport V2)"
+  },
+  {
+   "line": 138,
+   "why": "DM Evidence Transport V2 §5 / §9 (CEO 2026-10-15): the transported system list is OBSERVED-ONLY; [] is never a verified-negative conclusion",
+   "before": "  \"look_detail_systems\": [                                           // [] is a positive record: no designed detail visible in the look",
+   "after": "  \"look_detail_systems\": [                                           // the systems you OBSERVED; [] = you observed none — NOT a claim that the look has no designed detail"
+  }
+ ],
+ "new_vocabulary": "none",
+ "new_request": "none"
+}

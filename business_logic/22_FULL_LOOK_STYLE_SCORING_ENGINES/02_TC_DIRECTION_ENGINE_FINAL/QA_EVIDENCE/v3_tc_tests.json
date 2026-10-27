@@ -1,0 +1,387 @@
+{
+ "document": "STMX Full-Look TC Product-Only Resolver V3 Final Candidate — tests",
+ "at": "2026-10-25T02:52:30.879Z",
+ "counts": {
+  "PASS": 54
+ },
+ "tests": [
+  {
+   "group": "A",
+   "id": "A01",
+   "name": "F147 (V2 FROZEN_TOKEN_REPRESENTATION_GAP): scorable by packet structure → a C / T direction from observed evidence; diagnostics kept beside it",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE · support c1:proportion+construction c2:construction c3:silhouette+proportion+construction · sensitive_to FROZEN_TOKEN_REPRESENTATION_GAP"
+  },
+  {
+   "group": "A",
+   "id": "A02",
+   "name": "F187 (V2 FROZEN_TOKEN_REPRESENTATION_GAP): scorable by packet structure → a C / T direction from observed evidence; diagnostics kept beside it",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE · support c1:proportion+construction · sensitive_to FROZEN_TOKEN_REPRESENTATION_GAP,FRAME_LIMIT"
+  },
+  {
+   "group": "A",
+   "id": "A03",
+   "name": "F472 (V2 FROZEN_TOKEN_REPRESENTATION_GAP): scorable by packet structure → a C / T direction from observed evidence; diagnostics kept beside it",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE · support c1:proportion+construction c2:silhouette · sensitive_to FROZEN_TOKEN_REPRESENTATION_GAP"
+  },
+  {
+   "group": "A",
+   "id": "A04",
+   "name": "M269 (V2 PRODUCT_EVIDENCE_MISSING): scorable by packet structure → a C / T direction from observed evidence; diagnostics kept beside it",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE · support c4:proportion+construction c5:silhouette+proportion+construction c8:silhouette+proportion+construction · sensitive_to PRODUCT_EVIDENCE_MISSING"
+  },
+  {
+   "group": "A",
+   "id": "A05",
+   "name": "REF_000622 (V2 PRODUCT_EVIDENCE_MISSING): scorable by packet structure → a C / T direction from observed evidence; diagnostics kept beside it",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE · support c1:silhouette+proportion+construction · sensitive_to PRODUCT_EVIDENCE_MISSING,FRAME_LIMIT"
+  },
+  {
+   "group": "A",
+   "id": "A06",
+   "name": "M214 (V2 PRODUCT_EVIDENCE_MISSING): scorable by packet structure → a C / T direction from observed evidence; diagnostics kept beside it",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE · support c1:silhouette+proportion c3:silhouette+proportion+construction · sensitive_to FROZEN_TOKEN_REPRESENTATION_GAP,PRODUCT_EVIDENCE_MISSING"
+  },
+  {
+   "group": "A",
+   "id": "A07",
+   "name": "F267 (V2 COMPONENT_IDENTITY_UNKNOWN): scorable by packet structure → a C / T direction from observed evidence; diagnostics kept beside it",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE · support c1:silhouette+construction c3:silhouette+proportion+construction · sensitive_to COMPONENT_IDENTITY_UNKNOWN,FRAME_LIMIT"
+  },
+  {
+   "group": "A",
+   "id": "A08",
+   "name": "F418 (V2 COMPONENT_IDENTITY_UNKNOWN): scorable by packet structure → a C / T direction from observed evidence; diagnostics kept beside it",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE · support c4:silhouette+proportion+construction · sensitive_to COMPONENT_IDENTITY_UNKNOWN,COMPONENT_IDENTITY_UNKNOWN"
+  },
+  {
+   "group": "A",
+   "id": "A09",
+   "name": "F033: technical input failure proven by packet structure — no component identified as a garment; the only garment-like component c1 has UNKNOWN identity (no archetype key, so no frozen predicate can read its facts)",
+   "result": "PASS",
+   "evidence": "INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE · registry UNKNOWN,belt,footwear,jewellery"
+  },
+  {
+   "group": "A",
+   "id": "A10",
+   "name": "REF_000622 is NOT excluded because SR failed on it: its c1 Skirt is fully observed and carries the Classic support (TC packet structure, not SR history)",
+   "result": "PASS",
+   "evidence": "[{\"ref\":\"c1\",\"identity\":\"Skirt\",\"support\":[{\"channel\":\"silhouette\",\"rule\":\"SIL-FALSE-SLIM-Q1\",\"facts\":[\"fit=Slim\"]},{\"channel\":\"proportion\",\"rule\":\"PRO-FALSE-Q2\",\"facts\":[\"length=Maxi Length\"]},{\"channel\":\"construction\",\"rule\":\"CON-FALSE-C1\",\"facts\":[\"material=Knit\",\"pocket=None\"]}]}]"
+  },
+  {
+   "group": "R",
+   "id": "R01",
+   "name": "Material UNKNOWN → still scored (Classic look stays CLASSIC, departing look stays TRANSFORMATIVE)",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C DIRECT / TRANSFORMATIVE TC-P1 DIRECT"
+  },
+  {
+   "group": "R",
+   "id": "R02",
+   "name": "Product identity UNKNOWN → scored from the remaining garments (unknown component listed, never used as C evidence); only-unknown look → input failure, never CLASSIC",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE / INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE"
+  },
+  {
+   "group": "R",
+   "id": "R03",
+   "name": "Fit partially missing (jacket fit UNKNOWN) → scored CLASSIC on the available evidence with sensitivity POSSIBLE; the same fact observed Oversized → TRANSFORMATIVE (C is not a default)",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE / Oversized TRANSFORMATIVE TC-P1 DIRECT"
+  },
+  {
+   "group": "R",
+   "id": "R04",
+   "name": "Construction partially missing (collar · closure · front opening · pocket UNKNOWN on the jacket) → still scored from the remaining observed facts",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE · sensitivity POSSIBLE"
+  },
+  {
+   "group": "R",
+   "id": "R05",
+   "name": "one valid product departure (frozen SIL-TRUE-OVERSIZED on the trousers) → TRANSFORMATIVE (TC-P1)",
+   "result": "PASS",
+   "evidence": "c3 Trouser [SIL-TRUE-OVERSIZED]"
+  },
+  {
+   "group": "R",
+   "id": "R06",
+   "name": "Classic and Transformative garments mixed → TRANSFORMATIVE (Classic garments never cancel; sensitivity NONE)",
+   "result": "PASS",
+   "evidence": "c1 UNRESOLVED_FROZEN_INTERPRETIVE · c2 NO_VISIBLE_DEPARTURE · c3 DEPARTURE"
+  },
+  {
+   "group": "R",
+   "id": "R07",
+   "name": "styling-only departure (realized shoulder exposure + unobserved / reversed layering + securing relation on a Classic look) → no TRANSFORMATIVE; same result",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C DIRECT / CLASSIC TC-C DIRECT"
+  },
+  {
+   "group": "R",
+   "id": "R08",
+   "name": "layering hides part of a product (facts NOT_VISIBLE, occluded by another garment) → excluded under IX-1 (b), the look is still scored",
+   "result": "PASS",
+   "evidence": "excluded c2.sleeve_volume,c2.shoulder_span,c2.sleeve,c2.shoulder_connection"
+  },
+  {
+   "group": "R",
+   "id": "R09",
+   "name": "wearing context missing (no layer / securing relations, no exposure events) → same direction on all 43",
+   "result": "PASS",
+   "evidence": "43 / 43 unchanged"
+  },
+  {
+   "group": "R",
+   "id": "R10",
+   "name": "no valid departure and conventional grammar observed on every garment → CLASSIC (TC-C, DIRECT)",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C DIRECT"
+  },
+  {
+   "group": "R",
+   "id": "R11",
+   "name": "very limited product evidence: one garment with only its length observed → CLASSIC (AVAILABLE_EVIDENCE, POSSIBLE); nothing observed → input failure, never CLASSIC",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C AVAILABLE_EVIDENCE / INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE"
+  },
+  {
+   "group": "R",
+   "id": "R12",
+   "name": "empty / damaged packet → INPUT_CONTRACT input failure (null · {} · string · wrong version · missing run_record · TC not requested · state conflict)",
+   "result": "PASS",
+   "evidence": "PACKET_MISSING · PACKET_MISSING · PACKET_MISSING · PACKET_VERSION_UNKNOWN · RUN_RECORD_MISSING · TC_NOT_REQUESTED · RUN_RECORD_PACKET_STATE_CONFLICT"
+  },
+  {
+   "group": "R",
+   "id": "R13",
+   "name": "same evidence, different look id / image ref / run id → identical record (provenance aside) on all 43",
+   "result": "PASS",
+   "evidence": "43 / 43"
+  },
+  {
+   "group": "R",
+   "id": "R14",
+   "name": "input order changed (component registry, fact pool and run_record keys reversed) → same direction / rule / exception / Classic-support refs on all 43",
+   "result": "PASS",
+   "evidence": "43 / 43"
+  },
+  {
+   "group": "R",
+   "id": "R15",
+   "name": "repeated execution is deterministic (43 × 3 identical records)",
+   "result": "PASS",
+   "evidence": "{\"ok\":true,\"ev\":\"\"}"
+  },
+  {
+   "group": "G",
+   "id": "G01",
+   "name": "valid product departure → T: every look with a confirmed frozen departure is TRANSFORMATIVE, every TRANSFORMATIVE has one",
+   "result": "PASS",
+   "evidence": "{\"ok\":true,\"ev\":\"\"}"
+  },
+  {
+   "group": "G",
+   "id": "G02",
+   "name": "Classic garments do not cancel T: adding a fully conventional garment (copy of a Classic trouser) to every T look keeps T",
+   "result": "PASS",
+   "evidence": "21 / 21 stay T"
+  },
+  {
+   "group": "G",
+   "id": "G03",
+   "name": "styling-only departure creates no T: every layer relation UNKNOWN + realized shoulder exposure on every jacket / coat / shirt → identical on 43",
+   "result": "PASS",
+   "evidence": "43 / 43 unchanged"
+  },
+  {
+   "group": "G",
+   "id": "G04",
+   "name": "absence of styling observations does not block: wearing context removed (R09) and frame limits crop / occlusion / lower_body_cropped added → every scorable look keeps a C / T direction",
+   "result": "PASS",
+   "evidence": "42 / 42 keep their direction"
+  },
+  {
+   "group": "G",
+   "id": "G05",
+   "name": "missing evidence is never Classic evidence: removing every Classic-support fact of the 8 corrected looks (set UNKNOWN) → never CLASSIC (input failure when nothing else is observed)",
+   "result": "PASS",
+   "evidence": "F147 INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE · F187 INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE · F472 INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE · M269 INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE · REF_000622 INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE · M214 INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE · F267 INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE · F418 INPUT_FAILURE NO_TC_PRODUCT_EVIDENCE"
+  },
+  {
+   "group": "G",
+   "id": "G06",
+   "name": "C is evidence-sensitive, not a default: completing the reported sensitive fact toward its departure flips the look to T (M269 sweater fit · M214 shirt asymmetry · F418 unknown top identified as an Oversized sweater)",
+   "result": "PASS",
+   "evidence": "TRANSFORMATIVE TC-P1 DIRECT · TRANSFORMATIVE TC-P1 DIRECT · TRANSFORMATIVE TC-P1 DIRECT"
+  },
+  {
+   "group": "G",
+   "id": "G07",
+   "name": "missing evidence never stops scoring: every single TC fact of every garment of all 43 set UNKNOWN in turn → never an UNRESOLVED / UNKNOWN outcome; status RESOLVED or a named input failure",
+   "result": "PASS",
+   "evidence": "1169 single-fact omissions · bad "
+  },
+  {
+   "group": "G",
+   "id": "G08",
+   "name": "TC and SR are independent: the resolver loads no SR module, and changing SR-only facts (shoulder_drop SVP-106 · waist cinch) leaves the result unchanged",
+   "result": "PASS",
+   "evidence": "no SR code; 43 / 43 unchanged"
+  },
+  {
+   "group": "G",
+   "id": "G09",
+   "name": "no GT leakage and no look-id / REF-id rule (code scan of src/*.js, comments excluded)",
+   "result": "PASS",
+   "evidence": "scan of src/*.js"
+  },
+  {
+   "group": "G",
+   "id": "G10",
+   "name": "no REF-id rule: anonymised component refs (c1 → k1 …) and anonymised run identity give the same result on all 43",
+   "result": "PASS",
+   "evidence": "{\"ok\":true,\"ev\":\"\"}"
+  },
+  {
+   "group": "G",
+   "id": "G11",
+   "name": "no Vision expansion: adapter + product stage + visibility module + V1 pins are byte-identical to V2 (and the adapter / product / pins to V1)",
+   "result": "PASS",
+   "evidence": "fl_tc_input_adapter_v1.js · fl_tc_product_departure_v1.js · fl_tc_authority_v1.js · fl_tc_product_visibility_v2.js"
+  },
+  {
+   "group": "G",
+   "id": "G12",
+   "name": "no Item TC reopen: bound sha256 still match (Step 2 successor V4 · TC production authority · Item V1_3 rules · RC6 gates); FLV freeze id",
+   "result": "PASS",
+   "evidence": "step2_successor_v4,tc_production_authority,item_vision_v1_3_rules,flv_freeze_seal,flv_integrated_gates"
+  },
+  {
+   "group": "P",
+   "id": "P01",
+   "name": "product stage preserved: on all 43 packets the product result and every garment trace are identical to the V2 ledger",
+   "result": "PASS",
+   "evidence": "43 / 43 identical"
+  },
+  {
+   "group": "P",
+   "id": "P02",
+   "name": "every V2 C / T is unchanged in V3 (34 looks; the correction touches only V2 DIRECTION_UNRESOLVED)",
+   "result": "PASS",
+   "evidence": "34 looks · changed "
+  },
+  {
+   "group": "P",
+   "id": "P03",
+   "name": "accessories added (decorative chain, wrapped scarf) to a Classic look → CLASSIC unchanged (TC-D-4b)",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C DIRECT"
+  },
+  {
+   "group": "P",
+   "id": "P04",
+   "name": "layering arrangement variations do not decide (jacket over sweater ↔ reversed; skirt-over-trousers relation removed / reversed; wrapped scarf on F390)",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C DIRECT · CLASSIC TC-C DIRECT · TRANSFORMATIVE TC-P1 DIRECT"
+  },
+  {
+   "group": "P",
+   "id": "P05",
+   "name": "shirt in an unconventional wearing position (exposure + reversed relation) → same result (M270)",
+   "result": "PASS",
+   "evidence": "CLASSIC TC-C DIRECT"
+  },
+  {
+   "group": "P",
+   "id": "P06",
+   "name": "no majority vote / no departure count: one departing garment among Classic ones → T; looks with ≥ 2 departures give the identical record shape and rule",
+   "result": "PASS",
+   "evidence": "4 looks with ≥ 2 departures"
+  },
+  {
+   "group": "P",
+   "id": "P07",
+   "name": "no numeric score, strength, ordinal, tier (TC1–TC9), TC5, NEUTRAL or DIRECTION_UNRESOLVED in any output; no aggregation / vote in code",
+   "result": "PASS",
+   "evidence": "43 outputs"
+  },
+  {
+   "group": "P",
+   "id": "P08",
+   "name": "no styling gate in the resolver (no TC-S rule, no relation / exposure branch)",
+   "result": "PASS",
+   "evidence": "{\"ok\":true,\"ev\":\"\"}"
+  },
+  {
+   "group": "E",
+   "id": "E01",
+   "name": "output contract: status RESOLVED ⇒ direction C / T + rule TC-P1 / TC-C + resolved_by + basis.sensitivity; TECHNICAL_EXCEPTION ⇒ direction null + exception.class INPUT_FAILURE + a listed code",
+   "result": "PASS",
+   "evidence": "{\"ok\":true,\"ev\":\"\"}"
+  },
+  {
+   "group": "E",
+   "id": "E02",
+   "name": "every CLASSIC has Classic support resting on OBSERVED facts (each listed fact is OBSERVED in the run_record)",
+   "result": "PASS",
+   "evidence": "21 CLASSIC looks"
+  },
+  {
+   "group": "E",
+   "id": "E03",
+   "name": "frame invalid (look not observed · image_failure · not_a_worn_look) → NO_OBSERVABLE_WORN_LOOK input failure; feet_not_visible alone keeps the direction",
+   "result": "PASS",
+   "evidence": "INPUT_FAILURE NO_OBSERVABLE_WORN_LOOK · INPUT_FAILURE NO_OBSERVABLE_WORN_LOOK · INPUT_FAILURE NO_OBSERVABLE_WORN_LOOK · CLASSIC TC-C DIRECT"
+  },
+  {
+   "group": "E",
+   "id": "E04",
+   "name": "no garment at all (accessories / footwear only) → NO_GARMENT_OBSERVED input failure",
+   "result": "PASS",
+   "evidence": "INPUT_FAILURE NO_GARMENT_OBSERVED"
+  },
+  {
+   "group": "E",
+   "id": "E05",
+   "name": "construction read-set is sound against the frozen predicate: for every garment key, no single substitution of a field OUTSIDE the read-set (frozen Item V1_3 domain) changes the frozen construction verdict",
+   "result": "PASS",
+   "evidence": "663 substitutions · none"
+  },
+  {
+   "group": "E",
+   "id": "E06",
+   "name": "every read-set field is named by the frozen construction code (evaluator V2.2 base / V2.3.2)",
+   "result": "PASS",
+   "evidence": "material,surface,attachment,pocket,shoulder_connection,collar,front_opening_extent,waist_definition,sleeve,closure_type"
+  },
+  {
+   "group": "E",
+   "id": "E07",
+   "name": "authority provenance: constitution id · AEMS + Product-Only anchors · frozen pins · TC-D-3 superseded · V2 outcomes superseded",
+   "result": "PASS",
+   "evidence": "FROZEN,CEO_APPROVED,CEO_APPROVED,CEO_APPROVED,CEO_APPROVED,CEO_APPROVED_AMENDED,CEO_APPROVED,CEO_APPROVED,SUPERSEDED_FOR_FULL_LOOK_TC_2026_10_23,CEO_CASES_ILLUSTRATIVE,REMOVED_FROM_DIRECTION,SUPERSEDED_BY_V3_2026_10_25"
+  },
+  {
+   "group": "D",
+   "id": "D01",
+   "name": "processing order does not change any result (forward vs reversed over 43)",
+   "result": "PASS",
+   "evidence": "{\"ok\":true,\"ev\":\"\"}"
+  },
+  {
+   "group": "D",
+   "id": "D02",
+   "name": "no network module is loaded by the resolver (offline by construction)",
+   "result": "PASS",
+   "evidence": "{\"ok\":true,\"ev\":\"\"}"
+  }
+ ]
+}

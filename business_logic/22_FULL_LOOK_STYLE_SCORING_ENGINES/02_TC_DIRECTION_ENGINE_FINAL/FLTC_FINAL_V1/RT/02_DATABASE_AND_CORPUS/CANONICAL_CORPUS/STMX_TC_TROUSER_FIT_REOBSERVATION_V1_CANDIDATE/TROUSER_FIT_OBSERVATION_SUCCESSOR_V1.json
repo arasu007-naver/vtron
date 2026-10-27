@@ -1,0 +1,457 @@
+{
+ "document": "TROUSER_FIT_OBSERVATION_SUCCESSOR_V1",
+ "status": "CANDIDATE — governed versioned observation successor (fit on every governed trouser member) under the V1_6 candidate Trouser domain; nothing earlier is overwritten",
+ "sprint": "V2.3.61",
+ "date": "2026-09-26",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-26",
+  "Reason": "D-60.5 approved; §17 governed blind re-observation of the only field whose legal domain changed (fit)",
+  "Affected Scope": "this directory (new)"
+ },
+ "protocol_sha256": "a86170554550e7d9b43e6b5be1783d82bf4d73e01f0f5bb594bcad9f5a1c3450",
+ "batch_sha256": "b4eb3bdde3f7b03a51ca33d05a9ce5bab7d5ba0b3d66eb6ce908274c57ace796",
+ "producer_contract": "STMX_VISION_PRODUCER_V1_6_TROUSER_VOLUMINOUS_CANDIDATE",
+ "rule": "the runtime-facing value is v2361_expanded_domain; raw prior governed extraction, projection V3 value and the V2.3.60 blind value are preserved per member; no mechanical migration; UNKNOWN stays UNKNOWN",
+ "members": [
+  {
+   "anchor_id": "REF_000541#SU2",
+   "garment_ref": "target_2",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Relaxed"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Relaxed",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Relaxed"
+    }
+   },
+   "source_sha256": "255b245c14a8abd1c2a54ec95e2534a6bf53bf4b0b7c893d37d57679409d1722"
+  },
+  {
+   "anchor_id": "REF_000521#SU1",
+   "garment_ref": "target_1",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Oversized"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Regular",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Relaxed",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Oversized"
+    }
+   },
+   "source_sha256": "33513a9d1486eff818d0c2dc0ec230965774a3cdbbd1e9b7d2ff708385fed4af"
+  },
+  {
+   "anchor_id": "REF_000845#SU2",
+   "garment_ref": "target_2",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Oversized"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Oversized",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Oversized"
+    }
+   },
+   "source_sha256": "488cff2751f93aacdc31e8ee477a7f6b0066a8ccd07e70dd673ab4e6653dc0b8"
+  },
+  {
+   "anchor_id": "REF_000520#SU1",
+   "garment_ref": "target_1",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Slim"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Slim",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Slim",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Slim",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Slim"
+    }
+   },
+   "source_sha256": "cb0aa109390f14e5f8d8353564d7318e81b80a1cc615591cc3b1de6d0602a445"
+  },
+  {
+   "anchor_id": "REF_000494#SU2",
+   "garment_ref": "target_2",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Oversized"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Oversized",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Oversized",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Oversized",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Oversized"
+    }
+   },
+   "source_sha256": "9da267f5a332a6ac213682ea9562ba47190b86f8d831b450a350bef3537bd9df"
+  },
+  {
+   "anchor_id": "REF_000010#SU1",
+   "garment_ref": "target_3",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Relaxed"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "NOT_IN_V2360_BATCH",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Relaxed"
+    }
+   },
+   "source_sha256": "b5a89565efbdfb6682fd124b2ef634d4f4f52b239f19fb0e52369b1dbf998c95"
+  },
+  {
+   "anchor_id": "REF_000590#SU1",
+   "garment_ref": "target_1",
+   "fit": {
+    "state": "UNKNOWN",
+    "value": null
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Regular",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "values": null
+    },
+    "v2360_blind": "NOT_IN_V2360_BATCH",
+    "v2361_expanded_domain": {
+     "state": "UNKNOWN",
+     "value": null
+    }
+   },
+   "source_sha256": "547477b5b5aa47c157e6dcf3ab4a69672689e5643ff3c72565963c8fbcc13b8e"
+  },
+  {
+   "anchor_id": "REF_000817#SU1",
+   "garment_ref": "target_3",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Regular"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Regular",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Slim",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Regular"
+    }
+   },
+   "source_sha256": "8d88deb17153b446dbf74791d75a7834e77a093a88aff9e8a109771ecfe07b23"
+  },
+  {
+   "anchor_id": "REF_000841#SU1",
+   "garment_ref": "target_2",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Oversized"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Oversized",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Oversized"
+    }
+   },
+   "source_sha256": "7b367a674fba8a111c1e460a0c8d48907f997681a0a08ff8a450899c98ae8333"
+  },
+  {
+   "anchor_id": "REF_000846#SU2",
+   "garment_ref": "target_2",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Oversized"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Oversized",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Oversized"
+    }
+   },
+   "source_sha256": "e0125db87f0c0b745b211d9bf944059bbe50b71377a41280bf0104ba34fecc20"
+  },
+  {
+   "anchor_id": "REF_000593#SU1",
+   "garment_ref": "target_2",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Slim"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Slim",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Slim",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Slim",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Slim"
+    }
+   },
+   "source_sha256": "d0b8d29ed1dfc768d15922f502127374a2b708f98f8d2fc2f1c7280de02c3ba0"
+  },
+  {
+   "anchor_id": "REF_000575#SU1",
+   "garment_ref": "target_1",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Oversized"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Oversized",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Oversized",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Oversized",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Oversized"
+    }
+   },
+   "source_sha256": "c4ba2d3af5594aa2204fdcbe46f917bc8c313ab73f453fa532b79dc9d3de06be"
+  },
+  {
+   "anchor_id": "REF_000849#SU2",
+   "garment_ref": "target_3",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Relaxed"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Relaxed",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Relaxed"
+    }
+   },
+   "source_sha256": "09e3f9dbe8842fd206f067b98fea72241b3232e76adab7119aa7a4a137466b1e"
+  },
+  {
+   "anchor_id": "REF_000525#SU1",
+   "garment_ref": "target_1",
+   "fit": {
+    "state": "UNKNOWN",
+    "value": null
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Regular",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "values": null
+    },
+    "v2360_blind": "NOT_IN_V2360_BATCH",
+    "v2361_expanded_domain": {
+     "state": "UNKNOWN",
+     "value": null
+    }
+   },
+   "source_sha256": "dbce6624498acc3b12a09d56c5f6e388d44af3ba34b084efad0e6cb403e8e516"
+  },
+  {
+   "anchor_id": "REF_000378#SU2",
+   "garment_ref": "target_2",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Relaxed"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Relaxed",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Relaxed"
+    }
+   },
+   "source_sha256": "f1d06651e2fe87c098ece67362d0c63190696ac6ce24f2cc2cb3615547c2a722"
+  },
+  {
+   "anchor_id": "REF_000014#SU1",
+   "garment_ref": "target_3",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Relaxed"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "NOT_IN_V2360_BATCH",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Relaxed"
+    }
+   },
+   "source_sha256": "c91624c4a375825c8466b0e5d6a2a5d5d46eebab830b7897b5c032ad705c6377"
+  },
+  {
+   "anchor_id": "REF_000496#SU2",
+   "garment_ref": "target_2",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Relaxed"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Relaxed",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Relaxed"
+    }
+   },
+   "source_sha256": "7a56842adc318c7526d1dea9ac8bed9e2bb974412f52f9f25fecf4695a4fd6c0"
+  },
+  {
+   "anchor_id": "REF_000816#SU1",
+   "garment_ref": "target_3",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Slim"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Regular",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Slim",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Slim"
+    }
+   },
+   "source_sha256": "1f2d237f69fd042f818f721595556375e5052c812c62e39d96a0b05cc8fecfce"
+  },
+  {
+   "anchor_id": "REF_000840#SU1",
+   "garment_ref": "target_3",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Oversized"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Relaxed",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Oversized"
+    }
+   },
+   "source_sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45"
+  },
+  {
+   "anchor_id": "REF_000586#SU1",
+   "garment_ref": "target_2",
+   "fit": {
+    "state": "OBSERVED",
+    "value": "Relaxed"
+   },
+   "history": {
+    "raw_prior_governed_extraction": "Relaxed",
+    "projection_v3_fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "values": null
+    },
+    "v2360_blind": "OBSERVED:Oversized",
+    "v2361_expanded_domain": {
+     "state": "OBSERVED",
+     "value": "Relaxed"
+    }
+   },
+   "source_sha256": "f9968e627984cbff12c21bdc6654552775eb2eafe63251d6c8fbb93fd68ddd2d"
+  }
+ ]
+}

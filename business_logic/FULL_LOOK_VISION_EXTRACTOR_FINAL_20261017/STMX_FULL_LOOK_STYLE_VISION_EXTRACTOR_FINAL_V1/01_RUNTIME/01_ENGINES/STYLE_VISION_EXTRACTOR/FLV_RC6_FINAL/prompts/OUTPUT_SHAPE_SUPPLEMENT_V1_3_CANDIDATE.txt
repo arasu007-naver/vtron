@@ -1,0 +1,26 @@
+STMX FULL-LOOK STYLE VISION — OUTPUT SHAPE SUPPLEMENT (V1.3 CANDIDATE · CDM-15 PENDING)
+status: ISOLATED CANDIDATE — NOT part of Prompt V1.2 (unchanged). Not authorized for live use. Transport representation only: no observation rule in Prompt V1.2 sections 0–7 is changed, weakened or extended by this supplement.
+why: the four 2026-10-08 live outputs each followed the prompt's descriptive vocabulary in a different structure (objects array / object, facts map / array, colour areas flat / nested, {state,value} envelopes) because the schema document itself was never in the model input. This supplement binds the exact JSON shape = STMX_FULL_LOOK_STYLE_VISION_PHASE1_OUTPUT_SCHEMA_V1 (sha256 c92381e3…) + the frozen dm_subsystem block.
+
+8a. EXACT OUTPUT SHAPE (replaces nothing in section 8; it specifies the object named there)
+{
+  "frame": { "state": "OBSERVED|NOT_VISIBLE|UNKNOWN", "limits": [] },
+  "objects": [ { "ref": "c1", "identity": "<Item category | accessory family | UNKNOWN>", "participates": true, "product_family": "<footwear only, optional>", "subtype": "<optional>", "attached_to": "<ref, optional>", "why": "<optional>" },
+               { "ref": "x1", "identity": "UNKNOWN", "participates": false, "why": "<exclusion reason>" } ],
+  "front_state": { "<ref>": { "value": "fastened|partly_fastened|unfastened_worn_open|closed_by_other_means", "state": "OBSERVED|UNKNOWN|NOT_VISIBLE" } },
+  "layer_relations": [ { "over": "<garment ref>", "under": "<garment ref>", "revealed": ["Body", "..."], "state": "OBSERVED|UNKNOWN" } ],        // garment-to-garment, directly visible pairs only (CDM-05 B): never an accessory, never a pair you infer
+  "securing_relations": [ { "securing": "<separate device ref>", "affected": "<garment ref>", "region": "<where on the garment the draw-in occurs>", "visible_constriction": "OBSERVED|ABSENT|UNKNOWN" },
+                          { "affected": "<garment ref>", "device_is_own": true, "region": "<where>", "visible_constriction": "OBSERVED|ABSENT|UNKNOWN" } ],   // a garment closed by its OWN belt / tie: no separate component, no "securing" ref; its actual draw-in is still reported here (CDM-03 S1)
+  "colour_areas": [ { "carrier": "<ref>", "family": "<Colour V1 family>", "lightness": "light|normal|dark", "effect": "none|neon|metallic", "role": "field|point", "contrast": "Tonal|Subtle|Distinct (points only)", "part": { "carrier_kind": "closure|attachment|graphic|pattern|pocket|material_component|generic_descriptor", "carrier_ref": "<Item token, e.g. Button · Metal Hardware · Strap>" } },
+                    { "carrier": "<ref>", "state": "UNKNOWN|NOT_VISIBLE" } ],                                                                     // a colour you cannot read; if you can read the family but not the lightness, give the family and write "lightness": "UNKNOWN" — never guess a lightness
+  "upper": { "governing_ref": "<outermost upper garment ref>", "relation": { "value": "Slim|Regular|Relaxed|Oversized", "state": "OBSERVED|UNKNOWN|NOT_VISIBLE" }, "shoulder": { "value": "None|Mild|Strong|Extreme", "state": "..." }, "shape": { "value": "Structured|Semi-Structured|Semi-Fluid|Fluid", "state": "..." } },
+  "exposure_supplement": [ { "region": "<Item exposure region>", "carrier_refs": ["<garment ref>"], "attribution": "item_intrinsic|realized_state|UNKNOWN" } ],   // ONE record per REALIZED exposure only; do not list regions that are not exposed
+  "facts": { "<ref>": { "<fact>": "<value>" | ["<value>", ...] | "ABSENT" | "UNKNOWN" | { "state": "NOT_VISIBLE", "limitation": ["OCCLUDED_BY_OTHER_GARMENT"] } } },
+  "dm_subsystem": { ... as the DM ACQUISITION SUPPLEMENT ... }
+}
+8b. STATE SEMANTICS (transport only; the meanings in section 1 are unchanged)
+  · A fact whose value is a governed token "None" (asymmetry None · pocket None · shoulder_drop None · collar None · slit None · shoulder_structure None) is OBSERVED with that value — it is not ABSENT.
+  · ABSENT is only for a visible carrier that does not show the phenomenon on a fact whose domain has no "None" token (pattern · graphic · surface · material · decorative_detail · attachment · exposure rows).
+  · A fact you do not emit is read as UNKNOWN, never as ABSENT. Emit every applicable fact of every garment (section 6) and the six appearance facts of every accessory.
+  · material · surface · decorative_detail · attachment are MULTI facts: always an array when OBSERVED. Every other fact is one value.
+  (No colour-reading rule is added here: CDM-08 "black reads dark" was withdrawn; lightness is reported as seen under Colour V1.)

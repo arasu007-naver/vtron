@@ -1,0 +1,33 @@
+{
+ "document": "TRANSPORT_SCHEMA_V1_3_CANDIDATE",
+ "status": "ISOLATED CANDIDATE — CDM-15 (structured-output / transport schema enforcement) PENDING CEO APPROVAL",
+ "target": "STMX_FULL_LOOK_STYLE_VISION_PHASE1_OUTPUT_SCHEMA_V1 (sha256 c92381e3bcccd32d5eda6cc5fd063403a2ccc37158944813b4d6648c34447ba6) — unchanged; this file lists ONLY what the V1.3 converter accepts in addition and how it maps it",
+ "semantics_changed": false,
+ "representation_only": true,
+ "accepted_source_shapes": {
+  "frame": ["{state, limits}", "{look_observability:{state,limits}, excluded:[...]}"],
+  "objects": ["[{ref, identity:string|{state,value|family|category}, participates?, refinement?|identity_refinement?, subtype?, product_family?, attached_to?, why?, kind?, note?}]", "{components:[...], excluded:[...]}"],
+  "front_state": ["{ref:{value,state}}", "[{ref,value,state,...}]"],
+  "layer_relations": ["[{over|over_ref, under|under_ref, revealed[], state?}]"],
+  "securing_relations": ["[{securing|securing_ref?, affected|affected_ref, region|affected_region, visible_constriction:string|{state}, device_is_own?}]"],
+  "colour_areas": ["[{carrier|carrier_ref, family|color_family, lightness|color_lightness, effect|color_effect, role|standing, contrast|contrast_with_field, part:{carrier_kind,carrier_ref}|string}]", "[{ref|carrier, state, areas:[...]}]", "[{carrier, state:UNKNOWN|NOT_VISIBLE}]"],
+  "upper": ["{governing_ref, relation|final_upper_relation, shoulder|final_shoulder_realization, shape|final_upper_shape_behaviour} with {state,value} or scalar"],
+  "exposure_supplement": ["[{region, state?, carrier_refs|carriers, attribution|null}]"],
+  "facts": ["{ref:{fact: value|[values]|'ABSENT'|'UNKNOWN'|{state,value?,limitation?}}}", "[{ref, fact, state, value?, limitation?}]"],
+  "dm_subsystem": ["frozen Full-Look DM block (verbatim passthrough to the frozen adapter)"]
+ },
+ "transformations": {
+  "RENAME": "key names of the prompt vocabulary → contract keys (value untouched)",
+  "UNWRAP": "{state,value} envelopes → contract value forms (OBSERVED→value · ABSENT/UNKNOWN→token · NOT_VISIBLE→{state,limitation[]})",
+  "RESHAPE / FLATTEN": "array↔map, nested colour areas → flat",
+  "REPRESENTATION_MULTI_TO_ARRAY / REPRESENTATION_SINGLETON_TO_SCALAR": "governed MULTI facts are arrays; non-MULTI one-element arrays become scalars (representation, never a value change)",
+  "PART_TOKEN_MAPPED_EXACT": "a free-text colour part that EQUALS a Colour V1 / Item token (case-insensitive) → carrier_part; any other text is logged and NOT mapped",
+  "DEFAULT_PARTICIPATES_FROM_LISTING": "an object the model listed among its components with no participates field → participant (logged)",
+  "ATTRIBUTION_UNKNOWN_FROM_NULL": "exposure attribution null → UNKNOWN (the prompt's own rule for an undetermined cause)",
+  "IDENTITY_OUTSIDE_VOCABULARY_KEPT_AS_UNKNOWN_STATE": "Prompt V1.2 §3 rule applied; raw text kept in the log",
+  "NOT_EMITTED": "applicable facts / colour entries the model did not emit are listed; the pool reads them as UNKNOWN — never ABSENT",
+  "UNCONVERTIBLE": "anything the contract cannot carry without inventing or substituting (value outside its governed domain, OBSERVED without value, null value, unknown fact name, state outside domain, non-realized exposure rows, top-level keys outside the contract) — raw kept, not emitted"
+ },
+ "never": ["invent a value", "convert UNKNOWN into a value", "convert a missing field into ABSENT", "substitute vocabulary", "read model confidence as truth", "correct toward a reference", "synthesize a DM block"],
+ "approval_needed_for_canonical_adoption": "CDM-15: adopt OUTPUT_SHAPE_SUPPLEMENT_V1_3_CANDIDATE.txt as the bound transport shape (and, separately, structured-output enforcement at the API) so that conversion becomes a pass-through"
+}

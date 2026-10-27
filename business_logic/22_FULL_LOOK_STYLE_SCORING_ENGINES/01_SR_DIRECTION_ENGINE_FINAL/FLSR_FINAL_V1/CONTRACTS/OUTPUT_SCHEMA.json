@@ -1,0 +1,159 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "STMX Full-Look SR Direction record (lane B)",
+ "type": "object",
+ "required": [
+  "axis",
+  "resolver",
+  "lane",
+  "authority",
+  "direction",
+  "status"
+ ],
+ "properties": {
+  "axis": {
+   "const": "SR"
+  },
+  "resolver": {
+   "const": "STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R4_FINAL_CANDIDATE"
+  },
+  "lane": {
+   "const": "B"
+  },
+  "authority": {
+   "const": "STMX_FULL_LOOK_SR_DIRECTION_CONSTITUTION_V3_R4"
+  },
+  "status": {
+   "enum": [
+    "RESOLVED",
+    "TECHNICAL_EXCEPTION"
+   ]
+  },
+  "direction": {
+   "enum": [
+    "STRUCTURED",
+    "RELAXED",
+    null
+   ]
+  },
+  "rule": {
+   "enum": [
+    "SRB-1",
+    "SRB-2m",
+    "SRB-2os",
+    "SRB-2or",
+    "SRB-2f",
+    "SRB-2r",
+    "SRB-3h",
+    "SRB-3s",
+    "SRB-3k",
+    "SRB-3d",
+    "SRB-3g",
+    "SRB-3r",
+    null
+   ]
+  },
+  "resolved_by": {
+   "enum": [
+    "DIRECT",
+    "AVAILABLE_EVIDENCE (MS-1)"
+   ]
+  },
+  "basis": {
+   "type": "object",
+   "required": [
+    "governing_region",
+    "governing_upper",
+    "rule",
+    "evidence_used",
+    "missing_observations",
+    "sensitivity"
+   ],
+   "properties": {
+    "governing_region": {
+     "const": "UPPER"
+    },
+    "sensitivity": {
+     "enum": [
+      "NONE",
+      "POSSIBLE"
+     ]
+    },
+    "missing_observations": {
+     "type": "array",
+     "items": {
+      "enum": [
+       "relation",
+       "shape",
+       "shoulder",
+       "drop",
+       "waist",
+       "constriction",
+       "form_retention"
+      ]
+     }
+    }
+   }
+  },
+  "exception": {
+   "type": "object",
+   "required": [
+    "code",
+    "class"
+   ],
+   "properties": {
+    "code": {
+     "enum": [
+      "UPPER_NOT_VISIBLE",
+      "NO_UPPER_SR_EVIDENCE",
+      "INPUT_CONTRACT"
+     ]
+    },
+    "class": {
+     "const": "INPUT_FAILURE"
+    }
+   }
+  },
+  "trace": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  }
+ },
+ "allOf": [
+  {
+   "if": {
+    "properties": {
+     "status": {
+      "const": "RESOLVED"
+     }
+    }
+   },
+   "then": {
+    "required": [
+     "rule",
+     "basis"
+    ],
+    "properties": {
+     "direction": {
+      "enum": [
+       "STRUCTURED",
+       "RELAXED"
+      ]
+     }
+    }
+   },
+   "else": {
+    "required": [
+     "exception"
+    ],
+    "properties": {
+     "direction": {
+      "const": null
+     }
+    }
+   }
+  }
+ ]
+}

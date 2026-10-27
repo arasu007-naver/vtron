@@ -1,0 +1,142 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "STMX Full-Look EI Direction record (binary)",
+ "type": "object",
+ "required": [
+  "axis",
+  "resolver",
+  "authority",
+  "status",
+  "direction"
+ ],
+ "properties": {
+  "axis": {
+   "const": "EI"
+  },
+  "resolver": {
+   "const": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE"
+  },
+  "authority": {
+   "const": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_CONSTITUTION_V1_R3"
+  },
+  "status": {
+   "enum": [
+    "RESOLVED",
+    "TECHNICAL_EXCEPTION"
+   ]
+  },
+  "direction": {
+   "enum": [
+    "EXPRESSIVE",
+    "INTROVERT",
+    null
+   ]
+  },
+  "rule": {
+   "enum": [
+    "EI-E",
+    "EI-I",
+    null
+   ]
+  },
+  "resolved_by": {
+   "enum": [
+    "DIRECT",
+    "AVAILABLE_EVIDENCE",
+    null
+   ]
+  },
+  "basis": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "required": [
+    "expressive_bases",
+    "introvert_ground",
+    "unobserved",
+    "frame_limits"
+   ]
+  },
+  "exception": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "required": [
+    "code",
+    "class"
+   ],
+   "properties": {
+    "code": {
+     "enum": [
+      "INPUT_CONTRACT",
+      "NO_OBSERVABLE_WORN_LOOK",
+      "NO_COMPONENT_OBSERVED"
+     ]
+    },
+    "class": {
+     "const": "INPUT_FAILURE"
+    }
+   }
+  },
+  "evidence_trace": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "required": [
+    "expressive_bases",
+    "not_qualifying",
+    "absorbed_into_pattern_graphic",
+    "colour_grounds",
+    "diagnostics"
+   ]
+  },
+  "rule_trace": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  }
+ },
+ "allOf": [
+  {
+   "if": {
+    "properties": {
+     "status": {
+      "const": "RESOLVED"
+     }
+    }
+   },
+   "then": {
+    "required": [
+     "rule",
+     "basis",
+     "resolved_by"
+    ],
+    "properties": {
+     "direction": {
+      "enum": [
+       "EXPRESSIVE",
+       "INTROVERT"
+      ]
+     },
+     "exception": {
+      "const": null
+     }
+    }
+   },
+   "else": {
+    "required": [
+     "exception"
+    ],
+    "properties": {
+     "direction": {
+      "const": null
+     }
+    }
+   }
+  }
+ ]
+}

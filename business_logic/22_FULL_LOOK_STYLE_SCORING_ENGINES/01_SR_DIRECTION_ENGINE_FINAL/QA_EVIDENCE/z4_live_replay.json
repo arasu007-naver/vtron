@@ -1,0 +1,678 @@
+{
+ "document": "R4 replay of the 20 stored CG-1 live responses (offline; 0 API calls) — R2 → R3 → R4",
+ "at": "2026-10-25T00:39:28.422Z",
+ "all_inputs_sealed": true,
+ "every_run_s_or_r": true,
+ "sidecar_ignored_everywhere": true,
+ "deterministic": true,
+ "r2": {
+  "RELAXED": 13,
+  "STRUCTURED": 4,
+  "EXC:EVIDENCE_REPAIR_REQUIRED": 3
+ },
+ "r3": {
+  "STRUCTURED": 11,
+  "RELAXED": 9
+ },
+ "r4": {
+  "RELAXED": 17,
+  "STRUCTURED": 3
+ },
+ "anchors_runs": {
+  "r2": {
+   "MATCH": 4,
+   "CONFLICT": 4
+  },
+  "r3": {
+   "CONFLICT": 7,
+   "MATCH": 1
+  },
+  "r4": {
+   "MATCH": 5,
+   "CONFLICT": 3
+  }
+ },
+ "changed_r3_to_r4": [
+  "#1 M317 STRUCTURED (SRB-2g) → RELAXED (SRB-2or) · CEO RELAXED",
+  "#2 M317 STRUCTURED (SRB-2g) → RELAXED (SRB-2or) · CEO RELAXED",
+  "#3 M317 STRUCTURED (SRB-2g) → RELAXED (SRB-2or) · CEO RELAXED",
+  "#5 M320 STRUCTURED (SRB-2g) → RELAXED (SRB-2or) · CEO STRUCTURED",
+  "#7 F298 STRUCTURED (SRB-2g) → RELAXED (SRB-2or) · CEO RELAXED",
+  "#15 M309 STRUCTURED (SRB-2g) → RELAXED (SRB-2or) · CEO RELAXED",
+  "#17 srcoat3 STRUCTURED (SRB-2g) → RELAXED (SRB-2or)",
+  "#18 srsuit2 STRUCTURED (SRB-2g) → RELAXED (SRB-2or)"
+ ],
+ "unrelated_rules_changed": 0,
+ "rows": [
+  {
+   "call_no": 1,
+   "image_id": "M317",
+   "group": "G1_TARGET_PAIR",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Extreme",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": [
+     "Wool"
+    ]
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2xr",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2or",
+   "r4_missing": [],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": "RELAXED",
+   "gt_r2": "MATCH",
+   "gt_r3": "CONFLICT",
+   "gt_r4": "MATCH"
+  },
+  {
+   "call_no": 2,
+   "image_id": "M317",
+   "group": "G1_TARGET_PAIR",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Extreme",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": "UNKNOWN"
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2xr",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2or",
+   "r4_missing": [
+    "form_retention"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": "RELAXED",
+   "gt_r2": "MATCH",
+   "gt_r3": "CONFLICT",
+   "gt_r4": "MATCH"
+  },
+  {
+   "call_no": 3,
+   "image_id": "M317",
+   "group": "G1_TARGET_PAIR",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Extreme",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": "UNKNOWN"
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2xr",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2or",
+   "r4_missing": [
+    "form_retention"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": "RELAXED",
+   "gt_r2": "MATCH",
+   "gt_r3": "CONFLICT",
+   "gt_r4": "MATCH"
+  },
+  {
+   "call_no": 4,
+   "image_id": "M320",
+   "group": "G1_TARGET_PAIR",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Strong",
+    "shape": "Semi-Structured",
+    "drop": "UNKNOWN",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": [
+     "Wool"
+    ]
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2r",
+   "r3": "RELAXED",
+   "r3_rule": "SRB-2r",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2r",
+   "r4_missing": [
+    "drop"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": "STRUCTURED",
+   "gt_r2": "CONFLICT",
+   "gt_r3": "CONFLICT",
+   "gt_r4": "CONFLICT"
+  },
+  {
+   "call_no": 5,
+   "image_id": "M320",
+   "group": "G1_TARGET_PAIR",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Strong",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": "UNKNOWN"
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2xr",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2or",
+   "r4_missing": [
+    "form_retention"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": "STRUCTURED",
+   "gt_r2": "CONFLICT",
+   "gt_r3": "MATCH",
+   "gt_r4": "CONFLICT"
+  },
+  {
+   "call_no": 6,
+   "image_id": "M320",
+   "group": "G1_TARGET_PAIR",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Strong",
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": "UNKNOWN"
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2r",
+   "r3": "RELAXED",
+   "r3_rule": "SRB-2r",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2r",
+   "r4_missing": [
+    "form_retention"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": "STRUCTURED",
+   "gt_r2": "CONFLICT",
+   "gt_r3": "CONFLICT",
+   "gt_r4": "CONFLICT"
+  },
+  {
+   "call_no": 7,
+   "image_id": "F298",
+   "group": "G2_EVIDENCE",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Extreme",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Cinched",
+    "constriction": "OBSERVED",
+    "material": [
+     "Leather"
+    ]
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2xr",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2or",
+   "r4_missing": [],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": "RELAXED",
+   "gt_r2": "MATCH",
+   "gt_r3": "CONFLICT",
+   "gt_r4": "MATCH"
+  },
+  {
+   "call_no": 8,
+   "image_id": "F293",
+   "group": "G2_EVIDENCE",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": "UNKNOWN",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": [
+     "Wool"
+    ]
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2r",
+   "r3": "RELAXED",
+   "r3_rule": "SRB-2r",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2r",
+   "r4_missing": [
+    "drop"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 9,
+   "image_id": "F267",
+   "group": "G2_EVIDENCE",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Fluid",
+    "drop": "UNKNOWN",
+    "waist": "ABSENT",
+    "constriction": "NONE_LISTED",
+    "material": [
+     "Knit"
+    ]
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-3r",
+   "r3": "RELAXED",
+   "r3_rule": "SRB-3r",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-3r",
+   "r4_missing": [
+    "drop"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 10,
+   "image_id": "M134",
+   "group": "G2_EVIDENCE",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Slim",
+    "shoulder": "None",
+    "shape": "UNKNOWN",
+    "drop": "None",
+    "waist": "ABSENT",
+    "constriction": "NONE_LISTED",
+    "material": [
+     "Knit"
+    ]
+   },
+   "r2": "STRUCTURED",
+   "r2_rule": "SRB-1",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-1",
+   "r4": "STRUCTURED",
+   "r4_rule": "SRB-1",
+   "r4_missing": [
+    "shape"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 11,
+   "image_id": "M269",
+   "group": "G2_EVIDENCE",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Relaxed",
+    "shoulder": "Mild",
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": "UNKNOWN"
+   },
+   "r2": "EXC:EVIDENCE_REPAIR_REQUIRED",
+   "r2_rule": "SRB-2f|SRB-2r",
+   "r3": "RELAXED",
+   "r3_rule": "SRB-2r",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2r",
+   "r4_missing": [
+    "form_retention"
+   ],
+   "r4_sensitivity": "POSSIBLE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 12,
+   "image_id": "M270",
+   "group": "G2_EVIDENCE",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Relaxed",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": "UNKNOWN"
+   },
+   "r2": "EXC:EVIDENCE_REPAIR_REQUIRED",
+   "r2_rule": "SRB-2f|SRB-2r",
+   "r3": "RELAXED",
+   "r3_rule": "SRB-2r",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2r",
+   "r4_missing": [
+    "form_retention"
+   ],
+   "r4_sensitivity": "POSSIBLE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 13,
+   "image_id": "M178",
+   "group": "G2_EVIDENCE",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Relaxed",
+    "shoulder": "None",
+    "shape": "Semi-Fluid",
+    "drop": "UNKNOWN",
+    "waist": "ABSENT",
+    "constriction": "NONE_LISTED",
+    "material": "UNKNOWN"
+   },
+   "r2": "EXC:EVIDENCE_REPAIR_REQUIRED",
+   "r2_rule": "SRB-2f|SRB-2r",
+   "r3": "RELAXED",
+   "r3_rule": "SRB-2r",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2r",
+   "r4_missing": [
+    "drop",
+    "waist",
+    "form_retention"
+   ],
+   "r4_sensitivity": "POSSIBLE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 14,
+   "image_id": "F109",
+   "group": "G2_EVIDENCE",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Relaxed",
+    "shoulder": "None",
+    "shape": "Semi-Fluid",
+    "drop": "Dropped",
+    "waist": "ABSENT",
+    "constriction": "NONE_LISTED",
+    "material": [
+     "Cotton"
+    ]
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2r",
+   "r3": "RELAXED",
+   "r3_rule": "SRB-2r",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2r",
+   "r4_missing": [],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 15,
+   "image_id": "M309",
+   "group": "G3_CONTROL",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Strong",
+    "shape": "Structured",
+    "drop": "Dropped",
+    "waist": "Cinched",
+    "constriction": "OBSERVED",
+    "material": "UNKNOWN"
+   },
+   "r2": "STRUCTURED",
+   "r2_rule": "SRB-2xs",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2or",
+   "r4_missing": [
+    "form_retention"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": "RELAXED",
+   "gt_r2": "CONFLICT",
+   "gt_r3": "CONFLICT",
+   "gt_r4": "MATCH"
+  },
+  {
+   "call_no": 16,
+   "image_id": "M323",
+   "group": "G3_CONTROL",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Strong",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Defined",
+    "constriction": "OBSERVED",
+    "material": [
+     "Wool"
+    ]
+   },
+   "r2": "STRUCTURED",
+   "r2_rule": "SRB-2xs",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "STRUCTURED",
+   "r4_rule": "SRB-2os",
+   "r4_missing": [],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 17,
+   "image_id": "srcoat3",
+   "group": "G4_UNSEEN",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Strong",
+    "shape": "Structured",
+    "drop": "Dropped",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": "UNKNOWN"
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2xr",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2or",
+   "r4_missing": [
+    "form_retention"
+   ],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 18,
+   "image_id": "srsuit2",
+   "group": "G4_UNSEEN",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Strong",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": [
+     "Wool"
+    ]
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2xr",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2or",
+   "r4_missing": [],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 19,
+   "image_id": "srsuit1",
+   "group": "G4_UNSEEN",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "Strong",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Defined",
+    "constriction": "NONE_LISTED",
+    "material": [
+     "Wool"
+    ]
+   },
+   "r2": "STRUCTURED",
+   "r2_rule": "SRB-2xs",
+   "r3": "STRUCTURED",
+   "r3_rule": "SRB-2g",
+   "r4": "STRUCTURED",
+   "r4_rule": "SRB-2os",
+   "r4_missing": [],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  },
+  {
+   "call_no": 20,
+   "image_id": "tcbalen1",
+   "group": "G4_UNSEEN",
+   "sealed_inputs": true,
+   "live_facts": {
+    "fit": "Oversized",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": "Undefined",
+    "constriction": "NONE_LISTED",
+    "material": [
+     "Wool"
+    ]
+   },
+   "r2": "RELAXED",
+   "r2_rule": "SRB-2r",
+   "r3": "RELAXED",
+   "r3_rule": "SRB-2r",
+   "r4": "RELAXED",
+   "r4_rule": "SRB-2r",
+   "r4_missing": [],
+   "r4_sensitivity": "NONE",
+   "sidecar_ignored": true,
+   "deterministic": true,
+   "ceo_gt": null,
+   "gt_r2": null,
+   "gt_r3": null,
+   "gt_r4": null
+  }
+ ]
+}

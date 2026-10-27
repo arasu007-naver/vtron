@@ -1,0 +1,139 @@
+{
+ "document": "INTEGRATED_EVIDENCE_PACKET_SCHEMA_CANDIDATE_V1",
+ "status": "CANDIDATE — reproduces approved contracts only (Item V1_3 · Colour V1 · frozen Full-Look DM · CEO decisions CDM-03/04/05 · INT-01/02/03 · CA#29). CDM-15 canonical governance NOT asserted. No Canonical Dictionary registration.",
+ "packet_contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+ "packet_version": "V1_RC4",
+ "functional_areas": {
+  "1_run_contract_metadata": {
+   "keys": [
+    "packet_contract",
+    "packet_version",
+    "source_mode",
+    "requested_axes"
+   ],
+   "source_mode": "A | B | MIXED",
+   "note": "run identity lives in run_record.js (validation record), not in the packet"
+  },
+  "2_look_frame": {
+   "key": "look_frame",
+   "shape": "{ state ∈ OBSERVED|NOT_VISIBLE|UNKNOWN, limits ⊆ [crop, lower_body_cropped, feet_not_visible, occlusion, image_failure, not_a_worn_look] }",
+   "group": "G1",
+   "parameter": "SVP-001"
+  },
+  "3_component_registry": {
+   "key": "component_registry[]",
+   "entry": "{ component_ref, object_identity {state, value?}, item_record_ref?, front_state?, footwear_product_family?, footwear_product_subtype?, object_subtype?, attached_to?, product_context? }",
+   "group": "G1 (+ front_state read in G3.FR)",
+   "parameters": "SVP-002 · SVP-003 (conditional) · SVP-004 (conditional) · M-13 participation is routing (no field) · M-14 product_context metadata"
+  },
+  "4_common_observation_states": {
+   "keys": [
+    "common_visibility",
+    "component_fact_pool[].state / limitation"
+   ],
+   "common_visibility": "{ look_frame_state, look_frame_limits, facts_not_visible[{key, limitation}], facts_unknown[], identity_unknown[] } — provenance summary of the G1 reading; validated against the pool (no new observation)",
+   "states": "OBSERVED · ABSENT · NOT_VISIBLE(+limitation) · UNKNOWN; NOT_APPLICABLE returned, never stored (M-01 / M-02 / M-15)"
+  },
+  "5_component_appearance": {
+   "keys": [
+    "colour_composition",
+    "component_fact_pool[fact ∈ pattern·graphic·surface·material·decorative_detail·attachment]"
+   ],
+   "colour_composition": "{ state, field[{color_family, color_lightness, color_effect, carrier_refs[]}], points[{color_family, color_lightness, color_effect, carrier_ref{state,value?}, contrast_with_field, carrier_part?}], suppressed[], unreadable[], partial[]? }",
+   "group": "G2",
+   "parameters": "SVP-005 · SVP-006 (standing read in G4 from the G2 colours) · SVP-121…126 (MULTI facts keep the emitted array; CDM-18 pending)"
+  },
+  "6_garment_construction": {
+   "key": "component_fact_pool[fact ∈ grammar·trouser_distinction·silhouette·fit·asymmetry·length·sleeve·sleeve_volume·collar·closure_type·front_opening_extent·waist_definition·shoulder_structure·shoulder_drop·shoulder_span·shoulder_connection·pocket·slit]",
+   "entry": "{ component_ref, fact, state, value?, limitation?, route, source, lineage?, observation_group, pockets? }",
+   "groups": "G3 · G3.SH (shoulder bundle, INT-01) · G3.FR (front) · G3.PK (pocket)",
+   "conditional": "sleeve_volume (sleeve ≠ Sleeveless) · closure_type on tops/Dress/Jumpsuit (front_opening_extent ≠ None) · waist_definition (Two-Gate) · slit (Skirt · Dress; INT-03 states) · shoulder_span / shoulder_connection (Item conditional)"
+  },
+  "7_final_look_relations": {
+   "keys": [
+    "upper_realization",
+    "relations.layer_relations[]",
+    "relations.securing_relations[]",
+    "canonical_exposure"
+   ],
+   "upper_realization": "{ source_refs[], relation{…}, shoulder{… observation_group: G3.SH}, shape_behaviour{…} }",
+   "layer": "{ over_ref, under_ref, revealed[] (optional provenance), state } garment-to-garment only (CDM-05 B)",
+   "securing": "{ securing_ref, affected_ref, affected_region (verbatim, CDM-04 B), visible_constriction{state}, device_is_own? (CDM-03 S1 candidate) }",
+   "exposure": "{ events[{region, carrier_refs[], attribution{state,value?}, sources[], state}], hidden[] }",
+   "group": "G4",
+   "parameters": "SVP-007 · 008 · 009 · 010 · 011 · 012"
+  },
+  "8_nested_pocket_instances": {
+   "key": "component_fact_pool[fact = pocket].pockets[]",
+   "instance": "{ location ∈ Chest|Lower Front|Sleeve|Leg, construction {state, value ∈ Inset|Applied | null}, projection {state, value ∈ Flat|Projected|Volumetric | null} }",
+   "rule": "CA#29: present only under pocket OBSERVED Present; non-empty; scalar pocket_construction / pocket_projection never stored (SVP-117 / 118 nested)",
+   "group": "G3.PK"
+  },
+  "9_frozen_item_compatible_projection": {
+   "where": "validation/ run record (run_record.js projectParameters) + diagnostics/tc_product_evidence.js",
+   "note": "Item facts keep Item V1_3 names, values and states; MULTI arrays as emitted; pockets[] passed flattened to the frozen TC predicate; SVP-117 / 118 projected from instances for the sealed evaluator (comparison aid, not an emission)"
+  },
+  "10_dm_evidence_transport_v2": {
+   "keys": [
+    "dm_evidence",
+    "dm_transport",
+    "dm_acquisition"
+   ],
+   "authority": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_DM_VISION_EVIDENCE_TRANSPORT_V2.md (CEO 2026-10-15 scoped successor of the V1 transport requirement; V1 Final Freeze otherwise in force)",
+   "dm_evidence": "{ transport_contract: STMX_FULL_LOOK_DM_VISION_EVIDENCE_TRANSPORT_V2, look_components[] (DMP-1, ASSEMBLED = ∪ carrier_refs + lineage), look_detail_systems[] (DMP-2, V1 system schema, frozen admission; OBSERVED-ONLY — [] = none observed, never a verified negative), dm_evidence_visibility (DMP-3) { state: OBSERVED, value: <V1 token> } when derived from the look-level G1 record, else { state: UNKNOWN } } — delivered whenever the systems are admissible; DMP-3 is metadata, not a gate",
+   "dm_transport": "{ authority { v1_freeze { path, sha256 }, v2_transport { path, sha256 } }, output_fingerprint (V1 fingerprint over dm_evidence) }",
+   "dm_acquisition": "only when DM was requested and no record was delivered: { status: NOT_ACQUIRED, reason ∈ PROMPT_V1_2_HAS_NO_DM_SECTION|FIXTURE_HAS_NO_DM_BLOCK|NOT_REQUESTED|DM_BLOCK_REJECTED_BY_FROZEN_ADAPTER }",
+   "v1_compatibility": "dm_transport_v2.toFrozenV1Block(dm_evidence, registry) → the unchanged frozen adapter: V1 record when DMP-3 is OBSERVED; refused (DM_OUTPUT_SHAPE_ILLEGAL) when UNKNOWN — exactly the V1 requirement",
+   "group": "A1 (no reading)",
+   "rule": "DMP-3 reads no appearance fact (crosswalk V2.1); an inadmissible DM block is refused as a block (frozen atomicity) and never erases EI / TC / SR evidence; RC1–RC3 keys dm_subsystem / dm_adapter / dm_block_withheld are NOT emitted by RC4"
+  },
+  "11_validation_diagnostic_report": {
+   "where": "validator.js (packet) · request_trace { axes, k2_ledger, exposure_requests, layer_pairs_excluded, observation_groups, dm_diagnostics, provider_notes } · CLI outputs validation.json / provenance.json / unresolved_fields.json / native_check.json",
+   "fail_closed_controls": [
+    "missing required fact → NOT_EMITTED → UNKNOWN (never a value)",
+    "invalid state → ENVELOPE / STATE errors",
+    "invalid applicability → NOT_APPLICABLE never stored · CONDITIONAL_TRIGGER_VIOLATED · SLIT_OUTSIDE_SKIRT_DRESS",
+    "invalid vocabulary → UNCONVERTIBLE / domain errors",
+    "invalid component reference → *_UNKNOWN_REF",
+    "broken nested carrier → POCKET_* errors",
+    "incorrect cardinality → MULTIPLE_VALUES_ON_SINGLE_VALUE_FACT · POCKET_INSTANCE_EMPTY",
+    "invalid MULTI serialization → VALUE_OUTSIDE_GOVERNED_DOMAIN (representation kept as emitted, CDM-18)",
+    "duplicate physical object → ownership_resolution · PHYSICAL_OBJECT_DUPLICATED",
+    "duplicate DM phenomenon → DM_DUPLICATE_PHENOMENON",
+    "unsupported inference → no derivation code paths (tests SH-4 · SL-3) · DM_ADJUDICABLE_FROM_ABSENCE · DM_VISIBILITY_NOT_DERIVED_FROM_COMMON_RECORD · DM_VISIBILITY_DERIVABLE_BUT_UNKNOWN (validator re-derives DMP-3 from the packet; RC4)",
+    "frozen contract incompatibility → DM_AUTHORITY_PIN · DM_OUTPUT_MUTATED · PACKET_IDENTITY",
+    "scoring-sufficiency key anywhere in the packet → SCORING_SUFFICIENCY_KEY (RC2)"
+   ]
+  }
+ },
+ "model_output_contract": {
+  "source": "prompts/STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V1.txt §8a",
+  "top_keys": [
+   "frame",
+   "objects",
+   "front_state",
+   "layer_relations",
+   "securing_relations",
+   "colour_areas",
+   "upper",
+   "exposure_supplement",
+   "facts",
+   "dm_subsystem"
+  ],
+  "differences_from_FORM_C": [
+   "facts.<ref>.pocket = \"None\" | { value: \"Present\", pockets: [instances] } (CA#29); pocket_construction / pocket_projection never emitted",
+   "dm_subsystem = { look_detail_systems } only (DMP-1 assembled, DMP-3 derived — INT-02)",
+   "procedure §2 = one integrated observation G1 → G2 → G3 (SH · FR · PK) → G4",
+   "§6 shoulder ONE look (INT-01) · conditional slit (INT-03) · frozen conditional triggers"
+  ]
+ },
+ "not_in_this_schema": [
+  "any Direction / Strength / score / Style ID / Direction Code (validated absent)",
+  "EI realization sub-fields (GAP-2 pending)",
+  "securing-region vocabulary (CDM-04 pending — raw token carried)",
+  "own-device serialization registration (CDM-03 pending — candidate carrier)",
+  "MULTI canonical representation (CDM-18 pending)",
+  "structured-output enforcement at the API (CDM-15 pending)"
+ ],
+ "release_candidate": "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC4 (2026-10-15, Final Observable Evidence Delivery Correction): the DM projection follows DM Evidence Transport V2 (functional area 10); every other area unchanged from RC3. RC3: single-reason not_adjudicable only; RC2: DMP-3 from G1 only, DM block refused as a block"
+}

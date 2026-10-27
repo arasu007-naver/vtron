@@ -1,0 +1,249 @@
+{
+ "at": "2026-10-25T00:40:50.912Z",
+ "runs": [
+  {
+   "id": "FLV_RELEASE_VERIFY",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/06_RELEASE_VERIFICATION/verify_release.js --out <package>/_raw/exec/verify_release",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "R8 PASS G53: LiveProvider refuses · no network module, fetch call, credential variable or API endpoint in runtime src / cli | R9 PASS fixture smoke: bundled fixture M134 → PACKET_VALID | RELEASE_VERIFIED · C:\\work\\STMX\\STMX project\\master files\\STMX EI TC SR DM master\\04_GOVERNANCE_AND_FINAL_DOCS\\STMX_FULL_LOOK_SR_FINAL_CORRECTION_FREEZE_AND_BACKUP_V1\\_raw\\exec\\verify_release\\verify_report.json",
+   "log": "_raw/exec/logs/FLV_RELEASE_VERIFY.txt"
+  },
+  {
+   "id": "ITEM_SR_FINAL_RUN_ALL",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/tests/run_all.js",
+   "exit_code": 1,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 2,
+   "stdout_tail": "SR FINAL BINDING  10 / 10 | TOTAL             45 / 46  ·  fail 1 | replay units 114 · admitted 101 · unique 101 · Σ101 · {\"SR1\":0,\"SR2\":0,\"SR3\":4,\"SR4\":28,\"SR5\":19,\"SR6\":34,\"SR7\":11,\"SR8\":0,\"SR9\":0,\"null\":5}",
+   "log": "_raw/exec/logs/ITEM_SR_FINAL_RUN_ALL.txt"
+  },
+  {
+   "id": "FL_SR_DIAGNOSTIC_K2",
+   "command": "node --require _raw/redirect_preload.js 04_GOVERNANCE_AND_FINAL_DOCS/STMX_FULL_LOOK_DIRECTION_ARCHITECTURE_SEMANTIC_GENERALIZATION_CORRECTION_V1/_raw/k2_corrected_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": "  \"M320 → D [C:high:c1 ; H:high:c4]\" |  ] | }",
+   "log": "_raw/exec/logs/FL_SR_DIAGNOSTIC_K2.txt"
+  },
+  {
+   "id": "FL_SR_DIAGNOSTIC_43_PACKETS",
+   "command": "node --require _raw/redirect_preload.js 04_GOVERNANCE_AND_FINAL_DOCS/STMX_FL_SCORING_CODE_READINESS_AUDIT_V1/_raw/s4_packet_compat.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": "unresolved causes {\"EI\":{\"OPEN_CEO\":2,\"VISION_LIMITATION\":4},\"TC\":{\"VISION_LIMITATION\":9,\"OPEN_CEO\":1},\"SR\":{\"VISION_LIMITATION\":13}} | anchors [\"SR F298(rel) CEO RELAXED got UNRESOLVED UNRESOLVED\",\"SR M309(cv2) CEO RELAXED got RELAXED CORRECT\",\"SR M317(cv2) CEO RELAXED got UNRESOLVED UNRESOLVED\",\"SR M320(rel) CEO STRUCTURED got UNRESOLVED UNRESOLVED\",\"EI M308(cv2) CEO E got E CORRECT\",\"EI M320(re",
+   "log": "_raw/exec/logs/FL_SR_DIAGNOSTIC_43_PACKETS.txt"
+  },
+  {
+   "id": "SR_V1_REPLAY_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V1_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": " }, |  \"deterministic\": true | }",
+   "log": "_raw/exec/logs/SR_V1_REPLAY_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V1_TESTS_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V1_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":32}",
+   "log": "_raw/exec/logs/SR_V1_TESTS_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V2_REPLAY_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V2_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": " }, |  \"deterministic\": true | }",
+   "log": "_raw/exec/logs/SR_V2_REPLAY_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V2_TESTS_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V2_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":55}",
+   "log": "_raw/exec/logs/SR_V2_TESTS_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V3_REPLAY_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": " \"seals_ok\": true, |  \"deterministic\": true | }",
+   "log": "_raw/exec/logs/SR_V3_REPLAY_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V3_TESTS_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":27}",
+   "log": "_raw/exec/logs/SR_V3_TESTS_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V3_R1_REPLAY_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R1_CLOSURE_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": " \"seals_ok\": true, |  \"deterministic\": true | }",
+   "log": "_raw/exec/logs/SR_V3_R1_REPLAY_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V3_R1_TESTS_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R1_CLOSURE_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":36}",
+   "log": "_raw/exec/logs/SR_V3_R1_TESTS_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V3_R2_REPLAY_43",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R2_CG1_FINAL_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": "CHANGED F109 A RELAXED → EXC:EVIDENCE_REPAIR_REQUIRED | B RELAXED → RELAXED | CG1 M320 STRUCTURED Slim→STRUCTURED · Regular→STRUCTURED · Relaxed→STRUCTURED · Oversized→RELAXED · UNKNOWN→EXC:CONTRACT_GAP_CG1 | CG1 M317 RELAXED Slim→STRUCTURED · Regular→STRUCTURED · Relaxed→STRUCTURED · Oversized→RELAXED · UNKNOWN→EXC:CONTRACT_GAP_CG1",
+   "log": "_raw/exec/logs/SR_V3_R2_REPLAY_43.txt"
+  },
+  {
+   "id": "SR_V3_R2_TESTS",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R2_CG1_FINAL_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":37}",
+   "log": "_raw/exec/logs/SR_V3_R2_TESTS.txt"
+  },
+  {
+   "id": "SR_V3_R3_REPLAY_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R3_FINAL_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": " \"seals_ok\": true, |  \"deterministic\": true | }",
+   "log": "_raw/exec/logs/SR_V3_R3_REPLAY_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V3_R3_TESTS_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R3_FINAL_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":36}",
+   "log": "_raw/exec/logs/SR_V3_R3_TESTS_UNCHANGED.txt"
+  },
+  {
+   "id": "SR_V3_R4_REPLAY_43",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R4_FINAL_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": " \"seals_ok\": true, |  \"deterministic\": true | }",
+   "log": "_raw/exec/logs/SR_V3_R4_REPLAY_43.txt"
+  },
+  {
+   "id": "SR_V3_R4_TESTS",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R4_FINAL_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":41}",
+   "log": "_raw/exec/logs/SR_V3_R4_TESTS.txt"
+  },
+  {
+   "id": "VISION_CG1_CANDIDATE_TESTS",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_CG1_OBSERVATION_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":10}",
+   "log": "_raw/exec/logs/VISION_CG1_CANDIDATE_TESTS.txt"
+  },
+  {
+   "id": "LIVE_RUNNER_REFUSAL_NO_ANCHOR",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_CG1_OBSERVATION_CANDIDATE/runner/run_live_cg1_GATED.js",
+   "exit_code": 3,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "LIVE_NOT_EXECUTED_G53_ACTIVE · NO_APPROVAL_ANCHOR · AUTHORIZATION/CG1_APPROVAL_ANCHOR.json absent — no CEO approval for the CG-1 live validation exists",
+   "log": "_raw/exec/logs/LIVE_RUNNER_REFUSAL_NO_ANCHOR.txt"
+  },
+  {
+   "id": "LIVE_EXEC_COPY_REFUSAL_AFTER_EXPIRY",
+   "command": "node --require _raw/redirect_preload.js 04_GOVERNANCE_AND_FINAL_DOCS/STMX_FULL_LOOK_SR_CG1_G53_LIVE_VALIDATION_EXECUTION_V1/_raw/live/run_live_cg1_EXECUTION_COPY.js",
+   "exit_code": 3,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "LIVE_NOT_EXECUTED_G53_ACTIVE · ANCHOR_NOT_ACTIVE · EXPIRED",
+   "log": "_raw/exec/logs/LIVE_EXEC_COPY_REFUSAL_AFTER_EXPIRY.txt"
+  },
+  {
+   "id": "TC_V2_TESTS_UNCHANGED",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_TC_PRODUCT_ONLY_RESOLVER_V2_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":45}",
+   "log": "_raw/exec/logs/TC_V2_TESTS_UNCHANGED.txt"
+  },
+  {
+   "id": "PROXY_HOLDOUT_R1_R2_R3_R4",
+   "command": "node --require _raw/redirect_preload.js C:\\work\\STMX\\STMX project\\master files\\STMX EI TC SR DM master\\04_GOVERNANCE_AND_FINAL_DOCS\\STMX_FULL_LOOK_SR_FINAL_CORRECTION_FREEZE_AND_BACKUP_V1\\_raw\\z3_holdout.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "  \"STMX_B005_B5_03#SU1 Jacket waist Cinched drop None → R3 STRUCTURED · R4 RELAXED (SRB-2or) · CEO SR5 (NEUTRAL)\" |  ] | }",
+   "log": "_raw/exec/logs/PROXY_HOLDOUT_R1_R2_R3_R4.txt"
+  }
+ ],
+ "item_sr_failing_lines": [
+  "  FAIL  F31  TC remains not started (no STMX_TC_* engine workspace in ITEM_SCORING_ENGINE; Style engine tree ≡ pre-order aggregate)"
+ ],
+ "flv_release_checks": [
+  "R1 PASS",
+  "R2 PASS",
+  "R3 PASS",
+  "R4 PASS",
+  "R5 PASS",
+  "R6 PASS",
+  "R7 PASS",
+  "R8 PASS",
+  "R9 PASS"
+ ]
+}

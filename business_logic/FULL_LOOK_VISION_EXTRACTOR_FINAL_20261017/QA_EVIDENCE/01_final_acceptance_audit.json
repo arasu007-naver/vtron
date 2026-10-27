@@ -1,0 +1,882 @@
+{
+ "document": "Final Acceptance Audit (RC6)",
+ "at": "2026-10-17T08:24:35.263Z",
+ "live_api_calls": 0,
+ "code_changes": 0,
+ "gates": [
+  {
+   "id": "A-00",
+   "name": "RC6 = sealed code (SEAL-FLV-RC6-2026-10-17 · 129 files · aggregate recomputed)",
+   "result": "PASS",
+   "evidence": {
+    "n": 129,
+    "agg": "78e4a31e93f668cdf96c436be5bad16f2bb888a2336af355c203ba9943684963"
+   }
+  },
+  {
+   "id": "C-01",
+   "name": "RC6 full regression suite = 355 / 355 (historical reference)",
+   "result": "PASS",
+   "evidence": "355/355"
+  },
+  {
+   "id": "C-02",
+   "name": "12 / 12 contract-valid packets (validator ok, exit 0) — production path (no TC diagnostic)",
+   "result": "PASS",
+   "evidence": 12
+  },
+  {
+   "id": "C-03",
+   "name": "78 / 78 participating components delivered",
+   "result": "PASS",
+   "evidence": "78/78"
+  },
+  {
+   "id": "C-04",
+   "name": "46 / 46 DM Detail Systems delivered — verbatim, admitted by the frozen DM adapter under all 9 DMP-3 tokens, fingerprint verified (Evidence Transport V2)",
+   "result": "PASS",
+   "evidence": "46/46"
+  },
+  {
+   "id": "C-05",
+   "name": "No unauthorized scoring field (score / direction / strength / verdict / eligibility / style_id / tier …) in any packet",
+   "result": "PASS",
+   "evidence": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": "C-06",
+   "name": "Deterministic processing: two runs of the sealed CLI give byte-identical packets (12 / 12)",
+   "result": "PASS",
+   "evidence": []
+  },
+  {
+   "id": "B-01",
+   "name": "ABSENT never fabricated: every ABSENT in the 12 packets was emitted ABSENT / None by the model",
+   "result": "PASS",
+   "evidence": [
+    "F147:0",
+    "M269:0",
+    "F298:0",
+    "F390:0",
+    "M323:0",
+    "M178:0",
+    "M270:0",
+    "F187:0",
+    "F444:0",
+    "M303:0",
+    "M320:0",
+    "REF_000622:0"
+   ]
+  },
+  {
+   "id": "B-02",
+   "name": "Unreadable observations stay UNKNOWN / NOT_VISIBLE (present across the replay; never converted to a value)",
+   "result": "PASS",
+   "evidence": {
+    "unknown": 89,
+    "not_visible": 69
+   }
+  },
+  {
+   "id": "B-03",
+   "name": "Component references and ownership valid (every pool / colour / DM reference is a registry component)",
+   "result": "PASS",
+   "evidence": []
+  },
+  {
+   "id": "B-04",
+   "name": "No observed evidence silently lost in conversion: every model fact of a participant is in the pool, carries a logged UNCONVERTIBLE reason, is N/A by a frozen rule in the K-2 ledger, or was not demanded by any axis requester (approved AXIS-DEMAND-CONDITIONAL applicability); 0 requested-but-missing; every emitted (carrier, colour family) is in the packet (Colour V1 stitching → suppressed, logged)",
+   "result": "PASS",
+   "evidence": [
+    "F147 facts 0 colour 0",
+    "M269 facts 0 colour 0",
+    "F298 facts 0 colour 0",
+    "F390 facts 0 colour 0",
+    "M323 facts 0 colour 0",
+    "M178 facts 0 colour 0",
+    "M270 facts 0 colour 0",
+    "F187 facts 0 colour 0",
+    "F444 facts 0 colour 0",
+    "M303 facts 0 colour 0",
+    "M320 facts 0 colour 0",
+    "REF_000622 facts 0 colour 0"
+   ]
+  },
+  {
+   "id": "B-05",
+   "name": "One unresolved fact does not block unrelated evidence: 0 whole-look failures; local isolation available (suite R7 / R8 / R17) and not needed on the 12 responses",
+   "result": "PASS",
+   "evidence": 0
+  },
+  {
+   "id": "A-01",
+   "name": "Approved active parameter inventory (41) — every parameter is produced as OBSERVED in at least one of the 12 actual looks, or its absence is explained below",
+   "result": "PASS",
+   "evidence": {
+    "observed_somewhere": 41,
+    "never_observed_in_12": []
+   }
+  }
+ ],
+ "totals": {
+  "valid": 12,
+  "components": 78,
+  "participants": 78,
+  "dm": 46,
+  "dm_model": 46
+ },
+ "rows": [
+  {
+   "image": "F147",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 6,
+   "participants": 6,
+   "dm": 2,
+   "dm_model": 2,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [
+    {
+     "fact": "c2.shoulder_drop",
+     "identity": "T-Shirt",
+     "class": "NOT_DEMANDED (no axis requester for this component — AXIS-DEMAND-CONDITIONAL)"
+    }
+   ],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 7,
+   "not_visible_cells": 5
+  },
+  {
+   "image": "M269",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 11,
+   "participants": 11,
+   "dm": 8,
+   "dm_model": 8,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [
+    {
+     "fact": "c2.shoulder_drop",
+     "identity": "Shirt",
+     "class": "NOT_DEMANDED (no axis requester for this component — AXIS-DEMAND-CONDITIONAL)"
+    },
+    {
+     "fact": "c4.shoulder_drop",
+     "identity": "Sweater",
+     "class": "NOT_DEMANDED (no axis requester for this component — AXIS-DEMAND-CONDITIONAL)"
+    }
+   ],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 19,
+   "not_visible_cells": 14
+  },
+  {
+   "image": "F298",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 6,
+   "participants": 6,
+   "dm": 2,
+   "dm_model": 2,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [
+    {
+     "fact": "c2.shoulder_drop",
+     "identity": "Sweater",
+     "class": "NOT_DEMANDED (no axis requester for this component — AXIS-DEMAND-CONDITIONAL)"
+    }
+   ],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 6,
+   "not_visible_cells": 9
+  },
+  {
+   "image": "F390",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 8,
+   "participants": 8,
+   "dm": 5,
+   "dm_model": 5,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [
+    {
+     "fact": "c2.shoulder_drop",
+     "identity": "Shirt",
+     "class": "NOT_DEMANDED (no axis requester for this component — AXIS-DEMAND-CONDITIONAL)"
+    }
+   ],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 12,
+   "not_visible_cells": 7
+  },
+  {
+   "image": "M323",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 3,
+   "participants": 3,
+   "dm": 2,
+   "dm_model": 2,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [
+    {
+     "fact": "c1.shoulder_span",
+     "identity": "Jacket",
+     "class": "NOT_APPLICABLE_BY_FROZEN_RULE (k2_ledger)"
+    }
+   ],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 1,
+   "not_visible_cells": 2
+  },
+  {
+   "image": "M178",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 6,
+   "participants": 6,
+   "dm": 4,
+   "dm_model": 4,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [
+    {
+     "fact": "c1.shoulder_drop",
+     "identity": "Shirt",
+     "class": "NOT_DEMANDED (no axis requester for this component — AXIS-DEMAND-CONDITIONAL)"
+    }
+   ],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 8,
+   "not_visible_cells": 2
+  },
+  {
+   "image": "M270",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 9,
+   "participants": 9,
+   "dm": 10,
+   "dm_model": 10,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [
+    {
+     "fact": "c4.shoulder_drop",
+     "identity": "Sweater",
+     "class": "NOT_DEMANDED (no axis requester for this component — AXIS-DEMAND-CONDITIONAL)"
+    },
+    {
+     "fact": "c5.shoulder_drop",
+     "identity": "Shirt",
+     "class": "NOT_DEMANDED (no axis requester for this component — AXIS-DEMAND-CONDITIONAL)"
+    }
+   ],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 10,
+   "not_visible_cells": 8
+  },
+  {
+   "image": "F187",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 4,
+   "participants": 4,
+   "dm": 1,
+   "dm_model": 1,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 1,
+   "not_visible_cells": 0
+  },
+  {
+   "image": "F444",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 9,
+   "participants": 9,
+   "dm": 7,
+   "dm_model": 7,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 7,
+   "not_visible_cells": 1
+  },
+  {
+   "image": "M303",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 6,
+   "participants": 6,
+   "dm": 2,
+   "dm_model": 2,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [
+    {
+     "fact": "c2.shoulder_drop",
+     "identity": "Sweater",
+     "class": "NOT_DEMANDED (no axis requester for this component — AXIS-DEMAND-CONDITIONAL)"
+    }
+   ],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 5,
+   "not_visible_cells": 4
+  },
+  {
+   "image": "M320",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 5,
+   "participants": 5,
+   "dm": 2,
+   "dm_model": 2,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 7,
+   "not_visible_cells": 1
+  },
+  {
+   "image": "REF_000622",
+   "exit": 0,
+   "valid": true,
+   "deterministic": true,
+   "components": 5,
+   "participants": 5,
+   "dm": 1,
+   "dm_model": 1,
+   "dm_verbatim": true,
+   "dm_admitted": true,
+   "dm_fingerprint": true,
+   "refs_valid": true,
+   "absent_fabricated": [],
+   "facts_lost_silently": [],
+   "facts_not_in_pool_classified": [],
+   "colour_lost": [],
+   "scoring_keys": [],
+   "isolation": 0,
+   "unknown_cells": 6,
+   "not_visible_cells": 16
+  }
+ ],
+ "coverage": [
+  {
+   "id": "SVP-001",
+   "name": "look_observability",
+   "scope": "CONTROL",
+   "states": {
+    "OBSERVED": 12
+   },
+   "observed": 12
+  },
+  {
+   "id": "SVP-002",
+   "name": "component_identity",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 74,
+    "UNKNOWN": 4
+   },
+   "observed": 74
+  },
+  {
+   "id": "SVP-003",
+   "name": "identity_refinement",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 37
+   },
+   "observed": 37
+  },
+  {
+   "id": "SVP-004",
+   "name": "as_worn_front_state",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 13,
+    "UNKNOWN": 1
+   },
+   "observed": 13
+  },
+  {
+   "id": "SVP-005",
+   "name": "component_colour",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 77,
+    "UNKNOWN": 1
+   },
+   "observed": 77
+  },
+  {
+   "id": "SVP-006",
+   "name": "colour_composition_standing",
+   "scope": "GLOBAL",
+   "states": {
+    "OBSERVED": 77
+   },
+   "observed": 77
+  },
+  {
+   "id": "SVP-007",
+   "name": "final_upper_relation",
+   "scope": "GLOBAL",
+   "states": {
+    "OBSERVED": 11,
+    "NOT_VISIBLE": 1
+   },
+   "observed": 11
+  },
+  {
+   "id": "SVP-008",
+   "name": "final_shoulder_realization",
+   "scope": "GLOBAL",
+   "states": {
+    "OBSERVED": 11,
+    "NOT_VISIBLE": 1
+   },
+   "observed": 11
+  },
+  {
+   "id": "SVP-009",
+   "name": "final_upper_shape_behaviour",
+   "scope": "GLOBAL",
+   "states": {
+    "OBSERVED": 10,
+    "UNKNOWN": 1,
+    "NOT_VISIBLE": 1
+   },
+   "observed": 10
+  },
+  {
+   "id": "SVP-010",
+   "name": "layer_relation",
+   "scope": "RELATION",
+   "states": {
+    "OBSERVED": 10
+   },
+   "observed": 10
+  },
+  {
+   "id": "SVP-011",
+   "name": "securing_constriction",
+   "scope": "RELATION",
+   "states": {
+    "UNKNOWN": 3,
+    "OBSERVED": 4
+   },
+   "observed": 4
+  },
+  {
+   "id": "SVP-012",
+   "name": "canonical_physical_exposure",
+   "scope": "RELATION",
+   "states": {
+    "OBSERVED": 12
+   },
+   "observed": 12
+  },
+  {
+   "id": "SVP-101",
+   "name": "grammar",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 7
+   },
+   "observed": 7
+  },
+  {
+   "id": "SVP-102",
+   "name": "trouser_distinction",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 8
+   },
+   "observed": 8
+  },
+  {
+   "id": "SVP-103",
+   "name": "silhouette",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 10
+   },
+   "observed": 10
+  },
+  {
+   "id": "SVP-104",
+   "name": "fit",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 23,
+    "NOT_VISIBLE": 6,
+    "UNKNOWN": 1
+   },
+   "observed": 23
+  },
+  {
+   "id": "SVP-105",
+   "name": "shoulder_structure",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 8
+   },
+   "observed": 8
+  },
+  {
+   "id": "SVP-106",
+   "name": "shoulder_drop",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 10,
+    "UNKNOWN": 1,
+    "NOT_VISIBLE": 1
+   },
+   "observed": 10
+  },
+  {
+   "id": "SVP-107",
+   "name": "asymmetry",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 25,
+    "NOT_VISIBLE": 3,
+    "UNKNOWN": 2
+   },
+   "observed": 25
+  },
+  {
+   "id": "SVP-108",
+   "name": "length",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 22,
+    "NOT_VISIBLE": 7,
+    "UNKNOWN": 1
+   },
+   "observed": 22
+  },
+  {
+   "id": "SVP-109",
+   "name": "sleeve_volume",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 11,
+    "UNKNOWN": 2,
+    "NOT_VISIBLE": 7
+   },
+   "observed": 11
+  },
+  {
+   "id": "SVP-110",
+   "name": "shoulder_span",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 5,
+    "NOT_VISIBLE": 9
+   },
+   "observed": 5
+  },
+  {
+   "id": "SVP-111",
+   "name": "closure_type",
+   "scope": "COMPONENT",
+   "states": {
+    "NOT_VISIBLE": 1,
+    "OBSERVED": 10,
+    "UNKNOWN": 5
+   },
+   "observed": 10
+  },
+  {
+   "id": "SVP-112",
+   "name": "front_opening_extent",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 18,
+    "NOT_VISIBLE": 3
+   },
+   "observed": 18
+  },
+  {
+   "id": "SVP-113",
+   "name": "collar",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 20,
+    "NOT_VISIBLE": 1
+   },
+   "observed": 20
+  },
+  {
+   "id": "SVP-114",
+   "name": "sleeve",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 15,
+    "NOT_VISIBLE": 6
+   },
+   "observed": 15
+  },
+  {
+   "id": "SVP-115",
+   "name": "shoulder_connection",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 5,
+    "UNKNOWN": 1,
+    "NOT_VISIBLE": 8
+   },
+   "observed": 5
+  },
+  {
+   "id": "SVP-116",
+   "name": "pocket",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 18,
+    "NOT_VISIBLE": 11,
+    "UNKNOWN": 1
+   },
+   "observed": 18
+  },
+  {
+   "id": "SVP-117",
+   "name": "pocket_construction",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 13,
+    "UNKNOWN": 1
+   },
+   "observed": 13
+  },
+  {
+   "id": "SVP-118",
+   "name": "pocket_projection",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 14
+   },
+   "observed": 14
+  },
+  {
+   "id": "SVP-119",
+   "name": "waist_definition",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 6,
+    "UNKNOWN": 1
+   },
+   "observed": 6
+  },
+  {
+   "id": "SVP-120",
+   "name": "slit",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 2
+   },
+   "observed": 2
+  },
+  {
+   "id": "SVP-121",
+   "name": "pattern",
+   "scope": "COMPONENT",
+   "states": {
+    "ABSENT": 65,
+    "OBSERVED": 11,
+    "UNKNOWN": 2
+   },
+   "observed": 11
+  },
+  {
+   "id": "SVP-122",
+   "name": "graphic",
+   "scope": "COMPONENT",
+   "states": {
+    "ABSENT": 69,
+    "OBSERVED": 4,
+    "UNKNOWN": 4,
+    "NOT_VISIBLE": 1
+   },
+   "observed": 4
+  },
+  {
+   "id": "SVP-123",
+   "name": "surface",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 13,
+    "UNKNOWN": 13,
+    "ABSENT": 52
+   },
+   "observed": 13
+  },
+  {
+   "id": "SVP-124",
+   "name": "material",
+   "scope": "COMPONENT",
+   "states": {
+    "OBSERVED": 36,
+    "UNKNOWN": 42
+   },
+   "observed": 36
+  },
+  {
+   "id": "SVP-125",
+   "name": "decorative_detail",
+   "scope": "COMPONENT",
+   "states": {
+    "ABSENT": 68,
+    "OBSERVED": 8,
+    "UNKNOWN": 1,
+    "NOT_VISIBLE": 1
+   },
+   "observed": 8
+  },
+  {
+   "id": "SVP-126",
+   "name": "attachment",
+   "scope": "COMPONENT",
+   "states": {
+    "ABSENT": 61,
+    "OBSERVED": 15,
+    "UNKNOWN": 1,
+    "NOT_VISIBLE": 1
+   },
+   "observed": 15
+  },
+  {
+   "id": "DMP-1",
+   "name": "look_components",
+   "scope": "GLOBAL",
+   "states": {
+    "OBSERVED": 12
+   },
+   "observed": 12
+  },
+  {
+   "id": "DMP-2",
+   "name": "look_detail_systems",
+   "scope": "GLOBAL",
+   "states": {
+    "OBSERVED": 46
+   },
+   "observed": 46
+  },
+  {
+   "id": "DMP-3",
+   "name": "dm_evidence_visibility",
+   "scope": "CONTROL",
+   "states": {
+    "UNKNOWN": 10,
+    "OBSERVED": 2
+   },
+   "observed": 2
+  }
+ ],
+ "all_pass": true
+}

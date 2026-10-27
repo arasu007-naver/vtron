@@ -1,0 +1,19 @@
+{
+ "authority": "STMX_FULL_LOOK_EI_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1",
+ "status": "PRODUCTION",
+ "state": "FINAL_FROZEN_WITH_ACCEPTED_KNOWN_LIMITATION",
+ "axis": "EI (Full-Look) — Direction only",
+ "release_id": "STMX_FULL_LOOK_EI_DIRECTION_ENGINE_FINAL_V1",
+ "release_dir": "01_ENGINES/STYLE_SCORING_ENGINE/FLEI_FINAL_V1/",
+ "seal_id": "FLEI-FINAL-FREEZE-V1-2026-10-26",
+ "seal_sha256": "56d6509a8be89eeb3dfa136e45990a9526dc8bd8c0f42bf31cc672adccbc89f6",
+ "release_manifest_sha256": "96b0a31415a24773d08f43a3ab3cb0383e72f93fc33b21e596ac99e6260a261b",
+ "runtime_fingerprint": "9093684e0f37c9e7c20fc64f5b843544c95efa6546449b1ed3d843a0c2d501e6",
+ "constitution_id": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_CONSTITUTION_V1_R3",
+ "entry": "FLEI_FINAL_V1/lib/release_paths.js → score(packet, run_record)",
+ "known_ceo_gt_mismatch": "F228 (FL-EI-LIM-F228-001; CEO GT agreement 3/4)",
+ "freeze_declaration": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_EI_DIRECTION_ENGINE_FINAL_FREEZE_V1.md",
+ "not_this_engine": "Item EI production authority = 01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_PRODUCTION_AUTHORITY_V1.json (separate, unchanged)",
+ "set_at": "2026-10-26T04:55:09.548Z",
+ "reopen": "governed Full-Look EI reopen decision only"
+}

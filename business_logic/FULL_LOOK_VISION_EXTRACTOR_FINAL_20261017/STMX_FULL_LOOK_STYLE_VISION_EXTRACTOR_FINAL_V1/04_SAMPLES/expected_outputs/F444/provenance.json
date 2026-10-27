@@ -1,0 +1,608 @@
+{
+ "local_isolation": [],
+ "transport": {
+  "shape_variant": {
+   "frame": "flat",
+   "objects": "array",
+   "front_state": "map",
+   "colour": "flat",
+   "facts": "map"
+  },
+  "log": [
+   {
+    "kind": "IDENTITY_UNKNOWN_WITH_REASON",
+    "where": "c2",
+    "detail": "UNKNOWN identity emitted with a stated reason; category-dependent facts will not be requested (K-2 applicability) — review against 8d (identity vs attribute visibility)",
+    "raw": "bra top; fits no Item category"
+   },
+   {
+    "kind": "IDENTITY_UNKNOWN_WITH_REASON",
+    "where": "c4",
+    "detail": "UNKNOWN identity emitted with a stated reason; category-dependent facts will not be requested (K-2 applicability) — review against 8d (identity vs attribute visibility)",
+    "raw": "lace-edged underwear waistband visible above shorts"
+   },
+   {
+    "kind": "SECURING_REGION_RAW_TOKEN",
+    "where": "securing undefined→c3",
+    "detail": "region token outside the 5-region reference convention — carried verbatim (CDM-04 B: no enum forced)",
+    "raw": "waist"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c1].material",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "POCKET_INSTANCES_CARRIED",
+    "where": "facts[c1].pocket",
+    "detail": "2 instance(s) carried verbatim (CA#29)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c2].surface",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c2].decorative_detail",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c3].material",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c3].surface",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c4].surface",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c5].surface",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c6].attachment",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c8].surface",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c8].material",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "REPRESENTATION_KEPT_AS_EMITTED",
+    "where": "facts[c9].surface",
+    "detail": "one-element array on a MULTI fact kept as emitted (CDM-18 representation contract pending)"
+   },
+   {
+    "kind": "UNWRAP",
+    "where": "facts",
+    "detail": "{state,value|limitation} envelopes → contract values (OBSERVED → value · ABSENT / UNKNOWN → token · NOT_VISIBLE → {state, limitation[]})"
+   },
+   {
+    "kind": "PASSTHROUGH",
+    "where": "dm_subsystem",
+    "detail": "DM systems carried verbatim to the A1 assembly (dm_projection.js: DMP-1 assembled, DMP-3 mapped from common visibility; a model-emitted look_components / dm_evidence_visibility is dropped there and only compared)"
+   }
+  ],
+  "unconvertible": [],
+  "not_emitted": []
+ },
+ "k2_ledger": [
+  {
+   "requester": "EI-2",
+   "component_ref": "c1",
+   "family": "ei_appearance",
+   "stored": [
+    "pattern",
+    "graphic",
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment"
+   ],
+   "cached": [],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "EI-2",
+   "component_ref": "c2",
+   "family": "ei_appearance",
+   "stored": [
+    "pattern",
+    "graphic",
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment"
+   ],
+   "cached": [],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "EI-2",
+   "component_ref": "c3",
+   "family": "ei_appearance",
+   "stored": [
+    "pattern",
+    "graphic",
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment"
+   ],
+   "cached": [],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "EI-2",
+   "component_ref": "c4",
+   "family": "ei_appearance",
+   "stored": [
+    "pattern",
+    "graphic",
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment"
+   ],
+   "cached": [],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "EI-2",
+   "component_ref": "c5",
+   "family": "ei_appearance",
+   "stored": [
+    "pattern",
+    "graphic",
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment"
+   ],
+   "cached": [],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "EI-2",
+   "component_ref": "c6",
+   "family": "ei_appearance",
+   "stored": [
+    "pattern",
+    "graphic",
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment"
+   ],
+   "cached": [],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "EI-2",
+   "component_ref": "c7",
+   "family": "ei_appearance",
+   "stored": [
+    "pattern",
+    "graphic",
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment"
+   ],
+   "cached": [],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "EI-2",
+   "component_ref": "c8",
+   "family": "ei_appearance",
+   "stored": [
+    "pattern",
+    "graphic",
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment"
+   ],
+   "cached": [],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "EI-2",
+   "component_ref": "c9",
+   "family": "ei_appearance",
+   "stored": [
+    "pattern",
+    "graphic",
+    "surface",
+    "material",
+    "decorative_detail",
+    "attachment"
+   ],
+   "cached": [],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "TC-1",
+   "component_ref": "c1",
+   "family": "tc_archetype_key",
+   "stored": [],
+   "cached": [],
+   "not_applicable": [
+    "grammar",
+    "trouser_distinction"
+   ],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "TC-1",
+   "component_ref": "c1",
+   "family": "tc_silhouette",
+   "stored": [
+    "fit",
+    "asymmetry"
+   ],
+   "cached": [],
+   "not_applicable": [
+    "silhouette",
+    "shoulder_structure"
+   ],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "TC-1",
+   "component_ref": "c1",
+   "family": "tc_proportion",
+   "stored": [
+    "length",
+    "sleeve_volume",
+    "shoulder_span"
+   ],
+   "cached": [
+    "fit"
+   ],
+   "not_applicable": [],
+   "unknown_identity": [],
+   "nested": [],
+   "parent_gate_reads": [
+    "sleeve"
+   ]
+  },
+  {
+   "requester": "TC-1",
+   "component_ref": "c1",
+   "family": "tc_construction",
+   "stored": [
+    "closure_type",
+    "collar",
+    "shoulder_connection",
+    "pocket"
+   ],
+   "cached": [
+    "front_opening_extent",
+    "sleeve",
+    "attachment",
+    "material",
+    "surface"
+   ],
+   "not_applicable": [
+    "waist_definition",
+    "slit"
+   ],
+   "unknown_identity": [],
+   "nested": [
+    "pocket_construction",
+    "pocket_projection"
+   ],
+   "parent_gate_reads": [
+    "front_opening_extent"
+   ],
+   "nested_in": {
+    "pocket_construction": "pocket.pockets[].construction",
+    "pocket_projection": "pocket.pockets[].projection"
+   }
+  },
+  {
+   "requester": "TC-1",
+   "component_ref": "c3",
+   "family": "tc_archetype_key",
+   "stored": [
+    "trouser_distinction"
+   ],
+   "cached": [],
+   "not_applicable": [
+    "grammar"
+   ],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "TC-1",
+   "component_ref": "c3",
+   "family": "tc_silhouette",
+   "stored": [
+    "silhouette",
+    "fit",
+    "asymmetry"
+   ],
+   "cached": [],
+   "not_applicable": [
+    "shoulder_structure"
+   ],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "TC-1",
+   "component_ref": "c3",
+   "family": "tc_proportion",
+   "stored": [
+    "length"
+   ],
+   "cached": [
+    "fit"
+   ],
+   "not_applicable": [
+    "sleeve_volume",
+    "shoulder_span"
+   ],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "TC-1",
+   "component_ref": "c3",
+   "family": "tc_construction",
+   "stored": [
+    "pocket"
+   ],
+   "cached": [
+    "attachment",
+    "material",
+    "surface"
+   ],
+   "not_applicable": [
+    "closure_type",
+    "front_opening_extent",
+    "collar",
+    "sleeve",
+    "shoulder_connection",
+    "pocket_construction",
+    "pocket_projection",
+    "waist_definition",
+    "slit"
+   ],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "SR",
+   "component_ref": "c1",
+   "family": "sr_own_waist",
+   "stored": [],
+   "cached": [],
+   "not_applicable": [
+    "waist_definition"
+   ],
+   "unknown_identity": [],
+   "nested": []
+  },
+  {
+   "requester": "SR",
+   "component_ref": "c1",
+   "family": "sr_upper_shoulder",
+   "stored": [
+    "shoulder_drop"
+   ],
+   "cached": [],
+   "not_applicable": [
+    "shoulder_structure"
+   ],
+   "unknown_identity": [],
+   "nested": []
+  }
+ ],
+ "exposure_requests": [
+  {
+   "requester": "EI-2",
+   "request": "canonical_exposure",
+   "regions": [
+    "Shoulder",
+    "Chest / Décolletage",
+    "Midriff / Waist",
+    "Upper Thigh"
+   ]
+  }
+ ],
+ "layer_pairs_excluded": [],
+ "ownership_resolution": [],
+ "candidate_carriers_used": [
+  {
+   "carrier": "own_device_securing",
+   "where": "relations.securing_relations[].device_is_own = true (securing_ref = affected_ref)",
+   "semantics": "CDM-03 S1 (CEO 2026-10-10, approved): a garment's own self-belt is an integrated device; actual securing constriction is separately observed; one physical cause is counted once",
+   "approval_needed": "CDM-03 serialization / schema (the register states: no schema implementation was approved)"
+  },
+  {
+   "carrier": "securing_region_raw",
+   "where": "relations.securing_relations[].affected_region (verbatim observed token; no enum enforced)",
+   "semantics": "CDM-04 B (approved): affected region ≠ affected component; do not force the region into an unrelated token domain",
+   "approval_needed": "CDM-04 securing-region canonical vocabulary (CD-F298-11)"
+  },
+  {
+   "carrier": "pocket_instances",
+   "where": "component_fact_pool[pocket].pockets[] (+ transport facts.<ref>.pocket = { value, pockets })",
+   "semantics": "CA#29 (frozen Item V1_3, 2026-08-19): pockets[] is the sole canonical morphology carrier when pocket = Present; instance = one observable pocket group with its morphology; readability inside the instance via NOT_VISIBLE / UNKNOWN + null",
+   "approval_needed": "none for the semantics (frozen); the Full-Look packet slot itself is the GAP-4 implementation this candidate provides (CDM-15 structured-schema governance pending)"
+  },
+  {
+   "carrier": "dm_evidence_transport_v2",
+   "where": "packet.dm_evidence { transport_contract, look_components, look_detail_systems, dm_evidence_visibility { state, value? } } + packet.dm_transport { authority, output_fingerprint }",
+   "semantics": "CEO 2026-10-15 scoped successor (CURRENT_CONSTITUTION/STMX_FULL_LOOK_DM_VISION_EVIDENCE_TRANSPORT_V2.md): observed DMP-1 / DMP-2 delivered whether or not DMP-3 is established; observed-only list ([] = none observed, never a verified negative)",
+   "approval_needed": "none for transport (CEO-approved); Canonical Dictionary registration of the interface identifiers is an open CEO item"
+  },
+  {
+   "carrier": "dm_components_assembled",
+   "where": "dm_evidence.look_components (assembled, A1; RC1–RC3: dm_subsystem.look_components)",
+   "semantics": "DMP-1 = ∪ look_detail_systems[].carrier_refs + registry lineage (frozen adapter A-1 / A-2 hold by construction); no DM component detection; a model-emitted look_components is dropped and compared",
+   "approval_needed": "none for the frozen semantics; assembly method = Architecture Candidate"
+  },
+  {
+   "carrier": "observation_group_trace",
+   "where": "component_fact_pool[].observation_group · request_trace.observation_groups",
+   "semantics": "provenance of WHICH logical reading produced a fact (G1…G4 / bundles); labels only, never values",
+   "approval_needed": "none (provenance); the four-group structure is Architecture Candidate V2.1"
+  },
+  {
+   "carrier": "transport_conversion",
+   "where": "src/transport/*",
+   "semantics": "model response → canonical case: structure only, provenance-logged, nothing invented",
+   "approval_needed": "CDM-15 structured-output / transport schema enforcement"
+  }
+ ],
+ "observation_groups": {
+  "G1": [
+   "look_frame",
+   "component_registry",
+   "common_visibility"
+  ],
+  "G2": [
+   "colour_composition",
+   "c1.pattern",
+   "c1.graphic",
+   "c1.surface",
+   "c1.material",
+   "c1.decorative_detail",
+   "c1.attachment",
+   "c2.pattern",
+   "c2.graphic",
+   "c2.surface",
+   "c2.material",
+   "c2.decorative_detail",
+   "c2.attachment",
+   "c3.pattern",
+   "c3.graphic",
+   "c3.surface",
+   "c3.material",
+   "c3.decorative_detail",
+   "c3.attachment",
+   "c4.pattern",
+   "c4.graphic",
+   "c4.surface",
+   "c4.material",
+   "c4.decorative_detail",
+   "c4.attachment",
+   "c5.pattern",
+   "c5.graphic",
+   "c5.surface",
+   "c5.material",
+   "c5.decorative_detail",
+   "c5.attachment",
+   "c6.pattern",
+   "c6.graphic",
+   "c6.surface",
+   "c6.material",
+   "c6.decorative_detail",
+   "c6.attachment",
+   "c7.pattern",
+   "c7.graphic",
+   "c7.surface",
+   "c7.material",
+   "c7.decorative_detail",
+   "c7.attachment",
+   "c8.pattern",
+   "c8.graphic",
+   "c8.surface",
+   "c8.material",
+   "c8.decorative_detail",
+   "c8.attachment",
+   "c9.pattern",
+   "c9.graphic",
+   "c9.surface",
+   "c9.material",
+   "c9.decorative_detail",
+   "c9.attachment"
+  ],
+  "G3": [
+   "c1.fit",
+   "c1.asymmetry",
+   "c1.length",
+   "c1.sleeve",
+   "c1.sleeve_volume",
+   "c1.collar",
+   "c3.trouser_distinction",
+   "c3.silhouette",
+   "c3.fit",
+   "c3.asymmetry",
+   "c3.length"
+  ],
+  "G3.SH": [
+   "c1.shoulder_span",
+   "c1.shoulder_connection",
+   "c1.shoulder_drop",
+   "upper_realization.shoulder"
+  ],
+  "G3.FR": [
+   "c1.front_opening_extent",
+   "c1.closure_type"
+  ],
+  "G3.PK": [
+   "c1.pocket",
+   "c3.pocket"
+  ],
+  "G4": [
+   "relations",
+   "upper_realization.relation",
+   "upper_realization.shape_behaviour",
+   "canonical_exposure"
+  ],
+  "A1": [
+   "dm_evidence"
+  ]
+ },
+ "dm_diagnostics": [
+  {
+   "code": "MAPPING_UNRESOLVED",
+   "gap": "D-1",
+   "detail": "OBSERVED G1 record with no limit: the frozen enum offers adjudicable and partially_observable:{small_detail_unresolvable}; the SVP-001 limit vocabulary cannot record small_detail_unresolvable, so the common record cannot tell them apart → DMP-3 not established, never defaulted. RC4 (DM Evidence Transport V2, CEO 2026-10-15): dm_evidence_visibility { state: UNKNOWN } and the observed systems are delivered (the old D-1 option choice is superseded for transport)",
+   "where": "dm_evidence_visibility"
+  }
+ ],
+ "provider_notes": [],
+ "dm_adapter": null
+}

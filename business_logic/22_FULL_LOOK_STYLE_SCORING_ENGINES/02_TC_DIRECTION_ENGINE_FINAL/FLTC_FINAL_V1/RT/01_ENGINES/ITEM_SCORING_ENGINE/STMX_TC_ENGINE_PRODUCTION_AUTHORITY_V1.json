@@ -1,0 +1,70 @@
+{
+ "document": "STMX_TC_ENGINE_PRODUCTION_AUTHORITY_V1",
+ "date": "2026-09-27",
+ "status": "CURRENT PRODUCTION AUTHORITY POINTER — FULL TC ENGINE — COMPLETE_AND_CLOSED_AND_FROZEN — CEO APPROVED",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-27",
+  "Order": "STMX TC MAINLINE V2.3.92 — TC FINAL FREEZE + PRODUCTION PROMOTION §15–§19",
+  "Reason": "V2.3.91 reproduced exactly (13 / 13 entry gate); pre-promotion GT-blind replay passed (44 / 53 / 17 · exact 0 · null 114 · TC5 0 · 114 / 114 standalone equivalence · 18 / 18 collisions fail-closed · deterministic); the verified integrated TC runtime is promoted to canonical production authority without any semantic change",
+  "Affected Scope": "this record · Clean Engine registry TC entry (authority_status PRODUCTION) · CODE_IDENTITY_SEAL_AXIS_RUNTIME_BINDING_V3_PRODUCTION.json · CURRENT_CONSTITUTION/STMX_TC_ENGINE_FINAL_FREEZE_V1*"
+ },
+ "★_current_production_tc_engine": {
+  "id": "STMX_TC_ENGINE_V1",
+  "runtime_id": "STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE",
+  "engine_directory": "STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE",
+  "entry": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE/src/tc_integrated_runtime_v1.js",
+  "seal_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE/CODE_IDENTITY_SEAL_TC_INTEGRATED_RUNTIME_V1_PRODUCTION.json",
+  "code_identity_sha256": "88e6982f13efc409a7e5c45e6952f6c65989fd8e7fd98875eda7b4f3f830a21d",
+  "replay_output_sha256": "2f27d1a979de7e606665f8f964d584a027e41cca68894afbc0e6dd4a88c23aa8",
+  "promoted": "2026-09-27",
+  "clean_engine_binding": {
+   "registry": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/runtime/axis_binding_contracts.js",
+   "entry": "TC (single entry) · kind CODE_IDENTITY_SEAL → the production seal above · authority_status PRODUCTION · invocation CORPUS (key anchor_id) · score_output score",
+   "registry_version": "AXIS_BINDING_CONTRACTS_V3_PRODUCTION",
+   "binding_seal": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/CODE_IDENTITY_SEAL_AXIS_RUNTIME_BINDING_V3_PRODUCTION.json",
+   "generic_binding_identity": "c141a6e60a72067271633ed5556f8d977f9b4857d20bec44e0ede13afbc24684 (unchanged since V2.3.46)"
+  }
+ },
+ "★_canonical_chain_bound_by_name": {
+  "direction": "STMX_TC_DIRECTION_FREEZE_V1 — 01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/shadow/step2_successor_shadow_binding_v3.js (Step 2 successor V4 · shadow binding V3 · Step 3 successor V2 · runtime V3.4) · chain fingerprint a7d53f76780fa86600af9e7f35913e4dddfbd1616383dd0131d612281afdfbe2 verified on every corpus run",
+  "strength": "STMX_TC_TRANSFORMATIVE_STRENGTH_SEMANTIC_CONTRACT_FREEZE_V1 + STMX_TC_TRANSFORMATIVE_STRENGTH_AUTOMATION_LIMITATION_RECORD_V1 · automatic resolver NONE (BL-89-1 not built)",
+  "ordinal": "STMX_TC_ORDINAL_REPRESENTATION_CONTRACT_FREEZE_V1 · STMX_TC_ORDINAL_PROJECTOR_V1_CANDIDATE (code identity 352a7ea6d11d034baee405e17bbd102227728e65ee786911ea8e2e068f29e470) — directory name retained verbatim; production by explicit binding and hash"
+ },
+ "★_layer_status": {
+  "TC DIRECTION": "CLOSED_AND_FROZEN",
+  "TC TRANSFORMATIVE STRENGTH SEMANTICS": "CLOSED_AND_FROZEN",
+  "TC TRANSFORMATIVE STRENGTH AUTOMATION": "KNOWN_INFORMATION_OR_REPRESENTATION_LIMITATION / FROZEN_LIMITATION",
+  "TC CLASSIC STRENGTH": "NOT_APPLICABLE",
+  "TC SCORE PHYSICS": "CLASS C (historical framework retained, exact physics unrepresentable)",
+  "TC ORDINAL CONTRACT": "CLOSED_AND_FROZEN",
+  "TC ORDINAL PROJECTOR": "PRODUCTION_AUTHORITY",
+  "TC ENGINE INTEGRATION": "PRODUCTION_AUTHORITY",
+  "TC FINAL FREEZE": "EXECUTED (2026-09-27)",
+  "FULL TC ENGINE": "★ COMPLETE_AND_CLOSED_AND_FROZEN (2026-09-27)"
+ },
+ "★_canonical_output_contract": {
+  "envelope": "Clean Engine common envelope: runtime { id · full_identity_sha256 · authority_status PRODUCTION } · input_status · semantic · score · score_status · provenance",
+  "score": "TC# or null (canonical TC# notation; null today for every unit)",
+  "score_status": "UNRESOLVED when score is null — a lawful governed success, not a runtime failure",
+  "semantic": "direction · direction_status · strength · strength_status · ordinal_status · ordinal_bounds · unresolved_cause · provenance",
+  "authority_precedence": "envelope.runtime.authority_status governs; semantic.authority_status is the frozen projector-V1 literal \"CANDIDATE\" (code-record status at V2.3.90) and is not the authority of the result",
+  "tc5": "never emitted"
+ },
+ "★_resolution_rule": "⛔ BY NAME through the Clean Engine registry and this pointer. ⛔ NO latest, NO glob, NO directory scan, NO fallback. The binding re-hashes every sealed runtime file on resolution; the runtime re-hashes its 8 bound inputs at load and re-verifies the Direction freeze fingerprint on every corpus run; any drift fails closed.",
+ "★_rollback_pointer": {
+  "rollback_to_integration_candidate": {
+   "registry_bytes": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_92_TC_FINAL_FREEZE_AND_PRODUCTION_PROMOTION/prototypes/historical/axis_binding_contracts_V2_3_91.js",
+   "sha256": "2aa569af827658f9d69ff50286788506408f036e2f5aadc9d457283454779d2c",
+   "effect": "TC entry back to the V2.3.91 CANDIDATE binding (SHADOW-only execution; forward pipeline verifies but does not execute)"
+  },
+  "rollback_to_v2346": {
+   "registry_bytes": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_91_TC_ENGINE_INTEGRATION/prototypes/historical/axis_binding_contracts_V2_3_46.js",
+   "sha256": "80624724b2a0342ca3c21463085942afbef4da7e9853171ee34e650e46a36e91",
+   "effect": "TC entry back to the V2.3.43 Step 4 runtime (historical)"
+  },
+  "how": "restore the chosen registry bytes verbatim to 01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/runtime/axis_binding_contracts.js, then run the Final Freeze replay script; restore production = restore the production registry bytes preserved in the V2.3.92 package. ⛔ Rollback never touches Direction, Strength, ordinal contract, projector, GT, EI, DM or SR."
+ },
+ "★_known_limitations": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_FINAL_LIMITATION_REGISTER_V1.md",
+ "★_final_freeze": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_ENGINE_FINAL_FREEZE_V1.md",
+ "⛔_no_credentials": "⛔ No API key, token or credential appears in this document."
+}

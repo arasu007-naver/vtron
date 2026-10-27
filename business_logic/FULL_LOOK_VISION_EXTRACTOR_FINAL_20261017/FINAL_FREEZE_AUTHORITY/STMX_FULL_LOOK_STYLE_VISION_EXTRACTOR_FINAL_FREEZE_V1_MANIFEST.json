@@ -1,0 +1,103 @@
+{
+ "document": "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_FREEZE_V1_MANIFEST",
+ "status": "COMPLETE_AND_CLOSED_AND_FROZEN",
+ "freeze_id": "FLV-FINAL-FREEZE-V1-2026-10-17",
+ "decision": "CEO 2026-10-17 final closure order",
+ "release": {
+  "path": "01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1",
+  "file_count": 303,
+  "aggregate_sha256": "de1e46ce046c960226f9d5258dbe6e5f13731271ed537a17331cd28527c7e5bd",
+  "seal_file_sha256": "a6803bfac096c8fc466dcc4a1a3e4891c73856b384df123525f11ff6d135cb6a"
+ },
+ "accepted_candidate": {
+  "accepted_candidate": "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6",
+  "rc6_seal_id": "SEAL-FLV-RC6-2026-10-17",
+  "rc6_aggregate_sha256": "78e4a31e93f668cdf96c436be5bad16f2bb888a2336af355c203ba9943684963",
+  "rc6_seal_unmodified": "the RC6 seal is copied byte-identically to 03_SCHEMAS_AND_AUTHORITIES/RC6_CODE_IDENTITY_SEAL.json; the RC6 directory and its seal in 01_ENGINES/STYLE_VISION_EXTRACTOR are untouched",
+  "runtime": "01_RUNTIME/01_ENGINES/STYLE_VISION_EXTRACTOR/FLV_RC6_FINAL/ = 126 RC6 files byte-identical to the RC6 seal entries (map: 03_SCHEMAS_AND_AUTHORITIES/RUNTIME_TO_RC6_FILE_MAP.json); directory renamed for the Windows path limit only",
+  "excluded_from_rc6": [
+   "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6/prompts/STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V3_UNVALIDATED.txt",
+   "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6/prompts/INTEGRATED_PROMPT_V3_UNVALIDATED_DIFF_MANIFEST.json",
+   "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6/prompts/build_integrated_prompt_v3.js",
+   "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6/CODE_IDENTITY_SEAL_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6.json"
+  ],
+  "code_changes": 0,
+  "new_release_candidate": "none (no RC7)"
+ },
+ "key_identities": {
+  "prompt_v2": {
+   "name": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
+   "sha256": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba"
+  },
+  "schema": {
+   "path": "03_SCHEMAS_AND_AUTHORITIES/EVIDENCE_PACKET_SCHEMA_V1_RC4.json",
+   "sha256": "2f1ee1ef015c0344b93c67e6afe5831eb8f3660a81e9faa9a5a22f7cec8cce37"
+  },
+  "packet_contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET V1_RC4",
+  "parameter_inventory": {
+   "path": "03_SCHEMAS_AND_AUTHORITIES/PARAMETER_INVENTORY_V1_1.json",
+   "sha256": "0bc2d1522e8e86f9d2a721e48dbe6271493e4d3cde630077b5429ce6cbea4be7",
+   "status": "CEO_APPROVED_CANDIDATE",
+   "parameters": 41
+  },
+  "validator": {
+   "path": "01_RUNTIME/01_ENGINES/STYLE_VISION_EXTRACTOR/FLV_RC6_FINAL/src/validator.js",
+   "sha256": "5af932ee16dd212c06ef8c92b5e59ae1623a961e1b4cf268b425a2b0120b9e58"
+  },
+  "converter": {
+   "path": "01_RUNTIME/01_ENGINES/STYLE_VISION_EXTRACTOR/FLV_RC6_FINAL/src/transport/convert.js",
+   "sha256": "dd6c765f1e7ac83b660a8f237462816efeb59f209c0cf18273289e86e8d97891"
+  },
+  "evidence_transport_v2_code": {
+   "path": "01_RUNTIME/01_ENGINES/STYLE_VISION_EXTRACTOR/FLV_RC6_FINAL/src/dm_transport_v2.js",
+   "sha256": "b5450fb27434cb9e6088aba0283eb78a112ac8ac0c0dcbc5089b66df6c501bb8"
+  },
+  "local_isolation": {
+   "path": "01_RUNTIME/01_ENGINES/STYLE_VISION_EXTRACTOR/FLV_RC6_FINAL/src/isolation.js",
+   "sha256": "15a1ef4cbf4f36c47f5e20fc050c992647573ee41eb17721239bc3e76e23a313"
+  },
+  "entry_point_cli": {
+   "path": "01_RUNTIME/01_ENGINES/STYLE_VISION_EXTRACTOR/FLV_RC6_FINAL/cli/run_offline.js",
+   "sha256": "bd96756b5b5788a4cd47cd36893c01a60e37bbbdc5f986f3b6d987e251089dc1"
+  },
+  "frozen_dependencies": [
+   {
+    "path": "01_RUNTIME/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+    "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+    "role": "Item Vision V1_3 vocabulary · applicability (frozen Item authority)"
+   },
+   {
+    "path": "01_RUNTIME/01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+    "sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+    "role": "Colour V1 contract (EI-owned, frozen)"
+   },
+   {
+    "path": "01_RUNTIME/04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_DM_VISION_EXTRACTION_FINAL_FREEZE_V1.md",
+    "sha256": "49e513ea1c2ad036cc7ca15ae5014eceff601e60c0578e2064909f57fa6c6763",
+    "role": "Full-Look DM Vision Final Freeze V1 (hash-pinned in dm_adapter.js)"
+   },
+   {
+    "path": "01_RUNTIME/04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_DM_VISION_EVIDENCE_TRANSPORT_V2.md",
+    "sha256": "2e6bd0c7391c44254318055f0e04923e6e7ca72f9ccd2e7db375763da86229b2",
+    "role": "DM Evidence Transport V2 (CEO 2026-10-15; hash-pinned in dm_transport_v2.js)"
+   }
+  ],
+  "model": "claude-opus-5-5"
+ },
+ "evidence": {
+  "acceptance_audit": {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_CLOSURE_V1/_raw/manifests/z1_acceptance_audit.json",
+   "sha256": "14e853789ab9aaa10d966d038ed998787ab79ab7803663d2376800edb00d2366",
+   "all_pass": true
+  },
+  "clean_room_qa": {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_CLOSURE_V1/_raw/manifests/z7_cleanroom_qa.json",
+   "sha256": "794b6d9d06153163693a3b3942029e5adadb014e05170c82fbd4a4d8ba2edc47",
+   "all_pass": true
+  }
+ },
+ "declaration_file": {
+  "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_FREEZE_V1.md",
+  "sha256": "4ecc15e2bf3187ca3548b9a28c72de4640407153749c1a74e02959a363bf8976"
+ }
+}

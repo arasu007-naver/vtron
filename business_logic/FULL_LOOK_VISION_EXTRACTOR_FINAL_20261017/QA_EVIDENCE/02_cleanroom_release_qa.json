@@ -1,0 +1,47 @@
+{
+ "document": "CLEAN-ROOM RELEASE QA",
+ "at": "2026-10-17T08:32:12.223Z",
+ "live_api_calls": 0,
+ "clean_room": "C:\\Users\\lukek\\AppData\\Local\\Temp\\claude\\C--work-STMX-STMX-project-master-files-STMX-EI-TC-SR-DM-master\\d52cd3cb-be5a-44f7-aee2-f65ecae03cc9\\scratchpad\\cleanroom\\STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1",
+ "freeze_id": "FLV-FINAL-FREEZE-V1-2026-10-17",
+ "seal_aggregate": "de1e46ce046c960226f9d5258dbe6e5f13731271ed537a17331cd28527c7e5bd",
+ "seal_file_sha256": "a6803bfac096c8fc466dcc4a1a3e4891c73856b384df123525f11ff6d135cb6a",
+ "copy_byte_identical_to_seal": true,
+ "verifier": {
+  "exit": 0,
+  "all_pass": true,
+  "checks": [
+   "R1 PASS — manifest: 302 files, sha256 verified, none missing, none unlisted",
+   "R2 PASS — freeze seal FLV-FINAL-FREEZE-V1-2026-10-17: aggregate recomputed from its file table; table = SHA256SUMS.txt",
+   "R3 PASS — runtime = sealed RC6 bytes (126 files, each = RC6 seal entry; RC6 aggregate 78e4a31e93f668cd…)",
+   "R4 PASS — dependencies: 4 frozen files present with pinned sha256 · runtime loads · DM authorities verified by the runtime",
+   "R5 PASS — portability: runtime ROOT = 01_RUNTIME (inside the release) · no absolute development path in runtime src / cli",
+   "R6 PASS — replay: 12 stored responses → packets byte-identical to the expected outputs, deterministic, validator ok",
+   "R7 PASS — delivery: components 78 / 78 · DM systems 46 / 46 verbatim and admitted (9 DMP-3 tokens) · scoring fields 0",
+   "R8 PASS — G53: LiveProvider refuses · no network module, fetch call, credential variable or API endpoint in runtime src / cli",
+   "R9 PASS — fixture smoke: bundled fixture M134 → PACKET_VALID"
+  ],
+  "node": "v24.18.0"
+ },
+ "rc6_suites_in_clean_room": {
+  "totals": {
+   "PASS": 243,
+   "FAIL": 0,
+   "ENV_DEPENDENT": 26
+  },
+  "env_dependent_modules": [
+   "v13_transport",
+   "v14_representation",
+   "int_groups_counts",
+   "rc3_delivery",
+   "rc4_transport",
+   "rc5_correction",
+   "rc6_scoring_material"
+  ],
+  "failures": [],
+  "note": "the same 355 tests run 355 / 355 in the master environment on byte-identical runtime bytes (acceptance gate C-01 + verifier R3); ENV_DEPENDENT = a test / module that reads a historical evidence package or sibling candidate that is not part of the release by design"
+ },
+ "qa_left_copy_untouched": true,
+ "authoritative_release_unchanged_after_qa": true,
+ "all_pass": true
+}
