@@ -11,6 +11,7 @@ import {
   Link2,
   ScanSearch,
   ScanEye,
+  Layers,
   PackageSearch,
   ShoppingBag,
   Shirt,
@@ -46,6 +47,12 @@ export const NAV_LINKS = [
     label: "Style ID",
     icon: ScanSearch,
     title: "이미지 속 의복을 Vision 모델로 관찰해 37개 파라미터를 추출",
+  },
+  {
+    href: "/full-style-id-extraction",
+    label: "Full-Look Style ID",
+    icon: Layers,
+    title: "착장 전체 이미지를 Full-Look Vision Extractor 로 관찰하고 Full-Look Scoring Engine(EI · TC · SR)으로 스타일 아이디를 판정",
   },
   {
     href: "/product-style",
