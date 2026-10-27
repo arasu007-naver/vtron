@@ -33,6 +33,7 @@ import {
   axisLettersText,
   multipleCandidates,
   productRows,
+  targetText,
   type Summary,
 } from "@/components/style-ex/result-cards";
 
@@ -809,7 +810,7 @@ function summaryBlocks({ styleId, judgement }: Summary): ReportBlock[] {
         .join(" · ")}`,
     });
   }
-  if (styleId.target_id) blocks.push({ kind: "text", tone: "muted", text: `기준 의복: ${styleId.target_id}` });
+  if (styleId.target_id) blocks.push({ kind: "text", tone: "muted", text: `기준 의복: ${targetText(styleId)}` });
   if (styleId.axes) {
     blocks.push({
       kind: "rows",

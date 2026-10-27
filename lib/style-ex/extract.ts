@@ -315,21 +315,27 @@ async function observe(
     t.presentation_type = cand.presentation_type ?? null;
     if (productContext) t.product_match = cand.product_match === true;
   });
+  if (productContext) {
+    const matched = envelope.targets.filter((t) => t.product_match === true).map((t) => t.target_id);
+    console.info(`[style-ex] 상품 정보 적용 — product_match: ${matched.length ? matched.join(", ") : "없음 (이미지로 대표 의복 선택)"}`);
+  }
   return { ok: true as const, envelope, contract_valid: governed.contract_valid, visionModel: activeModel };
 }
+
+/** 대표 의복을 고른 근거 — 상품 정보로 고정(PRODUCT_MATCH) · 가장 두드러진 의복(DOMINANT) · 첫 적격 의복(FIRST_ELIGIBLE) */
+export type RepresentativeBasis = "PRODUCT_MATCH" | "DOMINANT" | "FIRST_ELIGIBLE";
 
 /**
  * 스타일 아이디를 정할 대표 의복 — 상품 정보로 고정된 의복(product_match), 없으면 prominence 가 dominant 인
  * 첫 의복, 그것도 없으면 첫 적격 의복
  */
-function representativeOf(targets: Obj[]) {
+export function representativeOf(targets: Obj[]): { target: Obj; basis: RepresentativeBasis } | null {
   const eligible = targets.filter((t) => t.eligible && t.record);
-  return (
-    eligible.find((t) => t.product_match === true) ??
-    eligible.find((t) => t.prominence === "dominant") ??
-    eligible[0] ??
-    null
-  );
+  const byProduct = eligible.find((t) => t.product_match === true);
+  if (byProduct) return { target: byProduct, basis: "PRODUCT_MATCH" };
+  const dominant = eligible.find((t) => t.prominence === "dominant");
+  if (dominant) return { target: dominant, basis: "DOMINANT" };
+  return eligible[0] ? { target: eligible[0], basis: "FIRST_ELIGIBLE" } : null;
 }
 
 /**
@@ -352,9 +358,10 @@ export async function extractStyle({ image, fileName, prompt, provider = "claude
  * 저장된 관찰(product_style.observation.envelope.targets)로 다시 판정할 때도 이것을 부른다.
  */
 export function judgeStyleIdByRules(targets: Obj[], fileName: string) {
-  const rep = representativeOf(targets);
-  if (!rep) return { styleId: { ok: false, error: "판정할 의복이 없습니다 (적격 target 0개)." }, scoring: null };
+  const picked = representativeOf(targets);
+  if (!picked) return { styleId: { ok: false, error: "판정할 의복이 없습니다 (적격 target 0개)." }, scoring: null };
 
+  const rep = picked.target;
   // 엔진 스코어링 — 적격 의복 전부 (대표 의복만 스타일 아이디에 쓰고, 나머지는 참고로 보여 준다)
   const eligible = targets.filter((t) => t.eligible && t.record);
   const built = eligible.map((t) => scoringRequestOf(t, fileName));
@@ -451,8 +458,8 @@ export function judgeStyleIdByRules(targets: Obj[], fileName: string) {
   const letters = ["EI", "TC", "SR", "DM"].map((a) => axes[a].letter);
   const id = letters.every(Boolean) ? letters.join("") : null;
   const styleId = id
-    ? { ok: true, style_id: id, style: STYLE_IDS[id] ?? null, candidates: styleIdCandidates(axes), target_id: rep.target_id, axes }
-    : { ok: false, error: "네 축 중 글자를 정하지 못한 축이 있습니다.", target_id: rep.target_id, axes };
+    ? { ok: true, style_id: id, style: STYLE_IDS[id] ?? null, candidates: styleIdCandidates(axes), target_id: rep.target_id, target_basis: picked.basis, axes }
+    : { ok: false, error: "네 축 중 글자를 정하지 못한 축이 있습니다.", target_id: rep.target_id, target_basis: picked.basis, axes };
 
   return { styleId, scoring };
 }
