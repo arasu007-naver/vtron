@@ -97,6 +97,30 @@
   }
   .issue:hover { text-decoration: underline; }
 
+  /* 프롬프트 출처 표시 */
+  .src { display: inline-block; font: 700 10.5px/1.6 ui-monospace, Consolas, monospace; letter-spacing: 0.03em; padding: 0 7px; border-radius: 4px; vertical-align: 1px; }
+  .src.sys { background: var(--model); color: var(--surface); }
+  .src.usr { background: var(--input); color: var(--surface); }
+  .lane-title .src { margin-right: 6px; }
+
+  /* 37개 요소 계층 */
+  .lv-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .lv-head .lv { font: 700 11.5px ui-monospace, Consolas, monospace; padding: 1px 7px; border-radius: 4px; background: var(--text); color: var(--surface); }
+  .lv-head h3 { margin: 0; }
+  .lv-head .rule-note { font-size: 12.5px; color: var(--muted); }
+  .htree, .htree ul { list-style: none; margin: 0; padding: 0; }
+  .htree { margin-top: 6px; }
+  .htree ul { padding-left: 16px; }
+  .htree li { position: relative; padding: 3px 0 3px 16px; font-size: 13.5px; color: var(--text); }
+  .htree li::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1.5px solid var(--line); }
+  .htree li:last-child::before { bottom: auto; height: 14px; }
+  .htree li::after { content: ""; position: absolute; left: 0; top: 14px; width: 11px; border-top: 1.5px solid var(--line); }
+  .htree .grp { font-weight: 600; }
+  .htree .scope { color: var(--muted); font-size: 12.5px; }
+  .htree .cond { font-weight: 600; color: var(--rule); }
+  .pill { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em; padding: 0 6px; border-radius: 999px; border: 1px solid var(--color); color: var(--color); vertical-align: 1px; }
+  .pill.alt { border-color: var(--out); color: var(--out); }
+
   /* 상태 결정 트리 */
   .tree { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 8px; }
   .tree svg { display: block; width: 100%; height: auto; }
@@ -157,6 +181,8 @@
     <span class="to">"Frozen-40"·"37 parameters"처럼 서로 다른 개수 표기를 없애고, record/target 용어를 하나로 맞춘다. 내부 거버넌스 메모(SR FROZEN 2026-08-21, CEO 2026-09-03, Run-3, "Real failures" 등)는 changelog로 옮기고, JSON 템플릿의 <code>//</code> 주석을 뺀다. POCKET·SV-5 규칙이 3~4번 반복되는 것은 한 곳으로 합친다.</span></div>
 
   <div class="legend">
+    <span><span class="src sys">SYSTEM</span>고정 관찰 프롬프트</span>
+    <span><span class="src usr">USER</span>요청마다 바뀌는 입력</span>
     <span><i style="border-color:var(--input);background:var(--input-bg)"></i>입력</span>
     <span><i style="border-color:var(--model);background:var(--model-bg)"></i>모델 관찰 단계</span>
     <span><i style="border-color:var(--rule);background:var(--rule-bg)"></i>게이트·규칙</span>
@@ -165,24 +191,53 @@
   </div>
 
   <!-- ───────────── 0. 입력 ───────────── -->
-  <div class="phase"><b>입력</b><h2>호출에 들어가는 것</h2></div>
+  <div class="phase"><b>입력</b><h2>system prompt와 user prompt</h2></div>
+  <p class="trigger">관찰 규칙은 전부 <b>system prompt</b>에 있고, 요청마다 바뀌는 것(이미지 · 상품 정보)만 <b>user prompt</b>로 갑니다. 아래 STAGE 1–5의 규칙은 모두 system prompt의 내용입니다.</p>
   <div class="split">
-    <div class="node input">
-      <div class="who">IMAGE</div>
-      <h3>상품 리스팅 이미지 1장</h3>
-      <p>착용 사진, 플랫레이, 행거, 마네킹, 누끼 모두 가능. 한 장에 의복이 여러 벌 있을 수 있음(여러 사람이 아니라 여러 아이템).</p>
+    <div>
+      <p class="lane-title"><span class="src sys">SYSTEM PROMPT</span> 고정 · 버전 관리 · 캐시</p>
+      <div class="node model">
+        <div class="who">관찰 프롬프트 (style_ex_prompt_versions 활성 버전)</div>
+        <h3>규칙 · 어휘 · 출력 스키마</h3>
+        <ul>
+          <li><code>buildProducerPrompt()</code> — GARMENT-LEVEL VISION OBSERVER: 역할, STAGE 1–2 규칙, 37개 파라미터 어휘, 출력 JSON 스키마</li>
+          <li><code>COLOUR_ADDENDUM</code> — STAGE 3–4 색상 스윕 · 누락 감사</li>
+          <li><code>PRESENTATION_ADDENDUM</code> — <code>presentation_type</code></li>
+        </ul>
+        <p>v1 기준 171,774자. 모든 요청에 같은 글이라 프롬프트 캐시가 걸립니다. 화면에서 고친 경우에만 다른 글이 갑니다.</p>
+      </div>
     </div>
-    <div class="node input">
-      <div class="who">PRODUCT CONTEXT</div>
-      <h3>상품명 · 카테고리</h3>
-      <p>예: <code>PICASSO 발수 패딩</code> / <code>패션의류&gt;여성의류&gt;아우터&gt;패딩</code>. <b>주 타깃 선택에만</b> 쓰고 관찰값에는 영향을 주면 안 됨. <a class="issue" href="#i-ctx">#14</a></p>
-      <div class="fix" id="i-ctx"><b>개선 #14</b>PRODUCT CONTEXT 위치
-        <span class="to">지금은 프롬프트 맨 끝에 있어 STAGE 1(타깃 식별)이 끝난 뒤에야 읽힌다. 타깃 식별 단계 옆으로 옮긴다.</span></div>
+    <div>
+      <p class="lane-title"><span class="src usr">USER PROMPT</span> 요청마다 바뀜</p>
+      <div class="node input">
+        <div class="who">IMAGE</div>
+        <h3>상품 리스팅 이미지 1장</h3>
+        <p>착용 사진, 플랫레이, 행거, 마네킹, 누끼 모두 가능. 한 장에 의복이 여러 벌 있을 수 있음(여러 사람이 아니라 여러 아이템).</p>
+      </div>
+      <div style="height:10px"></div>
+      <div class="node input">
+        <div class="who">PRODUCT CONTEXT — 상품을 골랐을 때만</div>
+        <h3>상품명 · 카테고리 + 대표 의복 지시</h3>
+        <p>예: <code>PICASSO 발수 패딩</code> / <code>패션의류&gt;여성의류&gt;아우터&gt;패딩</code>. 데이터와 함께 "그 의복에 <code>dominant</code> + <code>product_match</code>를 붙여라"는 지시도 이 블록에 들어 있습니다. <b>주 타깃 선택에만</b> 쓰고 관찰값에는 영향을 주면 안 됨. <a class="issue" href="#i-ctx">#14</a></p>
+        <div class="fix" id="i-ctx"><b>개선 #14</b>PRODUCT CONTEXT 위치
+          <span class="to">user prompt에 있어서 system prompt의 STAGE 1(타깃 식별)보다 늦게 읽힌다. system prompt에 "PRODUCT CONTEXT가 오면 먼저 상품 의복을 정한다"는 STAGE 0 지시를 두고, user prompt에는 상품명 · 카테고리 데이터만 남긴다. 그래야 캐시도 유지된다.</span></div>
+      </div>
     </div>
   </div>
   <div class="arrow"></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>공급자</th><th>system 자리</th><th>user 자리</th></tr></thead>
+      <tbody>
+        <tr><td>Claude</td><td><b>비어 있음</b> — <code>system</code> 파라미터를 쓰지 않음</td><td>한 user 메시지에 블록 3개: ① 관찰 프롬프트 (<code>cache_control</code>) ② PRODUCT CONTEXT ③ 이미지</td></tr>
+        <tr><td>Gemini</td><td><code>systemInstruction</code> = 관찰 프롬프트</td><td>이미지 + PRODUCT CONTEXT (상품을 고르지 않았으면 "Observe all visible garments…" 기본 지시 문장)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">역할 구분은 두 공급자가 같고 전송 위치만 다릅니다. Claude는 관찰 프롬프트를 user 메시지의 첫 블록으로 보내고, 그 블록까지를 캐시합니다 (<code>lib/style-ex/extract.ts</code> · <code>observe()</code>).</p>
+  <div class="arrow"></div>
   <div class="node model">
-    <div class="who">SYSTEM 역할</div>
+    <div class="who"><span class="src sys">SYSTEM PROMPT</span> 역할</div>
     <h3>의복 단위 관찰자 — 판단하지 않고 관찰만</h3>
     <ul>
       <li>스타일·조화·추천·점수·SR/TC/DM/EI를 <b>출력하지 않음</b> <a class="issue" href="#i-dm">#12</a></li>
@@ -226,8 +281,9 @@
         <p>장면 안에서의 역할일 뿐, 대상 여부를 정하지 않음.</p>
       </div>
       <div class="node rule">
-        <div class="who">PRODUCT MATCH</div>
+        <div class="who">PRODUCT MATCH <span class="src usr">USER</span></div>
         <h3>상품 컨텍스트로 판매 상품을 특정할 수 있는가</h3>
+        <p>이 단계의 지시와 데이터는 system prompt가 아니라 user prompt의 PRODUCT CONTEXT 블록에서 옵니다.</p>
         <p>특정되면 그 의복만 <code>dominant</code> + <code>product_match: true</code>. 후보가 없거나 둘 이상이면 아무에게도 붙이지 않음.</p>
       </div>
     </div>
@@ -317,6 +373,143 @@
         <span class="to">게이트 2에서 Coat/Dress/Jumpsuit는 항상 대상이고 최종 스윕 (7)도 키를 요구하는데, REQUIRED KEYS 목록에는 없다. Coat/Dress/Jumpsuit의 필수 목록에 넣고 Jacket만 조건부로 남긴다.</span></div>
       <div class="fix" id="i-shoulder"><b>개선 #4</b>스트랩리스·민소매 드레스의 shoulder_drop / shoulder_structure
         <span class="to">Dress에서 둘 다 필수인데 판단할 어깨선이 없다. 그러면 <code>None</code>이 "확인했더니 없음"이 아니라 "해당 없음"으로 오염된다. <code>shoulder_connection</code>이 Strapless·Halter·One Shoulder·Strap이면 키를 생략하는 규칙을 둔다.</span></div>
+    </div>
+  </div>
+
+  <!-- ───────────── 37개 요소 계층 ───────────── -->
+  <div class="phase"><b>계층</b><h2>37개 요소의 계층 구조</h2></div>
+  <p class="trigger">
+    엔진 <code>producer_rules_v1.js</code>의 <code>PN</code> 표(#1–#37)를, 누가 누구의 출력 여부를 정하는지에 따라 쌓았습니다.
+    상위 계층은 하위 요소를 <b>낼지 말지</b>만 정하고 <b>값</b>은 정하지 않습니다.
+  </p>
+  <div class="flow">
+    <div class="node input">
+      <div class="lv-head"><span class="lv">L0</span><h3>PRODUCT CONTEXT</h3><span class="src usr">USER</span><span class="rule-note">상품명 · 카테고리 — 대표 의복 선택에만 사용. L1 이하 규칙은 모두 <span class="src sys">SYSTEM</span></span></div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node model">
+      <div class="lv-head"><span class="lv">L1</span><h3>TARGET — 사진 속 의복 하나</h3></div>
+      <ul class="htree">
+        <li><code>identity</code> <span class="scope">독립 의복인가</span></li>
+        <li><code>readability</code> <span class="scope">전체 형태를 재구성할 수 있는가 → eligible</span></li>
+        <li><code>prominence</code> · <code>product_match</code> <span class="scope">장면 역할 · 상품 의복 표시</span></li>
+      </ul>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="lv-head"><span class="lv">L2</span><h3><code>#1 category</code></h3><span class="rule-note">모든 키의 적용 여부를 결정</span></div>
+      <p>아우터는 <code>#5 length</code>의 밑단 위치를 먼저 읽고 정합니다 (hem-first). 카테고리를 틀리면 아래 키 구성 전체가 어긋납니다.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node model">
+      <div class="lv-head"><span class="lv">L3</span><h3>카테고리가 켜는 기본 파라미터</h3></div>
+      <ul class="htree">
+        <li><span class="grp">범용 9</span> <span class="scope">모든 카테고리 필수</span>
+          <ul>
+            <li><code>#25 material</code> <span class="pill">MULTI</span></li>
+            <li><code>#26 surface</code> <span class="pill">MULTI</span></li>
+            <li><code>#27 pattern</code></li>
+            <li><code>#28 graphic</code></li>
+            <li><code>#21 pocket</code></li>
+            <li><code>#32 decorative_detail</code> <span class="pill">MULTI</span></li>
+            <li><code>#33 attachment</code> <span class="pill">MULTI</span></li>
+            <li><code>#29 asymmetry</code></li>
+            <li><code>#34 exposure_opening</code> <span class="pill">MULTI</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">형태</span>
+          <ul>
+            <li><code>#4 fit</code> <span class="scope">전 카테고리 (Dress·Jumpsuit는 upper/lower)</span></li>
+            <li><code>#5 length</code> <span class="scope">전 카테고리 (착용 사진에서만 값)</span></li>
+            <li><code>#6 fabric_behavior</code> <span class="scope">전 카테고리</span></li>
+            <li><code>#3 silhouette</code> <span class="scope">Trouser · Skirt · Dress · Jumpsuit</span></li>
+            <li><code>#2 trouser_distinction</code> <span class="scope">Trouser</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">상체 — upper</span> <span class="scope">상의 · 아우터 · Dress · Jumpsuit</span>
+          <ul>
+            <li><code>#8 sleeve</code></li>
+            <li><code>#11 shoulder_drop</code></li>
+            <li><code>#12 shoulder_structure</code> <span class="scope">아우터 · Dress · Jumpsuit</span></li>
+            <li><code>#13 neckline_shape</code> · <code>#14 neckline_position</code> <span class="scope">아우터 제외 · 폴로 칼라면 생략</span></li>
+            <li><code>#15 collar</code></li>
+            <li><code>#17 rib_hem</code></li>
+            <li><code>#18 hood</code> <span class="scope">Sweater · Sweatshirt · Jacket · Coat</span></li>
+            <li><code>#19 front_opening_extent</code></li>
+          </ul>
+        </li>
+        <li><span class="grp">하체 — lower</span>
+          <ul><li><code>#30 slit</code> <span class="scope">Skirt · Dress</span></li></ul>
+        </li>
+        <li><span class="grp">카테고리 전용</span>
+          <ul>
+            <li><code>#35 grammar</code> <span class="scope">Jacket · Coat</span></li>
+            <li><code>#31 ruffle</code> <span class="scope">Dress</span></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="lv-head"><span class="lv">L4</span><h3>부모 값이 켜는 조건부 파라미터</h3><span class="rule-note">엔진 <code>CONDITIONAL_TRIGGER</code></span></div>
+      <ul class="htree">
+        <li><span class="cond">#8 sleeve ≠ Sleeveless</span>
+          <ul>
+            <li><code>#16 cuff_type</code>
+              <ul><li><span class="cond">≠ None</span> → <code>#24 cuff_scale</code></li></ul>
+            </li>
+            <li><code>#36 sleeve_volume</code></li>
+          </ul>
+        </li>
+        <li><span class="cond">#15 collar ≠ None</span> → <code>#37 collar_scale</code></li>
+        <li><span class="cond">#19 front_opening_extent ≠ None</span> → <code>#20 closure_type</code> <span class="scope">Jacket·Coat는 항상 필수</span></li>
+        <li><span class="cond">#21 pocket = Present</span> → <code>pockets[]</code> 항목마다
+          <ul>
+            <li><code>location</code> <span class="scope">Chest · Lower Front · Sleeve · Leg</span></li>
+            <li><code>#22 pocket_construction</code></li>
+            <li><code>#23 pocket_projection</code></li>
+          </ul>
+        </li>
+        <li><span class="cond">category ∈ Jacket · Coat · Dress · Jumpsuit</span>
+          <ul><li><span class="cond">#5 length 게이트</span> (Jacket Cropped/Waist Length 제외) → <code>#7 waist_definition</code></li></ul>
+        </li>
+        <li><span class="cond">비표준 어깨가 보일 때</span> <span class="scope">부모 키 없음</span>
+          <ul>
+            <li><code>#9 shoulder_connection</code></li>
+            <li><code>#10 shoulder_span</code></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="arrow"></div>
+    <div class="node out">
+      <div class="lv-head"><span class="lv">L5</span><h3>값에 붙는 보조 필드</h3><span class="rule-note">37개에 포함되지 않음</span></div>
+      <ul class="htree">
+        <li>MULTI 값마다 → <code>locations</code> · <code>coverage</code></li>
+        <li><code>surface</code> → <code>finish_realization</code> (Glossy 등) · <code>treated_surface_realization</code> (Treated Surface)</li>
+        <li><code>pattern</code> → <code>visual_dominance</code> · <code>motif_complexity</code></li>
+      </ul>
+    </div>
+  </div>
+  <div class="split" style="margin-top:10px">
+    <div class="node color">
+      <div class="who">L1 아래 형제 레이어 · 37개 밖</div>
+      <ul class="htree">
+        <li><code>dm_designed_detail_evidence</code> <span class="scope">디자인 시스템별 증거</span></li>
+        <li><code>descriptor</code> <span class="scope">구조 필드가 담지 못하는 시각 정보</span></li>
+        <li><code>color_observation</code> <span class="scope">의복 관찰이 끝난 뒤</span></li>
+        <li><code>presentation_type</code> <span class="scope">WORN · FLAT_LAY · PRODUCT_ONLY</span></li>
+        <li><code>cross_target_visual_relations</code> <span class="pill alt">최상위</span> <span class="scope">의복 사이의 공유 요소</span></li>
+      </ul>
+    </div>
+    <div class="node rule">
+      <div class="who">계층 사이의 규칙</div>
+      <ul>
+        <li><b>위 → 아래</b>: 출력 여부만 정하고 값은 정하지 않음. <code>sleeve</code>=Long이라고 <code>cuff_type</code>=Standard가 되지 않음</li>
+        <li><b>같은 계층</b>: 값은 독립. 단 같은 증거를 한 번만 쓰도록 엮은 쌍(surface↔pattern, pattern↔graphic, ruffle↔collar)은 서로의 값을 봄</li>
+        <li><b>오류 전파</b>: <code>category</code>가 틀리면 L3 전체가, <code>sleeve</code>가 틀리면 <code>cuff_type</code>·<code>cuff_scale</code>·<code>sleeve_volume</code>이 함께 어긋남</li>
+        <li><b>생성</b>: 한 번의 호출에서 순서대로 생성되므로, 독립은 지시일 뿐 구조적으로 보장되지 않음</li>
+      </ul>
     </div>
   </div>
 
