@@ -18,6 +18,8 @@ import {
   UserCheck,
   Users,
   Building2,
+  KeySquare,
+  PlayCircle,
 } from "lucide-react";
 
 export const NAV_LINKS = [
@@ -104,6 +106,18 @@ export const NAV_LINKS = [
     label: "브랜드 관리",
     icon: Building2,
     title: "브랜드 ShopMy 제휴 메타 · 수수료율 · 스타일 코드 관리",
+  },
+  {
+    href: "/admin/api-mng",
+    label: "API 키 관리",
+    icon: KeySquare,
+    title: "사업자등록증으로 외부 업체를 확인하고 STMX API 키를 발급 · 재발급 · 폐기한다",
+  },
+  {
+    href: "/api-demo",
+    label: "API 데모",
+    icon: PlayCircle,
+    title: "발급한 API 키로 외부 API(Style ID)를 직접 불러 보고 axios 예제 코드를 본다",
   },
 ] as const;
 
