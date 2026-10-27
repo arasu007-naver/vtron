@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>착장 전체 비전 요소 추출 흐름</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #c9c9c3;
+    --input: #2f6fd6; --input-bg: #eaf1fc;
+    --out: #5b5b57; --out-bg: #efefec;
+    --model: #c2622e; --model-bg: #fbeee6;
+    --rule: #2c8a5a; --rule-bg: #e6f4ec;
+    --color: #8a4fc2; --color-bg: #f3ebfb;
+    --fail: #b8322f; --fail-bg: #fbeaea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161615; --surface: #1f1f1d; --text: #ecebe6; --muted: #9c9b95; --line: #44443f;
+      --input: #7aa7f0; --input-bg: #1b2738;
+      --out: #b7b6b0; --out-bg: #2a2a27;
+      --model: #e9935f; --model-bg: #35241a;
+      --rule: #63c793; --rule-bg: #173026;
+      --color: #c39af0; --color-bg: #2a1f38;
+      --fail: #ec7c78; --fail-bg: #3a1f1e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161615; --surface: #1f1f1d; --text: #ecebe6; --muted: #9c9b95; --line: #44443f;
+    --input: #7aa7f0; --input-bg: #1b2738;
+    --out: #b7b6b0; --out-bg: #2a2a27;
+    --model: #e9935f; --model-bg: #35241a;
+    --rule: #63c793; --rule-bg: #173026;
+    --color: #c39af0; --color-bg: #2a1f38;
+    --fail: #ec7c78; --fail-bg: #3a1f1e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
+  main { max-width: 900px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lede { color: var(--muted); margin: 0 0 20px; }
+  code { font: 12.5px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; background: var(--out-bg); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0 0 28px; font-size: 13px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; display: inline-block; }
+
+  .phase { margin: 36px 0 12px; display: flex; align-items: baseline; gap: 10px; }
+  .phase b { font-size: 12px; color: var(--surface); background: var(--text); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+  .phase h2 { font-size: 18px; margin: 0; }
+  .trigger { color: var(--muted); font-size: 13px; margin: -6px 0 12px; }
+
+  .flow { display: flex; flex-direction: column; align-items: stretch; }
+  .node {
+    position: relative; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--out);
+    border-radius: 8px; padding: 10px 14px;
+  }
+  .node .who { font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--out); }
+  .node h3 { font-size: 15px; margin: 2px 0 4px; }
+  .node p, .node ul { margin: 4px 0 0; font-size: 13.5px; color: var(--muted); }
+  .node ul { padding-left: 18px; }
+  .node li { margin: 2px 0; }
+  .node li b, .node p b { color: var(--text); font-weight: 600; }
+  .input { border-left-color: var(--input); background: var(--input-bg); } .input .who { color: var(--input); }
+  .out   { border-left-color: var(--out);   background: var(--out-bg); }   .out .who   { color: var(--out); }
+  .model { border-left-color: var(--model); background: var(--model-bg); } .model .who { color: var(--model); }
+  .rule  { border-left-color: var(--rule);  background: var(--rule-bg); }  .rule .who  { color: var(--rule); }
+  .color { border-left-color: var(--color); background: var(--color-bg); } .color .who { color: var(--color); }
+
+  .arrow { height: 22px; position: relative; }
+  .arrow::before { content: ""; position: absolute; left: 50%; top: 2px; bottom: 6px; border-left: 2px solid var(--line); }
+  .arrow::after { content: ""; position: absolute; left: calc(50% - 5px); bottom: 1px; border: 5px solid transparent; border-top: 6px solid var(--line); border-bottom: 0; }
+
+  .decision {
+    background: var(--surface); border: 1.5px dashed var(--line); border-radius: 8px; padding: 10px 14px;
+    display: grid; grid-template-columns: 1fr; gap: 6px;
+  }
+  .decision .q { font-weight: 600; font-size: 14px; }
+  .decision .q::before { content: "◆ "; color: var(--muted); }
+  .branch { font-size: 13.5px; }
+  .branch .tag { display: inline-block; margin-right: 8px; font-size: 11.5px; font-weight: 600; padding: 1px 7px; border-radius: 4px; background: var(--rule-bg); color: var(--rule); }
+  .branch .tag.no { background: var(--fail-bg); color: var(--fail); }
+  .branch .tag.alt { background: var(--out-bg); color: var(--out); }
+  .branch .tag.warn { background: var(--model-bg); color: var(--model); }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .split.three { grid-template-columns: 1fr 1fr 1fr; }
+  .split .lane-title { font-size: 12px; color: var(--muted); margin: 0 0 6px; }
+  @media (max-width: 720px) { .split, .split.three { grid-template-columns: 1fr; } }
+
+  .issue {
+    display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 999px;
+    background: var(--fail-bg); color: var(--fail); text-decoration: none; margin-left: 4px; vertical-align: 1px; white-space: nowrap;
+  }
+  .issue:hover { text-decoration: underline; }
+
+  /* 프롬프트 출처 표시 */
+  .src { display: inline-block; font: 700 10.5px/1.6 ui-monospace, Consolas, monospace; letter-spacing: 0.03em; padding: 0 7px; border-radius: 4px; vertical-align: 1px; }
+  .src.sys { background: var(--model); color: var(--surface); }
+  .src.usr { background: var(--input); color: var(--surface); }
+  .lane-title .src { margin-right: 6px; }
+
+  /* 37개 요소 계층 */
+  .lv-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .lv-head .lv { font: 700 11.5px ui-monospace, Consolas, monospace; padding: 1px 7px; border-radius: 4px; background: var(--text); color: var(--surface); }
+  .lv-head h3 { margin: 0; }
+  .lv-head .rule-note { font-size: 12.5px; color: var(--muted); }
+  .htree, .htree ul { list-style: none; margin: 0; padding: 0; }
+  .htree { margin-top: 6px; }
+  .htree ul { padding-left: 16px; }
+  .htree li { position: relative; padding: 3px 0 3px 16px; font-size: 13.5px; color: var(--text); }
+  .htree li::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1.5px solid var(--line); }
+  .htree li:last-child::before { bottom: auto; height: 14px; }
+  .htree li::after { content: ""; position: absolute; left: 0; top: 14px; width: 11px; border-top: 1.5px solid var(--line); }
+  .htree .grp { font-weight: 600; }
+  .htree .scope { color: var(--muted); font-size: 12.5px; }
+  .htree .cond { font-weight: 600; color: var(--rule); }
+  .pill { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em; padding: 0 6px; border-radius: 999px; border: 1px solid var(--color); color: var(--color); vertical-align: 1px; }
+  .pill.alt { border-color: var(--out); color: var(--out); }
+
+  /* 상태 결정 트리 */
+  .tree { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 8px; }
+  .tree svg { display: block; width: 100%; height: auto; }
+  .tree .box { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+  .tree .q { fill: var(--surface); stroke: var(--text); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .tree .leaf-ok { fill: var(--rule-bg); stroke: var(--rule); stroke-width: 1.5; }
+  .tree .leaf-none { fill: var(--model-bg); stroke: var(--model); stroke-width: 1.5; }
+  .tree .leaf-no { fill: var(--fail-bg); stroke: var(--fail); stroke-width: 1.5; }
+  .tree .leaf-alt { fill: var(--out-bg); stroke: var(--out); stroke-width: 1.5; }
+  .tree text { fill: var(--text); font: 13px -apple-system, "Segoe UI", "Malgun Gothic", sans-serif; }
+  .tree text.mono { font: 600 12.5px ui-monospace, Consolas, monospace; }
+  .tree text.lbl { fill: var(--muted); font-size: 11.5px; }
+  .tree line, .tree path { stroke: var(--line); stroke-width: 1.8; fill: none; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; background: var(--out-bg); }
+  td:first-child { white-space: nowrap; font-weight: 600; }
+  tr:last-child td { border-bottom: 0; }
+  .table-wrap { overflow-x: auto; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+  pre.json { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow: auto; font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
+
+  /* 개선 항목 — 대상 단계 바로 아래에 붙는다 */
+  .fix {
+    margin-top: 8px; background: var(--fail-bg); border: 1px solid var(--fail); border-left-width: 4px;
+    border-radius: 6px; padding: 7px 11px; font-size: 13px; line-height: 1.5; color: var(--text);
+  }
+  .fix > b { color: var(--fail); margin-right: 6px; white-space: nowrap; }
+  .fix .to { display: block; margin-top: 2px; color: var(--muted); }
+  .fix .to::before { content: "→ 개선: "; color: var(--fail); font-weight: 600; }
+  .fix + .fix { margin-top: 6px; }
+  .fix .orig { display: block; margin-top: 3px; font: 11.5px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); word-break: break-word; }
+  .fix-index { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .fix-index a { display: inline-block; font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--fail-bg); color: var(--fail); text-decoration: none; }
+  .fix-index a:hover { text-decoration: underline; }
+
+  @media print {
+    @page { size: A4; margin: 14mm 12mm; }
+    :root { color-scheme: light; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    main { max-width: none; padding: 0; }
+    .node, .decision, .tree, tr, .phase, .issues li { break-inside: avoid; }
+    .phase { break-after: avoid; }
+  }
+  .psum-toc { columns: 2; column-gap: 24px; font-size: 13px; margin: 0 0 16px; padding-left: 22px; }
+  .psum-toc a { color: var(--text); }
+  @media (max-width: 720px) { .psum-toc { columns: 1; } }
+  .psec { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--model); border-radius: 8px; padding: 10px 14px; margin: 0 0 12px; }
+  .psec h3 { font: 700 13.5px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; margin: 0 0 6px; color: var(--model); }
+  .psec ul { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--muted); }
+  .psec li { margin: 3px 0; }
+  .psec li b { color: var(--text); }
+  footer { margin-top: 40px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
+
+  /* 축 표시 — 그 값을 읽는 스코어링 축 */
+  .ax { display: inline-block; font: 700 10px/1.5 ui-monospace, Consolas, monospace; padding: 0 5px; border-radius: 4px; margin-left: 3px; vertical-align: 1px; background: var(--out-bg); color: var(--out); border: 1px solid var(--line); }
+  .ax.ei { color: var(--color); border-color: var(--color); background: var(--color-bg); }
+  .ax.tc { color: var(--input); border-color: var(--input); background: var(--input-bg); }
+  .ax.sr { color: var(--rule); border-color: var(--rule); background: var(--rule-bg); }
+  .ax.dm { color: var(--model); border-color: var(--model); background: var(--model-bg); }
+  .legend .ax { margin-left: 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>착장 전체 비전 요소 추출 흐름</h1>
+  <p class="lede">
+    <code>/full-style-id-extraction</code>의 관찰 프롬프트(STMX FULL-LOOK STYLE VISION — INTEGRATED EXTRACTION PROMPT <b>V2</b>)가 착장 사진 한 장을 받아
+    룩 전체의 관찰 JSON을 내고, 그 JSON이 Evidence Packet을 거쳐 EI · TC · SR 방향이 되기까지의 순서입니다.
+    비전 호출은 <b>한 번</b>이고, G1–G4는 그 호출 안에서 모델이 따라야 하는 정리 순서입니다(여러 번 보는 것이 아님).
+    이후 단계(추출 · 판정)는 모델을 부르지 않는 동결 코드입니다.
+    프롬프트 점검에서 찾은 개선 항목은 빨간 상자로, 해당 단계 바로 아래에 붙여 두었습니다.
+  </p>
+  <div class="fix" id="i-noise"><b>개선 #11</b>프롬프트 전체 — 노이즈와 버전 표기
+    <span class="to">첫 줄 제목은 "CANDIDATE V1"인데 버전은 V2이다. "historical 41 · 37 facts · 26 Item facts · 12 Style Vision parameters"처럼 개수 표기가 네 가지라 무엇을 다 내야 하는지 흐려진다. 내부 결정 코드(CEO-FLV-INT-01, CDM-03 S1, CDM-05 B, CA#29, EI-2, D-2 rule, K-2)와 "replaces nothing in section 8" 같은 패치 문구는 changelog로 옮기고, 8a–8e 보충 절은 본문(§3·§5·§6·§8)에 합친다. 파라미터 인벤토리 문서는 grammar를 "tops / outerwear / dresses"에 적용한다고 적지만 프롬프트와 런타임은 Jacket · Coat에만 묻는다 — 문서를 런타임에 맞춘다.</span><span class="orig">(원문: “STMX FULL-LOOK STYLE VISION — INTEGRATED EXTRACTION PROMPT CANDIDATE V1” / “inventory: … (historical 41) · active extraction = Architecture Candidate V2.1 (37 facts in four observation groups; 2 nested in pockets[]; 2 frozen-DM fields assembled, not asked)” / “8a. EXACT OUTPUT SHAPE (replaces nothing in section 8; it specifies the object named there)”)</span></div>
+
+  <div class="legend">
+    <span><span class="src usr">USER</span>user 메시지 (이 프롬프트는 system을 쓰지 않음)</span>
+    <span><i style="border-color:var(--input);background:var(--input-bg)"></i>입력</span>
+    <span><i style="border-color:var(--model);background:var(--model-bg)"></i>모델 관찰 단계</span>
+    <span><i style="border-color:var(--rule);background:var(--rule-bg)"></i>게이트·규칙 / 동결 코드</span>
+    <span><i style="border-color:var(--color);background:var(--color-bg)"></i>색상 · 룩 단위 레이어</span>
+    <span><i style="border-color:var(--out);background:var(--out-bg)"></i>출력</span>
+    <span><span class="ax ei">EI</span><span class="ax tc">TC</span><span class="ax sr">SR</span><span class="ax dm">DM</span>그 값을 쓰는 축</span>
+  </div>
+
+  <!-- ───────────── 입력 ───────────── -->
+  <div class="phase"><b>입력</b><h2>이미지 + 관찰 프롬프트 — 한 user 메시지</h2></div>
+  <p class="trigger">style-ex와 달리 <b>system prompt가 없습니다</b>. 승인 설정(<code>02_PROMPT/PROMPT_AND_MODEL_CONFIGURATION.json</code>)대로 이미지 블록과 프롬프트 텍스트 블록을 한 user 메시지로 보냅니다. 상품 정보(PRODUCT CONTEXT)도 없습니다 — 룩 전체가 대상입니다.</p>
+  <div class="split">
+    <div>
+      <p class="lane-title"><span class="src usr">USER ①</span> 요청마다 바뀜</p>
+      <div class="node input">
+        <div class="who">IMAGE</div>
+        <h3>완성된 착장 사진 1장</h3>
+        <p>JPEG · PNG · WEBP, 원본 바이트(자르기·보정 금지), 미디어 타입은 바이트로 판별. 주인공 한 명의 착장이 대상이고, 다른 사람·배경·손에 든 물건은 제외 대상입니다. 플랫레이·상품 사진·마네킹·콜라주는 <code>not_a_worn_look</code>.</p>
+      </div>
+    </div>
+    <div>
+      <p class="lane-title"><span class="src usr">USER ②</span> 고정 · 버전 관리</p>
+      <div class="node model">
+        <div class="who">관찰 프롬프트 (style_ex_prompt_versions · target='full' 활성 버전)</div>
+        <h3>규칙 · 어휘 · 출력 모양</h3>
+        <ul>
+          <li>§0–§9 · 39,660자 (40,228 bytes) · SHA-256 <code>535bc183…</code></li>
+          <li>버전 표에 행이 없으면 승인 V2 원문이 v1로 등록됨. 화면에서 고친 경우에만 다른 글이 가고, 그때 화면에 "승인 V2와 다름"이 표시됨</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="arrow"></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>공급자</th><th>모델 · 설정</th><th>user 메시지</th></tr></thead>
+      <tbody>
+        <tr><td>Claude</td><td><code>claude-opus-5-5</code> (<code>FULL_STYLE_EX_MODEL</code>) · max_tokens 32,000 · system · tools · temperature 없음</td><td>① 이미지 (base64) ② 프롬프트 텍스트 — 캐시 없음 <a class="issue" href="#i-cache">#12</a></td></tr>
+        <tr><td>Gemini</td><td><code>gemini-3.8-flash</code> · temperature 0 · <code>responseMimeType: application/json</code> · maxOutputTokens 65,536</td><td>같은 순서: 이미지 → 프롬프트 (<code>systemInstruction</code> 쓰지 않음) <a class="issue" href="#i-gemini">#14</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fix" id="i-cache"><b>개선 #12</b>전송 순서와 프롬프트 캐시
+    <span class="to">고정된 4만 자가 요청마다 바뀌는 이미지 <b>뒤</b>에 있어 프롬프트 캐시가 걸리지 않는다(입력 토큰을 매번 전부 낸다). 텍스트 블록을 앞에 두고 <code>cache_control</code>을 걸면 캐시가 된다. 단, 입력 계약이 "image block + text block"으로 동결돼 있으므로 순서를 바꾸려면 재검증(EX-04 12장 재현)과 승인이 필요하다.</span><span class="orig">(원문 설정: “messages: [ { role: user, content: [ image block (base64), text block (prompt V2) ] } ]” · “system: none”)</span></div>
+  <div class="fix" id="i-gemini"><b>개선 #14</b>Gemini 출력은 검증되지 않음
+    <span class="to">추출 엔진은 claude-opus-5-5 응답 12개로만 검증됐다. Gemini 응답이 §8a 모양을 지키는지(키 이름, MULTI 배열, pockets[] 형식) 표본으로 확인하고, 실패 유형을 관찰 결과 탭의 <code>native_check</code> · <code>transport.unconvertible</code>로 모은다.</span><span class="orig">(원문 설정: “model: claude-opus-5-5” · “live_validation: EX-04 (2026-10-16): 12 images, 12 calls, model returned claude-opus-5-5”)</span></div>
+  <div class="arrow"></div>
+  <div class="node model">
+    <div class="who">§0 역할과 한계</div>
+    <h3>착장 하나의 물리적 관찰자 — 판단하지 않고 보이는 것만</h3>
+    <ul>
+      <li>점수·순위·스타일 판단·스타일 방향·브랜드 추정·보이지 않는 것의 추론을 <b>하지 않음</b> <a class="issue" href="#i-dm">#10</a></li>
+      <li>파일명·캡션·이미지 속 글자·워터마크·메타데이터는 증거가 아님</li>
+      <li>착장 사진이 아니면 <code>look_observability</code>에 <code>not_a_worn_look</code>을 적고 멈춤 <a class="issue" href="#i-stop">#2</a></li>
+      <li>기억이나 패션 지식으로 채우지 않음. 같은 사실을 두 번 읽지 않음 — 프롬프트에서 다시 나오는 것은 같은 관찰의 재사용</li>
+    </ul>
+    <div class="fix" id="i-stop"><b>개선 #2</b>"멈춤"의 출력이 정해져 있지 않음
+      <span class="to">§8a는 frame · objects · facts … 를 모두 가진 객체 하나를 요구하는데, 착장이 아닐 때 "stop"하면 무엇을 내야 하는지 없다. <code>{"frame": {"state": "NOT_VISIBLE", "limits": ["not_a_worn_look"]}, "objects": [], …}</code>처럼 빈 모양을 명시한다. 그래야 추출 엔진이 TRANSPORT_FAILURE가 아니라 판정 불가로 돌려준다.</span><span class="orig">(원문: “If the image is not a worn look (flat-lay, product shot, mannequin, collage) report look_observability with the limit not_a_worn_look and stop.”)</span></div>
+  </div>
+
+  <!-- ───────────── G1 ───────────── -->
+  <div class="phase"><b>G1</b><h2>룩 프레임과 컴포넌트 등록</h2></div>
+  <div class="flow">
+    <div class="node rule">
+      <div class="who">(a) SVP-001 look_observability <span class="ax">CONTROL</span></div>
+      <h3>완성된 착장이 프레임 안에서 읽히는가</h3>
+      <p>state <code>OBSERVED</code> · <code>NOT_VISIBLE</code> · <code>UNKNOWN</code> (ABSENT 없음) + limits ⊆ {<code>crop</code>, <code>lower_body_cropped</code>, <code>feet_not_visible</code>, <code>occlusion</code>, <code>image_failure</code>, <code>not_a_worn_look</code>}. 이 limits로 나중에 DM의 <code>dm_evidence_visibility</code>가 계산됩니다.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="decision">
+      <div class="q">(b) 이 물체가 주인공의 착장 실현에 참여하는가?</div>
+      <div class="branch"><span class="tag">참여</span>몸에 입은 의복 · 착용한 액세서리 · 자기 손잡이/끈으로 든 가방 → 컴포넌트 <code>c1, c2, …</code> (한 물체 = 한 컴포넌트, 다시 등록하지 않음)</div>
+      <div class="branch"><span class="tag no">제외</span>팔에 걸치거나 손에 든 옷 · 손에 든 모자 · 다른 사람 · 소품 · 동물 · 배경 · 글자 → <code>x1, …</code> + 이유 (패킷에 들어가지 않음)</div>
+      <div class="branch"><span class="tag alt">소속</span>옷에 달린 자기 벨트 · 타이 · 새시는 그 옷의 일부 — 컴포넌트가 아님 (§8e)</div>
+    </div>
+    <div class="fix" id="i-part"><b>개선 #1</b><code>participates</code> 필드 — 금지와 필수가 동시에
+      <span class="to">§3은 "컴포넌트 안에 participation / admitted / eligible / excluded 필드를 내지 말라"는데, §8a의 출력 모양은 <code>objects[]</code>마다 <code>"participates": true|false</code>를 넣는다. 변환기는 둘 다 받아들이지만(없으면 참여로 간주) 모델에게는 모순이다. "participates는 objects[]에만 쓰고, facts 안에는 쓰지 않는다"로 범위를 적는다. 알려진 잔차 VQ(M178 팔에 든 코트 등록)도 이 판단에서 나온다.</span><span class="orig">(원문: “Participation is a routing decision, not a fact: do not emit any participation / admitted / eligible / excluded field inside a component.” / “"objects": [ { "ref": "c1", "identity": "…", "participates": true, …”)</span></div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">(c) §3 · §8d SVP-002 component_identity <span class="ax ei">EI</span><span class="ax tc">TC</span> · SVP-003 identity_refinement</div>
+      <h3>보이는 부분으로 정체를 정한다 — 가려진 속성이 정체를 낮추지 않음</h3>
+      <div class="split" style="margin-top:6px">
+        <div>
+          <p class="lane-title">의복 — Item 카테고리 10</p>
+          <p><code>T-Shirt</code> · <code>Shirt</code> · <code>Sweater</code> · <code>Sweatshirt</code> · <code>Jacket</code> · <code>Coat</code> · <code>Trouser</code> · <code>Skirt</code> · <code>Dress</code> · <code>Jumpsuit</code>. 어디에도 맞지 않으면(케이프·판초·브라톱) 억지로 맞추지 않고 identity <code>UNKNOWN</code>으로 남긴 채 색상·외관만 관찰.</p>
+        </div>
+        <div>
+          <p class="lane-title">액세서리 — family 10 + other</p>
+          <p><code>footwear</code>(+ product_family shoe/sneaker/boot/sandal/other, 늘 시도) · <code>bag</code> · <code>headwear</code> · <code>scarf</code> · <code>jewellery</code> · <code>belt</code> · <code>eyewear</code> · <code>hosiery</code> · <code>tie</code> · <code>gloves</code>. 그 밖 subtype은 확실할 때만.</p>
+        </div>
+      </div>
+      <p>예: 립 니트 터틀넥 칼라만 보여도 <code>Sweater</code> OBSERVED, 가려진 fit · length는 각각 <code>NOT_VISIBLE</code>. "조금만 보인다"는 UNKNOWN의 이유가 아님.</p>
+    </div>
+  </div>
+
+  <!-- ───────────── 계층 ───────────── -->
+  <div class="phase"><b>계층</b><h2>41개 파라미터의 계층 구조</h2></div>
+  <p class="trigger">
+    승인 인벤토리(<code>PARAMETER_INVENTORY_V1_1.json</code>)의 41개 = Style Vision 12(SVP-001–012) + Item 원사실 26(SVP-101–126) + DM 3(DMP-1–3)을,
+    누가 누구의 출력 여부를 정하는지에 따라 쌓았습니다. 모델이 직접 답하는 것은 37개이고(그중 2개는 <code>pockets[]</code> 안), DMP-1 · DMP-3은 코드가 조립합니다.
+    상위 계층은 하위 요소를 <b>낼지 말지</b>만 정하고 <b>값</b>은 정하지 않습니다.
+  </p>
+  <div class="flow">
+    <div class="node rule">
+      <div class="lv-head"><span class="lv">L0</span><h3>LOOK — 사진 속 착장 하나</h3><span class="rule-note"><code>SVP-001 look_observability</code> · <code>not_a_worn_look</code>이면 아래 전부 없음</span></div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node model">
+      <div class="lv-head"><span class="lv">L1</span><h3>COMPONENT <code>cN</code> — 참여한 물체 하나</h3></div>
+      <ul class="htree">
+        <li><code>SVP-002 component_identity</code> <span class="ax ei">EI</span><span class="ax tc">TC</span> <span class="scope">의복 카테고리 · 액세서리 family · UNKNOWN(state)</span></li>
+        <li><code>SVP-003 identity_refinement</code> <span class="scope">footwear product_family · 그 밖 subtype</span></li>
+        <li><code>SVP-005 component_colour</code> <span class="ax ei">EI</span> <span class="scope">모든 컴포넌트 · 아래 룩 단위 레이어로 모임</span></li>
+      </ul>
+    </div>
+    <div class="arrow"></div>
+    <div class="split">
+      <div class="node rule">
+        <div class="lv-head"><span class="lv">L2</span><h3>의복 — 카테고리가 켜는 사실</h3></div>
+        <p>§6 적용성 표: 카테고리마다 Item 원사실 14–24개. 표에 없는 사실은 <b>내지 않음</b>(UNKNOWN이 아님).</p>
+      </div>
+      <div class="node color">
+        <div class="lv-head"><span class="lv">L2</span><h3>액세서리 · UNKNOWN 물체</h3></div>
+        <p>외관 6개만: <code>pattern</code> · <code>graphic</code> · <code>surface</code> · <code>material</code> · <code>decorative_detail</code> · <code>attachment</code>. 구조 사실은 묻지 않음.</p>
+      </div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node model">
+      <div class="lv-head"><span class="lv">L3</span><h3>관찰 그룹별 Item 원사실 26</h3><span class="rule-note">G2 = 외관 · G3 = 구조 (영역별 한 번씩)</span></div>
+      <ul class="htree">
+        <li><span class="grp">G2 외관 6</span> <span class="scope">의복 + 액세서리 모두</span>
+          <ul>
+            <li><code>121 pattern</code> <span class="ax ei">EI</span></li>
+            <li><code>122 graphic</code> <span class="ax ei">EI</span></li>
+            <li><code>123 surface</code> <span class="pill">MULTI</span> <span class="ax ei">EI</span><span class="ax tc">TC</span><span class="ax sr">SR</span></li>
+            <li><code>124 material</code> <span class="pill">MULTI</span> <span class="ax ei">EI</span><span class="ax tc">TC</span><span class="ax sr">SR</span></li>
+            <li><code>125 decorative_detail</code> <span class="pill">MULTI</span> <span class="ax ei">EI</span></li>
+            <li><code>126 attachment</code> <span class="pill">MULTI</span> <span class="ax ei">EI</span><span class="ax tc">TC</span> <span class="scope">자기 벨트 = Belt</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">G3 형태</span> <span class="scope">의복</span>
+          <ul>
+            <li><code>104 fit</code> <span class="ax tc">TC</span> · <code>108 length</code> <span class="ax tc">TC</span> · <code>107 asymmetry</code> <span class="ax tc">TC</span> <span class="scope">모든 카테고리</span></li>
+            <li><code>103 silhouette</code> <span class="ax tc">TC</span> <span class="scope">Trouser · Skirt · Dress · Jumpsuit</span></li>
+            <li><code>101 grammar</code> <span class="ax ei">EI</span><span class="ax tc">TC</span> <span class="scope">Jacket · Coat</span></li>
+            <li><code>102 trouser_distinction</code> <span class="ax ei">EI</span><span class="ax tc">TC</span> <span class="scope">Trouser</span></li>
+            <li><code>114 sleeve</code> · <code>113 collar</code> <span class="ax tc">TC</span> <span class="scope">상의 · 아우터 · Dress · Jumpsuit</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">G3 SHOULDER 영역</span> <span class="scope">한 번 보고 넷을 답함</span>
+          <ul>
+            <li><code>105 shoulder_structure</code> <span class="ax tc">TC</span> <span class="scope">Jacket · Coat · Dress · Jumpsuit</span></li>
+            <li><code>106 shoulder_drop</code> <span class="ax sr">SR</span> <span class="scope">저장은 SR 지배 상의만</span></li>
+            <li><code>110 shoulder_span</code> · <code>115 shoulder_connection</code> <span class="ax tc">TC</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">G3 FRONT 영역</span>
+          <ul>
+            <li><code>112 front_opening_extent</code> <span class="ax tc">TC</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">G3 POCKET 영역</span>
+          <ul>
+            <li><code>116 pocket</code> <span class="ax tc">TC</span> <span class="scope">None · Present</span></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="lv-head"><span class="lv">L4</span><h3>부모 값이 켜는 조건부 사실</h3><span class="rule-note">Item 동결 적용성</span></div>
+      <ul class="htree">
+        <li><code>sleeve</code> ≠ Sleeveless → <code>109 sleeve_volume</code> <span class="ax tc">TC</span></li>
+        <li><code>front_opening_extent</code> ≠ None → <code>111 closure_type</code> <span class="ax tc">TC</span> <span class="scope">Jacket · Coat는 늘</span></li>
+        <li><code>length</code> ≠ Cropped · Waist Length → <code>119 waist_definition</code> <span class="ax tc">TC</span><span class="ax sr">SR</span> <span class="scope">Jacket · Coat · Dress · Jumpsuit</span></li>
+        <li><code>pocket</code> = Present → <code>pockets[]</code> <span class="scope">묶음마다 한 항목</span>
+          <ul>
+            <li><code>location</code> <span class="scope">Chest · Lower Front · Sleeve · Leg</span></li>
+            <li><code>117 construction</code> <span class="scope">Inset · Applied</span></li>
+            <li><code>118 projection</code> <span class="scope">Flat · Projected · Volumetric</span></li>
+          </ul>
+        </li>
+        <li>Skirt · Dress → <code>120 slit</code> <span class="ax tc">TC</span> <span class="scope">보이지 않으면 None이 아니라 NOT_VISIBLE</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="split" style="margin-top:10px">
+    <div class="node color">
+      <div class="who">L0 아래 룩 단위 레이어 · 컴포넌트를 ref로 가리킴</div>
+      <ul class="htree">
+        <li><code>colour_areas</code> <span class="scope">SVP-005 색 · SVP-006 field/point standing</span> <span class="ax ei">EI</span></li>
+        <li><code>front_state</code> <span class="scope">SVP-004 as_worn_front_state</span> <span class="ax tc">TC</span></li>
+        <li><code>layer_relations</code> <span class="scope">SVP-010 의복끼리 over/under</span> <span class="ax tc">TC</span></li>
+        <li><code>securing_relations</code> <span class="scope">SVP-011 조임</span> <span class="ax sr">SR</span></li>
+        <li><code>upper</code> <span class="scope">SVP-007 relation · 008 shoulder · 009 shape</span> <span class="ax sr">SR</span></li>
+        <li><code>exposure_supplement</code> <span class="scope">SVP-012 노출 부위</span> <span class="ax ei">EI</span></li>
+        <li><code>dm_subsystem.look_detail_systems</code> <span class="scope">DMP-2</span> <span class="ax dm">DM</span></li>
+      </ul>
+    </div>
+    <div class="node rule">
+      <div class="who">계층 사이의 규칙</div>
+      <ul>
+        <li><b>위 → 아래</b>: 출력 여부만 정함. <code>sleeve</code>=Long이라고 <code>sleeve_volume</code>이 Regular가 되지 않음</li>
+        <li><b>같은 영역</b>: 한 번 보고 함께 답하지만 값은 독립. <code>shoulder_structure</code>와 <code>shoulder_drop</code>은 서로를 근거로 삼지 않음</li>
+        <li><b>제품 ≠ 착용 결과</b>: <code>fit</code> · <code>shoulder_structure</code>(제품)와 <code>upper.relation</code> · <code>upper.shoulder</code>(착용 결과)는 다른 필드</li>
+        <li><b>오류 전파</b>: <code>identity</code>가 틀리면 L2 이하 키 구성이, <code>length</code>가 틀리면 <code>waist_definition</code> 출력 여부가 함께 어긋남</li>
+        <li><b>코드 조립</b>: DMP-1 <code>look_components</code>(carrier_refs에서) · DMP-3 <code>dm_evidence_visibility</code>(frame limits에서)는 모델이 내면 계약 위반</li>
+      </ul>
+    </div>
+  </div>
+  <div class="table-wrap" style="margin-top:10px">
+    <table>
+      <thead><tr><th>축</th><th>읽는 파라미터</th><th>패킷 블록</th></tr></thead>
+      <tbody>
+        <tr><td><span class="ax ei">EI</span></td><td>002 · 005 · 006 · 012 · 101 · 102 · 121–126</td><td><code>colour_composition</code> · <code>canonical_exposure</code></td></tr>
+        <tr><td><span class="ax tc">TC</span></td><td>002 · 004 · 010 · 101–105 · 107–120 · 123 · 124 · 126</td><td><code>component_registry</code> · <code>relations.layer_relations</code></td></tr>
+        <tr><td><span class="ax sr">SR</span></td><td>007 · 008 · 009 · 011 · 106 · 119 · 123 · 124</td><td><code>upper_realization</code> · <code>relations.securing_relations</code></td></tr>
+        <tr><td><span class="ax dm">DM</span></td><td>DMP-1 · DMP-2 (DMP-3은 제어)</td><td><code>dm_evidence</code> — Full-Look DM 엔진은 아직 없음</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">출처: <code>05_DOCS/SCORING_ENGINE_HANDOVER.md</code> §B. 소비 축이 없는 제어 파라미터: SVP-001 · SVP-003 · DMP-3.</p>
+
+  <!-- ───────────── G2 ───────────── -->
+  <div class="phase"><b>G2</b><h2>컴포넌트 외관 — 색상과 표면</h2></div>
+  <p class="trigger">컴포넌트마다 보이는 표면을 <b>한 번</b> 봅니다. 같은 무늬·하드웨어·장식을 다른 목적으로 다시 읽지 않고, DM 시스템(§9)도 여기서 기록한 사실로만 이름 붙입니다.</p>
+  <div class="split">
+    <div class="node color">
+      <div class="who">§4 COLOUR · SVP-005 / SVP-006 <span class="ax ei">EI</span></div>
+      <h3>색 영역 = carrier + family + lightness + effect + standing</h3>
+      <ul>
+        <li><b>family</b> 21: black · white_family · gray · navy · blue · red · pink · yellow · orange · green · purple · brown · camel · beige · khaki · mint · wine · olive · gold · silver · uncertain</li>
+        <li><b>lightness</b> light · normal · dark / <b>effect</b> none · neon · metallic</li>
+        <li><b>standing</b> <code>field</code>(큰 연속 면) · <code>point</code>(작은 면 · 액세서리 · 부품) + 점이면 <code>contrast</code> Tonal · Subtle · Distinct <a class="issue" href="#i-standing">#3</a></li>
+        <li>단추·버클·무늬색·끈은 <b>같은 컴포넌트의 point</b>(part 표시) — 별도 컴포넌트가 아님</li>
+        <li>금속 방화벽: 금·은은 그것을 가진 물체에 family + metallic으로. 벨트 버클은 벨트의 point, 안경 테와 렌즈는 한 안경의 두 point</li>
+        <li>피부·머리·배경은 색 영역이 아님. 못 읽으면 추측하지 말고 unreadable</li>
+      </ul>
+    </div>
+    <div class="node model">
+      <div class="who">§6 외관 사실 6</div>
+      <h3>pattern · graphic · surface · material · decorative_detail · attachment</h3>
+      <ul>
+        <li><b>pattern</b> Linear · Grid · Repeat / <b>graphic</b> Localized · Dominant</li>
+        <li><b>surface</b> Pleated · Gathered · Quilted · Textured Knit · Lace · Mesh · Treated Surface · Reflective · Glossy · Semi Transparent · Transparent · Exotic-Skin</li>
+        <li><b>material</b> Cotton · Wool · Leather · Suede · Knit · Denim · Synthetic · Silk · Velvet · Fur · Padding · Other — 광택으로 추론하지 않음</li>
+        <li><b>decorative_detail</b> Embroidery · Sequin-Beading · Appliqué · Piping</li>
+        <li><b>attachment</b> Metal Hardware · Jewelry Attachment · Ribbon · Belt · Epaulette · Storm Flap · Fur Trim · Fringe · Feather · Other</li>
+        <li>네 개(surface · material · decorative_detail · attachment)는 MULTI — OBSERVED면 늘 배열</li>
+      </ul>
+    </div>
+  </div>
+  <div class="fix" id="i-standing"><b>개선 #3</b>색의 standing은 언제 정하나 · lightness UNKNOWN
+    <span class="to">§4는 G2에서 색마다 standing(field/point)을 함께 보고하라는데, §2의 G4는 "G2에서 기록한 색의 field/point standing"을 룩을 본 뒤에 정하라고 한다. field/point는 룩 전체의 색 구성에 대한 판단이므로 G4로 한 번에 옮기고, G2는 carrier · family · lightness · effect만 적게 한다. 또 §8a 주석은 lightness를 못 읽으면 <code>"UNKNOWN"</code>을 쓰라는데 §4의 lightness 도메인에는 없다 — 도메인에 넣거나 unreadable/partial 규칙으로 통일한다.</span><span class="orig">(원문: “Report each colour area as carrier + family + lightness + effect + standing.” / “G4 — … and the field / point standing of the colours already recorded in G2.” / “if you can read the family but not the lightness, give the family and write "lightness": "UNKNOWN"”)</span></div>
+
+  <!-- ───────────── G3 ───────────── -->
+  <div class="phase"><b>G3</b><h2>의복 구조 — 영역마다 한 번</h2></div>
+  <p class="trigger">의복마다 형태 사실을 읽고, 세 영역(어깨 · 앞판 · 포켓)은 <b>각각 한 번 보고</b> 그 영역의 사실을 함께 답합니다. 제품 구조와 착용 결과는 다른 필드이고, 가려진 제품 구조는 착용 실루엣에서 추론하지 않고 NOT_VISIBLE입니다.</p>
+  <div class="flow">
+    <div class="node model">
+      <div class="who">형태</div>
+      <h3>grammar / trouser_distinction · silhouette · fit · asymmetry · length · sleeve · sleeve_volume · collar · waist_definition</h3>
+      <ul>
+        <li><b>grammar</b> Tailored · Casual · Utility (Jacket · Coat) <a class="issue" href="#i-grammar">#8</a> · <b>trouser_distinction</b> Tailored · Casual · Sport · Jeans · Leggings</li>
+        <li><b>fit</b> Slim · Regular · Relaxed · Oversized (+ Voluminous: Skirt · Dress) <a class="issue" href="#i-fit">#9</a></li>
+        <li><b>length</b> 카테고리별 도메인 (예: Coat Hip · Thigh · Knee · Maxi Length / Trouser Short … Extended Length)</li>
+      </ul>
+      <div class="fix" id="i-grammar"><b>개선 #8</b>grammar 정의 없음
+        <span class="to">Jacket · Coat에 묻지만 Tailored / Casual / Utility를 가르는 기준이 한 줄도 없고, §0의 "스타일 판단 금지"와도 부딪힌다. 테일러드 라펠·어깨 구조, 패치 포켓·플랩·스톰 플랩 같은 <b>구성 근거</b>로 정의해 관찰 사실로 만든다.</span><span class="orig">(원문: “SVP-101 grammar — What garment grammar is it (tailored / casual / utility)? Values: Tailored · Casual · Utility.”)</span></div>
+      <div class="fix" id="i-fit"><b>개선 #9</b>fit 경계 정의 없음
+        <span class="to">알려진 제약 L-1: 모델이 fit을 기준보다 한 단계 헐겁거나 꽉 끼게 읽고, M178에서는 그것만으로 TC의 SIL-TRUE-OVERSIZED가 켜진다. Slim / Regular / Relaxed / Oversized의 경계(어깨선 · 몸판 여유 · 주름의 방향)를 짧게 정의하고, 경계에서 망설이면 UNKNOWN을 허용한다.</span><span class="orig">(원문: “SVP-104 fit — How does the garment product fit the body? Values: … Slim · Regular · Relaxed · Oversized …” / KNOWN_LIMITATIONS L-1 “The model can read fit one step looser or tighter than the reference.”)</span></div>
+    </div>
+    <div class="arrow"></div>
+    <div class="split three">
+      <div class="node model">
+        <div class="who">SHOULDER 영역 · 한 번</div>
+        <h3>structure · drop · span · connection</h3>
+        <p><code>shoulder_structure</code>(패드·확장)와 <code>shoulder_drop</code>(솔기 끝 위치)은 <b>독립</b>. 패드 넣은 넓은 어깨도 drop None일 수 있음. 가장 바깥 상의의 <code>upper.shoulder</code>도 이 한 번의 관찰에서 가져옴. <a class="issue" href="#i-drop">#5</a></p>
+      </div>
+      <div class="node model">
+        <div class="who">FRONT 영역 · 한 번</div>
+        <h3>front_opening_extent · closure_type · 착용 앞 상태</h3>
+        <p>제품: None · Partial · Full / Button … Zipper · Open. 같은 관찰에서 착용 상태 <code>front_state</code>: fastened · partly_fastened · unfastened_worn_open · closed_by_other_means.</p>
+      </div>
+      <div class="node model">
+        <div class="who">POCKET 영역 · 한 번</div>
+        <h3>pocket → pockets[]</h3>
+        <p>Present면 묶음마다 한 항목(한 개 · 같은 한 쌍 · 캥거루 주머니 = 각 1). location은 네 토큰만. 형태를 못 읽어도 항목은 남기고 state NOT_VISIBLE/UNKNOWN + value null. 117 · 118을 따로 내지 않음.</p>
+      </div>
+    </div>
+    <div class="fix" id="i-drop"><b>개선 #5</b>shoulder_drop은 묻지만 대부분 버려짐
+      <span class="to">§6은 상의 모두에 shoulder_drop을 내라고(“Do not leave shoulder_drop out”) 하지만, 추출 엔진은 SR 지배 상의(가장 바깥 상의)의 값만 저장하고 나머지는 버린다(알려진 제약 L-4, AXIS-DEMAND-CONDITIONAL). 모델에게 "가장 바깥 상의의 shoulder_drop만 필수"라고 좁히거나, 다른 의복의 값도 TC 등에서 쓰도록 수요를 넓힌다. 지금은 토큰과 주의를 쓰고도 결과에 남지 않는다.</span><span class="orig">(원문: “Do not leave shoulder_drop out of the shoulder look.” / KNOWN_LIMITATIONS L-4 “shoulder_drop (SR) is stored only for the SR governing upper component.”)</span></div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">SLIT · 구조 관찰에서 (Skirt · Dress)</div>
+      <h3>밑단의 설계된 트임이 분명히 보일 때만 Present</h3>
+      <p>밑단이 충분히 보여 트임이 없다고 확신할 때만 None. 그 외는 NOT_VISIBLE(가려짐·잘림) 또는 UNKNOWN. 보이는 다리·피부, 포즈로 생긴 벌어짐, 풀린 플래킷, 랩 겹침은 슬릿이 아님. "슬릿이 안 보인다"를 None으로 바꾸지 않음.</p>
+    </div>
+  </div>
+
+  <!-- ───────────── 상태 결정 ───────────── -->
+  <div class="phase"><b>§1 · §7 · §8b</b><h2>사실마다 상태 결정</h2></div>
+  <p class="trigger">적용 대상인 모든 사실이 같은 트리를 탑니다. 보이지 않음 ≠ 판단 불가 ≠ 없음. 모델이 <b>내지 않은</b> 사실은 UNKNOWN으로 읽힙니다(ABSENT가 아님).</p>
+  <div class="tree">
+    <svg viewBox="0 0 860 330" role="img" aria-label="상태 결정 트리">
+      <path d="M430 46 V70 H120 V92"/>
+      <path d="M430 70 H560 V92"/>
+      <path d="M560 128 V150 H330 V172"/>
+      <path d="M560 150 H720 V172"/>
+      <path d="M720 208 V230 H580 V252"/>
+      <path d="M720 230 H800 V252"/>
+      <path d="M330 208 V252"/>
+      <rect class="q" x="270" y="10" width="320" height="36" rx="6"/>
+      <text x="430" y="33" text-anchor="middle">그 사실을 담는 영역이 프레임 안에 보이는가?</text>
+      <text class="lbl" x="128" y="66">아니오 (가려짐·잘림·조각)</text>
+      <text class="lbl" x="568" y="66">예</text>
+      <rect class="leaf-no" x="20" y="92" width="200" height="36" rx="6"/>
+      <text class="mono" x="120" y="115" text-anchor="middle">NOT_VISIBLE + limitation</text>
+      <text class="lbl" x="120" y="146" text-anchor="middle">OCCLUDED_BY_OTHER_GARMENT ·</text>
+      <text class="lbl" x="120" y="161" text-anchor="middle">TERMINAL_REGION_CROPPED ·</text>
+      <text class="lbl" x="120" y="176" text-anchor="middle">FRAGMENTARY_VISIBILITY · …</text>
+      <rect class="q" x="420" y="92" width="280" height="36" rx="6"/>
+      <text x="560" y="115" text-anchor="middle">보이는데 값을 확정할 수 있는가?</text>
+      <text class="lbl" x="338" y="146">아니오</text>
+      <text class="lbl" x="728" y="146">예</text>
+      <rect class="leaf-alt" x="250" y="172" width="160" height="36" rx="6"/>
+      <text class="mono" x="330" y="195" text-anchor="middle">UNKNOWN</text>
+      <text class="lbl" x="330" y="230" text-anchor="middle">안전하려고 낮추거나,</text>
+      <text class="lbl" x="330" y="245" text-anchor="middle">완결하려고 추측하지 않음</text>
+      <rect class="q" x="600" y="172" width="240" height="36" rx="6"/>
+      <text x="720" y="195" text-anchor="middle">현상이 존재하는가?</text>
+      <text class="lbl" x="588" y="226">아니오</text>
+      <text class="lbl" x="770" y="226">예</text>
+      <rect class="q" x="440" y="252" width="280" height="36" rx="6"/>
+      <text x="580" y="275" text-anchor="middle">값 도메인에 "None" 토큰이 있는가?</text>
+      <rect class="leaf-ok" x="740" y="252" width="110" height="36" rx="6"/>
+      <text class="mono" x="795" y="275" text-anchor="middle">OBSERVED</text>
+      <text class="lbl" x="795" y="306" text-anchor="middle">+ canonical 값</text>
+      <rect class="leaf-none" x="400" y="296" width="196" height="30" rx="6"/>
+      <text class="mono" x="498" y="316" text-anchor="middle">예 → OBSERVED "None"</text>
+      <rect class="leaf-alt" x="604" y="296" width="130" height="30" rx="6"/>
+      <text class="mono" x="669" y="316" text-anchor="middle">아니오 → ABSENT</text>
+    </svg>
+  </div>
+  <div class="split" style="margin-top:10px">
+    <div class="node rule">
+      <div class="who">None 토큰이 있는 사실 → 없으면 OBSERVED "None"</div>
+      <p><code>asymmetry</code> · <code>pocket</code> · <code>shoulder_drop</code> · <code>collar</code> · <code>slit</code> · <code>shoulder_structure</code></p>
+    </div>
+    <div class="node rule">
+      <div class="who">None 토큰이 없는 사실 → 없으면 ABSENT</div>
+      <p><code>pattern</code> · <code>graphic</code> · <code>surface</code> · <code>material</code> · <code>decorative_detail</code> · <code>attachment</code> · 노출 행</p>
+    </div>
+  </div>
+  <p class="note">적용되지 않는 사실(NOT_APPLICABLE)은 저장하지 않고 키를 내지 않습니다. 룩 단위 SVP-001 · 004 · 007–010에는 ABSENT가 없습니다(현상은 늘 있거나 읽을 수 없음).</p>
+
+  <!-- ───────────── G4 ───────────── -->
+  <div class="phase"><b>G4</b><h2>최종 착용 관계</h2></div>
+  <p class="trigger">룩을 입은 상태로 봅니다. 어깨 값은 G3의 어깨 관찰에서 가져오고 새로 보지 않습니다.</p>
+  <div class="flow">
+    <div class="node model">
+      <div class="who">§5 upper · SVP-007 / 008 / 009 <span class="ax sr">SR</span></div>
+      <h3>가장 바깥 상의(governing)가 입은 상태로 몸과 맺는 관계</h3>
+      <ul>
+        <li><b>relation</b> Slim · Regular · Relaxed · Oversized / <b>shoulder</b> None · Mild · Strong · Extreme / <b>shape</b> Structured · Semi-Structured · Semi-Fluid · Fluid (Semi-Structured와 Semi-Fluid 사이에서 망설이면 UNKNOWN, Balanced 금지)</li>
+        <li>그 의복의 제품 <code>fit</code> · <code>shoulder_structure</code>와는 다른 필드 <a class="issue" href="#i-gov">#7</a></li>
+      </ul>
+      <div class="fix" id="i-gov"><b>개선 #7</b>governing upper 정의
+        <span class="to">"OUTERMOST upper garment"만 있고, 코트 아래 원피스처럼 상의와 원피스가 겹칠 때, 코트를 어깨에만 걸쳤을 때, 상의가 보이지 않을 때(<code>NOT_VISIBLE</code>인지 <code>governing_ref</code>를 비우는지) 고르는 규칙이 없다. SR 판정 전체가 이 한 컴포넌트에 걸리므로(F298: c1 Coat) 우선순위를 명시한다.</span><span class="orig">(원문: “final_upper_relation / final_shoulder_realization / final_upper_shape_behaviour describe the OUTERMOST upper garment as worn (the governing component)”)</span></div>
+    </div>
+    <div class="arrow"></div>
+    <div class="split">
+      <div class="node rule">
+        <div class="who">SVP-010 layer_relations <span class="ax tc">TC</span></div>
+        <h3>의복끼리, 직접 보이는 쌍만</h3>
+        <p>(over, under) + 드러난 부분 ⊆ {Body, Bodice, Skirt Body, Leg, Shoulder, Sleeve, Collar, Lapel, Hood, Cuff, Hem, Waistband, Pocket, Strap}. 액세서리는 넣지 않고, 추론한 쌍도 넣지 않음.</p>
+      </div>
+      <div class="node rule">
+        <div class="who">SVP-011 securing_relations · §8e <span class="ax sr">SR</span></div>
+        <h3>조이는 물체가 윤곽을 실제로 끌어당기는가</h3>
+        <ul>
+          <li><b>별도 벨트</b>(자기 버클 · 독립 띠): <code>securing</code> → <code>affected</code>, <code>region</code>, <code>visible_constriction</code></li>
+          <li><b>자기 벨트</b>(벨트 고리 · 봉제 · 자기 여밈 끈): 컴포넌트 아님 → <code>attachment</code> Belt + 색은 그 옷의 point + <code>waist_definition</code> + <code>device_is_own: true</code> 항목 하나</li>
+          <li>끌어당김이 보여야 OBSERVED, 얹혀만 있으면 ABSENT. 같은 원인을 두 번 쓰지 않음 <a class="issue" href="#i-belt">#4</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fix" id="i-belt"><b>개선 #4</b>자기 벨트 규칙이 세 곳에 흩어져 서로를 고쳐 씀
+      <span class="to">§5 SVP-011은 "own belts → SVP-119"라 하고, §5 Rules는 자기 벨트를 securing_relations의 own device로 쓰라 하고, §8e는 "SVP-011의 그 문장을 이렇게 읽어라"로 덮어쓴다. 모델은 앞의 문장을 먼저 읽는다. 자기 벨트 규칙을 §8e 한 곳으로 모으고 SVP-011 정의에서는 "separate device만"으로 고친다.</span><span class="orig">(원문: “Applies: a separate securing object on another participant (own belts → SVP-119).” / “Where section 5 SVP-011 says "own belts → SVP-119", read it as: …”)</span></div>
+    <div class="arrow"></div>
+    <div class="node color">
+      <div class="who">SVP-012 canonical_physical_exposure <span class="ax ei">EI</span></div>
+      <h3>실제로 보이는 피부의 부위 — 실현 하나에 기록 하나</h3>
+      <div class="split" style="margin-top:6px">
+        <div>
+          <p class="lane-title">Class A 신체 부위</p>
+          <p>Shoulder · Chest / Décolletage · Midriff / Waist · Back · Upper Thigh — "어느 부위가 보이는가"</p>
+        </div>
+        <div>
+          <p class="lane-title">Class B 설계된 개구부</p>
+          <p>Open Back · Front Cutout · Side Cutout · Shoulder Cutout — "어떤 개구 구조가 있는가"</p>
+        </div>
+      </div>
+      <ul>
+        <li><b>부위 ≠ 메커니즘</b>: 미니 라벨만으로 Upper Thigh 아님, 홀터만으로 Shoulder 아님, 슬릿만으로 Upper Thigh 아님. 실제로 보이는 피부만</li>
+        <li>크기·정도·중요도는 판단하지 않고 세지 않음. carrier(의복)와 attribution(<code>item_intrinsic</code> · <code>realized_state</code> · <code>UNKNOWN</code>)은 메타데이터</li>
+        <li>노출된 부위만 적음 — 카메라가 보여 주지 않는 부위는 적지 않음</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ───────────── DM ───────────── -->
+  <div class="phase"><b>§9</b><h2>디자인 디테일 시스템 — 같은 관찰에서 이름 붙이기</h2></div>
+  <p class="trigger">DM을 위해 이미지를 다시 보지 않습니다. G2 외관 사실과 G4 관계만으로, 하나의 시각 현상을 이루는 컴포넌트 묶음마다 시스템 하나를 적습니다.</p>
+  <div class="split">
+    <div class="node model">
+      <div class="who">look_detail_systems[] — 시스템마다</div>
+      <ul>
+        <li><code>carrier_refs</code> 1..n · <code>look_detail_family</code> A–J</li>
+        <li><code>relational_form</code> accent · composition (H만)</li>
+        <li><code>size_in_look</code> small · medium · large / <code>contrast_in_look</code> low · medium · high / <code>position_in_look</code> localized · distributed · whole_look (각각 state 포함)</li>
+        <li><code>repeated_units</code> yes · no — 개수가 아님</li>
+        <li><code>[]</code> = 관찰한 시스템이 없음 ≠ 디테일이 없는 룩</li>
+      </ul>
+    </div>
+    <div class="node rule">
+      <div class="who">family</div>
+      <ul>
+        <li><b>A</b> 표면 적용(프린트·스트라이프·체크·그래픽·워싱 결과) · <b>B</b> 소재/구성 표면(케이블·자카드·레이스·메시) · <b>C</b> 하드웨어 · <b>D</b> 트림/마감 · <b>E</b> 장식 · <b>F</b> 3D 장식 구성(러플·티어·보우)</li>
+        <li><b>G</b> 액세서리가 A–F를 가짐 · <b>H</b> 스타일링이 만든 Point/Accent·색 구성 · <b>I</b> 디테일이 된 기능 구성(포켓) · <b>J</b> 혼합 표면/소재 분할</li>
+        <li><b>디테일이 아님</b>: 광택·소재의 고급스러움·투명·노출·컷아웃·슬릿·실루엣·비대칭·볼륨·평범한 구성·레이어링·개수·평범한 색 차이·매칭·반복</li>
+      </ul>
+    </div>
+  </div>
+  <div class="fix" id="i-dm"><b>개선 #10</b>축 이름 노출
+    <span class="to">§0은 스타일 방향을 정하지 말라는데, 출력 키가 <code>dm_subsystem</code>이고 §9 제목과 본문이 "DM", "DM score, Direction or Strength"를 직접 부른다. 모델이 축을 의식하면 관찰이 그쪽으로 기운다. 출력 키를 <code>detail_systems</code>처럼 중립 이름으로 바꾸고(변환기에서 매핑), 축 언급을 지운다 — style-ex 문서의 개선 #12와 같은 문제다.</span><span class="orig">(원문: “9. FROZEN FULL-LOOK DM EVIDENCE — … (emit exactly one `dm_subsystem` object with ONE field)” / “you do not decide any DM score, Direction or Strength.”)</span></div>
+
+  <!-- ───────────── 출력 ───────────── -->
+  <div class="phase"><b>§8</b><h2>직렬화 — JSON 객체 하나</h2></div>
+  <div class="flow">
+    <div class="split">
+      <div class="node rule">
+        <div class="who">§8b 상태 표기</div>
+        <ul>
+          <li>값만 쓰면 OBSERVED: <code>"fit": "Relaxed"</code></li>
+          <li>MULTI는 배열: <code>"material": ["Wool"]</code></li>
+          <li><code>"ABSENT"</code> · <code>"UNKNOWN"</code>은 문자열</li>
+          <li>NOT_VISIBLE은 객체: <code>{"state": "NOT_VISIBLE", "limitation": [...]}</code></li>
+          <li>Present 포켓은 <code>pockets[]</code>가 있어야 완결</li>
+        </ul>
+      </div>
+      <div class="node rule">
+        <div class="who">§8c 형식</div>
+        <ul>
+          <li>첫 글자 <code>{</code>, 마지막 글자 <code>}</code></li>
+          <li>코드 펜스 · "json" 라벨 · 앞뒤 설명 · 감싼 객체 · <b>주석</b> 금지 <a class="issue" href="#i-comment">#6</a></li>
+          <li>점수 · 방향 · 판정 · 스타일 이름 · 축 글자 · 숫자 평가 금지</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fix" id="i-comment"><b>개선 #6</b>출력 예시에 주석이 있음
+      <span class="to">§8c는 "no comments"인데 §8a의 정답 모양에는 <code>// garment-to-garment, …</code>, <code>// ONE record per REALIZED exposure only</code> 같은 줄 끝 주석이 10여 개 있다. 모델이 주석까지 따라 쓰면 엄격한 JSON이 아니다(변환기는 펜스·주석을 걷어 내고 <code>native_check</code>에 기록한다). 주석을 모양 밖의 규칙 목록으로 빼고, 모양은 순수 JSON으로 둔다.</span><span class="orig">(원문: “"layer_relations": [ … ],        // garment-to-garment, directly visible pairs only (CDM-05 B): …” / “No markdown code fence …, no comments, no trailing commentary.”)</span></div>
+    <div class="arrow"></div>
+<pre class="json">{
+  "frame": { "state": "OBSERVED", "limits": [] },
+  "objects": [
+    { "ref": "c1", "identity": "Coat", "participates": true },
+    { "ref": "c2", "identity": "Sweater", "participates": true },
+    { "ref": "c3", "identity": "gloves", "participates": true },
+    { "ref": "c4", "identity": "jewellery", "participates": true, "subtype": "earrings" },
+    { "ref": "c5", "identity": "hosiery", "participates": true, "subtype": "tights" },
+    { "ref": "c6", "identity": "footwear", "participates": true, "product_family": "shoe" },
+    { "ref": "x1", "identity": "UNKNOWN", "participates": false, "why": "other people / audience in background" }
+  ],
+  "front_state": { "c1": { "value": "partly_fastened", "state": "OBSERVED" } },
+  "layer_relations": [ { "over": "c1", "under": "c2", "revealed": ["Collar"], "state": "OBSERVED" } ],
+  "securing_relations": [ { "affected": "c1", "device_is_own": true, "region": "waist", "visible_constriction": "OBSERVED" } ],
+  "colour_areas": [
+    { "carrier": "c1", "family": "olive", "lightness": "normal", "effect": "none", "role": "field" },
+    { "carrier": "c1", "family": "camel", "lightness": "normal", "effect": "none", "role": "point", "contrast": "Subtle",
+      "part": { "carrier_kind": "attachment", "carrier_ref": "Belt" } },
+    { "carrier": "c2", "family": "wine", "lightness": "dark", "effect": "none", "role": "point", "contrast": "Distinct" },
+    …
+  ],
+  "upper": { "governing_ref": "c1",
+             "relation": { "value": "Oversized", "state": "OBSERVED" },
+             "shoulder": { "value": "Extreme", "state": "OBSERVED" },
+             "shape":    { "value": "Structured", "state": "OBSERVED" } },
+  "exposure_supplement": [],
+  "facts": {
+    "c1": { "material": ["Leather"], "surface": "ABSENT", "attachment": ["Belt"], "asymmetry": "None",
+            "fit": "Oversized", "length": "Knee Length", "sleeve": "Long", "sleeve_volume": "Voluminous",
+            "shoulder_drop": "None", "shoulder_structure": "Extreme", "collar": "Shirt",
+            "front_opening_extent": "Full", "closure_type": "Zipper", "grammar": "Casual", "waist_definition": "Cinched",
+            "pocket": { "value": "Present", "pockets": [ { "location": "Lower Front",
+                        "construction": { "state": "OBSERVED", "value": "Inset" },
+                        "projection":   { "state": "OBSERVED", "value": "Flat" } } ] }, … },
+    "c2": { "material": "UNKNOWN", "collar": "Stand",
+            "fit": { "state": "NOT_VISIBLE", "limitation": ["OCCLUDED_BY_OTHER_GARMENT"] }, … },
+    …
+  },
+  "dm_subsystem": { "look_detail_systems": [
+    { "carrier_refs": ["c2", "c3"], "look_detail_family": "H", "relational_form": "accent",
+      "size_in_look": { "state": "OBSERVED", "value": "medium" },
+      "contrast_in_look": { "state": "OBSERVED", "value": "medium" },
+      "position_in_look": { "state": "OBSERVED", "value": "distributed" }, "repeated_units": "no" },
+    { "carrier_refs": ["c1"], "look_detail_family": "F", … } ] }
+}</pre>
+    <p class="note">EX-04 표본 F298(올리브 가죽 코트 + 와인 스웨터 · 장갑)의 실제 응답을 줄인 것입니다(<code>…</code> = 생략). 와인 스웨터와 장갑이 한 H 시스템으로 묶인 것, 자기 벨트가 컴포넌트가 아니라 코트의 point 색 · attachment · own-device 조임으로 기록된 것을 볼 수 있습니다.</p>
+  </div>
+
+  <!-- ───────────── 추출 (코드) ───────────── -->
+  <div class="phase"><b>추출</b><h2>모델 출력 → Evidence Packet (동결 코드 FLV_RC6_FINAL)</h2></div>
+  <p class="trigger">여기부터 모델을 부르지 않습니다. <code>lib/full-style-ex/pipeline.cjs</code>의 <code>extract()</code>가 <code>cli/run_offline.js --model-text</code>와 같은 순서로 런타임을 부릅니다.</p>
+  <div class="flow">
+    <div class="node rule">
+      <div class="who">transport</div>
+      <h3>parseModelText → convertModelOutput · checkNative</h3>
+      <p>JSON 객체 하나인지 확인(펜스는 걷어 내고 기록) → 동결 케이스 모양으로 변환. 변환할 수 없는 값은 <code>unconvertible</code>, 모델이 내지 않은 사실은 <code>not_emitted</code>(= UNKNOWN). 원문이 엄격한 JSON이었는지는 <code>native_check</code>에 따로 남김. 실패하면 <code>TRANSPORT_FAILURE</code>.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">isolation · extract · validator</div>
+      <h3>축별 요청 게이트로 사실을 모아 패킷을 만들고 계약을 검사</h3>
+      <p>모든 축(EI · TC · SR · DM)의 요청으로 적용되는 사실만 풀에 넣음(K-2). 국소 오류는 격리해 기록. 검증(<code>validator.js</code>): 모든 ref가 레지스트리에 있는가, 참여자마다 색 기회가 있는가, 같은 조임 원인이 두 번인가, 점수·판정 키가 섞였는가 … → <code>PACKET_VALID</code> / <code>PACKET_INVALID</code>.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node out">
+      <div class="who">packet.json · STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET V1_RC4</div>
+      <h3>관찰만 — 점수 · 방향 · Style ID 없음</h3>
+      <ul class="htree">
+        <li><code>look_frame</code> <span class="scope">SVP-001</span></li>
+        <li><code>component_registry</code> <span class="scope">ref · identity · 앞 상태 · footwear family</span></li>
+        <li><code>relations</code> <span class="scope">layer · securing</span></li>
+        <li><code>colour_composition</code> <span class="scope">field[] · points[] · partial[] · suppressed[] · unreadable[]</span></li>
+        <li><code>upper_realization</code> <span class="scope">governing · relation · shoulder · shape</span></li>
+        <li><code>canonical_exposure</code> · <code>component_fact_pool</code> · <code>common_visibility</code></li>
+        <li><code>dm_evidence</code> <span class="scope">look_components · look_detail_systems · dm_evidence_visibility</span></li>
+        <li><code>request_trace</code> <span class="scope">어느 축이 무엇을 요청했나</span></li>
+      </ul>
+      <p>유효하면 사실을 파라미터 ID 셀(<code>SVP-xxx@cN</code>)로 펼친 <code>run_record</code>도 만듦 — image_hash · prompt_hash · model_id · run_id 포함.</p>
+    </div>
+    <div class="fix" id="i-struct"><b>개선 #13</b>기계적 규칙은 코드로
+      <span class="to">ref 무결성, MULTI 배열, NOT_VISIBLE 객체 모양, pockets[] 형식, 117·118 금지, DMP-1·3 금지, 점수 키 금지는 모두 결정론적이고 변환기 · validator가 이미 검사한다. 출력 JSON Schema(structured output)로 강제하고 프롬프트의 해당 설명(§8a 주석 · §8b · §8c 일부)을 줄이면, 4만 자 중 지각 판단(fit 경계 · 어깨 · 색 standing · 노출)에 주의를 더 줄 수 있다.</span><span class="orig">(원문: “A Present pocket without pockets[] is incomplete.” / “Do NOT emit look_components … and do NOT emit dm_evidence_visibility …; emitting either is a contract violation.”)</span></div>
+  </div>
+
+  <!-- ───────────── 판정 (코드) ───────────── -->
+  <div class="phase"><b>판정</b><h2>Evidence Packet → 방향 → 스타일 아이디 (동결 코드)</h2></div>
+  <p class="trigger">판정 프롬프트는 없습니다. <code>22_FULL_LOOK_STYLE_SCORING_ENGINES</code>의 세 릴리스가 같은 <code>packet</code> · <code>run_record</code>를 받아 축마다 방향 하나를 냅니다(로드할 때 고정 파일 해시를 검사, 어긋나면 예외).</p>
+  <div class="split three">
+    <div class="node rule">
+      <div class="who"><span class="ax ei">EI</span> FLEI_FINAL_V1</div>
+      <h3>EXPRESSIVE · INTROVERT</h3>
+      <p>색 구성(field · point · 대비)과 패턴·그래픽·장식·노출을 근거로. 예: olive field + wine/gold Distinct point → <code>EI-E</code>.</p>
+    </div>
+    <div class="node rule">
+      <div class="who"><span class="ax tc">TC</span> FLTC_FINAL_V1</div>
+      <h3>CLASSIC · TRANSFORMATIVE</h3>
+      <p>제품만(Product-Only): 의복의 비례·구성에서 고전 지지와 이탈을 찾음. 예: Coat <code>SIL-TRUE-OVERSIZED</code> → <code>TC-P1</code>.</p>
+    </div>
+    <div class="node rule">
+      <div class="who"><span class="ax sr">SR</span> FLSR_FINAL_V1</div>
+      <h3>STRUCTURED · RELAXED</h3>
+      <p>governing upper의 relation · shoulder · shape · drop · waist와 조임. 예: Oversized + Extreme + Structured, 몸 통제 없음 → <code>SRB-2or</code>.</p>
+    </div>
+  </div>
+  <div class="arrow"></div>
+  <div class="node out">
+    <div class="who">스타일 아이디 = EI · TC · SR · DM 글자 조합</div>
+    <h3>E/I · T/C · S/R · <span style="color:var(--fail)">D/M</span></h3>
+    <p>엔진이 RESOLVED면 그 글자, 미결이면 양쪽 글자(OR). <b>DM은 Full-Look 엔진이 없어 늘 D 또는 M</b>이라 후보가 최소 2개입니다(예: <code>ETRD</code> · <code>ETRM</code>). 패킷의 <code>dm_evidence</code>는 관찰 결과 탭에서 볼 수 있습니다.</p>
+  </div>
+
+  <!-- ───────────── 개선 항목 ───────────── -->
+  <div class="phase"><b>점검</b><h2>개선 항목 바로가기</h2></div>
+  <p class="trigger">각 항목은 위 흐름에서 대상 단계 바로 아래에 있습니다. #1–#6은 프롬프트 안의 규칙이 서로 어긋나 출력이 실제로 흔들릴 수 있는 곳이고, #7 이후는 정의 누락 · 노이즈 · 운영 항목입니다. 프롬프트는 동결 원문이므로, 고치면 새 버전으로 저장하고 EX-04 12장 재현으로 다시 검증해야 합니다.</p>
+  <ul class="fix-index">
+    <li><a href="#i-part">#1 participates</a></li>
+    <li><a href="#i-stop">#2 비착장 출력</a></li>
+    <li><a href="#i-standing">#3 색 standing</a></li>
+    <li><a href="#i-belt">#4 자기 벨트</a></li>
+    <li><a href="#i-drop">#5 shoulder_drop</a></li>
+    <li><a href="#i-comment">#6 예시 주석</a></li>
+    <li><a href="#i-gov">#7 governing upper</a></li>
+    <li><a href="#i-grammar">#8 grammar</a></li>
+    <li><a href="#i-fit">#9 fit 경계</a></li>
+    <li><a href="#i-dm">#10 축 이름 노출</a></li>
+    <li><a href="#i-noise">#11 노이즈</a></li>
+    <li><a href="#i-cache">#12 캐시</a></li>
+    <li><a href="#i-struct">#13 코드 검사</a></li>
+    <li><a href="#i-gemini">#14 Gemini</a></li>
+  </ul>
+
+  <!-- ───────────── 원문 프롬프트 단락별 요약 ───────────── -->
+  <div class="phase" id="prompt-summary"><b>부록</b><h2>원문 프롬프트 단락별 요약</h2></div>
+  <p class="trigger">full-style-id-extraction이 보내는 관찰 프롬프트(승인 V2, <code>STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2.txt</code>, 39,660자)를 원문의 절 순서대로 요약했습니다. 제목은 원문 절 제목 그대로입니다.</p>
+  <ol class="psum-toc">
+    <li><a href="#p-0">[머리말]</a></li>
+    <li><a href="#p-1">0. ROLE AND LIMITS</a></li>
+    <li><a href="#p-2">1. OBSERVATION STATE ENVELOPE</a></li>
+    <li><a href="#p-3">2. PROCEDURE — ONE INTEGRATED OBSERVATION</a></li>
+    <li><a href="#p-4">3. COMPONENT IDENTITY</a></li>
+    <li><a href="#p-5">4. COLOUR (per component; firewall)</a></li>
+    <li><a href="#p-6">5. STYLE-OWNED RELATIONS (12 Style Vision parameters)</a></li>
+    <li><a href="#p-7">6. ITEM RAW FACTS (26 Item Vision V1_3 facts)</a></li>
+    <li><a href="#p-8">7. UNKNOWN POLICY</a></li>
+    <li><a href="#p-9">8. OUTPUT</a></li>
+    <li><a href="#p-10">8a. EXACT OUTPUT SHAPE</a></li>
+    <li><a href="#p-11">8b. STATE SEMANTICS</a></li>
+    <li><a href="#p-12">8c. OUTPUT FORMAT</a></li>
+    <li><a href="#p-13">8d. COMPONENT IDENTITY VERSUS ATTRIBUTE VISIBILITY</a></li>
+    <li><a href="#p-14">8e. INTEGRATED SELF-BELT</a></li>
+    <li><a href="#p-15">9. FROZEN FULL-LOOK DM EVIDENCE</a></li>
+  </ol>
+  <div class="psum">
+<section class="psec" id="p-0"><h3>[머리말]</h3>
+<ul>
+<li>제목 · 버전(V2, V1에서 §9 한 줄만 바뀜 — DM Evidence Transport V2) · 인벤토리(역사적 41, 실제 추출 37: 네 관찰 그룹, 2개는 pockets[] 안, DM 필드 2개는 조립) · 소비자(통합 추출기)를 밝힘.</li>
+<li>모델에게 필요한 지시는 없음 — 관리용 메타데이터. <a class="issue" href="#i-noise">#11</a></li>
+</ul>
+</section>
+<section class="psec" id="p-1"><h3>0. ROLE AND LIMITS</h3>
+<ul>
+<li>사진 한 장 속 <b>완성된 착장 하나</b>의 원시 물리 관찰자. 몸 위에 보이는 것만 보고함.</li>
+<li>점수 · 순위 · 스타일 판단 · 스타일 방향 · 브랜드 추정 · 보이지 않는 것의 추론 금지.</li>
+<li>파일명 · 캡션 · 이미지 속 글자 · 워터마크 · 메타데이터는 증거가 아님.</li>
+<li>착장 사진이 아니면(플랫레이 · 상품 사진 · 마네킹 · 콜라주) <code>not_a_worn_look</code>을 적고 멈춤. <a class="issue" href="#i-stop">#2</a></li>
+</ul>
+</section>
+<section class="psec" id="p-2"><h3>1. OBSERVATION STATE ENVELOPE (every fact)</h3>
+<ul>
+<li>사실마다 상태 하나: <b>OBSERVED</b>(값 있음) · <b>ABSENT</b>(담는 부분은 보이는데 현상이 없음) · <b>NOT_VISIBLE</b>(가려짐 · 잘림 — limitation 필수) · <b>UNKNOWN</b>(보이지만 확정 불가).</li>
+<li>UNKNOWN을 피하려고 값을 지어내지 않음. NOT_APPLICABLE은 저장 상태가 아님 — 적용되지 않는 사실은 내지 않음.</li>
+</ul>
+</section>
+<section class="psec" id="p-3"><h3>2. PROCEDURE — ONE INTEGRATED OBSERVATION</h3>
+<ul>
+<li>이미지를 <b>한 번</b> 읽고 정리 순서만 G1→G4. 여러 패스가 아니고, 특정 축을 위해 다시 보지 않음.</li>
+<li><b>G1</b> 프레임 판독성 + 참여 물체 등록(<code>c1…</code>, 한 물체 = 한 컴포넌트) + 제외 목록 + 정체. 판독성은 읽는 곳에서 사실마다 기록.</li>
+<li><b>G2</b> 컴포넌트마다 표면을 한 번: 색 → 외관 6사실. DM 시스템도 이 사실로 이름 붙임.</li>
+<li><b>G3</b> 의복마다 구조: 형태 사실, 그리고 어깨 · 앞판 · 포켓 영역을 각각 한 번. 슬릿도 여기서. 제품 구조와 착용 결과는 다른 필드.</li>
+<li><b>G4</b> 입은 상태: 가장 바깥 상의의 relation/shoulder/shape, 레이어 · 조임 관계, 노출, G2 색의 field/point standing. <a class="issue" href="#i-standing">#3</a></li>
+<li>(e) 다른 이미지의 기억이나 패션 지식으로 채우지 않음. 같은 사실의 두 번째 언급은 재사용이지 재관찰이 아님.</li>
+</ul>
+</section>
+<section class="psec" id="p-4"><h3>3. COMPONENT IDENTITY</h3>
+<ul>
+<li>의복은 Item 카테고리 10개만. 맞는 게 없으면(케이프 · 판초 · 브라톱 …) UNKNOWN으로 두고 색 · 외관만 — 가까운 카테고리로 억지로 맞추지 않음.</li>
+<li>액세서리는 family 10개(+ other · UNKNOWN). footwear는 product_family와 조건부 subtype, 다른 family는 확실할 때만 subtype.</li>
+<li>상품 맥락(General / Activewear-Performance)은 내지 않음. 컴포넌트 안에 participation · eligible · excluded 필드를 내지 않음. <a class="issue" href="#i-part">#1</a></li>
+</ul>
+</section>
+<section class="psec" id="p-5"><h3>4. COLOUR (per component; firewall)</h3>
+<ul>
+<li>색 영역 = carrier + family(21) + lightness + effect + standing(field / point + 점이면 contrast).</li>
+<li>부품 색(단추 · 버클 · 무늬색 · 끈 · 패널)은 같은 컴포넌트의 point — 별도 컴포넌트가 아님.</li>
+<li>금속 방화벽: 금 · 은은 가진 물체에 metallic로. 한 물리 현상을 두 carrier에 중복하지 않음.</li>
+<li>피부 · 머리 · 배경은 색 영역이 아님. 그림자 · 반사 · 작은 면으로 못 읽으면 unreadable.</li>
+</ul>
+</section>
+<section class="psec" id="p-6"><h3>5. STYLE-OWNED RELATIONS (12 Style Vision parameters)</h3>
+<ul>
+<li>SVP-001–012의 질문 · 값 · 적용 · 상태를 정의: 프레임, 정체, 세분, 앞 상태, 색, 색 standing, 최종 상의 relation · shoulder · shape, 레이어, 조임, 노출.</li>
+<li>Rules: 앞 상태는 앞트임 의복만. 조임은 실제로 끌어당길 때만 OBSERVED, 얹혀만 있으면 ABSENT. 자기 끈 벨트는 own device이고 별도 컴포넌트가 아님. <a class="issue" href="#i-belt">#4</a></li>
+<li>최종 상의 3개는 <b>가장 바깥 상의</b>를 입은 상태로, 그 의복의 fit · shoulder_structure와 별개. <a class="issue" href="#i-gov">#7</a></li>
+<li>노출: Class A 신체 부위 / Class B 설계된 개구부. 부위 ≠ 메커니즘 — 라벨(미니 · 홀터 · 슬릿 · 민소매)만으로 부위를 정하지 않고 실제로 보이는 피부만. 크기 · 정도는 판단하지 않음. 실현 하나 = 기록 하나.</li>
+</ul>
+</section>
+<section class="psec" id="p-7"><h3>6. ITEM RAW FACTS (26 Item Vision V1_3 facts reused verbatim)</h3>
+<ul>
+<li>카테고리별 적용성 표 — 표에 있는 사실만 냄. 액세서리 · UNKNOWN 물체는 외관 6사실만.</li>
+<li>SVP-101–126의 값 도메인(카테고리별 fit · length · silhouette 포함). <a class="issue" href="#i-grammar">#8</a> <a class="issue" href="#i-fit">#9</a></li>
+<li>어깨는 한 번 보고 structure · drop · span · connection을 답하고, 최종 상의 shoulder도 그 관찰에서. structure와 drop은 서로에게서 유도하지 않음. 가려지면 NOT_VISIBLE. <a class="issue" href="#i-drop">#5</a></li>
+<li>벨트 방화벽: 자기 벨트는 attachment Belt, 별도 벨트는 belt 컴포넌트.</li>
+<li>포켓: pockets[]가 유일한 형태 저장소 — 묶음마다 한 항목, location 네 토큰, 못 읽으면 항목은 남기고 state + null. 117 · 118을 따로 내지 않음.</li>
+<li>슬릿: Skirt · Dress만. 분명히 보일 때만 Present, 확신할 때만 None, 그 밖은 NOT_VISIBLE / UNKNOWN.</li>
+<li>조건부: sleeve_volume(소매 있음), closure_type(앞트임 있음, Jacket · Coat는 늘), waist_definition(Cropped · Waist Length가 아닌 Jacket · Coat · Dress · Jumpsuit).</li>
+</ul>
+</section>
+<section class="psec" id="p-8"><h3>7. UNKNOWN POLICY</h3>
+<ul>
+<li>UNKNOWN은 정당한 답 — 보이지만 해상도 · 포즈 · 조명으로 확정할 수 없을 때. 가려지면 NOT_VISIBLE, 보이는데 없으면 ABSENT.</li>
+<li>안전하려고 읽을 수 있는 사실을 UNKNOWN으로 낮추지 않고, 완결하려고 추측을 OBSERVED로 올리지 않음.</li>
+</ul>
+</section>
+<section class="psec" id="p-9"><h3>8. OUTPUT</h3>
+<ul>
+<li>JSON 객체 하나(frame · objects · front_state · layer_relations · securing_relations · colour_areas · upper · exposure_supplement · facts). 설명 · 마크다운 · 점수 · 방향 · 판정 · 스타일 이름 · 축 글자 · 숫자 평가 금지.</li>
+</ul>
+</section>
+<section class="psec" id="p-10"><h3>8a. EXACT OUTPUT SHAPE</h3>
+<ul>
+<li>각 블록의 정확한 키와 값 모양. objects에 participates · product_family · subtype · attached_to · why.</li>
+<li>securing_relations는 별도 장치형과 own-device형 두 모양. colour_areas는 읽은 색 / 못 읽은 색 두 모양.</li>
+<li>facts는 ref → 사실 → 값 · 배열 · "ABSENT" · "UNKNOWN" · NOT_VISIBLE 객체 · pocket 객체.</li>
+<li>dm_subsystem에는 look_detail_systems만. 블록 끝마다 설명 주석이 붙어 있음. <a class="issue" href="#i-comment">#6</a></li>
+</ul>
+</section>
+<section class="psec" id="p-11"><h3>8b. STATE SEMANTICS</h3>
+<ul>
+<li>"None" 토큰(asymmetry · pocket · shoulder_drop · collar · slit · shoulder_structure)은 OBSERVED이지 ABSENT가 아님.</li>
+<li>ABSENT는 None 토큰이 없는 사실(외관 6 · 노출)에만. 내지 않은 사실은 UNKNOWN으로 읽힘 — 적용되는 사실은 모두 냄.</li>
+<li>material · surface · decorative_detail · attachment는 MULTI(배열). Present 포켓은 pockets[]가 있어야 완결.</li>
+<li>"black은 dark로 읽는다"(CDM-08)는 철회됨 — lightness는 보이는 대로.</li>
+</ul>
+</section>
+<section class="psec" id="p-12"><h3>8c. OUTPUT FORMAT</h3>
+<ul>
+<li>날 텍스트 JSON: 첫 글자 <code>{</code>, 마지막 글자 <code>}</code>. 코드 펜스 · 라벨 · 앞뒤 설명 · 감싼 객체 · 주석 금지. 객체 정확히 하나.</li>
+</ul>
+</section>
+<section class="psec" id="p-13"><h3>8d. COMPONENT IDENTITY VERSUS ATTRIBUTE VISIBILITY</h3>
+<ul>
+<li>정체는 <b>보이는 부분</b>으로 정함(립 니트 터틀넥 칼라 → Sweater, 직물 칼라 + 단추 플래킷 → Shirt). 대부분 가려져도 OBSERVED.</li>
+<li>가려진 속성은 정체를 낮추지 않음 — 각 사실을 자기 상태(NOT_VISIBLE + limitation, 구분 안 되는 소재 · 표면은 UNKNOWN)로.</li>
+<li>정체 UNKNOWN은 어느 카테고리에도 맞지 않거나 두 카테고리가 똑같이 지지될 때만. "조금만 보임"은 이유가 아님.</li>
+</ul>
+</section>
+<section class="psec" id="p-14"><h3>8e. INTEGRATED SELF-BELT</h3>
+<ul>
+<li>의복에 속한 벨트 · 타이 · 새시(자기 고리 · 봉제 · 자기 여밈 끈)는 그 의복의 일부 — objects · 색 carrier · 액세서리가 아님. 색 · 소재가 달라도 마찬가지.</li>
+<li>자기 버클이나 독립된 띠가 있는 별도 물체일 때만 belt 컴포넌트.</li>
+<li>기록: attachment Belt, 색은 그 의복의 point(part attachment/Belt), waist_definition Cinched(끌어당김) · Defined(조이지 않고 형태만) · Undefined.</li>
+<li>조임은 securing_relations에 own-device 항목 하나로 한 번만. SVP-011의 "own belts → SVP-119"는 이 규칙으로 읽음. <a class="issue" href="#i-belt">#4</a></li>
+</ul>
+</section>
+<section class="psec" id="p-15"><h3>9. FROZEN FULL-LOOK DM EVIDENCE</h3>
+<ul>
+<li>이미 관찰한 G2 표면 사실과 G4 관계로만 디자인 디테일 시스템을 기록. 다시 보지 않고, 컴포넌트를 다시 식별하지 않고, DM 점수 · 방향 · 강도를 정하지 않음. <a class="issue" href="#i-dm">#10</a></li>
+<li>카테고리 · 소재 이름 · 공정 이름(워싱 · 염색 · 디스트레스) · 액세서리 유무 · 개수로 디테일을 추론하지 않음.</li>
+<li>시스템마다 carrier_refs · family A–J · (H면) relational_form · size · contrast · position(각 state) · repeated_units. <code>[]</code>는 "관찰한 것이 없음"이지 "디테일 없음"이 아님.</li>
+<li>look_components · dm_evidence_visibility는 내지 않음(코드가 조립) — 내면 계약 위반.</li>
+<li>family A–J 정의와 "그 자체로는 디테일이 아닌 것" 목록(광택 · 투명 · 노출 · 슬릿 · 실루엣 · 레이어링 · 개수 · 평범한 색 차이 …).</li>
+</ul>
+</section>
+  </div>
+
+  <footer>
+    원본: <code>business_logic/FULL_LOOK_VISION_EXTRACTOR_FINAL_20261017/…/02_PROMPT/STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2.txt</code> ·
+    파이프라인: <code>lib/full-style-ex/pipeline.cjs</code> · <code>app/api/full-style-id-extraction/route.ts</code> ·
+    관련 문서: <code>docs/style-vision-element-extraction.html</code>
+  </footer>
+</main>
+</body>
+</html>
