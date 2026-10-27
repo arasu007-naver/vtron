@@ -39,6 +39,7 @@ create table public.style_id_job (
                     check (status in ('queued','running','succeeded','failed','dead')),
   image_path        text not null,                 -- Storage 비공개 버킷 경로
   image_sha256      text not null,                 -- 결과 재사용 키(2단계)
+  image_deleted_at  timestamptz,                   -- Storage 이미지를 지운 시각. 찍혀 있으면 재실행 불가
   product_name      text,
   product_category  text,
   attempts          int  not null default 0,
@@ -59,7 +60,10 @@ create index style_id_job_claim_idx on public.style_id_job (status, next_run_at)
 create index style_id_job_business_idx on public.style_id_job (business_user_id, created_at desc);
 ```
 
-- 이미지는 별도 비공개 Storage 버킷에 둔다. 작업이 끝나고 보존 기간(예: 7일)이 지나면 지운다.
+- 이미지는 별도 비공개 Storage 버킷에 둔다.
+  - `succeeded` · `failed`가 되면 즉시 지운다.
+  - `dead`는 관리자가 다시 실행할 수 있도록 보존 기간(`STYLE_ID_DEAD_IMAGE_RETENTION_DAYS`, 기본 7일) 동안 남긴다. 워커가 시작할 때와 1시간마다(`STYLE_ID_PURGE_INTERVAL_MS`) `claim_dead_style_id_job_images`로 기간이 지난 이미지를 지운다. 지운 뒤에는 재실행할 수 없다.
+- `requeue_style_id_job(id, max_attempts?)` 함수: `dead`이고 이미지가 남아 있을 때만 `queued`로 되돌리고 `attempts`를 0으로 만든다. 작업이 없으면 `P0002`, `dead`가 아니거나 이미지가 이미 지워졌으면 `55000` 오류를 낸다.
 - `claim_style_id_jobs(worker text, n int, lease interval)` 함수:
   - `status = 'queued' and next_run_at <= now()`인 작업과, `status = 'running' and locked_until < now()`(lease 만료)인 작업을 대상으로 한다.
   - `FOR UPDATE SKIP LOCKED`로 업체별로 번갈아(fair share) n개를 골라 `running`, `locked_by`, `locked_until = now() + lease`, `attempts + 1`로 바꾸고 돌려준다.
@@ -73,7 +77,7 @@ create index style_id_job_business_idx on public.style_id_job (business_user_id,
 | running | failed | 재시도해도 결과가 같은 오류(판정 실패 · 입력 오류) |
 | running | dead | `attempts >= max_attempts` |
 | running | running(재claim) | lease 만료(워커 중단). 다른 워커가 이어받음 |
-| dead | queued | 관리자가 수동 재실행 |
+| dead | queued | 관리자가 수동 재실행(`attempts` 초기화). 이미지가 남아 있을 때만 |
 
 ## 5. API
 인증은 기존 `withBusinessApi` / `authenticateBusiness`(Bearer `stmx_live_…`)를 그대로 쓰고, 호출마다 `api_call_log`에 남긴다.
@@ -111,10 +115,10 @@ create index style_id_job_business_idx on public.style_id_job (business_user_id,
 ### 6.1 오류 분류와 재시도
 | 오류 | 처리 |
 |---|---|
-| Anthropic 429/529, 5xx, 타임아웃, 네트워크 | `queued`로 되돌리고 지수 백오프 + 지터로 `next_run_at`을 미룸(30초 → 1분 → 2분 → 4분 …, 상한 30분). `retry-after` 헤더가 있으면 따름 |
+| Anthropic 429/529, 5xx, 타임아웃, 네트워크 | `queued`로 되돌리고 지수 백오프 + 지터로 `next_run_at`을 미룸(30초 → 1분 → 2분 → 4분 …, 상한 15분). `retry-after` 헤더가 있으면 따름 |
 | 의복 미검출 등 판정 실패(동기 API의 422) | 다시 해도 같으므로 재시도 없이 `failed` |
 | 이미지 손상 · 형식 오류 | `failed` |
-| `CLAUDE_API_KEY` 없음 등 설정 오류 | 작업은 `queued`로 두고 워커가 경보를 내며 대기(작업 자체의 잘못이 아님) |
+| `CLAUDE_API_KEY` 없음 | 워커가 시작할 때 오류를 남기고 종료(`exit 1`)해 설정 실수를 바로 드러낸다. 작업은 `queued`로 남아 유실되지 않는다 |
 | `attempts >= max_attempts` | `dead`. 사유와 함께 보관하고 관리자가 재실행 가능 |
 
 ## 7. 2단계 이후
@@ -132,4 +136,5 @@ create index style_id_job_business_idx on public.style_id_job (business_user_id,
 - Anthropic 429를 흉내 내면 백오프로 재시도해 결국 성공하고, 판정 실패는 재시도 없이 `failed`가 된다.
 - 업체 미완료 작업이 상한을 넘으면 `429` + `Retry-After`를 받는다.
 - 동기 엔드포인트가 동시 실행 상한을 넘으면 `429`를 돌려준다.
+- `dead` 작업은 보존 기간 동안 이미지가 남아 재실행할 수 있고, 기간이 지나면 이미지가 지워진다.
 - lint와 단위 테스트(오류 분류, 백오프 계산)가 통과한다.
