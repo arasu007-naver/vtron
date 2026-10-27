@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>의상 비전 요소 추출 흐름</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #c9c9c3;
+    --input: #2f6fd6; --input-bg: #eaf1fc;
+    --out: #5b5b57; --out-bg: #efefec;
+    --model: #c2622e; --model-bg: #fbeee6;
+    --rule: #2c8a5a; --rule-bg: #e6f4ec;
+    --color: #8a4fc2; --color-bg: #f3ebfb;
+    --fail: #b8322f; --fail-bg: #fbeaea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161615; --surface: #1f1f1d; --text: #ecebe6; --muted: #9c9b95; --line: #44443f;
+      --input: #7aa7f0; --input-bg: #1b2738;
+      --out: #b7b6b0; --out-bg: #2a2a27;
+      --model: #e9935f; --model-bg: #35241a;
+      --rule: #63c793; --rule-bg: #173026;
+      --color: #c39af0; --color-bg: #2a1f38;
+      --fail: #ec7c78; --fail-bg: #3a1f1e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161615; --surface: #1f1f1d; --text: #ecebe6; --muted: #9c9b95; --line: #44443f;
+    --input: #7aa7f0; --input-bg: #1b2738;
+    --out: #b7b6b0; --out-bg: #2a2a27;
+    --model: #e9935f; --model-bg: #35241a;
+    --rule: #63c793; --rule-bg: #173026;
+    --color: #c39af0; --color-bg: #2a1f38;
+    --fail: #ec7c78; --fail-bg: #3a1f1e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
+  main { max-width: 900px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lede { color: var(--muted); margin: 0 0 20px; }
+  code { font: 12.5px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; background: var(--out-bg); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0 0 28px; font-size: 13px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; display: inline-block; }
+
+  .phase { margin: 36px 0 12px; display: flex; align-items: baseline; gap: 10px; }
+  .phase b { font-size: 12px; color: var(--surface); background: var(--text); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+  .phase h2 { font-size: 18px; margin: 0; }
+  .trigger { color: var(--muted); font-size: 13px; margin: -6px 0 12px; }
+
+  .flow { display: flex; flex-direction: column; align-items: stretch; }
+  .node {
+    position: relative; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--out);
+    border-radius: 8px; padding: 10px 14px;
+  }
+  .node .who { font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--out); }
+  .node h3 { font-size: 15px; margin: 2px 0 4px; }
+  .node p, .node ul { margin: 4px 0 0; font-size: 13.5px; color: var(--muted); }
+  .node ul { padding-left: 18px; }
+  .node li { margin: 2px 0; }
+  .node li b, .node p b { color: var(--text); font-weight: 600; }
+  .input { border-left-color: var(--input); background: var(--input-bg); } .input .who { color: var(--input); }
+  .out   { border-left-color: var(--out);   background: var(--out-bg); }   .out .who   { color: var(--out); }
+  .model { border-left-color: var(--model); background: var(--model-bg); } .model .who { color: var(--model); }
+  .rule  { border-left-color: var(--rule);  background: var(--rule-bg); }  .rule .who  { color: var(--rule); }
+  .color { border-left-color: var(--color); background: var(--color-bg); } .color .who { color: var(--color); }
+
+  .arrow { height: 22px; position: relative; }
+  .arrow::before { content: ""; position: absolute; left: 50%; top: 2px; bottom: 6px; border-left: 2px solid var(--line); }
+  .arrow::after { content: ""; position: absolute; left: calc(50% - 5px); bottom: 1px; border: 5px solid transparent; border-top: 6px solid var(--line); border-bottom: 0; }
+
+  .decision {
+    background: var(--surface); border: 1.5px dashed var(--line); border-radius: 8px; padding: 10px 14px;
+    display: grid; grid-template-columns: 1fr; gap: 6px;
+  }
+  .decision .q { font-weight: 600; font-size: 14px; }
+  .decision .q::before { content: "◆ "; color: var(--muted); }
+  .branch { font-size: 13.5px; }
+  .branch .tag { display: inline-block; margin-right: 8px; font-size: 11.5px; font-weight: 600; padding: 1px 7px; border-radius: 4px; background: var(--rule-bg); color: var(--rule); }
+  .branch .tag.no { background: var(--fail-bg); color: var(--fail); }
+  .branch .tag.alt { background: var(--out-bg); color: var(--out); }
+  .branch .tag.warn { background: var(--model-bg); color: var(--model); }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .split.three { grid-template-columns: 1fr 1fr 1fr; }
+  .split .lane-title { font-size: 12px; color: var(--muted); margin: 0 0 6px; }
+  @media (max-width: 720px) { .split, .split.three { grid-template-columns: 1fr; } }
+
+  .issue {
+    display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 999px;
+    background: var(--fail-bg); color: var(--fail); text-decoration: none; margin-left: 4px; vertical-align: 1px; white-space: nowrap;
+  }
+  .issue:hover { text-decoration: underline; }
+
+  /* 상태 결정 트리 */
+  .tree { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 8px; }
+  .tree svg { display: block; width: 100%; height: auto; }
+  .tree .box { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+  .tree .q { fill: var(--surface); stroke: var(--text); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .tree .leaf-ok { fill: var(--rule-bg); stroke: var(--rule); stroke-width: 1.5; }
+  .tree .leaf-none { fill: var(--model-bg); stroke: var(--model); stroke-width: 1.5; }
+  .tree .leaf-no { fill: var(--fail-bg); stroke: var(--fail); stroke-width: 1.5; }
+  .tree .leaf-alt { fill: var(--out-bg); stroke: var(--out); stroke-width: 1.5; }
+  .tree text { fill: var(--text); font: 13px -apple-system, "Segoe UI", "Malgun Gothic", sans-serif; }
+  .tree text.mono { font: 600 12.5px ui-monospace, Consolas, monospace; }
+  .tree text.lbl { fill: var(--muted); font-size: 11.5px; }
+  .tree line, .tree path { stroke: var(--line); stroke-width: 1.8; fill: none; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; background: var(--out-bg); }
+  td:first-child { white-space: nowrap; font-weight: 600; }
+  tr:last-child td { border-bottom: 0; }
+  .table-wrap { overflow-x: auto; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+  pre.json { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow: auto; font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
+
+  /* 개선 항목 — 대상 단계 바로 아래에 붙는다 */
+  .fix {
+    margin-top: 8px; background: var(--fail-bg); border: 1px solid var(--fail); border-left-width: 4px;
+    border-radius: 6px; padding: 7px 11px; font-size: 13px; line-height: 1.5; color: var(--text);
+  }
+  .fix > b { color: var(--fail); margin-right: 6px; white-space: nowrap; }
+  .fix .to { display: block; margin-top: 2px; color: var(--muted); }
+  .fix .to::before { content: "→ 개선: "; color: var(--fail); font-weight: 600; }
+  .fix + .fix { margin-top: 6px; }
+  .fix-index { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .fix-index a { display: inline-block; font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--fail-bg); color: var(--fail); text-decoration: none; }
+  .fix-index a:hover { text-decoration: underline; }
+
+  @media print {
+    @page { size: A4; margin: 14mm 12mm; }
+    :root { color-scheme: light; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    main { max-width: none; padding: 0; }
+    .node, .decision, .tree, tr, .phase, .issues li { break-inside: avoid; }
+    .phase { break-after: avoid; }
+  }
+  footer { margin-top: 40px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>의상 비전 요소 추출 흐름</h1>
+  <p class="lede">
+    <code>producer_prompt_v1.js</code>(STMX GARMENT-LEVEL VISION OBSERVER)가 상품 이미지 한 장을 받아 의복별 관찰 JSON을 내기까지
+    모델에게 요구하는 판단 순서입니다. 비전 호출은 <b>한 번</b>이고, 아래 단계는 그 호출 안에서 모델이 따라야 하는 순서입니다.
+    프롬프트 점검에서 찾은 개선 항목은 빨간 상자로, 해당 단계 바로 아래에 붙여 두었습니다.
+  </p>
+  <div class="fix" id="i-noise"><b>개선 #13</b>프롬프트 전체 — 노이즈와 중복
+    <span class="to">"Frozen-40"·"37 parameters"처럼 서로 다른 개수 표기를 없애고, record/target 용어를 하나로 맞춘다. 내부 거버넌스 메모(SR FROZEN 2026-08-21, CEO 2026-09-03, Run-3, "Real failures" 등)는 changelog로 옮기고, JSON 템플릿의 <code>//</code> 주석을 뺀다. POCKET·SV-5 규칙이 3~4번 반복되는 것은 한 곳으로 합친다.</span></div>
+
+  <div class="legend">
+    <span><i style="border-color:var(--input);background:var(--input-bg)"></i>입력</span>
+    <span><i style="border-color:var(--model);background:var(--model-bg)"></i>모델 관찰 단계</span>
+    <span><i style="border-color:var(--rule);background:var(--rule-bg)"></i>게이트·규칙</span>
+    <span><i style="border-color:var(--color);background:var(--color-bg)"></i>색상 패스</span>
+    <span><i style="border-color:var(--out);background:var(--out-bg)"></i>출력</span>
+  </div>
+
+  <!-- ───────────── 0. 입력 ───────────── -->
+  <div class="phase"><b>입력</b><h2>호출에 들어가는 것</h2></div>
+  <div class="split">
+    <div class="node input">
+      <div class="who">IMAGE</div>
+      <h3>상품 리스팅 이미지 1장</h3>
+      <p>착용 사진, 플랫레이, 행거, 마네킹, 누끼 모두 가능. 한 장에 의복이 여러 벌 있을 수 있음(여러 사람이 아니라 여러 아이템).</p>
+    </div>
+    <div class="node input">
+      <div class="who">PRODUCT CONTEXT</div>
+      <h3>상품명 · 카테고리</h3>
+      <p>예: <code>PICASSO 발수 패딩</code> / <code>패션의류&gt;여성의류&gt;아우터&gt;패딩</code>. <b>주 타깃 선택에만</b> 쓰고 관찰값에는 영향을 주면 안 됨. <a class="issue" href="#i-ctx">#14</a></p>
+      <div class="fix" id="i-ctx"><b>개선 #14</b>PRODUCT CONTEXT 위치
+        <span class="to">지금은 프롬프트 맨 끝에 있어 STAGE 1(타깃 식별)이 끝난 뒤에야 읽힌다. 타깃 식별 단계 옆으로 옮긴다.</span></div>
+    </div>
+  </div>
+  <div class="arrow"></div>
+  <div class="node model">
+    <div class="who">SYSTEM 역할</div>
+    <h3>의복 단위 관찰자 — 판단하지 않고 관찰만</h3>
+    <ul>
+      <li>스타일·조화·추천·점수·SR/TC/DM/EI를 <b>출력하지 않음</b> <a class="issue" href="#i-dm">#12</a></li>
+      <li>정해진 canonical 토큰만 사용(동의어·대소문자 변형 금지). 증거는 짧은 시각 단서로만.</li>
+      <li>관찰끼리 서로를 근거로 추론하지 않음 <a class="issue" href="#i-reason">#11</a></li>
+    </ul>
+    <div class="fix" id="i-dm"><b>개선 #12</b>DM 노출
+      <span class="to">DM을 출력하지 말라면서 출력 키 이름이 <code>dm_designed_detail_evidence</code>이다. 중립적인 이름(<code>designed_detail_evidence</code>)으로 바꾼다.</span></div>
+    <div class="fix" id="i-reason"><b>개선 #11</b>"no reasoning chains" 문구
+      <span class="to">"WORK IN EXPLICIT STAGES", "sweep first, decide second"와 충돌한다. 원래 뜻대로 "파라미터끼리 서로를 근거로 추론하지 말 것"으로 바꿔 쓴다.</span></div>
+  </div>
+
+  <!-- ───────────── STAGE 1 ───────────── -->
+  <div class="phase"><b>STAGE 1</b><h2>타깃 식별</h2></div>
+  <p class="trigger">이미지 안의 의복을 하나씩 찾아 identity / readability / prominence를 정합니다.</p>
+  <div class="flow">
+    <div class="decision">
+      <div class="q">의복인가?</div>
+      <div class="branch"><span class="tag">YES</span>T-Shirt · Shirt · Sweater · Sweatshirt · Jacket · Coat · Trouser · Skirt · Dress · Jumpsuit 후보</div>
+      <div class="branch"><span class="tag no">NO</span>신발·가방·주얼리·벨트(액세서리)·안경·모자·장갑·스카프 → 타깃에서 제외, 관찰 없음</div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">C2 · IDENTITY</div>
+      <h3>독립된 의복으로 식별되는가 — <code>identity.value</code> true/false</h3>
+      <p>아이템을 합치지 않고, 보이지 않는 의복을 추정하지 않음.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="decision">
+      <div class="q">C3 · 의복 전체 형태(morphology)를 이미지에서 재구성할 수 있는가?</div>
+      <div class="branch"><span class="tag">RECONSTRUCTABLE</span><code>value: true</code> — 끝단이 잘려도 몸판의 연속 구간·볼륨·드레이프가 읽히면 해당 (예2: 밑단이 잘린 드레스)</div>
+      <div class="branch"><span class="tag no">NOT_RECONSTRUCTABLE</span><code>value: false</code> — 허리·힙 하드웨어만 보이는 바지(예1), 아우터에 가려진 이너(예3), 고정부(허리·서스펜션)가 가려져 실루엣을 끝까지 따라갈 수 없는 경우</div>
+      <div class="branch"><span class="tag alt">limitation</span>설명용일 뿐 결정권 없음: <code>TERMINAL_REGION_CROPPED</code> · <code>FRAGMENTARY_VISIBILITY</code> · <code>OCCLUDED_BY_OTHER_GARMENT</code> · <code>CONTINUOUS_STRUCTURE_VISIBLE</code></div>
+      <div class="branch"><span class="tag warn">자기 일관성</span>스스로 "추적 불가"라고 써 놓고 RECONSTRUCTABLE로 결론 내면 안 됨</div>
+    </div>
+    <div class="arrow"></div>
+    <div class="split">
+      <div class="node rule">
+        <div class="who">PROMINENCE</div>
+        <h3>dominant / secondary / minor</h3>
+        <p>장면 안에서의 역할일 뿐, 대상 여부를 정하지 않음.</p>
+      </div>
+      <div class="node rule">
+        <div class="who">PRODUCT MATCH</div>
+        <h3>상품 컨텍스트로 판매 상품을 특정할 수 있는가</h3>
+        <p>특정되면 그 의복만 <code>dominant</code> + <code>product_match: true</code>. 후보가 없거나 둘 이상이면 아무에게도 붙이지 않음.</p>
+      </div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node out">
+      <div class="who">ELIGIBLE TARGET</div>
+      <h3>이후 단계는 "eligible target"마다 수행 <a class="issue" href="#i-elig">#7</a></h3>
+      <p>NOT_RECONSTRUCTABLE 타깃에 무엇을 내보낼지는 프롬프트에 정의돼 있지 않음.</p>
+      <div class="fix" id="i-elig"><b>개선 #7</b>eligible target 정의 없음
+        <span class="to">앞에서는 "eligibility는 downstream이 결정한다"고 한다. 예: "basis=NOT_RECONSTRUCTABLE이면 identity·readability·category만 내보내고 observations·color는 생략"처럼 출력 범위를 명시한다.</span></div>
+    </div>
+  </div>
+
+  <!-- ───────────── STAGE 2-A 카테고리 ───────────── -->
+  <div class="phase"><b>STAGE 2 · A</b><h2>카테고리 합성</h2></div>
+  <p class="trigger">특징 하나가 카테고리를 정하지 않습니다. 몸판 원단·구성·거동·트림·착용 역할을 함께 봅니다.</p>
+  <div class="flow">
+    <div class="node rule">
+      <div class="who">OUTERWEAR HEM-FIRST</div>
+      <h3>아우터 후보면 밑단 위치부터 읽음 (순환 판단 금지)</h3>
+      <p>① 밑단 위치 → ② 신체 구간(허리/힙/허벅지/무릎/발목) → ③ Jacket·Coat 길이 도메인 적용 → ④ 전체 구성 확인 → ⑤ 카테고리 확정. 무릎 근처 밑단을 "Jacket이니까 Hip Length"로 끌어올리면 안 됨.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="split three">
+      <div class="node rule">
+        <div class="who">KNIT-BODY</div>
+        <p>니트 몸판 + 니트 트림이면 지퍼 가디건이라도 <code>Sweater</code></p>
+      </div>
+      <div class="node rule">
+        <div class="who">SWEAT-BODY</div>
+        <p>스웨트·플리스 몸판이면 후드 집업이라도 <code>Sweatshirt</code></p>
+      </div>
+      <div class="node rule">
+        <div class="who">OUTERWEAR-COLUMN</div>
+        <p>스스로 형태를 유지하는 무거운 롱 아우터면 민소매라도 <code>Coat</code>. 몸에 바로 입는 부드러운 원피스는 <code>Dress</code></p>
+      </div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">SHIRT vs JACKET</div>
+      <h3>셔츠 칼라라도 겉에 걸치는 오버셔츠·셔켓·사파리는 <code>Jacket</code></h3>
+    </div>
+    <div class="arrow"></div>
+    <div class="decision">
+      <div class="q">카테고리가 시각 증거로 확정되는가?</div>
+      <div class="branch"><span class="tag">OBSERVED</span>10개 토큰 중 정확히 1개 + 구성 단서 증거 ≥ 2개, <code>product_context</code>(General / Activewear-Performance) <a class="issue" href="#i-schema">#6</a></div>
+      <div class="branch"><span class="tag no">UNKNOWN</span>범용 9개만 관찰: material · surface · pattern · graphic · pocket · decorative_detail · attachment · asymmetry · exposure_opening</div>
+      <div class="branch"><span class="tag alt">빈틈</span>패딩 조끼·탱크톱·블라우스·반바지 등 매핑 규칙 없음 <a class="issue" href="#i-vest">#10</a></div>
+      <div class="fix" id="i-vest"><b>개선 #10</b>카테고리 매핑 공백
+        <span class="to">패딩 조끼(Jacket + Sleeveless인지), 탱크톱·캐미솔, 블라우스, 바디수트, 반바지의 카테고리를 정한다. material <code>Padding</code>(충전재)을 겉감 <code>Synthetic</code>과 함께 낼지 기준도 정한다. 지금 상품(패딩)에서 결과가 매번 갈릴 수 있다.</span></div>
+      <div class="fix"><b>개선 #6</b>product_context 출력 위치
+        <span class="to">값 정의는 있지만 JSON 어디에 넣는지 없다. <code>category.product_context</code> 등 위치를 OUTPUT 템플릿에 넣는다. (보조 실현 필드와 같은 문제 — STAGE 2·E 참고)</span></div>
+    </div>
+  </div>
+
+  <!-- ───────────── STAGE 2-B 적용성 ───────────── -->
+  <div class="phase"><b>STAGE 2 · B</b><h2>적용성 결정 — 어떤 키를 낼 것인가</h2></div>
+  <p class="trigger">키를 생략하는 것은 "해당 없음"을 뜻하는 계약입니다. "안 보임"을 생략으로 표현하면 안 됩니다.</p>
+  <div class="flow">
+    <div class="split">
+      <div class="node rule">
+        <div class="who">NOT-APPLICABLE</div>
+        <h3>카테고리별 금지 키 → 키 자체를 생략</h3>
+        <p>ABSENT·None·N/A·null로도 내보내면 안 됨. 예: Trouser의 <code>closure_type</code>, Jacket의 <code>shoulder_span</code>, 상의의 <code>silhouette</code>.</p>
+      </div>
+      <div class="node rule">
+        <div class="who">REQUIRED KEYS</div>
+        <h3>카테고리별 필수 키 → 반드시 존재</h3>
+        <p>없는 특징도 None/ABSENT로 답함. 개수: T-Shirt·Shirt 19 · Sweater·Sweatshirt 20 · Jacket·Coat·Jumpsuit 21 · Trouser·Skirt 14 · Dress 23.</p>
+      </div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">CONDITIONAL TRIGGERS</div>
+      <h3>부모 관찰이 켜면 반드시 따라 나오는 키</h3>
+      <ul>
+        <li><code>front_opening_extent</code> = Partial/Full → <code>closure_type</code> (Jacket/Coat는 항상 필수) <a class="issue" href="#i-closure">#2</a></li>
+        <li><code>sleeve</code> ≠ Sleeveless → <code>cuff_type</code>, <code>sleeve_volume</code></li>
+        <li><code>cuff_type</code> ≠ None → <code>cuff_scale</code> (None이면 키 생략)</li>
+        <li><code>collar</code> ≠ None → <code>collar_scale</code></li>
+        <li>스트랩·스트랩리스·홀터·원숄더가 보이면 → <code>shoulder_connection</code> <a class="issue" href="#i-shoulder">#4</a></li>
+        <li><code>waist_definition</code>: 게이트1 Jacket/Coat/Dress/Jumpsuit · 게이트2 Jacket이 Cropped/Waist Length면 제외 <a class="issue" href="#i-waist">#3</a></li>
+      </ul>
+      <div class="fix" id="i-closure"><b>개선 #2</b>앞트임 없는 아우터의 closure_type
+        <span class="to">Jacket/Coat에서는 필수인데 값 도메인에 None이 없어, 앞트임이 없는 아노락(<code>front_opening_extent=None</code>)에 쓸 정상 답이 없다. 아우터에서도 Partial/Full일 때만 쓰는 조건부 키로 바꾸거나, 이 경우 ABSENT를 쓴다고 명시한다.</span></div>
+      <div class="fix" id="i-waist"><b>개선 #3</b>waist_definition 필수 여부 불일치
+        <span class="to">게이트 2에서 Coat/Dress/Jumpsuit는 항상 대상이고 최종 스윕 (7)도 키를 요구하는데, REQUIRED KEYS 목록에는 없다. Coat/Dress/Jumpsuit의 필수 목록에 넣고 Jacket만 조건부로 남긴다.</span></div>
+      <div class="fix" id="i-shoulder"><b>개선 #4</b>스트랩리스·민소매 드레스의 shoulder_drop / shoulder_structure
+        <span class="to">Dress에서 둘 다 필수인데 판단할 어깨선이 없다. 그러면 <code>None</code>이 "확인했더니 없음"이 아니라 "해당 없음"으로 오염된다. <code>shoulder_connection</code>이 Strapless·Halter·One Shoulder·Strap이면 키를 생략하는 규칙을 둔다.</span></div>
+    </div>
+  </div>
+
+  <!-- ───────────── STAGE 2-C 상태 결정 ───────────── -->
+  <div class="phase"><b>STAGE 2 · C</b><h2>파라미터마다 상태 결정</h2></div>
+  <p class="trigger">적용 대상인 모든 키에 대해 같은 트리를 탑니다. 보이지 않음 ≠ 판단 불가 ≠ 없음.</p>
+  <div class="tree">
+    <svg viewBox="0 0 860 330" role="img" aria-label="상태 결정 트리">
+      <!-- 연결선 -->
+      <path d="M430 46 V70 H120 V92"/>
+      <path d="M430 70 H560 V92"/>
+      <path d="M560 128 V150 H330 V172"/>
+      <path d="M560 150 H720 V172"/>
+      <path d="M720 208 V230 H580 V252"/>
+      <path d="M720 230 H800 V252"/>
+      <path d="M330 208 V252"/>
+
+      <!-- Q1 -->
+      <rect class="q" x="270" y="10" width="320" height="36" rx="6"/>
+      <text x="430" y="33" text-anchor="middle">판단에 필요한 영역이 프레임 안에 보이는가?</text>
+      <text class="lbl" x="128" y="66">아니오 (가려짐·잘림·몸 없음)</text>
+      <text class="lbl" x="568" y="66">예</text>
+
+      <!-- leaf NOT_VISIBLE -->
+      <rect class="leaf-no" x="40" y="92" width="160" height="36" rx="6"/>
+      <text class="mono" x="120" y="115" text-anchor="middle">NOT_VISIBLE · null</text>
+
+      <!-- Q2 -->
+      <rect class="q" x="420" y="92" width="280" height="36" rx="6"/>
+      <text x="560" y="115" text-anchor="middle">보이는데 값을 확정할 수 있는가?</text>
+      <text class="lbl" x="338" y="146">아니오</text>
+      <text class="lbl" x="728" y="146">예</text>
+
+      <!-- leaf UNKNOWN -->
+      <rect class="leaf-alt" x="250" y="172" width="160" height="36" rx="6"/>
+      <text class="mono" x="330" y="195" text-anchor="middle">UNKNOWN · null</text>
+      <text class="lbl" x="330" y="230" text-anchor="middle">어려운 판단을 피하는</text>
+      <text class="lbl" x="330" y="245" text-anchor="middle">용도로 쓰면 계약 위반</text>
+
+      <!-- Q3 -->
+      <rect class="q" x="600" y="172" width="240" height="36" rx="6"/>
+      <text x="720" y="195" text-anchor="middle">특징이 존재하는가?</text>
+      <text class="lbl" x="588" y="226">아니오</text>
+      <text class="lbl" x="770" y="226">예</text>
+
+      <!-- Q4: None in domain -->
+      <rect class="q" x="440" y="252" width="280" height="36" rx="6"/>
+      <text x="580" y="275" text-anchor="middle">값 도메인에 None이 있는가? (SV-5)</text>
+
+      <!-- leaf OBSERVED -->
+      <rect class="leaf-ok" x="740" y="252" width="110" height="36" rx="6"/>
+      <text class="mono" x="795" y="275" text-anchor="middle">OBSERVED</text>
+      <text class="lbl" x="795" y="306" text-anchor="middle">+ canonical 값</text>
+
+      <!-- None / ABSENT leaves as text under Q4 -->
+      <rect class="leaf-none" x="400" y="296" width="196" height="30" rx="6"/>
+      <text class="mono" x="498" y="316" text-anchor="middle">예 → OBSERVED "None"</text>
+      <rect class="leaf-alt" x="604" y="296" width="130" height="30" rx="6"/>
+      <text class="mono" x="669" y="316" text-anchor="middle">아니오 → ABSENT</text>
+    </svg>
+  </div>
+  <div class="split" style="margin-top:10px">
+    <div class="node rule">
+      <div class="who">예외</div>
+      <ul>
+        <li><code>hood</code>: 도메인이 <code>Present</code> 하나뿐 → 후드가 없으면 ABSENT ("None" 금지)</li>
+        <li>MULTI 5종(material·surface·decorative_detail·attachment·exposure_opening)에는 None이 없음 → 전부 없으면 ABSENT</li>
+        <li><code>exposure_opening</code>: 착용자가 없으면 ABSENT가 아니라 NOT_VISIBLE (S1→S4 순서)</li>
+      </ul>
+    </div>
+    <div class="node rule">
+      <div class="who">증거–값 일치</div>
+      <ul>
+        <li>OBSERVED에는 반드시 값이 있어야 함</li>
+        <li>증거 문장이 값을 부정하면("~가 보이지 않음") OBSERVED로 내지 않음</li>
+        <li>None은 시야 불량의 대체값이 아님 — 직접 보고 없음을 확인했을 때만</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ───────────── STAGE 2-D 관찰 그룹 ───────────── -->
+  <div class="phase"><b>STAGE 2 · D</b><h2>영역별 관찰과 파이어월</h2></div>
+  <p class="trigger">region 토큰은 <code>upper</code> · <code>lower</code> · <code>whole_garment</code> 셋뿐입니다. 각 관찰은 자기 질문에만 답하고, 같은 증거를 두 번 쓰지 않습니다.</p>
+  <div class="split three">
+    <div class="node model">
+      <div class="who">UPPER</div>
+      <h3>상체 구성</h3>
+      <p><code>sleeve</code> <code>sleeve_volume</code> <code>shoulder_connection</code> <code>shoulder_span</code> <code>shoulder_drop</code> <code>shoulder_structure</code> <code>neckline_shape</code> <code>neckline_position</code> <code>collar</code> <code>collar_scale</code> <code>cuff_type</code> <code>cuff_scale</code> <code>rib_hem</code> <code>hood</code> <code>front_opening_extent</code> <code>closure_type</code></p>
+    </div>
+    <div class="node model">
+      <div class="who">LOWER</div>
+      <h3>하체 기하</h3>
+      <p><code>slit</code>, <code>silhouette</code>(Trouser·Skirt·Dress·Jumpsuit만), 하의의 <code>fit</code>·<code>length</code>. Dress·Jumpsuit의 fit·fabric_behavior는 <code>byRegion</code>으로 upper/lower를 따로 냄 <a class="issue" href="#i-fit">#8</a></p>
+      <div class="fix" id="i-fit"><b>개선 #8</b>Dress/Jumpsuit fit
+        <span class="to">REGIONS 섹션은 영역별(byRegion)로 내라고 하고, fit 섹션은 "전체를 보고 한 번만 답한다"고 해서 충돌한다. Dress/Jumpsuit에서는 영역별로 sweep 규칙을 적용한다고 한 줄 추가한다.</span></div>
+    </div>
+    <div class="node model">
+      <div class="who">WHOLE_GARMENT</div>
+      <h3>전체</h3>
+      <p><code>material</code> <code>surface</code> <code>pattern</code> <code>graphic</code> <code>pocket</code> <code>decorative_detail</code> <code>attachment</code> <code>asymmetry</code> <code>exposure_opening</code> <code>fabric_behavior</code> <code>trouser_distinction</code> <code>grammar</code> <a class="issue" href="#i-grammar">#9</a> <code>waist_definition</code> <code>ruffle</code></p>
+      <div class="fix" id="i-grammar"><b>개선 #9</b>grammar 정의 없음
+        <span class="to">Jacket/Coat에서 필수인데 Tailored/Casual/Utility를 가르는 기준이 없고, "스타일 판단 금지"와도 부딪힌다. trouser_distinction처럼 구성(construction) 근거로 정의한다.</span></div>
+    </div>
+  </div>
+  <div class="arrow"></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>파이어월</th><th>판단 기준</th><th>섞으면 안 되는 것</th></tr></thead>
+      <tbody>
+        <tr><td>fit</td><td>몸판과 몸 사이의 여유. 어깨 → 가슴 → 허리·밑단을 훑은 뒤 한 번만 답함. Relaxed와 Oversized는 <b>프레임 자체가 몸보다 큰지</b>로 가름</td><td>패딩 두께, 소매 볼륨, 플레어, 큰 칼라</td></tr>
+        <tr><td>shoulder_drop</td><td>정상 어깨 끝점이 <b>보존</b>되면 None, 상완으로 사라지면 Dropped</td><td>솔기 위치만으로 판단, 오버사이즈, 넓은 어깨</td></tr>
+        <tr><td>shoulder_structure</td><td>어깨선 윤곽 4단계: 둥글게 이어짐 None → 끝점이 읽힘 Mild → 직선·외향 Strong → 끝이 위로 솟음 Extreme</td><td>숨은 패드 추정, 퍼프 소매 캡</td></tr>
+        <tr><td>surface vs pattern</td><td>퀼팅 선은 surface=Quilted에만 씀. 퀼팅을 없애도 남는 무늬만 pattern</td><td>같은 퀼팅 기하를 두 번 계산</td></tr>
+        <tr><td>length</td><td>STEP 0: 실제 사람이 입었고 밑단을 몸에 대어 볼 수 있을 때만 값을 냄</td><td>플랫레이·행거에서 길이 추정</td></tr>
+        <tr><td>neckline vs shoulder_connection</td><td>Halter·Strap 등은 shoulder_connection 값. neckline_shape는 실제 개구부 가장자리만 봄</td><td>모여드는 원단을 V로 읽기</td></tr>
+        <tr><td>exposure_opening</td><td>옷 자체의 재단이 노출을 만들 때만. Class A(신체 부위)와 Class B(설계된 개구부)는 따로 판단</td><td>단추를 푼 상태, 포즈, 프레임 밖 등판</td></tr>
+        <tr><td>waist_definition</td><td>결과로 나타난 허리 형태(Undefined / Defined / Cinched)</td><td>벨트가 있다는 사실만으로 Cinched</td></tr>
+        <tr><td>trouser_distinction</td><td>허리·여밈·힙 포켓 조립 구조. 판단 순서 Leggings → Sport → Jeans → Tailored → Casual</td><td>데님 소재 = Jeans, 카고 포켓 = Casual</td></tr>
+        <tr><td>asymmetry</td><td>구성 자체의 좌우 불균형. 일반적인 더블브레스트 겹침이나 한쪽 슬릿만으로는 None</td><td>포즈, 한쪽 가슴 포켓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ───────────── STAGE 2-E 직렬화 ───────────── -->
+  <div class="phase"><b>STAGE 2 · E</b><h2>직렬화</h2></div>
+  <div class="flow">
+    <div class="split">
+      <div class="node rule">
+        <div class="who">SINGLE</div>
+        <h3>스칼라 <code>value</code>에 값 1개</h3>
+        <p>OBSERVED면 값 필수, 그 외 상태는 <code>null</code>. 값이 <code>Other</code>면 <code>descriptor</code> 필수. 반복은 <code>count</code>·<code>density</code> 메타데이터로.</p>
+      </div>
+      <div class="node rule">
+        <div class="who">MULTI (5종)</div>
+        <h3>스칼라 <code>value</code>는 항상 null, 값은 <code>values[]</code>에</h3>
+        <p>항목마다 evidence와 선택 필드 <code>locations</code>(Body·Bodice·Sleeve…, descriptor Panel/Edge), <code>coverage</code>(Localized/Partial/Dominant — 특수 처리 값에만).</p>
+      </div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">POCKET</div>
+      <h3><code>pocket = Present</code> → 비어 있지 않은 <code>pockets[]</code> 필수</h3>
+      <p>구분되는 포켓 그룹마다 <code>location</code>(Chest / Lower Front / Sleeve / Leg) + <code>construction</code>(Inset/Applied) + <code>projection</code>(Flat/Projected/Volumetric). 좌우 대칭은 항목 1개. 최상위 <code>pocket_construction</code>·<code>pocket_projection</code> 키는 폐기됨 <a class="issue" href="#i-pocket">#5</a></p>
+      <div class="fix" id="i-pocket"><b>개선 #5</b>폐기된 포켓 키가 아직 남아 있음
+        <span class="to">세 번이나 폐기했다고 하면서, [POCKET] 첫 문단과 CANONICAL VALUE DOMAINS에는 최상위 파라미터처럼 남아 있어 모델이 최상위 키로 내보내게 유도한다. 도메인 목록을 <code>pockets[].construction / .projection</code>으로 옮기고 첫 문단을 고쳐 쓴다.</span></div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">보조 실현 필드</div>
+      <h3>값에 붙는 세부 관찰 <a class="issue" href="#i-schema">#6</a></h3>
+      <p><code>finish_realization</code>(Glossy 등) · <code>treated_surface_realization</code>(Treated Surface) · pattern의 <code>visual_dominance</code>·<code>motif_complexity</code>. 출력 스키마에 위치가 정의돼 있지 않음.</p>
+      <div class="fix" id="i-schema"><b>개선 #6</b>보조 필드 위치 미정의
+        <span class="to">values[] 항목 안인지, 파라미터 객체 안인지 정해 OUTPUT 템플릿에 예시 위치를 넣는다. <code>product_context</code>도 함께 정한다.</span></div>
+    </div>
+  </div>
+
+  <!-- ───────────── DM ───────────── -->
+  <div class="phase"><b>STAGE 2 · F</b><h2>디자인 디테일 증거 (DM 하위 레이어)</h2></div>
+  <p class="trigger"><code>observations</code>와 같은 단계(형제)에 <code>dm_designed_detail_evidence</code>로 냅니다. 37개 파라미터에는 속하지 않습니다.</p>
+  <div class="flow">
+    <div class="node model">
+      <div class="who">INDIVIDUATION</div>
+      <h3>하나의 일관된 디자인 시스템 = 증거 1개</h3>
+      <p>스터드 40개로 된 밴드 하나 = 1개, 독립된 시스템 두 개 = 2개. <code>evidence_family</code> 7종: graphic · surface_pattern · surface_treatment · decorative_construction · attached_hardware · attached_detail · designed_color_contrast</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="split">
+      <div class="node rule">
+        <div class="who">3 PRIMITIVES</div>
+        <p><code>relative_size</code> small/medium/large (모티프 하나가 아니라 시스템 전체 크기) · <code>contrast</code> low/medium/high (색만 보는 게 아님) · <code>spatial_position</code> localized/distributed/whole_garment. ABSENT 금지.</p>
+      </div>
+      <div class="node rule">
+        <div class="who">M1 SUPPORTING</div>
+        <p><code>internal_chromatic_composition</code> · <code>internal_fill_realization</code>를 증거마다 state/value 형식으로. <code>excluded[]</code>의 사유는 natural_material / single_base_colour / image_capture_condition.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────────── descriptor ───────────── -->
+  <div class="phase"><b>STAGE 2 · G</b><h2>시각 재구성 descriptor</h2></div>
+  <div class="flow">
+    <div class="node model">
+      <div class="who">STEP 1 · GAP CHECK</div>
+      <h3>구조 필드와 색상만으로 잃는 정보가 있는가</h3>
+      <p>RG-1 부품 관계 · RG-2 배치·범위 · RG-3 형태 평탄화 · RG-4 시각적 모호성 · RG-5 타깃 간 관계 · RG-6 온톨로지 밖</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="decision">
+      <div class="q">STEP 2 · descriptor_need</div>
+      <div class="branch"><span class="tag">REQUIRED</span><code>reconstruction_gaps</code> 비어 있지 않음 + descriptor 작성. 필드를 반복하지 않고 FACT &gt; APPEARANCE &gt; INFERENCE 순으로 낮은 위험부터</div>
+      <div class="branch"><span class="tag alt">NOT_NEEDED</span>재구성이 완전하다고 적극적으로 판단한 경우에만. "밋밋해서"는 이유가 안 됨. UNDETERMINED 사용 금지</div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">STEP 4 · RG-5</div>
+      <h3>타깃 간 관계는 최상위 <code>cross_target_visual_relations</code>에 한 번만</h3>
+      <p>대상 타깃 2개 이상. 세트·짝 판정은 하지 않음. 타깃 스키마에 id 필드가 없어 <code>target_ids</code>로 가리킬 대상이 정해져 있지 않음 <a class="issue" href="#i-id">#1</a></p>
+      <div class="fix" id="i-id"><b>개선 #1</b>타깃 id 미정의
+        <span class="to">타깃에 <code>"target_id": "t1"</code>을 추가하거나, 배열 인덱스로 참조한다고 명시한다. 지금은 모델이 매번 다른 방식으로 id를 지어낸다.</span></div>
+    </div>
+  </div>
+
+  <!-- ───────────── sweep ───────────── -->
+  <div class="phase"><b>STAGE 2 · H</b><h2>최종 완결성 검사</h2></div>
+  <div class="flow">
+    <div class="node rule">
+      <div class="who">TRIGGERED-KEY FINAL SWEEP</div>
+      <h3>작성한 JSON의 실제 키를 기계적으로 확인</h3>
+      <ul>
+        <li>(1) sleeve가 있는데 <code>cuff_type</code>이 없음 · (2) 앞트임이 있는데 <code>closure_type</code>이 없음 · (3) cuff_scale · (4) collar_scale · (5) pockets[] · (6) sleeve_volume · (7) waist_definition</li>
+        <li>descriptor 문장에 쓴 특징("ribbed cuffs" 등)에는 구조 키가 반드시 있어야 함</li>
+      </ul>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">CONTRACT SELF-CHECK · 11개</div>
+      <p>금지 키 출력 · 필수 키 누락 · None이 필요한 곳 · None이 불법인 곳 · 값 없는 OBSERVED · values[] 없는 MULTI · descriptor 필요성 미판단 · 필드 반복 · 보지 않은 것 단정 · 관계를 타깃 안에 씀 · 길이 맞추기</p>
+      <div class="fix" id="i-struct"><b>개선 #15</b>기계적 검사를 코드로
+        <span class="to">필수·금지 키, SV-5(None과 ABSENT), MULTI 형식, 트리거 키는 결정론적이다. 카테고리별 JSON Schema(structured output)와 validator로 옮기고, 위반은 자동 보정하거나 위반 항목만 지정해 1회 재질의한다. 그러면 프롬프트를 크게 줄이고 fit·shoulder_drop·색상 언더톤 같은 지각 판단 규칙에 주의를 모을 수 있다.</span></div>
+    </div>
+  </div>
+
+  <!-- ───────────── STAGE 3-4 색상 ───────────── -->
+  <div class="phase"><b>STAGE 3 · 4</b><h2>색상 2차 스윕과 누락 감사</h2></div>
+  <p class="trigger">의복 패스를 끝낸 뒤 같은 이미지를 색상만 보며 다시 훑습니다. 색상 패스는 의복 관찰을 고치지 않습니다(GARMENT ATTENTION FIREWALL).</p>
+  <div class="flow">
+    <div class="node color">
+      <div class="who">PRIMARY</div>
+      <h3><code>primary_color_family</code> · <code>color_lightness</code> · <code>color_effect</code></h3>
+      <p>21개 계열(gold·silver는 독립 계열). 어둡고 따뜻한 원단은 <b>언더톤을 먼저 이름 붙임</b>: 초록 → olive · 적자색 → wine · 밝은 골드탄 → camel · 그 외 → brown. olive는 초록 기가 확인될 때만, 애매하면 brown.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node color">
+      <div class="who">CARRIER SWEEP</div>
+      <h3>캐리어 유형별로 하나씩 점검 → <code>additional_colors[]</code></h3>
+      <p>버튼·지퍼 → closure · 금속·벨트 → attachment · 로고 → graphic · 줄무늬 → pattern · 포켓 → pocket · 소재 구획 → material_component · 그 외 → generic_descriptor. 항목마다 <code>contrast_with_body</code>(Tonal/Subtle/Distinct).</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="decision">
+      <div class="q">추가 색상으로 낼 것인가?</div>
+      <div class="branch"><span class="tag">emit</span>의도된 디자인 색 + primary와 다른 계열 + 색이 읽힘 (작은 버튼이라도 해당: Small ≠ Ignore)</div>
+      <div class="branch"><span class="tag no">suppress</span>조명·그림자·주름·워싱·금속 반사·같은 계열 톤 차이·표면 차이(무광 vs 새틴)·실·스티치</div>
+      <div class="branch"><span class="tag alt">skip</span>하드웨어는 보이지만 색을 읽을 수 없음 → 은색/금색으로 추측하지 않음</div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node color">
+      <div class="who">USAGE</div>
+      <h3><code>color_usage</code> single / subtle / accent / multi · <code>multi_color</code> · <code>color_notes</code></h3>
+      <p>작은 대비 버튼 하나로 <code>multi_color</code>가 true가 되지는 않음.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">STAGE 4 · OMISSION AUDIT</div>
+      <p>(a) 빠진 디자인 색 (b) 반사·그림자를 색으로 오인 (c) 작은 부품 색 누락 (d) 복잡한 의복은 캐리어별로 따로 점검</p>
+    </div>
+  </div>
+
+  <!-- ───────────── STAGE 5 출력 ───────────── -->
+  <div class="phase"><b>STAGE 5</b><h2>최종 페이로드</h2></div>
+  <div class="flow">
+    <div class="node out">
+      <div class="who">PRESENTATION TYPE</div>
+      <h3><code>WORN</code> · <code>FLAT_LAY</code> · <code>PRODUCT_ONLY</code></h3>
+      <p>메타데이터이므로 관찰값을 바꾸지 않음.</p>
+    </div>
+    <div class="arrow"></div>
+<pre class="json">{
+  "targets": [
+    {
+      "descriptor_need": "REQUIRED" | "NOT_NEEDED",
+      "reconstruction_gaps": ["RG-1", …],
+      "descriptor": "…",
+      "identity":    { "value": true, "evidence": […] },
+      "readability": { "value": true, "basis": "RECONSTRUCTABLE", "limitation": […], "evidence": […] },
+      "prominence":  "dominant",
+      "product_match": true,                       // 상품으로 특정된 1개에만
+      "presentation_type": "WORN",
+      "category":    { "state": "OBSERVED", "value": "Jacket", "evidence": [ ≥2 ] },
+      "observations": {
+        "fit":      { "state": "OBSERVED", "value": "Regular", "region": "upper", "evidence": […] },
+        "material": { "state": "OBSERVED", "value": null, "values": [ { "value": "Synthetic", … } ] },
+        "pocket":   { "state": "OBSERVED", "value": "Present", "pockets": [ { "location": …, "construction": …, "projection": … } ] },
+        …
+      },
+      "dm_designed_detail_evidence": { "evidence": [ … ], "excluded": [ … ] },
+      "color_observation": {
+        "primary_color_family": "black", "color_lightness": "dark", "color_usage": "accent",
+        "multi_color": false, "color_effect": "none",
+        "additional_colors": [ { "color_family": "silver", "carrier_kind": "closure", "carrier_ref": "Zipper", "contrast_with_body": "Distinct" } ],
+        "evidence": { … }, "color_notes": null
+      }
+    }
+  ],
+  "cross_target_visual_relations": [ … ]          // 선택, RG-5 전용
+}</pre>
+  </div>
+
+  <!-- ───────────── 개선 항목 ───────────── -->
+  <div class="phase"><b>점검</b><h2>개선 항목 바로가기</h2></div>
+  <p class="trigger">각 항목은 위 흐름에서 대상 단계 바로 아래에 있습니다. #1–#8은 계약 충돌이라 출력이 실제로 어긋나는 곳이고, #9 이후는 정의 누락과 노이즈입니다.</p>
+  <ul class="fix-index">
+    <li><a href="#i-id">#1 타깃 id</a></li>
+    <li><a href="#i-closure">#2 closure_type</a></li>
+    <li><a href="#i-waist">#3 waist_definition</a></li>
+    <li><a href="#i-shoulder">#4 스트랩리스 어깨</a></li>
+    <li><a href="#i-pocket">#5 포켓 키</a></li>
+    <li><a href="#i-schema">#6 보조 필드 위치</a></li>
+    <li><a href="#i-elig">#7 eligible</a></li>
+    <li><a href="#i-fit">#8 Dress fit</a></li>
+    <li><a href="#i-grammar">#9 grammar</a></li>
+    <li><a href="#i-vest">#10 카테고리 매핑</a></li>
+    <li><a href="#i-reason">#11 추론 문구</a></li>
+    <li><a href="#i-dm">#12 DM 노출</a></li>
+    <li><a href="#i-noise">#13 노이즈</a></li>
+    <li><a href="#i-ctx">#14 상품 정보 위치</a></li>
+    <li><a href="#i-struct">#15 코드 검사</a></li>
+  </ul>
+
+  <footer>
+    원본: <code>lib/style-ex/engine/producer_prompt_v1.js</code> · 관련 문서: <code>docs/style-ex-flow.html</code>
+  </footer>
+</main>
+</body>
+</html>
