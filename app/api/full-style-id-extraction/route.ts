@@ -11,11 +11,14 @@ import {
 } from "@/lib/style-ex/api-key";
 import { authenticate, unauthorized } from "@/lib/supabase/route";
 import { styleIdCandidates, STYLE_IDS } from "@/lib/style-ex/style-ids";
+import { resolvePrompt } from "@/lib/style-ex/prompt-versions";
 
 /* Full-Look Style ID (/full-style-id-extraction)
    이미지 한 장 → 관찰(Vision 모델 1회, 승인 프롬프트 V2) → Full-Look Vision Extractor(FLV_RC6_FINAL)로 Evidence Packet
    → Full-Look Scoring Engines(EI · TC · SR 방향) → 스타일 아이디.
-   판정은 코드(동결 엔진)가 한다 — 판정 프롬프트는 없다. DM 은 Full-Look 엔진이 없어 D/M 양쪽(OR)으로 둔다. */
+   판정은 코드(동결 엔진)가 한다 — 판정 프롬프트는 없다. DM 은 Full-Look 엔진이 없어 D/M 양쪽(OR)으로 둔다.
+   관찰 프롬프트는 style_ex_prompt_versions 의 target='full' · kind='observe' 활성 버전이 기본이다
+   (행이 없으면 승인 V2 원문을 v1 로 등록한다, lib/style-ex/prompt-versions.ts). */
 
 export const runtime = "nodejs";
 export const maxDuration = 600;
@@ -159,18 +162,21 @@ function styleIdOf(scores: ReturnType<Pipeline["score"]>) {
 }
 
 /**
- * GET /api/full-style-id-extraction — 관찰 프롬프트(승인 V2 원문)
- *   응답: { prompt, promptVersion, promptSha256, models: { claude, gemini } }
+ * GET /api/full-style-id-extraction — 기본 관찰 프롬프트 = target='full' 활성 버전
+ *   응답: { prompt, versions: { prompt: { id, version } | null }, approved: { version, sha256 }, models: { claude, gemini } }
+ *         versions.prompt 가 null 이면 버전 표를 읽지 못해 코드 기본값(승인 V2 원문)을 준 것이다.
+ *         approved 는 추출 엔진이 검증된 승인 프롬프트 — 화면이 지금 프롬프트가 그것과 같은지 보인다.
  */
 export async function GET(request: Request) {
   const auth = await authenticate(request);
   if (!auth) return unauthorized();
   try {
-    const p = loadPipeline().prompt();
+    const observe = await resolvePrompt("observe", null, "full");
+    const approved = loadPipeline().prompt();
     return NextResponse.json({
-      prompt: p.text,
-      promptVersion: p.version,
-      promptSha256: p.sha256,
+      prompt: observe.content,
+      versions: { prompt: observe.version },
+      approved: { version: approved.version, sha256: approved.sha256 },
       models: { claude: claudeModel(), gemini: geminiModel() },
     });
   } catch (e) {
@@ -182,9 +188,11 @@ export async function GET(request: Request) {
  * POST /api/full-style-id-extraction — multipart/form-data
  *   image    : 이미지 파일 (필수, JPEG · PNG · WEBP, 5MB 이하)
  *   provider : 'claude' | 'gemini' (선택 — 비우면 'claude')
+ *   prompt   : 관찰 프롬프트 (선택 — 비우면 target='full' 활성 버전)
  *
  * 응답: { observation: { status, model_output, packet, validation, run_record, transport, native, ... },
- *        scoring: { EI, TC, SR } (엔진 방향 기록), styleId, provider, visionModel, usage, identity }
+ *        scoring: { EI, TC, SR } (엔진 방향 기록), styleId, provider, visionModel, usage, identity,
+ *        promptVersion: 쓴 버전 { id, version } (등록되지 않은 내용이면 null), promptApproved: 승인 V2 원문과 같은지 }
  */
 export async function POST(request: Request) {
   const auth = await authenticate(request);
@@ -205,20 +213,24 @@ export async function POST(request: Request) {
 
   try {
     const P = loadPipeline();
-    const prompt = P.prompt();
-    const observed = provider === "gemini" ? await observeGemini(image, mediaType, prompt.text) : await observeClaude(image, mediaType, prompt.text);
+    const custom = form?.get("prompt");
+    const prompt = await resolvePrompt("observe", typeof custom === "string" ? custom : null, "full");
+    const promptSha = P.sha(prompt.content);
+    const promptApproved = promptSha === P.prompt().sha256;
+    const observed = provider === "gemini" ? await observeGemini(image, mediaType, prompt.content) : await observeClaude(image, mediaType, prompt.content);
     const identity = {
       image_ref: file.name || "image",
       image_hash: createHash("sha256").update(image).digest("hex"),
-      prompt_version: prompt.version,
-      prompt_hash: prompt.sha256,
+      // 승인 V2 원문이면 V2, 아니면 버전 표의 번호 (등록되지 않은 내용이면 UNREGISTERED)
+      prompt_version: promptApproved ? P.prompt().version : prompt.version ? `full-observe v${prompt.version.version}` : "UNREGISTERED",
+      prompt_hash: promptSha,
       model_id: observed.model,
       run_id: randomUUID(),
       timestamp: new Date().toISOString(),
       raw_output_sha256: P.sha(observed.text),
     };
     const observation = P.extract(observed.text, identity);
-    const base = { provider, visionModel: observed.model, usage: observed.usage, identity };
+    const base = { provider, visionModel: observed.model, usage: observed.usage, identity, promptVersion: prompt.version, promptApproved };
     if (observation.status !== "PACKET_VALID" || !observation.packet || !observation.run_record) {
       return NextResponse.json({ ...base, observation: { ...observation, raw_text: observed.text }, scoring: null, styleId: null });
     }

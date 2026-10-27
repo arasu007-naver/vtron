@@ -43,7 +43,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ productContext: product ? productAddendum(product) : null });
   }
   // 판정은 코드(엔진 · tc-rules)가 하므로 판정 프롬프트는 내려보내지 않는다.
-  const observe = await resolvePrompt("observe");
+  const observe = await resolvePrompt("observe", null, "item");
   return NextResponse.json({ prompt: observe.content, versions: { prompt: observe.version } });
 }
 
@@ -112,7 +112,7 @@ export async function POST(request: Request) {
     const started = performance.now();
     // 상품 정보는 버전 관리 밖이다 — 떼어 낸 관찰 프롬프트로 버전을 찾고, 상품 정보는 뒤에 다시 붙여 넘긴다
     const { base, addendum } = splitProductContext(text("prompt") ?? "");
-    const observePrompt = await resolvePrompt("observe", base);
+    const observePrompt = await resolvePrompt("observe", base, "item");
     const extracted = await extractStyle({
       image: Buffer.from(await image.arrayBuffer()),
       fileName: image.name || "image",

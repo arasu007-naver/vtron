@@ -1,15 +1,18 @@
 import "server-only";
 import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { getAdminSupabase } from "@/lib/supabase/server";
 import { defaultPrompt } from "./extract";
 import { DEFAULT_JUDGE_PROMPT } from "./judge";
 
 /**
- * style-ex 프롬프트 버전 (supabase/migrations/0015_style_ex_prompt_versions.sql).
+ * style-ex 프롬프트 버전 (supabase/migrations/0015_style_ex_prompt_versions.sql · 0020_style_ex_prompt_target.sql).
  *
  * 관찰(observe) · 판정(judge) 프롬프트를 `style_ex_prompt_versions` 에 버전으로 쌓는다.
- * 종류마다 활성 버전이 하나 있고, 추출은 프롬프트를 따로 받지 않으면 활성 버전을 쓴다.
- * 종류에 행이 없으면 코드의 기본 프롬프트를 v1 로 등록한다. 표를 읽지 못하면(마이그레이션 전 등)
+ * 대상(target)은 item = /style-ex 의복별 · full = /full-style-id-extraction 착장 전체(관찰만).
+ * (target, kind) 마다 활성 버전이 하나 있고, 추출은 프롬프트를 따로 받지 않으면 활성 버전을 쓴다.
+ * (target, kind) 에 행이 없으면 코드의 기본 프롬프트를 v1 로 등록한다. 표를 읽지 못하면(마이그레이션 전 등)
  * 코드 기본 프롬프트로 돌아간다 — 추출은 멈추지 않는다.
  */
 
@@ -19,11 +22,22 @@ export type PromptKind = (typeof PROMPT_KINDS)[number];
 export const isPromptKind = (v: unknown): v is PromptKind =>
   typeof v === "string" && (PROMPT_KINDS as readonly string[]).includes(v);
 
+/** item = /style-ex 의복별 · full = /full-style-id-extraction 착장 전체 */
+export const PROMPT_TARGETS = ["item", "full"] as const;
+export type PromptTarget = (typeof PROMPT_TARGETS)[number];
+
+export const isPromptTarget = (v: unknown): v is PromptTarget =>
+  typeof v === "string" && (PROMPT_TARGETS as readonly string[]).includes(v);
+
+/** 대상마다 쓰는 프롬프트 종류 — full 은 판정을 엔진 코드가 하므로 관찰만 있다 */
+export const isTargetKind = (target: PromptTarget, kind: PromptKind) => target === "item" || kind === "observe";
+
 const TABLE = "style_ex_prompt_versions";
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export interface PromptVersion {
   id: string;
+  target: PromptTarget;
   kind: PromptKind;
   version: number;
   content: string;
@@ -40,19 +54,31 @@ export interface ResolvedPrompt {
   version: Pick<PromptVersion, "id" | "version"> | null;
 }
 
+/** Full-Look Vision Extractor 의 승인 관찰 프롬프트 V2 원문 (lib/full-style-ex/pipeline.cjs 와 같은 파일) */
+const FULL_PROMPT_FILE = path.join(
+  process.cwd(),
+  "business_logic/FULL_LOOK_VISION_EXTRACTOR_FINAL_20261017/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/02_PROMPT/STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2.txt"
+);
+
 /** 코드에 박힌 기본 프롬프트 — 첫 등록(v1)과 DB 폴백에 쓴다 */
-export const codeDefaultPrompt = (kind: PromptKind): string =>
-  kind === "observe" ? defaultPrompt() : DEFAULT_JUDGE_PROMPT;
+export const codeDefaultPrompt = (kind: PromptKind, target: PromptTarget = "item"): string => {
+  if (target === "full") {
+    if (kind !== "observe") throw new PromptVersionError("full 대상에는 판정 프롬프트가 없습니다.", 400);
+    return readFileSync(FULL_PROMPT_FILE, "utf8");
+  }
+  return kind === "observe" ? defaultPrompt() : DEFAULT_JUDGE_PROMPT;
+};
 
 const sha256 = (s: string) => createHash("sha256").update(s, "utf8").digest("hex");
 
 const userIdOf = (userId: string | null | undefined) => (userId && UUID.test(userId) ? userId : null);
 
-/** 종류의 모든 버전, 최신 먼저 */
-export async function listPromptVersions(kind: PromptKind): Promise<PromptVersion[]> {
+/** (target, kind) 의 모든 버전, 최신 먼저 */
+export async function listPromptVersions(kind: PromptKind, target: PromptTarget = "item"): Promise<PromptVersion[]> {
   const { data, error } = await getAdminSupabase()
     .from(TABLE)
     .select("*")
+    .eq("target", target)
     .eq("kind", kind)
     .order("version", { ascending: false });
   if (error) throw new Error(`${TABLE} 조회 실패: ${error.message}`);
@@ -67,14 +93,18 @@ export class PromptVersionError extends Error {
 
 /** 새 버전 등록. 같은 내용이 이미 있으면 409. */
 export async function createPromptVersion(input: {
+  target?: PromptTarget;
   kind: PromptKind;
   content: string;
   note?: string | null;
   activate?: boolean;
   userId?: string | null;
 }): Promise<PromptVersion> {
+  const target = input.target ?? "item";
+  if (!isTargetKind(target, input.kind)) throw new PromptVersionError("full 대상에는 판정 프롬프트가 없습니다.", 400);
   if (!input.content.trim()) throw new PromptVersionError("프롬프트 내용이 비어 있습니다.", 400);
   const { data, error } = await getAdminSupabase().rpc("create_style_ex_prompt_version", {
+    p_target: target,
     p_kind: input.kind,
     p_content: input.content,
     p_note: input.note ?? null,
@@ -83,7 +113,7 @@ export async function createPromptVersion(input: {
   });
   if (error) {
     if (error.code === "23505") {
-      const existing = await findByContent(input.kind, input.content).catch(() => null);
+      const existing = await findByContent(input.kind, input.content, target).catch(() => null);
       throw new PromptVersionError(
         existing ? `같은 내용이 이미 v${existing.version} 으로 등록돼 있습니다.` : "같은 내용이 이미 등록돼 있습니다.",
         409
@@ -105,10 +135,11 @@ export async function activatePromptVersion(id: string): Promise<PromptVersion> 
   return data as PromptVersion;
 }
 
-async function findByContent(kind: PromptKind, content: string) {
+async function findByContent(kind: PromptKind, content: string, target: PromptTarget) {
   const { data, error } = await getAdminSupabase()
     .from(TABLE)
     .select("id, version")
+    .eq("target", target)
     .eq("kind", kind)
     .eq("content_sha256", sha256(content))
     .maybeSingle();
@@ -116,30 +147,38 @@ async function findByContent(kind: PromptKind, content: string) {
   return data as Pick<PromptVersion, "id" | "version"> | null;
 }
 
-/** 활성 버전. 종류에 행이 하나도 없으면 코드 기본 프롬프트를 v1 로 등록해 활성화한다. */
-export async function activePromptVersion(kind: PromptKind): Promise<PromptVersion> {
+/** 활성 버전. (target, kind) 에 행이 하나도 없으면 코드 기본 프롬프트를 v1 로 등록해 활성화한다. */
+export async function activePromptVersion(kind: PromptKind, target: PromptTarget = "item"): Promise<PromptVersion> {
   const db = getAdminSupabase();
-  const { data, error } = await db.from(TABLE).select("*").eq("kind", kind).eq("is_active", true).maybeSingle();
+  const { data, error } = await db
+    .from(TABLE)
+    .select("*")
+    .eq("target", target)
+    .eq("kind", kind)
+    .eq("is_active", true)
+    .maybeSingle();
   if (error) throw new Error(`${TABLE} 조회 실패: ${error.message}`);
   if (data) return data as PromptVersion;
 
   const { count, error: countError } = await db
     .from(TABLE)
     .select("id", { count: "exact", head: true })
+    .eq("target", target)
     .eq("kind", kind);
   if (countError) throw new Error(`${TABLE} 조회 실패: ${countError.message}`);
-  if (count) throw new Error(`${kind} 프롬프트에 활성 버전이 없습니다. 버전 하나를 활성화하세요.`);
+  if (count) throw new Error(`${target} ${kind} 프롬프트에 활성 버전이 없습니다. 버전 하나를 활성화하세요.`);
 
   try {
     return await createPromptVersion({
+      target,
       kind,
-      content: codeDefaultPrompt(kind),
+      content: codeDefaultPrompt(kind, target),
       note: "코드 기본 프롬프트 (자동 등록)",
       activate: true,
     });
   } catch (e) {
     // 동시에 두 요청이 첫 등록을 하면 하나는 409 — 먼저 등록된 쪽을 읽는다
-    if (e instanceof PromptVersionError && e.status === 409) return activePromptVersion(kind);
+    if (e instanceof PromptVersionError && e.status === 409) return activePromptVersion(kind, target);
     throw e;
   }
 }
@@ -149,17 +188,21 @@ export async function activePromptVersion(kind: PromptKind): Promise<PromptVersi
  *   - override 가 비어 있으면 활성 버전 (DB 를 못 읽으면 코드 기본값, version null)
  *   - override 가 있으면 그 내용. 등록된 버전과 내용이 같으면 그 버전으로 남긴다.
  */
-export async function resolvePrompt(kind: PromptKind, override?: string | null): Promise<ResolvedPrompt> {
+export async function resolvePrompt(
+  kind: PromptKind,
+  override?: string | null,
+  target: PromptTarget = "item"
+): Promise<ResolvedPrompt> {
   const custom = override?.trim() ? override : null;
   if (custom === null) {
     try {
-      const active = await activePromptVersion(kind);
+      const active = await activePromptVersion(kind, target);
       return { content: active.content, version: { id: active.id, version: active.version } };
     } catch (e) {
-      console.warn(`[style-ex] ${kind} 프롬프트 버전을 읽지 못해 코드 기본값을 씁니다:`, e instanceof Error ? e.message : e);
-      return { content: codeDefaultPrompt(kind), version: null };
+      console.warn(`[style-ex] ${target} ${kind} 프롬프트 버전을 읽지 못해 코드 기본값을 씁니다:`, e instanceof Error ? e.message : e);
+      return { content: codeDefaultPrompt(kind, target), version: null };
     }
   }
-  const found = await findByContent(kind, custom).catch(() => null);
+  const found = await findByContent(kind, custom, target).catch(() => null);
   return { content: custom, version: found };
 }

@@ -133,7 +133,7 @@ export default function StyleExPage() {
 
   /** 한 종류의 버전 목록을 다시 읽는다 */
   const loadVersions = useCallback(async (key: PromptKey) => {
-    const res = await authFetch(`/api/style-ex/prompts?kind=${PROMPT_KIND[key]}`);
+    const res = await authFetch(`/api/style-ex/prompts?target=item&kind=${PROMPT_KIND[key]}`);
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data.error ?? `버전 목록을 읽지 못했습니다 (${res.status})`);
     setVersions((v) => ({ ...v, [key]: data.versions ?? [] }));
@@ -412,7 +412,7 @@ export default function StyleExPage() {
     return versionRequest(
       "/api/style-ex/prompts",
       "POST",
-      { kind: PROMPT_KIND[tab], content, note: versionNote, activate },
+      { target: "item", kind: PROMPT_KIND[tab], content, note: versionNote, activate },
       () => {
         if (activate) setDefaults((d) => ({ ...d, [tab]: content }));
         setVersionNote("");
