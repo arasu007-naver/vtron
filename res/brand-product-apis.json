@@ -1,0 +1,1623 @@
+{
+  "generatedAt": "2026-10-20T06:31:40.472Z",
+  "description": "브랜드 공식 홈페이지 기준 상품 조회 주소. brands.api 의 원천. apiType json=상품 JSON 엔드포인트, page=상품 목록 페이지. verified=false 는 봇 차단 등으로 응답을 확인 못 한 주소.",
+  "statusCodes": {
+    "verified": "응답(200)과 상품 목록·JSON 을 확인함",
+    "blocked": "봇 차단(403·406·429·타임아웃)으로 응답 확인 못 함. 상품 목록 경로는 찾았거나 추정함",
+    "homepage": "봇 차단으로 목록 경로를 못 찾아 공식 스토어 첫 화면을 넣음",
+    "unverified": "200 은 오지만 SPA·대기열 페이지라 실제 상품 목록인지 확인 못 함",
+    "fallback": "공식 상품 목록이 없어 대체 주소를 넣음(리다이렉트 사이트·소개 사이트·그룹몰 첫 화면 등)"
+  },
+  "brands": [
+    {
+      "naverBrandId": 12401,
+      "displayName": "샤넬",
+      "homepage": "https://www.chanel.com/kr/",
+      "api": "https://www.chanel.com/kr/fashion/ready-to-wear/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 사이트 레디투웨어 목록 200 확인 (패션은 온라인 판매 안 함, 조회만 가능)"
+    },
+    {
+      "naverBrandId": 10716,
+      "displayName": "구찌",
+      "homepage": "https://www.gucci.com/kr/ko/",
+      "api": "https://www.gucci.com/kr/ko/ca/whats-new/new-in-c-new-in",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "봇 차단(curl 타임아웃), 한국 스토어 신상품 목록"
+    },
+    {
+      "naverBrandId": 11468,
+      "displayName": "루이비통",
+      "homepage": "https://kr.louisvuitton.com/kor-kr/homepage",
+      "api": "https://kr.louisvuitton.com/kor-kr/homepage",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 한국 공식 스토어 루트"
+    },
+    {
+      "naverBrandId": 13143,
+      "displayName": "에르메스",
+      "homepage": "https://www.hermes.com/kr/ko/",
+      "api": "https://www.hermes.com/kr/ko/category/women/ready-wear/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 스토어 여성 레디투웨어 목록 200 확인"
+    },
+    {
+      "naverBrandId": 14298,
+      "displayName": "디올",
+      "homepage": "https://www.dior.com/ko_kr",
+      "api": "https://www.dior.com/ko_kr/fashion",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "403 차단, 한국 패션 페이지"
+    },
+    {
+      "naverBrandId": 14696,
+      "displayName": "프라다",
+      "homepage": "https://www.prada.com/kr/ko.html",
+      "api": "https://www.prada.com/kr/ko/womens.html",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 스토어 여성 목록 200 확인"
+    },
+    {
+      "naverBrandId": 199941,
+      "displayName": "생로랑",
+      "homepage": "https://www.ysl.com/ko-kr",
+      "api": "https://www.ysl.com/ko-kr",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 한국 스토어 루트"
+    },
+    {
+      "naverBrandId": 12034,
+      "displayName": "버버리",
+      "homepage": "https://kr.burberry.com/",
+      "api": "https://kr.burberry.com/l/womens-clothing/new-arrivals/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 스토어 여성 신상품 200 확인 (남성: /l/mens-clothing/new-arrivals/)"
+    },
+    {
+      "naverBrandId": 12474,
+      "displayName": "셀린느",
+      "homepage": "https://www.celine.com/ko-kr/home",
+      "api": "https://www.celine.com/ko-kr/home",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 한국 스토어 루트"
+    },
+    {
+      "naverBrandId": 11416,
+      "displayName": "로에베",
+      "homepage": "https://www.loewe.com/int/en/home",
+      "api": "https://www.loewe.com/int/en/women/accessories",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 로케일(kor/ko) 404, 글로벌 스토어 목록 사용"
+    },
+    {
+      "naverBrandId": 11893,
+      "displayName": "미우미우",
+      "homepage": "https://www.miumiu.com/kr/ko.html",
+      "api": "https://www.miumiu.com/kr/ko/new-arrivals/c/10200KR",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 스토어 신상품 200 확인"
+    },
+    {
+      "naverBrandId": 15234,
+      "displayName": "펜디",
+      "homepage": "https://www.fendi.com/kr-ko/",
+      "api": "https://www.fendi.com/kr-ko/",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "봇 차단(curl 타임아웃), 한국 스토어 루트"
+    },
+    {
+      "naverBrandId": 157292,
+      "displayName": "보테가베네타",
+      "homepage": "https://www.bottegaveneta.com/ko-kr",
+      "api": "https://www.bottegaveneta.com/ko-kr",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 한국 스토어 루트"
+    },
+    {
+      "naverBrandId": 12004,
+      "displayName": "발렌티노",
+      "homepage": "https://www.valentino.com/ko-kr/",
+      "api": "https://www.valentino.com/ko-kr/women/new-arrivals",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 스토어 여성 신상품 200 확인"
+    },
+    {
+      "naverBrandId": 920,
+      "displayName": "발렌시아가",
+      "homepage": "https://www.balenciaga.com/ko-kr",
+      "api": "https://www.balenciaga.com/ko-kr",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 한국 스토어 루트"
+    },
+    {
+      "naverBrandId": 178498,
+      "displayName": "톰브라운",
+      "homepage": "https://www.thombrowne.com/",
+      "api": "https://www.thombrowne.com/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "Shopify products.json 확인 (글로벌 스토어)"
+    },
+    {
+      "naverBrandId": 151532,
+      "displayName": "몽클레어",
+      "homepage": "https://www.moncler.com/ko-kr/",
+      "api": "https://www.moncler.com/ko-kr/",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 한국 스토어 루트"
+    },
+    {
+      "naverBrandId": 1393,
+      "displayName": "막스마라",
+      "homepage": "https://www.maxmara.com/ko-kr",
+      "api": "https://www.maxmara.com/ko-kr",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 한국 스토어 루트"
+    },
+    {
+      "naverBrandId": 202242,
+      "displayName": "더로우",
+      "homepage": "https://www.therow.com/",
+      "api": "https://www.therow.com/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "Shopify products.json 확인 (룩 상품 포함, product_type으로 거를 것)"
+    },
+    {
+      "naverBrandId": 258428,
+      "displayName": "르메르",
+      "homepage": "https://www.lemaire.fr/",
+      "api": "https://www.lemaire.fr/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "Shopify products.json 확인"
+    },
+    {
+      "naverBrandId": 202610,
+      "displayName": "아크네스튜디오",
+      "homepage": "https://www.acnestudios.com/kr/ko/home",
+      "api": "https://www.acnestudios.com/kr/ko/woman/new-arrivals/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 스토어 여성 신상품 200 확인"
+    },
+    {
+      "naverBrandId": 225643,
+      "displayName": "코스",
+      "homepage": "https://www.cos.com/ko-kr/",
+      "api": "https://www.cos.com/ko-kr/",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 한국 스토어 루트"
+    },
+    {
+      "naverBrandId": 1146,
+      "displayName": "랄프로렌",
+      "homepage": "https://www.ralphlauren.co.kr/",
+      "api": "https://www.ralphlauren.co.kr/",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 한국 공식몰 루트"
+    },
+    {
+      "naverBrandId": 14670,
+      "displayName": "폴로",
+      "homepage": "https://www.ralphlauren.co.kr/",
+      "api": "https://www.ralphlauren.co.kr/",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "403 차단, 랄프로렌 한국 공식몰 루트 (폴로 전용 경로 확인 못함)"
+    },
+    {
+      "naverBrandId": 233776,
+      "displayName": "휴고보스",
+      "homepage": "https://www.hugoboss.com/kr/home",
+      "api": "https://www.hugoboss.com/kr/women-all-new-arrivals/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 스토어 신상품 목록 (남성: /kr/men-all-new-arrivals/), 홈페이지에서 링크 확인"
+    },
+    {
+      "naverBrandId": 14392,
+      "displayName": "타임",
+      "homepage": "https://www.thehandsome.com/ko",
+      "api": "https://www.thehandsome.com/ko/DP/timeMain",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "더한섬닷컴 TIME(BR01) 브랜드관 200 확인"
+    },
+    {
+      "naverBrandId": 12696,
+      "displayName": "시스템",
+      "homepage": "https://www.thehandsome.com/ko",
+      "api": "https://www.thehandsome.com/ko/DP/systemMain",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "더한섬닷컴 SYSTEM(BR03) 브랜드관 200 확인"
+    },
+    {
+      "naverBrandId": 11645,
+      "displayName": "마인",
+      "homepage": "https://www.thehandsome.com",
+      "api": "https://www.thehandsome.com/ko/DP/brandMain/BR02",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한섬 더한섬닷컴 브랜드관(BR02=MINE 확인)"
+    },
+    {
+      "naverBrandId": 12551,
+      "displayName": "쉬즈미스",
+      "homepage": "https://www.idfmall.co.kr",
+      "api": "https://www.idfmall.co.kr/shesmiss?brand=shesmiss",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "인동에프엔 공식몰 IDF몰 브랜드관(Cafe24) 200"
+    },
+    {
+      "naverBrandId": 13950,
+      "displayName": "지고트",
+      "homepage": "https://www.babathe.com",
+      "api": "https://www.babathe.com/bnd/jigott",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "바바그룹 공식몰 바바더닷컴 브랜드관 200 (jigott.co.kr은 회사 소개로 리다이렉트)"
+    },
+    {
+      "naverBrandId": 37843,
+      "displayName": "리스트",
+      "homepage": "https://www.idfmall.co.kr",
+      "api": "https://www.idfmall.co.kr/list?brand=list",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "인동에프엔 공식몰 IDF몰 브랜드관 200"
+    },
+    {
+      "naverBrandId": 37412,
+      "displayName": "샤트렌",
+      "homepage": "http://www.chatelaine.co.kr",
+      "api": "https://www.hyungjimall.com/front/brand_detail.php?vender=8",
+      "apiType": "page",
+      "status": "unverified",
+      "verified": false,
+      "note": "공식 도메인이 형지몰 브랜드관으로 리다이렉트, 봇에 Loading 페이지만 반환"
+    },
+    {
+      "naverBrandId": 12070,
+      "displayName": "베스띠벨리",
+      "homepage": "https://www.shinwon.com",
+      "api": "https://www.shinwon.com/kor/m31_collection_2.php?brand=BESTI%20BELLI",
+      "apiType": "page",
+      "status": "fallback",
+      "verified": false,
+      "note": "자사몰 없음(신원몰 폐쇄). 공식 ONLINE SHOP은 네이버 브랜드스토어뿐, 신원 공식 컬렉션 페이지로 대체"
+    },
+    {
+      "naverBrandId": 1104,
+      "displayName": "로엠",
+      "homepage": "https://www.roem.co.kr",
+      "api": "https://www.roem.co.kr/category/new/99/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "이랜드 로엠 공식몰(Cafe24) 신상품 목록 상품 확인"
+    },
+    {
+      "naverBrandId": 37912,
+      "displayName": "잇미샤",
+      "homepage": "https://sisun.com/ITMICHAA/",
+      "api": "https://sisun.com/ITMICHAA/shop/list?upper_cate_code=21",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "시선인터내셔널 공식몰 SISUN.COM 잇미샤관 상품 목록 확인"
+    },
+    {
+      "naverBrandId": 28603,
+      "displayName": "올리비아로렌",
+      "homepage": "https://www.sejungmall.com",
+      "api": "https://www.sejungmall.com/product/list.html?cate_no=45",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "세정 공식몰(Cafe24) 올리비아로렌 카테고리 상품 확인"
+    },
+    {
+      "naverBrandId": 397,
+      "displayName": "조이너스",
+      "homepage": "https://e-joinus.co.kr",
+      "api": "https://e-joinus.co.kr/product/list.html?cate_no=46",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "인디에프 조이너스 공식몰(Cafe24) SHOP 목록. joinus.co.kr은 파킹 도메인"
+    },
+    {
+      "naverBrandId": 11072,
+      "displayName": "데무",
+      "homepage": "https://www.demoo.com",
+      "api": "https://www.demoo.com/product/list.html?cate_no=77",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "데무 공식 온라인 스토어(Cafe24) Shop 목록 상품 확인"
+    },
+    {
+      "naverBrandId": 416064,
+      "displayName": "더캐시미어",
+      "homepage": "https://www.thehandsome.com",
+      "api": "https://www.thehandsome.com/ko/DP/brandMain/BR08",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한섬 더한섬닷컴 브랜드관(BR08=the CASHMERE 확인)"
+    },
+    {
+      "naverBrandId": 222208,
+      "displayName": "르베이지",
+      "homepage": "https://www.ssfshop.com",
+      "api": "https://www.ssfshop.com/LEBEIGE/main?brandShopNo=BDMA07A06&brndShopId=ECBVF",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "삼성물산 SSF샵 브랜드관 200"
+    },
+    {
+      "naverBrandId": 1329,
+      "displayName": "갤럭시",
+      "homepage": "https://www.ssfshop.com",
+      "api": "https://www.ssfshop.com/Galaxy/main?brandShopNo=BDMA04A01&brndShopId=HMBGA",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "삼성물산 SSF샵 브랜드관 200"
+    },
+    {
+      "naverBrandId": 14935,
+      "displayName": "헨리코튼",
+      "homepage": "https://www.kolonmall.com",
+      "api": "https://www.kolonmall.com/Brands/HENRY-COTTONS/List/4947",
+      "apiType": "page",
+      "status": "unverified",
+      "verified": false,
+      "note": "코오롱몰 브랜드관. SPA라 아무 경로나 200, URL은 검색결과로 확인"
+    },
+    {
+      "naverBrandId": 39,
+      "displayName": "헤지스",
+      "homepage": "https://www.lfmall.co.kr",
+      "api": "https://www.lfmall.co.kr/app/exhibition/brandGroup/1002",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "LF몰 브랜드관 200 (1002=HAZZYS, 검색결과로 확인)"
+    },
+    {
+      "naverBrandId": 1217,
+      "displayName": "닥스",
+      "homepage": "https://www.lfmall.co.kr",
+      "api": "https://www.lfmall.co.kr/app/exhibition/brandGroup/1001",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "LF몰 브랜드관 200 (1001=DAKS, 검색결과로 확인)"
+    },
+    {
+      "naverBrandId": 170,
+      "displayName": "파크랜드",
+      "homepage": "https://www.parkland.co.kr",
+      "api": "https://eshop.parkland.co.kr/nhome/shop/category_list.asp?gender=MEN",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "파크랜드 공식 쇼핑몰 eshop 카테고리 목록 200"
+    },
+    {
+      "naverBrandId": 13979,
+      "displayName": "지오지아",
+      "homepage": "https://www.goodwearmall.com",
+      "api": "https://display.goodwearmall.com/brand/BDMABR",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "신성통상 공식몰 굿웨어몰 지오지아관(ziozia.goodwearmall.com 리다이렉트)"
+    },
+    {
+      "naverBrandId": 1116,
+      "displayName": "로가디스",
+      "homepage": "https://www.ssfshop.com",
+      "api": "https://www.ssfshop.com/Rogatis/main?brandShopNo=BDMA04A05&brndShopId=HMBRX",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "삼성물산 SSF샵 브랜드관 200"
+    },
+    {
+      "naverBrandId": 142943,
+      "displayName": "인디안",
+      "homepage": "https://www.sejungmall.com",
+      "api": "https://www.sejungmall.com/product/list.html?cate_no=29",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "세정 공식몰(Cafe24) 인디안 카테고리 상품 확인"
+    },
+    {
+      "naverBrandId": 14138,
+      "displayName": "캠브리지멤버스",
+      "homepage": "https://www.kolonmall.com",
+      "api": "https://www.kolonmall.com/Brands/CAMBRIDGE-MEMBERS/List/5682",
+      "apiType": "page",
+      "status": "unverified",
+      "verified": false,
+      "note": "코오롱몰 브랜드관. 브랜드ID 5682는 상품 URL로 추정, SPA라 내용 미검증"
+    },
+    {
+      "naverBrandId": 398564,
+      "displayName": "포터리",
+      "homepage": "https://ptry.co.kr",
+      "api": "https://ptry.co.kr/product/list.html?cate_no=943",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "포터리 공식 스토어(Cafe24) 남성 카테고리 상품 확인. pottery.kr은 파킹 도메인"
+    },
+    {
+      "naverBrandId": 13594,
+      "displayName": "유니클로",
+      "homepage": "https://www.uniqlo.com/kr/ko/",
+      "api": "https://www.uniqlo.com/kr/api/commerce/v5/ko/products?path=%2C%2C&limit=100&offset=0",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "공식 상품 API JSON 확인(total 1366), 홈페이지는 403 차단"
+    },
+    {
+      "naverBrandId": 13776,
+      "displayName": "자라",
+      "homepage": "https://www.zara.com/kr/ko/",
+      "api": "https://www.zara.com/kr/ko/woman-new-in-l1180.html",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰 여성 신상품 목록 200. JSON 엔드포인트는 404"
+    },
+    {
+      "naverBrandId": 151125,
+      "displayName": "H&M",
+      "homepage": "https://www2.hm.com/ko_kr/index.html",
+      "api": "https://www2.hm.com/ko_kr/ladies/shop-by-product/view-all.html",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "한국 공식몰 여성 전체보기, 403 차단"
+    },
+    {
+      "naverBrandId": 175601,
+      "displayName": "스파오",
+      "homepage": "https://www.spao.com",
+      "api": "https://www.spao.com/s/shop",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "이랜드 스파오 공식몰 SHOP 페이지 200"
+    },
+    {
+      "naverBrandId": 175077,
+      "displayName": "에잇세컨즈",
+      "homepage": "https://www.ssfshop.com/8Seconds/main",
+      "api": "https://www.ssfshop.com/8Seconds/main?brandShopNo=BDMA07A01&brndShopId=8SBSS",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "SSF샵(삼성물산) 브랜드관, 자체 몰 없음, 200 확인"
+    },
+    {
+      "naverBrandId": 178667,
+      "displayName": "탑텐",
+      "homepage": "https://topten10.goodwearmall.com",
+      "api": "https://display-topten10.goodwearmall.com/category/SSMA41",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "신성통상 굿웨어몰 탑텐관 카테고리, 200 확인 (topten10mall.com은 굿웨어몰로 이동)"
+    },
+    {
+      "naverBrandId": 158615,
+      "displayName": "미쏘",
+      "homepage": "https://www.mixxo.com",
+      "api": "https://mixxo.elandmall.co.kr/c/ctg?dispCategoryNo=1705319748",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "이랜드몰 미쏘관 카테고리 200 확인, 자체몰 mixxo.com(cafe24)도 있음"
+    },
+    {
+      "naverBrandId": 8,
+      "displayName": "후아유",
+      "homepage": "https://www.whoau.com",
+      "api": "https://www.whoau.com/product/list.html?cate_no=32",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "공식몰(cafe24) 전체 카테고리, 200 확인"
+    },
+    {
+      "naverBrandId": 236422,
+      "displayName": "무인양품",
+      "homepage": "https://mujikorea.co.kr",
+      "api": "https://mujikorea.co.kr/products/new",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "무인양품 한국 공식몰 신상품, 200 확인"
+    },
+    {
+      "naverBrandId": 257967,
+      "displayName": "무신사스탠다드",
+      "homepage": "https://www.musinsa.com/brand/musinsastandard",
+      "api": "https://www.musinsa.com/brand/musinsastandard",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "무신사 브랜드 단독관(공식), 200 확인"
+    },
+    {
+      "naverBrandId": 1269,
+      "displayName": "나이키",
+      "homepage": "https://www.nike.com/kr",
+      "api": "https://www.nike.com/kr/w",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "나이키 한국 공식 전체 상품, 200 확인"
+    },
+    {
+      "naverBrandId": 667,
+      "displayName": "아디다스",
+      "homepage": "https://www.adidas.co.kr",
+      "api": "https://www.adidas.co.kr/new_arrivals",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "403 차단, 한국 공식몰 신상품 페이지"
+    },
+    {
+      "naverBrandId": 10946,
+      "displayName": "뉴발란스",
+      "homepage": "https://www.nbkorea.com",
+      "api": "https://www.nbkorea.com/product/featuredList.action?cateGrpCode=250100&cIdx=1269",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "뉴발란스 공식몰 MEN New 목록, 200 확인"
+    },
+    {
+      "naverBrandId": 7,
+      "displayName": "휠라",
+      "homepage": "https://www.fila.co.kr",
+      "api": "https://www.fila.co.kr/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "Shopify products.json 확인"
+    },
+    {
+      "naverBrandId": 126,
+      "displayName": "퓨마",
+      "homepage": "https://kr.puma.com",
+      "api": "https://kr.puma.com/kr/ko/%EC%8B%A0%EC%83%81%ED%92%88-1",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "푸마 한국 공식몰 신상품, 200 확인"
+    },
+    {
+      "naverBrandId": 210327,
+      "displayName": "룰루레몬",
+      "homepage": "https://www.lululemon.co.kr",
+      "api": "https://www.lululemon.co.kr/ko-kr/c/whats-new",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "403 차단, 한국 공식몰 신상품 경로 추정"
+    },
+    {
+      "naverBrandId": 209779,
+      "displayName": "젝시믹스",
+      "homepage": "https://www.xexymix.com",
+      "api": "https://www.xexymix.com/shop/shopbrand.html?type=Y&xcode=062",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "공식몰(메이크샵) 카테고리, 200 확인, products.json 없음"
+    },
+    {
+      "naverBrandId": 223425,
+      "displayName": "안다르",
+      "homepage": "https://www.andar.co.kr",
+      "api": "https://www.andar.co.kr/product/list.html?cate_no=2818",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "공식몰(cafe24) 카테고리, 200 확인"
+    },
+    {
+      "naverBrandId": 136246,
+      "displayName": "데상트",
+      "homepage": "https://dk-on.com",
+      "api": "https://dk-on.com/newArrival",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "데상트코리아 공식몰 DK-ON 신상품, 200 확인"
+    },
+    {
+      "naverBrandId": 654,
+      "displayName": "아식스",
+      "homepage": "https://www.asics.co.kr",
+      "api": "https://www.asics.co.kr/c/new-arrivals",
+      "apiType": "page",
+      "status": "unverified",
+      "verified": false,
+      "note": "200이나 대기열(netfunnel) JS 페이지, 실제 목록 미확인"
+    },
+    {
+      "naverBrandId": 197164,
+      "displayName": "호카",
+      "homepage": "https://www.hoka.com/kr/ko/",
+      "api": "https://www.hoka.com/kr/ko/",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "406 봇 차단, 글로벌 공식몰 한국 로케일"
+    },
+    {
+      "naverBrandId": 253229,
+      "displayName": "온러닝",
+      "homepage": "https://www.on.com/ko-kr",
+      "api": "https://www.on.com/ko-kr/shop",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "On 공식몰 한국 전체 상품, 200 확인"
+    },
+    {
+      "naverBrandId": 946,
+      "displayName": "미즈노",
+      "homepage": "https://kor.mizuno.com",
+      "api": "https://kor.mizuno.com/product/list.html?cate_no=161",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "미즈노 한국 공식몰(cafe24, mizuno.co.kr 리다이렉트), 200 확인"
+    },
+    {
+      "naverBrandId": 32926,
+      "displayName": "언더아머",
+      "homepage": "https://www.underarmour.co.kr/ko-kr/",
+      "api": "https://www.underarmour.co.kr/ko-kr/c/new-arrivals/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰 신상품, 200 확인"
+    },
+    {
+      "naverBrandId": 1250,
+      "displayName": "노스페이스",
+      "homepage": "https://www.thenorthfacekorea.co.kr",
+      "api": "https://www.thenorthfacekorea.co.kr/submainNew",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "영원아웃도어 공식몰 NEW, 200 확인"
+    },
+    {
+      "naverBrandId": 14219,
+      "displayName": "코오롱스포츠",
+      "homepage": "https://www.kolonsport.com",
+      "api": "https://www.kolonsport.com/View/NewArrival",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "코오롱스포츠 공식몰(코오롱몰 기반) 신상품, 200 확인"
+    },
+    {
+      "naverBrandId": 306,
+      "displayName": "K2",
+      "homepage": "https://www.k-village.co.kr",
+      "api": "https://www.k-village.co.kr/k2",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "K2코리아 통합몰 K.VILLAGE의 K2관, k2.co.kr은 nginx 기본 페이지만 나옴"
+    },
+    {
+      "naverBrandId": 29907,
+      "displayName": "디스커버리",
+      "homepage": "https://www.discovery-expedition.com",
+      "api": "https://www.discovery-expedition.com/display/DXMB03NEW?gf=M",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "F&F 공식몰 신상품, 200 확인"
+    },
+    {
+      "naverBrandId": 100236,
+      "displayName": "내셔널지오그래픽",
+      "homepage": "https://www.natgeokorea.com",
+      "api": "https://www.nstationmall.com/natgeo",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "더네이쳐홀딩스 엔스테이션몰 브랜드관, natgeokorea.com/products.json은 JSON 아닌 HTML 반환"
+    },
+    {
+      "naverBrandId": 855,
+      "displayName": "블랙야크",
+      "homepage": "https://www.byn.kr/blackyak/",
+      "api": "https://www.byn.kr/blackyak/shop/big_section.php?cno1=1019",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "BYN블랙야크 통합몰 블랙야크관 카테고리, 200 확인"
+    },
+    {
+      "naverBrandId": 38562,
+      "displayName": "네파",
+      "homepage": "https://www.nplus.co.kr",
+      "api": "https://www.nplus.co.kr/product/list.asp?cno=100",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "네파 공식몰 N+ MEN 목록, nepa.co.kr 리다이렉트, 200 확인"
+    },
+    {
+      "naverBrandId": 12572,
+      "displayName": "스노우피크",
+      "homepage": "https://snowpeakstore.co.kr/",
+      "api": "https://snowpeakstore.co.kr/goods/goods_list.php?cateCd=001",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "스노우피크 어패럴 공식몰(고도몰), MEN 카테고리. WOMEN은 cateCd=002. 용품은 snowpeak.co.kr"
+    },
+    {
+      "naverBrandId": 798,
+      "displayName": "살로몬",
+      "homepage": "https://salomon.co.kr/",
+      "api": "https://salomon.co.kr/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰, Shopify products.json 확인"
+    },
+    {
+      "naverBrandId": 179357,
+      "displayName": "헬리녹스",
+      "homepage": "https://helinox.com/",
+      "api": "https://helinox.com/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "글로벌 공식몰, Shopify products.json 확인. helinox.co.kr은 403 차단"
+    },
+    {
+      "naverBrandId": 204675,
+      "displayName": "지포어",
+      "homepage": "https://www.gfore.com/",
+      "api": "https://www.kolonmall.com/Brands/GFORE",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "국내 공식 판매는 코오롱몰 브랜드관. gfore.com은 봇 차단 페이지"
+    },
+    {
+      "naverBrandId": 2197492,
+      "displayName": "말본골프",
+      "homepage": "https://malbon.com/",
+      "api": "https://malbon.com/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "글로벌 공식몰, Shopify products.json 확인"
+    },
+    {
+      "naverBrandId": 203701,
+      "displayName": "골든베어",
+      "homepage": "https://www.kolonmall.com/Brands/GOLDENBEAR",
+      "api": "https://www.kolonmall.com/Brands/GOLDENBEAR",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "코오롱몰 브랜드관(코오롱FnC), 자체 몰 없음"
+    },
+    {
+      "naverBrandId": 239780,
+      "displayName": "왁(WAAC)",
+      "homepage": "https://www.waacgolf.com/",
+      "api": "https://www.kolonmall.com/WAAC",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "waacgolf.com이 코오롱몰 브랜드관으로 리다이렉트"
+    },
+    {
+      "naverBrandId": 821,
+      "displayName": "빈폴",
+      "homepage": "https://www.beanpole.com/",
+      "api": "https://www.ssfshop.com/BEANPOLE/main",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "SSF샵 브랜드관. beanpole.com은 브랜드 소개 사이트"
+    },
+    {
+      "naverBrandId": 11592,
+      "displayName": "마리떼프랑소와저버",
+      "homepage": "https://marithe-official.com/",
+      "api": "https://marithe-official.com/product/list.html?cate_no=1001",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, 전체상품 카테고리"
+    },
+    {
+      "naverBrandId": 2812692,
+      "displayName": "세터",
+      "homepage": "https://satur.co.kr/",
+      "api": "https://satur.co.kr/product/list.html?cate_no=914",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, NEW 카테고리(전체 카테고리는 확인 안 됨)"
+    },
+    {
+      "naverBrandId": 1058,
+      "displayName": "리바이스",
+      "homepage": "https://levi.co.kr/",
+      "api": "https://levi.co.kr/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰, Shopify products.json 확인"
+    },
+    {
+      "naverBrandId": 539,
+      "displayName": "MLB",
+      "homepage": "https://www.mlb-korea.com/",
+      "api": "https://www.mlb-korea.com/display/MBMB01",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "F&F 공식몰, WOMEN ALL 카테고리(MEN은 MBMB02, CAP은 MBMB03)"
+    },
+    {
+      "naverBrandId": 209299,
+      "displayName": "아더에러",
+      "homepage": "https://adererror.com/kr",
+      "api": "https://adererror.com/kr/shop",
+      "apiType": "page",
+      "status": "unverified",
+      "verified": false,
+      "note": "SPA 구조라 /kr/shop이 200을 돌려주지만 목록 경로인지는 확인 안 됨"
+    },
+    {
+      "naverBrandId": 202815,
+      "displayName": "앤더슨벨",
+      "homepage": "https://anderssonbell.com/",
+      "api": "https://anderssonbell.com/product/list.html?cate_no=384",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, ALL 카테고리(385도 ALL)"
+    },
+    {
+      "naverBrandId": 203252,
+      "displayName": "디스이즈네버댓",
+      "homepage": "https://thisisneverthat.com/",
+      "api": "https://thisisneverthat.com/products",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "공식몰 sitemap의 /products 목록 페이지, products.json은 없음"
+    },
+    {
+      "naverBrandId": 210648,
+      "displayName": "키르시",
+      "homepage": "https://www.kirsh.co.kr/",
+      "api": "https://www.kirsh.co.kr/product/list.html?cate_no=217",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, shop all"
+    },
+    {
+      "naverBrandId": 208806,
+      "displayName": "로맨틱크라운",
+      "homepage": "https://www.romanticcrown.com/",
+      "api": "https://www.romanticcrown.com/",
+      "apiType": "page",
+      "status": "fallback",
+      "verified": false,
+      "note": "도메인이 외부 사이트(bos88a1.com)로 리다이렉트되고 403. 공식몰 확인 안 됨"
+    },
+    {
+      "naverBrandId": 227780,
+      "displayName": "LMC",
+      "homepage": "https://lostmanagementcities.com/",
+      "api": "https://lostmanagementcities.com/product/list.html?cate_no=1365",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "레이어 공식 LMC몰(카페24), APPAREL 카테고리"
+    },
+    {
+      "naverBrandId": 257417,
+      "displayName": "위11던(We11done)",
+      "homepage": "https://we11-done.com/",
+      "api": "https://we11-done.com/goods/goods_list.php?cateCd=002",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "고도몰 공식몰, 신상품 카테고리"
+    },
+    {
+      "naverBrandId": 2078392,
+      "displayName": "마뗑킴",
+      "homepage": "https://www.matinkim.com/",
+      "api": "https://www.matinkim.com/product/list.html?cate_no=45",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, NEW IN 카테고리"
+    },
+    {
+      "naverBrandId": 3301592,
+      "displayName": "마르디메크르디",
+      "homepage": "https://mardimercredi.com/",
+      "api": "https://mardimercredi.com/product/list.html?cate_no=487",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, SHOP 카테고리"
+    },
+    {
+      "naverBrandId": 2742892,
+      "displayName": "글로니",
+      "homepage": "https://glowny.co.kr/",
+      "api": "https://glowny.co.kr/product/list.html?cate_no=253",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, ALL 카테고리"
+    },
+    {
+      "naverBrandId": 2793492,
+      "displayName": "스탠드오일",
+      "homepage": "https://standoil.kr/",
+      "api": "https://standoil.kr/product/list.html?cate_no=652",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, NEW 카테고리"
+    },
+    {
+      "naverBrandId": 210820,
+      "displayName": "로우클래식",
+      "homepage": "https://www.lowclassic.com/",
+      "api": "https://www.lowclassic.com/product/bn-list.html?cate_no=785",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, SHOP NOW 목록"
+    },
+    {
+      "naverBrandId": 305300,
+      "displayName": "아모멘토",
+      "homepage": "https://amomento.co/",
+      "api": "https://amomento.co/product/list.html?cate_no=136",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰, Women all(Men all은 137)"
+    },
+    {
+      "naverBrandId": 239146,
+      "displayName": "민주킴",
+      "homepage": "https://www.minjukim.co/",
+      "api": "https://www.minjukim.co/ko/shop",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "공식몰 shop 페이지. minjukim.com은 파킹 도메인"
+    },
+    {
+      "naverBrandId": 225211,
+      "displayName": "혜인서",
+      "homepage": "https://hyeinseo.com/",
+      "api": "https://hyeinseo.com/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "공식몰, Shopify products.json 확인"
+    },
+    {
+      "naverBrandId": 3959692,
+      "displayName": "오픈YY",
+      "homepage": "https://open-yy.com",
+      "api": "https://open-yy.com/product/list.html?cate_no=213",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "Cafe24 자사몰(구 theopenproduct.com) VIEW ALL 카테고리 200 확인"
+    },
+    {
+      "naverBrandId": 3377092,
+      "displayName": "포스트아카이브팩션",
+      "homepage": "https://postarchivefaction.com",
+      "api": "https://postarchivefaction.com/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "Shopify products.json 확인"
+    },
+    {
+      "naverBrandId": 209832,
+      "displayName": "준지",
+      "homepage": "http://www.juunj.com",
+      "api": "https://www.ssfshop.com/JUUN-J/main?brandShopNo=BDMA07A11&brndShopId=ECBJC",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "juunj.com은 소개 사이트(판매 없음), 삼성물산 SSF샵 브랜드관 200 확인"
+    },
+    {
+      "naverBrandId": 215605,
+      "displayName": "우영미",
+      "homepage": "https://wooyoungmi.com",
+      "api": "https://wooyoungmi.com/product/list.html?cate_no=216",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "Cafe24 자사몰 남성 모두보기(여성은 cate_no=223), products.json 없음"
+    },
+    {
+      "naverBrandId": 180345,
+      "displayName": "젠틀몬스터",
+      "homepage": "https://www.gentlemonster.com/kr/ko",
+      "api": "https://www.gentlemonster.com/kr/ko/category/sunglasses/view-all",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "선글라스 전체보기 200 확인(안경은 /category/glasses/view-all)"
+    },
+    {
+      "naverBrandId": 253175,
+      "displayName": "분크",
+      "homepage": "https://vunque.com",
+      "api": "https://vunque.com/product/list.html?cate_no=144",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "Cafe24 자사몰 SHOP/NEW 카테고리 200 확인"
+    },
+    {
+      "naverBrandId": 32574,
+      "displayName": "슈콤마보니",
+      "homepage": "https://www.kolonmall.com/SUECOMMABONNIE",
+      "api": "https://www.kolonmall.com/Brands/SUECOMMABONNIE",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "suecommabonnie.com이 코오롱몰로 리다이렉트, 코오롱몰 브랜드관"
+    },
+    {
+      "naverBrandId": 159044,
+      "displayName": "쿠론",
+      "homepage": "https://www.kolonmall.com/COURONNE",
+      "api": "https://www.kolonmall.com/Brands/COURONNE",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "couronne.co.kr이 코오롱몰로 리다이렉트, 코오롱몰 브랜드관"
+    },
+    {
+      "naverBrandId": 14407,
+      "displayName": "탠디",
+      "homepage": "https://www.tandymall.com",
+      "api": "https://www.tandymall.com/shop/big_section.php?cno1=1072",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "공식몰 TANDYMALL 여성 ALL(남성 cno1=1071), tandy.co.kr은 무관 사이트"
+    },
+    {
+      "naverBrandId": 315,
+      "displayName": "캘빈클라인",
+      "homepage": "https://www.calvinklein.co.kr/ko/home/",
+      "api": "https://www.calvinklein.co.kr/ko/women/featured/new-arrivals/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰 여성 신상품(남성 /ko/men/featured/new-arrivals/)"
+    },
+    {
+      "naverBrandId": 27301,
+      "displayName": "밍크뮤",
+      "homepage": "http://www.minkmui.co.kr",
+      "api": "http://www.minkmui.co.kr",
+      "apiType": "page",
+      "status": "fallback",
+      "verified": false,
+      "note": "수향몰(suhyangmall/thesymall)로 리다이렉트되나 연결 불가, 자사 상품목록 확인 못함"
+    },
+    {
+      "naverBrandId": 13678,
+      "displayName": "이상봉",
+      "homepage": "https://www.liesangbong.com",
+      "api": "https://www.liesangbong.com",
+      "apiType": "page",
+      "status": "fallback",
+      "verified": false,
+      "note": "Wix 공식 사이트, 홈 외 상품목록 페이지 없음"
+    },
+    {
+      "naverBrandId": 32809,
+      "displayName": "토리버치",
+      "homepage": "https://www.toryburch.co.kr",
+      "api": "https://www.toryburch.co.kr/public/display/category/2d/view?dspCtgryNo=TRYA23",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰(삼성물산 운영) 신상 컬렉션 200 확인"
+    },
+    {
+      "naverBrandId": 1392,
+      "displayName": "마이클코어스",
+      "homepage": "https://www.michaelkors.co.kr",
+      "api": "https://www.michaelkors.co.kr/shop/big_section.php?cno1=1004",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰 핸드백 전체상품(신발 1005, 지갑 1006, 의류 1002)"
+    },
+    {
+      "naverBrandId": 14223,
+      "displayName": "코치",
+      "homepage": "https://korea.coach.com",
+      "api": "https://korea.coach.com/shop/new/women",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "403 차단(Access Denied), kr.coach.com DNS 없음, 경로 미확인"
+    },
+    {
+      "naverBrandId": 14185,
+      "displayName": "케이트스페이드",
+      "homepage": "https://www.katespade.com",
+      "api": "https://www.katespade.com/shop/new/view-all",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "katespade.co.kr은 파킹 도메인, 글로벌 사이트 403 차단"
+    },
+    {
+      "naverBrandId": 11444,
+      "displayName": "롱샴",
+      "homepage": "https://www.longchamp.com/kr/ko/",
+      "api": "https://www.longchamp.com/kr/ko/%EC%8B%A0%EC%A0%9C%ED%92%88/new-in/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰 신제품 200 확인"
+    },
+    {
+      "naverBrandId": 14445,
+      "displayName": "토즈",
+      "homepage": "https://www.tods.com/kr-ko",
+      "api": "https://www.tods.com/kr-ko/women.html",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "403 차단"
+    },
+    {
+      "naverBrandId": 14623,
+      "displayName": "페라가모",
+      "homepage": "https://www.ferragamo.com/kr/ko",
+      "api": "https://www.ferragamo.com/kr/ko/women/",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "403 차단"
+    },
+    {
+      "naverBrandId": 133532,
+      "displayName": "멀버리",
+      "homepage": "https://www.mulberry.com/kr/",
+      "api": "https://www.mulberry.com/kr/shop/women",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 사이트 여성 카테고리 200(봇 챌린지 페이지 가능성 있음)"
+    },
+    {
+      "naverBrandId": 204267,
+      "displayName": "칼린",
+      "homepage": "https://www.carlynmall.com",
+      "api": "https://www.carlynmall.com/shop/shopbrand.html?type=N&xcode=010&mcode=001",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "carlyn.co.kr→carlynmall.com(메이크샵) New Product 200 확인"
+    },
+    {
+      "naverBrandId": 249605,
+      "displayName": "아카이브앱크",
+      "homepage": "https://www.kolonmall.com/Brands/ARCHIVEPKE",
+      "api": "https://www.kolonmall.com/Brands/ARCHIVEPKE",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "archivepke.com은 매물 도메인, 코오롱몰 브랜드관"
+    },
+    {
+      "naverBrandId": 207176,
+      "displayName": "레이크넨",
+      "homepage": "https://reikenen.com",
+      "api": "https://reikenen.com/product/list.html?cate_no=44",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "Cafe24 자사몰 NEW ARRIVALS(슈즈 42, 백 51)"
+    },
+    {
+      "naverBrandId": 206955,
+      "displayName": "오야니",
+      "homepage": "https://www.oryany.co.kr",
+      "api": "https://oryany.com/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "글로벌 oryany.com Shopify products.json 확인(USD), 한국몰은 oryany.co.kr/product/list.html?cate_no=570"
+    },
+    {
+      "naverBrandId": 149383,
+      "displayName": "질바이질스튜어트",
+      "homepage": "https://www.lfmall.co.kr",
+      "api": "https://www.lfmall.co.kr/app/exhibition/brand/JILLBYJILLSTUART",
+      "apiType": "page",
+      "status": "unverified",
+      "verified": false,
+      "note": "LF몰 브랜드관 추정 URL, SPA라 모든 경로 200 반환해 미확인"
+    },
+    {
+      "naverBrandId": 17755,
+      "displayName": "빈폴액세서리",
+      "homepage": "https://www.ssfshop.com/Beanpole-Accessory/main?brandShopNo=BDMA01A04&brndShopId=BPBBE",
+      "api": "https://www.ssfshop.com/Beanpole-Accessory/main?dspCtgryNo=&brandShopNo=BDMA01A04&brndShopId=BPBBE",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "SSF샵 브랜드관 200 확인"
+    },
+    {
+      "naverBrandId": 14153,
+      "displayName": "컨버스",
+      "homepage": "https://www.converse.co.kr",
+      "api": "https://www.converse.co.kr/category/%EC%8B%A0%EC%A0%9C%ED%92%88%EC%A0%84%EC%B2%B4/1248/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰 신제품 전체 200 확인"
+    },
+    {
+      "naverBrandId": 923,
+      "displayName": "반스",
+      "homepage": "https://www.vans.co.kr",
+      "api": "https://www.vans.co.kr/category/new",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "반스 코리아 공식몰 신상품 목록 200 확인"
+    },
+    {
+      "naverBrandId": 31786,
+      "displayName": "오니츠카타이거",
+      "homepage": "https://www.onitsukatiger.com/kr/ko-kr/",
+      "api": "https://www.onitsukatiger.com/kr/ko-kr/",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "한국 공식 스토어, 429 봇 차단, 목록 경로 미확인"
+    },
+    {
+      "naverBrandId": 1216,
+      "displayName": "닥터마틴",
+      "homepage": "https://www.drmartens.co.kr",
+      "api": "https://www.drmartens.co.kr/products.json",
+      "apiType": "json",
+      "status": "verified",
+      "verified": true,
+      "note": "Shopify products.json 확인(limit=250 시 250개)"
+    },
+    {
+      "naverBrandId": 29647,
+      "displayName": "클락스",
+      "homepage": "https://www.clarks.com",
+      "api": "https://www.clarks.com/en-gb/womens/womens-shoes/w_shoes_uk-c",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰(clarks.co.kr) 접속 불가, 글로벌(UK) 여성화 목록 200"
+    },
+    {
+      "naverBrandId": 182,
+      "displayName": "팀버랜드",
+      "homepage": "https://www.timberland.co.kr",
+      "api": "https://www.timberland.co.kr/category/new",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "팀버랜드 코리아 공식몰 신상품 200 확인"
+    },
+    {
+      "naverBrandId": 13109,
+      "displayName": "어그",
+      "homepage": "https://www.ugg.com",
+      "api": "https://www.shinsegaev.com/",
+      "apiType": "page",
+      "status": "fallback",
+      "verified": false,
+      "note": "국내는 신세계인터내셔날 수입, 신세계V(구 SI빌리지)에서 판매. 브랜드관 URL은 SPA라 미확인, ugg.com 406 차단"
+    },
+    {
+      "naverBrandId": 199402,
+      "displayName": "캠퍼",
+      "homepage": "https://www.camper.com/ko_KR",
+      "api": "https://www.camper.com/ko_KR/women/shoes",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국어 공식몰 여성화 목록 200"
+    },
+    {
+      "naverBrandId": 28473,
+      "displayName": "에코",
+      "homepage": "https://kr.ecco.com",
+      "api": "https://kr.ecco.com/women/shoes",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "한국 공식몰, 429 봇 차단, 목록 경로 추정"
+    },
+    {
+      "naverBrandId": 911,
+      "displayName": "버켄스탁",
+      "homepage": "https://www.birkenstock.com/kr",
+      "api": "https://www.birkenstock.com/kr/sandals/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰 샌들 카테고리(홈 링크에서 확인)"
+    },
+    {
+      "naverBrandId": 29750,
+      "displayName": "크록스",
+      "homepage": "https://www.crocs.co.kr",
+      "api": "https://www.crocs.co.kr/c/new-arrivals",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "한국 공식몰 홈 200, 카테고리 요청은 429 차단, 경로 추정"
+    },
+    {
+      "naverBrandId": 198207,
+      "displayName": "로저비비에",
+      "homepage": "https://www.rogervivier.com/kr-ko/",
+      "api": "https://www.rogervivier.com/kr-ko/",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "한국 공식 사이트, 403 차단"
+    },
+    {
+      "naverBrandId": 30780,
+      "displayName": "지미추",
+      "homepage": "https://www.jimmychoo.com/ko-kr",
+      "api": "https://www.jimmychoo.com/ko-kr/women/shoes/",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "403 차단, 목록 경로 추정"
+    },
+    {
+      "naverBrandId": 202392,
+      "displayName": "만올로블라닉",
+      "homepage": "https://www.manoloblahnik.com/int/",
+      "api": "https://www.manoloblahnik.com/int/women.html",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 스토어 없음(/kr→/int 리다이렉트), 글로벌 여성 목록 200. products.json 없음"
+    },
+    {
+      "naverBrandId": 202633,
+      "displayName": "크리스찬루부탱",
+      "homepage": "https://apac.christianlouboutin.com/",
+      "api": "https://apac.christianlouboutin.com/",
+      "apiType": "page",
+      "status": "homepage",
+      "verified": false,
+      "note": "kr_ko가 APAC 사이트로 리다이렉트, 403 차단"
+    },
+    {
+      "naverBrandId": 241978,
+      "displayName": "발렌티노가라바니",
+      "homepage": "https://www.valentino.com/ko-kr/",
+      "api": "https://www.valentino.com/ko-kr/women/shoes",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국어 공식몰 여성 슈즈 200"
+    },
+    {
+      "naverBrandId": 178717,
+      "displayName": "골든구스",
+      "homepage": "https://www.goldengoose.com/kr/ko/",
+      "api": "https://www.goldengoose.com/kr/ko/ls/%EC%97%AC%EC%84%B1/%EC%8A%A4%EB%8B%88%EC%BB%A4%EC%A6%88-w-ko_kr",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "한국 공식몰 여성 스니커즈 목록 200"
+    },
+    {
+      "naverBrandId": 249009,
+      "displayName": "쿠에른",
+      "homepage": "https://www.cueren.com",
+      "api": "https://www.cueren.com/product/list.html?cate_no=26",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "영문명 CUEREN, 카페24 공식 스토어 WOMEN 목록(MEN은 cate_no=27)"
+    },
+    {
+      "naverBrandId": 235724,
+      "displayName": "르무통",
+      "homepage": "https://www.lemouton.co.kr",
+      "api": "https://www.lemouton.co.kr/product/list.html?cate_no=79",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰 전체보기 카테고리 200(products.json 없음)"
+    },
+    {
+      "naverBrandId": 13304,
+      "displayName": "엘로드",
+      "homepage": "https://www.kolonmall.com/Brands/ELORDCLUB/Intro",
+      "api": "https://www.kolonmall.com/Brands/ELORDCLUB/Intro",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "자체몰 없음, 코오롱몰 엘로드클럽 브랜드관(골프웨어)"
+    },
+    {
+      "naverBrandId": 759,
+      "displayName": "소다",
+      "homepage": "https://www.sodamall.com",
+      "api": "https://www.sodamall.com/category/new/233/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "소다몰 공식쇼핑몰 NEW 카테고리 200(WOMEN 138, MEN 144)"
+    },
+    {
+      "naverBrandId": 228910,
+      "displayName": "금강제화",
+      "homepage": "https://www.kumkangshoe.com",
+      "api": "https://www.kumkangshoe.com/products?cate1=01",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "금강제화 공식몰 상품목록 200"
+    },
+    {
+      "naverBrandId": 13181,
+      "displayName": "에스콰이아",
+      "homepage": "https://www.esquire.co.kr",
+      "api": "https://www.esquire.co.kr/category/new/24/",
+      "apiType": "page",
+      "status": "verified",
+      "verified": true,
+      "note": "카페24 공식몰 NEW 카테고리 200"
+    },
+    {
+      "naverBrandId": 198426,
+      "displayName": "레이밴",
+      "homepage": "https://www.ray-ban.com/korea",
+      "api": "https://www.ray-ban.com/korea/sunglasses/view-all/plp",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "한국 공식몰, 403 차단, 경로 추정"
+    },
+    {
+      "naverBrandId": 513,
+      "displayName": "오클리",
+      "homepage": "https://www.oakley.com/ko-kr",
+      "api": "https://www.oakley.com/ko-kr/category/sunglasses",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "한국 공식몰, 403 차단, 경로 추정"
+    },
+    {
+      "naverBrandId": 205960,
+      "displayName": "티파니",
+      "homepage": "https://www.tiffany.kr",
+      "api": "https://www.tiffany.kr/jewelry/",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "한국 공식 사이트(tiffany.kr), 403 차단"
+    },
+    {
+      "naverBrandId": 11442,
+      "displayName": "롤렉스",
+      "homepage": "https://www.rolex.com/ko",
+      "api": "https://www.rolex.com/ko/watches",
+      "apiType": "page",
+      "status": "blocked",
+      "verified": false,
+      "note": "온라인 판매 없음, 공식 시계 컬렉션 페이지, 403 차단"
+    }
+  ]
+}

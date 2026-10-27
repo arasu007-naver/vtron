@@ -31,8 +31,13 @@ If the product name and category let you tell WHICH visible garment is the produ
 If they do not let you tell (no visible garment matches, or more than one could), set prominence from the image as usual and add "product_match" to no garment.
 ⛔ This context only chooses the primary garment. It must not change any observation, category, eligibility, colour or presentation type — observe every garment exactly as you see it.`;
 
-/** 프롬프트 → 관찰 프롬프트(base) + 상품 정보(addendum, 없으면 null) */
-export function splitProductContext(prompt: string): { base: string; addendum: string | null } {
+/**
+ * 프롬프트 → 관찰 프롬프트(base) + 상품 정보(addendum, 없으면 null).
+ * 줄바꿈은 LF 로 맞춘다 — multipart/form-data 로 보낸 글은 줄바꿈이 CRLF 로 바뀌어 오므로, 그대로면 표식을 못 찾고
+ * 버전(LF 로 저장됨)과도 내용이 달라진다.
+ */
+export function splitProductContext(text: string): { base: string; addendum: string | null } {
+  const prompt = text.replace(/\r\n?/g, "\n");
   const at = prompt.lastIndexOf(MARKER);
   if (at < 0) return { base: prompt, addendum: null };
   const addendum = prompt.slice(at);
