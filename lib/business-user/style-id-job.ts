@@ -8,6 +8,16 @@ export const JOB_BUCKET = "style-id-jobs";
 export type JobStatus = "queued" | "running" | "succeeded" | "failed" | "dead";
 export const TERMINAL_STATUSES: readonly JobStatus[] = ["succeeded", "failed", "dead"];
 
+/**
+ * 끝나는 대로 이미지를 지우는 상태. dead 는 관리자가 다시 실행할 수 있도록(requeue_style_id_job)
+ * 보존 기간(DEFAULT_DEAD_IMAGE_RETENTION_DAYS) 동안 남겼다가 워커가 지운다.
+ */
+export const IMAGE_DELETE_NOW_STATUSES: readonly JobStatus[] = ["succeeded", "failed"];
+export const deletesImageNow = (status: string) => (IMAGE_DELETE_NOW_STATUSES as readonly string[]).includes(status);
+
+/** dead 작업 이미지 보존 기간(일) */
+export const DEFAULT_DEAD_IMAGE_RETENTION_DAYS = 7;
+
 /** 업체별 미완료(queued · running) 작업 상한 */
 export const DEFAULT_MAX_PENDING_JOBS = 1000;
 

@@ -7,7 +7,9 @@
 --   failed    → 재시도해도 같은 결과인 실패(의복 미검출 등). result = { ok: false, error }
 --   dead      → 일시 오류(Anthropic 429 · 529 · 5xx · 타임아웃 등)가 max_attempts 번 이어졌다
 --
--- 이미지는 비공개 버킷 style-id-jobs 의 image_path 에 두고, 작업이 끝나면(succeeded · failed · dead) 워커가 지운다.
+-- 이미지는 비공개 버킷 style-id-jobs 의 image_path 에 둔다. succeeded · failed 는 끝나는 대로 워커가 지운다.
+-- dead 는 관리자가 다시 실행할 수 있도록(requeue_style_id_job) 보존 기간 동안 남기고, 지난 뒤 워커가 지운다
+-- (claim_dead_style_id_job_images). 지운 작업은 image_deleted_at 이 찍히고 다시 실행할 수 없다.
 -- 같은 업체가 같은 idempotency_key 로 다시 등록하면 새 작업을 만들지 않고 기존 작업을 돌려준다.
 --
 -- 0017 실행 후 Supabase 대시보드 → SQL Editor 에 붙여넣어 실행한다(여러 번 실행해도 된다).
@@ -23,6 +25,7 @@ create table if not exists public.style_id_job (
   image_path        text        not null,
   image_sha256      text        not null,
   image_type        text,
+  image_deleted_at  timestamptz,
   product_name      text,
   product_category  text,
   attempts          integer     not null default 0,
@@ -42,6 +45,10 @@ create table if not exists public.style_id_job (
 
 comment on table public.style_id_job is
   '외부 API 스타일 아이디 비동기 작업 큐. 워커가 claim_style_id_jobs() 로 집는다';
+-- 앞선 0020(이 열이 없던 판)을 이미 실행한 DB 용
+alter table public.style_id_job add column if not exists image_deleted_at timestamptz;
+
+comment on column public.style_id_job.image_deleted_at is 'Storage 이미지를 지운 시각 — 찍혀 있으면 다시 실행할 수 없다';
 comment on column public.style_id_job.last_error is '서버 쪽 사유(업체에게는 result.error 의 일반화한 문구만 보인다)';
 comment on column public.style_id_job.request_id is '작업을 등록한 호출의 api_call_log.id';
 comment on column public.style_id_job.callback_url is '완료 웹훅 주소 — 아직 쓰지 않는다(다음 단계)';
@@ -55,6 +62,11 @@ create index if not exists style_id_job_ready_idx
 create index if not exists style_id_job_running_lease_idx
   on public.style_id_job (locked_until)
   where status = 'running';
+
+-- 보존 기간이 지난 dead 작업 이미지 찾기
+create index if not exists style_id_job_dead_image_idx
+  on public.style_id_job (finished_at)
+  where status = 'dead' and image_deleted_at is null;
 
 create index if not exists style_id_job_business_user_idx
   on public.style_id_job (business_user_id, created_at desc);
@@ -197,13 +209,78 @@ begin
 end;
 $$;
 
+-- 5) dead 작업 다시 실행 -------------------------------------------------------
+-- 관리자가 부른다. dead 이고 이미지가 아직 남아 있을 때만 queued 로 되돌리고 attempts 를 0 으로 둔다.
+-- last_error 는 앞 사유를 남긴 채 둔다(다음 실패 때 덮어쓴다). p_max_attempts 를 주면 그 값으로 바꾼다.
+--   P0002 = 없는 작업 · 55000 = dead 가 아니거나 이미지를 이미 지움
+create or replace function public.requeue_style_id_job(p_id uuid, p_max_attempts integer default null)
+returns public.style_id_job
+language plpgsql
+set search_path = public
+as $$
+declare
+  job public.style_id_job;
+begin
+  select * into job from public.style_id_job where id = p_id for update;
+  if not found then
+    raise exception 'style_id_job % 이 없습니다', p_id using errcode = 'P0002';
+  end if;
+  if job.status <> 'dead' then
+    raise exception 'dead 작업만 다시 실행할 수 있습니다 (지금 %)', job.status using errcode = '55000';
+  end if;
+  if job.image_deleted_at is not null then
+    raise exception '보존 기간이 지나 이미지를 지운 작업입니다 (%)', job.image_deleted_at using errcode = '55000';
+  end if;
+  if p_max_attempts is not null and p_max_attempts < 1 then
+    raise exception 'p_max_attempts 는 1 이상이어야 합니다';
+  end if;
+
+  update public.style_id_job
+     set status       = 'queued',
+         attempts     = 0,
+         max_attempts = coalesce(p_max_attempts, max_attempts),
+         next_run_at  = now(),
+         locked_by    = null,
+         locked_until = null,
+         result       = null,
+         started_at   = null,
+         finished_at  = null
+   where id = p_id
+  returning * into job;
+  return job;
+end;
+$$;
+
+-- 6) 보존 기간이 지난 dead 작업 이미지 지우기 ------------------------------------
+-- 워커가 주기적으로 부른다. finished_at 이 p_retention 보다 오래된 dead 작업 n 개에 image_deleted_at 을 먼저 찍고
+-- 그 image_path 를 돌려준다 — 워커가 Storage 에서 지운다. 먼저 찍으므로 지우는 사이에 requeue 가 끼어들지 못한다.
+create or replace function public.claim_dead_style_id_job_images(p_retention interval, n integer)
+returns table (id uuid, image_path text)
+language sql
+set search_path = public
+as $$
+  update public.style_id_job j
+     set image_deleted_at = now()
+   where j.id in (
+           select s.id from public.style_id_job s
+            where s.status = 'dead' and s.image_deleted_at is null
+              and s.finished_at < now() - p_retention
+            order by s.finished_at
+            limit n
+            for update skip locked
+         )
+  returning j.id, j.image_path;
+$$;
+
 -- 서버 라우트 · 워커(service role)만 부른다
 revoke all on function public.claim_style_id_jobs(text, integer, interval) from public, anon, authenticated;
 revoke all on function public.renew_style_id_job_lease(uuid, text, interval) from public, anon, authenticated;
 revoke all on function public.finish_style_id_job(uuid, text, text, jsonb, text, interval) from public, anon, authenticated;
+revoke all on function public.requeue_style_id_job(uuid, integer) from public, anon, authenticated;
+revoke all on function public.claim_dead_style_id_job_images(interval, integer) from public, anon, authenticated;
 
--- 5) 작업 이미지 버킷(비공개) ---------------------------------------------------
--- 정책을 두지 않으므로 service role 만 읽고 쓴다. 작업이 끝나면 워커가 지운다.
+-- 7) 작업 이미지 버킷(비공개) ---------------------------------------------------
+-- 정책을 두지 않으므로 service role 만 읽고 쓴다. 지우는 시점은 맨 위 설명 참고.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values (
   'style-id-jobs',

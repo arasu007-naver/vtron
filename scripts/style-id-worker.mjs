@@ -13,10 +13,13 @@
  *   STYLE_ID_WORKER_POLL_MS       집을 작업이 없을 때 다시 볼 간격 (기본 2000)
  *   STYLE_ID_RETRY_BASE_MS        일시 오류 재시도 기준 대기 (기본 30000) — 지수 백오프 + 지터
  *   STYLE_ID_RETRY_CAP_MS         재시도 대기 상한 (기본 900000)
+ *   STYLE_ID_DEAD_IMAGE_RETENTION_DAYS  dead 작업 이미지 보존 기간(일, 기본 7) — 그동안 관리자가 다시 실행할 수 있다
+ *   STYLE_ID_PURGE_INTERVAL_MS    보존 기간이 지난 dead 이미지를 지우는 간격 (기본 3600000)
  *
  * 흐름: claim_style_id_jobs()로 업체별로 번갈아 집기 → 이미지 내려받기 → runStyleId(동기 엔드포인트와 같은 판정)
  *       → finish_style_id_job()  succeeded | failed(판정 실패 등 영구) | retry(429 · 529 · 5xx · 타임아웃 · 네트워크)
- *       retry 가 max_attempts 에 닿으면 dead. 끝난 작업의 이미지는 지운다.
+ *       retry 가 max_attempts 에 닿으면 dead.
+ *       succeeded · failed 의 이미지는 바로 지우고, dead 의 이미지는 보존 기간이 지난 뒤 지운다(image_deleted_at).
  * 스키마는 supabase/migrations/0020_style_id_job.sql.
  */
 
@@ -43,7 +46,9 @@ const jiti = createJiti(import.meta.url, {
 const { getAdminSupabase } = await jiti.import("../lib/supabase/server.ts");
 const { anthropicApiKey } = await jiti.import("../lib/style-ex/api-key.ts");
 const { runStyleId, sniffImage } = await jiti.import("../lib/business-user/style-id.ts");
-const { JOB_BUCKET, TERMINAL_STATUSES } = await jiti.import("../lib/business-user/style-id-job.ts");
+const { DEFAULT_DEAD_IMAGE_RETENTION_DAYS, JOB_BUCKET, JOB_TABLE, deletesImageNow } = await jiti.import(
+  "../lib/business-user/style-id-job.ts"
+);
 const { backoffMs, classifyFailure, errorInfoOf } = await jiti.import("../lib/business-user/job-retry.ts");
 
 const envInt = (name, fallback) => {
@@ -59,6 +64,9 @@ const BACKOFF = {
   baseMs: envInt("STYLE_ID_RETRY_BASE_MS", 30_000),
   capMs: envInt("STYLE_ID_RETRY_CAP_MS", 15 * 60_000),
 };
+const DEAD_IMAGE_RETENTION_DAYS = envInt("STYLE_ID_DEAD_IMAGE_RETENTION_DAYS", DEFAULT_DEAD_IMAGE_RETENTION_DAYS);
+const PURGE_INTERVAL_MS = envInt("STYLE_ID_PURGE_INTERVAL_MS", 60 * 60_000);
+const PURGE_BATCH = 100;
 const ONCE = process.argv.includes("--once");
 const WORKER_ID = `${hostname()}:${process.pid}:${randomBytes(3).toString("hex")}`;
 
@@ -194,10 +202,44 @@ async function processJob(job) {
         : decision.error;
   log(`${job.id} ${status} (시도 ${job.attempts}/${job.max_attempts}, ${took}) ${detail ?? ""}`.trim());
 
-  if (TERMINAL_STATUSES.includes(status)) {
+  // dead 는 다시 실행할 수 있도록 남긴다 — 보존 기간이 지나면 purgeDeadImages 가 지운다
+  if (deletesImageNow(status)) {
     const { error: rmError } = await db.storage.from(JOB_BUCKET).remove([job.image_path]).then((r) => r, (e) => ({ error: e }));
     if (rmError) warn(`${job.id} 이미지 삭제 실패:`, rmError.message ?? rmError);
+    else {
+      const { error: markError } = await db
+        .from(JOB_TABLE)
+        .update({ image_deleted_at: new Date().toISOString() })
+        .eq("id", job.id)
+        .then((r) => r, (e) => ({ error: e }));
+      if (markError) warn(`${job.id} image_deleted_at 기록 실패:`, markError.message ?? markError);
+    }
   }
+}
+
+// ── 보존 기간이 지난 dead 이미지 지우기 ─────────────────────────────────────────
+// claim_dead_style_id_job_images 가 image_deleted_at 을 먼저 찍고 경로를 돌려준다(워커 여럿이 불러도 겹치지 않는다).
+async function purgeDeadImages() {
+  let total = 0;
+  for (;;) {
+    const { data, error } = await db
+      .rpc("claim_dead_style_id_job_images", { p_retention: `${DEAD_IMAGE_RETENTION_DAYS} days`, n: PURGE_BATCH })
+      .then((r) => r, (e) => ({ error: e }));
+    if (error) {
+      warn("dead 이미지 정리 실패:", error.message ?? error);
+      return;
+    }
+    if (!data?.length) break;
+    const { error: rmError } = await db.storage
+      .from(JOB_BUCKET)
+      .remove(data.map((r) => r.image_path))
+      .then((r) => r, (e) => ({ error: e }));
+    // 표시는 이미 찍혔다 — Storage 에 파일이 남을 수 있으니 경로를 로그로 남긴다
+    if (rmError) warn(`dead 이미지 ${data.length}건 Storage 삭제 실패:`, rmError.message ?? rmError, data.map((r) => r.image_path));
+    total += data.length;
+    if (data.length < PURGE_BATCH) break;
+  }
+  if (total) log(`보존 기간(${DEAD_IMAGE_RETENTION_DAYS}일)이 지난 dead 작업 이미지 ${total}건을 지웠습니다.`);
 }
 
 // ── 집기 루프 ─────────────────────────────────────────────────────────────────
@@ -209,8 +251,20 @@ async function claim(n) {
   return data ?? [];
 }
 
-log(`시작 — 동시 ${CONCURRENCY} · lease ${LEASE_SEC}s · heartbeat ${HEARTBEAT_MS / 1000}s${ONCE ? " · --once" : ""}`);
+log(
+  `시작 — 동시 ${CONCURRENCY} · lease ${LEASE_SEC}s · heartbeat ${HEARTBEAT_MS / 1000}s · ` +
+    `dead 이미지 보존 ${DEAD_IMAGE_RETENTION_DAYS}일${ONCE ? " · --once" : ""}`
+);
 let claimFailures = 0;
+let purging = null;
+const runPurge = () => {
+  purging ??= purgeDeadImages()
+    .catch((e) => warn("dead 이미지 정리 중 예외:", e instanceof Error ? e.message : e))
+    .finally(() => (purging = null));
+  return purging;
+};
+runPurge();
+const purgeTimer = setInterval(runPurge, PURGE_INTERVAL_MS);
 
 while (!stopping) {
   const free = CONCURRENCY - active.size;
@@ -242,6 +296,7 @@ while (!stopping) {
   if (claimed.length === 0 || active.size >= CONCURRENCY) await sleep(POLL_MS / 2 + Math.random() * POLL_MS);
 }
 
-await Promise.allSettled(active.values());
+clearInterval(purgeTimer);
+await Promise.allSettled([...active.values(), purging]);
 log("멈춤");
 process.exit(0);
