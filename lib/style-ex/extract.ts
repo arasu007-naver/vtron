@@ -32,12 +32,14 @@ import {
 } from "./scoring";
 import { STYLE_IDS, styleIdCandidates } from "./style-ids";
 import { splitProductContext } from "./product-context";
+import { fillFocus, focusOf, isEligible, isMultiCallPrompt, merge, multiCallPrompts, numberTargets } from "./multi-call";
 import { judgeTcRules, tcSummaryOf, type TcRuleResult } from "./tc-rules";
 
 /**
  * 의류 스타일 추출 (style-ex).
  *
- * 1. 관찰  : 이미지 1장 → Vision 호출 1회(Claude 또는 Gemini 3.8 Flash) → 의복별 37개 파라미터 + DM 디테일 + 색상 + 연출 유형
+ * 1. 관찰  : 이미지 1장 → Vision 호출(Claude 또는 Gemini 3.8 Flash) → 의복별 37개 파라미터 + DM 디테일 + 색상 + 연출 유형.
+ *           프롬프트가 다회 호출용(multi-call.ts)이면 식별 1회 + 적격 의복마다 관찰 1회(동시에), 아니면 1회.
  * 2. 스코어링: EI · SR · DM 은 STMX ITEM SCORING ENGINE V1 (scoring.ts), TC 는 규칙 판정 (tc-rules.ts)
  * 3. 미결  : 엔진 · 규칙이 글자를 정하지 못한 축은 엔진 방향이 있으면 그 글자, 없으면 기본 글자(DEFAULT_LETTER)
  * 4. 조합  : 대표 의복의 네 글자 → 스타일 아이디
@@ -127,6 +129,23 @@ export interface ExtractInput {
   provider?: StyleExProvider;
 }
 
+/** 다회 호출에서 의복별 관찰 호출을 동시에 몇 개까지 보내는가 */
+const OBSERVE_CONCURRENCY = 4;
+
+/** items 를 최대 limit 개씩 동시에 처리한다 — 결과는 items 순서 */
+async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
+  const out = new Array<R>(items.length);
+  let next = 0;
+  const worker = async () => {
+    while (next < items.length) {
+      const i = next++;
+      out[i] = await fn(items[i]);
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+  return out;
+}
+
 /** Gemini 모델은 최대 65,536 출력 토큰 및 1,048,576 입력 컨텍스트 윈도우를 지원한다 */
 const GEMINI_MAX_OUTPUT_TOKENS = 65_536;
 
@@ -141,8 +160,8 @@ async function observe(
   const isGemini = provider === "gemini";
   let activeModel = isGemini ? geminiVisionModel() : visionModel();
 
-  // 1) Claude Vision 호출 함수
-  const claudeVisionFn = async (_enginePrompt: string, img: unknown) => {
+  // 1) Claude Vision 호출 함수 — shared(캐시 블록) 뒤에 호출마다 다른 글(blocks)을 붙인다
+  const claudeVisionFnFor = (shared: string, blocks: string[], label: string) => async (_enginePrompt: string, img: unknown) => {
     const client = new Anthropic(anthropicClientOptions());
     const message = await client.messages
       .stream({
@@ -152,8 +171,8 @@ async function observe(
           {
             role: "user",
             content: [
-              { type: "text", text: prompt, cache_control: { type: "ephemeral" } },
-              ...(productContext ? [{ type: "text" as const, text: productContext }] : []),
+              { type: "text", text: shared, cache_control: { type: "ephemeral" } },
+              ...blocks.map((text) => ({ type: "text" as const, text })),
               imageToBlock(img) as Anthropic.ImageBlockParam,
             ],
           },
@@ -162,7 +181,7 @@ async function observe(
       .finalMessage();
     const { input_tokens, cache_creation_input_tokens, cache_read_input_tokens, output_tokens } = message.usage;
     console.info(
-      `[style-ex] Claude 관찰 usage — 입력 ${input_tokens} · 캐시 쓰기 ${cache_creation_input_tokens ?? 0} · ` +
+      `[style-ex] Claude ${label} usage — 입력 ${input_tokens} · 캐시 쓰기 ${cache_creation_input_tokens ?? 0} · ` +
         `캐시 읽기 ${cache_read_input_tokens ?? 0} · 출력 ${output_tokens}`
     );
     if (message.stop_reason === "max_tokens") throw new Error("관찰 출력이 max_tokens 에서 잘렸습니다.");
@@ -173,7 +192,7 @@ async function observe(
   //   - 방대한 37개 파라미터 관찰 프롬프트(4만+ 토큰)는 systemInstruction 블록에 배치하여
   //     어텐션 유실(Lost-in-the-middle) 없이 지시사항 전체를 100% 소화하도록 보장합니다.
   //   - maxOutputTokens 는 Gemini 최대 한도인 65,536으로 확장하여 thinking 및 대용량 JSON 출력이 잘리지 않게 합니다.
-  const geminiVisionFn = async (_enginePrompt: string, img: unknown) => {
+  const geminiVisionFnFor = (shared: string, blocks: string[], label: string) => async (_enginePrompt: string, img: unknown) => {
     const apiKey = geminiApiKey();
     if (!apiKey) throw new Error(MISSING_GEMINI_KEY_MESSAGE);
 
@@ -184,7 +203,7 @@ async function observe(
 
     const payload = {
       systemInstruction: {
-        parts: [{ text: prompt }],
+        parts: [{ text: shared }],
       },
       contents: [
         {
@@ -196,8 +215,8 @@ async function observe(
                 data: block.source.data,
               },
             },
-            ...(productContext
-              ? [{ text: productContext }]
+            ...(blocks.length
+              ? blocks.map((text) => ({ text }))
               : [
                   {
                     text: "Observe all visible garments in this image and output the complete JSON targets package strictly adhering to all 37 parameters in the system instructions. Do not omit any parameters.",
@@ -275,7 +294,7 @@ async function observe(
 
     const usage = data.usageMetadata;
     console.info(
-      `[style-ex] Gemini (${activeModel}) 관찰 usage — 입력 ${usage?.promptTokenCount ?? 0} · 출력 ${usage?.candidatesTokenCount ?? 0} · 사고 ${usage?.thoughtsTokenCount ?? 0}`
+      `[style-ex] Gemini (${activeModel}) ${label} usage — 입력 ${usage?.promptTokenCount ?? 0} · 출력 ${usage?.candidatesTokenCount ?? 0} · 사고 ${usage?.thoughtsTokenCount ?? 0}`
     );
 
     const candidate = data.candidates?.[0];
@@ -286,26 +305,68 @@ async function observe(
     return text;
   };
 
-  const visionFn = isGemini ? geminiVisionFn : claudeVisionFn;
+  const visionFnFor = (shared: string, blocks: string[], label: string) =>
+    isGemini ? geminiVisionFnFor(shared, blocks, label) : claudeVisionFnFor(shared, blocks, label);
+  const fail = (c: { code: string; detail?: string; attempts: number; raw?: unknown }, where?: string) => ({
+    ok: false as const,
+    error: { stage: "model_call", code: c.code, detail: where ? `${where}: ${c.detail ?? ""}` : c.detail, attempts: c.attempts },
+    raw: c.raw,
+    visionModel: activeModel,
+  });
 
   // 미디어 타입은 확장자가 아니라 파일 바이트로 판별한다(엔진 D5 규칙).
   // 엔진의 판별기는 파일 경로 입력에서만 동작하므로 임시 파일로 넘긴다.
   const tmp = path.join(tmpdir(), `style-ex-${randomUUID()}${path.extname(fileName)}`);
   await writeFile(tmp, image);
-  let call;
+  let pkg: { targets: Obj[] };
+  let visionCalls: number;
   try {
-    call = await runOneCall(tmp, { visionFn, timeoutMs: TIMEOUT_MS });
+    if (isMultiCallPrompt(prompt)) {
+      // 다회 호출 (multi-call.ts) — ① 식별 1회 → ② 적격 의복마다 관찰, 동시에. 상품 정보는 ①에만 붙인다.
+      const { shared, identify, observe: observeTemplate } = multiCallPrompts(prompt);
+      const first = await runOneCall(tmp, {
+        visionFn: visionFnFor(shared, [identify, ...(productContext ? [productContext] : [])], "식별"),
+        timeoutMs: TIMEOUT_MS,
+      });
+      if (!first.ok) return fail(first, "식별 호출");
+      const firstPkg = first.pkg as { targets: Obj[]; cross_target_visual_relations?: unknown };
+      const identified = numberTargets(firstPkg.targets);
+      const eligible = identified.filter(isEligible);
+      const results = await mapLimit(eligible, OBSERVE_CONCURRENCY, (t) =>
+        runOneCall(tmp, {
+          visionFn: visionFnFor(shared, [fillFocus(observeTemplate, focusOf(t))], `관찰 ${t.target_id}`),
+          timeoutMs: TIMEOUT_MS,
+        })
+      );
+      const observed = new Map<string, Obj>();
+      for (const [i, r] of results.entries()) {
+        const id = String(eligible[i].target_id);
+        if (!r.ok) return fail(r, `관찰 호출 ${id}`);
+        const got = (r.pkg as { targets: Obj[] }).targets;
+        observed.set(id, got.find((x) => x.target_id === id) ?? got[0] ?? {});
+      }
+      pkg = merge(identified, firstPkg.cross_target_visual_relations, observed, Boolean(productContext));
+      visionCalls = first.attempts + results.reduce((n, r) => n + r.attempts, 0);
+      console.info(`[style-ex] 다회 호출 — 식별 1 + 관찰 ${eligible.length} (적격 ${eligible.length} / 타깃 ${identified.length})`);
+    } else {
+      const call = await runOneCall(tmp, {
+        visionFn: visionFnFor(prompt, productContext ? [productContext] : [], "관찰"),
+        timeoutMs: TIMEOUT_MS,
+      });
+      if (!call.ok) return fail(call);
+      pkg = call.pkg as { targets: Obj[] };
+      visionCalls = call.attempts;
+    }
   } finally {
     await unlink(tmp).catch(() => {});
   }
-  if (!call.ok) return { ok: false as const, error: { stage: "model_call", code: call.code, detail: call.detail, attempts: call.attempts }, raw: call.raw };
 
   // role · extraction_depth · 검증은 엔진의 단일 권위(governEnvelope)가 정한다.
-  const governed = governEnvelope(call.pkg, { imageId: fileName, model: activeModel, visionCalls: call.attempts });
+  const governed = governEnvelope(pkg, { imageId: fileName, model: activeModel, visionCalls });
   const envelope = governed.envelope as { targets: Obj[] };
   // 대상별 형제 메타데이터만 덧붙인다 (onecall 프로토타입의 governCombinedPackage 와 같은 방식).
   // governEnvelope 는 candidates 순서대로 target 을 하나씩 만들므로 인덱스가 맞는다.
-  const candidates = (call.pkg as { targets: Obj[] }).targets;
+  const candidates = pkg.targets;
   envelope.targets.forEach((t, i) => {
     if (!t.eligible) return;
     const cand = candidates[i] ?? {};
@@ -319,7 +380,7 @@ async function observe(
     const matched = envelope.targets.filter((t) => t.product_match === true).map((t) => t.target_id);
     console.info(`[style-ex] 상품 정보 적용 — product_match: ${matched.length ? matched.join(", ") : "없음 (이미지로 대표 의복 선택)"}`);
   }
-  return { ok: true as const, envelope, contract_valid: governed.contract_valid, visionModel: activeModel };
+  return { ok: true as const, envelope, contract_valid: governed.contract_valid, visionModel: activeModel, visionCalls };
 }
 
 /** 대표 의복을 고른 근거 — 상품 정보로 고정(PRODUCT_MATCH) · 가장 두드러진 의복(DOMINANT) · 첫 적격 의복(FIRST_ELIGIBLE) */
