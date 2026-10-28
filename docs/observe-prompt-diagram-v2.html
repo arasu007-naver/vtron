@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>관찰 프롬프트 v2 흐름</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #c9c9c3;
+    --input: #2f6fd6; --input-bg: #eaf1fc;
+    --out: #5b5b57; --out-bg: #efefec;
+    --model: #c2622e; --model-bg: #fbeee6;
+    --rule: #2c8a5a; --rule-bg: #e6f4ec;
+    --color: #8a4fc2; --color-bg: #f3ebfb;
+    --fail: #b8322f; --fail-bg: #fbeaea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161615; --surface: #1f1f1d; --text: #ecebe6; --muted: #9c9b95; --line: #44443f;
+      --input: #7aa7f0; --input-bg: #1b2738;
+      --out: #b7b6b0; --out-bg: #2a2a27;
+      --model: #e9935f; --model-bg: #35241a;
+      --rule: #63c793; --rule-bg: #173026;
+      --color: #c39af0; --color-bg: #2a1f38;
+      --fail: #ec7c78; --fail-bg: #3a1f1e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161615; --surface: #1f1f1d; --text: #ecebe6; --muted: #9c9b95; --line: #44443f;
+    --input: #7aa7f0; --input-bg: #1b2738;
+    --out: #b7b6b0; --out-bg: #2a2a27;
+    --model: #e9935f; --model-bg: #35241a;
+    --rule: #63c793; --rule-bg: #173026;
+    --color: #c39af0; --color-bg: #2a1f38;
+    --fail: #ec7c78; --fail-bg: #3a1f1e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
+  main { max-width: 900px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lede { color: var(--muted); margin: 0 0 20px; }
+  code { font: 12.5px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; background: var(--out-bg); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0 0 28px; font-size: 13px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; display: inline-block; }
+
+  .phase { margin: 36px 0 12px; display: flex; align-items: baseline; gap: 10px; }
+  .phase b { font-size: 12px; color: var(--surface); background: var(--text); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+  .phase h2 { font-size: 18px; margin: 0; }
+  .trigger { color: var(--muted); font-size: 13px; margin: -6px 0 12px; }
+
+  .flow { display: flex; flex-direction: column; align-items: stretch; }
+  .node {
+    position: relative; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--out);
+    border-radius: 8px; padding: 10px 14px;
+  }
+  .node .who { font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--out); }
+  .node h3 { font-size: 15px; margin: 2px 0 4px; }
+  .node p, .node ul { margin: 4px 0 0; font-size: 13.5px; color: var(--muted); }
+  .node ul { padding-left: 18px; }
+  .node li { margin: 2px 0; }
+  .node li b, .node p b { color: var(--text); font-weight: 600; }
+  .input { border-left-color: var(--input); background: var(--input-bg); } .input .who { color: var(--input); }
+  .out   { border-left-color: var(--out);   background: var(--out-bg); }   .out .who   { color: var(--out); }
+  .model { border-left-color: var(--model); background: var(--model-bg); } .model .who { color: var(--model); }
+  .rule  { border-left-color: var(--rule);  background: var(--rule-bg); }  .rule .who  { color: var(--rule); }
+  .color { border-left-color: var(--color); background: var(--color-bg); } .color .who { color: var(--color); }
+
+  .arrow { height: 22px; position: relative; }
+  .arrow::before { content: ""; position: absolute; left: 50%; top: 2px; bottom: 6px; border-left: 2px solid var(--line); }
+  .arrow::after { content: ""; position: absolute; left: calc(50% - 5px); bottom: 1px; border: 5px solid transparent; border-top: 6px solid var(--line); border-bottom: 0; }
+
+  .decision {
+    background: var(--surface); border: 1.5px dashed var(--line); border-radius: 8px; padding: 10px 14px;
+    display: grid; grid-template-columns: 1fr; gap: 6px;
+  }
+  .decision .q { font-weight: 600; font-size: 14px; }
+  .decision .q::before { content: "◆ "; color: var(--muted); }
+  .branch { font-size: 13.5px; }
+  .branch .tag { display: inline-block; margin-right: 8px; font-size: 11.5px; font-weight: 600; padding: 1px 7px; border-radius: 4px; background: var(--rule-bg); color: var(--rule); }
+  .branch .tag.no { background: var(--fail-bg); color: var(--fail); }
+  .branch .tag.alt { background: var(--out-bg); color: var(--out); }
+  .branch .tag.warn { background: var(--model-bg); color: var(--model); }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .split.three { grid-template-columns: 1fr 1fr 1fr; }
+  .split .lane-title { font-size: 12px; color: var(--muted); margin: 0 0 6px; }
+  @media (max-width: 720px) { .split, .split.three { grid-template-columns: 1fr; } }
+
+  .issue {
+    display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 999px;
+    background: var(--fail-bg); color: var(--fail); text-decoration: none; margin-left: 4px; vertical-align: 1px; white-space: nowrap;
+  }
+  .issue:hover { text-decoration: underline; }
+
+  /* 프롬프트 출처 표시 */
+  .src { display: inline-block; font: 700 10.5px/1.6 ui-monospace, Consolas, monospace; letter-spacing: 0.03em; padding: 0 7px; border-radius: 4px; vertical-align: 1px; }
+  .src.sys { background: var(--model); color: var(--surface); }
+  .src.usr { background: var(--input); color: var(--surface); }
+  .lane-title .src { margin-right: 6px; }
+
+  /* 37개 요소 계층 */
+  .lv-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .lv-head .lv { font: 700 11.5px ui-monospace, Consolas, monospace; padding: 1px 7px; border-radius: 4px; background: var(--text); color: var(--surface); }
+  .lv-head h3 { margin: 0; }
+  .lv-head .rule-note { font-size: 12.5px; color: var(--muted); }
+  .htree, .htree ul { list-style: none; margin: 0; padding: 0; }
+  .htree { margin-top: 6px; }
+  .htree ul { padding-left: 16px; }
+  .htree li { position: relative; padding: 3px 0 3px 16px; font-size: 13.5px; color: var(--text); }
+  .htree li::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1.5px solid var(--line); }
+  .htree li:last-child::before { bottom: auto; height: 14px; }
+  .htree li::after { content: ""; position: absolute; left: 0; top: 14px; width: 11px; border-top: 1.5px solid var(--line); }
+  .htree .grp { font-weight: 600; }
+  .htree .scope { color: var(--muted); font-size: 12.5px; }
+  .htree .cond { font-weight: 600; color: var(--rule); }
+  .pill { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em; padding: 0 6px; border-radius: 999px; border: 1px solid var(--color); color: var(--color); vertical-align: 1px; }
+  .pill.alt { border-color: var(--out); color: var(--out); }
+
+  /* 상태 결정 트리 */
+  .tree { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 8px; }
+  .tree svg { display: block; width: 100%; height: auto; }
+  .tree .box { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+  .tree .q { fill: var(--surface); stroke: var(--text); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .tree .leaf-ok { fill: var(--rule-bg); stroke: var(--rule); stroke-width: 1.5; }
+  .tree .leaf-none { fill: var(--model-bg); stroke: var(--model); stroke-width: 1.5; }
+  .tree .leaf-no { fill: var(--fail-bg); stroke: var(--fail); stroke-width: 1.5; }
+  .tree .leaf-alt { fill: var(--out-bg); stroke: var(--out); stroke-width: 1.5; }
+  .tree text { fill: var(--text); font: 13px -apple-system, "Segoe UI", "Malgun Gothic", sans-serif; }
+  .tree text.mono { font: 600 12.5px ui-monospace, Consolas, monospace; }
+  .tree text.lbl { fill: var(--muted); font-size: 11.5px; }
+  .tree line, .tree path { stroke: var(--line); stroke-width: 1.8; fill: none; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; background: var(--out-bg); }
+  td:first-child { white-space: nowrap; font-weight: 600; }
+  tr:last-child td { border-bottom: 0; }
+  .table-wrap { overflow-x: auto; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+  pre.json { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow: auto; font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
+
+  /* 개선 항목 — 대상 단계 바로 아래에 붙는다 */
+  .fix {
+    margin-top: 8px; background: var(--fail-bg); border: 1px solid var(--fail); border-left-width: 4px;
+    border-radius: 6px; padding: 7px 11px; font-size: 13px; line-height: 1.5; color: var(--text);
+  }
+  .fix > b { color: var(--fail); margin-right: 6px; white-space: nowrap; }
+  .fix .to { display: block; margin-top: 2px; color: var(--muted); }
+  .fix .to::before { content: "→ 개선: "; color: var(--fail); font-weight: 600; }
+  .fix + .fix { margin-top: 6px; }
+  .fix .orig { display: block; margin-top: 3px; font: 11.5px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); word-break: break-word; }
+  .fix-index { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .fix-index a { display: inline-block; font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--fail-bg); color: var(--fail); text-decoration: none; }
+  .fix-index a:hover { text-decoration: underline; }
+
+  @media print {
+    @page { size: A4; margin: 14mm 12mm; }
+    :root { color-scheme: light; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    main { max-width: none; padding: 0; }
+    .node, .decision, .tree, tr, .phase, .issues li { break-inside: avoid; }
+    .phase { break-after: avoid; }
+  }
+  .psum-toc { columns: 2; column-gap: 24px; font-size: 13px; margin: 0 0 16px; padding-left: 22px; }
+  .psum-toc a { color: var(--text); }
+  @media (max-width: 720px) { .psum-toc { columns: 1; } }
+  .psec { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--model); border-radius: 8px; padding: 10px 14px; margin: 0 0 12px; }
+  .psec h3 { font: 700 13.5px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; margin: 0 0 6px; color: var(--model); }
+  .psec ul { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--muted); }
+  .psec li { margin: 3px 0; }
+  .psec li b { color: var(--text); }
+  footer { margin-top: 40px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
+
+  /* v1 대비 변경 · 보류 — 대상 단계 바로 아래에 붙는다 */
+  .chg, .held {
+    margin-top: 8px; border: 1px dashed var(--rule); border-left: 4px solid var(--rule); background: var(--rule-bg);
+    border-radius: 6px; padding: 7px 11px; font-size: 13px; line-height: 1.5; color: var(--text);
+  }
+  .chg > b { color: var(--rule); margin-right: 6px; white-space: nowrap; }
+  .chg .to, .held .to { display: block; margin-top: 2px; color: var(--muted); }
+  .held { border-color: var(--line); border-left-color: var(--out); background: var(--out-bg); border-style: solid; }
+  .held > b { color: var(--out); margin-right: 6px; white-space: nowrap; }
+  .chg + .chg, .chg + .held, .held + .held { margin-top: 6px; }
+  th, td.nw { white-space: nowrap; }
+  .fix-index a.ok { background: var(--rule-bg); color: var(--rule); }
+  .fix-index a:not(.ok) { background: var(--out-bg); color: var(--out); }
+  @media print { .chg, .held { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>관찰 프롬프트 v2 흐름</h1>
+  <p class="lede">
+    <code>/style-ex</code> 의 아이템 관찰 프롬프트 <b>v2</b>가 상품 이미지 한 장에서 의복별 관찰 JSON을 내기까지 모델에게 요구하는 판단 순서입니다.
+    비전 호출은 <b>한 번</b>이고, 아래 단계는 그 호출 안에서 모델이 따르는 순서입니다.
+    v1(코드 기본 프롬프트)에서 바뀐 곳은 <b style="color:var(--rule)">초록 상자</b>로, 엔진 변경이 필요해 보류한 개선은 <b>회색 상자</b>로 해당 단계 아래에 붙였습니다.
+    개선 번호는 <code>docs/style-vision-element-extraction.html</code>의 번호와 같습니다.
+    v2는 v1에 개선 11건을 처음 반영한 버전이고, 바로 다음 v3는 이 중 보조 필드 안내의 coverage 문장 한 줄만 고쳤습니다 —
+    그 문장은 아래 #6 에 <b style="color:var(--fail)">빨간 상자</b>로 표시했습니다.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>버전</th><th>상태</th><th>길이</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>v3</td><td>다음 버전</td><td class="nw">177,145자</td><td>v2에서 보조 필드 안내의 coverage 문장 한 줄 수정 (아래 #6)</td></tr>
+        <tr><td><b>v2</b></td><td><b>이 문서</b> · 비활성</td><td class="nw">177,135자</td><td>v1 + 개선 11건 (2026-10-28 등록)</td></tr>
+        <tr><td>v1</td><td>비활성</td><td class="nw">171,774자</td><td>코드 기본 프롬프트 (<code>buildProducerPrompt()</code> + 색상 · 연출 유형 addendum)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="note" style="margin-bottom:6px">v1 대비 변경 · 보류 항목</p>
+  <ul class="fix-index">
+    <li><a class="ok" href="#c14">#14 STAGE 0</a></li>
+    <li><a class="ok" href="#c1">#1 target_id</a></li>
+    <li><a class="ok" href="#c7">#7 비적격 출력 범위</a></li>
+    <li><a class="ok" href="#c10">#10 카테고리 매핑</a></li>
+    <li><a class="ok" href="#c2">#2 closure_type</a></li>
+    <li><a class="ok" href="#c3">#3 waist_definition</a></li>
+    <li><a class="ok" href="#c11">#11 독립 관찰</a></li>
+    <li><a class="ok" href="#c8">#8 fit 영역별</a></li>
+    <li><a class="ok" href="#c9">#9 grammar</a></li>
+    <li><a class="ok" href="#c5">#5 pockets[]</a></li>
+    <li><a class="ok" href="#c6">#6 보조 필드 위치</a></li>
+    <li><a class="ok" href="#c13">#13 개수 표기 (일부)</a></li>
+    <li><a href="#held">#4 · #12 · #15 보류</a></li>
+  </ul>
+
+  <div class="legend" style="margin-top:18px">
+    <span><span class="src sys">SYSTEM</span>버전 관리되는 관찰 프롬프트</span>
+    <span><span class="src usr">USER</span>요청마다 바뀌는 입력</span>
+    <span><i style="border-color:var(--input);background:var(--input-bg)"></i>입력</span>
+    <span><i style="border-color:var(--model);background:var(--model-bg)"></i>모델 관찰 단계</span>
+    <span><i style="border-color:var(--rule);background:var(--rule-bg)"></i>게이트 · 규칙</span>
+    <span><i style="border-color:var(--color);background:var(--color-bg)"></i>색상 패스</span>
+    <span><i style="border-color:var(--out);background:var(--out-bg)"></i>출력 · 엔진</span>
+    <span><i style="border-color:var(--rule);background:var(--rule-bg);border-style:dashed"></i>v1 대비 변경</span>
+  </div>
+
+  <!-- ───────────── 입력 ───────────── -->
+  <div class="phase"><b>입력</b><h2>system prompt와 user prompt</h2></div>
+  <p class="trigger">관찰 규칙은 전부 관찰 프롬프트(SYSTEM)에 있고, 이미지와 상품 정보만 요청마다 바뀝니다(USER).</p>
+  <div class="split">
+    <div>
+      <p class="lane-title"><span class="src sys">SYSTEM PROMPT</span> 고정 · 버전 관리 · 캐시</p>
+      <div class="node model">
+        <div class="who">style_ex_prompt_versions · item / observe · v2</div>
+        <h3>규칙 · 어휘 · 출력 스키마</h3>
+        <ul>
+          <li>GARMENT-LEVEL VISION OBSERVER — 역할, STAGE 0–2 규칙, 37개 파라미터 어휘, 출력 JSON 스키마</li>
+          <li>COLOUR addendum — STAGE 3–4 색상 스윕 · 누락 감사</li>
+          <li>PRESENTATION addendum — <code>presentation_type</code></li>
+        </ul>
+        <p>모든 요청에 같은 글이라 프롬프트 캐시가 걸립니다. 화면에서 앞부분을 고친 경우에만 다른 글이 갑니다.</p>
+      </div>
+    </div>
+    <div>
+      <p class="lane-title"><span class="src usr">USER PROMPT</span> 요청마다 바뀜</p>
+      <div class="node input">
+        <div class="who">IMAGE</div>
+        <h3>상품 리스팅 이미지 1장</h3>
+        <p>착용 · 플랫레이 · 행거 · 마네킹 · 누끼. 한 장에 의복이 여러 벌 있을 수 있습니다.</p>
+      </div>
+      <div class="arrow" style="height:10px"></div>
+      <div class="node input">
+        <div class="who">PRODUCT CONTEXT — 상품을 골랐을 때만</div>
+        <h3>상품명 · 카테고리 + 대표 의복 지시</h3>
+        <p>화면의 관찰 프롬프트 칸 끝에 붙어 보이고, 서버가 떼어 캐시 블록 뒤에 따로 보냅니다(<code>lib/style-ex/product-context.ts</code>).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── STAGE 0 ───────────── -->
+  <div class="phase"><b>STAGE 0</b><h2>PRODUCT CONTEXT — 판매 상품 먼저 정하기</h2></div>
+  <p class="trigger">v2에서 새로 생긴 단계입니다. 타깃을 찾기 전에 상품 의복을 정해 STAGE 1로 넘깁니다.</p>
+  <div class="flow">
+    <div class="decision">
+      <div class="q">이 프롬프트 뒤에 PRODUCT CONTEXT 블록이 있는가?</div>
+      <div class="branch"><span class="tag alt">NO</span>이 단계를 건너뛰고, <code>product_match</code>를 내지 않음</div>
+      <div class="branch"><span class="tag">YES</span>상품명 · 카테고리로 판매 중인 의복을 찾는다 ↓</div>
+    </div>
+    <div class="arrow"></div>
+    <div class="decision">
+      <div class="q">보이는 의복 중 상품에 맞는 것이 몇 벌인가?</div>
+      <div class="branch"><span class="tag">정확히 1벌</span>그 의복만 <code>prominence: "dominant"</code> + <code>product_match: true</code>, 나머지는 secondary / minor</div>
+      <div class="branch"><span class="tag no">0벌 · 2벌 이상</span>아무에게도 붙이지 않고 이미지로 prominence 결정</div>
+    </div>
+    <div class="node rule" style="margin-top:8px">
+      <div class="who">경계</div>
+      <p>PRODUCT CONTEXT는 <b>대표 의복 선택에만</b> 쓰고, 관찰값 · 카테고리 · 적격성 · 색상 · 연출 유형을 바꾸지 않습니다.</p>
+    </div>
+    <div class="chg" id="c14"><b>v2 #14</b>STAGE 0 추가
+      <span class="to">PRODUCT CONTEXT 지시가 user prompt에만 있어 STAGE 1(타깃 식별)보다 늦게 읽히던 문제. system prompt에 STAGE 0을 두어 타깃 식별 전에 상품 의복을 정한다. user 쪽 PRODUCT CONTEXT 블록은 그대로 두었다(데이터 + 같은 지시).</span></div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── STAGE 1 ───────────── -->
+  <div class="phase"><b>STAGE 1</b><h2>타깃 식별</h2></div>
+  <p class="trigger">이미지 안의 의복을 하나씩 찾아 identity · readability · prominence를 정합니다.</p>
+  <div class="flow">
+    <div class="decision">
+      <div class="q">의복인가?</div>
+      <div class="branch"><span class="tag">YES</span>T-Shirt · Shirt · Sweater · Sweatshirt · Jacket · Coat · Trouser · Skirt · Dress · Jumpsuit 후보</div>
+      <div class="branch"><span class="tag no">NO</span>신발 · 가방 · 주얼리 · 벨트 · 안경 · 모자 · 장갑 · 스카프 → 타깃 아님</div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">target_id</div>
+      <h3>배열 순서대로 <code>target_1</code>, <code>target_2</code>, …</h3>
+      <p>의복 간 관계(<code>cross_target_visual_relations</code>)도 이 id로 가리킵니다. 엔진이 붙이는 id(<code>target_N</code>)와 같은 규칙입니다.</p>
+    </div>
+    <div class="chg" id="c1"><b>v2 #1</b>타깃 id 정의
+      <span class="to">템플릿에 <code>"target_id": "target_1"</code>을 넣고 relations 예시도 <code>["target_1","target_2"]</code>로 바꿨다. 모델이 매번 다른 방식으로 id를 지어내던 문제.</span></div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">C2 · IDENTITY</div>
+      <h3>독립된 의복으로 식별되는가 — <code>identity.value</code></h3>
+    </div>
+    <div class="arrow"></div>
+    <div class="decision">
+      <div class="q">C3 · 의복 전체 형태를 이미지에서 재구성할 수 있는가? — <code>readability.basis</code></div>
+      <div class="branch"><span class="tag">RECONSTRUCTABLE</span>적격 타깃 → STAGE 2로</div>
+      <div class="branch"><span class="tag no">NOT_RECONSTRUCTABLE</span>또는 identity false → 식별 정보만 내고 끝 ↓</div>
+    </div>
+    <div class="node out" style="margin-top:8px">
+      <div class="who">비적격 타깃의 출력 범위</div>
+      <p><b>내는 것</b>: target_id · descriptor_need / reconstruction_gaps / descriptor · identity · readability · prominence<br>
+         <b>생략</b>: category · observations · dm_designed_detail_evidence · color_observation · presentation_type</p>
+    </div>
+    <div class="chg" id="c7"><b>v2 #7</b>비적격 타깃 출력 범위 명시
+      <span class="to">엔진(<code>governEnvelope</code>)은 비적격 타깃의 관찰값을 버린다. 모델이 쓸모없는 관찰을 쓰지 않게 내보낼 필드를 정했다.</span></div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">PROMINENCE · PRODUCT MATCH</div>
+      <h3>dominant / secondary / minor</h3>
+      <p>장면 안에서의 역할입니다. STAGE 0에서 상품 의복을 정했으면 그 의복이 dominant + <code>product_match</code>입니다.</p>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── STAGE 2·A ───────────── -->
+  <div class="phase"><b>STAGE 2 · A</b><h2>카테고리 합성</h2></div>
+  <p class="trigger">특징 하나가 카테고리를 정하지 않습니다. 몸판 원단 · 구성 · 거동 · 트림 · 착용 역할을 함께 봅니다.</p>
+  <div class="flow">
+    <div class="node model">
+      <div class="who">기존 규칙 (변경 없음)</div>
+      <ul>
+        <li><b>OUTERWEAR HEM-FIRST</b> — 아우터는 밑단 위치 → 신체 구간 → 길이 도메인 → 구성 → 카테고리 순</li>
+        <li><b>KNIT-BODY</b> 니트 몸판이면 지퍼 가디건도 Sweater · <b>SWEAT-BODY</b> 스웨트 몸판이면 후드 집업도 Sweatshirt</li>
+        <li><b>OUTERWEAR-COLUMN</b> 무거운 롱 아우터는 민소매라도 Coat · <b>SHIRT vs JACKET</b> 겉에 걸치는 오버셔츠는 Jacket</li>
+      </ul>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">자기 토큰이 없는 의복 — 구조로 매핑</div>
+      <div class="table-wrap" style="margin-top:6px">
+        <table>
+          <thead><tr><th>의복</th><th>카테고리</th></tr></thead>
+          <tbody>
+            <tr><td>패딩 · 퀼팅 · 다운 조끼, 겉에 입은 웨이스트코트</td><td>Jacket + <code>sleeve = Sleeveless</code> (무릎 아래까지 오는 롱 아우터면 Coat)</td></tr>
+            <tr><td>니트 조끼</td><td>Sweater + <code>sleeve = Sleeveless</code></td></tr>
+            <tr><td>탱크톱 · 캐미솔 · 튜브톱 · 크롭톱 · 스포츠 브라 · 저지 바디수트</td><td>T-Shirt (소매가 없으면 Sleeveless). 플래킷 · 셔츠 칼라가 있는 우븐 상의는 Shirt</td></tr>
+            <tr><td>블라우스</td><td>Shirt (러플 넥은 <code>collar = Ruffle</code>)</td></tr>
+            <tr><td>반바지 · 버뮤다 · 바이크 쇼츠</td><td>Trouser (<code>length = Short / Knee Length</code>)</td></tr>
+            <tr><td>레깅스</td><td>Trouser (<code>trouser_distinction = Leggings</code>)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><b>Padding</b> — 충전 · 퀼팅이 <b>보일 때</b> Padding과 겉감 소재(보통 Synthetic)를 각각 material 값으로 냅니다. 보이지 않는 안감 충전재는 내지 않습니다.</p>
+    </div>
+    <div class="chg" id="c10"><b>v2 #10</b>카테고리 매핑 공백 · Padding 기준
+      <span class="to">패딩 조끼 · 탱크톱 · 블라우스 · 바디수트 · 반바지의 카테고리가 정해져 있지 않아 결과가 매번 갈리던 문제. 엔진의 기존 결정(블라우스는 Shirt 안에 있다 등)과 맞췄다.</span></div>
+    <div class="arrow"></div>
+    <div class="decision">
+      <div class="q">카테고리가 시각 증거로 확정되는가?</div>
+      <div class="branch"><span class="tag">OBSERVED</span>10개 토큰 중 정확히 1개 + <code>category.product_context</code> (General / Activewear-Performance)</div>
+      <div class="branch"><span class="tag alt">UNKNOWN</span>범용 9개만 관찰: material · surface · pattern · graphic · pocket · decorative_detail · attachment · asymmetry · exposure_opening</div>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── STAGE 2·B ───────────── -->
+  <div class="phase"><b>STAGE 2 · B</b><h2>적용성 — 어떤 키를 낼 것인가</h2></div>
+  <p class="trigger">키를 생략하는 것은 "해당 없음"이라는 계약입니다. "안 보임"은 NOT_VISIBLE, "판단 불가"는 UNKNOWN입니다.</p>
+  <div class="flow">
+    <div class="split three">
+      <div class="node rule">
+        <div class="who">NOT-APPLICABLE</div>
+        <h3>카테고리별 금지 키 → 생략</h3>
+        <p>ABSENT · None · null로도 내면 안 됩니다.</p>
+      </div>
+      <div class="node rule">
+        <div class="who">REQUIRED KEYS</div>
+        <h3>카테고리별 필수 키 → 반드시 존재</h3>
+        <p>T-Shirt · Shirt 19 · Sweater · Sweatshirt 20 · Jacket · Coat · Jumpsuit 21 · Trouser · Skirt 14 · Dress 23</p>
+      </div>
+      <div class="node rule">
+        <div class="who">CONDITIONAL</div>
+        <h3>부모 관찰이 켜면 반드시 따라 나옴</h3>
+        <p>sleeve ≠ Sleeveless → cuff_type · sleeve_volume / cuff_type ≠ None → cuff_scale / collar ≠ None → collar_scale</p>
+      </div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">REQUIRED KEYS의 두 가지 예외 (v2부터 명시)</div>
+      <ul>
+        <li><b>Jacket / Coat의 closure_type</b> — <code>front_opening_extent = None</code>(앞트임 없는 아노락 등)이면 생략. Partial / Full이면 필수.</li>
+        <li><b>waist_definition</b> — Coat · Dress · Jumpsuit는 두 게이트를 늘 통과하므로 <b>항상 필수</b>. Jacket은 Hip Length 이상일 때만 필수, Cropped / Waist Length면 생략.</li>
+      </ul>
+    </div>
+    <div class="chg" id="c2"><b>v2 #2</b>앞트임 없는 아우터의 closure_type
+      <span class="to">Jacket / Coat에서 필수인데 값 도메인에 None이 없어 정상 답이 없던 문제. 엔진 검증기는 이미 이 경우를 해당 없음으로 보므로 "생략"으로 맞췄다. closure_type 블록의 "Jacket / Coat에 낸다" 문장도 함께 고쳤다.</span></div>
+    <div class="chg" id="c3"><b>v2 #3</b>waist_definition 필수 여부
+      <span class="to">엔진은 게이트를 통과하면 키를 요구하는데(<code>APPLICABLE_KEY_MISSING</code>) 프롬프트의 필수 목록에는 없던 불일치. 목록의 개수는 엔진 기준 그대로 두고 예외로 적었다.</span></div>
+    <div class="held"><b>보류 #4</b>끈 없는 · 민소매 드레스의 shoulder_drop / shoulder_structure
+      <span class="to">어깨선이 없어 None이 "해당 없음"으로 오염되는 문제. 그러나 Dress에서 두 키는 엔진의 필수 키라 생략하면 검증기가 거부한다 — 엔진 규칙을 함께 바꿔야 한다.</span></div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── STAGE 2·C ───────────── -->
+  <div class="phase"><b>STAGE 2 · C</b><h2>파라미터 읽기</h2></div>
+  <p class="trigger">파라미터마다 정해진 canonical 값 하나(MULTI는 값 목록)를 증거와 함께 냅니다.</p>
+  <div class="flow">
+    <div class="node model">
+      <div class="who">관찰 원칙</div>
+      <h3>파라미터끼리 서로를 근거로 삼지 않는다</h3>
+      <p>단계 순서(먼저 훑고, 나중에 정한다)는 그대로 따릅니다.</p>
+    </div>
+    <div class="chg" id="c11"><b>v2 #11</b>"no reasoning chains" 문구
+      <span class="to">"WORK IN EXPLICIT STAGES" · "sweep first, decide second"와 충돌하던 문구를 원래 뜻대로 "파라미터끼리 근거 삼지 말 것"으로 바꿨다.</span></div>
+    <div class="arrow"></div>
+    <div class="split">
+      <div>
+        <div class="node model">
+          <div class="who">fit</div>
+          <h3>의복 전체를 훑고 한 번 답한다</h3>
+          <p>어깨 → 가슴 · 몸통 → 허리 · 밑단 순으로 여유를 본 뒤 답합니다. <b>Dress · Jumpsuit는 상체 · 하체를 따로 훑어 <code>byRegion.upper</code> / <code>byRegion.lower</code>에 각각 답합니다.</b></p>
+        </div>
+        <div class="chg" id="c8"><b>v2 #8</b>Dress / Jumpsuit fit
+          <span class="to">REGIONS 규칙(영역별)과 fit 규칙("한 번만 답한다")이 충돌하던 것을 한 줄로 정리했다.</span></div>
+      </div>
+      <div>
+        <div class="node model">
+          <div class="who">grammar (Jacket / Coat)</div>
+          <h3>구성으로 가른다 — 스타일 인상 아님</h3>
+          <ul>
+            <li><b>Tailored</b> 라펠 · 테일러드 칼라, 셋인 소매와 각진 어깨, 단추 앞판 (블레이저 · 체스터필드)</li>
+            <li><b>Utility</b> 여러 Applied / Volumetric 포켓, 플랩 · 스톰 플랩 · 견장 · 드로코드 (필드 · 사파리 · 카고 · 파카 · 아노락)</li>
+            <li><b>Casual</b> 그 밖의 부드러운 쉘 (블루종 · 봄버 · 데님 재킷 · 유틸리티 하드웨어 없는 패딩)</li>
+          </ul>
+        </div>
+        <div class="chg" id="c9"><b>v2 #9</b>grammar 정의
+          <span class="to">필수 키인데 Tailored / Casual / Utility를 가르는 기준이 없던 문제. trouser_distinction처럼 구성 근거로 정의하고, 증거에 본 구성을 적게 했다.</span></div>
+      </div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node model">
+      <div class="who">pocket</div>
+      <h3>None / Present → 포켓마다 <code>pocket.pockets[]</code> 항목</h3>
+      <p>각 항목이 location + construction(Inset / Applied) + projection(Flat / Projected / Volumetric)을 함께 가집니다. 최상위 <code>pocket_construction</code> · <code>pocket_projection</code> 키는 없습니다.</p>
+    </div>
+    <div class="chg" id="c5"><b>v2 #5</b>폐기된 포켓 키
+      <span class="to">세 번 폐기했다고 하면서 [POCKET] 첫 문단과 값 도메인 목록에 최상위 파라미터처럼 남아 있던 것을 <code>pockets[].construction</code> / <code>.projection</code>으로 옮겼다.</span></div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── STAGE 2·D ───────────── -->
+  <div class="phase"><b>STAGE 2 · D</b><h2>보조 필드의 자리</h2></div>
+  <p class="trigger">보조 필드는 파라미터가 아니고 자기 키가 되지 않습니다. 정해진 자리에만 씁니다.</p>
+  <div class="flow">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>필드</th><th>자리</th></tr></thead>
+        <tbody>
+          <tr><td>product_context</td><td>타깃의 <code>category</code> 객체 안 (observations 아님)</td></tr>
+          <tr><td>locations[] · coverage · finish_realization · treated_surface_realization</td><td>그 값을 설명하는 MULTI <code>values[]</code> 항목 안 — 예 <code>{"value":"Glossy","finish_realization":"Enhanced"}</code>. graphic · pocket 의 coverage 만 예외로 관찰 객체 자체, <code>value</code> 옆 — <b style="color:var(--fail)">v2 문장, [COVERAGE] 규칙과 충돌 (v3에서 고침)</b></td></tr>
+          <tr><td>visual_dominance · motif_complexity</td><td>pattern 관찰 객체 자체, <code>value</code> 옆 (pattern이 OBSERVED일 때만)</td></tr>
+          <tr><td>pockets[]</td><td>pocket 관찰 안</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="chg" id="c6"><b>v2 #6</b>product_context · 보조 필드 위치
+      <span class="to">값 정의만 있고 JSON 어디에 넣는지 없던 문제. 엔진 검증기 · 컨트롤러가 읽는 자리에 맞춰 출력 템플릿과 위 표를 넣었다.</span></div>
+    <div class="chg" style="border-color:var(--fail);background:var(--fail-bg)"><b style="color:var(--fail)">v2 의 충돌</b>coverage 자리 문장
+      <span class="to">이 버전의 안내는 "graphic · pocket 의 coverage 는 관찰 객체 자체에"라고 적어, 기존 [COVERAGE] 규칙("NOT on graphic", coverage 를 받는 값 목록)과 서로 다른 말을 한다. 검증기는 둘 다 허용한다. v3 는 이 문장만 "coverage 는 [COVERAGE] 블록이 정한 값에만 — graphic · pattern · exposure_opening 에는 쓰지 않음"으로 고쳤다.</span>
+      <span class="to" style="font-family:ui-monospace,Consolas,monospace;font-size:11.5px">v2 원문: Exception: coverage for graphic and pocket sits on the observation object itself, next to "value".</span></div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── STAGE 3–4 ───────────── -->
+  <div class="phase"><b>STAGE 3 – 4</b><h2>색상 2차 스윕 · 누락 감사</h2></div>
+  <p class="trigger">의복 관찰을 모두 끝낸 뒤 같은 이미지를 색상만 다시 봅니다 (변경 없음).</p>
+  <div class="flow">
+    <div class="node color">
+      <div class="who">COLOUR</div>
+      <h3>타깃마다 색상 운반체를 하나씩 다시 본다</h3>
+      <p>기본색 → 디자인된 추가 색 → 단추 · 지퍼 · 하드웨어 → 로고 · 그래픽 → 패턴 → 포켓 → 소재 영역 → 파이핑. 색상 패스는 의복 관찰을 고치지 않습니다(<code>color_observation</code>은 record의 형제).</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">TRIGGERED-KEY FINAL SWEEP</div>
+      <h3>내보내기 직전 — 실제로 쓴 키를 다시 센다</h3>
+      <p>필수 키 개수, 켜진 조건부 키, 위의 두 예외(closure_type · waist_definition)를 확인합니다.</p>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── 출력 ───────────── -->
+  <div class="phase"><b>출력</b><h2>JSON (v2 템플릿 — v3 와 같음)</h2></div>
+<pre class="json">{
+  "targets": [
+    {
+      "target_id": "target_1",                 <span style="color:var(--rule)">← v2 #1</span>
+      "descriptor_need": "REQUIRED" | "NOT_NEEDED",
+      "identity": { "value": true, "evidence": [...] },
+      "readability": { "value": true, "basis": "RECONSTRUCTABLE", "limitation": [...], "evidence": [...] },
+      "prominence": "dominant",
+      "product_match": true,                   <span style="color:var(--rule)">← STAGE 0 (PRODUCT CONTEXT가 있을 때만)</span>
+      "category": { "state": "OBSERVED", "value": "Trouser", "evidence": [...],
+                    "product_context": "General" },   <span style="color:var(--rule)">← v2 #6</span>
+      "observations": {
+        "pocket": { "state": "OBSERVED", "value": "Present",
+                    "pockets": [ { "location": ..., "construction": ..., "projection": ... } ] },  <span style="color:var(--rule)">← v2 #5</span>
+        ...
+      },
+      "dm_designed_detail_evidence": [...],
+      "color_observation": {...},
+      "presentation_type": "WORN"
+    },
+    { "target_id": "target_2", "identity": {...},
+      "readability": { "value": false, "basis": "NOT_RECONSTRUCTABLE", ... },
+      "prominence": "minor" }                  <span style="color:var(--rule)">← v2 #7 비적격: 식별 정보만</span>
+  ],
+  "cross_target_visual_relations": [
+    { "relation_id": "r1", "target_ids": ["target_1", "target_3"], "kind": "...", "evidence": "..." }
+  ]
+}</pre>
+  <div class="chg" id="c13"><b>v2 #13</b>개수 표기 (일부 반영)
+    <span class="to">"Frozen-40"을 "37 parameters"로 통일했다. 거버넌스 메모를 changelog로 옮기는 것, JSON 템플릿의 <code>//</code> 주석 제거, POCKET · SV-5 반복 통합은 하지 않았다 — 17만 자 규칙문을 크게 고치는 작업이라 별도로 검증하며 해야 한다.</span></div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── 엔진 ───────────── -->
+  <div class="phase"><b>엔진</b><h2>관찰 envelope → 대표 의복 → 스타일 아이디</h2></div>
+  <p class="trigger">모델 출력 이후는 코드입니다 (<code>lib/style-ex/extract.ts</code> · <code>producer_controller_v1.js</code>).</p>
+  <div class="flow">
+    <div class="node out">
+      <div class="who">governEnvelope</div>
+      <h3>타깃마다 <code>target_N</code> · eligible · 검증</h3>
+      <p>identity ∧ readability면 적격 — 관찰을 record로 정리하고 검증기가 계약을 확인합니다(<code>contract_valid</code>). 비적격은 record 없이 진단만 남깁니다.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="decision">
+      <div class="q">대표 의복 — <code>styleId.target_basis</code></div>
+      <div class="branch"><span class="tag">PRODUCT_MATCH</span><code>product_match: true</code>인 적격 의복 (상품 정보로 고정)</div>
+      <div class="branch"><span class="tag alt">DOMINANT</span>없으면 prominence가 dominant인 첫 적격 의복</div>
+      <div class="branch"><span class="tag alt">FIRST_ELIGIBLE</span>그것도 없으면 첫 적격 의복</div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node out">
+      <div class="who">판정 (코드)</div>
+      <h3>EI · SR · DM = 스코어링 엔진 점수 · TC = 규칙 판정</h3>
+      <p>중립(점수 5)인 축은 양쪽 글자를 모두 가지고(OR), 나머지 축과 조합한 후보 전부가 <code>styleId.candidates</code>가 됩니다.</p>
+    </div>
+  </div>
+
+  <!-- ───────────── 보류 ───────────── -->
+  <div class="phase" id="held"><b>보류</b><h2>엔진 · 코드 변경이 필요한 개선</h2></div>
+  <div class="flow">
+    <div class="held"><b>보류 #4</b>끈 없는 드레스의 어깨 키 생략
+      <span class="to">Dress의 shoulder_drop / shoulder_structure는 엔진 필수 키 — 생략하면 <code>APPLICABLE_KEY_MISSING</code>. 엔진의 적용성 규칙(<code>producer_rules_v1.js</code> MANDATORY · 예외)을 먼저 바꿔야 한다.</span></div>
+    <div class="held"><b>보류 #12</b><code>dm_designed_detail_evidence</code> → <code>designed_detail_evidence</code>
+      <span class="to">DM 스코어링이 이 키 이름을 그대로 읽는다(<code>record.dm_designed_detail_evidence</code>). 프롬프트만 바꾸면 DM 축 입력이 사라진다 — 컨트롤러 · 스코어링을 함께 바꿔야 한다.</span></div>
+    <div class="held"><b>보류 #15</b>기계적 검사를 코드로
+      <span class="to">필수 · 금지 키, SV-5, MULTI 형식, 트리거 키를 카테고리별 JSON Schema(structured output)와 validator로 옮기고 위반만 1회 재질의 — 코드 작업이다. 이게 되면 프롬프트를 크게 줄일 수 있다.</span></div>
+  </div>
+
+  <!-- ───────────── 검증 ───────────── -->
+  <div class="phase"><b>검증</b><h2>v2 실측 (2026-10-28)</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>항목</th><th>결과</th></tr></thead>
+      <tbody>
+        <tr><td>상품</td><td>30 비캄 미드라이즈 쇼츠 3 (패션의류&gt;여성의류&gt;트레이닝복) — 사진에 티셔츠 + 쇼츠</td></tr>
+        <tr><td>계약</td><td><code>contract_valid: true</code>, 두 타깃 모두 검증 오류 0</td></tr>
+        <tr><td>대표 의복</td><td>target_2 (Trouser) · <code>product_match: true</code> · <code>target_basis: PRODUCT_MATCH</code></td></tr>
+        <tr><td>포켓</td><td>최상위 pocket_* 키 없음, <code>pocket.pockets[]</code>로 냄</td></tr>
+        <tr><td>스타일 아이디</td><td>ECRM — v1 실측과 같음</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">위 실측은 이 버전(v2)으로 한 것이다. v3 는 v2 에서 안내 문장 한 줄만 다르다(coverage 자리). #10(패딩 조끼 · 탱크톱 등)과 #2(앞트임 없는 아노락)가 겨냥한 상품은 아직 실측하지 않았다.</p>
+
+  <footer>
+    출처: <code>style_ex_prompt_versions</code> — target item · kind observe · v2 (<code>ae055d7b-79bf-4dd7-9caf-0c9076dd4f2a</code>). 다음 버전 v3 흐름도: <code>docs/observe-prompt-diagram-v3.html</code>.
+    개선 항목 원문: <code>docs/style-vision-element-extraction.html</code>.
+    되돌리려면 /style-ex 의 버전 목록에서 v1 또는 v2를 활성화한다.
+  </footer>
+</main>
+</body>
+
+</html>
