@@ -1,0 +1,59 @@
+{
+  "document": "STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1",
+  "date": "2026-09-15",
+  "status": "CURRENT PRODUCTION AUTHORITY POINTER — FULL SR ENGINE — COMPLETE_AND_CLOSED_AND_FROZEN — CEO APPROVED",
+  "approval_anchor": {
+    "CEO Decision": "2026-09-15",
+    "Order": "STMX SR — ORDINAL PROJECTOR FINAL CORRECTION + FULL ENGINE FINAL FREEZE §0 / §8 / §14 / §15 / §21 / §22",
+    "Reason": "SR7 Full Governance rule approved as a generic ordinal rule; SR8 predicate corrected to the exact ADR-125 text (illegal Strength gate removed); 30 / 30 direct CEO ordinal anchors reproduced with 0 pure ordinal residue and 0 authority conflict; canonical 101 replay with Direction / Strength / Eligibility delta 0; 46 / 46 tests; containment PASS. Every §21 hard gate passed — the complete SR engine is promoted to its final frozen production baseline.",
+    "Affected Scope": "this pointer (new) · STMX_SR_ENGINE_V1_FINAL_FREEZE/ (new) · 04_GOVERNANCE_AND_FINAL_DOCS/STMX_SR_ENGINE_FINAL_FREEZE_V1/ · Project Context sync"
+  },
+  "★_current_production_sr_engine": {
+    "id": "STMX_SR_ENGINE_V1",
+    "engine_directory": "STMX_SR_ENGINE_V1_FINAL_FREEZE",
+    "entry": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/src/sr_engine_v1_final.js",
+    "binding_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/production/sr_engine_binding_v1.js",
+    "seal_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_SR_ENGINE_V1_FINAL.json",
+    "promoted": "2026-09-15",
+    "full_sr_engine_aggregate_sha256": "fef01ed4303fa4b53b21fe677944a0d8daa2b65c1cf5b937703a9b8b016a5faf",
+    "full_identity_sha256": "59ea6dfdcca30ba8813a06733069daf9efab917df6b5103717d7cb334aebf1e3",
+    "consumes_observation_contract": "STMX_VISION_PRODUCER_V1_3 (37 parameters · unchanged)",
+    "consumes_input_metadata": "sr_evidence_eligibility ∈ { ADJUDICABLE_WORN · NOT_ADJUDICABLE_FLAT_PRODUCT · WORN_BUT_INSUFFICIENT · UNRESOLVED } supplied by the caller — missing / out-of-domain fails closed"
+  },
+  "★_canonical_chain_bound_by_name": {
+    "eligibility": "STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_evidence_eligibility_gate_v1.js (governed metadata gate — decided before any semantics)",
+    "direction": "STMX_SR_ENGINE_V1_2 — STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src (12 modules · aggregate 138adb1367ba7e4bde961da226275c91624d5453e4ccf027d5456a9b0fcc52e0)",
+    "strength": "STMX_SR_ENGINE_V1_3_SIDECAR — STMX_SR_STRENGTH_TERNARY_V1_3_CANDIDATE/src (2 modules · aggregate 9f0e62796336b5de86ab8a110d98f1b670b40927de0f44fce13bc808ec948265) · directory name retained verbatim (never renamed in place); frozen by hash",
+    "ordinal": "STMX_SR_ORDINAL_PROJECTOR_V1_FINAL — STMX_SR_ENGINE_V1_FINAL_FREEZE/src/sr_ordinal_projector_v1_final.js (aggregate 3924c35815ecd92d6e56f71cdc35be446c7e408e1b0e102cb40e6483acf14f29)",
+    "predecessor_projector": "STMX_SR_ORDINAL_PROJECTOR_V1_CANDIDATE — preserved unchanged as history; ⛔ never a fallback (its SR8 predicate carried a non-ADR-125 Strength gate)"
+  },
+  "★_layer_status": {
+    "SR ELIGIBILITY": "CLOSED / FROZEN — CEO 2026-09-13 (SR-ELIG-1…8); gate frozen inside the Direction engine",
+    "SR DIRECTION": "CLOSED / FROZEN — V1.2 (CEO cross-side closure 2026-09-15; REF_000246 = accepted governed cross-side residue)",
+    "SR STRENGTH": "CLOSED / FROZEN — V1.3 ternary WEAK / REGULAR / STRONG (+ N/A Neutral · UNKNOWN unresolved) = canonical Strength authority; V1.2 binary = legacy / diagnostic only",
+    "SR ORDINAL": "CLOSED / FROZEN — Ordinal Projector V1 FINAL (SR7 = Full Governance CEO §2 · SR8 = exact ADR-125 · SR1 / SR2 / SR9 endpoints preserved, runtime path not proven / unreachable)",
+    "FULL SR ENGINE": "★ COMPLETE_AND_CLOSED_AND_FROZEN (2026-09-15)"
+  },
+  "★_canonical_output_contract": {
+    "strength": "ternary Strength state (canonical) — PROMOTED: in V1.2 / V1.3 candidate outputs the same field name carried the binary state",
+    "score": "SR1 … SR9 | null (canonical SR#) — PROMOTED: in V1.2 / V1.3 candidate outputs the same field name carried the legacy V1.2 ordinal",
+    "strength_legacy_v1_2_binary": "explicitly named LEGACY / DIAGNOSTIC — never an authority",
+    "score_legacy_v1_2": "explicitly named DIAGNOSTIC provenance — never canonical SR#",
+    "notation": "SR1 … SR9 only (full axis prefix). ⛔ One-letter R/S forms are never emitted."
+  },
+  "★_resolution_rule": "⛔ BY NAME through an explicit binding module. ⛔ NO latest, NO glob, NO directory scan, NO mtime, NO auto-pick. A missing Direction engine, Strength engine, projector or observation contract throws and fails closed; identity assertions reject a renamed or substituted module; verifyFrozenBaseline() reports drift against the FINAL seal.",
+  "★_rollback_pointer": {
+    "rollback_to": "no earlier SR production baseline exists — SR was never promoted before this order (V1 · V1.1 · V1.2 · V1.3 · ordinal candidate were all NOT PRODUCTION)",
+    "how": "remove or disable this pointer; the candidate workspaces remain byte-identical for archaeology. ⛔ Rollback does not touch GT, Direction / Strength physics, EI or DM.",
+    "candidate_projector_note": "the candidate projector must not be re-bound: its SR8 predicate contains the Strength gate this order removed"
+  },
+  "★_residue_recorded": {
+    "ACCEPTED_GOVERNED_CROSS_SIDE_RESIDUE": ["REF_000246"],
+    "INHERITED_DIRECTION_OR_NEUTRAL_BOUNDARY_RESIDUE": 13,
+    "INHERITED_STRENGTH_RESIDUE": ["REF_000475", "REF_000493", "REF_000494 (Sweatshirt SU)", "REF_000575"],
+    "PURE_ORDINAL_RESIDUE_within_30_binding_anchors": 0,
+    "AUTHORITY_CONFLICT": 0,
+    "RULE_DRIVEN_COLLATERAL_WITHOUT_DIRECT_CEO_ORDINAL_AUTHORITY": ["REF_000007", "REF_000012", "REF_000014", "REF_000139", "REF_000807", "REF_000808", "REF_000834"]
+  },
+  "⛔_no_credentials": "⛔ No API key, token or credential appears in this document."
+}

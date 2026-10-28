@@ -1,0 +1,8 @@
+{
+ "image_ref": "M269",
+ "image_hash": "bc6f979d25674d708cd0e1a7126728156db27eeaae47d980d51ca77513611372",
+ "prompt_version": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
+ "prompt_hash": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
+ "model_id": "claude-opus-5-5",
+ "run_id": "RUN-EX04-0002"
+}

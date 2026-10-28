@@ -1,0 +1,4039 @@
+{
+ "document": "SR V3_R3 / V3_R4 — PROXY HOLDOUT on CEO Item SR GT (Item scoring object; diagnostic only, NOT Full-Look GT)",
+ "at": "2026-10-25T00:40:50.880Z",
+ "units": 56,
+ "binary_units": 49,
+ "ceo_neutral_units": 7,
+ "label_class": "CEO ITEM GT (SR1–4 → RELAXED · SR6–9 → STRUCTURED · SR5 excluded)",
+ "r1_base": {
+  "units": 49,
+  "resolved": 42,
+  "match": 38,
+  "conflict": 4,
+  "not_resolved": 7
+ },
+ "r2": {
+  "units": 49,
+  "resolved": 42,
+  "match": 38,
+  "conflict": 4,
+  "not_resolved": 7
+ },
+ "r3": {
+  "units": 49,
+  "resolved": 49,
+  "match": 44,
+  "conflict": 5,
+  "not_resolved": 0
+ },
+ "r4": {
+  "units": 49,
+  "resolved": 49,
+  "match": 44,
+  "conflict": 5,
+  "not_resolved": 0
+ },
+ "changed_r3_to_r4": [],
+ "conflicts_r4": [
+  "B1-11::REF_000011#SU1 Jacket {\"relation\":\"Oversized\",\"shoulder\":\"None\",\"shape\":\"Semi-Structured\",\"drop\":\"Dropped\",\"waist\":null,\"constriction\":null} FR=true → RELAXED (SRB-2r) missing waist,constriction · CEO SR6",
+  "STMX_B004_B4_06#SU1 Shirt {\"relation\":\"Slim\",\"shoulder\":null,\"shape\":\"Semi-Fluid\",\"drop\":\"None\",\"waist\":null,\"constriction\":null} FR=false → STRUCTURED (SRB-1) missing shoulder,waist,constriction · CEO SR4",
+  "B3-02::REF_000221#SU1 Shirt {\"relation\":\"Oversized\",\"shoulder\":null,\"shape\":\"Semi-Structured\",\"drop\":\"Dropped\",\"waist\":null,\"constriction\":null} FR=false → RELAXED (SRB-2r) missing shoulder,waist,constriction · CEO SR6",
+  "STMX_B005_B5_13#SU1 Shirt {\"relation\":\"Regular\",\"shoulder\":null,\"shape\":\"Semi-Structured\",\"drop\":\"None\",\"waist\":null,\"constriction\":null} FR=false → STRUCTURED (SRB-3s) missing shoulder,waist,constriction · CEO SR4",
+  "STMX_B007_B7_15#SU1 T-Shirt {\"relation\":\"Regular\",\"shoulder\":null,\"shape\":\"Semi-Fluid\",\"drop\":\"None\",\"waist\":null,\"constriction\":null} FR=false → RELAXED (SRB-3r) missing shoulder,waist,constriction · CEO SR6"
+ ],
+ "changed_r2_to_r3": [
+  "B1-04::REF_000004#SU1 EXC:EVIDENCE_REPAIR_REQUIRED→STRUCTURED (SRB-3s) CEO SR6 → MATCH",
+  "B1-05::REF_000005#SU1 EXC:EVIDENCE_REPAIR_REQUIRED→STRUCTURED (SRB-3s) CEO SR6 → MATCH",
+  "B1-06::REF_000006#SU1 EXC:EVIDENCE_REPAIR_REQUIRED→STRUCTURED (SRB-3s) CEO SR6 → MATCH",
+  "B1-08::REF_000008#SU1 EXC:EVIDENCE_REPAIR_REQUIRED→STRUCTURED (SRB-3s) CEO SR6 → MATCH",
+  "B1-10::REF_000010#SU1 EXC:EVIDENCE_REPAIR_REQUIRED→STRUCTURED (SRB-3s) CEO SR6 → MATCH",
+  "STMX_B004_B4_08#SU1 EXC:EVIDENCE_REPAIR_REQUIRED→RELAXED (SRB-3r) CEO SR4 → MATCH",
+  "STMX_B007_B7_15#SU1 EXC:EVIDENCE_REPAIR_REQUIRED→RELAXED (SRB-3r) CEO SR6 → CONFLICT"
+ ],
+ "conflicts_r3": [
+  "B1-11::REF_000011#SU1 Jacket {\"relation\":\"Oversized\",\"shoulder\":\"None\",\"shape\":\"Semi-Structured\",\"drop\":\"Dropped\",\"waist\":null,\"constriction\":null} FR=true → RELAXED (SRB-2r) missing waist,constriction · CEO SR6",
+  "STMX_B004_B4_06#SU1 Shirt {\"relation\":\"Slim\",\"shoulder\":null,\"shape\":\"Semi-Fluid\",\"drop\":\"None\",\"waist\":null,\"constriction\":null} FR=false → STRUCTURED (SRB-1) missing shoulder,waist,constriction · CEO SR4",
+  "B3-02::REF_000221#SU1 Shirt {\"relation\":\"Oversized\",\"shoulder\":null,\"shape\":\"Semi-Structured\",\"drop\":\"Dropped\",\"waist\":null,\"constriction\":null} FR=false → RELAXED (SRB-2r) missing shoulder,waist,constriction · CEO SR6",
+  "STMX_B005_B5_13#SU1 Shirt {\"relation\":\"Regular\",\"shoulder\":null,\"shape\":\"Semi-Structured\",\"drop\":\"None\",\"waist\":null,\"constriction\":null} FR=false → STRUCTURED (SRB-3s) missing shoulder,waist,constriction · CEO SR4",
+  "STMX_B007_B7_15#SU1 T-Shirt {\"relation\":\"Regular\",\"shoulder\":null,\"shape\":\"Semi-Fluid\",\"drop\":\"None\",\"waist\":null,\"constriction\":null} FR=false → RELAXED (SRB-3r) missing shoulder,waist,constriction · CEO SR6"
+ ],
+ "srb2g_cell_units": [
+  "STMX_B005_B5_03#SU1 Jacket waist Cinched drop None → R3 STRUCTURED · R4 RELAXED (SRB-2or) · CEO SR5 (NEUTRAL)"
+ ],
+ "rows": [
+  {
+   "unit": "B1-04::REF_000004#SU1",
+   "ref_id": "REF_000004",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000004__windpull5.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": null,
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "cmp_base": "NOT_RESOLVED",
+   "cmp_r2": "NOT_RESOLVED",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B1-05::REF_000005#SU1",
+   "ref_id": "REF_000005",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000005__windpull2.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": null,
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "cmp_base": "NOT_RESOLVED",
+   "cmp_r2": "NOT_RESOLVED",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B1-06::REF_000006#SU1",
+   "ref_id": "REF_000006",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000006__vpmdm1.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": null,
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "cmp_base": "NOT_RESOLVED",
+   "cmp_r2": "NOT_RESOLVED",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B1-07::REF_000007#SU1",
+   "ref_id": "REF_000007",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000007__346065-248-318.webp",
+   "category": "Jacket",
+   "material": [
+    "Wool"
+   ],
+   "surface": [
+    "Glossy"
+   ],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": "Strong",
+    "shape": "Structured",
+    "drop": null,
+    "waist": "Defined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR7",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B1-08::REF_000008#SU1",
+   "ref_id": "REF_000008",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000008__qtjk4.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic",
+    "Padding",
+    "Cotton"
+   ],
+   "surface": [
+    "Quilted"
+   ],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": null,
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": true,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "cmp_base": "NOT_RESOLVED",
+   "cmp_r2": "NOT_RESOLVED",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B1-09::REF_000009#SU1",
+   "ref_id": "REF_000009",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000009__bomberlong2.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic",
+    "Knit"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B1-10::REF_000010#SU1",
+   "ref_id": "REF_000010",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000010__스크린샷 2026-04-27 141834.png",
+   "category": "Jacket",
+   "material": [
+    "Synthetic",
+    "Knit"
+   ],
+   "surface": [
+    "Textured Knit"
+   ],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": null,
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3s",
+     "SRB-3k",
+     "SRB-3d"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "drop",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "cmp_base": "NOT_RESOLVED",
+   "cmp_r2": "NOT_RESOLVED",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B1-11::REF_000011#SU1",
+   "ref_id": "REF_000011",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000011__WEB_B02_0003__primary.jpg",
+   "category": "Jacket",
+   "material": [
+    "Leather"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": true,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "CONFLICT",
+   "cmp_r2": "CONFLICT",
+   "cmp_r3": "CONFLICT",
+   "cmp_r4": "CONFLICT",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B1-12::REF_000012#SU1",
+   "ref_id": "REF_000012",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000012__techybrid7.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Knit",
+    "Synthetic",
+    "Padding"
+   ],
+   "surface": [
+    "Quilted",
+    "Textured Knit"
+   ],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": null,
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": true,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "drop",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B2-02::REF_000013#SU1",
+   "ref_id": "REF_000013",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000013__srbjkloose2.jpg",
+   "category": "Jacket",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B2-01::REF_000014#SU1",
+   "ref_id": "REF_000014",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000014__cropjkmenbk1.jpg",
+   "category": "Jacket",
+   "material": [
+    "Wool"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B006_B6_06#SU1",
+   "ref_id": "REF_000141",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/02_Coat/REF_000141__WEB_B02_0036__primary.jpg",
+   "category": "Coat",
+   "material": [
+    "Leather"
+   ],
+   "surface": [
+    "Glossy"
+   ],
+   "inputs": {
+    "relation": "Relaxed",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": true,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-2f"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-2f"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-2f"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-2f"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B2-06::REF_000143#SU1",
+   "ref_id": "REF_000143",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/02_Coat/REF_000143__peddinglong1.jpeg",
+   "category": "Coat",
+   "material": [
+    "Padding",
+    "Synthetic"
+   ],
+   "surface": [
+    "Quilted"
+   ],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Structured",
+    "drop": "Dropped",
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": true,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "NEUTRAL",
+    "reason": "NEUTRAL"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B3-12::REF_000152#SU1",
+   "ref_id": "REF_000152",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/02_Coat/REF_000152__trench1.jpeg",
+   "category": "Coat",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "Mild",
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": "Defined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B005_B5_16#SU1",
+   "ref_id": "REF_000172",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/02_Coat/REF_000172__00042-jil-sander-fall-2022-ready-to-wear-milan-credit-alessandro-lucioni-gorunway.webp",
+   "category": "Coat",
+   "material": [
+    "Wool"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR7",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B005_B5_12#SU1",
+   "ref_id": "REF_000182",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/02_Coat/REF_000182__srcoat1.jpeg",
+   "category": "Coat",
+   "material": [
+    "Wool"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Defined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR7",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B005_B5_03#SU1",
+   "ref_id": "REF_000183",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/02_Coat/REF_000183__00033-saint-laurent-fall-2025-ready-to-wear-credit-gorunway.webp",
+   "category": "Jacket",
+   "material": [
+    "Leather"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": "Strong",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Cinched",
+    "constriction": null
+   },
+   "form_retention": true,
+   "ceo_gt": "SR5",
+   "ceo_direction": "NEUTRAL",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "EXC:CONTRACT_GAP_CG1",
+    "rules": [
+     "SRB-2x"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:CONTRACT_GAP_CG1",
+    "rules": [
+     "SRB-2x"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-2g"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2or"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r2": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r3": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r4": "CEO_NEUTRAL_NOT_BINARY",
+   "srb2g_cell": true
+  },
+  {
+   "unit": "STMX_B004_B4_08#SU1",
+   "ref_id": "REF_000184",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/03_Shirt/REF_000184__shirtsprint2.jpeg",
+   "category": "Shirt",
+   "material": [
+    "Synthetic"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3g",
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3g",
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "cmp_base": "NOT_RESOLVED",
+   "cmp_r2": "NOT_RESOLVED",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B007_B7_14#SU1",
+   "ref_id": "REF_000185",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/03_Shirt/REF_000185__shirtpt1.jpeg",
+   "category": "Shirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B004_B4_06#SU1",
+   "ref_id": "REF_000190",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/03_Shirt/REF_000190__laceblo2.jpeg",
+   "category": "Shirt",
+   "material": [
+    "Other"
+   ],
+   "surface": [
+    "Lace",
+    "Semi Transparent"
+   ],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "CONFLICT",
+   "cmp_r2": "CONFLICT",
+   "cmp_r3": "CONFLICT",
+   "cmp_r4": "CONFLICT",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B3-02::REF_000221#SU1",
+   "ref_id": "REF_000221",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/03_Shirt/REF_000221__Exaggerated Collar Oversized Tailored Organic Poplin Shirt",
+   "category": "Shirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "CONFLICT",
+   "cmp_r2": "CONFLICT",
+   "cmp_r3": "CONFLICT",
+   "cmp_r4": "CONFLICT",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B005_B5_13#SU1",
+   "ref_id": "REF_000246",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/03_Shirt/REF_000246__laceblo1.jpeg",
+   "category": "Shirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [
+    "Lace",
+    "Semi Transparent"
+   ],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "CONFLICT",
+   "cmp_r2": "CONFLICT",
+   "cmp_r3": "CONFLICT",
+   "cmp_r4": "CONFLICT",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B007_B7_15#SU1",
+   "ref_id": "REF_000323",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/04_TShirt/REF_000323__grp1.jpeg",
+   "category": "T-Shirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "NEUTRAL",
+    "reason": "NEUTRAL"
+   },
+   "r1_base": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3g",
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3g",
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "cmp_base": "NOT_RESOLVED",
+   "cmp_r2": "NOT_RESOLVED",
+   "cmp_r3": "CONFLICT",
+   "cmp_r4": "CONFLICT",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B2-13::REF_000325#SU1",
+   "ref_id": "REF_000325",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/04_TShirt/REF_000325__basicbk1.jpeg",
+   "category": "T-Shirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B004_B4_09#SU1",
+   "ref_id": "REF_000335",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/04_TShirt/REF_000335__sheer1.jpeg",
+   "category": "T-Shirt",
+   "material": [
+    "Knit"
+   ],
+   "surface": [
+    "Semi Transparent"
+   ],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": null,
+    "shape": "Fluid",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR5",
+   "ceo_direction": "NEUTRAL",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r2": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r3": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r4": "CEO_NEUTRAL_NOT_BINARY",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B005_B5_08#SU1",
+   "ref_id": "REF_000339",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/04_TShirt/REF_000339__basicvnkbk1.jpeg",
+   "category": "T-Shirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR5",
+   "ceo_direction": "NEUTRAL",
+   "item_engine": {
+    "d": "NEUTRAL",
+    "reason": "NEUTRAL"
+   },
+   "r1_base": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3g",
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3g",
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "cmp_base": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r2": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r3": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r4": "CEO_NEUTRAL_NOT_BINARY",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B3-15::REF_000368#SU1",
+   "ref_id": "REF_000368",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/04_TShirt/REF_000368__Oversized Boxy Drop Shoulder T-Shirt (Forest Green)",
+   "category": "T-Shirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR3",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "VOLUME_DOMINANT_REGULAR"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B006_B6_12#SU1",
+   "ref_id": "REF_000378",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/04_TShirt/REF_000378__sheer3.jpeg",
+   "category": "T-Shirt",
+   "material": [
+    "Knit"
+   ],
+   "surface": [
+    "Mesh",
+    "Semi Transparent"
+   ],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR3",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "VOLUME_DOMINANT_REGULAR"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B2-14::REF_000398#SU1",
+   "ref_id": "REF_000398",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/05_Sweater/REF_000398__polonb1.jpeg",
+   "category": "Sweater",
+   "material": [
+    "Knit"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR5",
+   "ceo_direction": "NEUTRAL",
+   "item_engine": {
+    "d": "NEUTRAL",
+    "reason": "NEUTRAL"
+   },
+   "r1_base": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3g",
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "EXC:EVIDENCE_REPAIR_REQUIRED",
+    "rules": [
+     "SRB-3g",
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-3r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "POSSIBLE"
+   },
+   "cmp_base": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r2": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r3": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r4": "CEO_NEUTRAL_NOT_BINARY",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B004_B4_11#SU1",
+   "ref_id": "REF_000399",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/05_Sweater/REF_000399__knitpolosh1.jpeg",
+   "category": "Sweater",
+   "material": [
+    "Knit"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B006_B6_08#SU1",
+   "ref_id": "REF_000410",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/05_Sweater/REF_000410__knitpolo3.jpeg",
+   "category": "Sweater",
+   "material": [
+    "Knit"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B005_B5_18#SU1",
+   "ref_id": "REF_000414",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/05_Sweater/REF_000414__knithvhd2.jpeg",
+   "category": "Sweater",
+   "material": [
+    "Knit"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Relaxed",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B006_B6_09#SU1",
+   "ref_id": "REF_000430",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/05_Sweater/REF_000430__zipcdg3.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Knit"
+   ],
+   "surface": [
+    "Textured Knit"
+   ],
+   "inputs": {
+    "relation": "Relaxed",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B3-14::REF_000432#SU1",
+   "ref_id": "REF_000432",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/05_Sweater/REF_000432__August Cable Knit Turtleneck Sweater (Light Grey)",
+   "category": "Sweater",
+   "material": [
+    "Knit"
+   ],
+   "surface": [
+    "Textured Knit"
+   ],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B004_B4_10#SU1",
+   "ref_id": "REF_000447",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/05_Sweater/REF_000447__Nancy Off The Shoulder Knit Top (Cream)",
+   "category": "Sweater",
+   "material": [
+    "Knit"
+   ],
+   "surface": [
+    "Textured Knit"
+   ],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B2-15::REF_000466#SU1",
+   "ref_id": "REF_000466",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/06_Sweatshirt/REF_000466__knithoodie2.jpeg",
+   "category": "Sweatshirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Relaxed",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B004_B4_12#SU1",
+   "ref_id": "REF_000469",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/06_Sweatshirt/REF_000469__Classic Relaxed Zip Hoodie With Pockets - Zebra",
+   "category": "Jacket",
+   "material": [
+    "Knit",
+    "Velvet"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Relaxed",
+    "shoulder": "None",
+    "shape": "Semi-Fluid",
+    "drop": "Dropped",
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B005_B5_15#SU1",
+   "ref_id": "REF_000475",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/06_Sweatshirt/REF_000475__casualovzipup1.jpeg",
+   "category": "Sweatshirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR3",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B3-16::REF_000493#SU1",
+   "ref_id": "REF_000493",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/06_Sweatshirt/REF_000493__Asymmetric Zip-Up Sweatshirt",
+   "category": "Sweatshirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR3",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B006_B6_02#SU1",
+   "ref_id": "REF_000494",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/06_Sweatshirt/REF_000494__casualovzipup2.jpeg",
+   "category": "Sweatshirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR3",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B006_B6_01#SU1",
+   "ref_id": "REF_000496",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/06_Sweatshirt/REF_000496__casualhoodie3.jpeg",
+   "category": "Sweatshirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B007_B7_03#SU1",
+   "ref_id": "REF_000499",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/07_Vest/REF_000499__fleeceworn2.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic"
+   ],
+   "surface": [
+    "Textured Knit"
+   ],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR5",
+   "ceo_direction": "NEUTRAL",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r2": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r3": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r4": "CEO_NEUTRAL_NOT_BINARY",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B007_B7_04#SU1",
+   "ref_id": "REF_000500",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/07_Vest/REF_000500__peddingvestworn1.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic",
+    "Padding"
+   ],
+   "surface": [
+    "Quilted"
+   ],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": true,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B006_B6_05#SU1",
+   "ref_id": "REF_000503",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/07_Vest/REF_000503__qtvestworn2.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic",
+    "Padding",
+    "Cotton"
+   ],
+   "surface": [
+    "Quilted"
+   ],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": true,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B3-03::REF_000508#SU1",
+   "ref_id": "REF_000508",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/07_Vest/REF_000508__vestblazer1.webp",
+   "category": "Jacket",
+   "material": [
+    "Synthetic"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "Mild",
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B005_B5_10#SU1",
+   "ref_id": "REF_000541",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/08_Trouser/REF_000541__wpantswidelong1.png",
+   "category": "Sweater",
+   "material": [
+    "Knit"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": null,
+    "shape": "Semi-Fluid",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B004_B4_13#SU1",
+   "ref_id": "REF_000616",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/11_Skirt/REF_000616__Ruffle Denim Mini Skirt (Washed Indigo)",
+   "category": "Shirt",
+   "material": [
+    "Cotton"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": null,
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "shoulder",
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B007_B7_05#SU1",
+   "ref_id": "REF_000807",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000807__0073_MDV1_jpg_537b21eb-94b3-4bee-9bd6-e030ebdbf98e.webp",
+   "category": "Jacket",
+   "material": [
+    "Wool"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B2-08::REF_000808#SU1",
+   "ref_id": "REF_000808",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000808__cropjkmenbk2.jpg",
+   "category": "Jacket",
+   "material": [
+    "Wool"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "Strong",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3h"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B2-07::REF_000809#SU1",
+   "ref_id": "REF_000809",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000809__lolopianalgreysuit1.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Wool"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Defined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR7",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B005_B5_04#SU1",
+   "ref_id": "REF_000811",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000811__sparkjk1.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic"
+   ],
+   "surface": [
+    "Reflective"
+   ],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": "Strong",
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": "Cinched",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_LOCALIZED"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "B3-13::REF_000834#SU1",
+   "ref_id": "REF_000834",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000834__superS1.jpeg",
+   "category": "Jacket",
+   "material": [
+    "Wool"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Slim",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": "None",
+    "waist": "Cinched",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR7",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "FULL_GOVERNANCE_BUILT_FORM"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-1"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B004_B4_01#SU1",
+   "ref_id": "REF_000845",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/15_STYLE_FULL_LOOK/REF_000845__WEB_B02_0030__primary.jpg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic",
+    "Padding"
+   ],
+   "surface": [
+    "Quilted"
+   ],
+   "inputs": {
+    "relation": "Oversized",
+    "shoulder": "None",
+    "shape": "Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": true,
+   "ceo_gt": "SR5",
+   "ceo_direction": "NEUTRAL",
+   "item_engine": {
+    "d": "NEUTRAL",
+    "reason": "NEUTRAL"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r2": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r3": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r4": "CEO_NEUTRAL_NOT_BINARY",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B004_B4_02#SU1",
+   "ref_id": "REF_000846",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/15_STYLE_FULL_LOOK/REF_000846__WEB_B02_0024__primary.jpg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Regular",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "None",
+    "waist": "Defined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR6",
+   "ceo_direction": "STRUCTURED",
+   "item_engine": {
+    "d": "STRUCTURED",
+    "reason": "PARTIAL_GOVERNANCE_WEAK"
+   },
+   "r1_base": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "STRUCTURED",
+    "rules": [
+     "SRB-3s"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B007_B7_16#SU1",
+   "ref_id": "REF_000847",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/15_STYLE_FULL_LOOK/REF_000847__00003-toteme-spring-2025-ready-to-wear-credit-brand.webp",
+   "category": "Coat",
+   "material": [
+    "Wool"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Relaxed",
+    "shoulder": "None",
+    "shape": "Semi-Structured",
+    "drop": "Dropped",
+    "waist": null,
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR4",
+   "ceo_direction": "RELAXED",
+   "item_engine": {
+    "d": "RELAXED",
+    "reason": "RELEASED_WEAK"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "waist",
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "MATCH",
+   "cmp_r2": "MATCH",
+   "cmp_r3": "MATCH",
+   "cmp_r4": "MATCH",
+   "srb2g_cell": false
+  },
+  {
+   "unit": "STMX_B004_B4_03#SU1",
+   "ref_id": "REF_000849",
+   "image": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/15_STYLE_FULL_LOOK/REF_000849__WEB_B02_0100__primary.jpg",
+   "category": "Jacket",
+   "material": [
+    "Synthetic"
+   ],
+   "surface": [],
+   "inputs": {
+    "relation": "Relaxed",
+    "shoulder": "Mild",
+    "shape": "Structured",
+    "drop": "Dropped",
+    "waist": "Undefined",
+    "constriction": null
+   },
+   "form_retention": false,
+   "ceo_gt": "SR5",
+   "ceo_direction": "NEUTRAL",
+   "item_engine": {
+    "d": "NEUTRAL",
+    "reason": "NEUTRAL"
+   },
+   "r1_base": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r2": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": null,
+    "sensitivity": null
+   },
+   "r3": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "r4": {
+    "label": "RELAXED",
+    "rules": [
+     "SRB-2r"
+    ],
+    "missing": [
+     "constriction"
+    ],
+    "sensitivity": "NONE"
+   },
+   "cmp_base": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r2": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r3": "CEO_NEUTRAL_NOT_BINARY",
+   "cmp_r4": "CEO_NEUTRAL_NOT_BINARY",
+   "srb2g_cell": false
+  }
+ ]
+}

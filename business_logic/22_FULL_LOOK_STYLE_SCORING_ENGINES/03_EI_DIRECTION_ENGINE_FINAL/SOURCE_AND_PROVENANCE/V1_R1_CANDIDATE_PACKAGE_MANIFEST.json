@@ -1,0 +1,206 @@
+{
+ "package": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R1_CANDIDATE",
+ "status": "CANDIDATE — not frozen, not production",
+ "created": "2026-10-25T12:08:47.440Z",
+ "constitution": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_CONSTITUTION_V1_R1",
+ "governance_package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_FULL_LOOK_EI_CEO_ADJUDICATION_INTEGRATION_AND_PRE_FREEZE_VALIDATION_V1/",
+ "predecessor": {
+  "package": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_CANDIDATE",
+  "code_identity": "685ec1cc058bf39e29b6ab7e6bd4368eca9101fb5fa1277384e6171f42e0fd4b",
+  "preserved": true
+ },
+ "code_identity": {
+  "construction": "sha256 over (path, sha256) of src/*.js, sorted",
+  "files": [
+   {
+    "path": "src/fl_ei_authority_v1.js",
+    "sha256": "d72e81a5963a145f21f664b26a8e2c551a092e900c140b84bf259a16691440c0"
+   },
+   {
+    "path": "src/fl_ei_colour_base_v1.js",
+    "sha256": "b1574b440404c544da73191b063aeeb865c76ab264d1237c0e8e9af9a497ce87"
+   },
+   {
+    "path": "src/fl_ei_direction_resolver_v1.js",
+    "sha256": "5ee1cd3a8902a8cdde052bfbf519067bba6e3abf0a7ab88af2000fa7973c7336"
+   },
+   {
+    "path": "src/fl_ei_evidence_v1.js",
+    "sha256": "62cc4a2fc9676b8dd15cf268614ad2a072fe43df2a692098ba5b0882942e4dca"
+   },
+   {
+    "path": "src/fl_ei_input_adapter_v1.js",
+    "sha256": "70ea1262f7fef2f5e17b63c33debc75412b7f5b795c04638ca8700b8823815cb"
+   }
+  ],
+  "aggregate_sha256": "a60b5252af846cf8c0d810133a64ba86118ec78a368bdb17c6907ac61aa86960"
+ },
+ "replay": {
+  "looks": 43,
+  "duplicate_ids": [],
+  "dataset_identity_ok": 43,
+  "valid_inputs": 43,
+  "input_failures": [],
+  "direction": {
+   "EXPRESSIVE": 36,
+   "INTROVERT": 7
+  },
+  "v1_direction": {
+   "EXPRESSIVE": 38,
+   "INTROVERT": 5
+  },
+  "neutral": 0,
+  "unknown_or_unresolved": 0,
+  "resolved_by": {
+   "DIRECT": 39,
+   "AVAILABLE_EVIDENCE": 4
+  },
+  "deterministic": 43,
+  "ceo_gt": [
+   "M178 INTROVERT → AGREE",
+   "M320 EXPRESSIVE → AGREE",
+   "M308 EXPRESSIVE → AGREE"
+  ],
+  "no_gt": 40,
+  "path_adjudications": [
+   "F065 HOLDS — ordinary shirt neckline opening is not Expressive exposure",
+   "F258 HOLDS — ordinary shorts leg visibility + normal neckline are not Expressive exposure",
+   "M210 HOLDS — standard white pocket square (scarf/pocket_square) has no EI effect"
+  ],
+  "changed_vs_v1": [
+   "M178 E→I",
+   "M210 E→I"
+  ],
+  "bases_changed_vs_v1": [
+   "F390 −2",
+   "M178 −2",
+   "M270 −2",
+   "F444 −1",
+   "F065 −1",
+   "F258 −3",
+   "F392 −1",
+   "F472 −2",
+   "M210 −1"
+  ],
+  "r1_rule_hits": {
+   "ACC-1": 9,
+   "ACC-2": 2,
+   "EX-2": 2,
+   "EX-1": 2
+  },
+  "pathways": {
+   "F": 26,
+   "PT": 54,
+   "PG": 15,
+   "GR": 2,
+   "AF": 1,
+   "EX": 17
+  },
+  "e_on_single_basis": [
+   "M323 EX@c1 Chest / Décolletage · styling-created exposure",
+   "F074 EX@c2 Midriff / Waist · garment-intrinsic exposure",
+   "F109 PT@c5 red point on footwear [material_component: Sole] · Distinct",
+   "F134 PT@c3 gold point on jewellery/necklace · Distinct",
+   "F258 PG@c1 Linear pattern · gold Distinct",
+   "M011 F@c1 camel field",
+   "M134 F@c1 white_family field",
+   "M165 F@c1 camel field",
+   "M309 PT@c3 pink point on footwear [attachment: Ribbon] · Distinct",
+   "M317 EX@c1 Chest / Décolletage · styling-created exposure"
+  ]
+ },
+ "tests": {
+  "counts": {
+   "PASS": 121,
+   "CONFLICT": 1
+  },
+  "by_class": {
+   "REAL_PACKET": {
+    "PASS": 43
+   },
+   "SYNTHETIC": {
+    "PASS": 58
+   },
+   "HISTORICAL_CEO_ADJUDICATION": {
+    "PASS": 8
+   },
+   "ILLUSTRATIVE_CEO_ANCHOR": {
+    "PASS": 12,
+    "CONFLICT": 1
+   }
+  },
+  "synthetic": 71,
+  "real": 51,
+  "known_conflicts": [
+   "SYN-G06 — CEO 10-17 navy/brown example (white pocket square → E) is not reproduced by R1 ACC-1, which applies the binding M210 adjudication to the same packet-level fact — CEO decision D-R1-1 pending"
+  ]
+ },
+ "repeatability": {
+  "runs": [
+   {
+    "ledger": "96963b93f23da97373e1f1a0735ad670676ee8ff2607ba973971b9d180bae9ff",
+    "tests": "8195b58d4b891f558bca6f31d874dfa0b0421cdfc927a83ea7159a4cf93da3fe",
+    "exit": 0
+   },
+   {
+    "ledger": "96963b93f23da97373e1f1a0735ad670676ee8ff2607ba973971b9d180bae9ff",
+    "tests": "8195b58d4b891f558bca6f31d874dfa0b0421cdfc927a83ea7159a4cf93da3fe",
+    "exit": 0
+   }
+  ],
+  "repeatable": true
+ },
+ "api_calls": 0,
+ "files": [
+  {
+   "path": "README.md",
+   "bytes": 1870,
+   "sha256": "3f64319e26000b12ce06180d032ddcaffa3a66e78044bef0f56a878775b75e6f"
+  },
+  {
+   "path": "cli/run_offline_replay.js",
+   "bytes": 9459,
+   "sha256": "a4dd52dc63831bce3f01f3a222da0c061daa66ac8419f8560cbeedeffbbed1cd"
+  },
+  {
+   "path": "src/fl_ei_authority_v1.js",
+   "bytes": 7581,
+   "sha256": "d72e81a5963a145f21f664b26a8e2c551a092e900c140b84bf259a16691440c0"
+  },
+  {
+   "path": "src/fl_ei_colour_base_v1.js",
+   "bytes": 3775,
+   "sha256": "b1574b440404c544da73191b063aeeb865c76ab264d1237c0e8e9af9a497ce87"
+  },
+  {
+   "path": "src/fl_ei_direction_resolver_v1.js",
+   "bytes": 6999,
+   "sha256": "5ee1cd3a8902a8cdde052bfbf519067bba6e3abf0a7ab88af2000fa7973c7336"
+  },
+  {
+   "path": "src/fl_ei_evidence_v1.js",
+   "bytes": 12002,
+   "sha256": "62cc4a2fc9676b8dd15cf268614ad2a072fe43df2a692098ba5b0882942e4dca"
+  },
+  {
+   "path": "src/fl_ei_input_adapter_v1.js",
+   "bytes": 3862,
+   "sha256": "70ea1262f7fef2f5e17b63c33debc75412b7f5b795c04638ca8700b8823815cb"
+  },
+  {
+   "path": "tests/run_tests.js",
+   "bytes": 47121,
+   "sha256": "d644c839e74dac42aef040133b0cc566e27c84da310420315ab31a57248adaab"
+  },
+  {
+   "path": "validation/ei_r1_replay_ledger.json",
+   "bytes": 569348,
+   "sha256": "96963b93f23da97373e1f1a0735ad670676ee8ff2607ba973971b9d180bae9ff"
+  },
+  {
+   "path": "validation/ei_r1_tests.json",
+   "bytes": 35115,
+   "sha256": "8195b58d4b891f558bca6f31d874dfa0b0421cdfc927a83ea7159a4cf93da3fe"
+  }
+ ]
+}

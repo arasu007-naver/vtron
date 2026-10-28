@@ -1,0 +1,258 @@
+{
+ "frame": {
+  "state": "OBSERVED",
+  "limits": [
+   "crop"
+  ]
+ },
+ "objects": [
+  {
+   "ref": "c1",
+   "identity": "Skirt",
+   "participates": true
+  },
+  {
+   "ref": "c2",
+   "identity": "T-Shirt",
+   "participates": true,
+   "why": "white knit top visible only at the waist; upper body cropped"
+  },
+  {
+   "ref": "c3",
+   "identity": "jewellery",
+   "participates": true,
+   "subtype": "bracelet",
+   "why": "gold bangle on the subject's left-of-frame wrist"
+  },
+  {
+   "ref": "c4",
+   "identity": "jewellery",
+   "participates": true,
+   "subtype": "bracelet",
+   "why": "thin red string on the right-of-frame wrist"
+  },
+  {
+   "ref": "c5",
+   "identity": "footwear",
+   "participates": true,
+   "product_family": "sandal",
+   "why": "pair of black strappy flat sandals"
+  }
+ ],
+ "front_state": {},
+ "layer_relations": [],
+ "securing_relations": [],
+ "colour_areas": [
+  {
+   "carrier": "c1",
+   "family": "black",
+   "role": "field",
+   "lightness": "normal",
+   "effect": "none"
+  },
+  {
+   "carrier": "c2",
+   "family": "white_family",
+   "role": "point",
+   "lightness": "light",
+   "effect": "none",
+   "contrast": "Distinct"
+  },
+  {
+   "carrier": "c3",
+   "family": "gold",
+   "role": "point",
+   "lightness": "normal",
+   "effect": "metallic",
+   "contrast": "Distinct"
+  },
+  {
+   "carrier": "c4",
+   "family": "red",
+   "role": "point",
+   "lightness": "normal",
+   "effect": "none",
+   "contrast": "Distinct"
+  },
+  {
+   "carrier": "c5",
+   "family": "black",
+   "role": "point",
+   "lightness": "normal",
+   "effect": "none",
+   "contrast": "Tonal"
+  }
+ ],
+ "upper": {
+  "governing_ref": "c2",
+  "relation": {
+   "state": "NOT_VISIBLE"
+  },
+  "shoulder": {
+   "state": "NOT_VISIBLE"
+  },
+  "shape": {
+   "state": "NOT_VISIBLE"
+  }
+ },
+ "exposure_supplement": [
+  {
+   "region": "Upper Thigh",
+   "carriers": [
+    "c1"
+   ],
+   "attribution": "item_intrinsic"
+  }
+ ],
+ "facts": {
+  "c1": {
+   "material": [
+    "Knit"
+   ],
+   "surface": "ABSENT",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "pocket": "None",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT",
+   "asymmetry": "None",
+   "silhouette": "Straight",
+   "fit": "Slim",
+   "length": "Maxi Length",
+   "slit": "Present"
+  },
+  "c2": {
+   "material": "UNKNOWN",
+   "surface": "UNKNOWN",
+   "pattern": "ABSENT",
+   "graphic": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "pocket": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "decorative_detail": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "attachment": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "asymmetry": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "fit": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "length": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "sleeve": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "shoulder_drop": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "collar": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "front_opening_extent": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "shoulder_connection": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   },
+   "shoulder_span": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   }
+  },
+  "c3": {
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "surface": "ABSENT",
+   "material": [
+    "Other"
+   ],
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  },
+  "c4": {
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "surface": "ABSENT",
+   "material": "UNKNOWN",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  },
+  "c5": {
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "surface": "ABSENT",
+   "material": "UNKNOWN",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  }
+ },
+ "dm": {
+  "look_detail_systems": [
+   {
+    "carrier_refs": [
+     "c3"
+    ],
+    "look_detail_family": "H",
+    "relational_form": "accent",
+    "size_in_look": {
+     "state": "OBSERVED",
+     "value": "small"
+    },
+    "contrast_in_look": {
+     "state": "OBSERVED",
+     "value": "high"
+    },
+    "position_in_look": {
+     "state": "OBSERVED",
+     "value": "localized"
+    },
+    "repeated_units": "no"
+   }
+  ]
+ }
+}

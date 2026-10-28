@@ -1,0 +1,240 @@
+{
+ "package": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE",
+ "status": "CANDIDATE — not frozen, not production",
+ "created": "2026-10-25T13:52:03.874Z",
+ "constitution": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_CONSTITUTION_V1_R3",
+ "governance_package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_FULL_LOOK_EI_V1_R3_FINAL_CONTRACT_CORRECTION_AND_FREEZE_READINESS_V1/",
+ "predecessor": {
+  "package": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R2_CANDIDATE",
+  "code_identity": "ddf9fe2fc6cc6661f89ca9836fde3b01cfa29f2cd67465e1c1fbe3bb5de1233d",
+  "preserved": true
+ },
+ "predecessor_v1_r1": {
+  "package": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R1_CANDIDATE",
+  "code_identity": "a60b5252af846cf8c0d810133a64ba86118ec78a368bdb17c6907ac61aa86960",
+  "preserved": true
+ },
+ "predecessor_v1": {
+  "package": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_CANDIDATE",
+  "code_identity": "685ec1cc058bf39e29b6ab7e6bd4368eca9101fb5fa1277384e6171f42e0fd4b",
+  "preserved": true
+ },
+ "code_identity": {
+  "construction": "sha256 over (path, sha256) of src/*.js, sorted",
+  "files": [
+   {
+    "path": "src/fl_ei_authority_v1.js",
+    "sha256": "e291ed8393eb68c3712ebbc77450ea5d4df423d931fe0c713d292e1a0708b88c"
+   },
+   {
+    "path": "src/fl_ei_colour_base_v1.js",
+    "sha256": "b1574b440404c544da73191b063aeeb865c76ab264d1237c0e8e9af9a497ce87"
+   },
+   {
+    "path": "src/fl_ei_direction_resolver_v1.js",
+    "sha256": "d77fa42e6a197bed94e28c83f8720b2cb5c7fc4e8c5ca2d910a757da89e9c729"
+   },
+   {
+    "path": "src/fl_ei_evidence_v1.js",
+    "sha256": "d0d65ca564d1491b4efa2de3c97c88fbe2a22af5d499168dc050358787fc0727"
+   },
+   {
+    "path": "src/fl_ei_input_adapter_v1.js",
+    "sha256": "70ea1262f7fef2f5e17b63c33debc75412b7f5b795c04638ca8700b8823815cb"
+   }
+  ],
+  "aggregate_sha256": "429896dfb3a5d9b4a9edbc207e5adb8e337c218866b0ee3ffbfeafbd07ea1e5d"
+ },
+ "replay": {
+  "looks": 43,
+  "duplicate_ids": [],
+  "dataset_identity_ok": 43,
+  "valid_inputs": 43,
+  "input_failures": [],
+  "direction": {
+   "EXPRESSIVE": 36,
+   "INTROVERT": 7
+  },
+  "r2_direction": {
+   "E": 36,
+   "I": 7
+  },
+  "r1_direction": {
+   "E": 36,
+   "I": 7
+  },
+  "v1_direction": {
+   "E": 38,
+   "I": 5
+  },
+  "predecessors_reproduce_sealed_ledgers": 43,
+  "neutral": 0,
+  "unknown_or_unresolved": 0,
+  "resolved_by": {
+   "DIRECT": 39,
+   "AVAILABLE_EVIDENCE": 4
+  },
+  "deterministic": 43,
+  "ceo_gt": [
+   "M178 INTROVERT → AGREE",
+   "M320 EXPRESSIVE → AGREE",
+   "M308 EXPRESSIVE → AGREE"
+  ],
+  "no_gt": 40,
+  "path_adjudications": [
+   "F065 HOLDS — ordinary shirt neckline opening is not Expressive exposure",
+   "F258 HOLDS — ordinary shorts leg visibility + normal neckline are not Expressive exposure",
+   "M210 HOLDS — conventional pocket square is not an independent qualifying E point"
+  ],
+  "changed_vs_r2": [],
+  "changed_vs_v1": [
+   "M178 E→I",
+   "M210 E→I"
+  ],
+  "bases_added_vs_r2": [],
+  "bases_removed_vs_r2": [],
+  "bases_relabelled_vs_r2": [
+   "M269 ~1",
+   "F390 ~1",
+   "M320 ~1",
+   "F012 ~1"
+  ],
+  "r3_rule_hits": {
+   "ACC-1": 7,
+   "ACC-2": 2,
+   "EX-2": 2,
+   "EX-1": 2,
+   "PS-1": 1
+  },
+  "qualification_routes": {
+   "ACC-1 ornament route": 1,
+   "ACC-2 ornament route": 2
+  },
+  "ps1_role_notes": 1,
+  "pathways": {
+   "F": 26,
+   "PT": 57,
+   "PG": 15,
+   "GR": 2,
+   "AF": 1,
+   "EX": 17
+  },
+  "e_on_single_basis": [
+   "M323 EX@c1 Chest / Décolletage · styling-created exposure",
+   "F074 EX@c2 Midriff / Waist · garment-intrinsic exposure",
+   "F109 PT@c5 red point on footwear [material_component: Sole] · Distinct",
+   "F134 PT@c3 gold point on jewellery/necklace · Distinct",
+   "F258 PG@c1 Linear pattern · gold Distinct",
+   "M011 F@c1 camel field",
+   "M134 F@c1 white_family field",
+   "M165 F@c1 camel field",
+   "M309 PT@c3 pink point on footwear [attachment: Ribbon] · Distinct",
+   "M317 EX@c1 Chest / Décolletage · styling-created exposure"
+  ]
+ },
+ "tests": {
+  "counts": {
+   "PASS": 216,
+   "FAIL": 0,
+   "SEMANTIC_CONFLICT": 0,
+   "NOT_REPLAYABLE": 2,
+   "NOT_APPLICABLE": 5
+  },
+  "by_class": {
+   "REAL_PACKET": {
+    "PASS": 77,
+    "NOT_APPLICABLE": 1
+   },
+   "SYNTHETIC": {
+    "PASS": 108,
+    "NOT_APPLICABLE": 4
+   },
+   "HISTORICAL_CEO_ADJUDICATION": {
+    "PASS": 13
+   },
+   "ILLUSTRATIVE_CEO_ANCHOR": {
+    "PASS": 18,
+    "NOT_REPLAYABLE": 2
+   }
+  },
+  "synthetic": 130,
+  "real": 93,
+  "non_pass": [
+   "NOT_APPLICABLE R1-J02 — V1_R1 design property (\"only removes admissions vs V1\"); V1_R2 deliberately admits designed metal ornamentation (ACC-2 ornament route: M320 jacket chain, F012 chain-belt hardware) that V1 suppressed a",
+   "NOT_APPLICABLE R2-P08 — V1_R2 assertion that the role is \"not established\" because the matched-suit (jacket / trouser colour) fact is unread; V1_R3 removes that outfit-type fact (order §4.1), so the trouser colour no longer ",
+   "NOT_REPLAYABLE R2-P09-REAL — original image not on disk (CC-4 IMAGE_NOT_AVAILABLE, recorded 10-18); no Frozen packet exists — only the labelled synthetic fixtures SYN-G06 / SYN-R2-P01 test its semantics",
+   "NOT_APPLICABLE SYN-R2-A02 — V1_R2 assumption \"standalone Embroidery is an observed styling role\"; the frozen EI Phase 2 canonical (CEO 2026-08-01) D5 says Standalone Embroidery Evidence = REJECTED, so V1_R3 does not admit it — h",
+   "NOT_APPLICABLE SYN-R2-A04 — V1_R2 assumption \"jewellery is ornamental by category\"; V1_R3 order §7.1 forbids classifying a whole accessory category as Expressive — historical expectation E preserved here; replaced by SYN-R3-B04 ",
+   "NOT_APPLICABLE SYN-R2-A05 — V1_R2 assumption \"an Embroidery part is a designed accent part\"; Phase 2 D5 (standalone Embroidery REJECTED) — historical expectation E preserved here; replaced by SYN-R3-B09 (white sneakers + Ribbon ",
+   "NOT_REPLAYABLE R3-P09-REAL — original image not on disk (CC-4 IMAGE_NOT_AVAILABLE, recorded 10-18); no Frozen packet exists — synthetic SYN-R3-P09 checks only the governed distinction and is not a visual reproduction"
+  ]
+ },
+ "repeatability": {
+  "runs": [
+   {
+    "ledger": "d8f0497db39fc1e260b002748294e36df65447d6c12f08d800c8e112e733ef68",
+    "tests": "f3a8701ba5670e1e39e76da10b44cad82b69104d5449cffac836743aabd1c70a",
+    "exit": 0
+   },
+   {
+    "ledger": "d8f0497db39fc1e260b002748294e36df65447d6c12f08d800c8e112e733ef68",
+    "tests": "f3a8701ba5670e1e39e76da10b44cad82b69104d5449cffac836743aabd1c70a",
+    "exit": 0
+   }
+  ],
+  "repeatable": true
+ },
+ "api_calls": 0,
+ "files": [
+  {
+   "path": "README.md",
+   "bytes": 2795,
+   "sha256": "1e84c92432124a8c1f261f3edd89241d0c894a08165d53f7bd4028e24a68c255"
+  },
+  {
+   "path": "cli/run_offline_replay.js",
+   "bytes": 12988,
+   "sha256": "36d590927e478f11a1310aa8cf39a0cd8a470a2828c6cb71b9f2e1efe2755e79"
+  },
+  {
+   "path": "src/fl_ei_authority_v1.js",
+   "bytes": 10849,
+   "sha256": "e291ed8393eb68c3712ebbc77450ea5d4df423d931fe0c713d292e1a0708b88c"
+  },
+  {
+   "path": "src/fl_ei_colour_base_v1.js",
+   "bytes": 3775,
+   "sha256": "b1574b440404c544da73191b063aeeb865c76ab264d1237c0e8e9af9a497ce87"
+  },
+  {
+   "path": "src/fl_ei_direction_resolver_v1.js",
+   "bytes": 7385,
+   "sha256": "d77fa42e6a197bed94e28c83f8720b2cb5c7fc4e8c5ca2d910a757da89e9c729"
+  },
+  {
+   "path": "src/fl_ei_evidence_v1.js",
+   "bytes": 22846,
+   "sha256": "d0d65ca564d1491b4efa2de3c97c88fbe2a22af5d499168dc050358787fc0727"
+  },
+  {
+   "path": "src/fl_ei_input_adapter_v1.js",
+   "bytes": 3862,
+   "sha256": "70ea1262f7fef2f5e17b63c33debc75412b7f5b795c04638ca8700b8823815cb"
+  },
+  {
+   "path": "tests/run_tests.js",
+   "bytes": 106974,
+   "sha256": "cb6a43ff64c916fea7963b6cd72194c1f0ef3f3c95a18fa45b47c9fccfcfc079"
+  },
+  {
+   "path": "validation/ei_r3_replay_ledger.json",
+   "bytes": 667403,
+   "sha256": "d8f0497db39fc1e260b002748294e36df65447d6c12f08d800c8e112e733ef68"
+  },
+  {
+   "path": "validation/ei_r3_tests.json",
+   "bytes": 76403,
+   "sha256": "f3a8701ba5670e1e39e76da10b44cad82b69104d5449cffac836743aabd1c70a"
+  }
+ ]
+}

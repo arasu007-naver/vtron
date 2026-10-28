@@ -1,0 +1,82 @@
+{
+ "at": "2026-10-25T02:31:05.288Z",
+ "tc_v2": {
+  "manifest_aggregate": "796a9513c7b40a9df097e0f7be9c522bd93304aa3c33f2058108ecdd7df7a89e",
+  "recomputed_aggregate": "796a9513c7b40a9df097e0f7be9c522bd93304aa3c33f2058108ecdd7df7a89e",
+  "order_stated": "796a9513c7b40a9df097e0f7be9c522bd93304aa3c33f2058108ecdd7df7a89e",
+  "identity_verified": true,
+  "files": [
+   {
+    "path": "cli/run_offline_replay.js",
+    "sha256": "96ac2226a68837f26cb2739cf4cf191cf54c033ad0469b8c333d6f5b3eb2a53b",
+    "matches_manifest": true
+   },
+   {
+    "path": "src/fl_tc_authority_v1.js",
+    "sha256": "5253d91c9480e797fb41a17c8b6f3f28cf3d405205c9805e49c2a305caf3067c",
+    "matches_manifest": true
+   },
+   {
+    "path": "src/fl_tc_authority_v2.js",
+    "sha256": "44e1004b547e4af741a634538df121eb80b73e5bae5055ef1099315859c712f3",
+    "matches_manifest": true
+   },
+   {
+    "path": "src/fl_tc_direction_resolver_v2.js",
+    "sha256": "dfba375902bcbbabf06729eaa35f216584cf5c413267abe165560e5f45056ede",
+    "matches_manifest": true
+   },
+   {
+    "path": "src/fl_tc_input_adapter_v1.js",
+    "sha256": "2e8e8e1751afaf13baff7256921b1866f36df616e7aca0133bfdf99621379e1a",
+    "matches_manifest": true
+   },
+   {
+    "path": "src/fl_tc_product_departure_v1.js",
+    "sha256": "21b0ab2df50bbabf34f944ed1a2b95cf4db89dd8baf40bedea69c73303e5cc4d",
+    "matches_manifest": true
+   },
+   {
+    "path": "src/fl_tc_product_visibility_v2.js",
+    "sha256": "02252eccba13783dc8e69a7a25a127539e9b9d3d09ca924a3744606bfbfc025e",
+    "matches_manifest": true
+   },
+   {
+    "path": "tests/run_tests.js",
+    "sha256": "6558d1e5f519b6c68eb16f3fd55126aca4952836c42c4fcf8883922cb1bc8d06",
+    "matches_manifest": true
+   }
+  ],
+  "status": "CANDIDATE · OFFLINE · NOT FROZEN · NOT PRODUCTION",
+  "tests": {
+   "PASS": 45
+  },
+  "replay_new": {
+   "DIRECTION_UNRESOLVED": 9,
+   "TRANSFORMATIVE": 21,
+   "CLASSIC": 13
+  }
+ },
+ "sr_freeze": {
+  "freeze_id": "FLSR-FINAL-FREEZE-V1-2026-10-25",
+  "sealed_at": null,
+  "seal_release_manifest_sha256": "f6b480d8233664b01988c31bc058f947c8f796635575549fd7c208b7bda8f431",
+  "release_manifest_sha256": "f6b480d8233664b01988c31bc058f947c8f796635575549fd7c208b7bda8f431",
+  "pointer_release_manifest_sha256": "f6b480d8233664b01988c31bc058f947c8f796635575549fd7c208b7bda8f431",
+  "consistent": true
+ },
+ "decision_log": {
+  "AEMS": true,
+  "FLSR_FINAL_FREEZE": true,
+  "FLTC_present": false
+ },
+ "context": {
+  "latest_entry_is_srbk": true,
+  "sr_drive_pending_recorded": true
+ },
+ "sr_drive_ceo_confirmation": {
+  "text": "CEO는 2026-10-25 SR Google Drive 백업 업로드가 완료됐음을 확인했다.",
+  "source": "AUTHORIZATION/TC_FINAL_FREEZE_CEO_ORDER_VERBATIM.md §1.2",
+  "drive_side_independently_verified_by_claude": false
+ }
+}

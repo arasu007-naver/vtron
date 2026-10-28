@@ -1,0 +1,8 @@
+{
+ "image_ref": "M323",
+ "image_hash": "2238975a21938eef80661934492d84ec1a2ae80b251561635fa4a18672a99c22",
+ "prompt_version": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
+ "prompt_hash": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
+ "model_id": "claude-opus-5-5",
+ "run_id": "RUN-EX04-0005"
+}

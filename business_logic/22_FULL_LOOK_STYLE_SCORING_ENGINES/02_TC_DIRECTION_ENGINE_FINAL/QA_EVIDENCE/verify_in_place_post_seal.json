@@ -1,0 +1,69 @@
+{
+ "release_id": "STMX_FULL_LOOK_TC_DIRECTION_ENGINE_V1",
+ "release_dir": "C:\\work\\STMX\\STMX project\\master files\\STMX EI TC SR DM master\\01_ENGINES\\STYLE_SCORING_ENGINE\\FLTC_FINAL_V1\\",
+ "at": "2026-10-25T03:09:24.978Z",
+ "node": "v24.18.0",
+ "all_pass": true,
+ "checks": [
+  {
+   "id": "V1",
+   "name": "manifest integrity",
+   "result": "PASS",
+   "evidence": "179 files · mismatched 0 · unlisted 0 · SHA256SUMS = manifest true"
+  },
+  {
+   "id": "V2",
+   "name": "runtime fingerprint",
+   "result": "PASS",
+   "evidence": "bc05359ac959d21894f389a95cea5a0393b0a9ce6d3bdace8570f73c17744174"
+  },
+  {
+   "id": "V3",
+   "name": "dependency closure + authority pins (fail-closed from RT/)",
+   "result": "PASS",
+   "evidence": "33 closure files · mismatched 0 · 5 pins · STMX_FULL_LOOK_TC_DIRECTION_CONSTITUTION_FINAL_V1"
+  },
+  {
+   "id": "V4",
+   "name": "isolation (no read outside the release)",
+   "result": "PASS",
+   "evidence": "87 file accesses · outside 0"
+  },
+  {
+   "id": "V5",
+   "name": "golden replay identical (43 corpus)",
+   "result": "PASS",
+   "evidence": "{\"total\":43,\"identical\":43,\"by_set\":{\"corpus43\":{\"looks\":43,\"CLASSIC\":21,\"TRANSFORMATIVE\":21,\"input_failures\":1}}}"
+  },
+  {
+   "id": "V6",
+   "name": "coverage + forbidden states",
+   "result": "PASS",
+   "evidence": "42 C/T · input failures F033 INPUT_FAILURE:NO_TC_PRODUCT_EVIDENCE"
+  },
+  {
+   "id": "V7",
+   "name": "determinism (second fresh replay identical)",
+   "result": "PASS",
+   "evidence": "43 / 43"
+  },
+  {
+   "id": "V8",
+   "name": "release tests",
+   "result": "PASS",
+   "evidence": "{\"PASS\":16}"
+  },
+  {
+   "id": "V9",
+   "name": "no network / credential code",
+   "result": "PASS",
+   "evidence": "clean"
+  },
+  {
+   "id": "V10",
+   "name": "freeze seal binding",
+   "result": "PASS",
+   "evidence": "seal FLTC-FINAL-FREEZE-V1-2026-10-25"
+  }
+ ]
+}

@@ -1,0 +1,782 @@
+{
+ "EI": {
+  "note": "OBSERVATIONS ONLY — selected by the approved inventory consumer_axes; no score, direction, strength or Style ID",
+  "parameters_for_this_axis": [
+   "SVP-002 component_identity",
+   "SVP-005 component_colour",
+   "SVP-006 colour_composition_standing",
+   "SVP-012 canonical_physical_exposure",
+   "SVP-101 grammar",
+   "SVP-102 trouser_distinction",
+   "SVP-121 pattern",
+   "SVP-122 graphic",
+   "SVP-123 surface",
+   "SVP-124 material",
+   "SVP-125 decorative_detail",
+   "SVP-126 attachment"
+  ],
+  "cells": {
+   "SVP-002@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Jacket"
+   },
+   "SVP-002@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": "belt"
+   },
+   "SVP-002@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Trouser"
+   },
+   "SVP-005@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     {
+      "color_family": "navy",
+      "color_lightness": "dark",
+      "color_effect": "none"
+     },
+     {
+      "color_family": "beige",
+      "color_lightness": "light",
+      "color_effect": "none",
+      "carrier_part": {
+       "carrier_kind": "material_component",
+       "carrier_ref": "Lapel"
+      }
+     },
+     {
+      "color_family": "navy",
+      "color_lightness": "dark",
+      "color_effect": "none",
+      "carrier_part": {
+       "carrier_kind": "closure",
+       "carrier_ref": "Button"
+      }
+     }
+    ]
+   },
+   "SVP-006@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     {
+      "color_family": "navy",
+      "standing": "field"
+     },
+     {
+      "color_family": "beige",
+      "standing": "point",
+      "contrast_with_field": "Distinct"
+     },
+     {
+      "color_family": "navy",
+      "standing": "point",
+      "contrast_with_field": "Tonal"
+     }
+    ]
+   },
+   "SVP-005@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     {
+      "color_family": "black",
+      "color_lightness": "dark",
+      "color_effect": "none"
+     }
+    ]
+   },
+   "SVP-006@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     {
+      "color_family": "black",
+      "standing": "field"
+     }
+    ]
+   },
+   "SVP-005@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     {
+      "color_family": "black",
+      "color_lightness": "dark",
+      "color_effect": "none"
+     },
+     {
+      "color_family": "silver",
+      "color_lightness": "normal",
+      "color_effect": "metallic",
+      "carrier_part": {
+       "carrier_kind": "attachment",
+       "carrier_ref": "Metal Hardware"
+      }
+     }
+    ]
+   },
+   "SVP-006@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     {
+      "color_family": "black",
+      "standing": "point",
+      "contrast_with_field": "Subtle"
+     },
+     {
+      "color_family": "silver",
+      "standing": "point",
+      "contrast_with_field": "Distinct"
+     }
+    ]
+   },
+   "SVP-012": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     {
+      "region": "Chest / Décolletage",
+      "carrier_refs": [
+       "c1"
+      ],
+      "attribution": {
+       "value": "realized_state",
+       "state": "OBSERVED"
+      }
+     }
+    ]
+   },
+   "SVP-121@c1": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-122@c1": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-123@c1": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-124@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Wool"
+    ]
+   },
+   "SVP-125@c1": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-126@c1": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-121@c2": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-122@c2": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-123@c2": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-124@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Leather"
+    ]
+   },
+   "SVP-125@c2": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-126@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Metal Hardware"
+    ]
+   },
+   "SVP-121@c3": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-122@c3": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-123@c3": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-124@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Wool"
+    ]
+   },
+   "SVP-125@c3": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-126@c3": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-101@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Tailored"
+   },
+   "SVP-102@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Tailored"
+   }
+  },
+  "look_blocks": {
+   "colour_composition": {
+    "state": "OBSERVED",
+    "field": [
+     {
+      "color_family": "navy",
+      "color_lightness": "dark",
+      "color_effect": "none",
+      "carrier_refs": [
+       "c1"
+      ]
+     },
+     {
+      "color_family": "black",
+      "color_lightness": "dark",
+      "color_effect": "none",
+      "carrier_refs": [
+       "c3"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "color_family": "beige",
+      "color_lightness": "light",
+      "color_effect": "none",
+      "carrier_ref": {
+       "value": "c1",
+       "state": "OBSERVED"
+      },
+      "contrast_with_field": "Distinct",
+      "carrier_part": {
+       "carrier_kind": "material_component",
+       "carrier_ref": "Lapel"
+      }
+     },
+     {
+      "color_family": "navy",
+      "color_lightness": "dark",
+      "color_effect": "none",
+      "carrier_ref": {
+       "value": "c1",
+       "state": "OBSERVED"
+      },
+      "contrast_with_field": "Tonal",
+      "carrier_part": {
+       "carrier_kind": "closure",
+       "carrier_ref": "Button"
+      }
+     },
+     {
+      "color_family": "black",
+      "color_lightness": "dark",
+      "color_effect": "none",
+      "carrier_ref": {
+       "value": "c2",
+       "state": "OBSERVED"
+      },
+      "contrast_with_field": "Subtle"
+     },
+     {
+      "color_family": "silver",
+      "color_lightness": "normal",
+      "color_effect": "metallic",
+      "carrier_ref": {
+       "value": "c2",
+       "state": "OBSERVED"
+      },
+      "contrast_with_field": "Distinct",
+      "carrier_part": {
+       "carrier_kind": "attachment",
+       "carrier_ref": "Metal Hardware"
+      }
+     }
+    ],
+    "suppressed": [
+     {
+      "carrier_ref": "c1",
+      "rule": "COLOUR_V1_SUPPRESSION:stitching"
+     }
+    ],
+    "unreadable": [],
+    "partial": [
+     {
+      "carrier_ref": "c1",
+      "color_family": "black",
+      "role": "point",
+      "unresolved": [
+       "contrast_with_field"
+      ],
+      "color_lightness": "dark",
+      "color_effect": "none",
+      "carrier_part": {
+       "carrier_kind": "generic_descriptor",
+       "carrier_ref": "Sleeve"
+      }
+     }
+    ]
+   },
+   "canonical_exposure": {
+    "events": [
+     {
+      "region": "Chest / Décolletage",
+      "carrier_refs": [
+       "c1"
+      ],
+      "attribution": {
+       "value": "realized_state",
+       "state": "OBSERVED"
+      },
+      "sources": [
+       {
+        "route": "observed"
+       }
+      ],
+      "state": "OBSERVED"
+     }
+    ],
+    "hidden": []
+   }
+  }
+ },
+ "TC": {
+  "note": "OBSERVATIONS ONLY — selected by the approved inventory consumer_axes; no score, direction, strength or Style ID",
+  "parameters_for_this_axis": [
+   "SVP-002 component_identity",
+   "SVP-004 as_worn_front_state",
+   "SVP-010 layer_relation",
+   "SVP-101 grammar",
+   "SVP-102 trouser_distinction",
+   "SVP-103 silhouette",
+   "SVP-104 fit",
+   "SVP-105 shoulder_structure",
+   "SVP-107 asymmetry",
+   "SVP-108 length",
+   "SVP-109 sleeve_volume",
+   "SVP-110 shoulder_span",
+   "SVP-111 closure_type",
+   "SVP-112 front_opening_extent",
+   "SVP-113 collar",
+   "SVP-114 sleeve",
+   "SVP-115 shoulder_connection",
+   "SVP-116 pocket",
+   "SVP-117 pocket_construction",
+   "SVP-118 pocket_projection",
+   "SVP-119 waist_definition",
+   "SVP-120 slit",
+   "SVP-123 surface",
+   "SVP-124 material",
+   "SVP-126 attachment"
+  ],
+  "cells": {
+   "SVP-002@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Jacket"
+   },
+   "SVP-004@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "fastened"
+   },
+   "SVP-002@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": "belt"
+   },
+   "SVP-002@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Trouser"
+   },
+   "SVP-010": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     {
+      "over_ref": "c1",
+      "under_ref": "c3",
+      "revealed": [
+       "Leg"
+      ]
+     }
+    ]
+   },
+   "SVP-123@c1": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-124@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Wool"
+    ]
+   },
+   "SVP-126@c1": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-123@c2": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-124@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Leather"
+    ]
+   },
+   "SVP-126@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Metal Hardware"
+    ]
+   },
+   "SVP-123@c3": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-124@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Wool"
+    ]
+   },
+   "SVP-126@c3": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-101@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Tailored"
+   },
+   "SVP-104@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Relaxed"
+   },
+   "SVP-105@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Strong"
+   },
+   "SVP-107@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Present"
+   },
+   "SVP-108@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Hip Length"
+   },
+   "SVP-114@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Long"
+   },
+   "SVP-109@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Voluminous"
+   },
+   "SVP-111@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Double Breasted Button"
+   },
+   "SVP-112@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Full"
+   },
+   "SVP-113@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Peak"
+   },
+   "SVP-116@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Present",
+    "pockets": [
+     {
+      "location": "Chest",
+      "construction": {
+       "state": "OBSERVED",
+       "value": "Inset"
+      },
+      "projection": {
+       "state": "OBSERVED",
+       "value": "Flat"
+      }
+     },
+     {
+      "location": "Lower Front",
+      "construction": {
+       "state": "OBSERVED",
+       "value": "Inset"
+      },
+      "projection": {
+       "state": "OBSERVED",
+       "value": "Flat"
+      }
+     }
+    ]
+   },
+   "SVP-117@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Inset",
+     "Inset"
+    ],
+    "nested_instances": 2,
+    "projected_from": "pocket.pockets[]"
+   },
+   "SVP-118@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Flat",
+     "Flat"
+    ],
+    "nested_instances": 2,
+    "projected_from": "pocket.pockets[]"
+   },
+   "SVP-119@c1": {
+    "observed_state": "UNKNOWN"
+   },
+   "SVP-102@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Tailored"
+   },
+   "SVP-103@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Straight"
+   },
+   "SVP-104@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Regular"
+   },
+   "SVP-107@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": "None"
+   },
+   "SVP-108@c3": {
+    "observed_state": "NOT_VISIBLE"
+   },
+   "SVP-116@c3": {
+    "observed_state": "NOT_VISIBLE"
+   }
+  },
+  "look_blocks": {
+   "component_registry": [
+    {
+     "component_ref": "c1",
+     "object_identity": {
+      "value": "Jacket",
+      "state": "OBSERVED"
+     },
+     "front_state": {
+      "value": "fastened",
+      "state": "OBSERVED"
+     }
+    },
+    {
+     "component_ref": "c2",
+     "object_identity": {
+      "value": "belt",
+      "state": "OBSERVED"
+     },
+     "attached_to": "c1"
+    },
+    {
+     "component_ref": "c3",
+     "object_identity": {
+      "value": "Trouser",
+      "state": "OBSERVED"
+     }
+    }
+   ],
+   "relations": {
+    "layer_relations": [
+     {
+      "over_ref": "c1",
+      "under_ref": "c3",
+      "revealed": [
+       "Leg"
+      ],
+      "state": "OBSERVED"
+     }
+    ],
+    "securing_relations": [
+     {
+      "securing_ref": "c2",
+      "affected_ref": "c1",
+      "affected_region": "waist",
+      "visible_constriction": {
+       "state": "OBSERVED"
+      }
+     }
+    ]
+   }
+  }
+ },
+ "SR": {
+  "note": "OBSERVATIONS ONLY — selected by the approved inventory consumer_axes; no score, direction, strength or Style ID",
+  "parameters_for_this_axis": [
+   "SVP-007 final_upper_relation",
+   "SVP-008 final_shoulder_realization",
+   "SVP-009 final_upper_shape_behaviour",
+   "SVP-011 securing_constriction",
+   "SVP-106 shoulder_drop",
+   "SVP-119 waist_definition",
+   "SVP-123 surface",
+   "SVP-124 material"
+  ],
+  "cells": {
+   "SVP-007": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Relaxed"
+   },
+   "SVP-008": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Strong"
+   },
+   "SVP-009": {
+    "observed_state": "OBSERVED",
+    "observed_value": "Structured"
+   },
+   "SVP-011@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": {
+     "affected_ref": "c1",
+     "affected_region": "waist"
+    }
+   },
+   "SVP-123@c1": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-124@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Wool"
+    ]
+   },
+   "SVP-123@c2": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-124@c2": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Leather"
+    ]
+   },
+   "SVP-123@c3": {
+    "observed_state": "ABSENT"
+   },
+   "SVP-124@c3": {
+    "observed_state": "OBSERVED",
+    "observed_value": [
+     "Wool"
+    ]
+   },
+   "SVP-119@c1": {
+    "observed_state": "UNKNOWN"
+   },
+   "SVP-106@c1": {
+    "observed_state": "OBSERVED",
+    "observed_value": "None"
+   }
+  },
+  "look_blocks": {
+   "upper_realization": {
+    "source_refs": [
+     "c1"
+    ],
+    "relation": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "shoulder": {
+     "state": "OBSERVED",
+     "value": "Strong",
+     "route": "observed",
+     "source": "fixture",
+     "observation_group": "G3.SH"
+    },
+    "shape_behaviour": {
+     "state": "OBSERVED",
+     "value": "Structured",
+     "route": "observed",
+     "source": "fixture"
+    }
+   },
+   "relations": {
+    "layer_relations": [
+     {
+      "over_ref": "c1",
+      "under_ref": "c3",
+      "revealed": [
+       "Leg"
+      ],
+      "state": "OBSERVED"
+     }
+    ],
+    "securing_relations": [
+     {
+      "securing_ref": "c2",
+      "affected_ref": "c1",
+      "affected_region": "waist",
+      "visible_constriction": {
+       "state": "OBSERVED"
+      }
+     }
+    ]
+   }
+  }
+ },
+ "DM": {
+  "note": "OBSERVATIONS ONLY — selected by the approved inventory consumer_axes; no score, direction, strength or Style ID",
+  "parameters_for_this_axis": [
+   "DMP-1 look_components",
+   "DMP-2 look_detail_systems"
+  ],
+  "cells": {},
+  "look_blocks": {
+   "dm_evidence": {
+    "transport_contract": "STMX_FULL_LOOK_DM_VISION_EVIDENCE_TRANSPORT_V2",
+    "look_components": [
+     {
+      "component_ref": "c1"
+     }
+    ],
+    "look_detail_systems": [
+     {
+      "carrier_refs": [
+       "c1"
+      ],
+      "look_detail_family": "D",
+      "size_in_look": {
+       "state": "OBSERVED",
+       "value": "medium"
+      },
+      "contrast_in_look": {
+       "state": "OBSERVED",
+       "value": "medium"
+      },
+      "position_in_look": {
+       "state": "OBSERVED",
+       "value": "distributed"
+      },
+      "repeated_units": "yes"
+     },
+     {
+      "carrier_refs": [
+       "c1"
+      ],
+      "look_detail_family": "J",
+      "size_in_look": {
+       "state": "OBSERVED",
+       "value": "medium"
+      },
+      "contrast_in_look": {
+       "state": "OBSERVED",
+       "value": "high"
+      },
+      "position_in_look": {
+       "state": "OBSERVED",
+       "value": "localized"
+      },
+      "repeated_units": "no"
+     }
+    ],
+    "dm_evidence_visibility": {
+     "state": "UNKNOWN"
+    }
+   }
+  }
+ }
+}

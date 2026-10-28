@@ -1,0 +1,15 @@
+{
+ "at": "2026-10-25T00:45:11.742Z",
+ "release_dir": "01_ENGINES/STYLE_SCORING_ENGINE/FLSR_FINAL_V1/",
+ "files": 218,
+ "runtime_fingerprint": "fd9590864a2a0e02d732539e769c7d781c9d0ee43f9284ae77a9057ef985b0a7",
+ "runtime_src_byte_identical": true,
+ "pins": 13,
+ "golden": {
+  "corpus43": 43,
+  "live20": 20,
+  "input_failures": 1
+ },
+ "longest_absolute_path_in_master": 253,
+ "release_manifest_sha256": "f6b480d8233664b01988c31bc058f947c8f796635575549fd7c208b7bda8f431"
+}

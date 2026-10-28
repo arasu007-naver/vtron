@@ -1,0 +1,283 @@
+{
+ "at": "2026-10-25T02:55:21.527Z",
+ "live_api_calls": 0,
+ "authority_types": {
+  "ceo_full_look_tc_adjudication_on_43": {
+   "count": 1,
+   "ids": [
+    "ADJ-TC-04"
+   ],
+   "note": "the register holds 8 TC entries; none names one of the 43 packets"
+  },
+  "historical_illustrative": [
+   {
+    "id": "ADJ-TC-01",
+    "ceo": "TRANSFORMATIVE",
+    "case": "illustrative: classic coat deliberately lowered below both shoulders"
+   },
+   {
+    "id": "ADJ-TC-02",
+    "ceo": "CLASSIC",
+    "case": "illustrative: ordinary jacket / shirt / knit layering"
+   },
+   {
+    "id": "ADJ-TC-03",
+    "ceo": "CLASSIC",
+    "case": "illustrative: ordinary shirt worn around the lower body as a skirt"
+   },
+   {
+    "id": "ADJ-TC-04",
+    "ceo": "CLASSIC",
+    "case": "illustrative: classic suit + additional decorative chain only"
+   },
+   {
+    "id": "ADJ-TC-05",
+    "ceo": "CLASSIC",
+    "case": "illustrative: large scarf wrapped around the upper torso"
+   },
+   {
+    "id": "ADJ-TC-06",
+    "ceo": "CLASSIC (for the wearing action alone)",
+    "case": "ordinary jacket merely draped over the shoulders (the wearing action alone)"
+   },
+   {
+    "id": "ADJ-TC-07",
+    "ceo": "APPROVED: sufficiently observable + no Product and no Styling Departure → CLASSIC",
+    "case": "CQ-TC-2 option A"
+   },
+   {
+    "id": "ADJ-TC-08",
+    "ceo": "any participating garment with a valid Product Departure → T; no second gate; Relaxed SR ≠ Classic TC",
+    "case": "Product Departure principle (cropped jacket · oversized pants · balloon / barrel · construction)"
+   }
+  ],
+  "item_tc_gt_proxy": {
+   "rows": [
+    {
+     "look": "F298",
+     "item_ref": "REF_000183",
+     "item_category": "Coat",
+     "corpus_role": "CALIBRATION",
+     "link": "reference v1_3 ceo_gt_records (Coat)",
+     "item_tc_gt": "TC7",
+     "item_tc_pole": "TRANSFORMATIVE",
+     "v3_look_direction": "TRANSFORMATIVE",
+     "same_pole": true,
+     "caveat": "garment-level Item GT; the look direction also depends on the other garments — a proxy, not a Full-Look TC GT"
+    },
+    {
+     "look": "REF_000622",
+     "item_ref": "REF_000622",
+     "item_category": "Skirt",
+     "corpus_role": "PRODUCT",
+     "link": "packet id = corpus ref id",
+     "item_tc_gt": "TC4",
+     "item_tc_pole": "CLASSIC",
+     "v3_look_direction": "CLASSIC",
+     "same_pole": true,
+     "caveat": "garment-level Item GT; the look direction also depends on the other garments — a proxy, not a Full-Look TC GT"
+    }
+   ],
+   "same_pole": 2,
+   "total": 2,
+   "note": "reported separately; never merged into an accuracy figure"
+  },
+  "engine_prediction": {
+   "CLASSIC": 21,
+   "TRANSFORMATIVE": 21,
+   "INPUT_FAILURE": 1
+  }
+ },
+ "accuracy": {
+  "full_look_tc_gt_rows": 0,
+  "value": null,
+  "statement": "Full-Look TC accuracy is NOT verified — no independent Full-Look TC CEO GT set exists"
+ },
+ "m178": {
+  "packet_trouser_fit": "Oversized",
+  "reference_trouser_fit": "Relaxed",
+  "v3_on_packet": "TRANSFORMATIVE TC-P1",
+  "v3_with_reference_fit_counterfactual": "CLASSIC TC-C",
+  "counterfactual_basis": {
+   "classic_support": [
+    "c1 Shirt",
+    "c2 Jacket",
+    "c3 Trouser"
+   ],
+   "interpretive_gaps": [
+    "c1 silhouette:SIL-MORPH",
+    "c3 construction:CON-UNRES-ATTACHMENT-OTHER-UNBOUND"
+   ],
+   "sensitivity": "POSSIBLE"
+  },
+  "classification": "KNOWN_LIMITATION — Vision observation boundary (frozen L-1 / A-2); the frozen predicate applies the approved rule to the value it receives; not a mandatory-scoring conflict (the look is scored either way)",
+  "v2_note": "V2 gave DIRECTION_UNRESOLVED for the same counterfactual (V2 package 07_M178_ANALYSIS.md); V3 gives a direction"
+ },
+ "sil_true_oversized_dependency": {
+  "t_looks": 21,
+  "t_looks_resting_only_on_SIL_TRUE_OVERSIZED": 14,
+  "looks": [
+   "F298",
+   "F390",
+   "M178",
+   "F444",
+   "M320",
+   "F065",
+   "F146",
+   "F391",
+   "F392",
+   "M011",
+   "M134",
+   "M165",
+   "M309",
+   "M317"
+  ],
+  "note": "the frozen fit reading Oversized is TC-critical: a fit boundary error moves such a look between T and C"
+ },
+ "interpretive_gaps": {
+  "looks": 13,
+  "rows": [
+   {
+    "look": "F147",
+    "v3": "CLASSIC",
+    "gaps": [
+     "c1 silhouette:SIL-MORPH"
+    ],
+    "decided_by": "Classic support on other channels / garments (gap contributes nothing)"
+   },
+   {
+    "look": "M323",
+    "v3": "TRANSFORMATIVE",
+    "gaps": [
+     "c1 silhouette:SIL-MORPH"
+    ],
+    "decided_by": "a valid departure elsewhere (gap irrelevant)"
+   },
+   {
+    "look": "M178",
+    "v3": "TRANSFORMATIVE",
+    "gaps": [
+     "c1 silhouette:SIL-MORPH",
+     "c3 construction:CON-UNRES-ATTACHMENT-OTHER-UNBOUND"
+    ],
+    "decided_by": "a valid departure elsewhere (gap irrelevant)"
+   },
+   {
+    "look": "F187",
+    "v3": "CLASSIC",
+    "gaps": [
+     "c1 silhouette:SIL-MORPH"
+    ],
+    "decided_by": "Classic support on other channels / garments (gap contributes nothing)"
+   },
+   {
+    "look": "M320",
+    "v3": "TRANSFORMATIVE",
+    "gaps": [
+     "c1 construction:CON-UNRES-ATTACHMENT-ROLE-NOT-OBSERVED"
+    ],
+    "decided_by": "a valid departure elsewhere (gap irrelevant)"
+   },
+   {
+    "look": "F074",
+    "v3": "TRANSFORMATIVE",
+    "gaps": [
+     "c2 construction:CON-UNRES-ATTACHMENT-ROLE-NOT-OBSERVED"
+    ],
+    "decided_by": "a valid departure elsewhere (gap irrelevant)"
+   },
+   {
+    "look": "F134",
+    "v3": "CLASSIC",
+    "gaps": [
+     "c1 construction:CON-UNRES-C2-TRANSPLANT-CANDIDATE"
+    ],
+    "decided_by": "Classic support on other channels / garments (gap contributes nothing)"
+   },
+   {
+    "look": "F146",
+    "v3": "TRANSFORMATIVE",
+    "gaps": [
+     "c1 proportion:U-KEY",
+     "c1 construction:U-KEY"
+    ],
+    "decided_by": "a valid departure elsewhere (gap irrelevant)"
+   },
+   {
+    "look": "F372",
+    "v3": "CLASSIC",
+    "gaps": [
+     "c1 construction:CON-UNRES-OPENWORK-ROLE-NOT-OBSERVED"
+    ],
+    "decided_by": "Classic support on other channels / garments (gap contributes nothing)"
+   },
+   {
+    "look": "F472",
+    "v3": "CLASSIC",
+    "gaps": [
+     "c1 silhouette:SIL-MORPH"
+    ],
+    "decided_by": "Classic support on other channels / garments (gap contributes nothing)"
+   },
+   {
+    "look": "M120",
+    "v3": "CLASSIC",
+    "gaps": [
+     "c1 construction:CON-UNRES-D4-LOCATION-NOT-OBSERVED",
+     "c4 construction:CON-UNRES-ATTACHMENT-OTHER-UNBOUND"
+    ],
+    "decided_by": "Classic support on other channels / garments (gap contributes nothing)"
+   },
+   {
+    "look": "M214",
+    "v3": "CLASSIC",
+    "gaps": [
+     "c1 construction:CON-UNRES-ATTACHMENT-ROLE-NOT-OBSERVED"
+    ],
+    "decided_by": "Classic support on other channels / garments (gap contributes nothing)"
+   },
+   {
+    "look": "M309",
+    "v3": "TRANSFORMATIVE",
+    "gaps": [
+     "c1 proportion:U-KEY",
+     "c1 construction:U-KEY"
+    ],
+    "decided_by": "a valid departure elsewhere (gap irrelevant)"
+   }
+  ],
+  "classification": "KNOWN_LIMITATION — frozen Item TC does not adjudicate preserved morphology / unbound construction roles; the look is still scored (AEMS); changing it requires a TC REOPEN DECISION"
+ },
+ "aems_conflict_review": [
+  {
+   "item": "V2 PO-R2 frozen interpretive gap (F147 · F187 · F472)",
+   "v2": "DIRECTION_UNRESOLVED",
+   "v3": "CLASSIC with sensitivity POSSIBLE",
+   "conflict_with_aems": "RESOLVED (scored)"
+  },
+  {
+   "item": "V2 PO-R3 material fact missing (M269 · REF_000622 · M214)",
+   "v2": "DIRECTION_UNRESOLVED",
+   "v3": "CLASSIC with sensitivity POSSIBLE",
+   "conflict_with_aems": "RESOLVED (scored)"
+  },
+  {
+   "item": "V2 PO-R4 unknown identity (F033 · F267 · F418)",
+   "v2": "DIRECTION_UNRESOLVED",
+   "v3": "F267 · F418 CLASSIC; F033 input failure (no identified garment)",
+   "conflict_with_aems": "RESOLVED (scored / input boundary)"
+  },
+  {
+   "item": "V2 PO-R5 M178 fit boundary",
+   "v2": "TRANSFORMATIVE",
+   "v3": "TRANSFORMATIVE",
+   "conflict_with_aems": "NONE (accuracy limitation only)"
+  },
+  {
+   "item": "V2 PO-R6 pocket density / hardware locations not transported",
+   "v2": "0 looks",
+   "v3": "0 looks",
+   "conflict_with_aems": "NONE"
+  }
+ ]
+}

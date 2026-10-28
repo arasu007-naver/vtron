@@ -1,0 +1,536 @@
+{
+ "record": "STMX_FULL_LOOK_STYLE_VISION_VALIDATION_RUN_RECORD",
+ "record_version": "V1",
+ "image_ref": "F288",
+ "image_hash": "b0811ba6458cb67f6fdaf05439809413470c209f3b9ed6e2af620bad941ee731",
+ "candidate_code_hash": null,
+ "inventory_version": "canonical_style_vision_parameter_inventory_candidate_v1_1",
+ "packet_version": "V1_RC4",
+ "prompt_version": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
+ "prompt_hash": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
+ "model_id": "claude-opus-5-5",
+ "model_version": null,
+ "run_id": "RUN-CV2-0018",
+ "timestamp": null,
+ "route": "A_FULL_IMAGE",
+ "raw_output_sha256": null,
+ "source_mode": "B",
+ "requested_axes": [
+  "EI",
+  "TC",
+  "SR",
+  "DM"
+ ],
+ "admission": [
+  "c1",
+  "c2",
+  "c3",
+  "c4",
+  "c5"
+ ],
+ "context_metadata": {},
+ "parameters": {
+  "SVP-001": {
+   "observed_state": "OBSERVED",
+   "observed_value": []
+  },
+  "SVP-002@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "T-Shirt"
+  },
+  "SVP-002@c2": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Shirt"
+  },
+  "SVP-004@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-002@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Skirt"
+  },
+  "SVP-004@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": "closed_by_other_means"
+  },
+  "SVP-002@c4": {
+   "observed_state": "OBSERVED",
+   "observed_value": "bag"
+  },
+  "SVP-003@c4": {
+   "observed_state": "OBSERVED",
+   "observed_value": {
+    "family_or_subtype": "handbag"
+   }
+  },
+  "SVP-002@c5": {
+   "observed_state": "OBSERVED",
+   "observed_value": "footwear"
+  },
+  "SVP-003@c5": {
+   "observed_state": "OBSERVED",
+   "observed_value": {
+    "family_or_subtype": "shoe"
+   }
+  },
+  "SVP-005@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "beige",
+     "color_lightness": "light",
+     "color_effect": "none"
+    }
+   ]
+  },
+  "SVP-006@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "beige",
+     "standing": "field"
+    }
+   ]
+  },
+  "SVP-005@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "gray",
+     "color_lightness": "normal",
+     "color_effect": "none"
+    }
+   ]
+  },
+  "SVP-006@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "gray",
+     "standing": "field"
+    }
+   ]
+  },
+  "SVP-005@c2": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "yellow",
+     "color_lightness": "light",
+     "color_effect": "none"
+    }
+   ]
+  },
+  "SVP-006@c2": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "yellow",
+     "standing": "point",
+     "contrast_with_field": "Subtle"
+    }
+   ]
+  },
+  "SVP-005@c4": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "brown",
+     "color_lightness": "dark",
+     "color_effect": "none"
+    },
+    {
+     "color_family": "gold",
+     "color_lightness": "normal",
+     "color_effect": "metallic",
+     "carrier_part": {
+      "carrier_kind": "attachment",
+      "carrier_ref": "Metal Hardware"
+     }
+    }
+   ]
+  },
+  "SVP-006@c4": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "brown",
+     "standing": "point",
+     "contrast_with_field": "Distinct"
+    },
+    {
+     "color_family": "gold",
+     "standing": "point",
+     "contrast_with_field": "Distinct"
+    }
+   ]
+  },
+  "SVP-005@c5": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "beige",
+     "color_lightness": "light",
+     "color_effect": "none"
+    },
+    {
+     "color_family": "brown",
+     "color_lightness": "dark",
+     "color_effect": "none",
+     "carrier_part": {
+      "carrier_kind": "pattern",
+      "carrier_ref": "Exotic-Skin"
+     }
+    }
+   ]
+  },
+  "SVP-006@c5": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "beige",
+     "standing": "point",
+     "contrast_with_field": "Subtle"
+    },
+    {
+     "color_family": "brown",
+     "standing": "point",
+     "contrast_with_field": "Distinct"
+    }
+   ]
+  },
+  "SVP-007": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Slim"
+  },
+  "SVP-008": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-009": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Fluid"
+  },
+  "SVP-010": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "over_ref": "c1",
+     "under_ref": "c2",
+     "revealed": [
+      "Collar",
+      "Cuff"
+     ]
+    },
+    {
+     "over_ref": "c3",
+     "under_ref": "c1",
+     "revealed": [
+      "Body",
+      "Sleeve"
+     ]
+    }
+   ]
+  },
+  "SVP-011@c3": {
+   "observed_state": "UNKNOWN",
+   "observed_value": {
+    "affected_ref": "c3",
+    "affected_region": "waist"
+   }
+  },
+  "SVP-012": {
+   "observed_state": "OBSERVED",
+   "observed_value": []
+  },
+  "SVP-121@c1": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-122@c1": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-123@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Semi Transparent"
+   ]
+  },
+  "SVP-124@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Knit"
+   ]
+  },
+  "SVP-125@c1": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-126@c1": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-121@c2": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-122@c2": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-123@c2": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Gathered"
+   ]
+  },
+  "SVP-124@c2": {
+   "observed_state": "UNKNOWN"
+  },
+  "SVP-125@c2": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-126@c2": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-121@c3": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-122@c3": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-123@c3": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-124@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Leather"
+   ]
+  },
+  "SVP-125@c3": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-126@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Belt"
+   ]
+  },
+  "SVP-121@c4": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-122@c4": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-123@c4": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-124@c4": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Leather"
+   ]
+  },
+  "SVP-125@c4": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-126@c4": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Metal Hardware"
+   ]
+  },
+  "SVP-121@c5": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-122@c5": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-123@c5": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Exotic-Skin"
+   ]
+  },
+  "SVP-124@c5": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Leather"
+   ]
+  },
+  "SVP-125@c5": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-126@c5": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-104@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Slim"
+  },
+  "SVP-107@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-108@c1": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-114@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Long"
+  },
+  "SVP-109@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Regular"
+  },
+  "SVP-110@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Regular"
+  },
+  "SVP-112@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-113@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-115@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Standard"
+  },
+  "SVP-116@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-104@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-107@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-108@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-114@c2": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Long"
+  },
+  "SVP-109@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-110@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-112@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-111@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-113@c2": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Shirt"
+  },
+  "SVP-115@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-116@c2": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-103@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Straight"
+  },
+  "SVP-104@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Slim"
+  },
+  "SVP-107@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Present"
+  },
+  "SVP-108@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Midi"
+  },
+  "SVP-116@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-120@c3": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-106@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  }
+ },
+ "provenance": {
+  "pool_routes": {
+   "c1.pattern": "observed",
+   "c1.graphic": "observed",
+   "c1.surface": "observed",
+   "c1.material": "observed",
+   "c1.decorative_detail": "observed",
+   "c1.attachment": "observed",
+   "c2.pattern": "observed",
+   "c2.graphic": "observed",
+   "c2.surface": "observed",
+   "c2.material": "observed",
+   "c2.decorative_detail": "observed",
+   "c2.attachment": "observed",
+   "c3.pattern": "observed",
+   "c3.graphic": "observed",
+   "c3.surface": "observed",
+   "c3.material": "observed",
+   "c3.decorative_detail": "observed",
+   "c3.attachment": "observed",
+   "c4.pattern": "observed",
+   "c4.graphic": "observed",
+   "c4.surface": "observed",
+   "c4.material": "observed",
+   "c4.decorative_detail": "observed",
+   "c4.attachment": "observed",
+   "c5.pattern": "observed",
+   "c5.graphic": "observed",
+   "c5.surface": "observed",
+   "c5.material": "observed",
+   "c5.decorative_detail": "observed",
+   "c5.attachment": "observed",
+   "c1.fit": "observed",
+   "c1.asymmetry": "observed",
+   "c1.length": "observed",
+   "c1.sleeve": "observed",
+   "c1.sleeve_volume": "observed",
+   "c1.shoulder_span": "observed",
+   "c1.front_opening_extent": "observed",
+   "c1.collar": "observed",
+   "c1.shoulder_connection": "observed",
+   "c1.pocket": "observed",
+   "c2.fit": "observed",
+   "c2.asymmetry": "observed",
+   "c2.length": "observed",
+   "c2.sleeve": "observed",
+   "c2.sleeve_volume": "observed",
+   "c2.shoulder_span": "observed",
+   "c2.front_opening_extent": "observed",
+   "c2.closure_type": "observed",
+   "c2.collar": "observed",
+   "c2.shoulder_connection": "observed",
+   "c2.pocket": "observed",
+   "c3.silhouette": "observed",
+   "c3.fit": "observed",
+   "c3.asymmetry": "observed",
+   "c3.length": "observed",
+   "c3.pocket": "observed",
+   "c3.slit": "observed",
+   "c1.shoulder_drop": "observed"
+  },
+  "ownership_resolution": [],
+  "packet_sha256": "5951d20eae9c87805c219648260a0045d0f136b85ab49fb5c47995434e065134"
+ },
+ "missing_identity": [
+  "candidate_code_hash",
+  "model_version",
+  "timestamp"
+ ],
+ "formal_comparison_valid": false
+}

@@ -1,0 +1,29 @@
+{
+ "seal_id": "FLSR-FINAL-FREEZE-V1-2026-10-25",
+ "release_id": "STMX_FULL_LOOK_SR_DIRECTION_ENGINE_V1",
+ "release_dir": "01_ENGINES/STYLE_SCORING_ENGINE/FLSR_FINAL_V1/",
+ "frozen_at": "2026-10-25T00:46:43.928Z",
+ "scope": "Full-Look SR DIRECTION only (STRUCTURED | RELAXED) — not Strength, not ordinal, not EI / TC / DM, not four-axis integration, not Style ID",
+ "release_manifest_sha256": "f6b480d8233664b01988c31bc058f947c8f796635575549fd7c208b7bda8f431",
+ "runtime_fingerprint": "fd9590864a2a0e02d732539e769c7d781c9d0ee43f9284ae77a9057ef985b0a7",
+ "constitution_id": "STMX_FULL_LOOK_SR_DIRECTION_CONSTITUTION_V3_R4",
+ "constitution_sha256": "0b6aef07221a67353f6976e6a7e36745c0acd1ca3064e74e2add472e2ebc78ee",
+ "source_candidate": {
+  "path": "01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R4_FINAL_CANDIDATE/",
+  "manifest_sha256": "acae72466d8f788720e209a03a128a39b11a9276d1b5a20690e085c063e6598d",
+  "code_identity": "fb72c54225d4eab1a02aef56c00bd3dca213b5ddf3f43e58c69784ffe2031310",
+  "runtime_src_byte_identical": true
+ },
+ "dependency_pins": 13,
+ "authority": {
+  "order": "STMX FULL-LOOK SR — FINAL DIRECTION CORRECTION, PRODUCTION FREEZE & VERIFIED BACKUP V1 (CEO 2026-10-25) §0.2 · §4 · §5",
+  "order_sha256": "c9dfe5d405a579829de6b2bcec03f9c79342aff4f4b057b697990508200a5520",
+  "cross_axis_rule": "AVAILABLE_EVIDENCE_MANDATORY_SCORING (CEO 2026-10-24, Frozen Decision Log STMX-2026-10-AEMS)"
+ },
+ "verification": {
+  "in_place": true,
+  "clean_room_pre_seal": true,
+  "gates": "F-01 … F-16 PASS"
+ },
+ "known_limitation": "M320 (CEO STRUCTURED) has the same admissible SR inputs as M317 (CEO RELAXED) except the prohibited Extreme / Strong proxy → both RELAXED; bounded, irreducible"
+}

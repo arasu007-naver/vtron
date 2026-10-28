@@ -1,0 +1,217 @@
+{
+ "document": "STEP2_LENGTH_TOKEN_COMPATIBILITY_PROJECTION_V1",
+ "status": "CANDIDATE — adapter-boundary compatibility overlay; the frozen Step 2 ledger, evaluator and Reference stay byte-identical",
+ "sprint": "V2.3.61",
+ "date": "2026-09-26",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-26",
+  "Reason": "OSF-7 (V2.3.60): Step 2 envelope spells Calf / Ankle, the Producer emits Calf Length / Ankle Length; repair at the lawful adapter / projection boundary (order §20)",
+  "Affected Scope": "this directory (new) · runtime V3.3 adapter (overlay of the proportion channel verdict for the listed members only)"
+ },
+ "authority": {
+  "spelling_note": "the CEO order writes `Calf Length` / `Ankle Length`; the CEO-locked Producer domain spells them `Calf` / `Ankle` — CA#9 §12 conflict, same zones, no new token",
+  "source": "03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md (trouser key, Proportion)",
+  "ca10": "Producer V1_3 producer_rules_v1.js lengthDomain comment: CA#10 (CEO 2026-08-13) Calf→Calf Length, Ankle→Ankle Length"
+ },
+ "mapping": {
+  "Calf Length": "Calf",
+  "Ankle Length": "Ankle"
+ },
+ "keys": [
+  "trouser",
+  "jumpsuit"
+ ],
+ "evaluator": {
+  "file": "05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_3_2.js",
+  "sha256": "5832ae6dc14bfd93ffdf96f57a9f75e04b69667e69a7b142bb442bd7826219bd",
+  "function": "prop (frozen, reused)"
+ },
+ "ledger_sha256": "cc51a5c1cf8df0f4f240ee83af1d1a5aa37b9938465a863f2ee38a7a796caeb5",
+ "not_changed": [
+  "Step 3 unit direction · statement_set · grammar_state (frozen Step 3 output, consumed as is)",
+  "raw Producer length value",
+  "every other member and channel"
+ ],
+ "rows": [
+  {
+   "anchor_id": "REF_000575#SU1",
+   "garment_ref": "target_1",
+   "archetype_key": "trouser",
+   "raw_producer_length": "Ankle Length",
+   "envelope_spelling": "Ankle",
+   "frozen_step2_proportion": {
+    "v": "UNRESOLVED",
+    "rule": "PRO-TOKEN-UNKNOWN",
+    "why": "length = Ankle Length not in domain"
+   },
+   "compatibility_proportion": {
+    "v": "FALSE",
+    "rule": "PRO-FALSE-Q2",
+    "why": "length = Ankle inside the conventional envelope (CEO Q2)",
+    "carrier": "length"
+   },
+   "member_direction": {
+    "frozen": "TRANSFORMATIVE",
+    "re_derived_by_frozen_rule_report_only": "TRANSFORMATIVE"
+   },
+   "provenance": "OSF-7 compatibility: frozen Step 2 prop() re-applied to the frozen envelope spelling of the same zone (Reference trouser spelling note · CA#9 §12 · CA#10)"
+  },
+  {
+   "anchor_id": "REF_000593#SU1",
+   "garment_ref": "target_2",
+   "archetype_key": "trouser",
+   "raw_producer_length": "Calf Length",
+   "envelope_spelling": "Calf",
+   "frozen_step2_proportion": {
+    "v": "UNRESOLVED",
+    "rule": "PRO-TOKEN-UNKNOWN",
+    "why": "length = Calf Length not in domain"
+   },
+   "compatibility_proportion": {
+    "v": "FALSE",
+    "rule": "PRO-FALSE-Q2",
+    "why": "length = Calf inside the conventional envelope (CEO Q2)",
+    "carrier": "length"
+   },
+   "member_direction": {
+    "frozen": "DIRECTION_UNRESOLVED",
+    "re_derived_by_frozen_rule_report_only": "CLASSIC"
+   },
+   "provenance": "OSF-7 compatibility: frozen Step 2 prop() re-applied to the frozen envelope spelling of the same zone (Reference trouser spelling note · CA#9 §12 · CA#10)"
+  },
+  {
+   "anchor_id": "REF_000788#SU1",
+   "garment_ref": "target_1",
+   "archetype_key": "jumpsuit",
+   "raw_producer_length": "Ankle Length",
+   "envelope_spelling": "Ankle",
+   "frozen_step2_proportion": {
+    "v": "UNRESOLVED",
+    "rule": "PRO-TOKEN-UNKNOWN",
+    "why": "length = Ankle Length not in domain"
+   },
+   "compatibility_proportion": {
+    "v": "FALSE",
+    "rule": "PRO-FALSE-Q2",
+    "why": "length = Ankle inside the conventional envelope (CEO Q2)",
+    "carrier": "length"
+   },
+   "member_direction": {
+    "frozen": "DIRECTION_UNRESOLVED",
+    "re_derived_by_frozen_rule_report_only": "CLASSIC"
+   },
+   "provenance": "OSF-7 compatibility: frozen Step 2 prop() re-applied to the frozen envelope spelling of the same zone (Reference trouser spelling note · CA#9 §12 · CA#10)"
+  },
+  {
+   "anchor_id": "REF_000790#SU1",
+   "garment_ref": "target_1",
+   "archetype_key": "jumpsuit",
+   "raw_producer_length": "Ankle Length",
+   "envelope_spelling": "Ankle",
+   "frozen_step2_proportion": {
+    "v": "UNRESOLVED",
+    "rule": "PRO-TOKEN-UNKNOWN",
+    "why": "length = Ankle Length not in domain"
+   },
+   "compatibility_proportion": {
+    "v": "FALSE",
+    "rule": "PRO-FALSE-Q2",
+    "why": "length = Ankle inside the conventional envelope (CEO Q2)",
+    "carrier": "length"
+   },
+   "member_direction": {
+    "frozen": "TRANSFORMATIVE",
+    "re_derived_by_frozen_rule_report_only": "TRANSFORMATIVE"
+   },
+   "provenance": "OSF-7 compatibility: frozen Step 2 prop() re-applied to the frozen envelope spelling of the same zone (Reference trouser spelling note · CA#9 §12 · CA#10)"
+  },
+  {
+   "anchor_id": "REF_000791#SU1",
+   "garment_ref": "target_1",
+   "archetype_key": "jumpsuit",
+   "raw_producer_length": "Ankle Length",
+   "envelope_spelling": "Ankle",
+   "frozen_step2_proportion": {
+    "v": "UNRESOLVED",
+    "rule": "PRO-TOKEN-UNKNOWN",
+    "why": "length = Ankle Length not in domain"
+   },
+   "compatibility_proportion": {
+    "v": "FALSE",
+    "rule": "PRO-FALSE-Q2",
+    "why": "length = Ankle inside the conventional envelope (CEO Q2)",
+    "carrier": "length"
+   },
+   "member_direction": {
+    "frozen": "DIRECTION_UNRESOLVED",
+    "re_derived_by_frozen_rule_report_only": "DIRECTION_UNRESOLVED"
+   },
+   "provenance": "OSF-7 compatibility: frozen Step 2 prop() re-applied to the frozen envelope spelling of the same zone (Reference trouser spelling note · CA#9 §12 · CA#10)"
+  },
+  {
+   "anchor_id": "REF_000840#SU1",
+   "garment_ref": "target_3",
+   "archetype_key": "trouser",
+   "raw_producer_length": "Calf Length",
+   "envelope_spelling": "Calf",
+   "frozen_step2_proportion": {
+    "v": "UNRESOLVED",
+    "rule": "PRO-TOKEN-UNKNOWN",
+    "why": "length = Calf Length not in domain"
+   },
+   "compatibility_proportion": {
+    "v": "FALSE",
+    "rule": "PRO-FALSE-Q2",
+    "why": "length = Calf inside the conventional envelope (CEO Q2)",
+    "carrier": "length"
+   },
+   "member_direction": {
+    "frozen": "DIRECTION_UNRESOLVED",
+    "re_derived_by_frozen_rule_report_only": "CLASSIC"
+   },
+   "provenance": "OSF-7 compatibility: frozen Step 2 prop() re-applied to the frozen envelope spelling of the same zone (Reference trouser spelling note · CA#9 §12 · CA#10)"
+  }
+ ],
+ "negatives": [
+  {
+   "test": "only PRO-TOKEN-UNKNOWN members recomputed",
+   "pass": true,
+   "evidence": "6 members"
+  },
+  {
+   "test": "every recomputed verdict is FALSE (same zone inside the frozen conventional envelope) — no Statement can appear",
+   "pass": true,
+   "evidence": "PRO-FALSE-Q2,PRO-FALSE-Q2,PRO-FALSE-Q2,PRO-FALSE-Q2,PRO-FALSE-Q2,PRO-FALSE-Q2"
+  },
+  {
+   "test": "only the two known tokens are mapped",
+   "pass": true,
+   "evidence": "{\"Calf Length\":\"Calf\",\"Ankle Length\":\"Ankle\"}"
+  },
+  {
+   "test": "no other length token changes verdict (every other member keeps its frozen proportion)",
+   "pass": true,
+   "evidence": "18 distinct length values in the ledger"
+  },
+  {
+   "test": "raw Producer value preserved",
+   "pass": true,
+   "evidence": "raw kept per row"
+  },
+  {
+   "test": "no TC-aware / category-specific branch (keys = the two keys whose frozen envelope uses the short spelling)",
+   "pass": true,
+   "evidence": "trouser · jumpsuit"
+  },
+  {
+   "test": "frozen Step 2 evaluator byte-identical",
+   "pass": true,
+   "evidence": "5832ae6dc14bfd93"
+  },
+  {
+   "test": "no tier read (tier_evidence / historical fields not consulted)",
+   "pass": true,
+   "evidence": "rows carry no tier field"
+  }
+ ]
+}

@@ -1,0 +1,277 @@
+{
+ "record": "STMX_FULL_LOOK_STYLE_VISION_VALIDATION_RUN_RECORD",
+ "record_version": "V1",
+ "image_ref": null,
+ "image_hash": null,
+ "candidate_code_hash": null,
+ "inventory_version": "canonical_style_vision_parameter_inventory_candidate_v1_1",
+ "packet_version": "V1_RC4",
+ "prompt_version": null,
+ "prompt_hash": null,
+ "model_id": null,
+ "model_version": null,
+ "run_id": null,
+ "timestamp": null,
+ "route": "A_FULL_IMAGE",
+ "raw_output_sha256": null,
+ "source_mode": "B",
+ "requested_axes": [
+  "EI",
+  "TC",
+  "SR",
+  "DM"
+ ],
+ "admission": [
+  "c1",
+  "c2"
+ ],
+ "context_metadata": {},
+ "parameters": {
+  "SVP-001": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "feet_not_visible"
+   ]
+  },
+  "SVP-002@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Dress"
+  },
+  "SVP-004@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "fastened"
+  },
+  "SVP-002@c2": {
+   "observed_state": "OBSERVED",
+   "observed_value": "footwear"
+  },
+  "SVP-003@c2": {
+   "observed_state": "OBSERVED",
+   "observed_value": {
+    "family_or_subtype": "boot"
+   }
+  },
+  "SVP-005@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "black",
+     "color_lightness": "dark",
+     "color_effect": "none"
+    }
+   ]
+  },
+  "SVP-006@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    {
+     "color_family": "black",
+     "standing": "field"
+    }
+   ]
+  },
+  "SVP-007": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Regular"
+  },
+  "SVP-008": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-009": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Structured"
+  },
+  "SVP-012": {
+   "observed_state": "OBSERVED",
+   "observed_value": []
+  },
+  "SVP-121@c1": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-122@c1": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-123@c1": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-124@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Wool"
+   ]
+  },
+  "SVP-125@c1": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-126@c1": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-121@c2": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-122@c2": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-123@c2": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-124@c2": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Leather"
+   ]
+  },
+  "SVP-125@c2": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-126@c2": {
+   "observed_state": "ABSENT"
+  },
+  "SVP-103@c1": {
+   "observed_state": "UNKNOWN"
+  },
+  "SVP-104@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Regular"
+  },
+  "SVP-105@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Mild"
+  },
+  "SVP-107@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-108@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Midi"
+  },
+  "SVP-114@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Long"
+  },
+  "SVP-109@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Regular"
+  },
+  "SVP-110@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Regular"
+  },
+  "SVP-112@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-113@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  },
+  "SVP-115@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Standard"
+  },
+  "SVP-116@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Present",
+   "pockets": [
+    {
+     "location": "Lower Front",
+     "construction": {
+      "state": "OBSERVED",
+      "value": "Inset"
+     },
+     "projection": {
+      "state": "OBSERVED",
+      "value": "Flat"
+     }
+    },
+    {
+     "location": "Chest",
+     "construction": {
+      "state": "NOT_VISIBLE",
+      "value": null
+     },
+     "projection": {
+      "state": "OBSERVED",
+      "value": "Flat"
+     }
+    }
+   ]
+  },
+  "SVP-117@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Inset",
+    "NOT_VISIBLE"
+   ],
+   "nested_instances": 2,
+   "projected_from": "pocket.pockets[]"
+  },
+  "SVP-118@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": [
+    "Flat",
+    "Flat"
+   ],
+   "nested_instances": 2,
+   "projected_from": "pocket.pockets[]"
+  },
+  "SVP-119@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "Defined"
+  },
+  "SVP-120@c1": {
+   "observed_state": "NOT_VISIBLE"
+  },
+  "SVP-106@c1": {
+   "observed_state": "OBSERVED",
+   "observed_value": "None"
+  }
+ },
+ "provenance": {
+  "pool_routes": {
+   "c1.pattern": "observed",
+   "c1.graphic": "observed",
+   "c1.surface": "observed",
+   "c1.material": "observed",
+   "c1.decorative_detail": "observed",
+   "c1.attachment": "observed",
+   "c2.pattern": "observed",
+   "c2.graphic": "observed",
+   "c2.surface": "observed",
+   "c2.material": "observed",
+   "c2.decorative_detail": "observed",
+   "c2.attachment": "observed",
+   "c1.silhouette": "observed",
+   "c1.fit": "observed",
+   "c1.shoulder_structure": "observed",
+   "c1.asymmetry": "observed",
+   "c1.length": "observed",
+   "c1.sleeve": "observed",
+   "c1.sleeve_volume": "observed",
+   "c1.shoulder_span": "observed",
+   "c1.front_opening_extent": "observed",
+   "c1.collar": "observed",
+   "c1.shoulder_connection": "observed",
+   "c1.pocket": "observed",
+   "c1.waist_definition": "observed",
+   "c1.slit": "observed",
+   "c1.shoulder_drop": "observed"
+  },
+  "ownership_resolution": [],
+  "packet_sha256": "e4a076e76e3c4e42d9d9e161eab66711e24dcade98d98ddeb862471f517ef57e"
+ },
+ "missing_identity": [
+  "image_ref",
+  "image_hash",
+  "candidate_code_hash",
+  "prompt_version",
+  "prompt_hash",
+  "model_id",
+  "model_version",
+  "run_id",
+  "timestamp"
+ ],
+ "formal_comparison_valid": false
+}

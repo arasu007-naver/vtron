@@ -1,0 +1,11 @@
+{
+ "at": "2026-10-26T04:48:15.855Z",
+ "method": "filesystem drive letters · DriveFS folders (LOCALAPPDATA/Google/DriveFS, ~/Google Drive, ~/My Drive, G:, H:) · GoogleDriveFS process · rclone / gdrive / gcloud / gsutil on PATH · session tool list",
+ "filesystem_drives": "C:",
+ "drivefs_dirs": "none",
+ "google_drive_process": false,
+ "cli_tools": "none",
+ "session_tools": "no Google Drive connector; the attached document connector is not Google Drive; a browser extension is present but uploading the backup folder through the user's own browser is an outward-facing action outside the CEO protocol (manual upload) and was not attempted",
+ "result": "NO_DIRECT_DRIVE_ACCESS",
+ "consequence": "EI_GOOGLE_DRIVE_BACKUP = PENDING_ACTUAL_UPLOAD_VERIFICATION — upload-ready folder C:/STMX_UPLOAD/03_EI_DIRECTION_ENGINE_FINAL/ (manual CEO upload to 22_FULL_LOOK_STYLE_SCORING_ENGINES/03_EI_DIRECTION_ENGINE_FINAL/)"
+}

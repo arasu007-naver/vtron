@@ -1,0 +1,206 @@
+{
+ "at": "2026-10-25T02:55:29.996Z",
+ "runs": [
+  {
+   "id": "FLV_RELEASE_VERIFY_R1_R9",
+   "area": "Frozen Vision",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/06_RELEASE_VERIFICATION/verify_release.js --out <package>/_raw/exec/verify_flv",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "R8 PASS G53: LiveProvider refuses · no network module, fetch call, credential variable or API endpoint in runtime src / cli | R9 PASS fixture smoke: bundled fixture M134 → PACKET_VALID | RELEASE_VERIFIED · C:\\work\\STMX\\STMX project\\master files\\STMX EI TC SR DM master\\04_GOVERNANCE_AND_FINAL_DOCS\\STMX_FULL_LOOK_TC_FINAL_CORRECTION_FREEZE_AND_BACKUP_V1\\_raw\\exec\\verify_flv\\verify_report.json",
+   "log": "_raw/exec/logs/FLV_RELEASE_VERIFY_R1_R9.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "FLSR_RELEASE_VERIFY_V1_V10",
+   "area": "Frozen Full-Look SR",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/FLSR_FINAL_V1/verify_release.js --out <package>/_raw/exec/verify_flsr",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "V9   PASS — clean | V10  PASS — seal FLSR-FINAL-FREEZE-V1-2026-10-25 | RELEASE_VERIFIED",
+   "log": "_raw/exec/logs/FLSR_RELEASE_VERIFY_V1_V10.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "SR_V3_R4_TESTS",
+   "area": "Frozen Full-Look SR (source candidate)",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R4_FINAL_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":41}",
+   "log": "_raw/exec/logs/SR_V3_R4_TESTS.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "ITEM_TC_INTEGRATED_RUNTIME_TESTS",
+   "area": "Frozen Item TC",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_INTEGRATED_RUNTIME_V1_CANDIDATE/tests/run_integrated_runtime_tests_v2391.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"pass\":26,\"total\":26}",
+   "log": "_raw/exec/logs/ITEM_TC_INTEGRATED_RUNTIME_TESTS.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "ITEM_TC_STEP2_SUCCESSOR_V4_TESTS",
+   "area": "Frozen Step 2 successor",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/tests/run_successor_v4_tests_v2386.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": " }, |  \"ok\": true | }",
+   "log": "_raw/exec/logs/ITEM_TC_STEP2_SUCCESSOR_V4_TESTS.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "ITEM_SR_FINAL_RUN_ALL",
+   "area": "Frozen Item SR (environment-known F31)",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/tests/run_all.js",
+   "exit_code": 1,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 2,
+   "stdout_tail": "SR FINAL BINDING  10 / 10 | TOTAL             45 / 46  ·  fail 1 | replay units 114 · admitted 101 · unique 101 · Σ101 · {\"SR1\":0,\"SR2\":0,\"SR3\":4,\"SR4\":28,\"SR5\":19,\"SR6\":34,\"SR7\":11,\"SR8\":0,\"SR9\":0,\"null\":5}",
+   "log": "_raw/exec/logs/ITEM_SR_FINAL_RUN_ALL.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "TC_V1_REPLAY_UNCHANGED",
+   "area": "TC V1 candidate",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_TC_DIRECTION_RESOLVER_V1_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": " }, |  \"deterministic\": true | }",
+   "log": "_raw/exec/logs/TC_V1_REPLAY_UNCHANGED.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "TC_V1_TESTS_UNCHANGED",
+   "area": "TC V1 candidate",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_TC_DIRECTION_RESOLVER_V1_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":32}",
+   "log": "_raw/exec/logs/TC_V1_TESTS_UNCHANGED.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "TC_V2_REPLAY_UNCHANGED",
+   "area": "TC V2 candidate",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_TC_PRODUCT_ONLY_RESOLVER_V2_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": " }, |  \"deterministic\": true | }",
+   "log": "_raw/exec/logs/TC_V2_REPLAY_UNCHANGED.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "TC_V2_TESTS_45",
+   "area": "TC V2 candidate",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_TC_PRODUCT_ONLY_RESOLVER_V2_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":45}",
+   "log": "_raw/exec/logs/TC_V2_TESTS_45.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "TC_V3_REPLAY_43",
+   "area": "TC V3 final candidate",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_TC_PRODUCT_ONLY_RESOLVER_V3_FINAL_CANDIDATE/cli/run_offline_replay.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": true,
+   "repo_writes_redirected": 1,
+   "stdout_tail": "  \"deterministic\": true |  } | }",
+   "log": "_raw/exec/logs/TC_V3_REPLAY_43.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "TC_V3_TESTS_54",
+   "area": "TC V3 final candidate",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_TC_PRODUCT_ONLY_RESOLVER_V3_FINAL_CANDIDATE/tests/run_tests.js",
+   "exit_code": 0,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "{\"PASS\":54}",
+   "log": "_raw/exec/logs/TC_V3_TESTS_54.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "G53_LIVE_RUNNER_REFUSAL_NO_ANCHOR",
+   "area": "No paid API / G53",
+   "command": "node --require _raw/redirect_preload.js 01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_CG1_OBSERVATION_CANDIDATE/runner/run_live_cg1_GATED.js",
+   "exit_code": 3,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "LIVE_NOT_EXECUTED_G53_ACTIVE · NO_APPROVAL_ANCHOR · AUTHORIZATION/CG1_APPROVAL_ANCHOR.json absent — no CEO approval for the CG-1 live validation exists",
+   "log": "_raw/exec/logs/G53_LIVE_RUNNER_REFUSAL_NO_ANCHOR.txt",
+   "classification": "PASS"
+  },
+  {
+   "id": "G53_EXEC_COPY_REFUSAL_AFTER_EXPIRY",
+   "area": "No paid API / G53",
+   "command": "node --require _raw/redirect_preload.js 04_GOVERNANCE_AND_FINAL_DOCS/STMX_FULL_LOOK_SR_CG1_G53_LIVE_VALIDATION_EXECUTION_V1/_raw/live/run_live_cg1_EXECUTION_COPY.js",
+   "exit_code": 3,
+   "expectation_met": true,
+   "reproduces_sealed_output": null,
+   "repo_writes_redirected": 0,
+   "stdout_tail": "LIVE_NOT_EXECUTED_G53_ACTIVE · ANCHOR_NOT_ACTIVE · EXPIRED",
+   "log": "_raw/exec/logs/G53_EXEC_COPY_REFUSAL_AFTER_EXPIRY.txt",
+   "classification": "PASS"
+  }
+ ],
+ "all_pass": true,
+ "environment_known": {
+  "ITEM_SR_FINAL_RUN_ALL": {
+   "expected": "45 / 46 (F31 environment assertion — pre-existing, recorded in the SR freeze packages)",
+   "failing_lines": [
+    "  FAIL  F31  TC remains not started (no STMX_TC_* engine workspace in ITEM_SCORING_ENGINE; Style engine tree ≡ pre-order aggregate)"
+   ]
+  }
+ },
+ "flv_release_checks": [
+  "R1 PASS",
+  "R2 PASS",
+  "R3 PASS",
+  "R4 PASS",
+  "R5 PASS",
+  "R6 PASS",
+  "R7 PASS",
+  "R8 PASS",
+  "R9 PASS"
+ ],
+ "flsr_release_checks": [
+  "V1 PASS",
+  "V2 PASS",
+  "V3 PASS",
+  "V4 PASS",
+  "V5 PASS",
+  "V6 PASS",
+  "V7 PASS",
+  "V8 PASS",
+  "V9 PASS",
+  "V10 PASS"
+ ],
+ "live_api_calls": 0
+}

@@ -1,0 +1,147 @@
+{
+ "view": "STMX_FULL_LOOK_TC_PRODUCT_EVIDENCE_VIEW",
+ "status": "DERIVED_DIAGNOSTIC_NON_CANONICAL",
+ "packet_version": "V1_RC4",
+ "scope_note": "Vision-side evidence completeness per participating garment for the frozen Item TC Step 2 predicates. No look-level TC, no styling, no score, no Strength.",
+ "excluded": "accessories (TC-D-4b HELD: no product-departure predicate exists)",
+ "garments": [
+  {
+   "component_ref": "c1",
+   "category": "Dress",
+   "identity_state": "OBSERVED",
+   "archetype_key": "dress",
+   "key_note": null,
+   "item_record_ref": null,
+   "predicate_read_facts": {
+    "fit": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Voluminous",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "shoulder_structure": {
+     "state": "OBSERVED",
+     "value": "Strong",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "shoulder_span": {
+     "state": "OBSERVED",
+     "value": "Extended",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "silhouette": {
+     "state": "OBSERVED",
+     "value": "Straight",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "length": {
+     "state": "OBSERVED",
+     "value": "Mini",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "sleeve": {
+     "state": "OBSERVED",
+     "value": "Short",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "collar": {
+     "state": "OBSERVED",
+     "value": "None",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "closure_type": {
+     "state": "NOT_APPLICABLE",
+     "why": "frozen Item conditional trigger: front_opening_extent=None"
+    },
+    "front_opening_extent": {
+     "state": "OBSERVED",
+     "value": "None",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "material": {
+     "state": "OBSERVED",
+     "value": [
+      "Knit"
+     ],
+     "route": "observed",
+     "source": "fixture"
+    },
+    "surface": {
+     "state": "ABSENT",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "attachment": {
+     "state": "ABSENT",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "pocket": {
+     "state": "OBSERVED",
+     "value": "Present",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "pocket_construction": {
+     "state": "NESTED_IN_POCKETS",
+     "why": "CA#29: carried inside pocket.pockets[] (passed to the predicate with the pocket token)"
+    },
+    "pocket_projection": {
+     "state": "NESTED_IN_POCKETS",
+     "why": "CA#29: carried inside pocket.pockets[] (passed to the predicate with the pocket token)"
+    },
+    "shoulder_connection": {
+     "state": "OBSERVED",
+     "value": "Standard",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "waist_definition": {
+     "state": "OBSERVED",
+     "value": "Defined",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "asymmetry": {
+     "state": "OBSERVED",
+     "value": "None",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "slit": {
+     "state": "OBSERVED",
+     "value": "None",
+     "route": "observed",
+     "source": "fixture"
+    }
+   },
+   "completeness": {
+    "observed": 15,
+    "absent": 2,
+    "not_visible": 0,
+    "unknown": 0,
+    "not_emitted": 0,
+    "not_applicable": 1
+   },
+   "evidence_classes": {
+    "hidden_by_participant": [],
+    "cropped_or_fragmentary": [],
+    "unknown": [],
+    "not_emitted": []
+   }
+  }
+ ]
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import CreatorTabs from "@/components/creator/CreatorTabs";
 import { useCallback, useEffect, useState, useTransition } from "react";
 import {
   BadgeCheck,
@@ -224,6 +225,7 @@ export default function CreatorReqPage() {
 
   return (
     <div className="h-full flex flex-col bg-[#F8F9FA] text-[#1D2330] overflow-hidden">
+      <CreatorTabs />
       {/* 1. 상단 타이틀 & 툴바 */}
       <header className="flex-none bg-white border-b border-[#E0E3E8] px-6 py-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">

@@ -1,0 +1,438 @@
+{
+ "document": "REF000671_CONSTRUCTION_REPRESENTATION_CORRECTION_V1",
+ "status": "CANDIDATE — governed versioned representation correction (TC scoring input); the canonical V1_3 record is IMMUTABLE and unchanged",
+ "sprint": "STMX TC MAINLINE V2.3.84 (Phase B)",
+ "date": "2026-09-27",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-27 — D-82-1 APPROVED (order V2.3.84 §2)",
+  "Reason": "the sheer banded yoke of REF_000671 is a body-zone upper-body construction system, not merely an optical transparency detail; Vision free text already saw it; the canonical tokens kept only optical transparency (EI-owned); TC lost the Construction evidence",
+  "Affected Scope": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_GOVERNED_REPRESENTATION_CORRECTION_V1_CANDIDATE/ (new) · consumed by TC upstream token projection V5 and Step 2 successor V3 only"
+ },
+ "rules": [
+  "existing vocabulary only (material enum · D-4 components); no new Atomic · Vision field · Departure family · TC rule",
+  "the optical transparency observation (surface Semi Transparent@Bodice) is preserved unchanged — it stays EI-owned (frozen REL-F2-TRANSPARENCY-EI)",
+  "descriptor / evidence strings are provenance only; the TC projection allowlist drops them; no free text reaches any predicate",
+  "no REF-specific rule: the correction changes observation data only; the frozen Construction predicate decides"
+ ],
+ "identity": {
+  "anchor_id": "REF_000671#SU1",
+  "garment_ref": "target_1",
+  "category": "Dress",
+  "image": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/12_Dress/REF_000671__dressmesh2.jpeg",
+  "image_sha256": "f9311f12a3b74b4c9e7ad25b0bcec38ff3c5e73082f646b1c62897fbe021a12f",
+  "identity_lineage_hash": "f9311f12a3b74b4c9e7ad25b0bcec38ff3c5e73082f646b1c62897fbe021a12f",
+  "corpus_record_id": "STMX_B005_B5_07"
+ },
+ "transition": {
+  "from": {
+   "file": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/FINAL_REPRESENTATION/CANONICAL_FINAL_REPRESENTATION_V1_3.jsonl",
+   "sha256": "747bab906b566bfb65e98c711a26faa7b0f8594cbb3c7683833a0b97e2d9a79d",
+   "status": "IMMUTABLE — unchanged"
+  },
+  "to": "this record (member-scoped successor of the material observation only)"
+ },
+ "observation_corrections": [
+  {
+   "id": "R671-C01",
+   "path": "material.values_detail[Synthetic].locations",
+   "old": null,
+   "new": [
+    {
+     "component": "Skirt Body"
+    }
+   ],
+   "source": "image REF_000671__dressmesh2.jpeg (first-hand, Opus pre-write audit): opaque matte crepe realises the skirt body; raw Vision material evidence \"smooth matte jersey-like drape over body\"",
+   "authority": "CEO D-82-1 (2026-09-27)",
+   "transition": "V1_3 (unbound) → V2.3.84 correction V1 (Skirt Body)"
+  },
+  {
+   "id": "R671-C02",
+   "path": "material.values_detail[Other] (added) · material.values",
+   "old": {
+    "values": [
+     "Synthetic"
+    ],
+    "values_detail_Other": null
+   },
+   "new": {
+    "values": [
+     "Synthetic",
+     "Other"
+    ],
+    "values_detail_Other": {
+     "value": "Other",
+     "descriptor": "sheer banded yoke fabric",
+     "evidence": [
+      "sheer panel at upper chest",
+      "sheer see-through banded panel across upper chest/shoulders"
+     ],
+     "locations": [
+      {
+       "component": "Bodice"
+      }
+     ]
+    }
+   },
+   "source": "image: the upper chest / shoulder yoke is built of a distinct sheer banded fabric (alternating sheer and opaque bands) ‖ raw Vision: \"Black floor-length short-sleeve column gown with sheer striped yoke\" · \"sheer panel at upper chest\" · \"sheer see-through banded panel across upper chest/shoulders\" · \"upper yoke panel transmits skin visibly through fabric\"",
+   "authority": "CEO D-82-1 (2026-09-27): body-zone construction system",
+   "transition": "V1_3 (single material system, sheer yoke only in evidence text) → V2.3.84 correction V1 (second material system bound to Bodice)"
+  }
+ ],
+ "unchanged": [
+  "surface (Semi Transparent@Bodice — EI transparency, preserved)",
+  "exposure_opening",
+  "fit (byRegion)",
+  "every other observation",
+  "identity_lineage",
+  "the V1_3 canonical file"
+ ],
+ "binding_notes": [
+  "component granularity: the frozen D-4 vocabulary has no sub-bodice (yoke) component; the sheer system is bound to Bodice, the zone it realises",
+  "the opaque base fabric is NOT bound to Bodice: a shared Bodice binding with a transparent surface there would assert, under the frozen F1 layered-body doctrine, an independent outer body over an inner body realising the same zone — the image shows a sectional yoke, not a layered body",
+  "optional D-4 binding of the base fabric to Sleeve (visibly opaque) is omitted: not required to represent the construction fact (smallest correction)",
+  "REF_000661 (Vision RAW: Synthetic@Skirt Body + Other \"sheer net/tulle\"@Bodice) is the representation precedent; 671 is represented from its own image and raw Vision evidence, not copied"
+ ],
+ "before": {
+  "material": {
+   "state": "OBSERVED",
+   "value": null,
+   "values": [
+    "Synthetic"
+   ],
+   "values_detail": [
+    {
+     "value": "Synthetic",
+     "evidence": [
+      "smooth matte jersey-like drape over body"
+     ]
+    }
+   ],
+   "byRegion": null,
+   "source": "RAW (no active adjudication)",
+   "domain_legal": true
+  }
+ },
+ "after": {
+  "material": {
+   "state": "OBSERVED",
+   "value": null,
+   "values": [
+    "Synthetic",
+    "Other"
+   ],
+   "values_detail": [
+    {
+     "value": "Synthetic",
+     "evidence": [
+      "smooth matte jersey-like drape over body"
+     ],
+     "locations": [
+      {
+       "component": "Skirt Body"
+      }
+     ]
+    },
+    {
+     "value": "Other",
+     "descriptor": "sheer banded yoke fabric",
+     "evidence": [
+      "sheer panel at upper chest",
+      "sheer see-through banded panel across upper chest/shoulders"
+     ],
+     "locations": [
+      {
+       "component": "Bodice"
+      }
+     ]
+    }
+   ],
+   "byRegion": null,
+   "source": "CEO D-82-1 governed representation correction (V2.3.84) over RAW (no active adjudication)",
+   "domain_legal": true
+  }
+ },
+ "corrected_final_observation": {
+  "garment_ref": "target_1",
+  "category": "Dress",
+  "extraction_category": "Dress",
+  "final_category": "Dress",
+  "category_authority": "RAW_EXTRACTION",
+  "observations": {
+   "material": {
+    "state": "OBSERVED",
+    "value": null,
+    "values": [
+     "Synthetic",
+     "Other"
+    ],
+    "values_detail": [
+     {
+      "value": "Synthetic",
+      "evidence": [
+       "smooth matte jersey-like drape over body"
+      ],
+      "locations": [
+       {
+        "component": "Skirt Body"
+       }
+      ]
+     },
+     {
+      "value": "Other",
+      "descriptor": "sheer banded yoke fabric",
+      "evidence": [
+       "sheer panel at upper chest",
+       "sheer see-through banded panel across upper chest/shoulders"
+      ],
+      "locations": [
+       {
+        "component": "Bodice"
+       }
+      ]
+     }
+    ],
+    "byRegion": null,
+    "source": "CEO D-82-1 governed representation correction (V2.3.84) over RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "surface": {
+    "state": "OBSERVED",
+    "value": null,
+    "values": [
+     "Semi Transparent"
+    ],
+    "values_detail": [
+     {
+      "value": "Semi Transparent",
+      "evidence": [
+       "upper yoke panel transmits skin visibly through fabric"
+      ],
+      "locations": [
+       {
+        "component": "Bodice"
+       }
+      ]
+     }
+    ],
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "pattern": {
+    "state": "ABSENT",
+    "value": null,
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "graphic": {
+    "state": "ABSENT",
+    "value": null,
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "pocket": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "decorative_detail": {
+    "state": "ABSENT",
+    "value": null,
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "attachment": {
+    "state": "ABSENT",
+    "value": null,
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "asymmetry": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "silhouette": {
+    "state": "OBSERVED",
+    "value": "Straight",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "fit": {
+    "state": "OBSERVED",
+    "value": null,
+    "values": null,
+    "byRegion": {
+     "upper": "Slim",
+     "lower": "Slim"
+    },
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "length": {
+    "state": "OBSERVED",
+    "value": "Maxi Length",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "fabric_behavior": {
+    "state": "OBSERVED",
+    "value": null,
+    "values": null,
+    "byRegion": {
+     "upper": "Semi-Fluid",
+     "lower": "Semi-Fluid"
+    },
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "sleeve": {
+    "state": "OBSERVED",
+    "value": "Short",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "shoulder_drop": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "shoulder_structure": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "neckline_shape": {
+    "state": "OBSERVED",
+    "value": "Round",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "neckline_position": {
+    "state": "OBSERVED",
+    "value": "High",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "collar": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "rib_hem": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "front_opening_extent": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "exposure_opening": {
+    "state": "OBSERVED",
+    "value": null,
+    "values": [
+     "Chest / Décolletage",
+     "Shoulder"
+    ],
+    "values_detail": [
+     {
+      "value": "Chest / Décolletage",
+      "evidence": [
+       "upper chest visible through semi-sheer striped yoke panel"
+      ]
+     },
+     {
+      "value": "Shoulder",
+      "evidence": [
+       "shoulder area visible through the sheer yoke panel"
+      ]
+     }
+    ],
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "slit": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "ruffle": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "waist_definition": {
+    "state": "OBSERVED",
+    "value": "Defined",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "sleeve_volume": {
+    "state": "OBSERVED",
+    "value": "Regular",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   },
+   "cuff_type": {
+    "state": "OBSERVED",
+    "value": "None",
+    "values": null,
+    "byRegion": null,
+    "source": "RAW (no active adjudication)",
+    "domain_legal": true
+   }
+  }
+ }
+}

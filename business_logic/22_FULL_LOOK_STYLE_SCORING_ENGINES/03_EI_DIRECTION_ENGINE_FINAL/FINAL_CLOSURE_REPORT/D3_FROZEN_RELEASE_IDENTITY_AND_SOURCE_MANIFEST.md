@@ -1,0 +1,51 @@
+# D3 — Frozen Release Identity and Source Manifest
+
+> STMX FULL-LOOK EI V1 — CONTROLLED FINAL FREEZE, KNOWN LIMITATION ACCEPTANCE & VERIFIED LOCAL / GOOGLE DRIVE BACKUP · 2026-10-26 · order `AUTHORIZATION/CEO_ORDER_VERBATIM.md` §2 · §8 · release `FLEI_FINAL_V1` · seal FLEI-FINAL-FREEZE-V1-2026-10-26 · 0 API calls (G53 active).
+
+| item | value |
+|---|---|
+| release ID | STMX_FULL_LOOK_EI_DIRECTION_ENGINE_FINAL_V1 |
+| release directory | 01_ENGINES/STYLE_SCORING_ENGINE/FLEI_FINAL_V1/ (short name per the FLSR_FINAL_V1 / FLTC_FINAL_V1 convention; keeps master-relative paths short) |
+| seal | FLEI-FINAL-FREEZE-V1-2026-10-26 · `FINAL_FREEZE_SEAL.json` sha `56d6509a8be89eeb3dfa136e45990a9526dc8bd8c0f42bf31cc672adccbc89f6` |
+| RELEASE_MANIFEST.json sha256 | 96b0a31415a24773d08f43a3ab3cb0383e72f93fc33b21e596ac99e6260a261b |
+| runtime fingerprint (RT src) | 9093684e0f37c9e7c20fc64f5b843544c95efa6546449b1ed3d843a0c2d501e6 |
+| source candidate | 01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE/ |
+| candidate code identity (manifest) | 429896dfb3a5d9b4a9edbc207e5adb8e337c218866b0ee3ffbfeafbd07ea1e5d |
+| code identity recomputed inside the release | 429896dfb3a5d9b4a9edbc207e5adb8e337c218866b0ee3ffbfeafbd07ea1e5d |
+| runtime src byte-identical | true |
+| constitution | STMX_FULL_LOOK_EI_BINARY_DIRECTION_CONSTITUTION_V1_R3 · sha `a81d0088e8f45d39ccd8f287ef6fd1e02691c5946828425bd38b2b804823331b` |
+| resolver id (unchanged) | STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE |
+| files in the release | 158 (incl. RELEASE_MANIFEST + SHA256SUMS) + seal |
+| Frozen Vision compatibility | FLV-FINAL-FREEZE-V1-2026-10-17 · STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET V1_RC4 |
+| production pointer | `01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_EI_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1.json` (status PRODUCTION · state FINAL_FROZEN_WITH_ACCEPTED_KNOWN_LIMITATION) |
+
+## Runtime source (byte copies of the V1_R3 candidate)
+
+| file | sha256 |
+|---|---|
+| RT/01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE/src/fl_ei_authority_v1.js | e291ed8393eb68c3712ebbc77450ea5d4df423d931fe0c713d292e1a0708b88c |
+| RT/01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE/src/fl_ei_colour_base_v1.js | b1574b440404c544da73191b063aeeb865c76ab264d1237c0e8e9af9a497ce87 |
+| RT/01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE/src/fl_ei_direction_resolver_v1.js | d77fa42e6a197bed94e28c83f8720b2cb5c7fc4e8c5ca2d910a757da89e9c729 |
+| RT/01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE/src/fl_ei_evidence_v1.js | d0d65ca564d1491b4efa2de3c97c88fbe2a22af5d499168dc050358787fc0727 |
+| RT/01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE/src/fl_ei_input_adapter_v1.js | 70ea1262f7fef2f5e17b63c33debc75412b7f5b795c04638ca8700b8823815cb |
+
+## Dependency closure (traced: every file the runtime loads or hashes while scoring the 43 packets; `q6`)
+
+| pin key | master-relative path | sha256 |
+|---|---|---|
+| neutral_registry_v3 | 01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V3_TABLE.json | 6ba8f01080c5a22a6a652175a7fc3295656a38846c05f7ac0aa98efc121dbc4a |
+| item_state_machine_v1_1_1 | 01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_STATE_MACHINE_V1_1_1.json | 3d9907bcf29adeaefec9c78c016f163c2f2c7d4a4a61fc09d7688c9c24f01e6f |
+| neutral_colour_authority | 04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_EI_NEUTRAL_COLOR_AUTHORITY_FROZEN_V1.md | fd76b8e964c46b1d6cc84e028827fb6c35c8c0b205a8b705782a34ef0a23e8bc |
+| body_exposure_two_class | 04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_BODY_EXPOSURE_TWO_CLASS_ARCHITECTURE_FROZEN_V1.md | 0c11071bfa0b1e4d7fdba5d3791e1fb464ff6b02fa4a8e12c669571bf17f0bd7 |
+| colour_v1_contract | 01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js | ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52 |
+| item_ei_production_authority | 01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_PRODUCTION_AUTHORITY_V1.json | 0623735875f697e5bc254d8cff2afeff3148dcf2f21543b185db9cd8d60e8ebb |
+| flv_freeze_seal | 01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/FINAL_FREEZE_SEAL.json | a6803bfac096c8fc466dcc4a1a3e4891c73856b384df123525f11ff6d135cb6a |
+| ei_phase2_observation_canonical | 04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_ARCHITECTURE/STMX_EI_SURFACE_MATERIAL_DECORATIVE_OBSERVATION_CANONICAL_V1.md | 5663eecf0f5b7c9e06fb713a7a858f732bf08ec63d464add56ab4894cb654dbf |
+| flv_producer_rules_coverage_map | 01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/01_RUNTIME/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js | c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad |
+
+Closure: 9 files = the 9 authority pins. Runtime reads after load: 0 (pure function). Packet inputs are excluded (they are the golden inputs).
+
+**Preserved, not in the release:**
+- V1 · V1_R1 · V1_R2 · V1_R3 candidates;
+- the shared-raw-evidence consumer (EISREC) and SC-1;
+- research scripts.

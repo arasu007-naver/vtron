@@ -1,0 +1,64 @@
+{
+  "document": "STMX_EI_DIRECTION_RUNTIME_STATE_MACHINE_V1_1_1",
+  "status": "AUTHORITATIVE DIRECTION-FIRST TRANSITION CONTRACT — CEO architecture correction 2026-09-04 (EI-X-D8 corrected · EI-X-D7 confirmed deterministic)",
+  "supersedes": [
+    "STMX_EI_DIRECTION_RUNTIME_STATE_MACHINE_V1 (I_BASE + ONE_MEANINGFUL executed with a MAY-OCCUR qualifier; CONTEXTUAL_NEUTRAL + ONE_MEANINGFUL → CONTEXTUAL_NEUTRAL) — HISTORICAL",
+    "STMX_EI_DIRECTION_RUNTIME_STATE_MACHINE_V1_1 (I_BASE + ONE_MEANINGFUL reported as a CEO-decision blocker; CONTEXTUAL_NEUTRAL + ONE_MEANINGFUL → CONTEXTUAL_NEUTRAL) — HISTORICAL"
+  ],
+  "authority": "CEO ARCHITECTURE CORRECTION ORDER 2026-09-04 (EI-X-D8 FINAL — CORRECTED · EI-X-D7 FINAL) · EI-X-D2 · D3 · D4 · D5 · D6 · Formal Closure §4 (E Base)",
+  "contextual_neutral_semantics": {
+    "is": "a category/colour combination treated as Neutral because it is selectable by both the I-side and the E-side groups under the Neutral Registry V2",
+    "is_not": [
+      "a colour with intrinsic neutral inertia",
+      "an intrinsically middle-strength colour",
+      "a state with inertia toward Neutral",
+      "an I Base"
+    ],
+    "consequence": "once ONE genuine independent Meaningful expressive pathway is present, the Neutral ambiguity resolves toward E; no second Meaningful pathway is required",
+    "why_i_base_differs": "I Base already carries a Non-Expressive directional bias, so one Meaningful moves it only to the middle (CROSSOVER_NEUTRAL); reaching E from I requires one Strong or multiple independent Meaningful pathways"
+  },
+  "discipline": "No numeric arithmetic. Evidence condition is evaluated on INDEPENDENT pathways after frozen deduplication and independence resolution. Weak pathways never aggregate. Registry membership (Stage 3) and direction transition (Stage 8) are separate layers. ⛔ No transition exists in code that is not enumerated here; code and this table are cross-validated by the runtime test suite.",
+  "states": {
+    "bases": ["I_BASE", "CONTEXTUAL_NEUTRAL", "E_BASE"],
+    "finals": ["I", "CROSSOVER_NEUTRAL", "CONTEXTUAL_NEUTRAL", "E"],
+    "groups": { "I": "I", "CROSSOVER_NEUTRAL": "NEUTRAL", "CONTEXTUAL_NEUTRAL": "NEUTRAL", "E": "E" }
+  },
+  "evidence_conditions": {
+    "NONE": "no resolved expressive pathway",
+    "WEAK_ONLY": "every resolved pathway is WEAK (any count)",
+    "ONE_MEANINGFUL": "exactly one independent MEANINGFUL pathway and no STRONG",
+    "MULTI_MEANINGFUL": "two or more INDEPENDENT MEANINGFUL pathways and no STRONG",
+    "ANY_STRONG": "at least one STRONG pathway (P2 valid canonical exposure or a P3 realization resolved STRONG by the general contract)"
+  },
+  "independence_requirement": "MULTI_MEANINGFUL counts independent pathways from the Independence Contract V1 (after Dedup Contract V1), never parameters, raw tokens, JSON fields or duplicate observations of one physical phenomenon (EI-X-D6 · P3-K13).",
+  "final_direction_table": {
+    "columns": ["no expressive evidence", "Weak only", "exactly 1 independent Meaningful", "multiple independent Meaningful", "≥1 Strong"],
+    "I_BASE": ["I", "I", "CROSSOVER_NEUTRAL", "E", "E"],
+    "CONTEXTUAL_NEUTRAL": ["CONTEXTUAL_NEUTRAL", "CONTEXTUAL_NEUTRAL", "E", "E", "E"],
+    "E_BASE": ["E", "E", "E", "E", "E"]
+  },
+  "transitions": [
+    { "rule_id": "T-I-NONE", "starting_base": "I_BASE", "evidence_condition": "NONE", "independence_requirement": "n/a", "final_state": "I", "authority": "EI-X-D7 FINAL · EI-X-D2" },
+    { "rule_id": "T-I-WEAK", "starting_base": "I_BASE", "evidence_condition": "WEAK_ONLY", "independence_requirement": "any number of Weak pathways, independent or not — never aggregates (EI-X-D3)", "final_state": "I", "authority": "EI-X-D7 FINAL · EI-X-D2 · EI-X-D3" },
+    { "rule_id": "T-I-1M", "starting_base": "I_BASE", "evidence_condition": "ONE_MEANINGFUL", "independence_requirement": "exactly one INDEPENDENT Meaningful pathway", "final_state": "CROSSOVER_NEUTRAL", "authority": "EI-X-D7 FINAL (CEO 2026-09-04) — deterministic; the earlier qualifier is removed" },
+    { "rule_id": "T-I-MM", "starting_base": "I_BASE", "evidence_condition": "MULTI_MEANINGFUL", "independence_requirement": "two or more INDEPENDENT Meaningful pathways (Independence Contract V1)", "final_state": "E", "authority": "EI-X-D7 FINAL · EI-X-D6" },
+    { "rule_id": "T-I-S", "starting_base": "I_BASE", "evidence_condition": "ANY_STRONG", "independence_requirement": "n/a (one Strong suffices)", "final_state": "E", "authority": "EI-X-D7 FINAL · EI-X-D4 (P2) · EI-X-D5 (P3)" },
+    { "rule_id": "T-CN-NONE", "starting_base": "CONTEXTUAL_NEUTRAL", "evidence_condition": "NONE", "independence_requirement": "n/a", "final_state": "CONTEXTUAL_NEUTRAL", "authority": "EI-X-D8 FINAL — CORRECTED (CEO 2026-09-04)" },
+    { "rule_id": "T-CN-WEAK", "starting_base": "CONTEXTUAL_NEUTRAL", "evidence_condition": "WEAK_ONLY", "independence_requirement": "any number of Weak pathways — never aggregates (EI-X-D3)", "final_state": "CONTEXTUAL_NEUTRAL", "authority": "EI-X-D8 FINAL — CORRECTED" },
+    { "rule_id": "T-CN-1M", "starting_base": "CONTEXTUAL_NEUTRAL", "evidence_condition": "ONE_MEANINGFUL", "independence_requirement": "exactly one INDEPENDENT Meaningful pathway", "final_state": "E", "authority": "EI-X-D8 FINAL — CORRECTED (CEO 2026-09-04): one genuine independent Meaningful pathway resolves the both-sides ambiguity toward E. The prior rule (→ CONTEXTUAL_NEUTRAL) is SUPERSEDED / INVALID." },
+    { "rule_id": "T-CN-MM", "starting_base": "CONTEXTUAL_NEUTRAL", "evidence_condition": "MULTI_MEANINGFUL", "independence_requirement": "two or more INDEPENDENT Meaningful pathways", "final_state": "E", "authority": "EI-X-D8 FINAL — CORRECTED · EI-X-D6" },
+    { "rule_id": "T-CN-S", "starting_base": "CONTEXTUAL_NEUTRAL", "evidence_condition": "ANY_STRONG", "independence_requirement": "n/a (one Strong suffices)", "final_state": "E", "authority": "EI-X-D8 FINAL — CORRECTED · EI-X-D4 / D5" },
+    { "rule_id": "T-E-ANY", "starting_base": "E_BASE", "evidence_condition": "ANY", "independence_requirement": "n/a", "final_state": "E", "authority": "E-BASE CONFIRMATION (CEO 2026-09-04) · Formal Closure §4 — ⛔ no E→Neutral or E→I suppression is invented" }
+  ],
+  "neutral_subtypes": {
+    "CROSSOVER_NEUTRAL": "reached from I_BASE by exactly one independent Meaningful pathway (EI-X-D7 path ②) — deterministic",
+    "CONTEXTUAL_NEUTRAL": "Neutral Registry V2 hit with no expressive evidence or Weak-only evidence (EI-X-D7 path ①)",
+    "note": "Both group to NEUTRAL at top level; the trace never collapses them."
+  },
+  "unresolved_policy": {
+    "rule": "When an UNRESOLVED evidence could change the top-level direction under any of its admissible forces {WEAK, MEANINGFUL, STRONG}, the evidence is MATERIAL and final_direction = UNRESOLVED. When no admissible force changes the top-level direction, it is NON-MATERIAL and the direction stands, with the finding exposed in trace.",
+    "method": "deterministic enumeration of admissible forces — no probability, no weighting",
+    "authority": "EI-X-D2 (UNKNOWN ≠ absence) · EI-X-D11"
+  },
+  "determinism": "DETERMINISTIC — every (base × condition) cell has exactly one final state; no qualifier, no CEO-decision blocker, no admissible-outcome set remains."
+}

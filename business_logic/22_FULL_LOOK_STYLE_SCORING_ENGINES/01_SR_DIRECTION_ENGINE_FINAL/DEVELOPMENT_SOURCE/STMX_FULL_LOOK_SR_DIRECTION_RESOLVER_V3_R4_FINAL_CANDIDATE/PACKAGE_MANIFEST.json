@@ -1,0 +1,128 @@
+{
+ "package": "STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R4_FINAL_CANDIDATE",
+ "created": "2026-10-25T00:40:02.446Z",
+ "status": "FINAL CANDIDATE — source of STMX_FULL_LOOK_SR_DIRECTION_ENGINE_FINAL_V1 (release status: see the production pointer / freeze seal)",
+ "governance": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_FULL_LOOK_SR_FINAL_CORRECTION_FREEZE_AND_BACKUP_V1/",
+ "base": {
+  "package": "STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R3_FINAL_CANDIDATE",
+  "manifest_sha256": "c94c565a229e5517ebb747988a3208c20c8b2203d079b3399ab56cfa42bf07fb",
+  "unchanged": true
+ },
+ "constitution_id": "STMX_FULL_LOOK_SR_DIRECTION_CONSTITUTION_V3_R4",
+ "code_identity": {
+  "files": [
+   "cli/run_offline_replay.js",
+   "src/fl_sr_authority_v3_r4.js",
+   "src/fl_sr_binary_constitution_v3_r4.js",
+   "src/fl_sr_direction_resolver_v3_r4.js",
+   "src/fl_sr_input_adapter_v1.js",
+   "tests/run_tests.js"
+  ],
+  "aggregate_sha256": "fb72c54225d4eab1a02aef56c00bd3dca213b5ddf3f43e58c69784ffe2031310"
+ },
+ "tests": {
+  "PASS": 41
+ },
+ "results": {
+  "mode_a": {
+   "scorable": 42,
+   "input_failures": 1,
+   "structured": 16,
+   "relaxed": 26,
+   "unresolved_or_unknown": 0,
+   "with_missing_observations": 27,
+   "sensitivity_possible": 5
+  },
+  "mode_b": {
+   "scorable": 42,
+   "input_failures": 1,
+   "structured": 16,
+   "relaxed": 26,
+   "unresolved_or_unknown": 0,
+   "with_missing_observations": 8,
+   "sensitivity_possible": 0
+  },
+  "ceo_gt": {
+   "lane_a": {
+    "cases": 4,
+    "resolved": 1,
+    "correct": 1,
+    "incorrect": 0,
+    "not_resolved": 3
+   },
+   "mode_a": {
+    "cases": 4,
+    "resolved": 4,
+    "correct": 3,
+    "incorrect": 1,
+    "not_resolved": 0
+   },
+   "mode_b": {
+    "cases": 4,
+    "resolved": 4,
+    "correct": 3,
+    "incorrect": 1,
+    "not_resolved": 0
+   }
+  }
+ },
+ "open_ceo_decisions": [],
+ "paid_api_calls": 0,
+ "files": [
+  {
+   "path": "CODE_DIFF_V3_R3_TO_V3_R4.md",
+   "bytes": 29234,
+   "sha256": "59b71afb84a6760a8c4a73d4f2719ee62e40fbd9057aa87b7f0d118259dfd177"
+  },
+  {
+   "path": "README.md",
+   "bytes": 2415,
+   "sha256": "8ca6e58da2586e88421757e51f15e02a160e9b3255eb3377d4113b4d66c37fc3"
+  },
+  {
+   "path": "cli/run_offline_replay.js",
+   "bytes": 8381,
+   "sha256": "1d088e0ce7540088c688bf4294b83b6496b7ada5031fe325218b421076ada05d"
+  },
+  {
+   "path": "evidence_corrections/ECC_V3_CANDIDATE.json",
+   "bytes": 40034,
+   "sha256": "cfcd1b551f5cfc4b1ad24b5d1b825f91aba5ebaa839be91df0bd1f2cf0019577"
+  },
+  {
+   "path": "src/fl_sr_authority_v3_r4.js",
+   "bytes": 13942,
+   "sha256": "5cc0de9a21c5c20f77dccb164ca4509212afcacdba6cf914f1a0b831c991c5e9"
+  },
+  {
+   "path": "src/fl_sr_binary_constitution_v3_r4.js",
+   "bytes": 5504,
+   "sha256": "7bdbce760b46edee07b80da897199a16f58bb4f59655e1aea3b58e7506a96d40"
+  },
+  {
+   "path": "src/fl_sr_direction_resolver_v3_r4.js",
+   "bytes": 12057,
+   "sha256": "0e89783c7bc1533ff8563b75610518b02cf3a12a62bfe8261e38290e7fde4aff"
+  },
+  {
+   "path": "src/fl_sr_input_adapter_v1.js",
+   "bytes": 3722,
+   "sha256": "254634052aa375df2d75c45f4e0e4b3512bd21d7948d14c946d36cb7ed720de7"
+  },
+  {
+   "path": "tests/run_tests.js",
+   "bytes": 32575,
+   "sha256": "30e23b6b35fba7ab45465e284e5fcf09ccefb416e0c8625aa8df99974c0cdee8"
+  },
+  {
+   "path": "validation/sr_v3_r4_regression_ledger.json",
+   "bytes": 143807,
+   "sha256": "7e21effba672dd044a1c58084d5fed55fed34ac9c067be274e03a8944eabbb04"
+  },
+  {
+   "path": "validation/sr_v3_r4_tests.json",
+   "bytes": 56272,
+   "sha256": "a25498598c47af8105879e2933b7e0b699d235fdc8fb3b5be9ea066912762b1d"
+  }
+ ]
+}

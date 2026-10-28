@@ -1,0 +1,27 @@
+{
+ "seal_id": "FLSR-FINAL-FREEZE-V1-2026-10-25",
+ "declaration_sha256": "924f60d5361cc571376a25273c23cd1f7efd8157184095b066bbb304011d5741",
+ "release_dir": "01_ENGINES/STYLE_SCORING_ENGINE/FLSR_FINAL_V1/",
+ "release_manifest_sha256": "f6b480d8233664b01988c31bc058f947c8f796635575549fd7c208b7bda8f431",
+ "seal_sha256": "83c1e65a7cb4bc2f564bc3d437371d9bc17f51cc05a3674768530e61b879d452",
+ "runtime_fingerprint": "fd9590864a2a0e02d732539e769c7d781c9d0ee43f9284ae77a9057ef985b0a7",
+ "constitution_id": "STMX_FULL_LOOK_SR_DIRECTION_CONSTITUTION_V3_R4",
+ "gates": [
+  "F-01 PASS",
+  "F-02 PASS",
+  "F-03 PASS",
+  "F-04 PASS",
+  "F-05 PASS",
+  "F-06 PASS",
+  "F-07 PASS",
+  "F-08 PASS",
+  "F-09 PASS",
+  "F-10 PASS",
+  "F-11 PASS",
+  "F-12 PASS",
+  "F-13 PASS",
+  "F-14 PASS",
+  "F-15 PASS",
+  "F-16 PASS"
+ ]
+}

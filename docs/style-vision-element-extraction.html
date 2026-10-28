@@ -154,6 +154,7 @@
   .fix .to { display: block; margin-top: 2px; color: var(--muted); }
   .fix .to::before { content: "→ 개선: "; color: var(--fail); font-weight: 600; }
   .fix + .fix { margin-top: 6px; }
+  .fix .orig { display: block; margin-top: 3px; font: 11.5px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); word-break: break-word; }
   .fix-index { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
   .fix-index a { display: inline-block; font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--fail-bg); color: var(--fail); text-decoration: none; }
   .fix-index a:hover { text-decoration: underline; }
@@ -166,6 +167,14 @@
     .node, .decision, .tree, tr, .phase, .issues li { break-inside: avoid; }
     .phase { break-after: avoid; }
   }
+  .psum-toc { columns: 2; column-gap: 24px; font-size: 13px; margin: 0 0 16px; padding-left: 22px; }
+  .psum-toc a { color: var(--text); }
+  @media (max-width: 720px) { .psum-toc { columns: 1; } }
+  .psec { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--model); border-radius: 8px; padding: 10px 14px; margin: 0 0 12px; }
+  .psec h3 { font: 700 13.5px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; margin: 0 0 6px; color: var(--model); }
+  .psec ul { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--muted); }
+  .psec li { margin: 3px 0; }
+  .psec li b { color: var(--text); }
   footer { margin-top: 40px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
 </style>
 </head>
@@ -178,7 +187,7 @@
     프롬프트 점검에서 찾은 개선 항목은 빨간 상자로, 해당 단계 바로 아래에 붙여 두었습니다.
   </p>
   <div class="fix" id="i-noise"><b>개선 #13</b>프롬프트 전체 — 노이즈와 중복
-    <span class="to">"Frozen-40"·"37 parameters"처럼 서로 다른 개수 표기를 없애고, record/target 용어를 하나로 맞춘다. 내부 거버넌스 메모(SR FROZEN 2026-08-21, CEO 2026-09-03, Run-3, "Real failures" 등)는 changelog로 옮기고, JSON 템플릿의 <code>//</code> 주석을 뺀다. POCKET·SV-5 규칙이 3~4번 반복되는 것은 한 곳으로 합친다.</span></div>
+    <span class="to">"Frozen-40"·"37 parameters"처럼 서로 다른 개수 표기를 없애고, record/target 용어를 하나로 맞춘다. 내부 거버넌스 메모(SR FROZEN 2026-08-21, CEO 2026-09-03, Run-3, "Real failures" 등)는 changelog로 옮기고, JSON 템플릿의 <code>//</code> 주석을 뺀다. POCKET·SV-5 규칙이 3~4번 반복되는 것은 한 곳으로 합친다.</span><span class="orig">(원문: “STAGE 2 — Complete the GARMENT extraction for EVERY eligible target … (all applicable Frozen-40 observations, …)” / “⛔ It is NOT one of the 37 parameters.” / “waist_definition applies only after TWO applicability gates (SR FROZEN 2026-08-21)” / “(Real failures: pocket · ruffle · rib_hem emitted as ABSENT.)”)</span></div>
 
   <div class="legend">
     <span><span class="src sys">SYSTEM</span>고정 관찰 프롬프트</span>
@@ -220,7 +229,7 @@
         <h3>상품명 · 카테고리 + 대표 의복 지시</h3>
         <p>예: <code>PICASSO 발수 패딩</code> / <code>패션의류&gt;여성의류&gt;아우터&gt;패딩</code>. 데이터와 함께 "그 의복에 <code>dominant</code> + <code>product_match</code>를 붙여라"는 지시도 이 블록에 들어 있습니다. <b>주 타깃 선택에만</b> 쓰고 관찰값에는 영향을 주면 안 됨. <a class="issue" href="#i-ctx">#14</a></p>
         <div class="fix" id="i-ctx"><b>개선 #14</b>PRODUCT CONTEXT 위치
-          <span class="to">user prompt에 있어서 system prompt의 STAGE 1(타깃 식별)보다 늦게 읽힌다. system prompt에 "PRODUCT CONTEXT가 오면 먼저 상품 의복을 정한다"는 STAGE 0 지시를 두고, user prompt에는 상품명 · 카테고리 데이터만 남긴다. 그래야 캐시도 유지된다.</span></div>
+          <span class="to">user prompt에 있어서 system prompt의 STAGE 1(타깃 식별)보다 늦게 읽힌다. system prompt에 "PRODUCT CONTEXT가 오면 먼저 상품 의복을 정한다"는 STAGE 0 지시를 두고, user prompt에는 상품명 · 카테고리 데이터만 남긴다. 그래야 캐시도 유지된다.</span><span class="orig">(원문: “PRODUCT CONTEXT (catalog metadata for THIS image — NOT an observation). … If the product name and category let you tell WHICH visible garment is the product being sold, that garment is FIXED as the primary target”)</span></div>
       </div>
     </div>
   </div>
@@ -245,9 +254,9 @@
       <li>관찰끼리 서로를 근거로 추론하지 않음 <a class="issue" href="#i-reason">#11</a></li>
     </ul>
     <div class="fix" id="i-dm"><b>개선 #12</b>DM 노출
-      <span class="to">DM을 출력하지 말라면서 출력 키 이름이 <code>dm_designed_detail_evidence</code>이다. 중립적인 이름(<code>designed_detail_evidence</code>)으로 바꾼다.</span></div>
+      <span class="to">DM을 출력하지 말라면서 출력 키 이름이 <code>dm_designed_detail_evidence</code>이다. 중립적인 이름(<code>designed_detail_evidence</code>)으로 바꾼다.</span><span class="orig">(원문: “You NEVER output SR / TC / DM / EI / governance / numbers.” / “Emit "dm_designed_detail_evidence" at TARGET level, as a SIBLING of "observations".”)</span></div>
     <div class="fix" id="i-reason"><b>개선 #11</b>"no reasoning chains" 문구
-      <span class="to">"WORK IN EXPLICIT STAGES", "sweep first, decide second"와 충돌한다. 원래 뜻대로 "파라미터끼리 서로를 근거로 추론하지 말 것"으로 바꿔 쓴다.</span></div>
+      <span class="to">"WORK IN EXPLICIT STAGES", "sweep first, decide second"와 충돌한다. 원래 뜻대로 "파라미터끼리 서로를 근거로 추론하지 말 것"으로 바꿔 쓴다.</span><span class="orig">(원문: “Observe independently — do not let one observation influence another (no reasoning chains).” / “WORK IN EXPLICIT STAGES. … you MUST reason in this order:” / “Sweep first, decide second.”)</span></div>
   </div>
 
   <!-- ───────────── STAGE 1 ───────────── -->
@@ -293,7 +302,7 @@
       <h3>이후 단계는 "eligible target"마다 수행 <a class="issue" href="#i-elig">#7</a></h3>
       <p>NOT_RECONSTRUCTABLE 타깃에 무엇을 내보낼지는 프롬프트에 정의돼 있지 않음.</p>
       <div class="fix" id="i-elig"><b>개선 #7</b>eligible target 정의 없음
-        <span class="to">앞에서는 "eligibility는 downstream이 결정한다"고 한다. 예: "basis=NOT_RECONSTRUCTABLE이면 identity·readability·category만 내보내고 observations·color는 생략"처럼 출력 범위를 명시한다.</span></div>
+        <span class="to">앞에서는 "eligibility는 downstream이 결정한다"고 한다. 예: "basis=NOT_RECONSTRUCTABLE이면 identity·readability·category만 내보내고 observations·color는 생략"처럼 출력 범위를 명시한다.</span><span class="orig">(원문: “For each GARMENT item you can see, report observations that let a downstream rule engine decide eligibility” / “run it on the composed JSON of every eligible target as the LAST step before you emit it”)</span></div>
     </div>
   </div>
 
@@ -333,9 +342,9 @@
       <div class="branch"><span class="tag no">UNKNOWN</span>범용 9개만 관찰: material · surface · pattern · graphic · pocket · decorative_detail · attachment · asymmetry · exposure_opening</div>
       <div class="branch"><span class="tag alt">빈틈</span>패딩 조끼·탱크톱·블라우스·반바지 등 매핑 규칙 없음 <a class="issue" href="#i-vest">#10</a></div>
       <div class="fix" id="i-vest"><b>개선 #10</b>카테고리 매핑 공백
-        <span class="to">패딩 조끼(Jacket + Sleeveless인지), 탱크톱·캐미솔, 블라우스, 바디수트, 반바지의 카테고리를 정한다. material <code>Padding</code>(충전재)을 겉감 <code>Synthetic</code>과 함께 낼지 기준도 정한다. 지금 상품(패딩)에서 결과가 매번 갈릴 수 있다.</span></div>
-      <div class="fix"><b>개선 #6</b>product_context 출력 위치
-        <span class="to">값 정의는 있지만 JSON 어디에 넣는지 없다. <code>category.product_context</code> 등 위치를 OUTPUT 템플릿에 넣는다. (보조 실현 필드와 같은 문제 — STAGE 2·E 참고)</span></div>
+        <span class="to">패딩 조끼(Jacket + Sleeveless인지), 탱크톱·캐미솔, 블라우스, 바디수트, 반바지의 카테고리를 정한다. material <code>Padding</code>(충전재)을 겉감 <code>Synthetic</code>과 함께 낼지 기준도 정한다. 지금 상품(패딩)에서 결과가 매번 갈릴 수 있다.</span><span class="orig">(원문: “- material (Cotton/Wool/Leather/Suede/Knit/Denim/Synthetic/Silk/Velvet/Fur/Padding/Other) = the material CLASS you can actually SEE, not an inferred fibre composition.”)</span></div>
+      <div class="fix" id="i-ctxout"><b>개선 #6</b>product_context 출력 위치
+        <span class="to">값 정의는 있지만 JSON 어디에 넣는지 없다. <code>category.product_context</code> 등 위치를 OUTPUT 템플릿에 넣는다. (보조 실현 필드와 같은 문제 — STAGE 2·E 참고)</span><span class="orig">(원문: “- category product_context ("General" | "Activewear-Performance") = the product context of the garment WITHIN its structural category.”)</span></div>
     </div>
   </div>
 
@@ -368,11 +377,11 @@
         <li><code>waist_definition</code>: 게이트1 Jacket/Coat/Dress/Jumpsuit · 게이트2 Jacket이 Cropped/Waist Length면 제외 <a class="issue" href="#i-waist">#3</a></li>
       </ul>
       <div class="fix" id="i-closure"><b>개선 #2</b>앞트임 없는 아우터의 closure_type
-        <span class="to">Jacket/Coat에서는 필수인데 값 도메인에 None이 없어, 앞트임이 없는 아노락(<code>front_opening_extent=None</code>)에 쓸 정상 답이 없다. 아우터에서도 Partial/Full일 때만 쓰는 조건부 키로 바꾸거나, 이 경우 ABSENT를 쓴다고 명시한다.</span></div>
+        <span class="to">Jacket/Coat에서는 필수인데 값 도메인에 None이 없어, 앞트임이 없는 아노락(<code>front_opening_extent=None</code>)에 쓸 정상 답이 없다. 아우터에서도 Partial/Full일 때만 쓰는 조건부 키로 바꾸거나, 이 경우 ABSENT를 쓴다고 명시한다.</span><span class="orig">(원문: “closure_type … emit it on Jacket / Coat (their closure), and on a T-Shirt / Shirt / Sweater / Sweatshirt / Dress / Jumpsuit that has a visible FRONT OPENING” / “- closure_type: Button | Single Breasted Button | Double Breasted Button | Snap Button | Zipper | Hook Closure | Open”)</span></div>
       <div class="fix" id="i-waist"><b>개선 #3</b>waist_definition 필수 여부 불일치
-        <span class="to">게이트 2에서 Coat/Dress/Jumpsuit는 항상 대상이고 최종 스윕 (7)도 키를 요구하는데, REQUIRED KEYS 목록에는 없다. Coat/Dress/Jumpsuit의 필수 목록에 넣고 Jacket만 조건부로 남긴다.</span></div>
+        <span class="to">게이트 2에서 Coat/Dress/Jumpsuit는 항상 대상이고 최종 스윕 (7)도 키를 요구하는데, REQUIRED KEYS 목록에는 없다. Coat/Dress/Jumpsuit의 필수 목록에 넣고 Jacket만 조건부로 남긴다.</span><span class="orig">(원문: “Coat / Dress / Jumpsuit remain eligible across their governed length domains (their lengths extend below the waist).” / “· Coat: (21) material, surface, … front_opening_extent, closure_type, grammar”)</span></div>
       <div class="fix" id="i-shoulder"><b>개선 #4</b>스트랩리스·민소매 드레스의 shoulder_drop / shoulder_structure
-        <span class="to">Dress에서 둘 다 필수인데 판단할 어깨선이 없다. 그러면 <code>None</code>이 "확인했더니 없음"이 아니라 "해당 없음"으로 오염된다. <code>shoulder_connection</code>이 Strapless·Halter·One Shoulder·Strap이면 키를 생략하는 규칙을 둔다.</span></div>
+        <span class="to">Dress에서 둘 다 필수인데 판단할 어깨선이 없다. 그러면 <code>None</code>이 "확인했더니 없음"이 아니라 "해당 없음"으로 오염된다. <code>shoulder_connection</code>이 Strapless·Halter·One Shoulder·Strap이면 키를 생략하는 규칙을 둔다.</span><span class="orig">(원문: “shoulder_drop APPLIES TO OUTERWEAR (Jacket / Coat) as well as tops, dresses and jumpsuits, and is REQUIRED there.” / “· Dress: (23) material, … sleeve, shoulder_drop, shoulder_structure, …”)</span></div>
     </div>
   </div>
 
@@ -604,14 +613,14 @@
       <h3>하체 기하</h3>
       <p><code>slit</code>, <code>silhouette</code>(Trouser·Skirt·Dress·Jumpsuit만), 하의의 <code>fit</code>·<code>length</code>. Dress·Jumpsuit의 fit·fabric_behavior는 <code>byRegion</code>으로 upper/lower를 따로 냄 <a class="issue" href="#i-fit">#8</a></p>
       <div class="fix" id="i-fit"><b>개선 #8</b>Dress/Jumpsuit fit
-        <span class="to">REGIONS 섹션은 영역별(byRegion)로 내라고 하고, fit 섹션은 "전체를 보고 한 번만 답한다"고 해서 충돌한다. Dress/Jumpsuit에서는 영역별로 sweep 규칙을 적용한다고 한 줄 추가한다.</span></div>
+        <span class="to">REGIONS 섹션은 영역별(byRegion)로 내라고 하고, fit 섹션은 "전체를 보고 한 번만 답한다"고 해서 충돌한다. Dress/Jumpsuit에서는 영역별로 sweep 규칙을 적용한다고 한 줄 추가한다.</span><span class="orig">(원문: “For a two-region parameter (Dress/Jumpsuit fabric_behavior/fit) use: "byRegion": { "upper": …, "lower": … }.” / “HOW TO READ FIT — SWEEP THE WHOLE GARMENT, THEN ANSWER ONCE.”)</span></div>
     </div>
     <div class="node model">
       <div class="who">WHOLE_GARMENT</div>
       <h3>전체</h3>
       <p><code>material</code> <code>surface</code> <code>pattern</code> <code>graphic</code> <code>pocket</code> <code>decorative_detail</code> <code>attachment</code> <code>asymmetry</code> <code>exposure_opening</code> <code>fabric_behavior</code> <code>trouser_distinction</code> <code>grammar</code> <a class="issue" href="#i-grammar">#9</a> <code>waist_definition</code> <code>ruffle</code></p>
       <div class="fix" id="i-grammar"><b>개선 #9</b>grammar 정의 없음
-        <span class="to">Jacket/Coat에서 필수인데 Tailored/Casual/Utility를 가르는 기준이 없고, "스타일 판단 금지"와도 부딪힌다. trouser_distinction처럼 구성(construction) 근거로 정의한다.</span></div>
+        <span class="to">Jacket/Coat에서 필수인데 Tailored/Casual/Utility를 가르는 기준이 없고, "스타일 판단 금지"와도 부딪힌다. trouser_distinction처럼 구성(construction) 근거로 정의한다.</span><span class="orig">(원문: “- grammar: Tailored | Casual | Utility” / “grammar is an OUTERWEAR (Jacket/Coat) parameter”)</span></div>
     </div>
   </div>
   <div class="arrow"></div>
@@ -654,7 +663,7 @@
       <h3><code>pocket = Present</code> → 비어 있지 않은 <code>pockets[]</code> 필수</h3>
       <p>구분되는 포켓 그룹마다 <code>location</code>(Chest / Lower Front / Sleeve / Leg) + <code>construction</code>(Inset/Applied) + <code>projection</code>(Flat/Projected/Volumetric). 좌우 대칭은 항목 1개. 최상위 <code>pocket_construction</code>·<code>pocket_projection</code> 키는 폐기됨 <a class="issue" href="#i-pocket">#5</a></p>
       <div class="fix" id="i-pocket"><b>개선 #5</b>폐기된 포켓 키가 아직 남아 있음
-        <span class="to">세 번이나 폐기했다고 하면서, [POCKET] 첫 문단과 CANONICAL VALUE DOMAINS에는 최상위 파라미터처럼 남아 있어 모델이 최상위 키로 내보내게 유도한다. 도메인 목록을 <code>pockets[].construction / .projection</code>으로 옮기고 첫 문단을 고쳐 쓴다.</span></div>
+        <span class="to">세 번이나 폐기했다고 하면서, [POCKET] 첫 문단과 CANONICAL VALUE DOMAINS에는 최상위 파라미터처럼 남아 있어 모델이 최상위 키로 내보내게 유도한다. 도메인 목록을 <code>pockets[].construction / .projection</code>으로 옮기고 첫 문단을 고쳐 쓴다.</span><span class="orig">(원문: “Observe pocket (None/Present), and only if Present and readable: pocket_construction (Inset=set-in/welt/jetted, Applied=patch)” / “Do NOT emit pocket_construction or pocket_projection at the top level — those keys are retired as an answer form.” / “- pocket_construction: Inset | Applied”)</span></div>
     </div>
     <div class="arrow"></div>
     <div class="node rule">
@@ -662,7 +671,7 @@
       <h3>값에 붙는 세부 관찰 <a class="issue" href="#i-schema">#6</a></h3>
       <p><code>finish_realization</code>(Glossy 등) · <code>treated_surface_realization</code>(Treated Surface) · pattern의 <code>visual_dominance</code>·<code>motif_complexity</code>. 출력 스키마에 위치가 정의돼 있지 않음.</p>
       <div class="fix" id="i-schema"><b>개선 #6</b>보조 필드 위치 미정의
-        <span class="to">values[] 항목 안인지, 파라미터 객체 안인지 정해 OUTPUT 템플릿에 예시 위치를 넣는다. <code>product_context</code>도 함께 정한다.</span></div>
+        <span class="to">values[] 항목 안인지, 파라미터 객체 안인지 정해 OUTPUT 템플릿에 예시 위치를 넣는다. <code>product_context</code>도 함께 정한다.</span><span class="orig">(원문: “- surface finish_realization ("Baseline" | "Enhanced" | "Pronounced") = when you emit a surface finish value such as Glossy, ALSO report whether the finish is the ORDINARY one”)</span></div>
     </div>
   </div>
 
@@ -708,7 +717,7 @@
       <h3>타깃 간 관계는 최상위 <code>cross_target_visual_relations</code>에 한 번만</h3>
       <p>대상 타깃 2개 이상. 세트·짝 판정은 하지 않음. 타깃 스키마에 id 필드가 없어 <code>target_ids</code>로 가리킬 대상이 정해져 있지 않음 <a class="issue" href="#i-id">#1</a></p>
       <div class="fix" id="i-id"><b>개선 #1</b>타깃 id 미정의
-        <span class="to">타깃에 <code>"target_id": "t1"</code>을 추가하거나, 배열 인덱스로 참조한다고 명시한다. 지금은 모델이 매번 다른 방식으로 id를 지어낸다.</span></div>
+        <span class="to">타깃에 <code>"target_id": "t1"</code>을 추가하거나, 배열 인덱스로 참조한다고 명시한다. 지금은 모델이 매번 다른 방식으로 id를 지어낸다.</span><span class="orig">(원문: “{ "relation_id": "&lt;short id&gt;", "target_ids": ["&lt;id&gt;","&lt;id&gt;"], // 2 or more DISTINCT targets — never one”)</span></div>
     </div>
   </div>
 
@@ -728,7 +737,7 @@
       <div class="who">CONTRACT SELF-CHECK · 11개</div>
       <p>금지 키 출력 · 필수 키 누락 · None이 필요한 곳 · None이 불법인 곳 · 값 없는 OBSERVED · values[] 없는 MULTI · descriptor 필요성 미판단 · 필드 반복 · 보지 않은 것 단정 · 관계를 타깃 안에 씀 · 길이 맞추기</p>
       <div class="fix" id="i-struct"><b>개선 #15</b>기계적 검사를 코드로
-        <span class="to">필수·금지 키, SV-5(None과 ABSENT), MULTI 형식, 트리거 키는 결정론적이다. 카테고리별 JSON Schema(structured output)와 validator로 옮기고, 위반은 자동 보정하거나 위반 항목만 지정해 1회 재질의한다. 그러면 프롬프트를 크게 줄이고 fit·shoulder_drop·색상 언더톤 같은 지각 판단 규칙에 주의를 모을 수 있다.</span></div>
+        <span class="to">필수·금지 키, SV-5(None과 ABSENT), MULTI 형식, 트리거 키는 결정론적이다. 카테고리별 JSON Schema(structured output)와 validator로 옮기고, 위반은 자동 보정하거나 위반 항목만 지정해 1회 재질의한다. 그러면 프롬프트를 크게 줄이고 fit·shoulder_drop·색상 언더톤 같은 지각 판단 규칙에 주의를 모을 수 있다.</span><span class="orig">(원문: “★ TRIGGERED-KEY EMISSION FINAL SWEEP (mechanical — the ONE authoritative FINAL completeness gate …): check the actual KEYS of the observations object you just wrote, not your intention.”)</span></div>
     </div>
   </div>
 
@@ -827,6 +836,672 @@
     <li><a href="#i-ctx">#14 상품 정보 위치</a></li>
     <li><a href="#i-struct">#15 코드 검사</a></li>
   </ul>
+
+  
+  <!-- ───────────── 원문 프롬프트 단락별 요약 ───────────── -->
+  <div class="phase" id="prompt-summary"><b>부록</b><h2>원문 프롬프트 단락별 요약</h2></div>
+  <p class="trigger">style-ex가 실제로 보내는 관찰 프롬프트(<code>defaultPrompt()</code> = V1_3 <code>buildProducerPrompt()</code> + <code>COLOUR_ADDENDUM</code> + <code>PRESENTATION_ADDENDUM</code>, 171,774자)를 원문의 섹션 순서대로 요약했습니다. 대괄호 제목은 원문 섹션 제목 그대로입니다.</p>
+  <ol class="psum-toc"><li><a href="#p-1">[SYSTEM]</a></li><li><a href="#p-2">[CANONICAL CATEGORIES — choose EXACTLY ONE token per garment]</a></li><li><a href="#p-3">[GARMENT TARGET SELECTION — GARMENT items only]</a></li><li><a href="#p-4">[STATES — use the correct one; never invent a value to avoid UNKNOWN]</a></li><li><a href="#p-5">[SEMANTIC <code>None</code> — WHICH PARAMETERS REQUIRE IT (SV-5)]</a></li><li><a href="#p-6">[REGIONS]</a></li><li><a href="#p-7">[LOCATION — optional per-value garment component binding]</a></li><li><a href="#p-8">[COVERAGE — optional per-value garment extent]</a></li><li><a href="#p-9">[POCKET — observe independently; no inference]</a></li><li><a href="#p-10">[OBSERVATION DISCIPLINE — do NOT over-read; ordinary appearance is not a feature]</a></li><li><a href="#p-11">[OBSERVATION DISCIPLINE — 계속]</a></li><li><a href="#p-12">[TARGET DESCRIPTOR — VISUAL RECONSTRUCTION PROTOCOL]</a></li><li><a href="#p-13">[OUTPUT — STRICT JSON ONLY, exactly this shape; no prose outside JSON]</a></li><li><a href="#p-14">[OBSERVATION SHAPE — SINGLE vs MULTI ARE TWO DIFFERENT SHAPES]</a></li><li><a href="#p-15">[MULTI SERIALIZATION — MANDATORY]</a></li><li><a href="#p-16">[CANONICAL VALUE DOMAINS — category-independent parameters]</a></li><li><a href="#p-17">[CANONICAL VALUE DOMAINS — category-dependent parameters]</a></li><li><a href="#p-18">[NOT APPLICABLE — OMIT THE KEY]</a></li><li><a href="#p-19">[REQUIRED KEYS — EMIT EVERY ONE (P2-R1)]</a></li><li><a href="#p-20">[DM DESIGNED DETAIL OBSERVATION — SUBORDINATE LAYER]</a></li><li><a href="#p-21">[⛔ CONTRACT SELF-CHECK — run this over your JSON BEFORE you return it]</a></li><li><a href="#p-22">[COLOUR_ADDENDUM — WORK IN EXPLICIT STAGES]</a></li><li><a href="#p-23">[GARMENT ATTENTION FIREWALL]</a></li><li><a href="#p-24">[PRESENTATION TYPE] (PRESENTATION_ADDENDUM)</a></li></ol>
+  <div class="psum">
+<section class="psec" id="p-1"><h3>[SYSTEM]</h3>
+<ul>
+<li>역할: STMX용 <b>GARMENT-LEVEL VISION OBSERVER</b>. 물리적으로 보이는 의류 사실만 관찰함.
+</li>
+<li>스타일·조화·outfit/look·소비자 정체성·추천·점수/tier는 판단하지 않음. <code>SR / TC / DM / EI</code> / governance / 숫자는 출력하지 않음.
+</li>
+<li>look 단위가 아니라 ITEM 단위로 관찰하며, 의류 아이템마다 따로 보고함.
+</li>
+<li>관찰끼리 영향을 주지 않게 독립적으로 관찰함(추론 체인 금지).
+</li>
+<li>STMX canonical 어휘를 정확히 써야 함. 의역·동의어·비슷한 패션 용어·대소문자 변경은 금지. 근거가 부족하면 값을 지어내지 말고 알맞은 STATE를 씀.
+</li>
+<li>Evidence는 짧고 구체적인, 눈에 보이는 이미지 단서만 적음(설명·추론 문장 금지).
+</li></ul>
+</section>
+<section class="psec" id="p-2"><h3>[CANONICAL CATEGORIES — choose EXACTLY ONE token per garment]</h3>
+<ul>
+<li>허용 토큰: <code>T-Shirt | Shirt | Sweater | Sweatshirt | Jacket | Coat | Trouser | Skirt | Dress | Jumpsuit</code>. 아이템당 하나만 고름.
+</li>
+<li>의역 금지. "top", "outerwear", "bottom" 같은 상위 계열명은 쓰지 않음.
+</li>
+<li>대소문자를 정확히 맞춤(<code>Sweatshirt</code> O, "sweatshirt" X). 후드 달린 플리스 풀오버는 <code>Sweatshirt</code>이고 <code>Sweater</code>가 아님.
+</li>
+<li><b>CATEGORY SYNTHESIS DISCIPLINE</b>: 카테고리는 몸판 원단/구조, 드레이프와 자립성 같은 거동, 트림, 착용 역할을 함께 보고 종합해 정함. 단일 특징으로는 절대 정하지 않음. zipper는 여밈 장치, hood는 부착물, 민소매는 소매 사실, collar는 목 사실일 뿐임.
+</li>
+<li>KNIT-BODY RULE: 몸판이 니트(rib/cable/chunky)이고 니트 거동과 니트 트림을 가지면 <code>Sweater</code>. 카디건과 풀집업 니트 카디건도 포함됨. <code>Jacket</code>이 되려면 아우터웨어 셸(테일러드/우븐/테크니컬/가죽)이 있어야 함.
+</li>
+<li>SWEAT-BODY RULE: 몸판이 스웨트/플리스이고 립 트림이 있으면 <code>Sweatshirt</code>. 집업 후디도 <code>Jacket</code>이 아님.
+</li>
+<li>OUTERWEAR-COLUMN RULE: 무겁고 자립하는 외투 원단, 전장 앞트임, 아우터 칼라와 포켓을 갖춘 긴 옷은 <code>Coat</code>(민소매여도 <code>Dress</code>가 아님). 반대로 몸 레이어로 입는 부드럽게 흐르는 원피스는 길어도 <code>Dress</code>. 원단 무게, 자립성, 트임, 역할로 판단함.
+</li>
+<li><code>category.evidence</code>는 필수이며 구조 단서를 최소 2개 적어야 함. 비어 있으면 불완전한 관찰임.
+</li>
+<li>확정할 수 없으면 <code>category.state = "UNKNOWN"</code>으로 두고 범용 파라미터 9개(<code>material, surface, pattern, graphic, pocket, decorative_detail, attachment, asymmetry, exposure_opening</code>)만 관찰함.
+</li></ul>
+</section>
+<section class="psec" id="p-3"><h3>[GARMENT TARGET SELECTION — GARMENT items only]</h3>
+<ul>
+<li>대상은 GARMENT뿐임. 신발, 가방, 주얼리, 액세서리용 벨트, 안경, 모자, 장갑, 액세서리용 스카프 등은 대상이 아님.
+</li>
+<li><code>identity</code>: 독립적으로 식별 가능한 의류인지(C2 Independent Identity) true/false와 짧은 근거로 보고함.
+</li>
+<li><code>readability</code>(C3): 질문은 "의류 전체 형태를 독립 타깃으로 재구성할 수 있을 만큼 구조가 보이는가?"임. 형식은 <code>{value, basis: RECONSTRUCTABLE|NOT_RECONSTRUCTABLE, limitation, evidence}</code>. eligibility는 <code>basis</code>만으로 정해지고 <code>value</code>와 일치해야 함. <code>limitation</code>(<code>TERMINAL_REGION_CROPPED · FRAGMENTARY_VISIBILITY · OCCLUDED_BY_OTHER_GARMENT · CONTINUOUS_STRUCTURE_VISIBLE</code>)은 설명용일 뿐 결정에 쓰이지 않음.
+</li>
+<li>C3가 아닌 것: 카테고리 식별 가능, 일부 국소 속성(waistband, pocket, neckline, sleeve, material, silhouette, length) 관찰 가능, 관찰 파라미터 개수. 디테일이 많이 보여도 NOT_RECONSTRUCTABLE일 수 있음.
+</li>
+<li>반대로 부분적으로 안 보인다고 자동으로 false가 되지도 않음. 연속된 몸판, 볼륨, 드레이프, 비례가 보이면 RECONSTRUCTABLE. 같은 limitation이 어느 결론으로든 이어질 수 있음.
+</li>
+<li><code>prominence</code>: <code>dominant / secondary / minor</code>. 장면 내 역할만 나타내며 eligibility를 정하지 않음.
+</li>
+<li>예시 1: 엉덩이까지만 보이는 바지는 다리 전체 형태를 재구성할 수 없으므로 NOT_RECONSTRUCTABLE. 하드웨어가 읽힌다고 전체 형태가 되는 것은 아님.
+</li>
+<li>예시 2: 밑단이 잘린 드레스라도 연속된 몸판이 잘 읽히면 RECONSTRUCTABLE + <code>TERMINAL_REGION_CROPPED</code>.
+</li>
+<li>예시 3: 열린 코트 안의 이너는 NOT_RECONSTRUCTABLE + <code>OCCLUDED_BY_OTHER_GARMENT</code>.
+</li>
+<li>PRODUCT-DEFINING STRUCTURE TEST: 고정부(하의는 허리, 매달리는 옷은 서스펜션)와 끝에서 끝까지의 실루엣이 덮는 옷에 가려 끊기면 NOT_RECONSTRUCTABLE. 큰 조각이 보여도 결과는 같음. 프레임 크롭과는 구분함.
+</li>
+<li>READABILITY SELF-CONSISTENCY: 자기 서술에 "entirely hidden", "cannot be traced"가 있으면 RECONSTRUCTABLE은 모순이므로 내보내면 안 됨. 아이템 병합, 숨은 의류 추론 금지. "Multiple garments"는 한 룩 안의 여러 아이템을 뜻함.
+</li></ul>
+</section>
+<section class="psec" id="p-4"><h3>[STATES — use the correct one; never invent a value to avoid UNKNOWN]</h3>
+<ul>
+<li><code>OBSERVED</code>: 특징이 있고 값을 판별할 수 있음. 값이 필수이며, 도메인에 <code>"None"</code>이 있으면 유효한 값임.
+</li>
+<li><code>ABSENT</code>: 해당되고 보이지만 특징이 없음(value null). <b>SV-5 PRIORITY RULE</b>: 도메인에 <code>None</code>이 있는 파라미터라면 OBSERVED <code>"None"</code>으로 적음. 가시성이 나쁜 경우에는 <code>None</code>이 아니라 NOT_VISIBLE/UNKNOWN을 씀.
+</li>
+<li><code>NOT_VISIBLE</code>: 가림·크롭·프레임 밖. <code>UNKNOWN</code>: 보이지만 판별 불가. 모호함을 ABSENT로, 가림을 UNKNOWN으로 바꾸지 않음. UNKNOWN에 값을 추측해 넣지 않음.
+</li>
+<li>OBSERVED에는 값이 반드시 있어야 함. 값을 대지 못하면 UNKNOWN을 씀.
+</li>
+<li>EVIDENCE–VALUE CONSISTENCY: evidence가 값을 부정하면 OBSERVED로 내보내지 않고 부재 상태로 바꿈.
+</li>
+<li>CONDITIONAL COMPLETENESS RE-CHECK: 트리거된 조건부 파라미터는 반드시 보고함. <code>closure_type</code>(Partial/Full 앞트임), <code>cuff_type</code>(소매 끝이 보일 때, 커프가 없으면 <code>"None"</code>), <code>cuff_scale</code>(non-None 커프일 때만, <code>cuff_type="None"</code>이면 키 생략), <code>shoulder_connection</code>(비표준 서스펜션), <code>waist_definition</code>(TWO GATES). 누락은 계약 위반임.
+</li>
+<li>TRIGGERED-KEY EMISSION FINAL SWEEP은 마지막 기계적 게이트로, 작성한 JSON 키를 실제로 점검함. (1) 민소매가 아닌 sleeve인데 <code>cuff_type</code> 없음 (2) Partial/Full인데 <code>closure_type</code> 없음 (3) <code>cuff_scale</code> (4) collar가 non-None인데 <code>collar_scale</code> 없음 (5) <code>pocket</code> Present이면 <code>pockets[]</code>가 비어 있지 않아야 하고 각 그룹에 location/construction/projection이 있어야 함. top-level <code>pocket_construction</code>/<code>pocket_projection</code>은 폐기됨 (6) <code>sleeve_volume</code> (7) Jacket/Coat/Dress/Jumpsuit에서 gate를 통과하면 <code>waist_definition</code>. Trouser/Skirt, Jacket "Cropped"/"Waist Length"에는 금지. 서술에 언급한 특징은 구조화 키에도 있어야 하며, 누락은 validator 실패로 처리됨.
+</li>
+<li>라우팅: 외곽 레이어로 입는 셔츠 칼라 옷(overshirt/shacket 등)은 <code>Jacket</code>. "Overshirt" 카테고리를 새로 만들지 않음.
+</li>
+<li>적용되지 않는 파라미터는 생략함(None으로 내보내지 않음). <code>grammar</code>는 Jacket/Coat 전용. <code>closure_type</code>은 Jacket/Coat에 쓰고, 그 외 상의/Dress/Jumpsuit는 앞트임이 있을 때만 쓰며 Trouser/Skirt에는 금지. <code>shoulder_structure</code>는 Outerwear/Dress/Jumpsuit.
+</li>
+<li><code>shoulder_drop</code>은 아우터웨어에서도 필수. <code>shoulder_structure</code>(윤곽 형태)와는 독립적이며 None+Dropped, Strong+None 모두 유효함.
+</li>
+<li><code>slit</code>은 Skirt/Dress 전용. <code>exposure_opening</code>은 모든 카테고리에서 필수 키임(크롭티, 미니스커트, 시스루 셔츠 등도 해당). 노출이 없으면 ABSENT, 판단할 수 없으면 NOT_VISIBLE/UNKNOWN.
+</li>
+<li>Jacket/Coat에는 <code>neckline_shape/position</code>을 쓰지 않음(collar로 표현). 이 규칙은 카테고리 기준이므로, 칼라가 있는 다른 카테고리에서는 neckline도 필수임.
+</li>
+<li><code>front_opening_extent</code>는 아우터웨어에서 필수(<code>Full/Partial/None</code>). 확장 범위를 보고하며 <code>closure_type</code>(메커니즘)과는 독립적임. 예: half-zip = Zipper + Partial.
+</li>
+<li>Trouser/Skirt에는 <code>waist_definition</code>을 쓰지 않음. <code>silhouette</code>는 Trouser/Skirt/Dress/Jumpsuit 전용이며 다른 카테고리에서는 키 자체가 없어야 함.
+</li>
+<li><code>shoulder_connection/shoulder_span</code>은 일반 소매 옷에 강제하지 않음. 비표준 서스펜션(Strap/Strapless/Halter/One Shoulder)을 인지하면 필수로 OBSERVED 처리함.
+</li>
+<li><code>ruffle</code>(None/Present)은 Dress 전용. 러플 칼라는 <code>collar = Ruffle</code>, 러플 스커트는 <code>surface = Gathered</code>, 플리츠는 <code>Pleated</code>로 적음.
+</li></ul>
+</section>
+<section class="psec" id="p-5"><h3>[SEMANTIC <code>None</code> — WHICH PARAMETERS REQUIRE IT (SV-5)]</h3>
+<ul>
+<li>아래 파라미터는 도메인에 <code>None</code>이 있으므로, 확인된 부재를 OBSERVED <code>"None"</code>으로 보고함.
+</li>
+<li>T-Shirt/Shirt/Sweater/Sweatshirt: <code>shoulder_drop, collar, cuff_type, rib_hem, front_opening_extent, pocket, asymmetry</code>.
+</li>
+<li>Jacket/Coat/Jumpsuit: 위 목록 + <code>shoulder_structure</code>.
+</li>
+<li>Trouser: <code>pocket, asymmetry</code>. Skirt: <code>pocket, asymmetry, slit</code>. Dress: Jacket 목록 + <code>slit, ruffle</code>.
+</li>
+<li>부재가 확인되면 키 생략, ABSENT, NOT_VISIBLE, UNKNOWN 모두 금지. <code>{ "state": "OBSERVED", "value": "None", "evidence": [...] }</code>로 적음.
+</li>
+<li>예시(hem): 평범한 동일 원단 마감이면 OBSERVED/"None", 가방에 가리거나 크롭되면 NOT_VISIBLE, 해상도가 낮으면 UNKNOWN.
+</li>
+<li>확인된 부재는 관찰 실패가 아니라 긍정적 관찰이며, 침묵이 아니라 <code>None</code>으로 기록함.
+</li></ul>
+</section>
+<section class="psec" id="p-6"><h3>[REGIONS]</h3>
+<ul>
+<li>허용 토큰: <code>whole_garment | upper | lower</code>. 자연어 region은 쓰지 않음.
+</li>
+<li>upper: <code>sleeve, sleeve_volume, shoulder_connection, shoulder_span, shoulder_drop, shoulder_structure, neckline_shape, neckline_position, collar, collar_scale, cuff_type, cuff_scale, rib_hem, hood, front_opening_extent, closure_type</code>.
+</li>
+<li><code>rib_hem</code>은 하단에 있어도 upper이며 짝이 되는 cuff 필드가 없음. 립 커프는 <code>cuff_type = Ribbed</code>로 적음.
+</li>
+<li>lower: <code>slit</code>.
+</li>
+<li><code>fit</code>: 상의/아우터 upper, Trouser/Skirt lower, Dress/Jumpsuit upper+lower. <code>length</code>: 상의/아우터 upper, Trouser/Skirt/Jumpsuit lower, Dress whole_garment.
+</li>
+<li><code>fabric_behavior</code>: whole_garment이며 Dress/Jumpsuit만 upper+lower(<code>byRegion</code>).
+</li>
+<li>나머지(silhouette, material 포함)는 하의를 포함한 모든 카테고리에서 whole_garment. 목록에 없는 region은 지어내지 않음.
+</li>
+<li>두 region을 쓰는 파라미터는 <code>"byRegion": { "upper": {...}, "lower": {...} }</code> 형식을 씀.
+</li></ul>
+</section>
+<section class="psec" id="p-7"><h3>[LOCATION — optional per-value garment component binding]</h3>
+<ul>
+<li>선택 사항. <code>material / surface / decorative_detail / attachment</code> 값에만 <code>locations</code>를 붙일 수 있음. <code>exposure_opening</code>에는 붙이지 않음.
+</li>
+<li>Component 토큰: <code>Body · Bodice · Skirt Body · Leg · Shoulder · Sleeve · Collar · Lapel · Hood · Cuff · Hem · Waistband · Pocket · Strap</code>.
+</li>
+<li>헷갈리기 쉬운 구분: <code>Body</code>는 상의/아우터 몸판, <code>Bodice</code>는 Dress/Jumpsuit 상체, <code>Skirt Body</code>는 스커트 부분("Skirt" 금지), <code>Leg</code>(Thigh/Knee 등 금지), <code>Hem</code>은 하단 마감(바지 밑단 포함), <code>Cuff</code>는 실제 커프 구조가 있을 때만, <code>Shoulder</code>는 위치일 뿐 어깨 파라미터에 영향 없음.
+</li>
+<li>descriptor는 두 가지뿐임. <code>"Panel"</code>(반드시 component와 함께), <code>"Edge"</code>(component와 함께 또는 단독).
+</li>
+<li>예시: Jacket Glossy→Lapel, Dress Lace→Bodice, Trouser 밑단 Lace→Hem. 여러 component는 한 값 항목에 함께 넣음. Piping→<code>{"descriptor":"Edge"}</code>.
+</li>
+<li>규칙: 지어내지 않음. 전체에 해당하면 생략("Whole Garment" 없음). Front/Back/Left/Right/Upper/Lower/Side/Center 같은 좌표 단어 금지. 같은 값을 반복하지 않음. 크기·중요도 표현에 쓰지 않음. region과는 별개임.
+</li></ul>
+</section>
+<section class="psec" id="p-8"><h3>[COVERAGE — optional per-value garment extent]</h3>
+<ul>
+<li>선택 사항. 값이 의류의 얼마만큼을 덮는지를 나타냄.
+</li>
+<li>다음 값에만 허용됨. surface: <code>Transparent · Semi Transparent · Mesh · Reflective · Glossy · Textured Knit · Exotic-Skin · Quilted · Treated Surface · Pleated · Lace</code> / material: <code>Fur</code> / decorative_detail: <code>Sequin-Beading · Appliqué</code> / attachment: <code>Metal Hardware · Jewelry Attachment · Feather · Ribbon · Fringe · Fur Trim</code>. 그 외(Cotton, Wool, Belt, Embroidery, Piping, Gathered 등)에 붙이면 계약 오류임.
+</li>
+<li>값은 <code>Localized</code>(제한된 부분), <code>Partial</code>(상당 부분이지만 지배적이지 않음), <code>Dominant</code>(대부분/전체의 성격) 세 가지뿐임.
+</li>
+<li>coverage는 location이 아님. 둘은 서로를 함축하지 않으며 함께 쓸 수 있음(예: Glossy lapel = Lapel + Localized).
+</li>
+<li>보이는 것만 보고함. 수치나 프레임 밖 추정은 금지이며, 판단할 수 없으면 생략함.
+</li>
+<li>중요도 판단이 아님. Weak/Strong, I/Neutral/E, Small/Large/Full/Global 등은 금지.
+</li>
+<li>OBSERVED 값에만 붙임. 값마다 따로 붙이고(예: Quilted Dominant + Fur Trim Localized) 의류 전체에 하나만 붙이지 않음.
+</li>
+<li>예시: Glossy Localized+Lapel, Quilted Dominant, Metal Hardware Partial, Fur Localized+Collar. <code>Wool</code>에 coverage를 붙이면 오류임.
+</li>
+<li><code>graphic</code>(자체 값에 범위가 포함됨), <code>pattern</code>(정의상 전체), <code>exposure_opening</code>에는 쓰지 않음.
+</li></ul>
+</section>
+<section class="psec" id="p-9"><h3>[POCKET — observe independently; no inference]</h3>
+<ul>
+<li><b>기본 관찰</b>: <code>pocket</code>(<code>None</code>/<code>Present</code>)을 관찰한다. <code>Present</code>이고 판독 가능할 때만 다음 두 값을 본다.
+<ul>
+<li><code>pocket_construction</code>: <code>Inset</code>(set-in/welt/jetted) / <code>Applied</code>(patch)
+</li>
+<li><code>pocket_projection</code>: <code>Flat</code>(평평하게 붙음) / <code>Projected</code>(몸판에서 떠 있으나 독립 3D 볼륨은 아님) / <code>Volumetric</code>(독립 3D 볼륨: gusset/bellows/box/pouch/cargo)
+</li></ul>
+</li>
+<li><b>금지 추론</b>: 플랩이 보인다고 해서 <code>Applied</code>·<code>Projected</code>·<code>Volumetric</code>가 되지 않는다. <code>Applied</code> 포켓이 자동으로 <code>Projected</code>나 <code>Volumetric</code>인 것도 아니다. 반대로 자체 gusset/bellows 3D 몸체가 있는 포켓(예: cargo)은 <code>Volumetric</code>이므로 <code>Projected</code>로 낮춰 읽지 않는다.
+</li>
+<li><b>다수성</b>: 개수는 메타데이터다. <code>count</code>(이산 반복)와 <code>density</code>(<code>sparse|moderate|dense</code>, 분산 정도)로 적고, 별도 파라미터로 만들지 않는다.
+</li>
+<li><b>POCKET MORPHOLOGY STATE</b>: <code>pocket = Present</code>이면 보고하는 모든 포켓 항목에 construction과 projection을 반드시 답한다. 이 답은 각 <code>pockets</code> 항목 안에 들어간다.
+<ul>
+<li>판독 가능 → <code>OBSERVED</code> + canonical 값. 생략하거나 하향 판독하지 않는다.
+</li>
+<li>증거가 가려짐 → <code>NOT_VISIBLE</code>, value <code>null</code>. 손·팔·물체가 가리는 경우, 개구부나 몸체가 차폐된 경우, 크롭 밖인 경우, 봐야 할 부위(개구부 가장자리·솔기·측면 깊이)가 화면에 없는 경우가 해당한다.
+</li>
+<li>부위는 보이지만 값을 확정할 수 없음 → <code>UNKNOWN</code>, value <code>null</code>. set-in과 patch를 구분할 수 없거나 측면 깊이가 안 보여 돌출 정도를 알 수 없는 경우다.
+</li>
+<li>판정은 파라미터마다 독립이다. 예를 들어 construction은 <code>NOT_VISIBLE</code>, projection은 <code>UNKNOWN</code>일 수 있다.
+</li>
+<li><code>UNKNOWN</code>은 어려운 판단을 피하는 용도가 아니다. 판독 가능한데 <code>UNKNOWN</code>을 고르면 값을 지어내는 것과 똑같은 계약 위반이다.
+</li>
+<li><code>pocket</code>이 <code>Present</code>가 아니면 형태를 아예 보고하지 않는다. 이는 '불확실'이 아니라 '해당 없음'이다.
+</li></ul>
+</li>
+<li><b>POCKET INSTANCES</b>: 포켓 형태는 <code>pocket</code> 관찰 안의 <code>pockets</code> 배열로만 보고한다.
+<ul>
+<li>각 항목은 <code>location</code> + <code>construction</code> + <code>projection</code>을 함께 담아 짝이 흩어지지 않게 한다(Chest/Applied/Flat, Lower Front/Applied/Volumetric JSON 예시가 있다).
+</li>
+<li><code>Present</code>면 포켓이 하나든, 동질 세트든, 서로 다른 그룹이든 항상 <code>pockets</code>를 출력한다.
+</li>
+<li>구분 가능한 포켓 그룹당 한 항목을 쓴다. 단일 포켓이나 하나로 이어진 파우치는 한 항목이다.
+</li>
+<li>그룹은 보이는 것으로만 나눈다. 의류 이름("Cargo", "utility", "tactical")은 항목을 늘릴 근거가 아니다.
+</li>
+<li><b>LOCATION</b> 토큰은 네 개뿐이다: <code>Chest</code>(상단 앞 가슴 높이), <code>Lower Front</code>(하단 앞, TROUSER의 앞 힙 포켓 포함), <code>Sleeve</code>, <code>Leg</code>(trouser/jumpsuit 다리). Side/Back/Left/Right/Hip/Thigh, 자유 텍스트, 좌표는 금지다.
+</li>
+<li>좌우 대칭은 인스턴스를 나누는 기준이 아니다. 같은 형태의 좌우 포켓은 한 항목이고, 단일 포켓을 둘로 쪼개지 않는다.
+</li>
+<li><code>pockets</code>는 개수가 아니다. 가림 때문에 전부 보이지 않을 수 있으므로 항목 수를 포켓 수로 취급하지 않는다.
+</li>
+<li>항목별 construction/projection에도 위와 같은 상태 규칙을 파라미터별·인스턴스별로 적용한다.
+</li>
+<li>항목을 지어내지 않는다. 포켓은 보이지만 그룹을 나눌 수 없으면 보이는 범위를 덮는 한 항목으로 쓴다.
+</li>
+<li>최상위 <code>pocket_construction</code>/<code>pocket_projection</code> 키는 응답 형식으로 폐기됐으므로 출력하지 않는다.
+</li></ul>
+</li>
+<li><b>POCKET MORPHOLOGY IS MANDATORY</b>: <code>pocket = Present</code>이면 비어 있지 않은 <code>pockets</code> 배열을 반드시 출력한다. 다른 형식은 없다.
+<ul>
+<li>케이스: 단일 포켓이나 연속 파우치 → 1항목, 형태가 같은 여러 포켓 → 그룹당 1항목, 형태나 위치가 다른 그룹 → 그룹마다 1항목, 형태를 읽을 수 없는 포켓 → 그래도 1항목.
+</li>
+<li>항목 스키마: <code>{ "location": "&lt;Chest|Lower Front|Sleeve|Leg&gt;", "construction": {...}, "projection": {...} }</code>.
+</li>
+<li>확신이 없어도 항목은 필수다. 형태를 읽지 못하면 <code>NOT_VISIBLE</code>/<code>UNKNOWN</code> + <code>null</code>로 답한다. 침묵은 판독 가능성에 대한 답이 아니다.
+</li>
+<li>construction과 projection은 독립 판정이다. 최상위 키 금지, 좌우 대칭 비분리, 항목 수 ≠ 개수 규칙을 다시 강조한다.
+</li></ul>
+</li></ul>
+</section>
+<section class="psec" id="p-10"><h3>[OBSERVATION DISCIPLINE — do NOT over-read; ordinary appearance is not a feature]</h3>
+<ul>
+<li><b>원칙</b>: 특정 구조가 실제로 보일 때만 피처로 보고한다. 평범한 원단 외관은 피처가 아니다.
+</li>
+<li><b>surface</b>:
+<ul>
+<li>값 목록(MULTI, 동시에 나타나는 값은 모두 나열): <code>Pleated/Gathered/Quilted/Textured Knit/Lace/Mesh/Treated Surface/Reflective/Glossy/Semi Transparent/Transparent/Exotic-Skin</code>.
+</li>
+<li>뚜렷한 구성·부착·광학 처리가 명확히 보일 때만 출력한다. 일반 직조 결, 보이는 weave, melange/heather, brushed/fleece nap, 광택, 조명 차이는 해당하지 않는다. 처리가 없으면 <code>ABSENT</code>.
+</li>
+<li><code>Textured Knit</code>은 두드러진 구조적 니트(chunky/bold rib, cable, waffle, popcorn, aran)에만 쓴다. 판단 기준은 몸판이다. 소매끝·밑단·칼라·플라켓의 rib 마감만 있고 몸판이 매끈하면 <code>ABSENT</code>.
+</li>
+<li>SURFACE UNCERTAINTY: 표면 현상은 보이지만 어떤 canonical 처리인지 확정할 수 없으면 <code>UNKNOWN</code>, 값 없음. 가장 비슷한 값을 고르거나 목록에 없는 토큰(예: "Textured Surface")을 만드는 것은 계약 위반이다. 현상이 보이므로 <code>ABSENT</code>도 틀린 답이다.
+</li>
+<li><code>Exotic-Skin</code>: 악어·뱀·도마뱀·타조 등의 비늘·깃·판 구조가 두드러지게 보이는 외관일 때만 쓴다. 진짜/가짜/엠보싱은 구분하지 않는다. 일반 가죽·vinyl·직물, 동물 무늬 프린트(pattern/graphic 영역), 상품명·카테고리만으로는 출력하지 않는다.
+</li>
+<li><code>Glossy</code>/<code>Semi Transparent</code>/<code>Transparent</code>: 광학 속성이므로 소재로 추론하지 않고 관찰한다. <code>Glossy</code>는 실제로 보이는 높은 광택이며 <code>Reflective</code>(더 강한 반사)와 구분한다. Satin/Leather/Vinyl이라고 자동으로 <code>Glossy</code>가 되지 않는다. Mesh가 자동으로 <code>Transparent</code>, Lace가 자동으로 <code>Semi Transparent</code>인 것도 아니다.
+</li>
+<li><code>finish_realization</code> (<code>Baseline</code>|<code>Enhanced</code>|<code>Pronounced</code>): finish 값을 낼 때 함께 보고한다. <code>Baseline</code>은 소재·카테고리에 원래 있는 광택, <code>Enhanced</code>는 의도적으로 기준을 넘긴 처리, <code>Pronounced</code>는 극단적·지배적 고광택. 판단이 안 되면 생략한다.
+</li>
+<li><code>treated_surface_realization</code> (<code>Baseline</code>|<code>Distressed</code>): <code>Treated Surface</code>일 때만 쓴다. <code>Baseline</code>은 워싱·페이딩 등 원단 손상이 없는 가공, <code>Distressed</code>는 의도적 프레잉·찢김 등 원단 손상. 보이는 것만 근거로 하며 소재·상품명으로 추론하지 않는다. 판단 불가면 생략한다.
+</li></ul>
+</li>
+<li><b>pattern</b>:
+<ul>
+<li><code>visual_dominance</code> (<code>Subordinate</code>|<code>Dominant</code>): 올오버 패턴이 시각 인상을 지배하는지 보고한다. 위치나 범위를 뜻하지 않는다. 판단 불가면 생략한다.
+</li>
+<li><code>motif_complexity</code> (<code>Simple</code>|<code>Compound</code>): 하나의 반복 요소/기하 체계면 <code>Simple</code>, 둘 이상의 모티프 또는 겹친 모티프면 <code>Compound</code>. pattern 토큰에서 유도하지 않는다.
+</li>
+<li>값 (<code>Linear/Grid/Repeat</code>): 의도적으로 반복되는 색/프린트 모티프가 보일 때만 쓴다. 직조·twill 선·미세한 톤 차이는 해당하지 않으며, 단색이면 <code>ABSENT</code>.
+</li>
+<li>퀼팅 방화벽: 퀼팅만으로 생긴 기하는 <code>surface = Quilted</code>가 소유하므로 pattern으로 이중 보고하지 않는다. 테스트는 "퀼팅을 제거해도 이 패턴이 남는가?". 남으면 독립 패턴으로 함께 출력한다(퀼팅된 체크 → <code>Quilted</code> + <code>Grid</code>).
+</li></ul>
+</li>
+<li><b>category product_context</b> (<code>General</code>|<code>Activewear-Performance</code>): 구조 카테고리 안에서의 제품 맥락이다. 구조 카테고리를 바꾸지 않으며("Leggings Top" 없음), 색상이 아니라 구성과 연출로 판단한다.
+</li>
+<li><b>graphic</b> (<code>Localized/Dominant</code>): 특정 영역에 배치된 그래픽(로고, 슬로건, 프린트 이미지)이다. 올오버 반복 모티프는 pattern이므로 graphic은 <code>ABSENT</code>. 같은 모티프를 이중 보고하지 않는다.
+</li>
+<li><b>asymmetry</b> (<code>None/Present</code>):
+<ul>
+<li>의류 자체 구성의 의도적 좌우 불균형이다. 예: high-low·사선 밑단, 한쪽 높이가 다른 허리선, 관례적 겹침을 넘는 사선·랩, 원숄더, 한쪽에만 있는 패널·드레이프·타이·러플.
+</li>
+<li>더블브레스트·랩·한쪽 단추열 같은 관례적 여밈 겹침은 비대칭이 아니다(<code>None</code>). 한쪽 슬릿만으로도 비대칭이 아니며(C-2), 슬릿은 slit에서 보고한다.
+</li>
+<li>상의·아우터를 포함해 모든 의류의 밑단·허리선을 읽는다. 포즈(팔 올림, 기울어진 자세, 쏠린 천)는 비대칭이 아니다.
+</li>
+<li>미러 테스트를 주 구조만으로 끝내지 않고 한쪽에만 있는 요소를 전부 훑는다. 단일 가슴 포켓, 사이드 지퍼, 단일 벤트 같은 일상 디테일은 <code>None</code>.
+</li>
+<li>Semantic None: 대칭으로 판단했으면 <code>OBSERVED</code> + <code>None</code>. 한쪽이 크롭·가림이면 <code>NOT_VISIBLE</code>, 보이지만 판독 불가면 <code>UNKNOWN</code>.
+</li></ul>
+</li>
+<li><b>collar</b> (<code>None/Shirt/Stand/Sailor/Peter Pan/Tie/Ruffle/Shawl/Notched/Peak</code>):
+<ul>
+<li>실제 칼라 구조만 해당한다. 맨 네크라인(crew, scoop, open V)은 <code>None</code>.
+</li>
+<li><code>Stand</code>는 독립적인 칼라 조각이 필요하다. 후드 개구부 윗단, 지퍼 chin-guard, 네크 마감 밴드는 <code>None</code>.
+</li>
+<li>라펠은 칼라↔라펠 솔기의 노치로 1차 판별한다. 노치가 보이면 <code>Notched</code>, 노치 없이 아래 라펠 끝이 솟으면 <code>Peak</code>. 판독 불가면 <code>UNKNOWN</code>.
+</li></ul>
+</li>
+<li><b>waist_definition</b> (<code>Undefined/Defined/Cinched</code>):
+<ul>
+<li>메커니즘이 아니라 관찰되는 결과 형태를 판단한다. <code>Defined</code>는 허리가 형태 잡혀 좁아지거나 자연 허리 벨트가 허리를 설정하는 상태, <code>Undefined</code>는 형태 잡힘 없음(bodycon이라도 허리가 좁아지지 않으면 해당), <code>Cinched</code>는 명확한 안쪽 압축.
+</li>
+<li>벨트가 있다는 것만으로 <code>Cinched</code>가 아니다. <code>Cinched</code>는 실루엣이나 fit을 함의하지 않는다.
+</li>
+<li>적용 게이트 (SR FROZEN 2026-08-21): GATE 1, 카테고리는 Jacket/Coat/Dress/Jumpsuit만. GATE 2, Jacket이 <code>Cropped</code>/<code>Waist Length</code>면 키를 내지 않고 <code>Hip Length</code>면 평가한다. Coat/Dress/Jumpsuit는 전 길이에서 적격. length는 적용 여부만 정하고 값을 유도하지 않는다.
+</li>
+<li>적용되면 반드시 상태로 답한다: 판독되면 <code>OBSERVED</code>, 허리가 크롭·가림이면 <code>NOT_VISIBLE</code>, 확정 불가면 <code>UNKNOWN</code>. <code>Undefined</code>를 판독 불가의 대체값으로 쓰지 않는다.
+</li></ul>
+</li>
+<li><b>fit</b> (<code>Slim/Regular/Relaxed/Oversized</code>):
+<ul>
+<li>전체 3D 실루엣 기준의 신체 대비 여유 판단이다. 판독 가능성은 이미지 유형이 아니라 증거로 정하며, 비착용이어도 3D 형태가 읽히면 <code>OBSERVED</code>. 완전히 평평하거나 증거가 부족할 때만 <code>UNKNOWN</code>.
+</li>
+<li>Confound 방화벽: "부피는 여유가 아니다." 원단 두께, 패딩·퀼팅, 소매 볼륨, 플레어, 큰 칼라·커프는 단독 근거가 아니다(각각 다른 파라미터가 소유). 확장된 어깨 폭은 fit의 증거이며 <code>shoulder_drop</code>으로 전환하지 않는다.
+</li>
+<li>판독 절차: 어깨/상단 폭 → 가슴/몸통 → 허리~밑단 순으로 훑은 뒤 한 번 답한다. 한 영역으로 전체를 결정하지 않는다. 근거 없는 기본값 <code>Regular</code>는 계약 위반이다.
+</li>
+<li>세 경계: <code>Slim</code>↔<code>Regular</code>는 윤곽이 신체를 재현하는지, <code>Regular</code>↔<code>Relaxed</code>는 몸판이 떨어져 늘어지는지, <code>Relaxed</code>↔<code>Oversized</code>는 구성 프레임 자체가 착용자보다 큰지("BUILT larger vs FILLED thicker").
+</li></ul>
+</li>
+<li><b>shoulder_structure</b> (<code>None/Mild/Strong/Extreme</code>):
+<ul>
+<li>보이는 바깥 어깨 윤곽만 판단한다. 패드·심지는 추론하지 않으며, 퍼프 소매캡은 어깨 끝점이 아니다.
+</li>
+<li>STEP 1 둥글고 연속적이며 끝점 없음 → <code>None</code>. STEP 2 끝점이 읽히지만 직선 유지·외측 확장 없음 → <code>Mild</code>. STEP 3 수평에 가까운 직선 또는 상당한 외측 확장 → 최소 <code>Strong</code>. STEP 4 끝점 자체가 위로 솟음 → <code>Extreme</code>.
+</li>
+<li>fit, 폭, <code>sleeve_volume</code>, 두께, <code>shoulder_drop</code>은 단독으로 판독을 올리거나 내리지 않는다.
+</li></ul>
+</li>
+<li><b>shoulder_drop</b> (<code>None/Dropped</code>): 의류 어깨 구성이 끝나는 지점을 착용자의 해부학적 어깨 끝과 비교한다. 결정 질문은 솔기 위치가 아니라 정상 어깨 끝점이 보존되는지다.
+</li></ul>
+</section>
+<section class="psec" id="p-11"><h3>[OBSERVATION DISCIPLINE — 계속]</h3>
+<ul>
+<li><b>shoulder_drop (판정 절차)</b>: STEP 1 — 착용자 신체에서 해부학적 어깨 끝을 찾는다. 의복 seam을 기준으로 삼지 않는다. STEP 2 — ★ 먼저 끝점 보존 여부를 확인한다. 정상 어깨 끝에 해당하는 명확한 구조적 끝점이 있으면 <code>None</code>. STEP 3 — 끝점이 보존되지 않고 어깨 구조가 상완 쪽으로 이어진 뒤 소매로 넘어가면 <code>Dropped</code>. STEP 4 — junction 위치는 보조 증거일 뿐이며 "junction이 바깥이니 Dropped" 추론은 금지. STEP 5 — 그 밖의 보조 형태는 STEP 1–3을 대체할 수 없다.
+<ul>
+<li>CASE A: 프레임이 확장돼 소매가 바깥에서 시작해도 끝점이 보이면 <code>None</code>. CASE B: 정상 끝점이 없고 전환이 상완에서 일어나면 <code>Dropped</code>.
+</li>
+<li>Seam 유무는 어느 방향으로도 기준이 아니다. 명확히 보존된 끝점은 <code>None</code>의 긍정 증거다.
+</li>
+<li>폭/핏 방화벽: Oversized 핏, 넓은 어깨 폭, 프레임 확장, 볼륨, 패딩 유무, 소매 볼륨, 원단 경도는 단독으로 <code>shoulder_drop</code>을 정하지 못한다. Oversized+<code>None</code>, Regular/Relaxed+<code>Dropped</code> 모두 정당하다.
+</li>
+<li><code>shoulder_span</code>(프레임 폭), <code>shoulder_structure</code>(윤곽 형태)와 별개 질문이며 서로 도출하지 않는다.
+</li>
+<li>Evidence에는 해부학적 어깨 끝을 어디로 잡았는지와 junction이 그 점 대비 어디에 있는지를 적는다.
+</li></ul>
+</li>
+<li><b>sleeve_volume</b> (<code>Regular</code>/<code>Voluminous</code>): 소매 몸판의 가시적 볼륨이며 길이와 별개다. 일반 소매 범위면 <code>Regular</code>, puff·balloon처럼 의도적으로 확장된 소매 몸판이면 <code>Voluminous</code>. 원단 두께·퀼팅·패딩·다운으로 커진 소매는 <code>Regular</code>이며 "puffer → Voluminous" 지름길은 금지. 소매 스타일명은 출력하지 않는다.
+</li>
+<li><b>cuff_type</b> (<code>None</code>/<code>Standard</code>/<code>French</code>/<code>Ribbed</code>): 소매 끝 구조의 종류만 본다. sleeveless면 키를 생략한다. <code>None</code>은 별도 cuff 구조 없음, <code>Standard</code>는 일반 cuff 밴드, <code>French</code>는 접어 겹친 이중 cuff, <code>Ribbed</code>는 리브 니트 밴드. cuff가 없는 소매 끝이 보이면 OBSERVED+<code>"None"</code>이며, 프레임 밖이면 NOT_VISIBLE, 판정 불가면 UNKNOWN.
+</li>
+<li><b>cuff_scale</b> (<code>Reduced</code>/<code>Regular</code>/<code>Enlarged</code>): <code>cuff_type</code>이 OBSERVED이고 <code>None</code>이 아닐 때만 적용한다. 적용되면 반드시 하나를 고르며 <code>Regular</code>도 능동적인 답이다. cuff 깊이를 소매 폭(착용 이미지는 전완) 대비로 이미지 안에서 측정한다. 풀린 cuff에 속지 않고, 소매 길이·부피는 근거가 아니다. "셔츠치고 큼" 같은 외부 기준 표현은 금지.
+</li>
+<li><b>collar_scale</b> (<code>Reduced</code>/<code>Regular</code>/<code>Enlarged</code>): collar와 lapel을 함께 담는 단일 필드다. collar가 OBSERVED이고 <code>None</code>이 아닐 때만 적용한다. 셔츠형은 neckline·상흉부 대비 도달 범위, lapel형은 chest panel 대비 가로 폭으로 본다. 수치 규칙 금지. 형태≠크기(Peak가 자동 Enlarged 아님), 여밈 구조≠크기.
+</li>
+<li><b>COMPONENT SCALE ≠ GARMENT FIT</b>: 부품 크기는 주변 대비, fit은 몸판 대 신체 대비로 별개 질문이다. 큰 collar/cuff가 Oversized를 만들지 않고, 그 반대도 아니다.
+</li>
+<li><b>fabric_behavior</b> (<code>Structured</code>/<code>Semi-Structured</code>/<code>Semi-Fluid</code>/<code>Fluid</code>): 원단 자체가 입체 형태를 얼마나 만드는가. <code>Structured</code>는 원단이 볼륨을 만들고 유지, <code>Semi-Structured</code>는 형태는 유지되지만 쉽게 굴복, <code>Semi-Fluid</code>는 대체로 몸을 따름, <code>Fluid</code>는 자립 없이 드레이프.
+<ul>
+<li>접힘 자체가 Semi-Structured가 아니다. 국소 강성(패딩·퀼팅 패널)이 전체를 Structured로 만들지 않는다. 몸판·소매·하단을 통합해 판단한다. 소재 정체(Leather/Denim/Wool)가 Structured를 정하지 않는다.
+</li></ul>
+</li>
+<li><b>material</b> (<code>Cotton</code>/<code>Wool</code>/<code>Leather</code>/<code>Suede</code>/<code>Knit</code>/<code>Denim</code>/<code>Synthetic</code>/<code>Silk</code>/<code>Velvet</code>/<code>Fur</code>/<code>Padding</code>/<code>Other</code>): 보이는 소재 class이며 섬유 조성 추론이 아니다. 매끈한 기술 원단은 <code>Synthetic</code>. 판정할 수 없으면 더 넓은 class, <code>Other</code>, 또는 UNKNOWN. 영역별 소재가 다르면 각각 값으로 보고하고 <code>locations</code>로 위치를 적는다.
+</li>
+<li><b>trouser_distinction</b> (<code>Tailored</code>/<code>Casual</code>/<code>Sport</code>/<code>Jeans</code>/<code>Leggings</code>): waistband, 앞 여밈, hip pocket, 다리 구조로 읽는 제품 class 관찰이다. 소재·포켓 형태·핏 관찰이 아니다.
+<ul>
+<li>값 정의: <code>Tailored</code>는 수트 조립, <code>Jeans</code>는 데님형 원단 + 벨트고리 waistband, fly front, 곡선 hip pocket·리벳, <code>Sport</code>는 고무·drawcord pull-on, <code>Leggings</code>는 밀착 신축 니트 pull-on, <code>Casual</code>은 위 어디에도 해당하지 않는 일상 바지. <code>Casual</code>은 fallback이 아니라 긍정적 답이다.
+</li>
+<li>Jeans는 포켓 개수가 아니다. cargo 포켓이 있어도 jeans 조립이면 <code>Jeans</code>. 드레스 바지형 데님은 <code>Tailored</code>, pull-on 데님은 <code>Casual</code>.
+</li>
+<li><code>material = Denim</code>만으로 Jeans가 아니다. 폭·핏·워싱·길이·rise는 무관하다.
+</li>
+<li>waistband·여밈·hip pocket을 읽을 수 없으면 UNKNOWN이며 Casual이 흡수하지 않는다.
+</li>
+<li>결정 순서: Leggings → Sport → Jeans → Tailored → Casual → UNKNOWN. 첫 일치에서 멈춘다.
+</li></ul>
+</li>
+<li><b>closure_type</b> (<code>Button</code>/<code>Single Breasted Button</code>/<code>Double Breasted Button</code>/<code>Snap Button</code>/<code>Zipper</code>/<code>Hook Closure</code>/<code>Open</code>): 보이는 여밈 메커니즘만 적는다. 숨은 Snap/Zipper/Hook을 추론하지 않는다. 단추 달린 아우터는 브레스팅에 따라 Single/Double, 일반 상의·드레스 placket은 <code>Button</code>, 여밈 없는 앞 개구부는 <code>Open</code>.
+</li>
+<li><b>hood</b>: 도메인은 <code>Present</code> 하나뿐이다. 보이면 OBSERVED+<code>"Present"</code>, 적용 카테고리에서 명백히 없으면 ABSENT+null. <code>"None"</code> 값은 불법이다. 비적용 카테고리면 키를 생략한다. 후드 개구부 상단은 Stand collar가 아니다.
+</li>
+<li><b>decorative_detail</b> (<code>Embroidery</code>/<code>Sequin-Beading</code>/<code>Appliqué</code>/<code>Piping</code>): 부착 장식 구성(MULTI). <code>Piping</code>은 솔기·가장자리를 따라가는 좁은 부착 코드이며, 위치는 <code>locations</code>, 색은 <code>color_observation</code>에 따로 적는다. topstitch, 대비 밴드, 리브 hem, fur/feather 트림은 Piping이 아니다.
+</li>
+<li><b>exposure_opening</b>: 모든 카테고리에 적용되는 2-class MULTI 관찰이며 키는 필수다.
+<ul>
+<li>카테고리는 게이트가 아니다. 크롭 상의의 실제 피부 간격은 <code>Midriff / Waist</code>, 미니스커트의 두드러진 노출은 <code>Upper Thigh</code>. 기존 "Dress/Jumpsuit 전용" 제한은 폐기됐다(CEO 2026-09-03).
+</li>
+<li>상태 순서: (S1) Class A나 B가 확립되면 OBSERVED. (S2) 착용자/신체 관계가 없어 Class A를 평가할 수 없으면 NOT_VISIBLE. (S3) 신체 관계가 읽히고 노출이 없으면 ABSENT. (S4) 보이지만 판정 불가면 UNKNOWN.
+</li>
+<li>CLASS A(신체 부위): <code>Shoulder</code>, <code>Chest / Décolletage</code>, <code>Midriff / Waist</code>, <code>Back</code>, <code>Upper Thigh</code>. 일반 sleeveless·tank의 통상 어깨 노출은 <code>Shoulder</code>가 아니다.
+</li>
+<li>CLASS B(설계된 개구부): <code>Open Back</code>, <code>Front Cutout</code>, <code>Side Cutout</code>, <code>Shoulder Cutout</code>. 부위와 구성은 공존할 수 있다(예: [Back, Open Back]).
+</li>
+<li>BODY EXPOSURE FIREWALL: 구성이나 카테고리만으로 region을 만들지 않는다. 단추를 풀거나 걷는 등 착용·연출 상태로 생긴 노출은 제외한다. 질문은 "구성대로 여미고 곧게 걸었을 때도 노출되는가". Class B가 Class A를 자동으로 증명하지 않는다.
+</li></ul>
+</li>
+<li><b>attachment "Belt"</b>: 허리 벨트만 해당한다. 소매 스트랩·탭은 Belt가 아니고, 어깨 탭은 <code>Epaulette</code>.
+</li>
+<li><b>neckline_shape / neckline_position</b>: 실제 목 개구부의 원단 가장자리로 읽고 장식 끈이나 수렴선은 보지 않는다. 직선 상단은 <code>Straight</code>, <code>V</code>는 실제 V 가장자리에만 쓴다. <code>Round</code>는 목 가까운 얕은 둥근 형태, <code>Scoop</code>은 더 깊고 넓은 U형.
+</li>
+<li><b>PARAMETER OWNERSHIP FIREWALL</b>: 구성과 개구부 기하는 다른 파라미터이며 둘 다 답한다.
+<ul>
+<li><code>shoulder_connection</code>(<code>Standard</code>/<code>Strap</code>/<code>Strapless</code>/<code>Halter</code>/<code>One Shoulder</code>)은 어깨·목 지지 방식이다. 이 값들은 <code>neckline_shape</code>에 쓰지 않는다.
+</li>
+<li><code>neckline_shape</code>(<code>Round</code>/<code>V</code>/<code>Square</code>/<code>Straight</code>/<code>Scoop</code>/<code>Mock</code>/<code>Turtleneck</code>/<code>Funnel</code>)는 개구부 가장자리 형태다. halter라는 이유로 추론하지 않고, 완전한 윤곽이 안 보이면 UNKNOWN.
+</li>
+<li>knot·수렴하는 원단은 V가 아니다. 구성은 exposure를 대체하거나 억제하지 않는다. 정면 이미지에서 <code>Back</code>은 낼 수 없다. exposure는 neckline_shape에서 도출하지 않는다.
+</li>
+<li>예: 목 뒤로 감기고 어깨가 드러난 둥근 가장자리 드레스 → <code>Halter</code> + <code>Round</code> + <code>exposure_opening</code>에 <code>Shoulder</code>.
+</li></ul>
+</li>
+<li><b>공통 불확실성 규칙</b>: 영역은 보이지만 값을 신뢰성 있게 정할 수 없으면 추측하지 말고 UNKNOWN을 쓴다.
+</li></ul>
+</section>
+<section class="psec" id="p-12"><h3>[TARGET DESCRIPTOR — VISUAL RECONSTRUCTION PROTOCOL]</h3>
+<ul>
+<li><b>WHAT THE DESCRIPTOR IS FOR</b>: 구조화 관찰과 색 블록이 담지 못하는 시각 정보를 실어, 이미지를 보지 못한 독자도 외형을 재구성하게 하는 것이 유일한 목적이다. 관찰 요약이 아니며, 필드로 재구성 가능한 절은 삭제한다.
+</li>
+<li><b>금지 사항</b>: 점수, 축 이름(TC/SR/DM/EI), 격식·품질·취향·가격·용도 결론은 금지. 브랜드·디자이너·진위·출처·컬렉션을 사실로 단정하지 않는다("Chanel jacket"은 날조). 재구성 갭을 크게 줄일 때만 "Chanel-like" 같은 유사성 표지와 함께 유추를 쓸 수 있다.
+</li>
+<li><b>FACT · APPEARANCE · INFERENCE</b>: 모든 절은 세 층 중 하나이며 FACT &gt; APPEARANCE &gt; INFERENCE 순으로 위험이 낮은 층을 쓴다. APPEARANCE는 "-like", "resembles", "appears" 등으로 표시한다. INFERENCE는 최후 수단으로, 실제 갭이 있고 사실로 해결할 수 없으며 불확실성을 명시하는 등 9개 조건을 모두 충족할 때만 허용한다. 추론을 사실로 격상하지 않는다.
+</li>
+<li><b>인식론적 지위 규칙</b>: 금지어 목록은 없다. "structured shoulders" 같은 형태어도 보이면 정당하다. 금지되는 것은 관찰하지 않은 것을 사실로 주장하는 것이다.
+</li>
+<li><b>STEP 1 — RECONSTRUCTION GAP CHECK</b>: 구조화 관찰과 색 블록 이후에도 손실되는 시각 정보를 식별자로 보고한다.
+<ul>
+<li><code>RG-1</code> 부품의 결합·레이어 관계, <code>RG-2</code> 특징의 배치·범위, <code>RG-3</code> 토큰이 평탄화한 형태, <code>RG-4</code> UNKNOWN이나 양자택일을 강요받은 시각적 모호성, <code>RG-5</code> target 간 관계(STEP 4로 넘김), <code>RG-6</code> 도메인에 토큰이 없거나 <code>Other</code>가 강제된 경우.
+</li></ul>
+</li>
+<li><b>STEP 2 — <code>descriptor_need</code></b>: <code>"REQUIRED"</code>면 descriptor를 쓰고 <code>reconstruction_gaps</code>를 나열한다. <code>"NOT_NEEDED"</code>면 둘 다 비운다. NOT_NEEDED는 능동적 판단이며, 수수하거나 확신이 없다는 이유로 내지 않는다. 완전성을 보증할 수 없으면 REQUIRED. <code>"UNDETERMINED"</code>는 사용할 수 없다.
+</li>
+<li><b>STEP 3 — 작성</b>: 나열한 갭만 닫는다. 평서 산문으로 쓰고 bullet·JSON·줄바꿈은 쓰지 않는다. 길이는 정보량이 정하며 최소·최대가 없다. filler, 마케팅 문구, 필드 반복은 금지. 각 descriptor는 자기 target만 다룬다.
+</li>
+<li><b>STEP 4 — <code>cross_target_visual_relations</code> (RG-5)</b>: 둘 이상 target 간 관계(같은 트림 모티프, 같은 소재 처리, 색 조율)는 최상위 <code>cross_target_visual_relations</code>에 연결 target을 명시해 한 번만 낸다. suit나 매칭 페어를 선언하지 않는다.
+</li></ul>
+</section>
+<section class="psec" id="p-13"><h3>[OUTPUT — STRICT JSON ONLY, exactly this shape; no prose outside JSON]</h3>
+<ul>
+<li>JSON만 출력하고 JSON 밖에는 산문을 쓰지 않는다. 최상위는 <code>targets[]</code>와 선택 항목 <code>cross_target_visual_relations[]</code>.
+</li>
+<li>target 필드:
+<ul>
+<li><code>descriptor_need</code> (<code>REQUIRED</code>|<code>NOT_NEEDED</code>), <code>reconstruction_gaps</code> (<code>RG-1</code>..<code>RG-6</code>), <code>descriptor</code>
+</li>
+<li><code>identity</code> {<code>value</code>, <code>evidence</code>}
+</li>
+<li><code>readability</code> {<code>value</code>, <code>basis</code>, <code>limitation</code>, <code>evidence</code>}: <code>basis</code>가 적격성을 정하는 유일한 근거다.
+</li>
+<li><code>prominence</code> (<code>dominant</code>|<code>secondary</code>|<code>minor</code>)
+</li>
+<li><code>category</code> {<code>state</code> <code>OBSERVED</code>|<code>UNKNOWN</code>, <code>value</code>, <code>evidence</code>}
+</li>
+<li><code>observations</code>: 파라미터별. SINGLE과 MULTI 템플릿이 다르다.
+</li></ul>
+</li>
+<li><code>cross_target_visual_relations</code>: 관계가 없으면 생략한다. 항목은 <code>relation_id</code>, <code>target_ids</code>(서로 다른 target 2개 이상), <code>kind</code>, <code>evidence</code>. <code>kind</code>는 <code>REPEATED_TRIM_MOTIF</code>|<code>REPEATED_MATERIAL_TREATMENT</code>|<code>REPEATED_DECORATIVE_MOTIF</code>|<code>REPEATED_COLOUR_TREATMENT</code>|<code>OTHER_VISUAL_COORDINATION</code>.
+</li></ul>
+</section>
+<section class="psec" id="p-14"><h3>[OBSERVATION SHAPE — SINGLE vs MULTI ARE TWO DIFFERENT SHAPES]</h3>
+<ul>
+<li>MULTI 파라미터는 정확히 5개다: <code>material</code>, <code>surface</code>, <code>decorative_detail</code>, <code>attachment</code>, <code>exposure_opening</code>. 나머지는 모두 SINGLE.
+</li>
+<li>(A) SINGLE: <code>state</code>, <code>value</code>, <code>region</code>, <code>evidence</code>. 영역형 파라미터만 <code>byRegion</code>을 쓴다. <code>descriptor</code>는 값이 <code>Other</code>일 때만 필수. 반복은 <code>count</code>, <code>density</code>(<code>sparse</code>|<code>moderate</code>|<code>dense</code>)로 적는다. OBSERVED이면 value 필수, 그 외 state는 null.
+</li>
+<li>(B) MULTI: 스칼라 <code>value</code>는 항상 null이고 값은 <code>values[]</code>에 담는다. 각 항목은 <code>value</code>, <code>descriptor</code>, <code>evidence</code>, 선택 <code>coverage</code>, 선택 <code>locations</code> {<code>component</code>, <code>descriptor</code> <code>Panel</code>|<code>Edge</code>}.
+</li></ul>
+</section>
+<section class="psec" id="p-15"><h3>[MULTI SERIALIZATION — MANDATORY]</h3>
+<ul>
+<li>MULTI 도메인에는 <code>None</code>이 없다. 전부 없으면 <code>ABSENT</code>, value null, values[] 비움. OBSERVED에 "None"을 쓰면 계약 위반이다.
+</li>
+<li>값이 하나뿐이어도 <code>values[]</code>에 넣는다. 스칼라 value는 대표값이 아니며 아무 의미도 없다.
+</li>
+<li>키 생략은 파라미터가 카테고리에 적용되지 않을 때만 한다. 적용되지만 안 보이면 키를 내고 <code>NOT_VISIBLE</code>/<code>UNKNOWN</code>. 생략된 적용 키는 하류에서 보충되지 않고 레코드가 거부된다.
+</li>
+<li>모든 값은 아래 도메인의 정확한 canonical 토큰이어야 한다.
+</li></ul>
+</section>
+<section class="psec" id="p-16"><h3>[CANONICAL VALUE DOMAINS — category-independent parameters]</h3>
+<ul>
+<li><code>trouser_distinction</code>: Tailored/Casual/Sport/Jeans/Leggings · <code>fabric_behavior</code>: Structured/Semi-Structured/Semi-Fluid/Fluid · <code>waist_definition</code>: Undefined/Defined/Cinched
+</li>
+<li><code>sleeve</code>: Sleeveless/Short/Mid/Long · <code>sleeve_volume</code>: Regular/Voluminous · <code>shoulder_connection</code>: Standard/Strap/Strapless/Halter/One Shoulder · <code>shoulder_span</code>: Narrow/Regular/Extended · <code>shoulder_drop</code>: None/Dropped · <code>shoulder_structure</code>: None/Mild/Strong/Extreme
+</li>
+<li><code>neckline_shape</code>: Round/V/Square/Straight/Scoop/Mock/Turtleneck/Funnel · <code>neckline_position</code>: High/Regular/Low · <code>collar</code>: None/Shirt/Stand/Sailor/Peter Pan/Tie/Ruffle/Shawl/Notched/Peak · <code>collar_scale</code>: Reduced/Regular/Enlarged
+</li>
+<li><code>cuff_type</code>: None/Standard/French/Ribbed · <code>cuff_scale</code>: Reduced/Regular/Enlarged · <code>rib_hem</code>: None/Present · <code>hood</code>: Present
+</li>
+<li><code>front_opening_extent</code>: None/Partial/Full · <code>closure_type</code>: Button/Single Breasted Button/Double Breasted Button/Snap Button/Zipper/Hook Closure/Open
+</li>
+<li><code>pocket</code>: None/Present · <code>pocket_construction</code>: Inset/Applied · <code>pocket_projection</code>: Flat/Projected/Volumetric
+</li>
+<li><code>material</code> [MULTI]: Cotton/Wool/Leather/Suede/Knit/Denim/Synthetic/Silk/Velvet/Fur/Padding/Other. 함께 나타나는 값을 모두 나열하고 순위를 매기지 않는다. <code>Other</code>는 descriptor가 있을 때만.
+</li>
+<li><code>surface</code> [MULTI]: Pleated/Gathered/Quilted/Textured Knit/Lace/Mesh/Treated Surface/Reflective/Glossy/Semi Transparent/Transparent/Exotic-Skin
+</li>
+<li><code>pattern</code>: Linear/Grid/Repeat · <code>graphic</code>: Localized/Dominant · <code>asymmetry</code>, <code>slit</code>, <code>ruffle</code>: None/Present
+</li>
+<li><code>decorative_detail</code> [MULTI]: Embroidery/Sequin-Beading/Appliqué/Piping
+</li>
+<li><code>attachment</code> [MULTI]: Metal Hardware/Jewelry Attachment/Ribbon/Belt/Epaulette/Storm Flap/Fur Trim/Fringe/Feather/Other
+</li>
+<li><code>exposure_opening</code> [MULTI]: Shoulder/Chest / Décolletage/Midriff / Waist/Back/Upper Thigh/Open Back/Front Cutout/Side Cutout/Shoulder Cutout
+</li>
+<li><code>grammar</code>: Tailored/Casual/Utility
+</li></ul>
+</section>
+<section class="psec" id="p-17"><h3>[CANONICAL VALUE DOMAINS — category-dependent parameters]</h3>
+<ul>
+<li><b><code>silhouette</code></b>: Trouser Straight/Flared/Tapered · Skirt Straight/Widening/Narrowing · Dress Straight/Widening/Flared/Narrowing · Jumpsuit Straight/Flared/Tapered. 상의·아우터에는 키 자체를 내지 않는다.
+<ul>
+<li>하의가 밑단 쪽으로 향하는 방향 기하만 뜻한다. 헐렁함·폭·볼륨은 fit의 영역이다. 와이드는 Flared가 아니고 슬림은 Tapered가 아니다.
+</li></ul>
+</li>
+<li><b>LENGTH STEP 0 — 착용 신체 확인</b>: 의복이 보이는 인체에 착용돼 있고 밑단 위치를 잡을 신체 부위가 프레임 안에 있는가? 아니면 <code>length</code> NOT_VISIBLE/null로 쓰고 멈춘다.
+<ul>
+<li>플랫레이, 팩샷, 행거, 고스트 마네킹, 마네킹·바디폼은 '아니오'다. 의복 전체가 보인다는 것만으로는 부족하다.
+</li>
+<li>프레임 내 밑단 위치, 픽셀 비율, 카테고리 고정관념, 가상의 착용자로 길이를 추정하지 않는다.
+</li></ul>
+</li>
+<li><b><code>length</code></b>: T-Shirt/Shirt/Sweater/Sweatshirt Cropped/Regular/Long · Jacket Cropped/Waist Length/Hip Length · Coat Hip Length/Thigh Length/Knee Length/Maxi Length · Trouser/Jumpsuit Short/Knee Length/Calf Length/Ankle Length/Full Length/Extended Length · Skirt/Dress Mini/Midi/Maxi Length.
+</li>
+<li><b>Coat·Jacket 랜드마크</b>: Coat는 Hip·Thigh·Knee·Maxi를 신체 구간으로 가르고 허벅지 구간을 압축하지 않는다. Jacket은 허리 위아래 약 10cm인 Waist Zone을 기준으로 Cropped(분명히 위)·Waist Length(안)·Hip Length(분명히 아래)를 정한다. Waist와 Hip의 1차 판별은 바지 앞주머니가 덮이는 정도다. 립 밑단·봄버 구조는 길이 근거가 아니다.
+</li>
+<li><b>★ 아우터 밑단 우선, 순환 금지</b>: 실제 밑단 → 신체 구간 → 길이 도메인·카테고리 종합 → 전체 구성 확인 → 카테고리 확정. 잠정 카테고리가 신체 구간을 정하면 안 된다. 밑단 구간이 카테고리 도메인과 충돌하면 카테고리를 재검토한다.
+</li>
+<li><b>LENGTH READABILITY</b>: 밑단이 프레임 밖·가림이면 NOT_VISIBLE, 보이지만 자세 때문에 신뢰할 수 없으면 UNKNOWN. 선 자세에서 밑단과 신체가 분명하면 반드시 값을 고른다.
+</li>
+<li><b><code>fit</code></b>: Slim/Regular/Relaxed/Oversized. Skirt·Dress에만 <code>Voluminous</code>가 추가된다. Dress/Jumpsuit는 upper+lower.
+</li></ul>
+</section>
+<section class="psec" id="p-18"><h3>[NOT APPLICABLE — OMIT THE KEY]</h3>
+<ul>
+<li>비적용 파라미터는 키를 완전히 생략한다. N/A, null, None, ABSENT, NOT_VISIBLE, UNKNOWN, 빈 값으로도 내지 않는다.
+</li>
+<li>T-Shirt/Shirt: trouser_distinction, silhouette, waist_definition, shoulder_structure, hood, slit, ruffle, grammar. Sweater: 위에서 hood를 뺀 것.
+</li>
+<li>Sweatshirt: trouser_distinction, silhouette, waist_definition, shoulder_connection, shoulder_span, shoulder_structure, slit, ruffle, grammar.
+</li>
+<li>Jacket/Coat: trouser_distinction, silhouette, shoulder_connection, shoulder_span, neckline_shape, neckline_position, slit, ruffle.
+</li>
+<li>Trouser: waist_definition과 상의 관련 키 전부(sleeve, shoulder_*, neckline_*, collar, cuff_*, rib_hem, hood, front_opening_extent, closure_type, slit, ruffle, grammar, sleeve_volume, collar_scale).
+</li>
+<li>Skirt: trouser_distinction + Trouser와 같은 상의 관련 키(slit 제외). Dress: trouser_distinction, hood, grammar. Jumpsuit: trouser_distinction, hood, slit, ruffle, grammar.
+</li></ul>
+</section>
+<section class="psec" id="p-19"><h3>[REQUIRED KEYS — EMIT EVERY ONE (P2-R1)]</h3>
+<ul>
+<li>NOT-APPLICABLE 목록의 거울이다. 나열된 키는 특징이 없어도 반드시 존재해야 한다.
+</li>
+<li>공통 9개: material, surface, pattern, graphic, pocket, decorative_detail, attachment, asymmetry, exposure_opening.
+</li>
+<li>T-Shirt/Shirt (19): 공통 + fit, length, fabric_behavior, sleeve, shoulder_drop, neckline_shape, neckline_position, collar, rib_hem, front_opening_extent. Sweater/Sweatshirt (20): 위 + hood.
+</li>
+<li>Jacket/Coat (21): 공통 + fit, length, fabric_behavior, sleeve, shoulder_drop, shoulder_structure, collar, rib_hem, hood, front_opening_extent, closure_type, grammar.
+</li>
+<li>Trouser (14): 공통 + trouser_distinction, silhouette, fit, length, fabric_behavior. Skirt (14): 공통 + silhouette, fit, length, fabric_behavior, slit.
+</li>
+<li>Dress (23): 공통 + silhouette, fit, length, fabric_behavior, sleeve, shoulder_drop, shoulder_structure, neckline_shape, neckline_position, collar, rib_hem, front_opening_extent, slit, ruffle. Jumpsuit (21): Dress에서 slit·ruffle을 뺀 것.
+</li>
+<li>응답 전에 키 개수를 센다. 비가시는 NOT_VISIBLE, 판단 불가는 UNKNOWN, 확인된 부재는 의미적 <code>None</code> 또는 ABSENT. 침묵은 항상 거부된다.
+</li>
+<li>조건부 파라미터는 이 목록에 없으며 각자의 규칙이 등장 여부를 정한다.
+</li></ul>
+</section>
+<section class="psec" id="p-20"><h3>[DM DESIGNED DETAIL OBSERVATION — SUBORDINATE LAYER]</h3>
+<ul>
+<li><b>위치</b>: <code>dm_designed_detail_evidence</code>는 target 레벨에서 <code>observations</code>의 형제로 둔다. 37개 파라미터가 아니다.
+</li>
+<li><b>정의</b>: evidence 하나는 의복 위의 일관된 디자인 시스템 하나다. 무엇인지는 <code>evidence_family</code>로, 어떻게 보이는지는 세 primitive로 표현한다.
+</li>
+<li><b><code>evidence_family</code></b> (정확히 하나): <code>graphic</code>(프린트·로고), <code>surface_pattern</code>(자카드·핀스트라이프·반복 표면), <code>surface_treatment</code>(퀼팅·플리츠·셔링·디자인된 워시·레이스 바탕·광택 효과), <code>decorative_construction</code>(러플, 장식 솔기), <code>attached_hardware</code>(스터드·그로밋·장식 단추·디자인 지퍼), <code>attached_detail</code>(자수·비즈·시퀸·패치·프린지·깃털·리본), <code>designed_color_contrast</code>(대비 칼라·커프·밑단, 컬러블록).
+</li>
+<li><b>세 primitive</b> (각각 {<code>state</code>,<code>value</code>}): <code>relative_size</code> small/medium/large(시스템 전체 크기), <code>contrast</code> low/medium/high(주변과의 분리), <code>spatial_position</code> localized/distributed/whole_garment. <code>ABSENT</code>는 불법이며 사진 품질 문제는 state로 표현한다.
+</li>
+<li><b>측정 원칙</b>: 모티프가 아니라 시스템을 측정한다(가는 올오버 핀스트라이프는 large). 대비는 색만이 아니다(검정 위 검정 퀼팅도 contrast low로 인정).
+</li>
+<li><b>개체화</b>: 일관된 시스템 하나가 evidence 하나다(스터드 40개 밴드 1개). 독립된 두 시스템은 병합하지 않는다.
+</li>
+<li><b><code>evidence_id</code></b>는 레코드 내 고유하고 안정적이어야 한다. <b><code>source_observation_refs</code></b>는 예 "observations.graphic"이며, 해당 관찰이 없으면 <code>DM_SPECIFIC_OBSERVATION</code>.
+</li>
+<li><b><code>m1_supporting_realization</code></b>: 모든 evidence에 기록한다. <code>internal_chromatic_composition</code>(<code>multi_colour_compound</code>|<code>limited_or_uniform</code>), <code>internal_fill_realization</code>(<code>dense_varied</code>|<code>uniform_or_sparse</code>). 판정이 아닌 관찰이며, 읽을 수 없으면 UNKNOWN/NOT_VISIBLE.
+</li>
+<li><b><code>excluded[]</code></b>: 의도적으로 제외한 것과 이유(<code>natural_material</code>|<code>single_base_colour</code>|<code>image_capture_condition</code>). "functional"은 이유가 될 수 없다.
+</li>
+<li>디테일이 없으면 <code>"evidence": []</code>. DM 점수, DM1~DM9, tier, "M1/M2 triggered", Direction, Strength 등은 절대 출력하지 않는다.
+</li></ul>
+</section>
+<section class="psec" id="p-21"><h3>[⛔ CONTRACT SELF-CHECK — run this over your JSON BEFORE you return it]</h3>
+<ul>
+<li>실제 추출에서 validator에 거부된 위반들이며, 반환 전에 자기 출력을 다시 읽고 고친다.
+<ul>
+<li>비적용 키 출력(예: Trouser의 closure_type, Jacket의 shoulder_span).
+</li>
+<li>적용 키 누락(예: rib_hem, hood, front_opening_extent, neckline_*).
+</li>
+<li>의미적 None이 필요한 곳에 ABSENT(예: pocket, ruffle, rib_hem).
+</li>
+<li>None이 불법인 곳에 "None"(예: pattern, graphic).
+</li>
+<li>값 없는 OBSERVED.
+</li>
+<li>values[] 없는 MULTI OBSERVED.
+</li>
+<li>descriptor 필요성 미판단. 평범해 보여서 NOT_NEEDED로 두는 것은 오답이다.
+</li>
+<li>descriptor가 필드를 반복함.
+</li>
+<li>보지 않은 것을 단정함(정체·유추·추론 점검).
+</li>
+<li>target 간 관계를 target 안에 기록함.
+</li>
+<li>descriptor 길이를 숫자에 맞춤.
+</li></ul>
+</li>
+<li>구조적으로 무효인 관찰은 정직한 UNKNOWN보다 나쁘다. 하류는 고치지 않고 거부한다.
+</li></ul>
+</section>
+<section class="psec" id="p-22"><h3>[COLOUR_ADDENDUM — WORK IN EXPLICIT STAGES]</h3>
+<ul>
+<li>단일 Vision 호출이지만 아래 순서로 추론한다.
+</li>
+<li><b>STAGE 1</b>: 의복 target 식별(identity + readability).
+</li>
+<li><b>STAGE 2</b>: 적격 target마다 위 명세대로 의복 추출을 끝낸다(Frozen-40 관찰). 끝나기 전에는 색을 출력하지 않는다.
+</li>
+<li><b>STAGE 3 — 전용 색 2차 스윕</b>: 같은 이미지를 carrier 유형별로 다시 본다(주색 → 추가 디자인 색 → 단추·클로저 → 지퍼 → 금속·벨트 → 로고·그래픽 → 패턴 색 → 포켓 → 소재 영역 → 파이핑·칼라·커프·웨이스트밴드·패널). 결과는 target별 형제 <code>color_observation</code>으로 낸다.
+<ul>
+<li><code>primary_color_family</code>: black, white_family, gray, navy, blue, red, pink, yellow, orange, green, purple, brown, camel, beige, khaki, mint, wine, olive, gold, silver, uncertain 중 하나. <code>gold</code>/<code>silver</code>는 독립 패밀리.
+</li>
+<li>★ 따뜻한 어두운 색: 어둡기가 아니라 언더톤으로 판단한다. 녹색 기운이면 olive, 적자색이면 wine, 밝은 골든 탄이면 camel, 해당 없으면 brown. 조명이 만든 황주황 기운이나 밀리터리 같은 의복 연상으로 olive를 고르지 않는다. 애매하면 brown 쪽으로 기운다.
+</li>
+<li><code>color_lightness</code>(light/normal/dark), <code>color_usage</code>(single/subtle/accent/multi), <code>multi_color</code>(작은 단추·지퍼·로고만으로는 true가 아님), <code>color_effect</code>(none/neon/metallic).
+</li>
+<li><code>additional_colors</code>: 주색과 다른 패밀리의 의도된 디자인 색. 항목은 {<code>color_family</code>, <code>carrier_kind</code>, <code>carrier_ref</code>, <code>contrast_with_body</code>}. carrier는 closure, attachment, graphic, pattern, pocket, material_component, generic_descriptor 순으로 매핑한다. <code>contrast_with_body</code>는 <code>Tonal</code>|<code>Subtle</code>|<code>Distinct</code>.
+</li>
+<li>Small != Ignore: 톤이 가까운 단추도 의도된 색이면 포함한다. 실, 스티치, 그림자, 주름, 워시, 금속 반사, 동일 패밀리 톤 차이는 억제한다.
+</li>
+<li>컴포넌트·하드웨어 최종 스윕: 벨트·스트랩·대비 칼라 등 구조 컴포넌트와 하드웨어 존을 이미지에서 다시 확인한다. 색을 신뢰할 수 없으면 기록하지 않고 silver/gold를 추측하지 않는다("청바지라서 은색" 가정 금지).
+</li>
+<li><code>evidence</code>{<code>primary</code>,<code>lightness</code>,<code>usage</code>,<code>effect</code>}는 보이는 단서만 짧게. <code>color_notes</code>는 필드가 담지 못하는 색 사실(그라데이션, 이리데선트 등) 또는 null.
+</li></ul>
+</li>
+<li><b>STAGE 4 — 색 누락 감사</b>: (a) 놓친 디자인 색 (b) 반사·그림자를 색으로 오인 (c) 작은 컴포넌트 색 누락 (d) 복잡한 의복은 carrier별로 따로 점검.
+</li>
+<li><b>STAGE 5</b>: 최종 결합 payload를 출력한다.
+</li></ul>
+</section>
+<section class="psec" id="p-23"><h3>[GARMENT ATTENTION FIREWALL]</h3>
+<ul>
+<li>색 2차 스윕은 명백한 구조적 모순이 없는 한 STAGE 2의 의복 관찰을 고치지 않는다.
+</li>
+<li><code>observations</code>와 <code>color_observation</code>은 별개의 형제 계약이다. <code>secondary_color_family</code>, <code>secondary_color_present</code>는 내보내지 않는다.
+</li></ul>
+</section>
+<section class="psec" id="p-24"><h3>[PRESENTATION TYPE] (PRESENTATION_ADDENDUM)</h3>
+<ul>
+<li>메타데이터이며 의복 파라미터가 아니다. 어떤 관찰도 바꾸면 안 된다.
+</li>
+<li>적격 target마다 <code>observations</code>의 형제로 <code>presentation_type</code>을 추가한다.
+</li>
+<li><code>WORN</code>은 실제 사람이 입어 신체와의 관계가 보임, <code>FLAT_LAY</code>는 착용자 없이 바닥에 펼침, <code>PRODUCT_ONLY</code>는 행거·고스트 마네킹·마네킹·바디폼·팩샷처럼 실제 착용자가 없음. 토큰 하나만 고른다.
+</li></ul>
+</section>
+  </div>
 
   <footer>
     원본: <code>lib/style-ex/engine/producer_prompt_v1.js</code> · 관련 문서: <code>docs/style-ex-flow.html</code>
