@@ -155,6 +155,10 @@
   .fix .to::before { content: "→ 개선: "; color: var(--fail); font-weight: 600; }
   .fix + .fix { margin-top: 6px; }
   .fix .orig { display: block; margin-top: 3px; font: 11.5px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); word-break: break-word; }
+  .fix .applied { display: block; margin-top: 4px; padding: 4px 8px; border-radius: 4px; background: var(--rule-bg); color: var(--rule); font: 11.5px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; word-break: break-word; }
+  .fix .applied::before { content: "개선: "; font-weight: 700; }
+  .fix .applied .where { color: var(--muted); font-family: -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+  .fix .applied.pending { background: var(--out-bg); color: var(--muted); }
   .fix-index { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
   .fix-index a { display: inline-block; font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--fail-bg); color: var(--fail); text-decoration: none; }
   .fix-index a:hover { text-decoration: underline; }
@@ -197,7 +201,7 @@
     프롬프트 점검에서 찾은 개선 항목은 빨간 상자로, 해당 단계 바로 아래에 붙여 두었습니다.
   </p>
   <div class="fix" id="i-noise"><b>개선 #11</b>프롬프트 전체 — 노이즈와 버전 표기
-    <span class="to">첫 줄 제목은 "CANDIDATE V1"인데 버전은 V2이다. "historical 41 · 37 facts · 26 Item facts · 12 Style Vision parameters"처럼 개수 표기가 네 가지라 무엇을 다 내야 하는지 흐려진다. 내부 결정 코드(CEO-FLV-INT-01, CDM-03 S1, CDM-05 B, CA#29, EI-2, D-2 rule, K-2)와 "replaces nothing in section 8" 같은 패치 문구는 changelog로 옮기고, 8a–8e 보충 절은 본문(§3·§5·§6·§8)에 합친다. 파라미터 인벤토리 문서는 grammar를 "tops / outerwear / dresses"에 적용한다고 적지만 프롬프트와 런타임은 Jacket · Coat에만 묻는다 — 문서를 런타임에 맞춘다.</span><span class="orig">(원문: “STMX FULL-LOOK STYLE VISION — INTEGRATED EXTRACTION PROMPT CANDIDATE V1” / “inventory: … (historical 41) · active extraction = Architecture Candidate V2.1 (37 facts in four observation groups; 2 nested in pockets[]; 2 frozen-DM fields assembled, not asked)” / “8a. EXACT OUTPUT SHAPE (replaces nothing in section 8; it specifies the object named there)”)</span></div>
+    <span class="to">첫 줄 제목은 "CANDIDATE V1"인데 버전은 V2이다. "historical 41 · 37 facts · 26 Item facts · 12 Style Vision parameters"처럼 개수 표기가 네 가지라 무엇을 다 내야 하는지 흐려진다. 내부 결정 코드(CEO-FLV-INT-01, CDM-03 S1, CDM-05 B, CA#29, EI-2, D-2 rule, K-2)와 "replaces nothing in section 8" 같은 패치 문구는 changelog로 옮기고, 8a–8e 보충 절은 본문(§3·§5·§6·§8)에 합친다. 파라미터 인벤토리 문서는 grammar를 "tops / outerwear / dresses"에 적용한다고 적지만 프롬프트와 런타임은 Jacket · Coat에만 묻는다 — 문서를 런타임에 맞춘다.</span><span class="orig">(원문: “STMX FULL-LOOK STYLE VISION — INTEGRATED EXTRACTION PROMPT CANDIDATE V1” / “inventory: … (historical 41) · active extraction = Architecture Candidate V2.1 (37 facts in four observation groups; 2 nested in pockets[]; 2 frozen-DM fields assembled, not asked)” / “8a. EXACT OUTPUT SHAPE (replaces nothing in section 8; it specifies the object named there)”)</span><span class="applied">“STMX FULL-LOOK STYLE VISION — INTEGRATED EXTRACTION PROMPT V1.1 / prompt_version: FULL_LOOK_OBSERVE_V1_1 (based on the approved V2) / scope: per look you answer 37 facts — the 12 look and relation parameters of section 5 and the 26 Item garment facts of section 6 …” — CEO-FLV-INT-01 · CDM-03 S1 · CA#29 · EI-2 · D-2 rule · PHASE1_OUTPUT_SCHEMA · “replaces nothing in section 8” 삭제. 인벤토리 문서의 grammar 적용 표기는 동결 패키지라 그대로 <span class="where">(v1.1 머리말 · §3 · §5 · §6 · §8)</span></span></div>
 
   <div class="legend">
     <span><span class="src usr">USER</span>user 메시지 (이 프롬프트는 system을 쓰지 않음)</span>
@@ -244,9 +248,9 @@
     </table>
   </div>
   <div class="fix" id="i-cache"><b>개선 #12</b>전송 순서와 프롬프트 캐시
-    <span class="to">고정된 4만 자가 요청마다 바뀌는 이미지 <b>뒤</b>에 있어 프롬프트 캐시가 걸리지 않는다(입력 토큰을 매번 전부 낸다). 텍스트 블록을 앞에 두고 <code>cache_control</code>을 걸면 캐시가 된다. 단, 입력 계약이 "image block + text block"으로 동결돼 있으므로 순서를 바꾸려면 재검증(EX-04 12장 재현)과 승인이 필요하다.</span><span class="orig">(원문 설정: “messages: [ { role: user, content: [ image block (base64), text block (prompt V2) ] } ]” · “system: none”)</span></div>
+    <span class="to">고정된 4만 자가 요청마다 바뀌는 이미지 <b>뒤</b>에 있어 프롬프트 캐시가 걸리지 않는다(입력 토큰을 매번 전부 낸다). 텍스트 블록을 앞에 두고 <code>cache_control</code>을 걸면 캐시가 된다. 단, 입력 계약이 "image block + text block"으로 동결돼 있으므로 순서를 바꾸려면 재검증(EX-04 12장 재현)과 승인이 필요하다.</span><span class="orig">(원문 설정: “messages: [ { role: user, content: [ image block (base64), text block (prompt V2) ] } ]” · “system: none”)</span><span class="applied">(코드) 승인 V2가 아닌 프롬프트는 [ text(cache_control: ephemeral), image ] 순서로 보낸다 — BlockOrder "prompt_first". 승인 V2는 검증된 "image_first" 그대로. 응답의 blockOrder에 기록 <span class="where">(app/api/full-style-id-extraction/route.ts)</span></span></div>
   <div class="fix" id="i-gemini"><b>개선 #14</b>Gemini 출력은 검증되지 않음
-    <span class="to">추출 엔진은 claude-opus-5-5 응답 12개로만 검증됐다. Gemini 응답이 §8a 모양을 지키는지(키 이름, MULTI 배열, pockets[] 형식) 표본으로 확인하고, 실패 유형을 관찰 결과 탭의 <code>native_check</code> · <code>transport.unconvertible</code>로 모은다.</span><span class="orig">(원문 설정: “model: claude-opus-5-5” · “live_validation: EX-04 (2026-10-16): 12 images, 12 calls, model returned claude-opus-5-5”)</span></div>
+    <span class="to">추출 엔진은 claude-opus-5-5 응답 12개로만 검증됐다. Gemini 응답이 §8a 모양을 지키는지(키 이름, MULTI 배열, pockets[] 형식) 표본으로 확인하고, 실패 유형을 관찰 결과 탭의 <code>native_check</code> · <code>transport.unconvertible</code>로 모은다.</span><span class="orig">(원문 설정: “model: claude-opus-5-5” · “live_validation: EX-04 (2026-10-16): 12 images, 12 calls, model returned claude-opus-5-5”)</span><span class="applied pending">미적용 — 유료 실호출이 필요해 아직 하지 않음. 표본 이미지로 Gemini 응답을 받아 native_check · transport.unconvertible · normalized를 모아야 함</span></div>
   <div class="arrow"></div>
   <div class="node model">
     <div class="who">§0 역할과 한계</div>
@@ -258,7 +262,7 @@
       <li>기억이나 패션 지식으로 채우지 않음. 같은 사실을 두 번 읽지 않음 — 프롬프트에서 다시 나오는 것은 같은 관찰의 재사용</li>
     </ul>
     <div class="fix" id="i-stop"><b>개선 #2</b>"멈춤"의 출력이 정해져 있지 않음
-      <span class="to">§8a는 frame · objects · facts … 를 모두 가진 객체 하나를 요구하는데, 착장이 아닐 때 "stop"하면 무엇을 내야 하는지 없다. <code>{"frame": {"state": "NOT_VISIBLE", "limits": ["not_a_worn_look"]}, "objects": [], …}</code>처럼 빈 모양을 명시한다. 그래야 추출 엔진이 TRANSPORT_FAILURE가 아니라 판정 불가로 돌려준다.</span><span class="orig">(원문: “If the image is not a worn look (flat-lay, product shot, mannequin, collage) report look_observability with the limit not_a_worn_look and stop.”)</span></div>
+      <span class="to">§8a는 frame · objects · facts … 를 모두 가진 객체 하나를 요구하는데, 착장이 아닐 때 "stop"하면 무엇을 내야 하는지 없다. <code>{"frame": {"state": "NOT_VISIBLE", "limits": ["not_a_worn_look"]}, "objects": [], …}</code>처럼 빈 모양을 명시한다. 그래야 추출 엔진이 TRANSPORT_FAILURE가 아니라 판정 불가로 돌려준다.</span><span class="orig">(원문: “If the image is not a worn look (flat-lay, product shot, mannequin, collage) report look_observability with the limit not_a_worn_look and stop.”)</span><span class="applied">“… report look_observability with the limit not_a_worn_look and stop, returning exactly this object: {"frame": {"state": "NOT_VISIBLE", "limits": ["not_a_worn_look"]}, "objects": [], "front_state": {}, …, "upper": {"governing_ref": null, …}, "exposure_supplement": [], "facts": {}, "detail_systems": []}.” <span class="where">(v1.1 §0)</span></span></div>
   </div>
 
   <!-- ───────────── G1 ───────────── -->
@@ -277,7 +281,7 @@
       <div class="branch"><span class="tag alt">소속</span>옷에 달린 자기 벨트 · 타이 · 새시는 그 옷의 일부 — 컴포넌트가 아님 (§8e)</div>
     </div>
     <div class="fix" id="i-part"><b>개선 #1</b><code>participates</code> 필드 — 금지와 필수가 동시에
-      <span class="to">§3은 "컴포넌트 안에 participation / admitted / eligible / excluded 필드를 내지 말라"는데, §8a의 출력 모양은 <code>objects[]</code>마다 <code>"participates": true|false</code>를 넣는다. 변환기는 둘 다 받아들이지만(없으면 참여로 간주) 모델에게는 모순이다. "participates는 objects[]에만 쓰고, facts 안에는 쓰지 않는다"로 범위를 적는다. 알려진 잔차 VQ(M178 팔에 든 코트 등록)도 이 판단에서 나온다.</span><span class="orig">(원문: “Participation is a routing decision, not a fact: do not emit any participation / admitted / eligible / excluded field inside a component.” / “"objects": [ { "ref": "c1", "identity": "…", "participates": true, …”)</span></div>
+      <span class="to">§3은 "컴포넌트 안에 participation / admitted / eligible / excluded 필드를 내지 말라"는데, §8a의 출력 모양은 <code>objects[]</code>마다 <code>"participates": true|false</code>를 넣는다. 변환기는 둘 다 받아들이지만(없으면 참여로 간주) 모델에게는 모순이다. "participates는 objects[]에만 쓰고, facts 안에는 쓰지 않는다"로 범위를 적는다. 알려진 잔차 VQ(M178 팔에 든 코트 등록)도 이 판단에서 나온다.</span><span class="orig">(원문: “Participation is a routing decision, not a fact: do not emit any participation / admitted / eligible / excluded field inside a component.” / “"objects": [ { "ref": "c1", "identity": "…", "participates": true, …”)</span><span class="applied">“Participation is a routing decision, not a fact: it is written ONLY as "participates" on each entry of objects[] (true for a component cN, false for an excluded xN); never write participation, admitted, eligible or excluded inside facts or anywhere else.” <span class="where">(v1.1 §3)</span></span></div>
     <div class="arrow"></div>
     <div class="node rule">
       <div class="who">(c) §3 · §8d SVP-002 component_identity <span class="ax ei">EI</span><span class="ax tc">TC</span> · SVP-003 identity_refinement</div>
@@ -454,7 +458,7 @@
     </div>
   </div>
   <div class="fix" id="i-standing"><b>개선 #3</b>색의 standing은 언제 정하나 · lightness UNKNOWN
-    <span class="to">§4는 G2에서 색마다 standing(field/point)을 함께 보고하라는데, §2의 G4는 "G2에서 기록한 색의 field/point standing"을 룩을 본 뒤에 정하라고 한다. field/point는 룩 전체의 색 구성에 대한 판단이므로 G4로 한 번에 옮기고, G2는 carrier · family · lightness · effect만 적게 한다. 또 §8a 주석은 lightness를 못 읽으면 <code>"UNKNOWN"</code>을 쓰라는데 §4의 lightness 도메인에는 없다 — 도메인에 넣거나 unreadable/partial 규칙으로 통일한다.</span><span class="orig">(원문: “Report each colour area as carrier + family + lightness + effect + standing.” / “G4 — … and the field / point standing of the colours already recorded in G2.” / “if you can read the family but not the lightness, give the family and write "lightness": "UNKNOWN"”)</span></div>
+    <span class="to">§4는 G2에서 색마다 standing(field/point)을 함께 보고하라는데, §2의 G4는 "G2에서 기록한 색의 field/point standing"을 룩을 본 뒤에 정하라고 한다. field/point는 룩 전체의 색 구성에 대한 판단이므로 G4로 한 번에 옮기고, G2는 carrier · family · lightness · effect만 적게 한다. 또 §8a 주석은 lightness를 못 읽으면 <code>"UNKNOWN"</code>을 쓰라는데 §4의 lightness 도메인에는 없다 — 도메인에 넣거나 unreadable/partial 규칙으로 통일한다.</span><span class="orig">(원문: “Report each colour area as carrier + family + lightness + effect + standing.” / “G4 — … and the field / point standing of the colours already recorded in G2.” / “if you can read the family but not the lightness, give the family and write "lightness": "UNKNOWN"”)</span><span class="applied">“In G2 report each colour area as carrier + family + lightness + effect (+ part). In G4, after the whole look has been read, give each recorded colour area its standing; do not assign standing while you are still reading single components.” / “lightness ∈ {light, normal, dark, UNKNOWN} (UNKNOWN only when the family is readable but the lightness is not)” <span class="where">(v1.1 §2 G2 · §4)</span></span></div>
 
   <!-- ───────────── G3 ───────────── -->
   <div class="phase"><b>G3</b><h2>의복 구조 — 영역마다 한 번</h2></div>
@@ -469,9 +473,9 @@
         <li><b>length</b> 카테고리별 도메인 (예: Coat Hip · Thigh · Knee · Maxi Length / Trouser Short … Extended Length)</li>
       </ul>
       <div class="fix" id="i-grammar"><b>개선 #8</b>grammar 정의 없음
-        <span class="to">Jacket · Coat에 묻지만 Tailored / Casual / Utility를 가르는 기준이 한 줄도 없고, §0의 "스타일 판단 금지"와도 부딪힌다. 테일러드 라펠·어깨 구조, 패치 포켓·플랩·스톰 플랩 같은 <b>구성 근거</b>로 정의해 관찰 사실로 만든다.</span><span class="orig">(원문: “SVP-101 grammar — What garment grammar is it (tailored / casual / utility)? Values: Tailored · Casual · Utility.”)</span></div>
+        <span class="to">Jacket · Coat에 묻지만 Tailored / Casual / Utility를 가르는 기준이 한 줄도 없고, §0의 "스타일 판단 금지"와도 부딪힌다. 테일러드 라펠·어깨 구조, 패치 포켓·플랩·스톰 플랩 같은 <b>구성 근거</b>로 정의해 관찰 사실로 만든다.</span><span class="orig">(원문: “SVP-101 grammar — What garment grammar is it (tailored / casual / utility)? Values: Tailored · Casual · Utility.”)</span><span class="applied">“Decide ONLY from visible construction, never from style impression: Tailored = tailoring construction is visible (a notched, peak or shawl lapel; a single- or double-breasted button front; welt or flap pockets …). Utility = functional construction dominates (several applied, flap or cargo pockets; a storm flap, epaulettes, drawcords, a hood …). Casual = a jacket or coat that shows neither group.” <span class="where">(v1.1 §6 SVP-101)</span></span></div>
       <div class="fix" id="i-fit"><b>개선 #9</b>fit 경계 정의 없음
-        <span class="to">알려진 제약 L-1: 모델이 fit을 기준보다 한 단계 헐겁거나 꽉 끼게 읽고, M178에서는 그것만으로 TC의 SIL-TRUE-OVERSIZED가 켜진다. Slim / Regular / Relaxed / Oversized의 경계(어깨선 · 몸판 여유 · 주름의 방향)를 짧게 정의하고, 경계에서 망설이면 UNKNOWN을 허용한다.</span><span class="orig">(원문: “SVP-104 fit — How does the garment product fit the body? Values: … Slim · Regular · Relaxed · Oversized …” / KNOWN_LIMITATIONS L-1 “The model can read fit one step looser or tighter than the reference.”)</span></div>
+        <span class="to">알려진 제약 L-1: 모델이 fit을 기준보다 한 단계 헐겁거나 꽉 끼게 읽고, M178에서는 그것만으로 TC의 SIL-TRUE-OVERSIZED가 켜진다. Slim / Regular / Relaxed / Oversized의 경계(어깨선 · 몸판 여유 · 주름의 방향)를 짧게 정의하고, 경계에서 망설이면 UNKNOWN을 허용한다.</span><span class="orig">(원문: “SVP-104 fit — How does the garment product fit the body? Values: … Slim · Regular · Relaxed · Oversized …” / KNOWN_LIMITATIONS L-1 “The model can read fit one step looser or tighter than the reference.”)</span><span class="applied">“Read fit from the visible ease between garment and body, never from the shoulder seam position (that is shoulder_drop): Slim = … Regular = … Relaxed = … Oversized = deliberately larger than the body … When the reading sits on a boundary between two neighbouring values, report UNKNOWN rather than choosing.” <span class="where">(v1.1 §6 SVP-104)</span></span></div>
     </div>
     <div class="arrow"></div>
     <div class="split three">
@@ -492,7 +496,7 @@
       </div>
     </div>
     <div class="fix" id="i-drop"><b>개선 #5</b>shoulder_drop은 묻지만 대부분 버려짐
-      <span class="to">§6은 상의 모두에 shoulder_drop을 내라고(“Do not leave shoulder_drop out”) 하지만, 추출 엔진은 SR 지배 상의(가장 바깥 상의)의 값만 저장하고 나머지는 버린다(알려진 제약 L-4, AXIS-DEMAND-CONDITIONAL). 모델에게 "가장 바깥 상의의 shoulder_drop만 필수"라고 좁히거나, 다른 의복의 값도 TC 등에서 쓰도록 수요를 넓힌다. 지금은 토큰과 주의를 쓰고도 결과에 남지 않는다.</span><span class="orig">(원문: “Do not leave shoulder_drop out of the shoulder look.” / KNOWN_LIMITATIONS L-4 “shoulder_drop (SR) is stored only for the SR governing upper component.”)</span></div>
+      <span class="to">§6은 상의 모두에 shoulder_drop을 내라고(“Do not leave shoulder_drop out”) 하지만, 추출 엔진은 SR 지배 상의(가장 바깥 상의)의 값만 저장하고 나머지는 버린다(알려진 제약 L-4, AXIS-DEMAND-CONDITIONAL). 모델에게 "가장 바깥 상의의 shoulder_drop만 필수"라고 좁히거나, 다른 의복의 값도 TC 등에서 쓰도록 수요를 넓힌다. 지금은 토큰과 주의를 쓰고도 결과에 남지 않는다.</span><span class="orig">(원문: “Do not leave shoulder_drop out of the shoulder look.” / KNOWN_LIMITATIONS L-4 “shoulder_drop (SR) is stored only for the SR governing upper component.”)</span><span class="applied">“shoulder_drop is REQUIRED for the governing upper garment (upper.governing_ref) and is NOT emitted for any other garment, even where the applicability table lists it.” <span class="where">(v1.1 §6 Shoulder)</span></span></div>
     <div class="arrow"></div>
     <div class="node rule">
       <div class="who">SLIT · 구조 관찰에서 (Skirt · Dress)</div>
@@ -569,7 +573,7 @@
         <li>그 의복의 제품 <code>fit</code> · <code>shoulder_structure</code>와는 다른 필드 <a class="issue" href="#i-gov">#7</a></li>
       </ul>
       <div class="fix" id="i-gov"><b>개선 #7</b>governing upper 정의
-        <span class="to">"OUTERMOST upper garment"만 있고, 코트 아래 원피스처럼 상의와 원피스가 겹칠 때, 코트를 어깨에만 걸쳤을 때, 상의가 보이지 않을 때(<code>NOT_VISIBLE</code>인지 <code>governing_ref</code>를 비우는지) 고르는 규칙이 없다. SR 판정 전체가 이 한 컴포넌트에 걸리므로(F298: c1 Coat) 우선순위를 명시한다.</span><span class="orig">(원문: “final_upper_relation / final_shoulder_realization / final_upper_shape_behaviour describe the OUTERMOST upper garment as worn (the governing component)”)</span></div>
+        <span class="to">"OUTERMOST upper garment"만 있고, 코트 아래 원피스처럼 상의와 원피스가 겹칠 때, 코트를 어깨에만 걸쳤을 때, 상의가 보이지 않을 때(<code>NOT_VISIBLE</code>인지 <code>governing_ref</code>를 비우는지) 고르는 규칙이 없다. SR 판정 전체가 이 한 컴포넌트에 걸리므로(F298: c1 Coat) 우선순위를 명시한다.</span><span class="orig">(원문: “final_upper_relation / final_shoulder_realization / final_upper_shape_behaviour describe the OUTERMOST upper garment as worn (the governing component)”)</span><span class="applied">“GOVERNING UPPER (upper.governing_ref) = the outermost participating garment whose shoulder region rests on the wearer's shoulders: a Jacket or Coat worn on the body (also when draped over the shoulders without the arms in the sleeves) governs over everything under it; otherwise the outermost T-Shirt · Shirt · Sweater · Sweatshirt; otherwise a Dress or Jumpsuit. … When no upper garment is in frame, write governing_ref null and the three states NOT_VISIBLE.” <span class="where">(v1.1 §5 Rules)</span></span></div>
     </div>
     <div class="arrow"></div>
     <div class="split">
@@ -589,7 +593,7 @@
       </div>
     </div>
     <div class="fix" id="i-belt"><b>개선 #4</b>자기 벨트 규칙이 세 곳에 흩어져 서로를 고쳐 씀
-      <span class="to">§5 SVP-011은 "own belts → SVP-119"라 하고, §5 Rules는 자기 벨트를 securing_relations의 own device로 쓰라 하고, §8e는 "SVP-011의 그 문장을 이렇게 읽어라"로 덮어쓴다. 모델은 앞의 문장을 먼저 읽는다. 자기 벨트 규칙을 §8e 한 곳으로 모으고 SVP-011 정의에서는 "separate device만"으로 고친다.</span><span class="orig">(원문: “Applies: a separate securing object on another participant (own belts → SVP-119).” / “Where section 5 SVP-011 says "own belts → SVP-119", read it as: …”)</span></div>
+      <span class="to">§5 SVP-011은 "own belts → SVP-119"라 하고, §5 Rules는 자기 벨트를 securing_relations의 own device로 쓰라 하고, §8e는 "SVP-011의 그 문장을 이렇게 읽어라"로 덮어쓴다. 모델은 앞의 문장을 먼저 읽는다. 자기 벨트 규칙을 §8e 한 곳으로 모으고 SVP-011 정의에서는 "separate device만"으로 고친다.</span><span class="orig">(원문: “Applies: a separate securing object on another participant (own belts → SVP-119).” / “Where section 5 SVP-011 says "own belts → SVP-119", read it as: …”)</span><span class="applied">“Applies: a separate securing device on another participant. A garment's own belt / tie / sash is never a securing component: it is reported only as section 8e prescribes.” / “8e. INTEGRATED SELF-BELT (the ONE rule for a garment's own belt, tie or sash; sections 5 and 6 refer here)” — “read it as …” 덮어쓰기 문장 삭제 <span class="where">(v1.1 §5 SVP-011 · §5 Rules · §6 · §8e)</span></span></div>
     <div class="arrow"></div>
     <div class="node color">
       <div class="who">SVP-012 canonical_physical_exposure <span class="ax ei">EI</span></div>
@@ -636,7 +640,7 @@
     </div>
   </div>
   <div class="fix" id="i-dm"><b>개선 #10</b>축 이름 노출
-    <span class="to">§0은 스타일 방향을 정하지 말라는데, 출력 키가 <code>dm_subsystem</code>이고 §9 제목과 본문이 "DM", "DM score, Direction or Strength"를 직접 부른다. 모델이 축을 의식하면 관찰이 그쪽으로 기운다. 출력 키를 <code>detail_systems</code>처럼 중립 이름으로 바꾸고(변환기에서 매핑), 축 언급을 지운다 — style-ex 문서의 개선 #12와 같은 문제다.</span><span class="orig">(원문: “9. FROZEN FULL-LOOK DM EVIDENCE — … (emit exactly one `dm_subsystem` object with ONE field)” / “you do not decide any DM score, Direction or Strength.”)</span></div>
+    <span class="to">§0은 스타일 방향을 정하지 말라는데, 출력 키가 <code>dm_subsystem</code>이고 §9 제목과 본문이 "DM", "DM score, Direction or Strength"를 직접 부른다. 모델이 축을 의식하면 관찰이 그쪽으로 기운다. 출력 키를 <code>detail_systems</code>처럼 중립 이름으로 바꾸고(변환기에서 매핑), 축 언급을 지운다 — style-ex 문서의 개선 #12와 같은 문제다.</span><span class="orig">(원문: “9. FROZEN FULL-LOOK DM EVIDENCE — … (emit exactly one `dm_subsystem` object with ONE field)” / “you do not decide any DM score, Direction or Strength.”)</span><span class="applied">“9. DESIGNED DETAIL SYSTEMS — NAMED FROM THE SAME OBSERVATION (emit exactly one "detail_systems" array)” / “… and you do not score, rate or rank anything.” — 출력 키 dm_subsystem → detail_systems, 본문의 DM 언급 삭제 <span class="where">(v1.1 §8 · §8a · §9)</span></span></div>
 
   <!-- ───────────── 출력 ───────────── -->
   <div class="phase"><b>§8</b><h2>직렬화 — JSON 객체 하나</h2></div>
@@ -662,7 +666,7 @@
       </div>
     </div>
     <div class="fix" id="i-comment"><b>개선 #6</b>출력 예시에 주석이 있음
-      <span class="to">§8c는 "no comments"인데 §8a의 정답 모양에는 <code>// garment-to-garment, …</code>, <code>// ONE record per REALIZED exposure only</code> 같은 줄 끝 주석이 10여 개 있다. 모델이 주석까지 따라 쓰면 엄격한 JSON이 아니다(변환기는 펜스·주석을 걷어 내고 <code>native_check</code>에 기록한다). 주석을 모양 밖의 규칙 목록으로 빼고, 모양은 순수 JSON으로 둔다.</span><span class="orig">(원문: “"layer_relations": [ … ],        // garment-to-garment, directly visible pairs only (CDM-05 B): …” / “No markdown code fence …, no comments, no trailing commentary.”)</span></div>
+      <span class="to">§8c는 "no comments"인데 §8a의 정답 모양에는 <code>// garment-to-garment, …</code>, <code>// ONE record per REALIZED exposure only</code> 같은 줄 끝 주석이 10여 개 있다. 모델이 주석까지 따라 쓰면 엄격한 JSON이 아니다(변환기는 펜스·주석을 걷어 내고 <code>native_check</code>에 기록한다). 주석을 모양 밖의 규칙 목록으로 빼고, 모양은 순수 JSON으로 둔다.</span><span class="orig">(원문: “"layer_relations": [ … ],        // garment-to-garment, directly visible pairs only (CDM-05 B): …” / “No markdown code fence …, no comments, no trailing commentary.”)</span><span class="applied">“8a. EXACT OUTPUT SHAPE (pure JSON; the rules for each key follow the shape)” — 줄 끝 // 주석을 모두 빼고 “Rules for the shape: · layer_relations: garment-to-garment pairs that are directly visible only — never an accessory, never an inferred pair. · …” 목록으로 옮김 <span class="where">(v1.1 §8a)</span></span></div>
     <div class="arrow"></div>
 <pre class="json">{
   "frame": { "state": "OBSERVED", "limits": [] },
@@ -744,7 +748,7 @@
       <p>유효하면 사실을 파라미터 ID 셀(<code>SVP-xxx@cN</code>)로 펼친 <code>run_record</code>도 만듦 — image_hash · prompt_hash · model_id · run_id 포함.</p>
     </div>
     <div class="fix" id="i-struct"><b>개선 #13</b>기계적 규칙은 코드로
-      <span class="to">ref 무결성, MULTI 배열, NOT_VISIBLE 객체 모양, pockets[] 형식, 117·118 금지, DMP-1·3 금지, 점수 키 금지는 모두 결정론적이고 변환기 · validator가 이미 검사한다. 출력 JSON Schema(structured output)로 강제하고 프롬프트의 해당 설명(§8a 주석 · §8b · §8c 일부)을 줄이면, 4만 자 중 지각 판단(fit 경계 · 어깨 · 색 standing · 노출)에 주의를 더 줄 수 있다.</span><span class="orig">(원문: “A Present pocket without pockets[] is incomplete.” / “Do NOT emit look_components … and do NOT emit dm_evidence_visibility …; emitting either is a contract violation.”)</span></div>
+      <span class="to">ref 무결성, MULTI 배열, NOT_VISIBLE 객체 모양, pockets[] 형식, 117·118 금지, DMP-1·3 금지, 점수 키 금지는 모두 결정론적이고 변환기 · validator가 이미 검사한다. 출력 JSON Schema(structured output)로 강제하고 프롬프트의 해당 설명(§8a 주석 · §8b · §8c 일부)을 줄이면, 4만 자 중 지각 판단(fit 경계 · 어깨 · 색 standing · 노출)에 주의를 더 줄 수 있다.</span><span class="orig">(원문: “A Present pocket without pockets[] is incomplete.” / “Do NOT emit look_components … and do NOT emit dm_evidence_visibility …; emitting either is a contract violation.”)</span><span class="applied">(코드) normalize(): detail_systems → dm_subsystem.look_detail_systems, facts 안 participation · admitted · eligible · excluded · pocket_construction · pocket_projection 삭제, look_components · dm_evidence_visibility 삭제 — 관찰값은 바꾸지 않고 바꾼 것을 normalized[]에 기록 <span class="where">(lib/full-style-ex/pipeline.cjs)</span></span></div>
   </div>
 
   <!-- ───────────── 판정 (코드) ───────────── -->
@@ -776,7 +780,7 @@
 
   <!-- ───────────── 개선 항목 ───────────── -->
   <div class="phase"><b>점검</b><h2>개선 항목 바로가기</h2></div>
-  <p class="trigger">각 항목은 위 흐름에서 대상 단계 바로 아래에 있습니다. #1–#6은 프롬프트 안의 규칙이 서로 어긋나 출력이 실제로 흔들릴 수 있는 곳이고, #7 이후는 정의 누락 · 노이즈 · 운영 항목입니다. 프롬프트는 동결 원문이므로, 고치면 새 버전으로 저장하고 EX-04 12장 재현으로 다시 검증해야 합니다.</p>
+  <p class="trigger">각 항목은 위 흐름에서 대상 단계 바로 아래에 있습니다. #1–#6은 프롬프트 안의 규칙이 서로 어긋나 출력이 실제로 흔들릴 수 있는 곳이고, #7 이후는 정의 누락 · 노이즈 · 운영 항목입니다. 프롬프트는 동결 원문이므로, 고치면 새 버전으로 저장하고 EX-04 12장 재현으로 다시 검증해야 합니다.<br>녹색 <b>개선:</b> 줄은 반영한 문장입니다 — 프롬프트 v1.1(<code>lib/full-style-ex/prompts/FULL_LOOK_OBSERVE_PROMPT_V1_1.txt</code>, 버전 표 <code>target='full'</code> v2, 비활성)과 코드. #14만 미적용입니다.</p>
   <ul class="fix-index">
     <li><a href="#i-part">#1 participates</a></li>
     <li><a href="#i-stop">#2 비착장 출력</a></li>

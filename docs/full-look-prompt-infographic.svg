@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2330" viewBox="0 0 1600 2330">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6b6b66"/></marker></defs>
+<rect width="1600" height="2330" fill="#f7f7f5"/>
+<rect x="0" y="0" width="1600" height="250" rx="0" fill="#1d1d1b"/>
+<text x="56" y="72" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="18" font-weight="700" fill="#c9c9c3" text-anchor="start" letter-spacing="2">STMX FULL-LOOK STYLE VISION</text>
+<text x="56" y="128" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="50" font-weight="800" fill="#ffffff" text-anchor="start">착장 전체 관찰 프롬프트 v1.1</text>
+<text x="56" y="172" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="400" fill="#dcdcd6" text-anchor="start">착장 사진 1장 → 관찰 JSON 1개.  점수 · 방향 · 스타일 판단 없이, 몸 위에 보이는 것만 기록합니다.</text>
+<rect x="1010" y="52" width="132" height="140" rx="16" fill="#2b2b29" stroke="#44443f" stroke-width="1.5"/>
+<text x="1076" y="122" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="40" font-weight="800" fill="#ffffff" text-anchor="middle">1회</text>
+<text x="1076" y="160" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="500" fill="#b7b6b0" text-anchor="middle">비전 호출</text>
+<rect x="1156" y="52" width="132" height="140" rx="16" fill="#2b2b29" stroke="#44443f" stroke-width="1.5"/>
+<text x="1222" y="122" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="40" font-weight="800" fill="#ffffff" text-anchor="middle">37</text>
+<text x="1222" y="160" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="500" fill="#b7b6b0" text-anchor="middle">관찰 사실</text>
+<rect x="1302" y="52" width="132" height="140" rx="16" fill="#2b2b29" stroke="#44443f" stroke-width="1.5"/>
+<text x="1368" y="122" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="40" font-weight="800" fill="#ffffff" text-anchor="middle">4</text>
+<text x="1368" y="160" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="500" fill="#b7b6b0" text-anchor="middle">상태</text>
+<rect x="1448" y="52" width="132" height="140" rx="16" fill="#2b2b29" stroke="#44443f" stroke-width="1.5"/>
+<text x="1514" y="122" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="30" font-weight="800" fill="#ffffff" text-anchor="middle">41,732</text>
+<text x="1514" y="160" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="500" fill="#b7b6b0" text-anchor="middle">글자</text>
+<text x="56" y="222" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#9c9b95" text-anchor="start">기반: 승인 프롬프트 V2 (SHA-256 535bc183…) · 버전 표 style_ex_prompt_versions · target=&#x27;full&#x27; v2 (v1.1, 비활성)</text>
+<circle cx="74" cy="313" r="17" fill="#1d1d1b"/>
+<text x="74" y="319" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+<text x="104" y="320" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="26" font-weight="800" fill="#1d1d1b" text-anchor="start">한 장의 사진이 스타일 아이디가 되기까지</text>
+<text x="104" y="348" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="400" fill="#6b6b66" text-anchor="start">모델은 한 번만 부르고, 이후는 모두 동결 코드입니다.</text>
+<rect x="56" y="382" width="224" height="128" rx="14" fill="#eaf1fc" stroke="#2f6fd6" stroke-width="1.5"/>
+<rect x="56" y="382" width="6" height="128" rx="3" fill="#2f6fd6"/>
+<text x="78" y="414" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="800" fill="#2f6fd6" text-anchor="start">입력</text>
+<text x="78" y="452" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="22" font-weight="800" fill="#1d1d1b" text-anchor="start">착장 사진 1장</text>
+<text x="78" y="484" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">JPEG · PNG · WEBP</text>
+<line x1="284" y1="446" x2="308" y2="446" stroke="#6b6b66" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="312" y="382" width="224" height="128" rx="14" fill="#eaf1fc" stroke="#2f6fd6" stroke-width="1.5"/>
+<rect x="312" y="382" width="6" height="128" rx="3" fill="#2f6fd6"/>
+<text x="334" y="414" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="800" fill="#2f6fd6" text-anchor="start">입력</text>
+<text x="334" y="452" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="22" font-weight="800" fill="#1d1d1b" text-anchor="start">관찰 프롬프트</text>
+<text x="334" y="484" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">v1.1 · 프롬프트 먼저 + 캐시</text>
+<line x1="540" y1="446" x2="564" y2="446" stroke="#6b6b66" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="568" y="382" width="224" height="128" rx="14" fill="#fbeee6" stroke="#c2622e" stroke-width="1.5"/>
+<rect x="568" y="382" width="6" height="128" rx="3" fill="#c2622e"/>
+<text x="590" y="414" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="800" fill="#c2622e" text-anchor="start">모델</text>
+<text x="590" y="452" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="22" font-weight="800" fill="#1d1d1b" text-anchor="start">Vision 1회 호출</text>
+<text x="590" y="484" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">Claude opus-5-5 · Gemini</text>
+<line x1="796" y1="446" x2="820" y2="446" stroke="#6b6b66" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="824" y="382" width="224" height="128" rx="14" fill="#efefec" stroke="#5b5b57" stroke-width="1.5"/>
+<rect x="824" y="382" width="6" height="128" rx="3" fill="#5b5b57"/>
+<text x="846" y="414" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="800" fill="#5b5b57" text-anchor="start">출력</text>
+<text x="846" y="452" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="22" font-weight="800" fill="#1d1d1b" text-anchor="start">관찰 JSON 1개</text>
+<text x="846" y="484" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">frame … detail_systems</text>
+<line x1="1052" y1="446" x2="1076" y2="446" stroke="#6b6b66" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="1080" y="382" width="224" height="128" rx="14" fill="#e6f4ec" stroke="#2c8a5a" stroke-width="1.5"/>
+<rect x="1080" y="382" width="6" height="128" rx="3" fill="#2c8a5a"/>
+<text x="1102" y="414" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="800" fill="#2c8a5a" text-anchor="start">코드</text>
+<text x="1102" y="452" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="22" font-weight="800" fill="#1d1d1b" text-anchor="start">Evidence Packet</text>
+<text x="1102" y="484" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">FLV_RC6 · 정리 · 검증</text>
+<line x1="1308" y1="446" x2="1332" y2="446" stroke="#6b6b66" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="1336" y="382" width="224" height="128" rx="14" fill="#e6f4ec" stroke="#2c8a5a" stroke-width="1.5"/>
+<rect x="1336" y="382" width="6" height="128" rx="3" fill="#2c8a5a"/>
+<text x="1358" y="414" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="800" fill="#2c8a5a" text-anchor="start">코드</text>
+<text x="1358" y="452" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="22" font-weight="800" fill="#1d1d1b" text-anchor="start">EI · TC · SR 방향</text>
+<text x="1358" y="484" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">+ DM은 D/M 양쪽</text>
+<line x1="1064" y1="368" x2="1064" y2="524" stroke="#b8322f" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="1064" y="360" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="700" fill="#b8322f" text-anchor="middle">← 모델  |  코드 →</text>
+<circle cx="74" cy="593" r="17" fill="#1d1d1b"/>
+<text x="74" y="599" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">2</text>
+<text x="104" y="600" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="26" font-weight="800" fill="#1d1d1b" text-anchor="start">한 번 보고, 네 단계로 정리한다 — G1 → G4</text>
+<text x="104" y="628" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="400" fill="#6b6b66" text-anchor="start">여러 번 보는 것이 아닙니다. 같은 사실을 두 번 읽지 않고, 축을 위해 다시 보지 않습니다.</text>
+<rect x="56" y="662" width="356" height="400" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<rect x="56" y="662" width="356" height="76" rx="14" fill="#e6f4ec" stroke="#2c8a5a" stroke-width="1.5"/>
+<rect x="56" y="722" width="356" height="16" fill="#e6f4ec"/>
+<text x="80" y="712" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="34" font-weight="800" fill="#2c8a5a" text-anchor="start">G1</text>
+<text x="148" y="711" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="24" font-weight="800" fill="#1d1d1b" text-anchor="start">프레임 · 등록</text>
+<text x="80" y="780" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">착장이 프레임 안에서 읽히는가</text>
+<text x="80" y="820" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">  → frame (crop · occlusion …)</text>
+<text x="80" y="860" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">참여한 물체마다 c1, c2 …</text>
+<text x="80" y="900" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">  한 물체 = 한 컴포넌트</text>
+<text x="80" y="940" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">제외: 손에 든 옷 · 다른 사람 · 배경</text>
+<text x="80" y="980" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">정체: 의복 10 · 액세서리 10</text>
+<line x1="76" y1="1008" x2="392" y2="1008" stroke="#d9d9d3"/>
+<text x="80" y="1040" font-family="SF Mono, Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#2c8a5a" text-anchor="start">→ frame · objects</text>
+<line x1="414" y1="700" x2="434" y2="700" stroke="#6b6b66" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="436" y="662" width="356" height="400" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<rect x="436" y="662" width="356" height="76" rx="14" fill="#f3ebfb" stroke="#8a4fc2" stroke-width="1.5"/>
+<rect x="436" y="722" width="356" height="16" fill="#f3ebfb"/>
+<text x="460" y="712" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="34" font-weight="800" fill="#8a4fc2" text-anchor="start">G2</text>
+<text x="528" y="711" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="24" font-weight="800" fill="#1d1d1b" text-anchor="start">외관</text>
+<text x="460" y="780" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">컴포넌트마다 표면을 한 번</text>
+<text x="460" y="820" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">색: family 21 · lightness · effect</text>
+<text x="460" y="860" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">외관 6: pattern · graphic · surface</text>
+<text x="460" y="900" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">  material · decorative · attachment</text>
+<text x="460" y="940" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">부품 색은 같은 컴포넌트의 point</text>
+<text x="460" y="980" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">금속색은 그것을 가진 물체에</text>
+<line x1="456" y1="1008" x2="772" y2="1008" stroke="#d9d9d3"/>
+<text x="460" y="1040" font-family="SF Mono, Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#8a4fc2" text-anchor="start">→ colour_areas · facts</text>
+<line x1="794" y1="700" x2="814" y2="700" stroke="#6b6b66" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="816" y="662" width="356" height="400" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<rect x="816" y="662" width="356" height="76" rx="14" fill="#fbeee6" stroke="#c2622e" stroke-width="1.5"/>
+<rect x="816" y="722" width="356" height="16" fill="#fbeee6"/>
+<text x="840" y="712" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="34" font-weight="800" fill="#c2622e" text-anchor="start">G3</text>
+<text x="908" y="711" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="24" font-weight="800" fill="#1d1d1b" text-anchor="start">의복 구조</text>
+<text x="840" y="780" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">형태: fit · length · silhouette …</text>
+<text x="840" y="820" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">어깨 영역 한 번 → 4개</text>
+<text x="840" y="860" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">  structure ≠ drop (서로 유도 금지)</text>
+<text x="840" y="900" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">앞판 영역 한 번 → 트임 · 여밈</text>
+<text x="840" y="940" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">포켓 영역 한 번 → pockets[]</text>
+<text x="840" y="980" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">슬릿: 보일 때만 Present</text>
+<line x1="836" y1="1008" x2="1152" y2="1008" stroke="#d9d9d3"/>
+<text x="840" y="1040" font-family="SF Mono, Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#c2622e" text-anchor="start">→ facts · front_state</text>
+<line x1="1174" y1="700" x2="1194" y2="700" stroke="#6b6b66" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="1196" y="662" width="356" height="400" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<rect x="1196" y="662" width="356" height="76" rx="14" fill="#eaf1fc" stroke="#2f6fd6" stroke-width="1.5"/>
+<rect x="1196" y="722" width="356" height="16" fill="#eaf1fc"/>
+<text x="1220" y="712" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="34" font-weight="800" fill="#2f6fd6" text-anchor="start">G4</text>
+<text x="1288" y="711" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="24" font-weight="800" fill="#1d1d1b" text-anchor="start">착용 관계</text>
+<text x="1220" y="780" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">지배 상의의 relation · shoulder · shape</text>
+<text x="1220" y="820" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">레이어: 의복끼리 보이는 쌍만</text>
+<text x="1220" y="860" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">조임: 실제로 끌어당길 때만</text>
+<text x="1220" y="900" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">노출: 보이는 피부의 부위만</text>
+<text x="1220" y="940" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">색 standing: field / point</text>
+<text x="1220" y="980" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="400" fill="#1d1d1b" text-anchor="start">디테일 시스템 A–J 이름 붙이기</text>
+<line x1="1216" y1="1008" x2="1532" y2="1008" stroke="#d9d9d3"/>
+<text x="1220" y="1040" font-family="SF Mono, Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#2f6fd6" text-anchor="start">→ upper · relations · exposure</text>
+<circle cx="74" cy="1143" r="17" fill="#1d1d1b"/>
+<text x="74" y="1149" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">3</text>
+<text x="104" y="1150" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="26" font-weight="800" fill="#1d1d1b" text-anchor="start">착장 하나에 묻는 37개 사실</text>
+<text x="104" y="1178" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="400" fill="#6b6b66" text-anchor="start">룩 · 관계 12 + 의복 원사실 26. 적용되지 않는 사실은 내지 않습니다(UNKNOWN이 아님).</text>
+<text x="56" y="1204" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#8a4fc2" text-anchor="start">룩 · 관계 12  (SVP-001–012)</text>
+<text x="535.8947368421052" y="1204" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#c2622e" text-anchor="start">의복 원사실 26  (SVP-101–126)</text>
+<rect x="56" y="1216" width="36.1578947368421" height="64" rx="6" fill="#8a4fc2"/>
+<text x="75.57894736842105" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+<text x="75.57894736842105" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">프레임</text>
+<rect x="95.15789473684211" y="1216" width="114.4736842105263" height="64" rx="6" fill="#9d66cf"/>
+<text x="153.89473684210526" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">3</text>
+<text x="153.89473684210526" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">정체 · 색</text>
+<rect x="212.6315789473684" y="1216" width="36.1578947368421" height="64" rx="6" fill="#b07fd9"/>
+<text x="232.21052631578945" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+<text x="232.21052631578945" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">색역할</text>
+<rect x="251.78947368421052" y="1216" width="36.1578947368421" height="64" rx="6" fill="#8a4fc2"/>
+<text x="271.36842105263156" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+<text x="271.36842105263156" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">앞상태</text>
+<rect x="290.9473684210526" y="1216" width="114.4736842105263" height="64" rx="6" fill="#9d66cf"/>
+<text x="349.6842105263157" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">3</text>
+<text x="349.6842105263157" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">지배 상의</text>
+<rect x="408.4210526315789" y="1216" width="75.3157894736842" height="64" rx="6" fill="#b07fd9"/>
+<text x="447.578947368421" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">2</text>
+<text x="447.578947368421" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">레이어 · 조임</text>
+<rect x="486.7368421052631" y="1216" width="36.1578947368421" height="64" rx="6" fill="#8a4fc2"/>
+<text x="506.31578947368416" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+<text x="506.31578947368416" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">노출</text>
+<rect x="535.8947368421052" y="1216" width="230.28070175438594" height="64" rx="6" fill="#c2622e"/>
+<text x="652.5350877192982" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">6</text>
+<text x="652.5350877192982" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">외관</text>
+<rect x="769.1754385964912" y="1216" width="347.7543859649122" height="64" rx="6" fill="#cf7843"/>
+<text x="944.5526315789473" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">9</text>
+<text x="944.5526315789473" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">형태</text>
+<rect x="1119.9298245614034" y="1216" width="151.96491228070175" height="64" rx="6" fill="#d98d5b"/>
+<text x="1197.4122807017543" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">4</text>
+<text x="1197.4122807017543" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">어깨</text>
+<rect x="1274.8947368421052" y="1216" width="73.64912280701753" height="64" rx="6" fill="#c2622e"/>
+<text x="1313.219298245614" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">2</text>
+<text x="1313.219298245614" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">앞판</text>
+<rect x="1351.5438596491226" y="1216" width="112.80701754385963" height="64" rx="6" fill="#cf7843"/>
+<text x="1409.4473684210525" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">3</text>
+<text x="1409.4473684210525" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">포켓</text>
+<rect x="1467.3508771929824" y="1216" width="73.64912280701753" height="64" rx="6" fill="#d98d5b"/>
+<text x="1505.6754385964912" y="1244" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">2</text>
+<text x="1505.6754385964912" y="1266" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">허리 · 트임</text>
+<rect x="56.0" y="1316" width="357.0" height="150" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<rect x="56.0" y="1316" width="357.0" height="5" rx="2" fill="#c2622e"/>
+<text x="76.0" y="1356" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="18" font-weight="800" fill="#c2622e" text-anchor="start">의복 — 카테고리가 켠다</text>
+<text x="76.0" y="1392" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">T-Shirt · Shirt · Sweater · Sweatshirt</text>
+<text x="76.0" y="1418" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">Jacket · Coat · Trouser · Skirt</text>
+<text x="76.0" y="1444" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">Dress · Jumpsuit — 카테고리마다 14–24개</text>
+<rect x="433.0" y="1316" width="357.0" height="150" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<rect x="433.0" y="1316" width="357.0" height="5" rx="2" fill="#8a4fc2"/>
+<text x="453.0" y="1356" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="18" font-weight="800" fill="#8a4fc2" text-anchor="start">액세서리 — 외관 6개만</text>
+<text x="453.0" y="1392" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">footwear · bag · headwear · scarf</text>
+<text x="453.0" y="1418" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">jewellery · belt · eyewear · hosiery</text>
+<text x="453.0" y="1444" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">tie · gloves (+ other)</text>
+<rect x="810.0" y="1316" width="357.0" height="150" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<rect x="810.0" y="1316" width="357.0" height="5" rx="2" fill="#2c8a5a"/>
+<text x="830.0" y="1356" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="18" font-weight="800" fill="#2c8a5a" text-anchor="start">조건부 — 부모 값이 켠다</text>
+<text x="830.0" y="1392" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">소매 있음 → sleeve_volume</text>
+<text x="830.0" y="1418" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">앞트임 있음 → closure_type</text>
+<text x="830.0" y="1444" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">Present → pockets[] (위치 · 구성 · 돌출)</text>
+<rect x="1187.0" y="1316" width="357.0" height="150" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<rect x="1187.0" y="1316" width="357.0" height="5" rx="2" fill="#5b5b57"/>
+<text x="1207.0" y="1356" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="18" font-weight="800" fill="#5b5b57" text-anchor="start">코드가 조립 — 묻지 않음</text>
+<text x="1207.0" y="1392" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">DM look_components ← carrier_refs</text>
+<text x="1207.0" y="1418" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">dm_evidence_visibility ← frame limits</text>
+<text x="1207.0" y="1444" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">모델이 내면 정리 단계에서 삭제</text>
+<circle cx="74" cy="1553" r="17" fill="#1d1d1b"/>
+<text x="74" y="1559" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">4</text>
+<text x="104" y="1560" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="26" font-weight="800" fill="#1d1d1b" text-anchor="start">모든 사실에 상태 하나</text>
+<text x="104" y="1588" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="400" fill="#6b6b66" text-anchor="start">보이지 않음 ≠ 판단 불가 ≠ 없음. 안전하려고 낮추지도, 완결하려고 추측하지도 않습니다.</text>
+<rect x="56.0" y="1622" width="357.0" height="170" rx="14" fill="#e6f4ec" stroke="#2c8a5a" stroke-width="1.5"/>
+<text x="78.0" y="1672" font-family="SF Mono, Menlo, Consolas, monospace" font-size="26" font-weight="800" fill="#2c8a5a" text-anchor="start">OBSERVED</text>
+<text x="78.0" y="1714" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" font-weight="700" fill="#1d1d1b" text-anchor="start">보이고, 값을 준다</text>
+<text x="78.0" y="1750" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">&quot;fit&quot;: &quot;Relaxed&quot;</text>
+<text x="78.0" y="1772" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">None 토큰(asymmetry None …)도 OBSERVED</text>
+<rect x="433.0" y="1622" width="357.0" height="170" rx="14" fill="#efefec" stroke="#5b5b57" stroke-width="1.5"/>
+<text x="455.0" y="1672" font-family="SF Mono, Menlo, Consolas, monospace" font-size="26" font-weight="800" fill="#5b5b57" text-anchor="start">ABSENT</text>
+<text x="455.0" y="1714" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" font-weight="700" fill="#1d1d1b" text-anchor="start">담는 부분은 보이는데 현상이 없다</text>
+<text x="455.0" y="1750" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">None 토큰이 없는 사실만</text>
+<text x="455.0" y="1772" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">외관 6 · 노출</text>
+<rect x="810.0" y="1622" width="357.0" height="170" rx="14" fill="#fbeaea" stroke="#b8322f" stroke-width="1.5"/>
+<text x="832.0" y="1672" font-family="SF Mono, Menlo, Consolas, monospace" font-size="26" font-weight="800" fill="#b8322f" text-anchor="start">NOT_VISIBLE</text>
+<text x="832.0" y="1714" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" font-weight="700" fill="#1d1d1b" text-anchor="start">가려지거나 잘렸다</text>
+<text x="832.0" y="1750" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">limitation 필수</text>
+<text x="832.0" y="1772" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">OCCLUDED_BY_OTHER_GARMENT …</text>
+<rect x="1187.0" y="1622" width="357.0" height="170" rx="14" fill="#fbeee6" stroke="#c2622e" stroke-width="1.5"/>
+<text x="1209.0" y="1672" font-family="SF Mono, Menlo, Consolas, monospace" font-size="26" font-weight="800" fill="#c2622e" text-anchor="start">UNKNOWN</text>
+<text x="1209.0" y="1714" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" font-weight="700" fill="#1d1d1b" text-anchor="start">보이지만 확정할 수 없다</text>
+<text x="1209.0" y="1750" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">경계에서 망설이면 UNKNOWN</text>
+<text x="1209.0" y="1772" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">모델이 내지 않은 사실도 UNKNOWN</text>
+<circle cx="74" cy="1843" r="17" fill="#1d1d1b"/>
+<text x="74" y="1849" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">5</text>
+<text x="104" y="1850" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="26" font-weight="800" fill="#1d1d1b" text-anchor="start">관찰을 지키는 여섯 개의 방화벽</text>
+<rect x="56.0" y="1890" width="482.6666666666667" height="130" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<circle cx="90.0" cy="1930" r="16" fill="#1d1d1b"/>
+<text x="90.0" y="1936" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+<text x="118.0" y="1937" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#1d1d1b" text-anchor="start">한 번만 본다</text>
+<text x="80.0" y="1974" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">영역마다 한 번. 두 번째 언급은 같은 관찰의 재사용이고,</text>
+<text x="80.0" y="1998" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">축을 위해 다시 보지 않는다.</text>
+<rect x="558.6666666666667" y="1890" width="482.6666666666667" height="130" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<circle cx="592.6666666666667" cy="1930" r="16" fill="#1d1d1b"/>
+<text x="592.6666666666667" y="1936" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">2</text>
+<text x="620.6666666666667" y="1937" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#1d1d1b" text-anchor="start">정체는 보이는 부분으로</text>
+<text x="582.6666666666667" y="1974" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">터틀넥 칼라만 보여도 Sweater.</text>
+<text x="582.6666666666667" y="1998" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">가려진 속성은 정체를 낮추지 않는다.</text>
+<rect x="1061.3333333333335" y="1890" width="482.6666666666667" height="130" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<circle cx="1095.3333333333335" cy="1930" r="16" fill="#1d1d1b"/>
+<text x="1095.3333333333335" y="1936" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">3</text>
+<text x="1123.3333333333335" y="1937" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#1d1d1b" text-anchor="start">자기 벨트 = 옷의 일부</text>
+<text x="1085.3333333333335" y="1974" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">컴포넌트가 아니다. attachment Belt + waist_definition</text>
+<text x="1085.3333333333335" y="1998" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">+ own-device 조임 항목 하나 (§8e 한 곳).</text>
+<rect x="56.0" y="2040" width="482.6666666666667" height="130" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<circle cx="90.0" cy="2080" r="16" fill="#1d1d1b"/>
+<text x="90.0" y="2086" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">4</text>
+<text x="118.0" y="2087" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#1d1d1b" text-anchor="start">부위 ≠ 메커니즘</text>
+<text x="80.0" y="2124" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">미니 · 홀터 · 슬릿 · 민소매 라벨만으로 노출 부위를</text>
+<text x="80.0" y="2148" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">정하지 않는다. 보이는 피부만.</text>
+<rect x="558.6666666666667" y="2040" width="482.6666666666667" height="130" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<circle cx="592.6666666666667" cy="2080" r="16" fill="#1d1d1b"/>
+<text x="592.6666666666667" y="2086" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">5</text>
+<text x="620.6666666666667" y="2087" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#1d1d1b" text-anchor="start">색은 가진 물체에</text>
+<text x="582.6666666666667" y="2124" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">버클은 벨트의 point, 단추는 옷의 point.</text>
+<text x="582.6666666666667" y="2148" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">피부 · 머리 · 배경은 색이 아니다.</text>
+<rect x="1061.3333333333335" y="2040" width="482.6666666666667" height="130" rx="14" fill="#ffffff" stroke="#d9d9d3" stroke-width="1.5"/>
+<circle cx="1095.3333333333335" cy="2080" r="16" fill="#1d1d1b"/>
+<text x="1095.3333333333335" y="2086" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">6</text>
+<text x="1123.3333333333335" y="2087" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-weight="800" fill="#1d1d1b" text-anchor="start">디테일은 같은 관찰에서</text>
+<text x="1085.3333333333335" y="2124" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">A–J family로 묶기만. 광택 · 노출 · 실루엣 · 개수는</text>
+<text x="1085.3333333333335" y="2148" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="400" fill="#6b6b66" text-anchor="start">그 자체로 디테일이 아니다.</text>
+<line x1="56" y1="2234" x2="1544" y2="2234" stroke="#d9d9d3"/>
+<text x="56" y="2264" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">v1.1 변경: participates 범위 · 비착장 출력 고정 · 색 standing은 G4 · 자기 벨트 규칙 단일화 · shoulder_drop은 지배 상의만 · 예시 주석 제거 · 지배 상의 정의 · grammar · fit 경계 · 출력 키 detail_systems</text>
+<text x="56" y="2290" font-family="Apple SD Gothic Neo, AppleSDGothicNeo, Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" font-weight="400" fill="#6b6b66" text-anchor="start">원문: lib/full-style-ex/prompts/FULL_LOOK_OBSERVE_PROMPT_V1_1.txt  ·  흐름 문서: docs/full-vision-feature-extraction.html</text>
+</svg>
