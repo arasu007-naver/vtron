@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>관찰 프롬프트 v4 흐름</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #c9c9c3;
+    --input: #2f6fd6; --input-bg: #eaf1fc;
+    --out: #5b5b57; --out-bg: #efefec;
+    --model: #c2622e; --model-bg: #fbeee6;
+    --rule: #2c8a5a; --rule-bg: #e6f4ec;
+    --color: #8a4fc2; --color-bg: #f3ebfb;
+    --fail: #b8322f; --fail-bg: #fbeaea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161615; --surface: #1f1f1d; --text: #ecebe6; --muted: #9c9b95; --line: #44443f;
+      --input: #7aa7f0; --input-bg: #1b2738;
+      --out: #b7b6b0; --out-bg: #2a2a27;
+      --model: #e9935f; --model-bg: #35241a;
+      --rule: #63c793; --rule-bg: #173026;
+      --color: #c39af0; --color-bg: #2a1f38;
+      --fail: #ec7c78; --fail-bg: #3a1f1e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161615; --surface: #1f1f1d; --text: #ecebe6; --muted: #9c9b95; --line: #44443f;
+    --input: #7aa7f0; --input-bg: #1b2738;
+    --out: #b7b6b0; --out-bg: #2a2a27;
+    --model: #e9935f; --model-bg: #35241a;
+    --rule: #63c793; --rule-bg: #173026;
+    --color: #c39af0; --color-bg: #2a1f38;
+    --fail: #ec7c78; --fail-bg: #3a1f1e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
+  main { max-width: 900px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lede { color: var(--muted); margin: 0 0 20px; }
+  code { font: 12.5px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; background: var(--out-bg); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0 0 28px; font-size: 13px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; display: inline-block; }
+
+  .phase { margin: 36px 0 12px; display: flex; align-items: baseline; gap: 10px; }
+  .phase b { font-size: 12px; color: var(--surface); background: var(--text); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+  .phase h2 { font-size: 18px; margin: 0; }
+  .trigger { color: var(--muted); font-size: 13px; margin: -6px 0 12px; }
+
+  .flow { display: flex; flex-direction: column; align-items: stretch; }
+  .node {
+    position: relative; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--out);
+    border-radius: 8px; padding: 10px 14px;
+  }
+  .node .who { font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--out); }
+  .node h3 { font-size: 15px; margin: 2px 0 4px; }
+  .node p, .node ul { margin: 4px 0 0; font-size: 13.5px; color: var(--muted); }
+  .node ul { padding-left: 18px; }
+  .node li { margin: 2px 0; }
+  .node li b, .node p b { color: var(--text); font-weight: 600; }
+  .input { border-left-color: var(--input); background: var(--input-bg); } .input .who { color: var(--input); }
+  .out   { border-left-color: var(--out);   background: var(--out-bg); }   .out .who   { color: var(--out); }
+  .model { border-left-color: var(--model); background: var(--model-bg); } .model .who { color: var(--model); }
+  .rule  { border-left-color: var(--rule);  background: var(--rule-bg); }  .rule .who  { color: var(--rule); }
+  .color { border-left-color: var(--color); background: var(--color-bg); } .color .who { color: var(--color); }
+
+  .arrow { height: 22px; position: relative; }
+  .arrow::before { content: ""; position: absolute; left: 50%; top: 2px; bottom: 6px; border-left: 2px solid var(--line); }
+  .arrow::after { content: ""; position: absolute; left: calc(50% - 5px); bottom: 1px; border: 5px solid transparent; border-top: 6px solid var(--line); border-bottom: 0; }
+
+  .decision {
+    background: var(--surface); border: 1.5px dashed var(--line); border-radius: 8px; padding: 10px 14px;
+    display: grid; grid-template-columns: 1fr; gap: 6px;
+  }
+  .decision .q { font-weight: 600; font-size: 14px; }
+  .decision .q::before { content: "◆ "; color: var(--muted); }
+  .branch { font-size: 13.5px; }
+  .branch .tag { display: inline-block; margin-right: 8px; font-size: 11.5px; font-weight: 600; padding: 1px 7px; border-radius: 4px; background: var(--rule-bg); color: var(--rule); }
+  .branch .tag.no { background: var(--fail-bg); color: var(--fail); }
+  .branch .tag.alt { background: var(--out-bg); color: var(--out); }
+  .branch .tag.warn { background: var(--model-bg); color: var(--model); }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .split.three { grid-template-columns: 1fr 1fr 1fr; }
+  .split .lane-title { font-size: 12px; color: var(--muted); margin: 0 0 6px; }
+  @media (max-width: 720px) { .split, .split.three { grid-template-columns: 1fr; } }
+
+  .issue {
+    display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 999px;
+    background: var(--fail-bg); color: var(--fail); text-decoration: none; margin-left: 4px; vertical-align: 1px; white-space: nowrap;
+  }
+  .issue:hover { text-decoration: underline; }
+
+  /* 프롬프트 출처 표시 */
+  .src { display: inline-block; font: 700 10.5px/1.6 ui-monospace, Consolas, monospace; letter-spacing: 0.03em; padding: 0 7px; border-radius: 4px; vertical-align: 1px; }
+  .src.sys { background: var(--model); color: var(--surface); }
+  .src.usr { background: var(--input); color: var(--surface); }
+  .lane-title .src { margin-right: 6px; }
+
+  /* 37개 요소 계층 */
+  .lv-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .lv-head .lv { font: 700 11.5px ui-monospace, Consolas, monospace; padding: 1px 7px; border-radius: 4px; background: var(--text); color: var(--surface); }
+  .lv-head h3 { margin: 0; }
+  .lv-head .rule-note { font-size: 12.5px; color: var(--muted); }
+  .htree, .htree ul { list-style: none; margin: 0; padding: 0; }
+  .htree { margin-top: 6px; }
+  .htree ul { padding-left: 16px; }
+  .htree li { position: relative; padding: 3px 0 3px 16px; font-size: 13.5px; color: var(--text); }
+  .htree li::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1.5px solid var(--line); }
+  .htree li:last-child::before { bottom: auto; height: 14px; }
+  .htree li::after { content: ""; position: absolute; left: 0; top: 14px; width: 11px; border-top: 1.5px solid var(--line); }
+  .htree .grp { font-weight: 600; }
+  .htree .scope { color: var(--muted); font-size: 12.5px; }
+  .htree .cond { font-weight: 600; color: var(--rule); }
+  .pill { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em; padding: 0 6px; border-radius: 999px; border: 1px solid var(--color); color: var(--color); vertical-align: 1px; }
+  .pill.alt { border-color: var(--out); color: var(--out); }
+
+  /* 상태 결정 트리 */
+  .tree { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 8px; }
+  .tree svg { display: block; width: 100%; height: auto; }
+  .tree .box { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+  .tree .q { fill: var(--surface); stroke: var(--text); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .tree .leaf-ok { fill: var(--rule-bg); stroke: var(--rule); stroke-width: 1.5; }
+  .tree .leaf-none { fill: var(--model-bg); stroke: var(--model); stroke-width: 1.5; }
+  .tree .leaf-no { fill: var(--fail-bg); stroke: var(--fail); stroke-width: 1.5; }
+  .tree .leaf-alt { fill: var(--out-bg); stroke: var(--out); stroke-width: 1.5; }
+  .tree text { fill: var(--text); font: 13px -apple-system, "Segoe UI", "Malgun Gothic", sans-serif; }
+  .tree text.mono { font: 600 12.5px ui-monospace, Consolas, monospace; }
+  .tree text.lbl { fill: var(--muted); font-size: 11.5px; }
+  .tree line, .tree path { stroke: var(--line); stroke-width: 1.8; fill: none; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; background: var(--out-bg); }
+  td:first-child { white-space: nowrap; font-weight: 600; }
+  tr:last-child td { border-bottom: 0; }
+  .table-wrap { overflow-x: auto; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+  pre.json { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow: auto; font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
+
+  /* 개선 항목 — 대상 단계 바로 아래에 붙는다 */
+  .fix {
+    margin-top: 8px; background: var(--fail-bg); border: 1px solid var(--fail); border-left-width: 4px;
+    border-radius: 6px; padding: 7px 11px; font-size: 13px; line-height: 1.5; color: var(--text);
+  }
+  .fix > b { color: var(--fail); margin-right: 6px; white-space: nowrap; }
+  .fix .to { display: block; margin-top: 2px; color: var(--muted); }
+  .fix .to::before { content: "→ 개선: "; color: var(--fail); font-weight: 600; }
+  .fix + .fix { margin-top: 6px; }
+  .fix .orig { display: block; margin-top: 3px; font: 11.5px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); word-break: break-word; }
+  .fix-index { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .fix-index a { display: inline-block; font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--fail-bg); color: var(--fail); text-decoration: none; }
+  .fix-index a:hover { text-decoration: underline; }
+
+  @media print {
+    @page { size: A4; margin: 14mm 12mm; }
+    :root { color-scheme: light; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    main { max-width: none; padding: 0; }
+    .node, .decision, .tree, tr, .phase, .issues li { break-inside: avoid; }
+    .phase { break-after: avoid; }
+  }
+  .psum-toc { columns: 2; column-gap: 24px; font-size: 13px; margin: 0 0 16px; padding-left: 22px; }
+  .psum-toc a { color: var(--text); }
+  @media (max-width: 720px) { .psum-toc { columns: 1; } }
+  .psec { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--model); border-radius: 8px; padding: 10px 14px; margin: 0 0 12px; }
+  .psec h3 { font: 700 13.5px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; margin: 0 0 6px; color: var(--model); }
+  .psec ul { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--muted); }
+  .psec li { margin: 3px 0; }
+  .psec li b { color: var(--text); }
+  footer { margin-top: 40px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
+
+  /* v1 대비 변경 · 보류 — 대상 단계 바로 아래에 붙는다 */
+  .chg, .held {
+    margin-top: 8px; border: 1px dashed var(--rule); border-left: 4px solid var(--rule); background: var(--rule-bg);
+    border-radius: 6px; padding: 7px 11px; font-size: 13px; line-height: 1.5; color: var(--text);
+  }
+  .chg > b { color: var(--rule); margin-right: 6px; white-space: nowrap; }
+  .chg .to, .held .to { display: block; margin-top: 2px; color: var(--muted); }
+  .held { border-color: var(--line); border-left-color: var(--out); background: var(--out-bg); border-style: solid; }
+  .held > b { color: var(--out); margin-right: 6px; white-space: nowrap; }
+  .chg + .chg, .chg + .held, .held + .held { margin-top: 6px; }
+  th, td.nw { white-space: nowrap; }
+  .fix-index a.ok { background: var(--rule-bg); color: var(--rule); }
+  .fix-index a:not(.ok) { background: var(--out-bg); color: var(--out); }
+  @media print { .chg, .held { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>관찰 프롬프트 v4 흐름 — 다회 비전 호출</h1>
+  <p class="lede">
+    v4는 v3까지의 <b>비전 1회 제한</b>을 풀고, 아이템 관찰을 <b>식별 1회 → 적격 의복마다 관찰 1회(동시에)</b>로 나눕니다.
+    규칙 문장은 v3와 같고(공통 규칙), 호출마다 범위와 출력 모양만 다릅니다. 나눠 받은 결과는 하나로 합쳐 1회 호출과 같은 엔진(검증 · 스코어링)에 넘깁니다.
+    v3에서 바뀐 곳은 <b style="color:var(--rule)">초록 상자</b>입니다.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>버전</th><th>상태</th><th>길이</th><th>비전 호출</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>v4</td><td>등록 · 선택 가능</td><td class="nw">182,068자</td><td class="nw">1 + 적격 의복 수</td><td>공통 규칙(v3) + CALL 1 IDENTIFY + CALL 2 OBSERVE. <code>lib/style-ex/multi-call.ts</code>가 필요하다</td></tr>
+        <tr><td>v3</td><td>활성 · 기본 (item / observe)</td><td class="nw">177,145자</td><td class="nw">1</td><td>개선 11건 + coverage 문장 수정</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">v4는 다회 호출 코드가 배포된 서버에서만 제대로 돈다. 코드가 없는 서버에 v4를 보내면 두 CALL 절이 한 프롬프트로 섞여 간다 — 그래서 기본값은 v3로 두었고, v4는 /style-ex 버전 목록에서 골라 쓴다. 코드 배포 후 v4를 활성화하면 기본이 된다.</p>
+
+  <div class="legend" style="margin-top:18px">
+    <span><span class="src sys">SHARED</span>모든 호출에 같은 공통 규칙 (캐시)</span>
+    <span><span class="src usr">PER CALL</span>호출마다 바뀌는 글 · 이미지</span>
+    <span><i style="border-color:var(--input);background:var(--input-bg)"></i>입력</span>
+    <span><i style="border-color:var(--model);background:var(--model-bg)"></i>비전 호출</span>
+    <span><i style="border-color:var(--rule);background:var(--rule-bg)"></i>코드 · 규칙</span>
+    <span><i style="border-color:var(--out);background:var(--out-bg)"></i>출력 · 엔진</span>
+    <span><i style="border-color:var(--rule);background:var(--rule-bg);border-style:dashed"></i>v3 대비 변경</span>
+  </div>
+
+  <!-- ───────────── 한눈에 ───────────── -->
+  <div class="phase"><b>한눈에</b><h2>호출 구조</h2></div>
+  <div class="tree">
+    <svg viewBox="0 0 860 300" role="img" aria-label="식별 1회 뒤 적격 의복마다 관찰 호출을 동시에 보내고 결과를 합쳐 엔진에 넘기는 흐름">
+      <rect class="box" x="10" y="120" width="130" height="60" rx="8"/>
+      <text x="75" y="146" text-anchor="middle">이미지</text>
+      <text x="75" y="164" text-anchor="middle" class="lbl">+ 상품 정보(선택)</text>
+      <path d="M140 150 L178 150"/><path d="M172 145 L180 150 L172 155"/>
+      <rect class="leaf-none" x="180" y="110" width="150" height="80" rx="8"/>
+      <text x="255" y="138" text-anchor="middle" class="mono">CALL 1</text>
+      <text x="255" y="156" text-anchor="middle">IDENTIFY</text>
+      <text x="255" y="174" text-anchor="middle" class="lbl">타깃 · 카테고리 · where</text>
+      <path d="M330 150 L370 60"/><path d="M330 150 L370 150"/><path d="M330 150 L370 240"/>
+      <rect class="leaf-none" x="372" y="30" width="170" height="60" rx="8"/>
+      <text x="457" y="55" text-anchor="middle" class="mono">CALL 2 · target_1</text>
+      <text x="457" y="74" text-anchor="middle" class="lbl">TARGET FOCUS + 키 목록</text>
+      <rect class="leaf-none" x="372" y="120" width="170" height="60" rx="8"/>
+      <text x="457" y="145" text-anchor="middle" class="mono">CALL 2 · target_2</text>
+      <text x="457" y="164" text-anchor="middle" class="lbl">동시에</text>
+      <rect class="leaf-alt" x="372" y="210" width="170" height="60" rx="8" stroke-dasharray="4 3"/>
+      <text x="457" y="235" text-anchor="middle" class="mono">CALL 2 · target_N</text>
+      <text x="457" y="254" text-anchor="middle" class="lbl">적격 의복 수만큼 (최대 4개씩)</text>
+      <path d="M542 60 L590 150"/><path d="M542 150 L590 150"/><path d="M542 240 L590 150"/>
+      <rect class="leaf-ok" x="592" y="120" width="110" height="60" rx="8"/>
+      <text x="647" y="146" text-anchor="middle">merge()</text>
+      <text x="647" y="164" text-anchor="middle" class="lbl">패키지 하나로</text>
+      <path d="M702 150 L736 150"/><path d="M730 145 L738 150 L730 155"/>
+      <rect class="leaf-alt" x="738" y="120" width="112" height="60" rx="8"/>
+      <text x="794" y="146" text-anchor="middle">엔진</text>
+      <text x="794" y="164" text-anchor="middle" class="lbl">1회와 같음</text>
+      <text x="255" y="215" text-anchor="middle" class="lbl">캐시 쓰기 (공통 규칙)</text>
+      <text x="457" y="112" text-anchor="middle" class="lbl">캐시 읽기 ×N</text>
+    </svg>
+  </div>
+
+  <!-- ───────────── 프롬프트 구성 ───────────── -->
+  <div class="phase"><b>프롬프트</b><h2>버전 하나 = 공통 규칙 + 호출별 절</h2></div>
+  <p class="trigger">Full-Look v1.2(비전 3회)와 같은 구분 줄 규약을 씁니다. 구분 줄이 없는 버전(v1–v3)은 예전처럼 1회로 돕니다.</p>
+  <div class="flow">
+    <div class="node model">
+      <div class="who"><span class="src sys">SHARED</span> 첫 구분 줄 앞 · 177,394자</div>
+      <h3>공통 규칙 — v3와 같은 글</h3>
+      <p>관찰자 역할, STAGE 0–4, 37개 파라미터 어휘 · 적용성 · SV-5, 색상 · 연출 유형 addendum, 출력 스키마. 모든 호출에서 <b>맨 앞 블록</b>이라 CALL 1이 쓴 프롬프트 캐시를 CALL 2들이 읽습니다.</p>
+    </div>
+    <div class="chg"><b>v4</b>STAGES 문장
+      <span class="to">"This is ONE Vision call (no second invocation, no hidden retries)" → "SEVERAL Vision calls: ONE IDENTIFY call for the whole image, then ONE OBSERVE call per eligible target … the CALL section says which stages THIS call performs and overrides the [OUTPUT] shape". 공통 규칙에서 바뀐 곳은 이 문장 하나다.</span></div>
+    <div class="arrow"></div>
+    <div class="split">
+      <div class="node rule">
+        <div class="who"><code>=====[ CALL 1: IDENTIFY ]=====</code></div>
+        <h3>식별 절 · 2.4k자</h3>
+        <p>STAGE 0 · STAGE 1 · 카테고리 합성만. 관찰 · DM · 색상 · 연출 유형은 내지 않음.</p>
+      </div>
+      <div class="node rule">
+        <div class="who"><code>=====[ CALL 2: OBSERVE ]=====</code></div>
+        <h3>관찰 절 · 2.2k자</h3>
+        <p><code>{{TARGET_FOCUS_JSON}}</code> 자리에 코드가 의복 하나의 초점 정보를 넣음. STAGE 2–4를 그 의복에만.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── CALL 1 ───────────── -->
+  <div class="phase"><b>CALL 1</b><h2>IDENTIFY — 이미지 전체 1회</h2></div>
+  <p class="trigger">요청 블록: <span class="src sys">SHARED</span> 공통 규칙 (cache_control) → <span class="src usr">PER CALL</span> 식별 절 → 상품 정보(골랐을 때만) → 이미지</p>
+  <div class="flow">
+    <div class="node model">
+      <div class="who">모델이 하는 일</div>
+      <ul>
+        <li><b>STAGE 0</b> 상품 정보가 있으면 판매 상품 의복을 먼저 정함 → 그 의복만 dominant + <code>product_match</code></li>
+        <li><b>STAGE 1</b> 의복마다 identity · readability · prominence, <code>target_1…</code> 순서</li>
+        <li><b>카테고리 합성</b> hem-first · knit-body · sweat-body · outerwear-column · 토큰 없는 의복 매핑 — <b>여기서 정한 카테고리가 최종</b></li>
+        <li><b>where</b> 적격 의복마다 위치 설명 한 줄 (프레임 위치 + 의복 + 구별되는 시각 단서)</li>
+      </ul>
+    </div>
+    <div class="chg"><b>v4</b>where — 위치 설명
+      <span class="to">CALL 2가 같은 이미지에서 그 의복 하나를 찾는 열쇠. 두 타깃이 같은 설명을 쓰면 안 된다. 합칠 때 뺀다(계약 필드가 아니다).</span></div>
+    <div class="arrow"></div>
+<pre class="json">{ "targets": [
+    { "target_id": "target_1", "where": "the shorts — black, lower half of the frame",
+      "identity": {...}, "readability": { "value": true, "basis": "RECONSTRUCTABLE", ... },
+      "prominence": "dominant", "product_match": true,
+      "category": { "state": "OBSERVED", "value": "Trouser", "evidence": [...], "product_context": "General" } },
+    { "target_id": "target_2", "where": "the T-shirt — white, upper body", ... "prominence": "secondary" },
+    { "target_id": "target_3", "identity": {...}, "readability": { "value": false, "basis": "NOT_RECONSTRUCTABLE" }, ... }
+  ],
+  "cross_target_visual_relations": [ ... ] }</pre>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── 코드: 초점 만들기 ───────────── -->
+  <div class="phase"><b>코드</b><h2>적격 의복 고르기 · TARGET FOCUS 만들기</h2></div>
+  <p class="trigger"><code>lib/style-ex/multi-call.ts</code> — 비전 호출 없음</p>
+  <div class="flow">
+    <div class="decision">
+      <div class="q">적격인가? — identity.value ∧ readability.value ∧ basis = RECONSTRUCTABLE (엔진 C2 ∧ C3와 같은 판단)</div>
+      <div class="branch"><span class="tag">적격</span>CALL 2를 부른다</div>
+      <div class="branch"><span class="tag alt">비적격</span>CALL 2 없음 — CALL 1의 식별 정보만 엔진으로</div>
+    </div>
+    <div class="arrow"></div>
+    <div class="node rule">
+      <div class="who">TARGET FOCUS — 키 목록은 엔진 적용성 규칙(<code>producer_rules_v1</code>)에서 뽑는다</div>
+      <div class="table-wrap" style="margin-top:6px">
+        <table>
+          <thead><tr><th>필드</th><th>내용</th><th>Jacket 예</th></tr></thead>
+          <tbody>
+            <tr><td>where · descriptor</td><td>CALL 1의 위치 설명 · 재구성 설명</td><td>—</td></tr>
+            <tr><td>category</td><td>CALL 1에서 정한 카테고리 (고정)</td><td>Jacket</td></tr>
+            <tr><td>keys.required</td><td>범용 + 카테고리 필수 (U ∪ M)</td><td>21개</td></tr>
+            <tr><td>keys.conditional</td><td>부모 관찰이 켜면 내는 키 (C)</td><td>waist_definition · cuff_type · cuff_scale · sleeve_volume · collar_scale</td></tr>
+            <tr><td>keys.not_applicable</td><td>내면 안 되는 키 (N)</td><td>8개</td></tr>
+            <tr><td>keys.absent_as_none</td><td>확인된 없음을 <code>"None"</code>으로 답하는 키 — 값 도메인에 None이 있는 키 (그 밖은 ABSENT)</td><td>pocket · asymmetry · collar …</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>포켓 형태(<code>pocket_construction</code> · <code>pocket_projection</code>)는 은퇴한 최상위 형식이라 목록에서 뺀다 — <code>pocket.pockets[]</code> 안에서만 답한다. 카테고리가 UNKNOWN이면 범용 9개만 필수.</p>
+    </div>
+    <div class="chg"><b>v4</b>키 목록을 프롬프트가 아니라 코드가 준다
+      <span class="to">v3까지는 모델이 17만 자 규칙에서 카테고리별 필수 · 금지 · 조건부 키를 스스로 찾아야 했다. v4는 그 의복에 해당하는 키만 정확히 받는다 — 37개 중 필요한 것만 내게 하는 효율화의 핵심. absent_as_none은 첫 실측에서 나온 SEMANTIC_NONE_ILLEGAL(graphic = "None") 때문에 더했다.</span></div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── CALL 2 ───────────── -->
+  <div class="phase"><b>CALL 2</b><h2>OBSERVE — 적격 의복마다 1회, 동시에</h2></div>
+  <p class="trigger">요청 블록: <span class="src sys">SHARED</span> 공통 규칙 (캐시 읽기) → <span class="src usr">PER CALL</span> 관찰 절 + TARGET FOCUS → 이미지. 상품 정보는 붙이지 않는다(대표 의복은 CALL 1에서 정함). 동시에 최대 4개.</p>
+  <div class="split three">
+    <div class="node model">
+      <div class="who">CALL 2 · target_1</div>
+      <h3>Trouser</h3>
+      <p>required 14 · conditional 0 · not_applicable 20</p>
+    </div>
+    <div class="node model">
+      <div class="who">CALL 2 · target_2</div>
+      <h3>T-Shirt</h3>
+      <p>required 19 · conditional cuff_type · sleeve_volume …</p>
+    </div>
+    <div class="node model" style="border-style:dashed">
+      <div class="who">CALL 2 · target_N</div>
+      <h3>…</h3>
+      <p>적격 의복 수만큼</p>
+    </div>
+  </div>
+  <div class="flow" style="margin-top:10px">
+    <div class="node model">
+      <div class="who">각 호출에서 모델이 하는 일 — 초점 의복 하나만</div>
+      <ul>
+        <li>focus.where로 의복을 찾고, 다른 의복은 맥락으로만 본다 (값을 옮겨 적지 않음)</li>
+        <li><b>STAGE 2</b> required 전부, conditional은 트리거가 켜질 때, not_applicable은 내지 않음 (closure_type · waist_definition 예외 적용)</li>
+        <li>확인된 없음: absent_as_none 키만 <code>"None"</code>, 나머지는 <code>ABSENT</code> + value null</li>
+        <li><b>STAGE 3</b> 색상 2차 스윕 · <b>STAGE 4</b> 누락 감사 → <code>color_observation</code>, <code>presentation_type</code></li>
+        <li>내기 전 focus.keys와 대조</li>
+      </ul>
+    </div>
+    <div class="arrow"></div>
+<pre class="json">{ "targets": [
+    { "target_id": "target_1",
+      "category": { "state": "OBSERVED", "value": "Trouser", "evidence": [...], "product_context": "General" },
+      "observations": { ... 14 required + 켜진 conditional ... },
+      "dm_designed_detail_evidence": [...],
+      "color_observation": {...},
+      "presentation_type": "WORN" } ] }</pre>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── merge ───────────── -->
+  <div class="phase"><b>merge</b><h2>1회 호출과 같은 패키지 하나로</h2></div>
+  <div class="flow">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>필드</th><th>어디서 받나</th></tr></thead>
+        <tbody>
+          <tr><td>target_id</td><td>CALL 1 배열 순서로 다시 매김 (<code>target_1…</code>, 엔진 governEnvelope의 id와 같음)</td></tr>
+          <tr><td>identity · readability · descriptor · prominence</td><td>CALL 1</td></tr>
+          <tr><td>product_match</td><td>CALL 1 (상품 정보가 있을 때만)</td></tr>
+          <tr><td>category</td><td>CALL 1 — product_context가 없으면 CALL 2의 것을 보탬</td></tr>
+          <tr><td>observations · dm_designed_detail_evidence · color_observation · presentation_type</td><td>CALL 2 (그 의복의 호출)</td></tr>
+          <tr><td>cross_target_visual_relations</td><td>CALL 1 (의복 사이 관계는 전체를 본 호출이 안다)</td></tr>
+          <tr><td>where</td><td>버림 — CALL 2에 넘기는 용도</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="node out" style="margin-top:8px">
+      <div class="who">실패</div>
+      <p>호출마다 엔진 어댑터(<code>runOneCall</code>)의 기술적 재시도(1회)를 그대로 쓴다. CALL 1이나 어느 CALL 2든 끝내 실패하면 추출 전체를 실패로 돌려준다 — 일부 의복만 관찰된 결과를 정상인 것처럼 넘기지 않는다. <code>visionCalls</code>에 실제 호출 수(재시도 포함)를 남긴다.</p>
+    </div>
+  </div>
+
+  <div class="arrow"></div>
+
+  <!-- ───────────── 엔진 ───────────── -->
+  <div class="phase"><b>엔진</b><h2>governEnvelope → 대표 의복 → 스타일 아이디 (변경 없음)</h2></div>
+  <div class="flow">
+    <div class="node out">
+      <div class="who">governEnvelope · 검증 · 스코어링</div>
+      <p>합친 패키지는 1회 호출의 출력과 모양이 같아, 그 뒤는 그대로입니다 — 적격 판정, record 정리, 검증기(<code>contract_valid</code>), 대표 의복(<code>PRODUCT_MATCH</code> → <code>DOMINANT</code> → <code>FIRST_ELIGIBLE</code>), EI · SR · DM 스코어링과 TC 규칙, 중립 축 OR 후보.</p>
+    </div>
+  </div>
+
+  <!-- ───────────── 실측 ───────────── -->
+  <div class="phase"><b>실측</b><h2>v3(1회) vs v4(다회) — 같은 사진 (2026-10-28)</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>항목</th><th>v3 · 1회</th><th>v4 · 다회</th></tr></thead>
+      <tbody>
+        <tr><td>상품 · 사진</td><td colspan="2">30 비캄 미드라이즈 쇼츠 3 — 티셔츠 + 쇼츠, 착용 사진</td></tr>
+        <tr><td>비전 호출</td><td>1</td><td>3 (식별 1 + 관찰 2 동시)</td></tr>
+        <tr><td>걸린 시간</td><td>42.1초</td><td>39.6초</td></tr>
+        <tr><td>출력 토큰</td><td>3,799 (한 번에)</td><td>944 → 1,568 ∥ 2,260</td></tr>
+        <tr><td>공통 규칙 69.6k 토큰</td><td>캐시 쓰기 1</td><td>캐시 쓰기 1 + 읽기 2 (읽기는 0.1배 가격)</td></tr>
+        <tr><td>계약</td><td>contract_valid · 오류 0</td><td>contract_valid · 오류 0</td></tr>
+        <tr><td>대표 의복 · 스타일 아이디</td><td>쇼츠 · PRODUCT_MATCH · ECRM</td><td>쇼츠 · PRODUCT_MATCH · ECRM</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">
+    두 벌 사진에서는 시간이 비슷하고, v4가 입력(캐시 읽기)을 더 쓴다. v4의 이점은 ① 의복마다 해당 키 목록만 받아 정확도를 겨냥하고,
+    ② 출력이 의복별로 나뉘어 한 응답이 길어지지 않으며(잘림 위험 감소), ③ 의복이 늘어도 관찰이 동시에 돌아 시간이 덜 는다는 것이다.
+    첫 v4 실측에서 graphic = "None"(SEMANTIC_NONE_ILLEGAL)이 나와 absent_as_none을 더했고, 다시 돌린 결과가 위 표다. 실측은 이 사진 하나뿐이다 — 의복이 많은 사진 · 아우터 · 패딩 조끼는 아직 시험하지 않았다.
+  </p>
+
+  <footer>
+    출처: <code>style_ex_prompt_versions</code> — target item · kind observe · v4 (<code>a1c1efe5-47b0-442b-b0ed-494128bc2dd4</code>, 등록 · 비활성).
+    코드: <code>lib/style-ex/multi-call.ts</code> (분리 · 키 목록 · 초점 · 합치기), <code>lib/style-ex/extract.ts</code> <code>observe()</code> (다회 / 1회 분기).
+    규칙 변경 이력: <code>docs/observe-prompt-diagram-v3.html</code>.
+  </footer>
+</main>
+</body>
+
+</html>
