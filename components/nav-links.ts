@@ -150,6 +150,7 @@ const NAVBAR: { href: NavHref; label?: string; match?: string[] }[] = [
   { href: "/creator-req", match: ["/admin/creators"] },
   { href: "/admin/brands" },
   { href: "/admin/api-mng" },
+  { href: "/prompt-dbg" },
 ];
 
 export interface NavBarLink {
