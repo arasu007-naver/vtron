@@ -22,6 +22,7 @@ import {
   Users,
   Building2,
   KeySquare,
+  Bug,
   PlayCircle,
 } from "lucide-react";
 
@@ -127,6 +128,12 @@ export const NAV_LINKS = [
     label: "API 데모",
     icon: PlayCircle,
     title: "발급한 API 키로 외부 API(Style ID)를 직접 불러 보고 axios 예제 코드를 본다",
+  },
+  {
+    href: "/prompt-dbg",
+    label: "프롬프트 디버그",
+    icon: Bug,
+    title: "관찰 프롬프트 버전을 골라 흐름도와 원문을 나란히 보고, 흐름도의 단계를 누르면 그 절로 커서가 간다",
   },
 ] as const;
 
