@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { LogOut, Sparkles } from "lucide-react";
-import { NAV_LINKS as LINKS } from "./nav-links";
+import { NAVBAR_LINKS as LINKS } from "./nav-links";
 import { logout } from "@/lib/auth-client";
 
 /**
@@ -17,9 +17,9 @@ import { logout } from "@/lib/auth-client";
  * 보호된 라우트 목록과 로그아웃 버튼을 띄울 이유가 없다.
  */
 
-// `/products` 가 `/products-2-link` 까지 켜지지 않도록 경계(`/`)까지 본다.
-const isActive = (pathname: string, href: string) =>
-  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+// `/products` 가 `/products-2-link` 까지 켜지지 않도록 경계(`/`)까지 본다. 합친 링크는 match 의 경로 어디서든 켜진다.
+const isActive = (pathname: string, match: string[]) =>
+  match.some((href) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`)));
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -48,17 +48,17 @@ export default function NavBar() {
       <Link
         href="/"
         className="flex items-center gap-1.5 pr-2 mr-1 no-underline"
-        title="VTON 스튜디오"
+        title="Full-Look Style ID"
       >
         <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent)]" />
         <span className="font-[family-name:var(--font-heading)] font-semibold text-[19.8px] tracking-[0.18em] uppercase text-black">
-          STMX Studio
+          STMX
         </span>
       </Link>
 
       <div className="flex items-center gap-1 min-w-0 overflow-x-auto vt-scroll">
-        {LINKS.map(({ href, label, icon: Icon, title }) => {
-          const active = isActive(pathname, href);
+        {LINKS.map(({ href, label, icon: Icon, title, match }) => {
+          const active = isActive(pathname, match);
           return (
             <Link
               key={href}

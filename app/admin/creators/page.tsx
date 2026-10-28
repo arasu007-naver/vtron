@@ -1,5 +1,6 @@
 "use client";
 
+import CreatorTabs from "@/components/creator/CreatorTabs";
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import {
@@ -140,6 +141,7 @@ export default function AdminCreatorsPage() {
 
   return (
     <div className="h-full flex flex-col bg-[#F8F9FA] text-[#1D2330] overflow-hidden">
+      <CreatorTabs />
       <header className="flex-none bg-white border-b border-[#E0E3E8] px-6 py-4">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div className="flex items-center gap-3">

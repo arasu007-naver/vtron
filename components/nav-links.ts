@@ -1,6 +1,8 @@
 /**
- * 전역 내비게이션 링크 — `NavBar` 와 채팅 도우미(`ChatAgent`)가 같은 목록 · 레이블을 쓴다.
- * 채팅 API(`/api/agent`)도 이 목록으로 페이지를 안내하므로 링크를 더하면 세 곳에 함께 반영된다.
+ * 전역 링크.
+ *   NAV_LINKS    — 채팅 도우미(`ChatAgent`)와 채팅 API(`/api/agent`)가 쓰는 전체 페이지 목록 · 레이블
+ *   NAVBAR_LINKS — 상단 `NavBar` 에 보이는 것만 (NAV_LINKS 에서 고르고 레이블 · 활성 경로를 덧씌운다)
+ * 인덱스(/)는 Full-Look Style ID 추출 페이지이고, 로고가 그리로 간다. VTON 스튜디오는 /studio 다.
  */
 
 import {
@@ -25,7 +27,7 @@ import {
 
 export const NAV_LINKS = [
   {
-    href: "/",
+    href: "/studio",
     label: "스튜디오",
     icon: LayoutDashboard,
     title: "배경 + 캐릭터 + 가먼트 조합 가상 피팅",
@@ -129,3 +131,30 @@ export const NAV_LINKS = [
 ] as const;
 
 export type NavHref = (typeof NAV_LINKS)[number]["href"];
+
+type NavLink = (typeof NAV_LINKS)[number];
+
+/** 상단 NavBar 에 둘 링크 — 순서대로. label 을 주면 NavBar 에서만 그 이름을 쓰고, match 의 경로에서도 켜진다. */
+const NAVBAR: { href: NavHref; label?: string; match?: string[] }[] = [
+  { href: "/style-ex", label: "Item Style ID" },
+  { href: "/product-style" },
+  { href: "/contracts" },
+  // 크리에이터 계약 관리(/admin/creators)는 Creator 요청에 합쳤다 — 두 페이지 위의 CreatorTabs 로 오간다
+  { href: "/creator-req", match: ["/admin/creators"] },
+  { href: "/admin/brands" },
+  { href: "/admin/api-mng" },
+];
+
+export interface NavBarLink {
+  href: NavHref;
+  label: string;
+  icon: NavLink["icon"];
+  title: string;
+  /** 이 링크를 켜는 경로들 (href 포함) */
+  match: string[];
+}
+
+export const NAVBAR_LINKS: NavBarLink[] = NAVBAR.map(({ href, label, match }) => {
+  const link = NAV_LINKS.find((l) => l.href === href)!;
+  return { ...link, label: label ?? link.label, match: [href, ...(match ?? [])] };
+});
