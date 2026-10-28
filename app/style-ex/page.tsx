@@ -16,10 +16,14 @@
    입력 이미지는 파일로 고르거나, [상품 Style ID 추출] 모달(ProductPickModal)에서 등록된 상품을
    찾아 그 상품의 원본 사진을 쓴다. 상품을 고르면 그 상품 정보(PRODUCT CONTEXT, lib/style-ex/product-context)가
    관찰 프롬프트 끝에 붙어 보이고(버전에는 저장되지 않는다), 상품으로 추출하면 프롬프트 아래에 상품 정보가 서고, [PDF 작성] 이
-   상품 사진 · 상품 정보 · 호출 결과를 위에서 아래로 담은 PDF 를 내려받게 한다(lib/style-ex/report-pdf). */
+   상품 사진 · 상품 정보 · 호출 결과를 위에서 아래로 담은 PDF 를 내려받게 한다(lib/style-ex/report-pdf).
+
+   [흐름도] = 그 관찰 프롬프트 버전의 흐름도(HTML, 버전마다 하나 — 0022)를 왼쪽에, 프롬프트 편집을 오른쪽에 둔 화면
+   (components/style-ex/FlowDocModal, 인덱스와 같다). 새 버전으로 저장하면 고치기 시작한 버전의 흐름도를 물려받는다. */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Check, Crop, ExternalLink, FileDown, ImagePlus, Loader2, RotateCcw, Save, ScanSearch, ShoppingBag } from "lucide-react";
+import { Check, Crop, ExternalLink, FileDown, ImagePlus, Loader2, RotateCcw, Save, ScanSearch, ShoppingBag, Workflow } from "lucide-react";
+import FlowDocModal from "@/components/style-ex/FlowDocModal";
 import { authFetch } from "@/lib/auth-client";
 import ProductPickModal from "@/components/style-ex/ProductPickModal";
 import type { CatalogProduct } from "@/lib/tryon/product-catalog";
@@ -64,6 +68,10 @@ interface PromptVersion {
   note: string | null;
   is_active: boolean;
   created_at: string;
+  /** 흐름도를 넣은 때 — null 이면 흐름도 없음 (0022 전이면 없다) */
+  flow_doc_updated_at?: string | null;
+  /** 흐름도를 물려받은 버전 id */
+  flow_doc_from?: string | null;
 }
 
 /** 부위 크롭 결과 (/api/style-ex/crops) */
@@ -110,6 +118,9 @@ export default function StyleExPage() {
   const [versionNote, setVersionNote] = useState("");
   const [versionBusy, setVersionBusy] = useState(false);
   const [versionError, setVersionError] = useState<string | null>(null);
+  /** 흐름도를 보일 버전 (종류별) — 마지막으로 불러온(고른) 버전. 고치는 중에도 그 버전의 흐름도를 본다 */
+  const [flowBase, setFlowBase] = useState<Record<PromptKey, string | null>>({ prompt: null, judgePrompt: null });
+  const [flowOpen, setFlowOpen] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [provider, setProvider] = useState<"claude" | "gemini">("claude");
   const [usedModel, setUsedModel] = useState<string | null>(null);
@@ -384,9 +395,16 @@ export default function StyleExPage() {
     setPrompts((p) => ({ ...p, [key]: base + (splitProductContext(p[key]).addendum ?? "") }));
   const currentVersion = versionOf(tab);
   const activeVersion = versions[tab].find((v) => v.is_active) ?? null;
+  /** 흐름도를 보일 버전 — 지금 내용과 같은 버전, 고치는 중이면 고치기 시작한 버전, 처음이면 활성 버전 */
+  const flowVersion = currentVersion ?? versions[tab].find((v) => v.id === flowBase[tab]) ?? activeVersion;
 
   /** 버전 API 호출 — 실패하면 오류를 보여 주고, 성공하면 그 종류의 목록을 다시 읽는다 */
-  const versionRequest = async (url: string, method: "POST" | "PATCH", payload: unknown, onDone: () => void) => {
+  const versionRequest = async (
+    url: string,
+    method: "POST" | "PATCH",
+    payload: unknown,
+    onDone: (data: { version?: PromptVersion }) => void
+  ) => {
     if (versionBusy) return;
     setVersionBusy(true);
     setVersionError(null);
@@ -398,7 +416,7 @@ export default function StyleExPage() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error ?? `요청이 실패했습니다 (${res.status})`);
-      onDone();
+      onDone(data);
       await loadVersions(tab);
     } catch (e) {
       setVersionError(e instanceof Error ? e.message : String(e));
@@ -414,9 +432,11 @@ export default function StyleExPage() {
     return versionRequest(
       "/api/style-ex/prompts",
       "POST",
-      { target: "item", kind: PROMPT_KIND[tab], content, note: versionNote, activate },
-      () => {
+      // 고치기 시작한 버전의 흐름도를 물려받는다
+      { target: "item", kind: PROMPT_KIND[tab], content, note: versionNote, activate, flowFrom: flowVersion?.id ?? null },
+      (data) => {
         if (activate) setDefaults((d) => ({ ...d, [tab]: content }));
+        if (data.version?.id) setFlowBase((f) => ({ ...f, [tab]: data.version!.id }));
         setVersionNote("");
       }
     );
@@ -553,7 +573,10 @@ export default function StyleExPage() {
                 value={currentVersion?.id ?? ""}
                 onChange={(e) => {
                   const v = versions[tab].find((x) => x.id === e.target.value);
-                  if (v) replaceBase(tab, v.content);
+                  if (v) {
+                    replaceBase(tab, v.content);
+                    setFlowBase((f) => ({ ...f, [tab]: v.id }));
+                  }
                 }}
                 disabled={!versions[tab].length}
                 title="버전을 고르면 그 내용을 불러옵니다"
@@ -569,13 +592,35 @@ export default function StyleExPage() {
               {isEdited(tab) && (
                 <button
                   type="button"
-                  onClick={() => replaceBase(tab, defaults[tab])}
+                  onClick={() => {
+                    replaceBase(tab, defaults[tab]);
+                    setFlowBase((f) => ({ ...f, [tab]: activeVersion?.id ?? null }));
+                  }}
                   className="flex items-center gap-1 text-xs text-black/60 hover:text-black"
                 >
                   <RotateCcw className="w-3 h-3" />
                   활성 버전 복원
                 </button>
               )}
+              <button
+                type="button"
+                onClick={() => setFlowOpen(true)}
+                disabled={!flowVersion}
+                title={
+                  flowVersion
+                    ? `v${flowVersion.version} 의 흐름도를 보며 프롬프트 고치기${
+                        flowVersion.flow_doc_updated_at ? (flowVersion.flow_doc_from ? " (물려받은 흐름도)" : "") : " — 아직 흐름도 없음"
+                      }`
+                    : "버전을 먼저 불러오세요"
+                }
+                className="flex items-center gap-1 rounded border border-[var(--color-divider)] bg-white px-2 py-0.5 text-xs hover:bg-black/5 disabled:opacity-50"
+              >
+                <Workflow className="w-3 h-3 text-[var(--color-accent-700)]" />
+                흐름도
+                {flowVersion?.flow_doc_updated_at && (
+                  <span className={`w-1.5 h-1.5 rounded-full ${flowVersion.flow_doc_from ? "bg-amber-500" : "bg-emerald-600"}`} />
+                )}
+              </button>
             </div>
             <textarea
               ref={promptRef}
@@ -751,6 +796,22 @@ export default function StyleExPage() {
           </div>
         </section>
       </div>
+
+      <FlowDocModal
+        open={flowOpen}
+        onClose={() => setFlowOpen(false)}
+        versionId={flowVersion?.id ?? null}
+        versionNumber={flowVersion?.version ?? null}
+        edited={!currentVersion}
+        prompt={prompts[tab]}
+        onPromptChange={(value) => setPrompts((p) => ({ ...p, [tab]: value }))}
+        note={versionNote}
+        onNoteChange={setVersionNote}
+        onSave={(activate) => void handleSaveVersion(activate)}
+        busy={versionBusy}
+        error={versionError}
+        onFlowChanged={() => void loadVersions(tab).catch(() => {})}
+      />
 
       <ProductPickModal
         open={productModal}

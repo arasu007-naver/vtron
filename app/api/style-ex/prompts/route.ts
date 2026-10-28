@@ -48,7 +48,8 @@ export async function GET(request: Request) {
 
 /**
  * POST /api/style-ex/prompts — 새 버전 등록
- *   body: { kind: "observe" | "judge", content, note?, activate?, target?: "item" | "full" (비우면 item) }
+ *   body: { kind: "observe" | "judge", content, note?, activate?, target?: "item" | "full" (비우면 item),
+ *           flowFrom?: 고치기 시작한 버전 id — 그 버전의 흐름도를 물려받는다 }
  *   응답: { version: PromptVersion } · 같은 내용이 이미 있으면 409
  */
 export async function POST(request: Request) {
@@ -69,6 +70,7 @@ export async function POST(request: Request) {
       note: typeof body.note === "string" ? body.note : null,
       activate: body.activate === true,
       userId: auth.user.id,
+      flowFrom: typeof body.flowFrom === "string" ? body.flowFrom : null,
     });
     return NextResponse.json({ version }, { status: 201 });
   } catch (e) {

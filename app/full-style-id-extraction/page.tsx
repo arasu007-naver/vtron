@@ -19,15 +19,20 @@
    상품 사진으로 추출하면 서버가 결과를 product_style 에 target='full' 로 저장한다(/style-ex 는 'item') —
    상품 Style ID 페이지가 둘을 구별해 보인다.
 
+   [흐름도] = 그 관찰 프롬프트 버전의 흐름도(HTML, 버전마다 하나 — 0022)를 왼쪽에, 프롬프트 편집을 오른쪽에 둔 화면
+   (components/style-ex/FlowDocModal). 고치는 중이면 고치기 시작한 버전의 흐름도를 보이고, 새 버전으로 저장하면 그 흐름도를
+   물려받는다.
+
    비전 호출 횟수는 관찰 프롬프트 버전이 정한다. 3회 방식 프롬프트(v1.2 "비전 호출 3+", =====[ CALL n ]===== 구분)를
    고르면 [추출]이 비전 3회(lib/full-style-ex/three-call.ts — 등록 → 외관 ∥ 구조 · 관계)로 돌고, 그 밖은 비전 1회다. */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Check, ImagePlus, Layers, Loader2, RotateCcw, Save, ScanSearch, ShoppingBag } from "lucide-react";
+import { Check, ImagePlus, Layers, Loader2, RotateCcw, Save, ScanSearch, ShoppingBag, Workflow } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
 import ProductPickModal from "@/components/style-ex/ProductPickModal";
 import type { CatalogProduct } from "@/lib/tryon/product-catalog";
 import { SavedChip, StyleIdCard, type SavedResult, type StyleIdResult } from "@/components/style-ex/result-cards";
+import FlowDocModal from "@/components/style-ex/FlowDocModal";
 
 type Status = "idle" | "running" | "done" | "error";
 type Provider = "claude" | "gemini";
@@ -61,6 +66,10 @@ interface PromptVersion {
   note: string | null;
   is_active: boolean;
   created_at: string;
+  /** 흐름도를 넣은 때 — null 이면 흐름도 없음 (0022 전이면 없다) */
+  flow_doc_updated_at?: string | null;
+  /** 흐름도를 물려받은 버전 id */
+  flow_doc_from?: string | null;
 }
 
 const VERSIONS_URL = "/api/style-ex/prompts?target=full&kind=observe";
@@ -91,6 +100,9 @@ export default function FullStyleIdExtractionPage() {
   const [isApproved, setIsApproved] = useState<boolean | null>(null);
   const [versions, setVersions] = useState<PromptVersion[]>([]);
   const [versionNote, setVersionNote] = useState("");
+  /** 흐름도를 보일 버전 — 마지막으로 불러온(고른) 버전. 고치는 중에도 그 버전의 흐름도를 본다 */
+  const [flowBaseId, setFlowBaseId] = useState<string | null>(null);
+  const [flowOpen, setFlowOpen] = useState(false);
   const [versionBusy, setVersionBusy] = useState(false);
   const [models, setModels] = useState<Record<Provider, string> | null>(null);
   const [promptError, setPromptError] = useState<string | null>(null);
@@ -136,6 +148,7 @@ export default function FullStyleIdExtractionPage() {
         if (typeof data.prompt !== "string") throw new Error(data.error ?? `관찰 프롬프트를 받지 못했습니다 (${res.status})`);
         setPrompt(data.prompt);
         setDefaultPrompt(data.prompt);
+        setFlowBaseId(data.versions?.prompt?.id ?? null);
         setApproved(data.approved ?? null);
         setModels(data.models ?? null);
         if (!data.versions?.prompt) {
@@ -285,7 +298,15 @@ export default function FullStyleIdExtractionPage() {
   const activeVersion = versions.find((v) => v.is_active) ?? null;
 
   /** 버전 API 호출 — 실패하면 오류를 보여 주고, 성공하면 목록을 다시 읽는다 */
-  const versionRequest = async (url: string, method: "POST" | "PATCH", payload: unknown, onDone: () => void) => {
+  /** 흐름도를 보일 버전 — 지금 내용과 같은 버전, 고치는 중이면 고치기 시작한 버전 */
+  const flowVersion = currentVersion ?? versions.find((v) => v.id === flowBaseId) ?? activeVersion;
+
+  const versionRequest = async (
+    url: string,
+    method: "POST" | "PATCH",
+    payload: unknown,
+    onDone: (data: { version?: PromptVersion }) => void
+  ) => {
     if (versionBusy) return;
     setVersionBusy(true);
     setPromptError(null);
@@ -297,7 +318,7 @@ export default function FullStyleIdExtractionPage() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error ?? `요청이 실패했습니다 (${res.status})`);
-      onDone();
+      onDone(data);
       await loadVersions();
     } catch (e) {
       setPromptError(e instanceof Error ? e.message : String(e));
@@ -313,9 +334,11 @@ export default function FullStyleIdExtractionPage() {
     return versionRequest(
       "/api/style-ex/prompts",
       "POST",
-      { target: "full", kind: "observe", content, note: versionNote, activate },
-      () => {
+      // 고치기 시작한 버전의 흐름도를 물려받는다
+      { target: "full", kind: "observe", content, note: versionNote, activate, flowFrom: flowVersion?.id ?? null },
+      (data) => {
         if (activate) setDefaultPrompt(content);
+        if (data.version?.id) setFlowBaseId(data.version.id);
         setVersionNote("");
       }
     );
@@ -445,7 +468,10 @@ export default function FullStyleIdExtractionPage() {
                 value={currentVersion?.id ?? ""}
                 onChange={(e) => {
                   const v = versions.find((x) => x.id === e.target.value);
-                  if (v) setPrompt(v.content);
+                  if (v) {
+                    setPrompt(v.content);
+                    setFlowBaseId(v.id);
+                  }
                 }}
                 disabled={!versions.length}
                 title="버전을 고르면 그 내용을 불러옵니다"
@@ -461,13 +487,35 @@ export default function FullStyleIdExtractionPage() {
               {isEdited && (
                 <button
                   type="button"
-                  onClick={() => setPrompt(defaultPrompt)}
+                  onClick={() => {
+                    setPrompt(defaultPrompt);
+                    setFlowBaseId(activeVersion?.id ?? null);
+                  }}
                   className="flex items-center gap-1 text-xs text-black/60 hover:text-black"
                 >
                   <RotateCcw className="w-3 h-3" />
                   활성 버전 복원
                 </button>
               )}
+              <button
+                type="button"
+                onClick={() => setFlowOpen(true)}
+                disabled={!flowVersion}
+                title={
+                  flowVersion
+                    ? `v${flowVersion.version} 의 흐름도를 보며 프롬프트 고치기${
+                        flowVersion.flow_doc_updated_at ? (flowVersion.flow_doc_from ? " (물려받은 흐름도)" : "") : " — 아직 흐름도 없음"
+                      }`
+                    : "버전을 먼저 불러오세요"
+                }
+                className="flex items-center gap-1 rounded border border-[var(--color-divider)] bg-white px-2 py-0.5 text-xs hover:bg-black/5 disabled:opacity-50"
+              >
+                <Workflow className="w-3 h-3 text-[var(--color-accent-700)]" />
+                흐름도
+                {flowVersion?.flow_doc_updated_at && (
+                  <span className={`w-1.5 h-1.5 rounded-full ${flowVersion.flow_doc_from ? "bg-amber-500" : "bg-emerald-600"}`} />
+                )}
+              </button>
             </div>
             <textarea
               value={prompt}
@@ -594,6 +642,22 @@ export default function FullStyleIdExtractionPage() {
           </div>
         </section>
       </div>
+
+      <FlowDocModal
+        open={flowOpen}
+        onClose={() => setFlowOpen(false)}
+        versionId={flowVersion?.id ?? null}
+        versionNumber={flowVersion?.version ?? null}
+        edited={!currentVersion}
+        prompt={prompt}
+        onPromptChange={setPrompt}
+        note={versionNote}
+        onNoteChange={setVersionNote}
+        onSave={handleSaveVersion}
+        busy={versionBusy}
+        error={promptError}
+        onFlowChanged={() => void loadVersions().catch(() => {})}
+      />
 
       <ProductPickModal
         open={productModal}
