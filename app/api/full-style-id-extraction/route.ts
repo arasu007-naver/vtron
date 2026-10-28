@@ -12,6 +12,15 @@ import {
 import { authenticate, unauthorized } from "@/lib/supabase/route";
 import { styleIdCandidates, STYLE_IDS } from "@/lib/style-ex/style-ids";
 import { resolvePrompt } from "@/lib/style-ex/prompt-versions";
+import {
+  fillRegistry,
+  isThreeCallPrompt,
+  merge as mergeThree,
+  parseJsonObject,
+  registryOf,
+  skipRest,
+  threeCallPrompts,
+} from "@/lib/full-style-ex/three-call";
 
 /* Full-Look Style ID (/full-style-id-extraction)
    이미지 한 장 → 관찰(Vision 모델 1회, 승인 프롬프트 V2) → Full-Look Vision Extractor(FLV_RC6_FINAL)로 Evidence Packet
@@ -65,8 +74,14 @@ function mediaTypeOf(b: Buffer): "image/jpeg" | "image/png" | "image/webp" | nul
   return null;
 }
 
+/**
+ * 프롬프트를 이미지 앞에 둘지 (개선 #12). 승인 V2 는 검증된 입력 계약(이미지 → 텍스트)을 그대로 지키고,
+ * 그 밖의 버전(v1.1 …)은 고정된 프롬프트를 앞에 두어 프롬프트 캐시가 걸리게 한다.
+ */
+type BlockOrder = "image_first" | "prompt_first";
+
 /** Claude — 이미지 블록 + 프롬프트 텍스트 블록을 한 user 메시지로. system · tools · temperature 없음 */
-async function observeClaude(image: Buffer, mediaType: string, prompt: string) {
+async function observeClaude(image: Buffer, mediaType: string, prompt: string, order: BlockOrder) {
   const model = claudeModel();
   const client = new Anthropic({ ...anthropicClientOptions(), timeout: TIMEOUT_MS });
   const message = await client.messages
@@ -76,10 +91,16 @@ async function observeClaude(image: Buffer, mediaType: string, prompt: string) {
       messages: [
         {
           role: "user",
-          content: [
-            { type: "image", source: { type: "base64", media_type: mediaType as "image/jpeg", data: image.toString("base64") } },
-            { type: "text", text: prompt },
-          ],
+          content:
+            order === "image_first"
+              ? [
+                  { type: "image", source: { type: "base64", media_type: mediaType as "image/jpeg", data: image.toString("base64") } },
+                  { type: "text", text: prompt },
+                ]
+              : [
+                  { type: "text", text: prompt, cache_control: { type: "ephemeral" } },
+                  { type: "image", source: { type: "base64", media_type: mediaType as "image/jpeg", data: image.toString("base64") } },
+                ],
         },
       ],
     })
@@ -89,13 +110,21 @@ async function observeClaude(image: Buffer, mediaType: string, prompt: string) {
   return { text, model: message.model, usage: message.usage as unknown as Obj };
 }
 
-/** Gemini — Claude 와 같은 모양(이미지 + 프롬프트 한 user 메시지). 503 · 429 는 두 번 더 시도한다 */
-async function observeGemini(image: Buffer, mediaType: string, prompt: string) {
+/** Gemini — Claude 와 같은 모양(이미지 + 프롬프트 한 user 메시지, 순서도 같다). 503 · 429 는 두 번 더 시도한다 */
+async function observeGemini(image: Buffer, mediaType: string, prompt: string, order: BlockOrder) {
   const apiKey = geminiApiKey();
   if (!apiKey) throw new Error(MISSING_GEMINI_KEY_MESSAGE);
   const model = geminiModel();
   const payload = {
-    contents: [{ role: "user", parts: [{ inline_data: { mime_type: mediaType, data: image.toString("base64") } }, { text: prompt }] }],
+    contents: [
+      {
+        role: "user",
+        parts:
+          order === "image_first"
+            ? [{ inline_data: { mime_type: mediaType, data: image.toString("base64") } }, { text: prompt }]
+            : [{ text: prompt }, { inline_data: { mime_type: mediaType, data: image.toString("base64") } }],
+      },
+    ],
     generationConfig: { temperature: 0.0, maxOutputTokens: GEMINI_MAX_OUTPUT_TOKENS, responseMimeType: "application/json" },
   };
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
@@ -184,11 +213,134 @@ export async function GET(request: Request) {
   }
 }
 
+/** 공급자에 맞춰 비전 1회 — 3회 프로토타입은 늘 프롬프트를 먼저 두어 캐시를 쓴다 */
+const observeOnce = (provider: Provider, image: Buffer, mediaType: string, prompt: string, order: BlockOrder) =>
+  provider === "gemini" ? observeGemini(image, mediaType, prompt, order) : observeClaude(image, mediaType, prompt, order);
+
+/** 한 호출의 기록 — 관찰 결과 탭에서 호출마다 무엇을 받았는지 본다 */
+interface CallRecord {
+  call: "registry" | "appearance" | "construction";
+  model: string | null;
+  ms: number;
+  prompt_chars: number;
+  prompt_sha256: string;
+  usage: Obj | null;
+  output: Obj | null;
+  raw_text?: string;
+  error?: string;
+}
+
+/**
+ * 3회 프로토타입 ("3+ vision", lib/full-style-ex/three-call.ts).
+ *   ① 등록 → (② 외관 ∥ ③ 구조 · 관계) → 합치기 → 단일 호출과 같은 정리 · 추출 · 채점.
+ * 착장이 아니거나 참여 물체가 없으면 ②③ 을 부르지 않는다.
+ */
+async function observeThree(provider: Provider, image: Buffer, mediaType: string, content: string, sha: (s: string) => string) {
+  const calls: CallRecord[] = [];
+  const run = async (call: CallRecord["call"], prompt: string) => {
+    const started = performance.now();
+    const rec: CallRecord = { call, model: null, ms: 0, prompt_chars: prompt.length, prompt_sha256: sha(prompt), usage: null, output: null };
+    calls.push(rec);
+    try {
+      const r = await observeOnce(provider, image, mediaType, prompt, "prompt_first");
+      rec.model = r.model;
+      rec.usage = r.usage;
+      try {
+        rec.output = parseJsonObject(r.text);
+      } catch (e) {
+        rec.raw_text = r.text;
+        throw new Error(`${call} 호출의 출력을 JSON 으로 읽지 못했습니다: ${e instanceof Error ? e.message : String(e)}`);
+      }
+      return rec.output;
+    } catch (e) {
+      rec.error = e instanceof Error ? e.message : String(e);
+      throw e;
+    } finally {
+      rec.ms = Math.round(performance.now() - started);
+    }
+  };
+
+  const template = threeCallPrompts(content);
+  const p1 = template.calls[0];
+  let r1: Obj;
+  let r2: Obj | null = null;
+  let r3: Obj | null = null;
+  let skipped: string | null;
+  try {
+    r1 = await run("registry", p1);
+    skipped = skipRest(r1);
+    if (!skipped) {
+      const registry = registryOf(r1);
+      const p2 = fillRegistry(template.calls[1], registry);
+      const p3 = fillRegistry(template.calls[2], registry);
+      // ②③ 은 서로 기다리지 않는다. 하나가 실패해도 다른 하나의 기록은 남긴다.
+      const [a, b] = await Promise.allSettled([run("appearance", p2), run("construction", p3)]);
+      if (a.status === "rejected") throw a.reason;
+      if (b.status === "rejected") throw b.reason;
+      [r2, r3] = [a.value, b.value];
+    }
+  } catch (e) {
+    throw Object.assign(e instanceof Error ? e : new Error(String(e)), { calls });
+  }
+  const { merged, log } = mergeThree(r1, r2, r3);
+  return {
+    text: JSON.stringify(merged),
+    model: calls.find((c) => c.model)?.model ?? (provider === "gemini" ? geminiModel() : claudeModel()),
+    calls,
+    merge_log: log,
+    skipped,
+    // run_record 에는 등록이 채워지기 전의 v1.2 원문 해시를 남긴다 — 이미지마다 같은 값이라 버전을 가리킨다
+    prompt_version: template.version,
+    prompt_sha256: sha(template.text),
+  };
+}
+
+/** 비전 3회로 추출 → 정리 · 추출 엔진 · 채점 엔진은 1회와 같다 */
+async function extractThree(
+  P: Pipeline,
+  provider: Provider,
+  image: Buffer,
+  mediaType: string,
+  fileName: string,
+  prompt: Awaited<ReturnType<typeof resolvePrompt>>
+) {
+  const mode = "three";
+  try {
+    const three = await observeThree(provider, image, mediaType, prompt.content, P.sha);
+    const identity = {
+      image_ref: fileName || "image",
+      image_hash: createHash("sha256").update(image).digest("hex"),
+      prompt_version: three.prompt_version,
+      prompt_hash: three.prompt_sha256,
+      model_id: three.model,
+      run_id: randomUUID(),
+      timestamp: new Date().toISOString(),
+      raw_output_sha256: P.sha(three.text),
+    };
+    const observation = P.extract(three.text, identity);
+    const threeCall = { calls: three.calls, merge_log: three.merge_log, skipped: three.skipped };
+    const usage = three.calls.map((c) => ({ call: c.call, ms: c.ms, usage: c.usage }));
+    const base = { mode, provider, visionModel: three.model, visionCalls: three.calls.length, usage, identity, promptVersion: prompt.version, promptApproved: false, blockOrder: "prompt_first" };
+    if (observation.status !== "PACKET_VALID" || !observation.packet || !observation.run_record) {
+      return NextResponse.json({ ...base, observation: { ...observation, three_call: threeCall }, scoring: null, styleId: null });
+    }
+    const scoring = P.score(observation.packet, observation.run_record);
+    return NextResponse.json({ ...base, observation: { ...observation, three_call: threeCall }, scoring, styleId: styleIdOf(scoring) });
+  } catch (e) {
+    const calls = (e as { calls?: CallRecord[] }).calls;
+    return NextResponse.json(
+      { mode, error: e instanceof Error ? e.message : String(e), ...(calls ? { three_call: { calls } } : {}) },
+      { status: 500 }
+    );
+  }
+}
+
 /**
  * POST /api/full-style-id-extraction — multipart/form-data
  *   image    : 이미지 파일 (필수, JPEG · PNG · WEBP, 5MB 이하)
  *   provider : 'claude' | 'gemini' (선택 — 비우면 'claude')
- *   prompt   : 관찰 프롬프트 (선택 — 비우면 target='full' 활성 버전)
+ *   prompt   : 관찰 프롬프트 (선택 — 비우면 target='full' 활성 버전).
+ *              3회 방식 프롬프트(v1.2 "비전 호출 3+", =====[ CALL n ]===== 구분)면 비전 3회 — ① 등록 → ② 외관 ∥ ③ 구조 · 관계
  *
  * 응답: { observation: { status, model_output, packet, validation, run_record, transport, native, ... },
  *        scoring: { EI, TC, SR } (엔진 방향 기록), styleId, provider, visionModel, usage, identity,
@@ -215,14 +367,24 @@ export async function POST(request: Request) {
     const P = loadPipeline();
     const custom = form?.get("prompt");
     const prompt = await resolvePrompt("observe", typeof custom === "string" ? custom : null, "full");
+    // 3회 방식 프롬프트(v1.2 "비전 호출 3+")면 비전 3회로 돈다 — 버전을 고르는 것이 방식을 고르는 것이다
+    if (isThreeCallPrompt(prompt.content)) return await extractThree(P, provider, image, mediaType, file.name, prompt);
+    const mode = "single";
     const promptSha = P.sha(prompt.content);
     const promptApproved = promptSha === P.prompt().sha256;
-    const observed = provider === "gemini" ? await observeGemini(image, mediaType, prompt.content) : await observeClaude(image, mediaType, prompt.content);
+    const order: BlockOrder = promptApproved ? "image_first" : "prompt_first";
+    const observed =
+      provider === "gemini"
+        ? await observeGemini(image, mediaType, prompt.content, order)
+        : await observeClaude(image, mediaType, prompt.content, order);
     const identity = {
       image_ref: file.name || "image",
       image_hash: createHash("sha256").update(image).digest("hex"),
-      // 승인 V2 원문이면 V2, 아니면 버전 표의 번호 (등록되지 않은 내용이면 UNREGISTERED)
-      prompt_version: promptApproved ? P.prompt().version : prompt.version ? `full-observe v${prompt.version.version}` : "UNREGISTERED",
+      // 승인 V2 원문이면 V2, 아니면 프롬프트 머리의 prompt_version 줄(예: FULL_LOOK_OBSERVE_V1_1), 그것도 없으면 버전 표의 번호
+      prompt_version: promptApproved
+        ? P.prompt().version
+        : (/^prompt_version:\s*(\S+)/m.exec(prompt.content)?.[1] ??
+          (prompt.version ? `full-observe v${prompt.version.version}` : "UNREGISTERED")),
       prompt_hash: promptSha,
       model_id: observed.model,
       run_id: randomUUID(),
@@ -230,7 +392,7 @@ export async function POST(request: Request) {
       raw_output_sha256: P.sha(observed.text),
     };
     const observation = P.extract(observed.text, identity);
-    const base = { provider, visionModel: observed.model, usage: observed.usage, identity, promptVersion: prompt.version, promptApproved };
+    const base = { mode, provider, visionModel: observed.model, visionCalls: 1, usage: observed.usage, identity, promptVersion: prompt.version, promptApproved, blockOrder: order };
     if (observation.status !== "PACKET_VALID" || !observation.packet || !observation.run_record) {
       return NextResponse.json({ ...base, observation: { ...observation, raw_text: observed.text }, scoring: null, styleId: null });
     }

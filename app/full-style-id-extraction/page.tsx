@@ -3,7 +3,7 @@
 /* Full-Look Style ID (/full-style-id-extraction)
    개별 의복이 아니라 착장 전체(Full-Look)로 스타일 아이디를 정한다. 구성은 /style-ex 와 같다.
 
-   ┌ 이미지 미리보기        [이미지] [추출] ┬ [관찰 프롬프트]     [클로드|Gemini] ┤
+   ┌ 이미지 미리보기 [상품 Style ID] [이미지] [추출] ┬ [관찰 프롬프트]     [클로드|Gemini] ┤
    │                                      ├ 호출 결과 [관찰 결과|판정 결과]          │
    └──────────────────────────────────────┴───────────────────────────────────┘
 
@@ -11,16 +11,31 @@
    판정 = Full-Look Scoring Engines(EI · TC · SR 방향, 동결 코드)에 패킷을 넘긴다 — 판정 프롬프트는 없다.
    관찰 프롬프트는 /style-ex 와 같은 표(style_ex_prompt_versions)에 target='full' 로 버전이 쌓인다.
    처음에는 활성 버전(없으면 승인 V2 원문이 v1)을 채우고, 고치면 고친 내용으로 호출한다.
-   추출 엔진은 승인 V2 로 검증됐으므로 지금 프롬프트가 V2 와 다르면 표시한다. */
+   추출 엔진은 승인 V2 로 검증됐으므로 지금 프롬프트가 V2 와 다르면 표시한다.
+
+   입력 이미지는 파일로 고르거나, [상품 Style ID] 모달(ProductPickModal, /style-ex 와 같음)에서 등록된 상품을 찾아
+   그 상품의 원본 사진을 쓴다. /style-ex 와 달리 상품 정보(PRODUCT CONTEXT)를 프롬프트에 붙이지 않는다 —
+   Full-Look 관찰은 대표 의복이 아니라 착장 전체가 대상이고, 승인 프롬프트 V2 에는 상품 정보 자리가 없다.
+
+   비전 호출 횟수는 관찰 프롬프트 버전이 정한다. 3회 방식 프롬프트(v1.2 "비전 호출 3+", =====[ CALL n ]===== 구분)를
+   고르면 [추출]이 비전 3회(lib/full-style-ex/three-call.ts — 등록 → 외관 ∥ 구조 · 관계)로 돌고, 그 밖은 비전 1회다. */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Check, ImagePlus, Loader2, RotateCcw, Save, ScanSearch } from "lucide-react";
+import { Check, ImagePlus, Layers, Loader2, RotateCcw, Save, ScanSearch, ShoppingBag } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
+import ProductPickModal from "@/components/style-ex/ProductPickModal";
+import type { CatalogProduct } from "@/lib/tryon/product-catalog";
 import { StyleIdCard, type StyleIdResult } from "@/components/style-ex/result-cards";
 
 type Status = "idle" | "running" | "done" | "error";
 type Provider = "claude" | "gemini";
 type ResultKey = "observe" | "judge";
+/** single = 비전 1회 · three = 비전 3회 (프롬프트 버전이 정한다) */
+type Mode = "single" | "three";
+
+/** 3회 방식 프롬프트인가 — 서버(lib/full-style-ex/three-call.ts isThreeCallPrompt)와 같은 기준 */
+const isThreeCallPrompt = (text: string) =>
+  text.includes("{{REGISTERED_COMPONENTS_JSON}}") && /^=====\[ CALL \d: \w+ \]=====$/m.test(text);
 
 const RESULT_TABS: { key: ResultKey; label: string }[] = [
   { key: "observe", label: "관찰 결과" },
@@ -50,6 +65,9 @@ const VERSIONS_URL = "/api/style-ex/prompts?target=full&kind=observe";
 
 /** 서버(/api/full-style-id-extraction)의 이미지 한도와 같다 */
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+
+/** 서버가 받는 형식 (JPEG · PNG · WEBP) — 상품 사진의 확장자를 정한다 */
+const EXTENSION: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
 
 const shortDate = (iso: string) =>
   new Date(iso).toLocaleString("ko-KR", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
@@ -83,7 +101,15 @@ export default function FullStyleIdExtractionPage() {
   const [styleId, setStyleId] = useState<StyleIdResult | null>(null);
   const [scoring, setScoring] = useState<Record<string, AxisRecord> | null>(null);
   const [usedModel, setUsedModel] = useState<string | null>(null);
+  /** 진행 중이거나 마지막으로 돈 방식 · 비전 호출 수 */
+  const [runMode, setRunMode] = useState<Mode | null>(null);
+  const [visionCalls, setVisionCalls] = useState<number | null>(null);
   const [elapsed, setElapsed] = useState<number | null>(null);
+  // 상품 Style ID — 고른 상품의 사진이 입력 이미지가 된다
+  const [productModal, setProductModal] = useState(false);
+  const [productLoading, setProductLoading] = useState<string | null>(null);
+  const [productError, setProductError] = useState<string | null>(null);
+  const [product, setProduct] = useState<CatalogProduct | null>(null);
 
   const loadVersions = useCallback(async () => {
     const res = await authFetch(VERSIONS_URL);
@@ -147,36 +173,80 @@ export default function FullStyleIdExtractionPage() {
     setStyleId(null);
     setScoring(null);
     setUsedModel(null);
+    setVisionCalls(null);
     setElapsed(null);
   };
 
-  const handlePick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const picked = e.target.files?.[0];
-    e.target.value = ""; // 같은 파일을 다시 골라도 change 가 뜨도록
-    if (!picked) return;
+  /** 새 입력 이미지 — 파일 선택과 상품 선택이 같이 쓴다. 이전 결과는 모두 비운다. */
+  const applyImage = (picked: File, from: CatalogProduct | null) => {
     if (previewUrlRef.current) URL.revokeObjectURL(previewUrlRef.current);
     previewUrlRef.current = URL.createObjectURL(picked);
     setPreviewUrl(previewUrlRef.current);
     setFile(picked);
+    setProduct(from);
     resetResult();
     setStatus(picked.size > MAX_IMAGE_BYTES ? "error" : "idle");
     if (picked.size > MAX_IMAGE_BYTES) setMessage(`이미지가 5MB 를 넘습니다 (${(picked.size / 1024 / 1024).toFixed(1)}MB).`);
   };
 
+  const handlePick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const picked = e.target.files?.[0];
+    e.target.value = ""; // 같은 파일을 다시 골라도 change 가 뜨도록
+    if (picked) applyImage(picked, null);
+  };
+
+  /**
+   * 상품을 고르면 그 상품의 원본 사진을 받아 입력 이미지로 쓴다.
+   * 목록의 사진은 200px 축소본이라 관찰에 쓰면 디테일이 뭉개진다 — 원본(originalImageUrl)을 받는다.
+   */
+  const pickProduct = async (picked: CatalogProduct) => {
+    const url = picked.originalImageUrl ?? picked.imageUrl;
+    if (!url) {
+      setProductError("이 상품에는 등록된 사진이 없습니다.");
+      return;
+    }
+    setProductLoading(picked.name);
+    setProductError(null);
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`상품 사진을 내려받지 못했습니다 (HTTP ${res.status}).`);
+      const blob = await res.blob();
+      const type = blob.type || "image/jpeg";
+      if (!EXTENSION[type]) throw new Error(`지원하지 않는 이미지 형식입니다 (${type}). JPEG · PNG · WEBP 만 됩니다.`);
+      if (blob.size > MAX_IMAGE_BYTES) {
+        throw new Error(`상품 사진이 5MB 를 넘습니다 (${(blob.size / 1024 / 1024).toFixed(1)}MB).`);
+      }
+      applyImage(new File([blob], `${picked.id}.${EXTENSION[type]}`, { type }), picked);
+      setProductModal(false);
+    } catch (e) {
+      setProductError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setProductLoading(null);
+    }
+  };
+
+  const closeProductModal = useCallback(() => {
+    setProductModal(false);
+    setProductError(null);
+  }, []);
+
   const handleExtract = async () => {
+    const mode: Mode = isThreeCallPrompt(prompt) ? "three" : "single";
     if (!file || status === "running" || file.size > MAX_IMAGE_BYTES) return;
     setStatus("running");
+    setRunMode(mode);
     resetResult();
     const started = performance.now();
     const body = new FormData();
     body.append("image", file);
     body.append("provider", provider);
-    // 관찰 프롬프트는 고친 경우에만 보낸다 — 그대로면 서버가 활성 버전을 쓴다
+    // 관찰 프롬프트는 고친 경우에만 보낸다 — 그대로면 서버가 활성 버전을 쓴다. 3회 방식인지는 서버가 내용으로 정한다.
     if (prompt !== defaultPrompt) body.append("prompt", prompt);
     try {
       const res = await authFetch("/api/full-style-id-extraction", { method: "POST", body });
       const data = await res.json();
       setUsedModel(data.visionModel ?? null);
+      setVisionCalls(typeof data.visionCalls === "number" ? data.visionCalls : null);
       if (data.observation) {
         const { observation, ...judged } = data;
         setParts({ observe: JSON.stringify(observation, null, 2), judge: JSON.stringify(judged, null, 2) });
@@ -198,6 +268,7 @@ export default function FullStyleIdExtractionPage() {
 
   const modelLabel = (p: Provider) => models?.[p] ?? (p === "claude" ? "Claude" : "Gemini");
   const isEdited = defaultPrompt !== "" && prompt !== defaultPrompt;
+  const threeCall = isThreeCallPrompt(prompt);
   const currentVersion = versions.find((v) => v.content === prompt) ?? null;
   const activeVersion = versions.find((v) => v.is_active) ?? null;
 
@@ -265,8 +336,27 @@ export default function FullStyleIdExtractionPage() {
             </button>
           )}
 
-          {/* 상단 FAB 그룹 (이미지 선택 + 추출) */}
-          <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+          {/* 고른 상품 — 입력 이미지가 상품 사진일 때 */}
+          {product && file && (
+            <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
+              <span className="max-w-full truncate rounded-full bg-white/95 shadow px-3 py-1 text-xs text-black/70">
+                {[product.brandName, product.name].filter(Boolean).join(" · ")}
+              </span>
+            </div>
+          )}
+
+          {/* 상단 FAB 그룹 (상품 선택 + 이미지 선택 + 추출) */}
+          <div className="absolute top-4 right-4 flex flex-wrap justify-end items-center gap-2 z-10">
+            <button
+              type="button"
+              onClick={() => setProductModal(true)}
+              disabled={status === "running"}
+              title="등록된 상품을 찾아 그 상품 사진으로 Full-Look Style ID 를 추출"
+              className="btn btn-secondary bg-white/95 hover:bg-white rounded-full shadow-lg px-4 py-3 flex items-center gap-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ShoppingBag className="w-5 h-5 text-[var(--color-accent-700)]" />
+              <span>상품 Style ID</span>
+            </button>
             <button
               type="button"
               onClick={() => fileRef.current?.click()}
@@ -281,11 +371,15 @@ export default function FullStyleIdExtractionPage() {
               type="button"
               onClick={handleExtract}
               disabled={!file || status === "running" || !prompt}
-              title={file ? "Full-Look 스타일 아이디 추출" : "먼저 이미지를 선택하세요"}
+              title={
+                file
+                  ? `Full-Look 스타일 아이디 추출 (${threeCall ? "비전 3회 — ① 등록 → ② 외관 ∥ ③ 구조 · 관계" : "비전 1회"})`
+                  : "먼저 이미지를 선택하세요"
+              }
               className="btn btn-primary rounded-full shadow-lg px-5 py-3 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {status === "running" ? <Loader2 className="w-5 h-5 animate-spin" /> : <ScanSearch className="w-5 h-5" />}
-              {status === "running" ? "추출 중…" : "추출"}
+              {status === "running" ? (runMode === "three" ? "3회 호출 중…" : "추출 중…") : "추출"}
             </button>
           </div>
         </section>
@@ -305,6 +399,15 @@ export default function FullStyleIdExtractionPage() {
                   title={`승인 ${approved.version} sha256 ${approved.sha256}`}
                 >
                   {isApproved ? `승인 ${approved.version} 원문` : `승인 ${approved.version} 과 다름`}
+                </span>
+              )}
+              {threeCall && (
+                <span
+                  className="ml-2 inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-[rgba(182,130,53,0.16)] text-[var(--color-accent-800)] font-semibold"
+                  title="3회 방식 프롬프트 — [추출]이 ① 등록 → ② 외관 ∥ ③ 구조 · 관계로 비전을 3회 부릅니다"
+                >
+                  <Layers className="w-3 h-3" />
+                  비전 호출 3+
                 </span>
               )}
               {/* 모델 선택 토글 (클로드 / Gemini) */}
@@ -437,6 +540,16 @@ export default function FullStyleIdExtractionPage() {
               {usedModel && (
                 <span className="text-xs font-normal px-2 py-0.5 rounded-full bg-black/5 text-black/70">{usedModel}</span>
               )}
+              {visionCalls !== null && (
+                <span
+                  className={`text-xs font-normal px-2 py-0.5 rounded-full ${
+                    runMode === "three" ? "bg-[rgba(182,130,53,0.16)] text-[var(--color-accent-800)]" : "bg-black/5 text-black/70"
+                  }`}
+                  title={runMode === "three" ? "3회 프로토타입 — 호출별 기록은 관찰 결과의 three_call" : "비전 1회"}
+                >
+                  비전 {visionCalls}회
+                </span>
+              )}
               {packetStatus && (
                 <span
                   className={`text-xs font-normal ${packetStatus === "PACKET_VALID" ? "text-emerald-700" : "text-[var(--color-danger)]"}`}
@@ -455,7 +568,9 @@ export default function FullStyleIdExtractionPage() {
               )}
               <pre className="p-3 font-[family-name:var(--font-mono)] text-xs leading-relaxed whitespace-pre-wrap break-all">
                 {status === "running"
-                  ? "관찰 → Evidence Packet → EI · TC · SR 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
+                  ? runMode === "three"
+                    ? "① 등록 → ② 외관 ∥ ③ 구조 · 관계 (비전 3회) → 합치기 → Evidence Packet → EI · TC · SR 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
+                    : "관찰 → Evidence Packet → EI · TC · SR 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
                   : parts?.[resultTab] ||
                     message ||
                     (resultTab === "observe"
@@ -466,6 +581,14 @@ export default function FullStyleIdExtractionPage() {
           </div>
         </section>
       </div>
+
+      <ProductPickModal
+        open={productModal}
+        loading={productLoading}
+        error={productError}
+        onPick={pickProduct}
+        onClose={closeProductModal}
+      />
     </div>
   );
 }
