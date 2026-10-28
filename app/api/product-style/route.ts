@@ -9,11 +9,34 @@ export const dynamic = "force-dynamic";
 
 const DEFAULT_PAGE_SIZE = 12;
 
+/** product_style 에서 읽는 열 — target 은 0021 전이면 없다 */
+interface ProductStyleDbRow {
+  id: string;
+  created_at: string;
+  model_id: string;
+  image_url: string;
+  ok: boolean;
+  style_id: string;
+  target_id: string | null;
+  axes: Parameters<typeof styleIdCandidates>[0];
+  error: string | null;
+  scoring: unknown;
+  judgement: unknown;
+  observation: unknown;
+  vision_model: string | null;
+  judge_model: string | null;
+  elapsed_ms: number | null;
+  target?: string;
+  version?: string | null;
+}
+
 /**
  * GET /api/product-style?page=1&pageSize=12 — 저장된 상품 Style ID 추출 결과(product_style), 최신 먼저.
  *   응답: { rows, total, page, pageSize }
- *   row: { id, created_at, model_id, image_url, styleId, judgement, scoring, observation, vision_model, judge_model,
- *          elapsed_ms, product } — styleId 는 /api/style-ex 응답의 styleId 와 같은 모양으로 되살린다.
+ *   row: { id, created_at, model_id, image_url, target, styleId, judgement, scoring, observation, vision_model, judge_model,
+ *          elapsed_ms, product }
+ *          target 은 어느 페이지가 추출했는지 — item = /style-ex · full = 인덱스(/full-style-id-extraction). 0021 전이면 item.
+ *          version 은 추출에 쓴 관찰 프롬프트 버전 레이블(v1.1 · v2 · custom), 모르면 null. — styleId 는 /api/style-ex 응답의 styleId 와 같은 모양으로 되살린다.
  *          product 는 카탈로그(brand_catalog_models)에서 찾은 상품 정보, 못 찾으면 null.
  */
 export async function GET(req: NextRequest) {
@@ -27,14 +50,22 @@ export async function GET(req: NextRequest) {
 
   const supabase = getAdminSupabase();
   const from = (page - 1) * pageSize;
-  const { data, error, count } = await supabase
-    .from("product_style")
-    .select(
-      "id, created_at, model_id, image_url, ok, style_id, target_id, axes, error, scoring, judgement, observation, vision_model, judge_model, elapsed_ms",
-      { count: "exact" }
-    )
-    .order("created_at", { ascending: false })
-    .range(from, from + pageSize - 1);
+  const COLUMNS =
+    "id, created_at, model_id, image_url, ok, style_id, target_id, axes, error, scoring, judgement, observation, vision_model, judge_model, elapsed_ms";
+  const query = (columns: string) =>
+    supabase
+      .from("product_style")
+      .select(columns, { count: "exact" })
+      .order("created_at", { ascending: false })
+      .range(from, from + pageSize - 1);
+  // target · version 열(0021)이 없으면 그 둘 없이 다시 읽는다 — 그때는 모든 행이 item, 버전은 모름
+  let res = await query(`${COLUMNS}, target, version`);
+  if (res.error && /\b(target|version)\b/.test(res.error.message)) res = await query(COLUMNS);
+  const { data, error, count } = res as unknown as {
+    data: ProductStyleDbRow[] | null;
+    error: { message: string } | null;
+    count: number | null;
+  };
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   const rows = data ?? [];
@@ -84,6 +115,8 @@ export async function GET(req: NextRequest) {
       created_at: r.created_at,
       model_id: r.model_id,
       image_url: r.image_url,
+      target: r.target === "full" ? "full" : "item",
+      version: r.version ?? null,
       styleId: r.ok
         ? {
             ok: true,

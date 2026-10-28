@@ -187,3 +187,36 @@ export function StyleIdCard({ summary }: { summary: Summary }) {
     </div>
   );
 }
+
+/** product_style 저장 결과 (/api/style-ex · /api/full-style-id-extraction 의 saved) */
+export type SavedResult =
+  | { id: string; target: "item" | "full"; version: string | null; recorded: boolean }
+  | { error: string };
+
+/**
+ * 저장 결과 표시 — "DB 저장됨 (item:v1)" 처럼 기록한 target:version 을 보인다.
+ * recorded false = target · version 열(0021) 전이라 그 둘 없이 저장됨.
+ */
+export function SavedChip({ saved }: { saved: SavedResult | null }) {
+  if (!saved) return null;
+  if ("error" in saved) {
+    return (
+      <span className="text-xs font-normal text-[var(--color-danger)] truncate" title={saved.error}>
+        DB 저장 실패
+      </span>
+    );
+  }
+  const label = [saved.target, saved.version].filter(Boolean).join(":");
+  return saved.recorded === false ? (
+    <span
+      className="text-xs font-normal text-amber-700"
+      title={`product_style.id = ${saved.id}\ntarget · version 열이 없어(0021 마이그레이션 전) 그 둘 없이 저장했습니다.`}
+    >
+      DB 저장됨 · {label} 미기록
+    </span>
+  ) : (
+    <span className="text-xs font-normal text-emerald-700" title={`product_style.id = ${saved.id}\ntarget = ${saved.target} · version = ${saved.version ?? "없음"}`}>
+      DB 저장됨 ({label})
+    </span>
+  );
+}

@@ -11,7 +11,8 @@ import {
 } from "@/lib/style-ex/api-key";
 import { authenticate, unauthorized } from "@/lib/supabase/route";
 import { styleIdCandidates, STYLE_IDS } from "@/lib/style-ex/style-ids";
-import { resolvePrompt } from "@/lib/style-ex/prompt-versions";
+import { resolvePrompt, versionLabel } from "@/lib/style-ex/prompt-versions";
+import { saveProductStyle, type SavedProductStyle } from "@/lib/style-ex/product-style";
 import {
   fillRegistry,
   isThreeCallPrompt,
@@ -295,6 +296,67 @@ async function observeThree(provider: Provider, image: Buffer, mediaType: string
   };
 }
 
+/** 추출 한 번의 응답 — POST 가 상품 사진이면 product_style 에 저장한 뒤 돌려준다 */
+interface Extracted {
+  status: number;
+  body: Obj & {
+    observation?: Obj;
+    styleId?: Obj | null;
+    scoring?: unknown;
+    visionModel?: string;
+    promptVersion?: { id: string } | null;
+    /** 관찰 프롬프트 버전 레이블 (versionLabel) — product_style.version */
+    promptLabel?: string;
+  };
+}
+
+/** brand_catalog_models.id — 네이버 카탈로그 모델 id (/api/style-ex 와 같다) */
+const MODEL_ID = /^[\w-]{1,40}$/;
+
+/**
+ * 상품 사진으로 추출한 결과를 product_style 에 target='full' 로 남긴다 (/style-ex 는 'item').
+ * 실패한 추출도 남긴다 — 관찰 결과가 있는 응답이면. 저장이 실패해도 추출 결과는 돌려준다.
+ */
+async function saveFull(
+  out: Extracted,
+  product: { modelId: string; imageUrl: string },
+  extra: { customPrompt: boolean; elapsedMs: number; userId: string }
+): Promise<Extracted> {
+  const { body } = out;
+  if (out.status !== 200 || !body.observation) return out;
+  const observation = body.observation;
+  const styleId =
+    body.styleId ??
+    ({
+      ok: false,
+      error: `${String(observation.status ?? "관찰 실패")}${observation.error ? `: ${String(observation.error)}` : ""}`,
+    } as Obj);
+  let saved: SavedProductStyle | { error: string };
+  try {
+    saved = await saveProductStyle({
+      // 인덱스 = 착장 전체 추출 → target full, 관찰 프롬프트 버전 레이블(v1 · v1.1 · v1.2 · custom)
+      target: "full",
+      version: body.promptLabel ?? null,
+      modelId: product.modelId,
+      imageUrl: product.imageUrl,
+      result: {
+        customPrompt: extra.customPrompt,
+        promptVersions: { prompt: body.promptVersion ?? null, judgePrompt: null },
+        styleId,
+        scoring: body.scoring ?? null,
+        judgement: null,
+        observation,
+      },
+      visionModel: String(body.visionModel ?? ""),
+      elapsedMs: extra.elapsedMs,
+      userId: extra.userId,
+    });
+  } catch (e) {
+    saved = { error: e instanceof Error ? e.message : String(e) };
+  }
+  return { status: out.status, body: { ...body, saved } };
+}
+
 /** 비전 3회로 추출 → 정리 · 추출 엔진 · 채점 엔진은 1회와 같다 */
 async function extractThree(
   P: Pipeline,
@@ -303,7 +365,7 @@ async function extractThree(
   mediaType: string,
   fileName: string,
   prompt: Awaited<ReturnType<typeof resolvePrompt>>
-) {
+): Promise<Extracted> {
   const mode = "three";
   try {
     const three = await observeThree(provider, image, mediaType, prompt.content, P.sha);
@@ -320,18 +382,15 @@ async function extractThree(
     const observation = P.extract(three.text, identity);
     const threeCall = { calls: three.calls, merge_log: three.merge_log, skipped: three.skipped };
     const usage = three.calls.map((c) => ({ call: c.call, ms: c.ms, usage: c.usage }));
-    const base = { mode, provider, visionModel: three.model, visionCalls: three.calls.length, usage, identity, promptVersion: prompt.version, promptApproved: false, blockOrder: "prompt_first" };
+    const base = { mode, provider, visionModel: three.model, visionCalls: three.calls.length, usage, identity, promptVersion: prompt.version, promptLabel: versionLabel(prompt.content, prompt.version), promptApproved: false, blockOrder: "prompt_first" };
     if (observation.status !== "PACKET_VALID" || !observation.packet || !observation.run_record) {
-      return NextResponse.json({ ...base, observation: { ...observation, three_call: threeCall }, scoring: null, styleId: null });
+      return { status: 200, body: { ...base, observation: { ...observation, three_call: threeCall }, scoring: null, styleId: null } };
     }
     const scoring = P.score(observation.packet, observation.run_record);
-    return NextResponse.json({ ...base, observation: { ...observation, three_call: threeCall }, scoring, styleId: styleIdOf(scoring) });
+    return { status: 200, body: { ...base, observation: { ...observation, three_call: threeCall }, scoring, styleId: styleIdOf(scoring) } };
   } catch (e) {
     const calls = (e as { calls?: CallRecord[] }).calls;
-    return NextResponse.json(
-      { mode, error: e instanceof Error ? e.message : String(e), ...(calls ? { three_call: { calls } } : {}) },
-      { status: 500 }
-    );
+    return { status: 500, body: { mode, error: e instanceof Error ? e.message : String(e), ...(calls ? { three_call: { calls } } : {}) } };
   }
 }
 
@@ -341,6 +400,8 @@ async function extractThree(
  *   provider : 'claude' | 'gemini' (선택 — 비우면 'claude')
  *   prompt   : 관찰 프롬프트 (선택 — 비우면 target='full' 활성 버전).
  *              3회 방식 프롬프트(v1.2 "비전 호출 3+", =====[ CALL n ]===== 구분)면 비전 3회 — ① 등록 → ② 외관 ∥ ③ 구조 · 관계
+ *   modelId  : 상품 사진으로 추출할 때 그 상품의 카탈로그 모델 id (선택 — 있으면 결과를 product_style 에 target='full' 로 저장)
+ *   imageUrl : 그 상품 사진의 원본 https URL (modelId 와 함께)
  *
  * 응답: { observation: { status, model_output, packet, validation, run_record, transport, native, ... },
  *        scoring: { EI, TC, SR } (엔진 방향 기록), styleId, provider, visionModel, usage, identity,
@@ -363,12 +424,39 @@ export async function POST(request: Request) {
   const mediaType = mediaTypeOf(image);
   if (!mediaType) return NextResponse.json({ error: "JPEG · PNG · WEBP 이미지만 지원합니다." }, { status: 400 });
 
+  const text = (key: string) => {
+    const v = form?.get(key);
+    return typeof v === "string" ? v.trim() : "";
+  };
+  const modelId = text("modelId");
+  const imageUrl = text("imageUrl");
+  if (modelId && (!MODEL_ID.test(modelId) || !/^https:\/\//i.test(imageUrl))) {
+    return NextResponse.json({ error: "modelId 와 함께 상품 사진의 https imageUrl 이 필요합니다." }, { status: 400 });
+  }
+  // 관찰 프롬프트는 화면에서 고친 경우에만 온다 — 공백만 지우지 않고 그대로 쓴다
+  const rawPrompt = form?.get("prompt");
+  const custom = typeof rawPrompt === "string" && rawPrompt.trim() ? rawPrompt : null;
+  const started = performance.now();
+  const out = await extractOne(provider, image, mediaType, file.name, custom);
+  const finished = modelId
+    ? await saveFull(out, { modelId, imageUrl }, { customPrompt: custom !== null, elapsedMs: performance.now() - started, userId: auth.user.id })
+    : out;
+  return NextResponse.json(finished.body, { status: finished.status });
+}
+
+/** 관찰 프롬프트 버전에 따라 비전 1회 또는 3회로 추출 → 정리 · 추출 엔진 · 채점 엔진 */
+async function extractOne(
+  provider: Provider,
+  image: Buffer,
+  mediaType: string,
+  fileName: string,
+  custom: string | null
+): Promise<Extracted> {
   try {
     const P = loadPipeline();
-    const custom = form?.get("prompt");
-    const prompt = await resolvePrompt("observe", typeof custom === "string" ? custom : null, "full");
+    const prompt = await resolvePrompt("observe", custom, "full");
     // 3회 방식 프롬프트(v1.2 "비전 호출 3+")면 비전 3회로 돈다 — 버전을 고르는 것이 방식을 고르는 것이다
-    if (isThreeCallPrompt(prompt.content)) return await extractThree(P, provider, image, mediaType, file.name, prompt);
+    if (isThreeCallPrompt(prompt.content)) return await extractThree(P, provider, image, mediaType, fileName, prompt);
     const mode = "single";
     const promptSha = P.sha(prompt.content);
     const promptApproved = promptSha === P.prompt().sha256;
@@ -378,7 +466,7 @@ export async function POST(request: Request) {
         ? await observeGemini(image, mediaType, prompt.content, order)
         : await observeClaude(image, mediaType, prompt.content, order);
     const identity = {
-      image_ref: file.name || "image",
+      image_ref: fileName || "image",
       image_hash: createHash("sha256").update(image).digest("hex"),
       // 승인 V2 원문이면 V2, 아니면 프롬프트 머리의 prompt_version 줄(예: FULL_LOOK_OBSERVE_V1_1), 그것도 없으면 버전 표의 번호
       prompt_version: promptApproved
@@ -392,13 +480,13 @@ export async function POST(request: Request) {
       raw_output_sha256: P.sha(observed.text),
     };
     const observation = P.extract(observed.text, identity);
-    const base = { mode, provider, visionModel: observed.model, visionCalls: 1, usage: observed.usage, identity, promptVersion: prompt.version, promptApproved, blockOrder: order };
+    const base = { mode, provider, visionModel: observed.model, visionCalls: 1, usage: observed.usage, identity, promptVersion: prompt.version, promptLabel: versionLabel(prompt.content, prompt.version), promptApproved, blockOrder: order };
     if (observation.status !== "PACKET_VALID" || !observation.packet || !observation.run_record) {
-      return NextResponse.json({ ...base, observation: { ...observation, raw_text: observed.text }, scoring: null, styleId: null });
+      return { status: 200, body: { ...base, observation: { ...observation, raw_text: observed.text }, scoring: null, styleId: null } };
     }
     const scoring = P.score(observation.packet, observation.run_record);
-    return NextResponse.json({ ...base, observation, scoring, styleId: styleIdOf(scoring) });
+    return { status: 200, body: { ...base, observation, scoring, styleId: styleIdOf(scoring) } };
   } catch (e) {
-    return NextResponse.json({ error: e instanceof Error ? e.message : String(e) }, { status: 500 });
+    return { status: 500, body: { error: e instanceof Error ? e.message : String(e) } };
   }
 }

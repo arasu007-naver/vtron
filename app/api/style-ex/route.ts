@@ -12,8 +12,8 @@ import {
   geminiVisionModel,
   type StyleExProvider,
 } from "@/lib/style-ex/extract";
-import { productContextOf, saveProductStyle } from "@/lib/style-ex/product-style";
-import { resolvePrompt } from "@/lib/style-ex/prompt-versions";
+import { productContextOf, saveProductStyle, type SavedProductStyle } from "@/lib/style-ex/product-style";
+import { resolvePrompt, versionLabel } from "@/lib/style-ex/prompt-versions";
 import { productAddendum, splitProductContext } from "@/lib/style-ex/product-context";
 
 // Vision 호출 + 스코어링(자식 프로세스) + LLM 판정까지 수 분이 걸릴 수 있으므로 Node 런타임에서 실행한다.
@@ -134,9 +134,12 @@ export async function POST(request: Request) {
     if (!modelId || !imageUrl) return NextResponse.json(out);
 
     // 상품 사진의 결과는 실패한 것도 남긴다. 저장이 실패해도 추출 결과는 돌려준다.
-    let saved: { id: string } | { error: string };
+    let saved: SavedProductStyle | { error: string };
     try {
       saved = await saveProductStyle({
+        // /style-ex = 의복별 추출 → target item, 관찰 프롬프트 버전 레이블(v1 · v2 · custom)
+        target: "item",
+        version: versionLabel(observePrompt.content, observePrompt.version),
         modelId,
         imageUrl,
         result: out,

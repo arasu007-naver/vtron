@@ -60,6 +60,17 @@ const FULL_PROMPT_FILE = path.join(
   "business_logic/FULL_LOOK_VISION_EXTRACTOR_FINAL_20261017/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/02_PROMPT/STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2.txt"
 );
 
+/**
+ * 추출 기록(product_style.version)에 남기는 버전 레이블.
+ *   프롬프트 머리에 prompt_version: FULL_LOOK_OBSERVE_V1_1(…) 처럼 버전을 밝혔으면 그것 → "v1.1"
+ *   아니면 버전 표의 번호 → "v2", 등록되지 않은 내용(화면에서 고친 것)이면 "custom"
+ */
+export function versionLabel(content: string, version: Pick<PromptVersion, "version"> | null): string {
+  const declared = /^prompt_version:\s*FULL_LOOK_OBSERVE_V(\d+)_(\d+)/m.exec(content);
+  if (declared) return `v${declared[1]}.${declared[2]}`;
+  return version ? `v${version.version}` : "custom";
+}
+
 /** 코드에 박힌 기본 프롬프트 — 첫 등록(v1)과 DB 폴백에 쓴다 */
 export const codeDefaultPrompt = (kind: PromptKind, target: PromptTarget = "item"): string => {
   if (target === "full") {

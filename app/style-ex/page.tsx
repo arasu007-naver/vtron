@@ -33,7 +33,9 @@ import {
   axisLettersText,
   multipleCandidates,
   productRows,
+  SavedChip,
   targetText,
+  type SavedResult,
   type Summary,
 } from "@/components/style-ex/result-cards";
 
@@ -127,7 +129,7 @@ export default function StyleExPage() {
   const [productError, setProductError] = useState<string | null>(null);
   const [product, setProduct] = useState<CatalogProduct | null>(null);
   /** 상품 사진으로 추출했을 때 product_style 저장 결과 */
-  const [saved, setSaved] = useState<{ id: string } | { error: string } | null>(null);
+  const [saved, setSaved] = useState<SavedResult | null>(null);
   const [pdfBusy, setPdfBusy] = useState(false);
   const [pdfError, setPdfError] = useState<string | null>(null);
 
@@ -721,16 +723,7 @@ export default function StyleExPage() {
               {status === "error" && (
                 <span className="text-xs font-normal text-[var(--color-danger)]">실패</span>
               )}
-              {saved &&
-                ("id" in saved ? (
-                  <span className="text-xs font-normal text-emerald-700" title={`product_style.id = ${saved.id}`}>
-                    DB 저장됨
-                  </span>
-                ) : (
-                  <span className="text-xs font-normal text-[var(--color-danger)] truncate" title={saved.error}>
-                    DB 저장 실패
-                  </span>
-                ))}
+              <SavedChip saved={saved} />
               <button
                 type="button"
                 onClick={handleCrop}

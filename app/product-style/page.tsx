@@ -4,11 +4,15 @@
 
    ┌ 상품 Style ID  N건                         [« ‹ 1 2 3 … › »] ┐
    │ ┌ 항목 ┐ ┌ 항목 ┐ ┌ 항목 ┐   ← 항목 하나 = 화면 너비의 1/3, 세로 스크롤 │
-   │ │ 상품 사진       │                                          │
+   │ │ 상품 사진  [target:version] ← 오른쪽 아래 FAB (예: full:v1.2) │
    │ │ 상품 정보 (/style-ex 의 상품 정보 칸과 같은 행)           │
    │ │ 판정 결과 (스타일 아이디 카드 + 판정 JSON)                │
    │ │ 관찰 결과 (관찰 envelope JSON)                            │
-   └──────────────────────────────────────────────────────────────┘ */
+   └──────────────────────────────────────────────────────────────┘
+
+   target = 어느 페이지가 연산 · 추출했는지 (product_style.target, 0021) — full = 인덱스(/full-style-id-extraction)
+   착장 전체 · item = /style-ex 의복별. version = 추출에 쓴 관찰 프롬프트 버전 레이블(product_style.version) —
+   v1.1 · v1.2 · v1 · v2 · custom. 사진 오른쪽 아래에 "target:version" 으로 열 값 그대로 보인다(버전을 모르면 target 만). */
 
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ExternalLink, Loader2 } from "lucide-react";
@@ -24,6 +28,10 @@ interface ProductStyleRow {
   created_at: string;
   model_id: string;
   image_url: string;
+  /** 어느 페이지가 추출했는지 — full = 인덱스(Full-Look) · item = /style-ex */
+  target: "full" | "item";
+  /** 추출에 쓴 관찰 프롬프트 버전 레이블 — 모르면(버전 표 전 행) null */
+  version: string | null;
   styleId: StyleIdResult;
   judgement: LlmJudgement | null;
   scoring: unknown;
@@ -162,7 +170,7 @@ export default function ProductStylePage() {
         {error && <p className="m-4 text-sm text-[var(--color-danger)]">{error}</p>}
         {!loading && !error && rows.length === 0 && (
           <p className="m-4 text-sm text-black/60">
-            저장된 상품 Style ID 가 없습니다. Style ID 페이지에서 상품으로 추출하면 여기에 쌓입니다.
+            저장된 상품 Style ID 가 없습니다. Item Style ID 또는 인덱스(Full-Look) 페이지에서 상품으로 추출하면 여기에 쌓입니다.
           </p>
         )}
         <div className="grid grid-cols-3 gap-4 p-4 items-start">
@@ -188,22 +196,37 @@ function ProductStyleItem({ row }: { row: ProductStyleRow }) {
 
   return (
     <article className="min-w-0 flex flex-col rounded-xl border border-[var(--color-divider)] bg-white overflow-hidden">
-      {/* 상품 사진 — 추출에 쓴 원본 */}
-      <a
-        href={row.image_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block bg-[var(--color-surface)]"
-        title="원본 사진 열기"
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element -- 외부 상품 사진, 도메인이 정해져 있지 않다 */}
-        <img
-          src={row.image_url}
-          alt={row.product?.name ?? row.model_id}
-          loading="lazy"
-          className="w-full aspect-square object-contain"
-        />
-      </a>
+      {/* 상품 사진 — 추출에 쓴 원본. 오른쪽 아래 FAB = target 값 그대로 (full | item) */}
+      <div className="relative">
+        <a
+          href={row.image_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block bg-[var(--color-surface)]"
+          title="원본 사진 열기"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element -- 외부 상품 사진, 도메인이 정해져 있지 않다 */}
+          <img
+            src={row.image_url}
+            alt={row.product?.name ?? row.model_id}
+            loading="lazy"
+            className="w-full aspect-square object-contain"
+          />
+        </a>
+        <span
+          title={
+            (row.target === "full"
+              ? "target = full — 인덱스(Full-Look Style ID) 페이지에서 착장 전체로 연산 · 추출"
+              : "target = item — Item Style ID(/style-ex) 페이지에서 의복별로 연산 · 추출") +
+            `\nversion = ${row.version ?? "기록 없음 (버전 표 전 추출)"} — 추출에 쓴 관찰 프롬프트 버전`
+          }
+          className={`absolute bottom-3 right-3 rounded-full shadow-lg px-4 py-2 text-sm font-semibold font-[family-name:var(--font-mono)] pointer-events-auto ${
+            row.target === "full" ? "bg-[var(--color-accent-700)] text-white" : "bg-white/95 text-black"
+          }`}
+        >
+          {row.version ? `${row.target}:${row.version}` : row.target}
+        </span>
+      </div>
 
       {/* 상품 정보 — /style-ex 의 상품 정보 칸과 같은 행 */}
       <div className="px-3 py-2 border-b border-[var(--color-divider)] bg-[var(--color-panel)]">

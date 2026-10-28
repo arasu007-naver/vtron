@@ -16,6 +16,8 @@
    입력 이미지는 파일로 고르거나, [상품 Style ID] 모달(ProductPickModal, /style-ex 와 같음)에서 등록된 상품을 찾아
    그 상품의 원본 사진을 쓴다. /style-ex 와 달리 상품 정보(PRODUCT CONTEXT)를 프롬프트에 붙이지 않는다 —
    Full-Look 관찰은 대표 의복이 아니라 착장 전체가 대상이고, 승인 프롬프트 V2 에는 상품 정보 자리가 없다.
+   상품 사진으로 추출하면 서버가 결과를 product_style 에 target='full' 로 저장한다(/style-ex 는 'item') —
+   상품 Style ID 페이지가 둘을 구별해 보인다.
 
    비전 호출 횟수는 관찰 프롬프트 버전이 정한다. 3회 방식 프롬프트(v1.2 "비전 호출 3+", =====[ CALL n ]===== 구분)를
    고르면 [추출]이 비전 3회(lib/full-style-ex/three-call.ts — 등록 → 외관 ∥ 구조 · 관계)로 돌고, 그 밖은 비전 1회다. */
@@ -25,7 +27,7 @@ import { Check, ImagePlus, Layers, Loader2, RotateCcw, Save, ScanSearch, Shoppin
 import { authFetch } from "@/lib/auth-client";
 import ProductPickModal from "@/components/style-ex/ProductPickModal";
 import type { CatalogProduct } from "@/lib/tryon/product-catalog";
-import { StyleIdCard, type StyleIdResult } from "@/components/style-ex/result-cards";
+import { SavedChip, StyleIdCard, type SavedResult, type StyleIdResult } from "@/components/style-ex/result-cards";
 
 type Status = "idle" | "running" | "done" | "error";
 type Provider = "claude" | "gemini";
@@ -110,6 +112,8 @@ export default function FullStyleIdExtractionPage() {
   const [productLoading, setProductLoading] = useState<string | null>(null);
   const [productError, setProductError] = useState<string | null>(null);
   const [product, setProduct] = useState<CatalogProduct | null>(null);
+  /** 상품 사진으로 추출했을 때 product_style 저장 결과 */
+  const [saved, setSaved] = useState<SavedResult | null>(null);
 
   const loadVersions = useCallback(async () => {
     const res = await authFetch(VERSIONS_URL);
@@ -174,6 +178,7 @@ export default function FullStyleIdExtractionPage() {
     setScoring(null);
     setUsedModel(null);
     setVisionCalls(null);
+    setSaved(null);
     setElapsed(null);
   };
 
@@ -242,11 +247,18 @@ export default function FullStyleIdExtractionPage() {
     body.append("provider", provider);
     // 관찰 프롬프트는 고친 경우에만 보낸다 — 그대로면 서버가 활성 버전을 쓴다. 3회 방식인지는 서버가 내용으로 정한다.
     if (prompt !== defaultPrompt) body.append("prompt", prompt);
+    // 상품 사진이면 서버가 결과를 product_style 에 target='full' 로 저장한다
+    const productImageUrl = product && (product.originalImageUrl ?? product.imageUrl);
+    if (product && productImageUrl) {
+      body.append("modelId", product.id);
+      body.append("imageUrl", productImageUrl);
+    }
     try {
       const res = await authFetch("/api/full-style-id-extraction", { method: "POST", body });
       const data = await res.json();
       setUsedModel(data.visionModel ?? null);
       setVisionCalls(typeof data.visionCalls === "number" ? data.visionCalls : null);
+      setSaved(data.saved ?? null);
       if (data.observation) {
         const { observation, ...judged } = data;
         setParts({ observe: JSON.stringify(observation, null, 2), judge: JSON.stringify(judged, null, 2) });
@@ -558,6 +570,7 @@ export default function FullStyleIdExtractionPage() {
                 </span>
               )}
               {status === "error" && <span className="text-xs font-normal text-[var(--color-danger)]">실패</span>}
+              <SavedChip saved={saved} />
             </div>
             <div className="flex-1 min-h-0 mx-4 mb-4 overflow-auto rounded border border-[var(--color-divider)] bg-white vt-scroll">
               {resultTab === "judge" && styleId && (
