@@ -23,7 +23,7 @@ const targetOf = (v: unknown): PromptTarget | null => (v == null || v === "" ? "
 
 /**
  * GET /api/style-ex/prompts?kind=observe|judge[&target=item|full] — 그 (target, kind) 의 프롬프트 버전 목록 (최신 먼저)
- *   target 을 비우면 item (/style-ex). full 은 /full-style-id-extraction 이고 observe 만 있다.
+ *   target 을 비우면 item (/style-ex). full 은 /full-style-ex 이고 observe 만 있다.
  *   응답: { versions: PromptVersion[] }
  */
 export async function GET(request: Request) {

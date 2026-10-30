@@ -6,7 +6,7 @@ import type { ProductContext } from "./product-context";
  * 상품 Style ID 저장 (supabase/migrations/0014_product_style.sql · 0021_product_style_target.sql).
  *
  * 상품 사진으로 추출한 결과를 `product_style` 에 한 행으로 남긴다. target 은 어느 페이지가 추출했는지 —
- * item = /style-ex 의복별 · full = 인덱스(/full-style-id-extraction) 착장 전체. 실패한 추출도 남긴다 —
+ * item = /style-ex 의복별 · full = 인덱스(/full-style-ex) 착장 전체. 실패한 추출도 남긴다 —
  * 어느 상품이 왜 안 되는지 보이게. service role 로 쓴다(표에 RLS 정책이 없다).
  */
 
@@ -15,7 +15,7 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 type Obj = Record<string, unknown>;
 
 export interface ProductStyleInput {
-  /** item = /style-ex · full = 인덱스(/full-style-id-extraction) */
+  /** item = /style-ex · full = 인덱스(/full-style-ex) */
   target: "item" | "full";
   /** 관찰 프롬프트 버전 레이블 (prompt-versions.ts versionLabel) — v1.1 · v2 · custom */
   version?: string | null;

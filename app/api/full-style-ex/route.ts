@@ -10,7 +10,7 @@ import {
   geminiApiKey,
 } from "@/lib/style-ex/api-key";
 import { authenticate, unauthorized } from "@/lib/supabase/route";
-import { styleIdCandidates, STYLE_IDS } from "@/lib/style-ex/style-ids";
+import { STYLE_IDS } from "@/lib/style-ex/style-ids";
 import { resolvePrompt, versionLabel } from "@/lib/style-ex/prompt-versions";
 import { saveProductStyle, type SavedProductStyle } from "@/lib/style-ex/product-style";
 import {
@@ -23,10 +23,10 @@ import {
   threeCallPrompts,
 } from "@/lib/full-style-ex/three-call";
 
-/* Full-Look Style ID (/full-style-id-extraction)
+/* Full-Look Style ID (/full-style-ex)
    이미지 한 장 → 관찰(Vision 모델 1회, 승인 프롬프트 V2) → Full-Look Vision Extractor(FLV_RC6_FINAL)로 Evidence Packet
-   → Full-Look Scoring Engines(EI · TC · SR 방향) → 스타일 아이디.
-   판정은 코드(동결 엔진)가 한다 — 판정 프롬프트는 없다. DM 은 Full-Look 엔진이 없어 D/M 양쪽(OR)으로 둔다.
+   → Full-Look 4축 통합 Runtime(FL4AX_FINAL_V1 — EI · TC · SR · DM 동결 엔진) → 네 방향 → 스타일 아이디.
+   판정은 코드(동결 엔진)가 한다 — 판정 프롬프트는 없다. 한 축이라도 판정 불가면 스타일 아이디는 없다(글자를 채우지 않는다).
    관찰 프롬프트는 style_ex_prompt_versions 의 target='full' · kind='observe' 활성 버전이 기본이다
    (행이 없으면 승인 V2 원문을 v1 로 등록한다, lib/style-ex/prompt-versions.ts). */
 
@@ -47,12 +47,12 @@ const geminiModel = () =>
 
 type Obj = Record<string, unknown>;
 type Provider = "claude" | "gemini";
-type Axis = "EI" | "TC" | "SR";
 
 interface Pipeline {
   prompt(): { text: string; sha256: string; version: string };
   extract(modelText: string, identity: Obj): Obj & { status: string; packet: Obj | null; run_record: Obj | null };
-  score(packet: Obj, runRecord: Obj): Record<Axis, Obj & { status: string; direction: string | null; rule?: string }>;
+  /** 4축 통합 판정 (FL4AX_FINAL_V1) */
+  score(packet: Obj, runRecord: Obj): FourAxisResult & Obj;
   sha(s: string | Buffer): string;
 }
 
@@ -62,7 +62,11 @@ function loadPipeline(): Pipeline {
   if (!pipeline) {
     const { createRequire } = process.getBuiltinModule("module") as typeof import("node:module");
     const nodeRequire = createRequire(path.join(process.cwd(), "package.json"));
-    pipeline = nodeRequire(path.join(process.cwd(), "lib/full-style-ex/pipeline.cjs")) as Pipeline;
+    const entry = nodeRequire.resolve(path.join(process.cwd(), "lib/full-style-ex/pipeline.cjs"));
+    // 개발 서버는 이 라우트를 다시 읽어도 Node 의 require 캐시는 그대로라, 고친 pipeline.cjs 대신 예전 것이 남는다
+    // (엔진 위치를 옮긴 뒤 예전 경로를 읽어 실패하는 식). 라우트를 다시 읽을 때마다 pipeline.cjs 만 새로 읽는다.
+    if (process.env.NODE_ENV !== "production") delete nodeRequire.cache[entry];
+    pipeline = nodeRequire(entry) as Pipeline;
   }
   return pipeline;
 }
@@ -155,44 +159,59 @@ async function observeGemini(image: Buffer, mediaType: string, prompt: string, o
   return { text, model, usage: data.usageMetadata ?? null };
 }
 
-/** 엔진 방향 → 스타일 아이디 글자 */
-const LETTER: Record<Axis, Record<string, string>> = {
-  EI: { EXPRESSIVE: "E", INTROVERT: "I" },
-  TC: { TRANSFORMATIVE: "T", CLASSIC: "C" },
-  SR: { STRUCTURED: "S", RELAXED: "R" },
-};
-const POLES: Record<Axis | "DM", [string, string]> = { EI: ["E", "I"], TC: ["T", "C"], SR: ["S", "R"], DM: ["D", "M"] };
+/** 4축 통합 판정 결과 (FL4AX_FINAL_V1 · STMX_FULL_LOOK_FOUR_AXIS_RESULT_V1) 중 화면 · 저장에 쓰는 부분 */
+interface FourAxisAxis {
+  status: "DIRECTION" | "INPUT_FAILURE" | "CONTRACT_VIOLATION";
+  direction: string | null;
+  direction_label: string | null;
+  rule: string | null;
+  input_failure: { code: string; class: string } | null;
+  contract_violation: string | null;
+  reason_ko: string;
+}
+interface FourAxisResult {
+  status: "COMPLETE" | "INPUT_FAILURE" | "CONTRACT_VIOLATION";
+  style_id: string | null;
+  directions: Record<FourAxis, string | null>;
+  axes: Record<FourAxis, FourAxisAxis>;
+  reason_ko: string;
+}
+type FourAxis = "EI" | "TC" | "SR" | "DM";
+const FOUR_AXES: FourAxis[] = ["EI", "TC", "SR", "DM"];
 
-/** 방향 기록 → 스타일 아이디. 미결 축(엔진 미해결 · DM)은 양쪽 글자(OR)로 두고 후보를 모두 보인다 */
-function styleIdOf(scores: ReturnType<Pipeline["score"]>) {
-  const axes: Obj = {};
-  for (const axis of ["EI", "TC", "SR"] as const) {
-    const r = scores[axis];
-    const letter = r.direction ? LETTER[axis][r.direction] : undefined;
-    axes[axis] = letter
-      ? { letter, letters: [letter], source: "ENGINE", label: r.rule ?? null, detail: `${r.direction} · ${r.status}` }
-      : {
-          letter: POLES[axis][0],
-          letters: POLES[axis],
-          source: null,
-          label: null,
-          detail: `엔진 미결 (${[r.status, r.error].filter(Boolean).join(" · ")}) → ${POLES[axis].join(" 또는 ")} (양쪽 모두)`,
-        };
+/**
+ * 4축 통합 판정 → 화면 · product_style 의 styleId 모양 (StyleIdCard).
+ * 엔진이 정한 대로만 옮긴다 — 한 축이라도 판정 불가면 style_id 는 null 이고 글자를 채우거나 양쪽 후보로 펼치지 않는다.
+ */
+function styleIdOf(result: FourAxisResult) {
+  const axes = Object.fromEntries(
+    FOUR_AXES.map((axis) => {
+      const a = result.axes[axis];
+      const letter = a.status === "DIRECTION" ? a.direction : null;
+      return [
+        axis,
+        {
+          letter,
+          letters: letter ? [letter] : [],
+          source: letter ? "ENGINE" : null,
+          label: a.rule,
+          detail: [a.direction_label, a.reason_ko, a.input_failure ? `판정 불가 ${a.input_failure.code}` : null, a.contract_violation]
+            .filter(Boolean)
+            .join(" · "),
+        },
+      ];
+    })
+  );
+  if (result.status !== "COMPLETE" || !result.style_id) {
+    const failed = FOUR_AXES.filter((x) => result.axes[x].status !== "DIRECTION");
+    return { ok: false, error: `${result.status} — ${failed.join(" · ")} 축 판정 불가 (${result.reason_ko})`, axes };
   }
-  axes.DM = {
-    letter: "D",
-    letters: POLES.DM,
-    source: null,
-    label: null,
-    detail: "Full-Look DM 스코어링 엔진이 아직 없습니다 → D 또는 M (양쪽 모두). 패킷의 dm_evidence 는 관찰 결과에 있습니다.",
-  };
-  const candidates = styleIdCandidates(axes as Parameters<typeof styleIdCandidates>[0]);
-  const id = candidates[0]?.style_id ?? null;
-  return { ok: Boolean(id), style_id: id, style: id ? (STYLE_IDS[id] ?? null) : null, candidates, axes };
+  const id = result.style_id;
+  return { ok: true, style_id: id, style: STYLE_IDS[id] ?? null, candidates: [{ style_id: id, style: STYLE_IDS[id] ?? null }], axes, reason_ko: result.reason_ko };
 }
 
 /**
- * GET /api/full-style-id-extraction — 기본 관찰 프롬프트 = target='full' 활성 버전
+ * GET /api/full-style-ex — 기본 관찰 프롬프트 = target='full' 활성 버전
  *   응답: { prompt, versions: { prompt: { id, version } | null }, approved: { version, sha256 }, models: { claude, gemini } }
  *         versions.prompt 가 null 이면 버전 표를 읽지 못해 코드 기본값(승인 V2 원문)을 준 것이다.
  *         approved 는 추출 엔진이 검증된 승인 프롬프트 — 화면이 지금 프롬프트가 그것과 같은지 보인다.
@@ -395,7 +414,7 @@ async function extractThree(
 }
 
 /**
- * POST /api/full-style-id-extraction — multipart/form-data
+ * POST /api/full-style-ex — multipart/form-data
  *   image    : 이미지 파일 (필수, JPEG · PNG · WEBP, 5MB 이하)
  *   provider : 'claude' | 'gemini' (선택 — 비우면 'claude')
  *   prompt   : 관찰 프롬프트 (선택 — 비우면 target='full' 활성 버전).

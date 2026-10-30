@@ -35,7 +35,7 @@ interface ProductStyleDbRow {
  *   응답: { rows, total, page, pageSize }
  *   row: { id, created_at, model_id, image_url, target, styleId, judgement, scoring, observation, vision_model, judge_model,
  *          elapsed_ms, product }
- *          target 은 어느 페이지가 추출했는지 — item = /style-ex · full = 인덱스(/full-style-id-extraction). 0021 전이면 item.
+ *          target 은 어느 페이지가 추출했는지 — item = /style-ex · full = 인덱스(/full-style-ex). 0021 전이면 item.
  *          version 은 추출에 쓴 관찰 프롬프트 버전 레이블(v1.1 · v2 · custom), 모르면 null. — styleId 는 /api/style-ex 응답의 styleId 와 같은 모양으로 되살린다.
  *          product 는 카탈로그(brand_catalog_models)에서 찾은 상품 정보, 못 찾으면 null.
  */

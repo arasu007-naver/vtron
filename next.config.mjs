@@ -15,6 +15,10 @@ const fashnImageHosts = [
 
 const nextConfig = {
   reactStrictMode: true,
+  // Full-Look Style ID 페이지 경로를 /full-style-id-extraction → /full-style-ex 로 바꿨다 — 예전 링크는 새 경로로
+  async redirects() {
+    return [{ source: "/full-style-id-extraction", destination: "/full-style-ex", permanent: true }];
+  },
   images: {
     remotePatterns: [
       {

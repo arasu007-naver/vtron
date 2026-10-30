@@ -10,7 +10,7 @@ import { DEFAULT_JUDGE_PROMPT } from "./judge";
  * style-ex 프롬프트 버전 (supabase/migrations/0015_style_ex_prompt_versions.sql · 0020_style_ex_prompt_target.sql).
  *
  * 관찰(observe) · 판정(judge) 프롬프트를 `style_ex_prompt_versions` 에 버전으로 쌓는다.
- * 대상(target)은 item = /style-ex 의복별 · full = /full-style-id-extraction 착장 전체(관찰만).
+ * 대상(target)은 item = /style-ex 의복별 · full = /full-style-ex 착장 전체(관찰만).
  * (target, kind) 마다 활성 버전이 하나 있고, 추출은 프롬프트를 따로 받지 않으면 활성 버전을 쓴다.
  * (target, kind) 에 행이 없으면 코드의 기본 프롬프트를 v1 로 등록한다. 표를 읽지 못하면(마이그레이션 전 등)
  * 코드 기본 프롬프트로 돌아간다 — 추출은 멈추지 않는다.
@@ -22,7 +22,7 @@ export type PromptKind = (typeof PROMPT_KINDS)[number];
 export const isPromptKind = (v: unknown): v is PromptKind =>
   typeof v === "string" && (PROMPT_KINDS as readonly string[]).includes(v);
 
-/** item = /style-ex 의복별 · full = /full-style-id-extraction 착장 전체 */
+/** item = /style-ex 의복별 · full = /full-style-ex 착장 전체 */
 export const PROMPT_TARGETS = ["item", "full"] as const;
 export type PromptTarget = (typeof PROMPT_TARGETS)[number];
 
@@ -73,7 +73,7 @@ export interface ResolvedPrompt {
 /** Full-Look Vision Extractor 의 승인 관찰 프롬프트 V2 원문 (lib/full-style-ex/pipeline.cjs 와 같은 파일) */
 const FULL_PROMPT_FILE = path.join(
   process.cwd(),
-  "business_logic/FULL_LOOK_VISION_EXTRACTOR_FINAL_20261017/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/02_PROMPT/STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2.txt"
+  "lib/full-style-ex/engine/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/02_PROMPT/STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2.txt"
 );
 
 /**

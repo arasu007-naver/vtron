@@ -1,6 +1,6 @@
 "use client";
 
-/* Full-Look Style ID (/full-style-id-extraction)
+/* Full-Look Style ID (/full-style-ex)
    개별 의복이 아니라 착장 전체(Full-Look)로 스타일 아이디를 정한다. 구성은 /style-ex 와 같다.
 
    ┌ 이미지 미리보기 [상품 Style ID] [이미지] [추출] ┬ [관찰 프롬프트]     [클로드|Gemini] ┤
@@ -8,7 +8,8 @@
    └──────────────────────────────────────┴───────────────────────────────────┘
 
    관찰 = Vision 모델 1회 → Full-Look Vision Extractor(FLV_RC6_FINAL)가 Evidence Packet 으로 구조화.
-   판정 = Full-Look Scoring Engines(EI · TC · SR 방향, 동결 코드)에 패킷을 넘긴다 — 판정 프롬프트는 없다.
+   판정 = Full-Look 4축 통합 Runtime(FL4AX_FINAL_V1 — EI · TC · SR · DM 동결 엔진)에 패킷을 넘긴다 — 판정 프롬프트는 없다.
+   한 축이라도 판정 불가면 스타일 아이디가 없다(엔진이 글자를 채우지 않는다).
    관찰 프롬프트는 /style-ex 와 같은 표(style_ex_prompt_versions)에 target='full' 로 버전이 쌓인다.
    처음에는 활성 버전(없으면 승인 V2 원문이 v1)을 채우고, 고치면 고친 내용으로 호출한다.
    추출 엔진은 승인 V2 로 검증됐으므로 지금 프롬프트가 V2 와 다르면 표시한다.
@@ -49,13 +50,22 @@ const RESULT_TABS: { key: ResultKey; label: string }[] = [
   { key: "judge", label: "판정 결과" },
 ];
 
-/** 엔진 방향 기록 (축별) */
+/** 4축 통합 판정(FL4AX_FINAL_V1)의 축 하나 */
 interface AxisRecord {
-  axis?: string;
-  status: string;
+  status: "DIRECTION" | "INPUT_FAILURE" | "CONTRACT_VIOLATION";
   direction: string | null;
-  rule?: string;
-  error?: string;
+  direction_label: string | null;
+  rule: string | null;
+  input_failure: { code: string; class: string } | null;
+  reason_ko: string;
+}
+
+/** 4축 통합 판정 결과 (STMX_FULL_LOOK_FOUR_AXIS_RESULT_V1) */
+interface FourAxisResult {
+  status: "COMPLETE" | "INPUT_FAILURE" | "CONTRACT_VIOLATION";
+  style_id: string | null;
+  axes: Record<string, AxisRecord>;
+  reason_ko: string;
 }
 
 /** /api/style-ex/prompts 의 프롬프트 버전 (target='full', kind='observe') */
@@ -74,7 +84,7 @@ interface PromptVersion {
 
 const VERSIONS_URL = "/api/style-ex/prompts?target=full&kind=observe";
 
-/** 서버(/api/full-style-id-extraction)의 이미지 한도와 같다 */
+/** 서버(/api/full-style-ex)의 이미지 한도와 같다 */
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
 /** 서버가 받는 형식 (JPEG · PNG · WEBP) — 상품 사진의 확장자를 정한다 */
@@ -113,7 +123,7 @@ export default function FullStyleIdExtractionPage() {
   const [message, setMessage] = useState("");
   const [packetStatus, setPacketStatus] = useState<string | null>(null);
   const [styleId, setStyleId] = useState<StyleIdResult | null>(null);
-  const [scoring, setScoring] = useState<Record<string, AxisRecord> | null>(null);
+  const [scoring, setScoring] = useState<FourAxisResult | null>(null);
   const [usedModel, setUsedModel] = useState<string | null>(null);
   /** 진행 중이거나 마지막으로 돈 방식 · 비전 호출 수 */
   const [runMode, setRunMode] = useState<Mode | null>(null);
@@ -142,7 +152,7 @@ export default function FullStyleIdExtractionPage() {
     };
     (async () => {
       try {
-        const res = await authFetch("/api/full-style-id-extraction");
+        const res = await authFetch("/api/full-style-ex");
         const data = await res.json().catch(() => ({}));
         if (cancelled) return;
         if (typeof data.prompt !== "string") throw new Error(data.error ?? `관찰 프롬프트를 받지 못했습니다 (${res.status})`);
@@ -267,7 +277,7 @@ export default function FullStyleIdExtractionPage() {
       body.append("imageUrl", productImageUrl);
     }
     try {
-      const res = await authFetch("/api/full-style-id-extraction", { method: "POST", body });
+      const res = await authFetch("/api/full-style-ex", { method: "POST", body });
       const data = await res.json();
       setUsedModel(data.visionModel ?? null);
       setVisionCalls(typeof data.visionCalls === "number" ? data.visionCalls : null);
@@ -526,7 +536,7 @@ export default function FullStyleIdExtractionPage() {
             />
             <p className="flex-none mx-4 mb-1 text-xs text-black/50">
               이미지와 함께 {modelLabel(provider)} 에 보내고, 응답은 Evidence Packet 으로 구조화된 뒤 Full-Look Scoring
-              Engine(EI · TC · SR)이 판정합니다. 추출 엔진은 승인 {approved?.version ?? "V2"} 원문으로 검증됐습니다.
+              Engine(EI · TC · SR · DM 4축 통합)이 판정합니다. 추출 엔진은 승인 {approved?.version ?? "V2"} 원문으로 검증됐습니다.
             </p>
             {/* 버전 관리 (target='full') — 저장 안 한 내용이면 새 버전으로 저장, 활성이 아닌 버전이면 활성화 */}
             <div className="flex-none flex items-center gap-2 mx-4 mb-3 text-xs">
@@ -630,13 +640,13 @@ export default function FullStyleIdExtractionPage() {
               <pre className="p-3 font-[family-name:var(--font-mono)] text-xs leading-relaxed whitespace-pre-wrap break-all">
                 {status === "running"
                   ? runMode === "three"
-                    ? "① 등록 → ② 외관 ∥ ③ 구조 · 관계 (비전 3회) → 합치기 → Evidence Packet → EI · TC · SR 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
-                    : "관찰 → Evidence Packet → EI · TC · SR 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
+                    ? "① 등록 → ② 외관 ∥ ③ 구조 · 관계 (비전 3회) → 합치기 → Evidence Packet → EI · TC · SR · DM 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
+                    : "관찰 → Evidence Packet → EI · TC · SR · DM 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
                   : parts?.[resultTab] ||
                     message ||
                     (resultTab === "observe"
                       ? "관찰 프롬프트의 결과(모델 출력 · Evidence Packet · run_record · 검증)가 여기에 표시됩니다."
-                      : "관찰 결과를 Scoring Engine 에 넣은 결과(EI · TC · SR 방향 · 스타일 아이디)가 여기에 표시됩니다.")}
+                      : "관찰 결과를 Scoring Engine 에 넣은 결과(EI · TC · SR · DM 방향 · 스타일 아이디)가 여기에 표시됩니다.")}
               </pre>
             </div>
           </div>
@@ -670,23 +680,30 @@ export default function FullStyleIdExtractionPage() {
   );
 }
 
-/** 엔진별 방향 · 규칙 · 상태 한 줄씩 */
-function DirectionRows({ scoring }: { scoring: Record<string, AxisRecord> }) {
+/** 4축 — 축마다 판정 상태 · 방향 · 규칙 · 엔진의 한국어 근거 */
+function DirectionRows({ scoring }: { scoring: FourAxisResult }) {
   return (
-    <ul className="p-3 border-b border-[var(--color-divider)] text-xs space-y-1">
-      {(["EI", "TC", "SR"] as const).map((axis) => {
-        const r = scoring[axis];
-        if (!r) return null;
-        return (
-          <li key={axis} className="flex gap-2 font-[family-name:var(--font-mono)]">
-            <span className="w-8 font-semibold">{axis}</span>
-            <span className={r.status === "RESOLVED" ? "text-emerald-700" : "text-[var(--color-danger)]"}>{r.status}</span>
-            <span className="font-semibold">{r.direction ?? "—"}</span>
-            {r.rule && <span className="text-black/50">{r.rule}</span>}
-            {r.error && <span className="text-[var(--color-danger)] truncate">{r.error}</span>}
-          </li>
-        );
-      })}
-    </ul>
+    <div className="p-3 border-b border-[var(--color-divider)] text-xs space-y-1.5">
+      <p className="m-0 text-black/60">
+        4축 통합 판정 <span className="font-[family-name:var(--font-mono)]">{scoring.status}</span> · {scoring.reason_ko}
+      </p>
+      <ul className="m-0 p-0 list-none space-y-1">
+        {(["EI", "TC", "SR", "DM"] as const).map((axis) => {
+          const r = scoring.axes?.[axis];
+          if (!r) return null;
+          const ok = r.status === "DIRECTION";
+          return (
+            <li key={axis} className="flex gap-2">
+              <span className="flex-none w-8 font-semibold font-[family-name:var(--font-mono)]">{axis}</span>
+              <span className={`flex-none w-28 font-[family-name:var(--font-mono)] ${ok ? "text-emerald-700" : "text-[var(--color-danger)]"}`}>
+                {ok ? `${r.direction} ${r.direction_label ?? ""}` : (r.input_failure?.code ?? r.status)}
+              </span>
+              {r.rule && <span className="flex-none text-black/50 font-[family-name:var(--font-mono)]">{r.rule}</span>}
+              <span className="text-black/70">{r.reason_ko}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
