@@ -10,7 +10,7 @@
    │ │ 관찰 결과 (관찰 envelope JSON)                            │
    └──────────────────────────────────────────────────────────────┘
 
-   target = 어느 페이지가 연산 · 추출했는지 (product_style.target, 0021) — full = 인덱스(/full-style-id-extraction)
+   target = 어느 페이지가 연산 · 추출했는지 (product_style.target, 0021) — full = 인덱스(/full-style-ex)
    착장 전체 · item = /style-ex 의복별. version = 추출에 쓴 관찰 프롬프트 버전 레이블(product_style.version) —
    v1.1 · v1.2 · v1 · v2 · custom. 사진 오른쪽 아래에 "target:version" 으로 열 값 그대로 보인다(버전을 모르면 target 만). */
 

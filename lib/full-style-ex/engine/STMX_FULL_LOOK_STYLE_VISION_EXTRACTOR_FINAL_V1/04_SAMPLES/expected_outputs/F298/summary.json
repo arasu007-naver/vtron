@@ -1,0 +1,60 @@
+{
+ "tool": "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6/cli/run_offline.js",
+ "architecture": "integrated observation (G1–G4 logical groups in one pass; A1 frozen-DM assembly)",
+ "live_inference": "NONE (G53)",
+ "input": {
+  "kind": "raw_response",
+  "file": "C:/work/STMX/STMX project/master files/STMX EI TC SR DM master/01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/04_SAMPLES/inputs/F298.raw_response.json",
+  "sha256": "443021e31b6d10303957ca50e6f0159accca8f27b8763553fe23ec99fb399afa",
+  "model": "claude-opus-5-5",
+  "stop_reason": "end_turn",
+  "fences_stripped": false
+ },
+ "outputs": {
+  "packet": "659b90bdd4df5c1817785def16db3bb0dd8791f34a3c050fe0992d8d0d812807",
+  "validation": "def01ee59ed2a10bf3be0d5128281de6ec2bc980b7f895ca1769978296d18cf2",
+  "provenance": "6e3e1d81ce22212dbc1d2bfb5f2b4bc5b9fb4c9d069b9113c5b46c637c4edaad",
+  "native_check": "88f882dd7f57aa3dc32e568f8b2bd254021b822cafc6f36e8705a9706302713a",
+  "unresolved_fields": "719743dd7258db425ec5f7df7670fc9768a873c371d17856082f5996f506b823",
+  "run_record": "7403a5a4bb78868bf9e0dc333d4642672f4961e84b10762da13c15d5f982a95d",
+  "tc_product_evidence_view": "cc874b180b47afcff628ab916e148875f05888ff55dd500e6f0c2a9ae8ab5cee"
+ },
+ "status": "PACKET_VALID",
+ "transport": {
+  "shape_variant": {
+   "frame": "flat",
+   "objects": "array",
+   "front_state": "map",
+   "colour": "flat",
+   "facts": "map"
+  },
+  "counts": {
+   "SECURING_REGION_RAW_TOKEN": 1,
+   "REPRESENTATION_KEPT_AS_EMITTED": 6,
+   "POCKET_INSTANCES_CARRIED": 1,
+   "UNWRAP": 1,
+   "PASSTHROUGH": 1
+  },
+  "unconvertible": 0,
+  "not_emitted": 1
+ },
+ "local_isolation": {
+  "actions": 0,
+  "records": []
+ },
+ "native": {
+  "strict_json_as_emitted": true,
+  "native_conformant": true,
+  "shape_and_vocabulary_conformant": true,
+  "counts": {
+   "PARSE": 0,
+   "REQUIRED_BLOCK": 0,
+   "STATE_REPRESENTATION": 0,
+   "UNSUPPORTED_FIELD": 0,
+   "INVALID_VOCABULARY": 0,
+   "STRUCTURAL_OMISSION": 0,
+   "FORBIDDEN_KEY": 0
+  }
+ },
+ "validation_errors": 0
+}

@@ -1,0 +1,8 @@
+{
+ "image_ref": "F187",
+ "image_hash": "f2af3cb08bf06b6431a616e362e95b0791dea573e94839315d197876e259442e",
+ "prompt_version": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
+ "prompt_hash": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
+ "model_id": "claude-opus-5-5",
+ "run_id": "RUN-EX04-0008"
+}

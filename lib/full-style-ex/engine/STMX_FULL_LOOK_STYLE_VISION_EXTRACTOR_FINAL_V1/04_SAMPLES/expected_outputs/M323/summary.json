@@ -1,0 +1,62 @@
+{
+ "tool": "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6/cli/run_offline.js",
+ "architecture": "integrated observation (G1–G4 logical groups in one pass; A1 frozen-DM assembly)",
+ "live_inference": "NONE (G53)",
+ "input": {
+  "kind": "raw_response",
+  "file": "C:/work/STMX/STMX project/master files/STMX EI TC SR DM master/01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/04_SAMPLES/inputs/M323.raw_response.json",
+  "sha256": "701ec1d5cfdd08c45ff440f30a80cf5badbcb93dfe286dee4105b37bb97e31ce",
+  "model": "claude-opus-5-5",
+  "stop_reason": "end_turn",
+  "fences_stripped": false
+ },
+ "outputs": {
+  "packet": "8b34f75727e3403691f7126de6a4e8ab6d50b54e494c3c16affe37d7a5de4f89",
+  "validation": "def01ee59ed2a10bf3be0d5128281de6ec2bc980b7f895ca1769978296d18cf2",
+  "provenance": "23af127d0e8cd9abd400641699dd44e2484b9bf41cf78320e1c221274613f873",
+  "native_check": "5467386c9415e1a34af27e6536858b2c37013de1e8bce21d72fe3bbd902faa52",
+  "unresolved_fields": "484b5663cf6151373feecedf3bc2d21def12d86ece9d8a3f305c059e1907547f",
+  "run_record": "658a866599c1b26e5975ec2fcd8b303281612c6c4243c0a9121e53147596e1a6",
+  "tc_product_evidence_view": "8ca0397fb16894e13c73d249bb37b2ff7de8450fba20f65b2c29f8b6cdaba185"
+ },
+ "status": "PACKET_VALID",
+ "transport": {
+  "shape_variant": {
+   "frame": "flat",
+   "objects": "array",
+   "front_state": "map",
+   "colour": "flat",
+   "facts": "map"
+  },
+  "counts": {
+   "SECURING_REGION_RAW_TOKEN": 1,
+   "COLOUR_PART_ON_FIELD_NORMALIZED_TO_POINT": 1,
+   "COLOUR_V1_STITCHING_SUPPRESSED": 1,
+   "REPRESENTATION_KEPT_AS_EMITTED": 4,
+   "POCKET_INSTANCES_CARRIED": 1,
+   "UNWRAP": 1,
+   "PASSTHROUGH": 1
+  },
+  "unconvertible": 0,
+  "not_emitted": 0
+ },
+ "local_isolation": {
+  "actions": 0,
+  "records": []
+ },
+ "native": {
+  "strict_json_as_emitted": true,
+  "native_conformant": false,
+  "shape_and_vocabulary_conformant": false,
+  "counts": {
+   "PARSE": 0,
+   "REQUIRED_BLOCK": 0,
+   "STATE_REPRESENTATION": 0,
+   "UNSUPPORTED_FIELD": 0,
+   "INVALID_VOCABULARY": 0,
+   "STRUCTURAL_OMISSION": 1,
+   "FORBIDDEN_KEY": 0
+  }
+ },
+ "validation_errors": 0
+}

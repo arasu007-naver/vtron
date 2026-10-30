@@ -1,0 +1,97 @@
+{
+ "frame": null,
+ "identity_unknown": [],
+ "pool_unknown": [
+  "c2.surface",
+  "c2.material",
+  "c4.surface",
+  "c5.material",
+  "c6.material",
+  "c2.closure_type"
+ ],
+ "pool_not_visible": [
+  {
+   "key": "c2.fit",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  },
+  {
+   "key": "c2.asymmetry",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  },
+  {
+   "key": "c2.length",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  },
+  {
+   "key": "c2.sleeve",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  },
+  {
+   "key": "c2.sleeve_volume",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  },
+  {
+   "key": "c2.shoulder_span",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  },
+  {
+   "key": "c2.front_opening_extent",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  },
+  {
+   "key": "c2.shoulder_connection",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  },
+  {
+   "key": "c2.pocket",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  }
+ ],
+ "colour_unreadable": [],
+ "colour_partial": [],
+ "upper": {},
+ "not_emitted_by_model": [
+  {
+   "ref": "c2",
+   "fact": "closure_type",
+   "note": "applicable fact not emitted by the model → pool reads UNKNOWN (never ABSENT)"
+  }
+ ],
+ "unconvertible": [],
+ "dm": null,
+ "dm_visibility_not_established": {
+  "diagnostics": [
+   {
+    "code": "MAPPING_UNRESOLVED",
+    "gap": "D-1",
+    "detail": "OBSERVED G1 record with no limit: the frozen enum offers adjudicable and partially_observable:{small_detail_unresolvable}; the SVP-001 limit vocabulary cannot record small_detail_unresolvable, so the common record cannot tell them apart → DMP-3 not established, never defaulted. RC4 (DM Evidence Transport V2, CEO 2026-10-15): dm_evidence_visibility { state: UNKNOWN } and the observed systems are delivered (the old D-1 option choice is superseded for transport)",
+    "where": "dm_evidence_visibility"
+   }
+  ]
+ },
+ "securing_region_outside_reference_domain": [
+  {
+   "securing_ref": "c1",
+   "affected_ref": "c1",
+   "affected_region": "waist"
+  }
+ ]
+}

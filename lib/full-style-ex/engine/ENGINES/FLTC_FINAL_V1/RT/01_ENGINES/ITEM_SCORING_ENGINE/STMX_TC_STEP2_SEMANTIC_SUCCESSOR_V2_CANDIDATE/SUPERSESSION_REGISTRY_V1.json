@@ -1,0 +1,149 @@
+{
+ "document": "STMX_TC_STEP2_SUPERSESSION_REGISTRY_V1",
+ "status": "CANDIDATE · SHADOW · NOT FROZEN · NOT PRODUCTION",
+ "sprint": "V2.3.68",
+ "date": "2026-09-26",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-26 (D-67 APPROVE WITH NARROW REVISION)",
+  "Reason": "D-67 A: a successor observation becomes the materialization input only where the governed supersession conditions are satisfied; this registry is the explicit, versioned, provenance-bound authority the Step 2 successor consults",
+  "Affected Scope": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/SUPERSESSION_REGISTRY_V1.json (new)"
+ },
+ "spec": {
+  "rule": "D-67 A — a successor observation supersedes the historical observation of ONE semantic field for an EXPLICITLY LISTED member set iff (1) same semantic field definition (a bounded applicability extension is separately governed and never redefines a value); (2) blind observation protocol sealed before any identity / GT join; (3) a CEO-approved binding authority explicitly names that observation version as the successor runtime / materialization input; (4) per-member version history and provenance are preserved.",
+  "never_select_by": [
+   "latest timestamp",
+   "largest version number",
+   "highest confidence",
+   "closest GT fit",
+   "archetype key alone",
+   "field name alone"
+  ],
+  "selection": "a member × field is SUCCESSOR-selected only if it appears in an entry member_domain AND its key is in applicable_key_domain AND the entry validates; every other member × field keeps the HISTORICAL observation",
+  "entry_required_fields": [
+   "entry_id",
+   "field",
+   "delta_class",
+   "semantic_contract_delta",
+   "applicable_key_domain",
+   "member_domain",
+   "predecessor_observation_version",
+   "successor_observation_version",
+   "authority_source",
+   "blind_protocol_seal",
+   "binding_decision",
+   "history_preservation_rule",
+   "conditions"
+  ],
+  "admissible_delta_class": [
+   "O1"
+  ],
+  "semantic_contract_delta_required": 0,
+  "refused_at_load": [
+   "delta_class ≠ O1 (O2 is decided per value at materialization; O3 never executes)",
+   "semantic_contract_delta ≠ 0",
+   "any predicate / rule / semantic override key",
+   "field outside the verified re-execution map (V1: fit)",
+   "member not present in the successor record",
+   "seal / protocol / batch hash mismatch",
+   "history missing for any member"
+  ],
+  "o2_note": "O2 is not a registry class: a registered O1 successor value that lies outside the frozen Step 2 domain of the member key is detected per value at materialization and fails closed through the existing frozen unresolved outcome (SIL-STATE)"
+ },
+ "entries": [
+  {
+   "entry_id": "SR-001-TROUSER-FIT-V2361",
+   "field": "fit",
+   "delta_class": "O1",
+   "semantic_contract_delta": 0,
+   "applicable_key_domain": [
+    "trouser"
+   ],
+   "member_domain": [
+    "REF_000010#SU1|target_3",
+    "REF_000014#SU1|target_3",
+    "REF_000378#SU2|target_2",
+    "REF_000494#SU2|target_2",
+    "REF_000496#SU2|target_2",
+    "REF_000520#SU1|target_1",
+    "REF_000521#SU1|target_1",
+    "REF_000525#SU1|target_1",
+    "REF_000541#SU2|target_2",
+    "REF_000575#SU1|target_1",
+    "REF_000586#SU1|target_2",
+    "REF_000590#SU1|target_1",
+    "REF_000593#SU1|target_2",
+    "REF_000816#SU1|target_3",
+    "REF_000817#SU1|target_3",
+    "REF_000840#SU1|target_3",
+    "REF_000841#SU1|target_2",
+    "REF_000845#SU2|target_2",
+    "REF_000846#SU2|target_2",
+    "REF_000849#SU2|target_3"
+   ],
+   "predecessor_observation_version": {
+    "id": "CANONICAL_FINAL_REPRESENTATION_V1_1 — production Producer V1_3 extraction as consumed by the frozen Step 2 clean run (V2.3.2 evaluator, V2.3.21 FINAL FREEZE)",
+    "read_through": "frozen Step 2 member ledger `observed.fit`, via the sealed V3.3 adapter (tier / GT fields deleted at parse)",
+    "status": "CANONICAL · production · frozen Step 2 input"
+   },
+   "successor_observation_version": {
+    "id": "TROUSER_FIT_OBSERVATION_SUCCESSOR_V1",
+    "file": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_TROUSER_FIT_REOBSERVATION_V1_CANDIDATE/TROUSER_FIT_OBSERVATION_SUCCESSOR_V1.json",
+    "sha256": "e5a6ebc5a83bbfb4f1abfbb82ac019727063275a7407a7909a38e1acaded3e26",
+    "value_path": "members[].fit",
+    "producer_contract": "STMX_VISION_PRODUCER_V1_6_TROUSER_VOLUMINOUS_CANDIDATE",
+    "status": "CANDIDATE — governed versioned observation successor (fit on every governed trouser member) under the V1_6 candidate Trouser domain; nothing earlier is overwritten",
+    "rule": "the runtime-facing value is v2361_expanded_domain; raw prior governed extraction, projection V3 value and the V2.3.60 blind value are preserved per member; no mechanical migration; UNKNOWN stays UNKNOWN"
+   },
+   "authority_source": {
+    "decision": "D-60.5 (CEO 2026-09-26) — governed blind re-observation of trouser fit (V2.3.61 §17)",
+    "record_approval_anchor": {
+     "CEO Decision": "2026-09-26",
+     "Reason": "D-60.5 approved; §17 governed blind re-observation of the only field whose legal domain changed (fit)",
+     "Affected Scope": "this directory (new)"
+    }
+   },
+   "blind_protocol_seal": {
+    "seal_file": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_TROUSER_FIT_REOBSERVATION_V1_CANDIDATE/SEAL_TROUSER_FIT_REOBSERVATION_V1.json",
+    "seal_sha256": "b9ea82aa24ac53f0718998998d16705bebfc17db8e6b1cf09112457f7bd67d67",
+    "sealed_at": "2026-09-25T22:38:57.019Z",
+    "seal_order_step": 3,
+    "protocol_file": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_TROUSER_FIT_REOBSERVATION_V1_CANDIDATE/TROUSER_REOBSERVATION_PROTOCOL_V1.json",
+    "protocol_sha256": "a86170554550e7d9b43e6b5be1783d82bf4d73e01f0f5bb594bcad9f5a1c3450",
+    "batch_sha256": "b4eb3bdde3f7b03a51ca33d05a9ce5bab7d5ba0b3d66eb6ce908274c57ace796",
+    "observation_aggregate_sha256": "1f015a1b0c7797b491f30e0b28d7b9fd239fa15abbfc3c695953d5f39eee20ee",
+    "gt_read_at_observation": 0
+   },
+   "binding_decision": {
+    "runtime_binding": "D-60.5 / V2.3.61: bound into GT-free token projection V4 → runtime V3.3 / V3.4 constitutive layer",
+    "materialization_binding": "D-67 (CEO 2026-09-26) approved the supersession rule; order V2.3.68 §8 names this V2.3.61 trouser fit successor authority as the (minimum) registry entry for Step 2 successor materialization"
+   },
+   "history_preservation_rule": "per-member history (raw prior governed extraction · projection V3 · V2.3.60 blind · V2.3.61 expanded domain) preserved in the successor record; the historical observation and historical Step 2 result are carried in every successor result provenance; nothing is overwritten",
+   "conditions": {
+    "c1_same_field_definition": "fit — Producer V1_3 definition; V1_6 candidate adds Voluminous applicability for trouser (CA#41 record), which never redefines an existing value → values outside the frozen Step 2 domain fail closed (O2)",
+    "c2_blind_seal_before_join": "batch sealed 2026-09-25T22:38:57.019Z (seal order step 3) before the member map was opened (V2.3.61 20_)",
+    "c3_ceo_binding": "D-60.5 (runtime) + D-67 / V2.3.68 §8 (materialization)",
+    "c4_history_preserved": "20 / 20 members carry raw prior + intermediate readings"
+   }
+  }
+ ],
+ "explicitly_not_registered": [
+  {
+   "class": "sleeve_volume n/a → Regular (14 members)",
+   "lineage": "SLEEVE_VOLUME_BACKFILL_LEDGER_V1 (V2.3.59 §8/§9 OSF-2 governed blind backfill; prior_state KEY_OMITTED)",
+   "reason": "condition (3) unmet for Step 2: bound only as a realization parameter of the V3.x constitutive layer, never named as a Step 2 materialization input; a completion of an omitted key, not a correction",
+   "effect": "historical observation retained for Step 2"
+  },
+  {
+   "class": "surface / attachment null → \"\" (8 rows)",
+   "lineage": "projection representation (null vs empty value list)",
+   "reason": "normalization-only representational drift — no observation difference",
+   "effect": "historical observation retained"
+  },
+  {
+   "class": "dress / jumpsuit composite fit null → \"\" (14 rows)",
+   "lineage": "projection representation of the composite Upper / Lower fit",
+   "reason": "normalization-only representational drift — no observation difference",
+   "effect": "historical observation retained"
+  }
+ ]
+}

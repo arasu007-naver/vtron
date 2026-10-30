@@ -1,0 +1,64 @@
+{
+ "seal_id": "FLEI-FINAL-FREEZE-V1-2026-10-26",
+ "release_id": "STMX_FULL_LOOK_EI_DIRECTION_ENGINE_FINAL_V1",
+ "release_dir": "01_ENGINES/STYLE_SCORING_ENGINE/FLEI_FINAL_V1/",
+ "frozen_at": "2026-10-26T04:55:09.548Z",
+ "state": "FINAL_FROZEN_WITH_ACCEPTED_KNOWN_LIMITATION",
+ "final_v1_frozen": true,
+ "known_ceo_gt_mismatch": "F228",
+ "scope": "Full-Look EI DIRECTION only (EXPRESSIVE | INTROVERT) — not Strength, not Item EI, not TC / SR / DM, not four-axis integration, not Style ID",
+ "release_manifest_sha256": "96b0a31415a24773d08f43a3ab3cb0383e72f93fc33b21e596ac99e6260a261b",
+ "runtime_fingerprint": "9093684e0f37c9e7c20fc64f5b843544c95efa6546449b1ed3d843a0c2d501e6",
+ "constitution_id": "STMX_FULL_LOOK_EI_BINARY_DIRECTION_CONSTITUTION_V1_R3",
+ "constitution_sha256": "a81d0088e8f45d39ccd8f287ef6fd1e02691c5946828425bd38b2b804823331b",
+ "source_candidate": {
+  "path": "01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_EI_BINARY_DIRECTION_RESOLVER_V1_R3_CANDIDATE/",
+  "manifest_sha256": "1588ed3e1744964c0ee49784a668486d988a43b3ecfb67616f273ab0bae25e02",
+  "code_identity": "429896dfb3a5d9b4a9edbc207e5adb8e337c218866b0ee3ffbfeafbd07ea1e5d",
+  "code_identity_recomputed_in_release": "429896dfb3a5d9b4a9edbc207e5adb8e337c218866b0ee3ffbfeafbd07ea1e5d",
+  "runtime_src_byte_identical": true
+ },
+ "dependency_pins": 9,
+ "dependency_closure": 9,
+ "golden": {
+  "corpus43": 43,
+  "distribution": {
+   "EXPRESSIVE": 36,
+   "INTROVERT": 7
+  }
+ },
+ "known_accepted_limitation": {
+  "id": "FL-EI-LIM-F228-001",
+  "look": "F228",
+  "ceo_gt": "EXPRESSIVE",
+  "frozen_runtime_output": "INTROVERT",
+  "gt_agreement": "3/4",
+  "acceptance_type": "CONTROLLED_V1_KNOWN_LIMITATION",
+  "correction_status": "DEFERRED_NOT_IMPLEMENTED",
+  "ceo_gt_status": "RETAINED_FINAL",
+  "statement": "F228 remains a known incorrect prediction; not fixed, GT not overridden, not removed from the denominator"
+ },
+ "research_artefacts_not_in_release": {
+  "shared_raw_evidence_consumer": "RESEARCH_CANDIDATE_ONLY",
+  "sc1": "NOT_APPROVED_NOT_IMPLEMENTED",
+  "v1_r4": "NOT_CREATED",
+  "frozen_runtime": "V1_R3_ONLY"
+ },
+ "authority": {
+  "order": "STMX FULL-LOOK EI V1 — CONTROLLED FINAL FREEZE, KNOWN LIMITATION ACCEPTANCE & VERIFIED LOCAL / GOOGLE DRIVE BACKUP (CEO 2026-10-26)",
+  "order_sha256": "2a477887750dbf8b5b8e13277748c871b9a4fddb662b05732ee1e5649336b543",
+  "semantic_authorities": [
+   "STMX-2026-10-FLEI-SEMANTICS-DEC-1-3",
+   "STMX-2026-10-FLEI-DEC-4-BINARY",
+   "STMX-2026-10-FLEI-R1-CASE-ADJUDICATIONS",
+   "STMX-2026-10-FLEI-R2-POCKET-SQUARE-CLARIFICATION",
+   "STMX-2026-10-FLEI-R3-FINAL-CONTRACT-CORRECTION",
+   "STMX-2026-10-AEMS"
+  ]
+ },
+ "verification": {
+  "in_place": true,
+  "clean_room_pre_seal": true,
+  "gates": "A-1 · A-2 · A-3 · A-4 · A-5 · A-6 · B-1 · B-2 · B-3 · B-4 · C-1 · C-2 · C-3 · C-4 PASS"
+ }
+}

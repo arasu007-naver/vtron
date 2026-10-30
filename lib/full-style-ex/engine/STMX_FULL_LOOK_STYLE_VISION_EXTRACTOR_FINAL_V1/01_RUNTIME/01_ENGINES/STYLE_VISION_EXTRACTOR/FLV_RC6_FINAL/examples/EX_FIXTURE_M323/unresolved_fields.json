@@ -1,0 +1,41 @@
+{
+ "frame": null,
+ "identity_unknown": [],
+ "pool_unknown": [
+  "c1.pattern",
+  "c1.graphic",
+  "c1.decorative_detail",
+  "c2.pattern",
+  "c2.graphic",
+  "c2.surface",
+  "c2.material",
+  "c2.decorative_detail",
+  "c2.attachment",
+  "c3.pattern",
+  "c3.graphic",
+  "c3.surface",
+  "c3.decorative_detail",
+  "c3.attachment",
+  "c3.silhouette",
+  "c3.fit",
+  "c3.asymmetry",
+  "c3.pocket",
+  "c1.shoulder_drop"
+ ],
+ "pool_not_visible": [
+  {
+   "key": "c3.length",
+   "limitation": [
+    "TERMINAL_REGION_CROPPED"
+   ]
+  }
+ ],
+ "colour_unreadable": [],
+ "colour_partial": [],
+ "upper": {},
+ "not_emitted_by_model": [],
+ "unconvertible": [],
+ "dm": null,
+ "dm_visibility_not_established": null,
+ "securing_region_outside_reference_domain": []
+}

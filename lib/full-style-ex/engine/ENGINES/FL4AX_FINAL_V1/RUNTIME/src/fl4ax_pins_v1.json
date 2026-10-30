@@ -1,0 +1,60 @@
+{
+ "document": "FL4AX engine pins — the four Final Frozen Full-Look Direction releases bound read-only by release directory name + seal / manifest / runtime-fingerprint SHA-256 (verified at load, fail-closed)",
+ "source": "the four authority pointers in 01_ENGINES/STYLE_SCORING_ENGINE/ (2026-10-29), each agreeing with its release",
+ "axis_order": [
+  "EI",
+  "TC",
+  "SR",
+  "DM"
+ ],
+ "engines": {
+  "EI": {
+   "release_dir": "FLEI_FINAL_V1",
+   "release_id": "STMX_FULL_LOOK_EI_DIRECTION_ENGINE_FINAL_V1",
+   "seal_id": "FLEI-FINAL-FREEZE-V1-2026-10-26",
+   "seal_sha256": "56d6509a8be89eeb3dfa136e45990a9526dc8bd8c0f42bf31cc672adccbc89f6",
+   "release_manifest_sha256": "96b0a31415a24773d08f43a3ab3cb0383e72f93fc33b21e596ac99e6260a261b",
+   "runtime_fingerprint": "9093684e0f37c9e7c20fc64f5b843544c95efa6546449b1ed3d843a0c2d501e6",
+   "entry": "lib/release_paths.js",
+   "call": "PACKET_AND_RUN_RECORD",
+   "authority_pointer": "STMX_FULL_LOOK_EI_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "authority_pointer_sha256": "7866d2d66d9b47bb8beabd324257fdd8ee6f0afb24fe10772403470d57b44d04"
+  },
+  "TC": {
+   "release_dir": "FLTC_FINAL_V1",
+   "release_id": "STMX_FULL_LOOK_TC_DIRECTION_ENGINE_V1",
+   "seal_id": "FLTC-FINAL-FREEZE-V1-2026-10-25",
+   "seal_sha256": "abd275133a9cd98947611eef09e242d1386296ad691d90ddf96d5c287f7c7da4",
+   "release_manifest_sha256": "8085f8bbf649fe4d6032b68790e084ad5c7c9f995b39a7989a930d81a6a888d0",
+   "runtime_fingerprint": "bc05359ac959d21894f389a95cea5a0393b0a9ce6d3bdace8570f73c17744174",
+   "entry": "lib/release_paths.js",
+   "call": "PACKET_AND_RUN_RECORD",
+   "authority_pointer": "STMX_FULL_LOOK_TC_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "authority_pointer_sha256": "5d4678c377c38570675c75c2a315d99d13f5c0fe924ee2964e1deaf5edac6fbe"
+  },
+  "SR": {
+   "release_dir": "FLSR_FINAL_V1",
+   "release_id": "STMX_FULL_LOOK_SR_DIRECTION_ENGINE_V1",
+   "seal_id": "FLSR-FINAL-FREEZE-V1-2026-10-25",
+   "seal_sha256": "83c1e65a7cb4bc2f564bc3d437371d9bc17f51cc05a3674768530e61b879d452",
+   "release_manifest_sha256": "f6b480d8233664b01988c31bc058f947c8f796635575549fd7c208b7bda8f431",
+   "runtime_fingerprint": "fd9590864a2a0e02d732539e769c7d781c9d0ee43f9284ae77a9057ef985b0a7",
+   "entry": "lib/release_paths.js",
+   "call": "PACKET_AND_RUN_RECORD",
+   "authority_pointer": "STMX_FULL_LOOK_SR_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "authority_pointer_sha256": "c2ccb740554a205983a127cc663333ed79647f379c9442667dbbcbb5ea70184f"
+  },
+  "DM": {
+   "release_dir": "FLDM_FINAL_V1",
+   "release_id": "STMX_FULL_LOOK_DM_DIRECTION_ENGINE_FINAL_V1",
+   "seal_id": "FLDM-FINAL-FREEZE-V1-2026-10-29",
+   "seal_sha256": "2799b7a232c96a8289af1bffae4d47ee033a52817d673a560e3bbfa116d86b70",
+   "release_manifest_sha256": "466298d1ea07fd57b98e3a28ca5c9d262f4deb399ed23411924b0973503bdd1d",
+   "runtime_fingerprint": "1d90cd1774fa01df20db8f0ec3462f4d481f2381bf8d86a1e7e67685e0996c57",
+   "entry": "lib/release_entry.js",
+   "call": "PACKET_ONLY",
+   "authority_pointer": "STMX_FULL_LOOK_DM_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "authority_pointer_sha256": "e71c87c3744d5654b821c98d6b3c6bfdd2a39c65b09d76433886973deac1917a"
+  }
+ }
+}

@@ -52,10 +52,10 @@ export const NAV_LINKS = [
     title: "이미지 속 의복을 Vision 모델로 관찰해 37개 파라미터를 추출",
   },
   {
-    href: "/full-style-id-extraction",
+    href: "/full-style-ex",
     label: "Full-Look Style ID",
     icon: Layers,
-    title: "착장 전체 이미지를 Full-Look Vision Extractor 로 관찰하고 Full-Look Scoring Engine(EI · TC · SR)으로 스타일 아이디를 판정",
+    title: "착장 전체 이미지를 Full-Look Vision Extractor 로 관찰하고 4축 통합 판정(EI · TC · SR · DM)으로 스타일 아이디를 정한다",
   },
   {
     href: "/product-style",
@@ -143,6 +143,8 @@ type NavLink = (typeof NAV_LINKS)[number];
 
 /** 상단 NavBar 에 둘 링크 — 순서대로. label 을 주면 NavBar 에서만 그 이름을 쓰고, match 의 경로에서도 켜진다. */
 const NAVBAR: { href: NavHref; label?: string; match?: string[] }[] = [
+  // 인덱스(/)도 같은 Full-Look 페이지라 거기서도 켜진다
+  { href: "/full-style-ex", label: "Full Style ID", match: ["/"] },
   { href: "/style-ex", label: "Item Style ID" },
   { href: "/product-style" },
   { href: "/contracts" },

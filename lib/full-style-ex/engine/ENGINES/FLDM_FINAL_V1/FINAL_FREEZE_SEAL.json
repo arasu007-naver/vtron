@@ -1,0 +1,53 @@
+{
+ "seal_id": "FLDM-FINAL-FREEZE-V1-2026-10-29",
+ "release_id": "STMX_FULL_LOOK_DM_DIRECTION_ENGINE_FINAL_V1",
+ "release_dir": "01_ENGINES/STYLE_SCORING_ENGINE/FLDM_FINAL_V1/",
+ "frozen_at": "2026-10-29T12:20:42.668Z",
+ "state": "FINAL_FROZEN",
+ "state_detail": "FINAL_FROZEN_WITH_ACCEPTED_KNOWN_LIMITATIONS (FLDM-LIM-001 F012 · FLDM-LIM-002 F472 · FLDM-HIST-001 F267)",
+ "scope": "Full-Look DM DIRECTION only (DETAIL | MINIMAL) — not Strength, not Item DM, not EI / TC / SR, not four-axis integration, not Style ID",
+ "release_manifest_sha256": "466298d1ea07fd57b98e3a28ca5c9d262f4deb399ed23411924b0973503bdd1d",
+ "runtime_fingerprint": "1d90cd1774fa01df20db8f0ec3462f4d481f2381bf8d86a1e7e67685e0996c57",
+ "constitution_id": "STMX_FULL_LOOK_DM_BINARY_DIRECTION_CONSTITUTION_V3_1",
+ "constitution_sha256": "4ad1fc884f3d65b99d9481463080e4d52b80ec154787acb9292fb4aa298a1c64",
+ "source_candidate": {
+  "path": "01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_DM_DIRECTION_RESOLVER_V3_1_CANDIDATE/",
+  "code_aggregate_sha256": "03ff42d1a1331975b51ba88ad654256b94dd1ab2f6949cdc0091685e3cda5e84"
+ },
+ "golden": {
+  "total": 43,
+  "distribution": {
+   "M": 18,
+   "D": 25
+  },
+  "source": "sealed frozen packets of the 43 development looks (DMSC2 inventory, hash-checked)"
+ },
+ "validation": {
+  "binary_labelled": "40 / 42",
+  "historical": "40 / 43",
+  "binary_output": "43 / 43",
+  "independent_holdout": "none"
+ },
+ "ceo_decision": {
+  "date": "2026-10-29",
+  "order_sha256": "70419f2a3acf7697a2b10d645e5db9428678832b0428cf1996d3f3a7c6fe5459",
+  "h_orn_1": "REJECTED",
+  "neutral": "PROHIBITED"
+ },
+ "authority": "01_ENGINES/STYLE_SCORING_ENGINE/STMX_FULL_LOOK_DM_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+ "production_deployment": "NOT AUTHORIZED BY THE FREEZE ORDER",
+ "verification": {
+  "pre_seal": [
+   "V1 PASS",
+   "V2 PASS",
+   "V3 PASS",
+   "V4 PASS",
+   "V5 PASS",
+   "V6 PASS",
+   "V7 PASS",
+   "V8 PASS",
+   "V9 PASS",
+   "V10 PASS"
+  ]
+ }
+}

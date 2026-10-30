@@ -1,0 +1,183 @@
+{
+ "passed": 16,
+ "total": 16,
+ "unique": 16,
+ "rows": [
+  {
+   "n": 1,
+   "EI": "E",
+   "TC": "T",
+   "SR": "S",
+   "DM": "D",
+   "style_id": "ETSD",
+   "expected": "ETSD",
+   "pass": true,
+   "observed_in_43": 5
+  },
+  {
+   "n": 2,
+   "EI": "E",
+   "TC": "T",
+   "SR": "S",
+   "DM": "M",
+   "style_id": "ETSM",
+   "expected": "ETSM",
+   "pass": true,
+   "observed_in_43": 0
+  },
+  {
+   "n": 3,
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D",
+   "style_id": "ETRD",
+   "expected": "ETRD",
+   "pass": true,
+   "observed_in_43": 9
+  },
+  {
+   "n": 4,
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "M",
+   "style_id": "ETRM",
+   "expected": "ETRM",
+   "pass": true,
+   "observed_in_43": 5
+  },
+  {
+   "n": 5,
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "D",
+   "style_id": "ECSD",
+   "expected": "ECSD",
+   "pass": true,
+   "observed_in_43": 4
+  },
+  {
+   "n": 6,
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "M",
+   "style_id": "ECSM",
+   "expected": "ECSM",
+   "pass": true,
+   "observed_in_43": 4
+  },
+  {
+   "n": 7,
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "D",
+   "style_id": "ECRD",
+   "expected": "ECRD",
+   "pass": true,
+   "observed_in_43": 3
+  },
+  {
+   "n": 8,
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "M",
+   "style_id": "ECRM",
+   "expected": "ECRM",
+   "pass": true,
+   "observed_in_43": 5
+  },
+  {
+   "n": 9,
+   "EI": "I",
+   "TC": "T",
+   "SR": "S",
+   "DM": "D",
+   "style_id": "ITSD",
+   "expected": "ITSD",
+   "pass": true,
+   "observed_in_43": 0
+  },
+  {
+   "n": 10,
+   "EI": "I",
+   "TC": "T",
+   "SR": "S",
+   "DM": "M",
+   "style_id": "ITSM",
+   "expected": "ITSM",
+   "pass": true,
+   "observed_in_43": 1
+  },
+  {
+   "n": 11,
+   "EI": "I",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D",
+   "style_id": "ITRD",
+   "expected": "ITRD",
+   "pass": true,
+   "observed_in_43": 1
+  },
+  {
+   "n": 12,
+   "EI": "I",
+   "TC": "T",
+   "SR": "R",
+   "DM": "M",
+   "style_id": "ITRM",
+   "expected": "ITRM",
+   "pass": true,
+   "observed_in_43": 0
+  },
+  {
+   "n": 13,
+   "EI": "I",
+   "TC": "C",
+   "SR": "S",
+   "DM": "D",
+   "style_id": "ICSD",
+   "expected": "ICSD",
+   "pass": true,
+   "observed_in_43": 1
+  },
+  {
+   "n": 14,
+   "EI": "I",
+   "TC": "C",
+   "SR": "S",
+   "DM": "M",
+   "style_id": "ICSM",
+   "expected": "ICSM",
+   "pass": true,
+   "observed_in_43": 1
+  },
+  {
+   "n": 15,
+   "EI": "I",
+   "TC": "C",
+   "SR": "R",
+   "DM": "D",
+   "style_id": "ICRD",
+   "expected": "ICRD",
+   "pass": true,
+   "observed_in_43": 1
+  },
+  {
+   "n": 16,
+   "EI": "I",
+   "TC": "C",
+   "SR": "R",
+   "DM": "M",
+   "style_id": "ICRM",
+   "expected": "ICRM",
+   "pass": true,
+   "observed_in_43": 1
+  }
+ ]
+}

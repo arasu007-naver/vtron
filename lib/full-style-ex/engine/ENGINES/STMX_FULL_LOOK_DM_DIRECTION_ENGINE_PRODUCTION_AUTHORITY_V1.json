@@ -1,0 +1,29 @@
+{
+ "authority": "STMX_FULL_LOOK_DM_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1",
+ "status": "FINAL_FROZEN",
+ "state": "FINAL_FROZEN_WITH_ACCEPTED_KNOWN_LIMITATIONS",
+ "production_deployment": "NOT AUTHORIZED BY THE FREEZE ORDER (2026-10-29) — this record names the frozen release; it does not activate a consumer registry or a four-axis runtime",
+ "axis": "DM (Full-Look) — Direction only",
+ "release_id": "STMX_FULL_LOOK_DM_DIRECTION_ENGINE_FINAL_V1",
+ "release_dir": "01_ENGINES/STYLE_SCORING_ENGINE/FLDM_FINAL_V1/",
+ "seal_id": "FLDM-FINAL-FREEZE-V1-2026-10-29",
+ "seal_sha256": "2799b7a232c96a8289af1bffae4d47ee033a52817d673a560e3bbfa116d86b70",
+ "release_manifest_sha256": "466298d1ea07fd57b98e3a28ca5c9d262f4deb399ed23411924b0973503bdd1d",
+ "runtime_fingerprint": "1d90cd1774fa01df20db8f0ec3462f4d481f2381bf8d86a1e7e67685e0996c57",
+ "runtime_version": "FL_DM_DIRECTION_CANDIDATE_V3_1",
+ "source_code_aggregate_sha256": "03ff42d1a1331975b51ba88ad654256b94dd1ab2f6949cdc0091685e3cda5e84",
+ "constitution_id": "STMX_FULL_LOOK_DM_BINARY_DIRECTION_CONSTITUTION_V3_1",
+ "entry": "FLDM_FINAL_V1/lib/release_entry.js → score(packet)",
+ "validation": {
+  "binary_labelled": "40 / 42",
+  "historical": "40 / 43",
+  "binary_output": "43 / 43",
+  "independent_holdout": "none"
+ },
+ "known_limitations": "FLDM-LIM-001 F012 · FLDM-LIM-002 F472 · FLDM-HIST-001 F267 — 04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_DM_V1_KNOWN_LIMITATION_REGISTER.md",
+ "freeze_declaration": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_DM_DIRECTION_ENGINE_FINAL_FREEZE_V1.md",
+ "ceo_decision": "2026-10-29 FCR-DM-1 Final Closure (order sha256 70419f2a3acf7697…)",
+ "not_this_engine": "Item DM authorities (01_ENGINES/ITEM_SCORING_ENGINE/…) are separate and unchanged",
+ "set_at": "2026-10-29T12:20:42.668Z",
+ "reopen": "governed Full-Look DM reopen decision + new versioned successor only"
+}

@@ -1,0 +1,831 @@
+{
+ "packet_contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+ "packet_version": "V1_RC4",
+ "source_mode": "B",
+ "requested_axes": [
+  "EI",
+  "TC",
+  "SR",
+  "DM"
+ ],
+ "look_frame": {
+  "state": "OBSERVED",
+  "limits": []
+ },
+ "component_registry": [
+  {
+   "component_ref": "c1",
+   "object_identity": {
+    "value": "Sweater",
+    "state": "OBSERVED"
+   }
+  },
+  {
+   "component_ref": "c2",
+   "object_identity": {
+    "value": "Trouser",
+    "state": "OBSERVED"
+   }
+  },
+  {
+   "component_ref": "c3",
+   "object_identity": {
+    "value": "footwear",
+    "state": "OBSERVED"
+   },
+   "footwear_product_family": {
+    "state": "UNKNOWN"
+   }
+  }
+ ],
+ "relations": {
+  "layer_relations": [
+   {
+    "over_ref": "c1",
+    "under_ref": "c2",
+    "revealed": [
+     "Leg",
+     "Body"
+    ],
+    "state": "OBSERVED"
+   }
+  ],
+  "securing_relations": []
+ },
+ "colour_composition": {
+  "state": "OBSERVED",
+  "field": [
+   {
+    "color_family": "beige",
+    "color_lightness": "light",
+    "color_effect": "none",
+    "carrier_refs": [
+     "c1",
+     "c2"
+    ]
+   }
+  ],
+  "points": [
+   {
+    "color_family": "black",
+    "color_lightness": "dark",
+    "color_effect": "none",
+    "carrier_ref": {
+     "value": "c3",
+     "state": "OBSERVED"
+    },
+    "contrast_with_field": "Distinct"
+   }
+  ],
+  "suppressed": [],
+  "unreadable": []
+ },
+ "upper_realization": {
+  "source_refs": [
+   "c1"
+  ],
+  "relation": {
+   "state": "OBSERVED",
+   "value": "Regular",
+   "route": "observed",
+   "source": "fixture"
+  },
+  "shoulder": {
+   "state": "OBSERVED",
+   "value": "None",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3.SH"
+  },
+  "shape_behaviour": {
+   "state": "UNKNOWN",
+   "route": "observed",
+   "source": "fixture",
+   "ambiguity": [
+    "Semi-Fluid",
+    "Semi-Structured"
+   ]
+  }
+ },
+ "canonical_exposure": {
+  "events": [],
+  "hidden": []
+ },
+ "component_fact_pool": [
+  {
+   "component_ref": "c1",
+   "fact": "pattern",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "graphic",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "surface",
+   "state": "OBSERVED",
+   "value": "Textured Knit",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "material",
+   "state": "OBSERVED",
+   "value": "Knit",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "decorative_detail",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "attachment",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "pattern",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "graphic",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "surface",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "material",
+   "state": "OBSERVED",
+   "value": "Cotton",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "decorative_detail",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "attachment",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c3",
+   "fact": "pattern",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c3",
+   "fact": "graphic",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c3",
+   "fact": "surface",
+   "state": "OBSERVED",
+   "value": "Glossy",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c3",
+   "fact": "material",
+   "state": "OBSERVED",
+   "value": "Leather",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c3",
+   "fact": "decorative_detail",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c3",
+   "fact": "attachment",
+   "state": "ABSENT",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G2"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "fit",
+   "state": "OBSERVED",
+   "value": "Slim",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "asymmetry",
+   "state": "OBSERVED",
+   "value": "None",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "length",
+   "state": "OBSERVED",
+   "value": "Regular",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "sleeve",
+   "state": "OBSERVED",
+   "value": "Long",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "sleeve_volume",
+   "state": "OBSERVED",
+   "value": "Regular",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "shoulder_span",
+   "state": "OBSERVED",
+   "value": "Regular",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3.SH"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "front_opening_extent",
+   "state": "OBSERVED",
+   "value": "None",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3.FR"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "collar",
+   "state": "OBSERVED",
+   "value": "None",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "shoulder_connection",
+   "state": "OBSERVED",
+   "value": "Standard",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3.SH"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "pocket",
+   "state": "OBSERVED",
+   "value": "None",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3.PK"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "trouser_distinction",
+   "state": "OBSERVED",
+   "value": "Casual",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "silhouette",
+   "state": "OBSERVED",
+   "value": "Straight",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "fit",
+   "state": "OBSERVED",
+   "value": "Oversized",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "asymmetry",
+   "state": "OBSERVED",
+   "value": "None",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "length",
+   "state": "UNKNOWN",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3"
+  },
+  {
+   "component_ref": "c2",
+   "fact": "pocket",
+   "state": "UNKNOWN",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3.PK"
+  },
+  {
+   "component_ref": "c1",
+   "fact": "shoulder_drop",
+   "state": "UNKNOWN",
+   "route": "observed",
+   "source": "fixture",
+   "observation_group": "G3.SH"
+  }
+ ],
+ "common_visibility": {
+  "look_frame_state": "OBSERVED",
+  "look_frame_limits": [],
+  "facts_not_visible": [],
+  "facts_unknown": [
+   "c2.length",
+   "c2.pocket",
+   "c1.shoulder_drop"
+  ],
+  "identity_unknown": []
+ },
+ "dm_evidence": {
+  "transport_contract": "STMX_FULL_LOOK_DM_VISION_EVIDENCE_TRANSPORT_V2",
+  "look_components": [
+   {
+    "component_ref": "c1"
+   }
+  ],
+  "look_detail_systems": [
+   {
+    "carrier_refs": [
+     "c1"
+    ],
+    "look_detail_family": "B",
+    "size_in_look": {
+     "state": "OBSERVED",
+     "value": "large"
+    },
+    "contrast_in_look": {
+     "state": "OBSERVED",
+     "value": "low"
+    },
+    "position_in_look": {
+     "state": "OBSERVED",
+     "value": "localized"
+    },
+    "repeated_units": "yes"
+   }
+  ],
+  "dm_evidence_visibility": {
+   "state": "UNKNOWN"
+  }
+ },
+ "dm_transport": {
+  "authority": {
+   "v1_freeze": {
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS\\CURRENT_CONSTITUTION\\STMX_FULL_LOOK_DM_VISION_EXTRACTION_FINAL_FREEZE_V1.md",
+    "sha256": "49e513ea1c2ad036cc7ca15ae5014eceff601e60c0578e2064909f57fa6c6763"
+   },
+   "v2_transport": {
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS\\CURRENT_CONSTITUTION\\STMX_FULL_LOOK_DM_VISION_EVIDENCE_TRANSPORT_V2.md",
+    "sha256": "2e6bd0c7391c44254318055f0e04923e6e7ca72f9ccd2e7db375763da86229b2"
+   }
+  },
+  "output_fingerprint": "0d56166ee42929818ef8abeaedeaaf8fb3612a1f3c7912ee1efa38f8714361fd"
+ },
+ "request_trace": {
+  "axes": {
+   "requested_axes": [
+    "EI",
+    "TC",
+    "SR",
+    "DM"
+   ],
+   "EI": {
+    "phase_reached": "appearance",
+    "exposure_requested": true,
+    "appearance_requested": true,
+    "stop": "full secondary path requested"
+   },
+   "TC": {
+    "garments_reached": [
+     "c1",
+     "c2"
+    ],
+    "unresolvable": [],
+    "product_gate": "UNRESOLVED_EVIDENCE",
+    "resolved_on": null,
+    "styling_requested": false,
+    "unknown_tc_facts": [
+     "c2.length",
+     "c2.pocket"
+    ]
+   },
+   "SR": {
+    "governing_upper": "c1",
+    "own_waist_requested": true,
+    "upper_shoulder_requested": true
+   },
+   "DM": {
+    "assembly": "A1 — DMP-1 assembled from carrier_refs · DMP-2 from the shared pass · DMP-3 mapped from common visibility (or UNKNOWN); no DM reading; Transport V2 — delivered whenever admissible",
+    "delivered": true,
+    "dmp3_state": "UNKNOWN"
+   }
+  },
+  "k2_ledger": [
+   {
+    "requester": "EI-2",
+    "component_ref": "c1",
+    "family": "ei_appearance",
+    "stored": [
+     "pattern",
+     "graphic",
+     "surface",
+     "material",
+     "decorative_detail",
+     "attachment"
+    ],
+    "cached": [],
+    "not_applicable": [],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "EI-2",
+    "component_ref": "c2",
+    "family": "ei_appearance",
+    "stored": [
+     "pattern",
+     "graphic",
+     "surface",
+     "material",
+     "decorative_detail",
+     "attachment"
+    ],
+    "cached": [],
+    "not_applicable": [],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "EI-2",
+    "component_ref": "c3",
+    "family": "ei_appearance",
+    "stored": [
+     "pattern",
+     "graphic",
+     "surface",
+     "material",
+     "decorative_detail",
+     "attachment"
+    ],
+    "cached": [],
+    "not_applicable": [],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "TC-1",
+    "component_ref": "c1",
+    "family": "tc_archetype_key",
+    "stored": [],
+    "cached": [],
+    "not_applicable": [
+     "grammar",
+     "trouser_distinction"
+    ],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "TC-1",
+    "component_ref": "c1",
+    "family": "tc_silhouette",
+    "stored": [
+     "fit",
+     "asymmetry"
+    ],
+    "cached": [],
+    "not_applicable": [
+     "silhouette",
+     "shoulder_structure"
+    ],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "TC-1",
+    "component_ref": "c1",
+    "family": "tc_proportion",
+    "stored": [
+     "length",
+     "sleeve_volume",
+     "shoulder_span"
+    ],
+    "cached": [
+     "fit"
+    ],
+    "not_applicable": [],
+    "unknown_identity": [],
+    "nested": [],
+    "parent_gate_reads": [
+     "sleeve"
+    ]
+   },
+   {
+    "requester": "TC-1",
+    "component_ref": "c1",
+    "family": "tc_construction",
+    "stored": [
+     "collar",
+     "shoulder_connection",
+     "pocket"
+    ],
+    "cached": [
+     "front_opening_extent",
+     "sleeve",
+     "attachment",
+     "material",
+     "surface"
+    ],
+    "not_applicable": [
+     "closure_type",
+     "pocket_construction",
+     "pocket_projection",
+     "waist_definition",
+     "slit"
+    ],
+    "unknown_identity": [],
+    "nested": [],
+    "parent_gate_reads": [
+     "front_opening_extent"
+    ],
+    "not_applicable_by_trigger": {
+     "closure_type": "front_opening_extent=None"
+    }
+   },
+   {
+    "requester": "TC-1",
+    "component_ref": "c2",
+    "family": "tc_archetype_key",
+    "stored": [
+     "trouser_distinction"
+    ],
+    "cached": [],
+    "not_applicable": [
+     "grammar"
+    ],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "TC-1",
+    "component_ref": "c2",
+    "family": "tc_silhouette",
+    "stored": [
+     "silhouette",
+     "fit",
+     "asymmetry"
+    ],
+    "cached": [],
+    "not_applicable": [
+     "shoulder_structure"
+    ],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "TC-1",
+    "component_ref": "c2",
+    "family": "tc_proportion",
+    "stored": [
+     "length"
+    ],
+    "cached": [
+     "fit"
+    ],
+    "not_applicable": [
+     "sleeve_volume",
+     "shoulder_span"
+    ],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "TC-1",
+    "component_ref": "c2",
+    "family": "tc_construction",
+    "stored": [
+     "pocket"
+    ],
+    "cached": [
+     "attachment",
+     "material",
+     "surface"
+    ],
+    "not_applicable": [
+     "closure_type",
+     "front_opening_extent",
+     "collar",
+     "sleeve",
+     "shoulder_connection",
+     "pocket_construction",
+     "pocket_projection",
+     "waist_definition",
+     "slit"
+    ],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "SR",
+    "component_ref": "c1",
+    "family": "sr_own_waist",
+    "stored": [],
+    "cached": [],
+    "not_applicable": [
+     "waist_definition"
+    ],
+    "unknown_identity": [],
+    "nested": []
+   },
+   {
+    "requester": "SR",
+    "component_ref": "c1",
+    "family": "sr_upper_shoulder",
+    "stored": [
+     "shoulder_drop"
+    ],
+    "cached": [],
+    "not_applicable": [
+     "shoulder_structure"
+    ],
+    "unknown_identity": [],
+    "nested": []
+   }
+  ],
+  "exposure_requests": [
+   {
+    "requester": "EI-2",
+    "request": "canonical_exposure",
+    "regions": []
+   }
+  ],
+  "layer_pairs_excluded": [],
+  "observation_groups": {
+   "G1": [
+    "look_frame",
+    "component_registry",
+    "common_visibility"
+   ],
+   "G2": [
+    "colour_composition",
+    "c1.pattern",
+    "c1.graphic",
+    "c1.surface",
+    "c1.material",
+    "c1.decorative_detail",
+    "c1.attachment",
+    "c2.pattern",
+    "c2.graphic",
+    "c2.surface",
+    "c2.material",
+    "c2.decorative_detail",
+    "c2.attachment",
+    "c3.pattern",
+    "c3.graphic",
+    "c3.surface",
+    "c3.material",
+    "c3.decorative_detail",
+    "c3.attachment"
+   ],
+   "G3": [
+    "c1.fit",
+    "c1.asymmetry",
+    "c1.length",
+    "c1.sleeve",
+    "c1.sleeve_volume",
+    "c1.collar",
+    "c2.trouser_distinction",
+    "c2.silhouette",
+    "c2.fit",
+    "c2.asymmetry",
+    "c2.length"
+   ],
+   "G3.SH": [
+    "c1.shoulder_span",
+    "c1.shoulder_connection",
+    "c1.shoulder_drop",
+    "upper_realization.shoulder"
+   ],
+   "G3.FR": [
+    "c1.front_opening_extent"
+   ],
+   "G3.PK": [
+    "c1.pocket",
+    "c2.pocket"
+   ],
+   "G4": [
+    "relations",
+    "upper_realization.relation",
+    "upper_realization.shape_behaviour",
+    "canonical_exposure"
+   ],
+   "A1": [
+    "dm_evidence"
+   ]
+  },
+  "dm_diagnostics": [
+   {
+    "code": "LOOK_COMPONENTS_EMITTED_DROPPED",
+    "detail": "DMP-1 is assembled from carrier_refs (A1); the emitted list was identical"
+   },
+   {
+    "code": "MAPPING_UNRESOLVED",
+    "gap": "D-1",
+    "detail": "OBSERVED G1 record with no limit: the frozen enum offers adjudicable and partially_observable:{small_detail_unresolvable}; the SVP-001 limit vocabulary cannot record small_detail_unresolvable, so the common record cannot tell them apart → DMP-3 not established, never defaulted. RC4 (DM Evidence Transport V2, CEO 2026-10-15): dm_evidence_visibility { state: UNKNOWN } and the observed systems are delivered (the old D-1 option choice is superseded for transport)",
+    "where": "dm_evidence_visibility"
+   },
+   {
+    "code": "DM_VISIBILITY_EMITTED_DROPPED",
+    "detail": "a DM-only visibility judgement is not read (INT-02); emitted value kept for comparison only: \"adjudicable\" (DMP-3 not established: UNKNOWN)"
+   }
+  ],
+  "provider_notes": []
+ }
+}

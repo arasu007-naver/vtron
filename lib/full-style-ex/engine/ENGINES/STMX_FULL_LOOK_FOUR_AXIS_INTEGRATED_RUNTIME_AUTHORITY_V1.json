@@ -1,0 +1,42 @@
+{
+ "authority": "STMX_FULL_LOOK_FOUR_AXIS_INTEGRATED_RUNTIME_AUTHORITY_V1",
+ "status": "FINAL_FROZEN",
+ "production_deployment": "NOT AUTHORIZED (CEO order 2026-10-29) — this record names the frozen integration release; it does not activate a consumer registry or site",
+ "scope": "Full-Look four-axis integration (EI · TC · SR · DM → Style ID)",
+ "release_id": "STMX_FULL_LOOK_FOUR_AXIS_INTEGRATED_FINAL_V1",
+ "runtime_id": "FL4AX_FINAL_V1",
+ "release_dir": "01_ENGINES/STYLE_SCORING_ENGINE/FL4AX_FINAL_V1/",
+ "seal_id": "FL4AX-FINAL-FREEZE-V1-2026-10-29",
+ "seal_sha256": "afa3d90c55b8d635b0a34c61f432dc00399c69fa790f9bf2123526e2cfdcdc04",
+ "release_manifest_sha256": "122f651e02f735604fcaa892c4cda38105da897ec67051da266aff3ece20b7e0",
+ "runtime_fingerprint": "1c8a762cf1d6d76c25660af425807464992213a89d0484aabdeb594cde329047",
+ "source_code_aggregate_sha256": "b4b5be8b40906f58a4562d70f9e65362f0d5ad8442b84045d2ba49976b67ce1c",
+ "contract_id": "STMX_FULL_LOOK_FOUR_AXIS_INTEGRATION_CONTRACT_V1",
+ "entry": "FL4AX_FINAL_V1/lib/release_entry.js → scoreFullLook({ packet, run_record })",
+ "bound_releases": {
+  "EI": "FLEI_FINAL_V1 · FLEI-FINAL-FREEZE-V1-2026-10-26",
+  "TC": "FLTC_FINAL_V1 · FLTC-FINAL-FREEZE-V1-2026-10-25",
+  "SR": "FLSR_FINAL_V1 · FLSR-FINAL-FREEZE-V1-2026-10-25",
+  "DM": "FLDM_FINAL_V1 · FLDM-FINAL-FREEZE-V1-2026-10-29"
+ },
+ "vision_input": "FLV-FINAL-FREEZE-V1-2026-10-17 · STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET V1_RC4",
+ "validation": {
+  "direct_vs_integrated": {
+   "EI": "43 / 43",
+   "TC": "43 / 43",
+   "SR": "43 / 43",
+   "DM": "43 / 43"
+  },
+  "mapping_16": "16 / 16",
+  "determinism": "two fresh processes identical",
+  "runtime_gt_reads": 0,
+  "network_attempts": 0,
+  "independent_holdout": "none"
+ },
+ "known_limitations": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_FOUR_AXIS_KNOWN_LIMITATION_REGISTER.md",
+ "freeze_declaration": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_FOUR_AXIS_INTEGRATED_FINAL_FREEZE_V1.md",
+ "ceo_decision": "2026-10-29 (order sha256 7e45c6c4c06c12dd…)",
+ "not_this_engine": "Item Scoring V1 / V2 authorities (01_ENGINES/ITEM_SCORING_ENGINE/…) are separate and unchanged",
+ "set_at": "2026-10-29T12:59:29.475Z",
+ "reopen": "governed reopen decision + new versioned successor only"
+}

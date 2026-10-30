@@ -1,0 +1,344 @@
+{
+ "frame": {
+  "state": "OBSERVED",
+  "limits": []
+ },
+ "objects": [
+  {
+   "ref": "c1",
+   "identity": "Coat",
+   "participates": true
+  },
+  {
+   "ref": "c2",
+   "identity": "Sweater",
+   "participates": true
+  },
+  {
+   "ref": "c3",
+   "identity": "gloves",
+   "participates": true
+  },
+  {
+   "ref": "c4",
+   "identity": "jewellery",
+   "participates": true,
+   "subtype": "earrings"
+  },
+  {
+   "ref": "c5",
+   "identity": "hosiery",
+   "participates": true,
+   "subtype": "tights"
+  },
+  {
+   "ref": "c6",
+   "identity": "footwear",
+   "participates": true,
+   "product_family": "shoe"
+  },
+  {
+   "ref": "x1",
+   "identity": "UNKNOWN",
+   "participates": false,
+   "why": "other people / audience in background"
+  }
+ ],
+ "front_state": {
+  "c1": {
+   "value": "partly_fastened",
+   "state": "OBSERVED"
+  }
+ },
+ "layer_relations": [
+  {
+   "over": "c1",
+   "under": "c2",
+   "revealed": [
+    "Collar"
+   ],
+   "state": "OBSERVED"
+  }
+ ],
+ "securing_relations": [
+  {
+   "affected": "c1",
+   "region": "waist",
+   "visible_constriction": "OBSERVED",
+   "device_is_own": true
+  }
+ ],
+ "colour_areas": [
+  {
+   "carrier": "c1",
+   "family": "olive",
+   "role": "field",
+   "lightness": "normal",
+   "effect": "none"
+  },
+  {
+   "carrier": "c1",
+   "family": "camel",
+   "role": "point",
+   "lightness": "normal",
+   "effect": "none",
+   "contrast": "Subtle",
+   "part": {
+    "carrier_kind": "attachment",
+    "carrier_ref": "Belt"
+   }
+  },
+  {
+   "carrier": "c2",
+   "family": "wine",
+   "role": "point",
+   "lightness": "dark",
+   "effect": "none",
+   "contrast": "Distinct"
+  },
+  {
+   "carrier": "c3",
+   "family": "wine",
+   "role": "point",
+   "lightness": "dark",
+   "effect": "none",
+   "contrast": "Distinct"
+  },
+  {
+   "carrier": "c4",
+   "family": "gold",
+   "role": "point",
+   "lightness": "normal",
+   "effect": "metallic",
+   "contrast": "Distinct"
+  },
+  {
+   "carrier": "c5",
+   "family": "black",
+   "role": "point",
+   "lightness": "normal",
+   "effect": "none",
+   "contrast": "Subtle"
+  },
+  {
+   "carrier": "c6",
+   "family": "black",
+   "role": "point",
+   "lightness": "dark",
+   "effect": "none",
+   "contrast": "Subtle"
+  }
+ ],
+ "upper": {
+  "governing_ref": "c1",
+  "relation": {
+   "value": "Oversized",
+   "state": "OBSERVED"
+  },
+  "shoulder": {
+   "value": "Extreme",
+   "state": "OBSERVED"
+  },
+  "shape": {
+   "value": "Structured",
+   "state": "OBSERVED"
+  }
+ },
+ "exposure_supplement": [],
+ "facts": {
+  "c1": {
+   "material": [
+    "Leather"
+   ],
+   "surface": "ABSENT",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": [
+    "Belt"
+   ],
+   "asymmetry": "None",
+   "fit": "Oversized",
+   "length": "Knee Length",
+   "sleeve": "Long",
+   "sleeve_volume": "Voluminous",
+   "shoulder_drop": "None",
+   "shoulder_structure": "Extreme",
+   "collar": "Shirt",
+   "front_opening_extent": "Full",
+   "closure_type": "Zipper",
+   "grammar": "Casual",
+   "waist_definition": "Cinched",
+   "pocket": {
+    "state": "OBSERVED",
+    "value": "Present",
+    "pockets": [
+     {
+      "location": "Lower Front",
+      "construction": {
+       "state": "OBSERVED",
+       "value": "Inset"
+      },
+      "projection": {
+       "state": "OBSERVED",
+       "value": "Flat"
+      }
+     }
+    ]
+   }
+  },
+  "c2": {
+   "material": "UNKNOWN",
+   "surface": "UNKNOWN",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT",
+   "asymmetry": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   },
+   "fit": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   },
+   "length": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   },
+   "sleeve": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   },
+   "sleeve_volume": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   },
+   "shoulder_drop": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   },
+   "shoulder_connection": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   },
+   "shoulder_span": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   },
+   "collar": "Stand",
+   "front_opening_extent": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   },
+   "pocket": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   }
+  },
+  "c3": {
+   "material": [
+    "Leather"
+   ],
+   "surface": "ABSENT",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  },
+  "c4": {
+   "material": [
+    "Other"
+   ],
+   "surface": "UNKNOWN",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  },
+  "c5": {
+   "material": "UNKNOWN",
+   "surface": [
+    "Semi Transparent"
+   ],
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  },
+  "c6": {
+   "material": "UNKNOWN",
+   "surface": [
+    "Glossy"
+   ],
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  }
+ },
+ "dm": {
+  "look_detail_systems": [
+   {
+    "carrier_refs": [
+     "c2",
+     "c3"
+    ],
+    "look_detail_family": "H",
+    "relational_form": "accent",
+    "size_in_look": {
+     "state": "OBSERVED",
+     "value": "medium"
+    },
+    "contrast_in_look": {
+     "state": "OBSERVED",
+     "value": "medium"
+    },
+    "position_in_look": {
+     "state": "OBSERVED",
+     "value": "distributed"
+    },
+    "repeated_units": "no"
+   },
+   {
+    "carrier_refs": [
+     "c1"
+    ],
+    "look_detail_family": "F",
+    "size_in_look": {
+     "state": "OBSERVED",
+     "value": "medium"
+    },
+    "contrast_in_look": {
+     "state": "OBSERVED",
+     "value": "low"
+    },
+    "position_in_look": {
+     "state": "OBSERVED",
+     "value": "localized"
+    },
+    "repeated_units": "no"
+   }
+  ]
+ }
+}

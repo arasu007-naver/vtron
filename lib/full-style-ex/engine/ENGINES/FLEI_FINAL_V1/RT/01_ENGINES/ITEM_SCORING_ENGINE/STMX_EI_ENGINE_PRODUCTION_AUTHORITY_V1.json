@@ -1,0 +1,111 @@
+{
+  "document": "STMX_EI_ENGINE_PRODUCTION_AUTHORITY_V1",
+  "date": "2026-09-27",
+  "status": "CURRENT PRODUCTION AUTHORITY POINTER — STMX_EI_ENGINE_V1 (COMPLETE · CLOSED_AND_FROZEN) via its EI-owned production integration — STMX ITEM SCORING ENGINE V1 Final Freeze — CEO APPROVED",
+  "approval_anchor": {
+    "CEO Decision": "2026-09-27",
+    "Order": "STMX ITEM SCORING ENGINE V1 — FINAL FREEZE + PRODUCTION PROMOTION + FINAL BACKUP PREPARATION · Decision 1 · §17",
+    "Reason": "promote the verified four-axis candidate composition to production; same code identity, no scoring change",
+    "Affected Scope": "this pointer (new) · CODE_IDENTITY_SEAL_EI_PRODUCTION_INTEGRATION_V1_PRODUCTION.json (new) · registry EI entry"
+  },
+  "★_current_production_ei_engine": {
+    "id": "STMX_EI_ENGINE_V1",
+    "integration_runtime_id": "STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE",
+    "entry": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/src/ei_production_integration_v1.js",
+    "seal_file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/CODE_IDENTITY_SEAL_EI_PRODUCTION_INTEGRATION_V1_PRODUCTION.json",
+    "code_identity_sha256": "fd1617037ce09fef6a05e2288e7584bdd92b26337a22ca44fc1cef37f3c0a401",
+    "bound_inputs": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/BOUND_INPUTS.json",
+    "promoted": "2026-09-27"
+  },
+  "★_frozen_direction_authority": {
+    "id": "STMX_EI_DIRECTION_FROZEN_BASELINE_V1",
+    "runtime": "STMX_EI_DIRECTION_RUNTIME_V1_2_7",
+    "runtime_entry": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_direction_runtime_v1_2_7.js",
+    "runtime_entry_sha256": "3f210adbb709a8183f0c42631239b17e5549ae6363fae81d2f39ae52b7fd6e74",
+    "frozen_manifest": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_FROZEN_BASELINE_V1/MANIFEST.json",
+    "entry_count": 324,
+    "frozen_aggregate_sha256": "08eb312074db17009f2bb791365b6200b8d3ed9d1e8459f7de8b07f07305fb35"
+  },
+  "★_frozen_numeric_authority": {
+    "id": "STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1",
+    "layer": "STMX_EI_NUMERIC_LAYER_V1",
+    "layer_entry": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/src/ei_numeric_layer_v1.js",
+    "layer_entry_sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b",
+    "frozen_manifest": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/MANIFEST.json",
+    "entry_count": 15,
+    "frozen_aggregate_sha256": "5c5ad6e233277ae80fc7ff347b4b90bd799524c224abe694c196d95da3c80610"
+  },
+  "★_ei_engine_closure": {
+    "id": "STMX_EI_ENGINE_V1",
+    "status": "COMPLETE · CLOSED_AND_FROZEN (2026-09-08) — unchanged",
+    "closure_record": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V1_SUCCESSOR_FREEZE_2026_09_08/STMX_EI_ENGINE_V1_FINAL_CLOSURE.json",
+    "closure_record_sha256": "d9916d33c73f7c89c9253f7d054a248ce0ca9e61d4dfde0931570e3e6297276c"
+  },
+  "★_bridge": {
+    "id": "STMX_EI_DIRECTION_NUMERIC_BRIDGE_V1",
+    "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/src/ei_direction_numeric_bridge_v1.js",
+    "sha256": "21116a4155ed6d0595dc38cde0f51cfcb1dc2ba1d551557fd16dac09c602fc44",
+    "classification": "A — mechanical transport of already-governed EI information (select · rename · link · governed qualifier lookup); no scoring decision",
+    "basis": [
+      "NUMERIC_SEMANTIC_STATE_114.json header (the resolver receives ONLY { frozen_direction, exposure, pathways, admitted })",
+      "REF_000616_BLOCKER_ANALYSIS.json (NO_FORCE pathways are never counted as a mechanism)",
+      "STMX_EI_EXPOSURE_REALIZATION_AUTHORITY_V1.json (qualifier storage · missing qualifier never inferred · absence = UNKNOWN)",
+      "ei_numeric_layer_v1.js CLASS_A_UPPER / CLASS_A_LOWER / MODE constants"
+    ],
+    "basis_files": [
+      {
+        "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/contracts/STMX_EI_EXPOSURE_REALIZATION_AUTHORITY_V1.json",
+        "sha256": "5b544986627496008fc723f490b1ab528782448b6493d20591c76467c4a9138d"
+      },
+      {
+        "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/governance/REF_000616_BLOCKER_ANALYSIS.json",
+        "sha256": "4c68501328681257e996a4498dcb4c098b83a211f0e13cb25e5327d80be67443"
+      },
+      {
+        "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/fixtures/NUMERIC_SEMANTIC_STATE_114.json",
+        "sha256": "2eb85b884a66be032c9624af8bf66bf77a2e90f82079b52032fdf0323d9fc392"
+      },
+      {
+        "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_NUMERIC_V1_FROZEN_BASELINE_R1/src/ei_numeric_layer_v1.js",
+        "sha256": "d656a579ca0bd107f024eb2671666de539aafe7a28b197dbe640274509a47c1b"
+      }
+    ],
+    "basis_note": "reference only — never opened by the runtime (the fixture carries GT columns; it is the offline exactness reference)",
+    "exactness": "reproduces the frozen fixture NUMERIC_SEMANTIC_STATE_114.json byte-for-byte on 114 / 114 governed units"
+  },
+  "★_existing_frozen_ei_behavioral_invariant_preserved_by_v1_integration": {
+    "behavior": "NO_FORCE pathways are excluded from the Numeric state",
+    "status": "EXISTING FROZEN EI BEHAVIORAL INVARIANT PRESERVED BY V1 INTEGRATION — not a new rule, not a new CEO decision, not new EI physics",
+    "evidence": [
+      "the frozen Direction runtime V1.2.7 marks those pathways resolution_status = NO_FORCE itself",
+      "the frozen Numeric R1 state fixture NUMERIC_SEMANTIC_STATE_114.json contains no NO_FORCE pathway (verified: the bridge reproduces it byte-for-byte on 114 / 114 only with the exclusion)",
+      "the frozen R1 governance analysis REF_000616_BLOCKER_ANALYSIS.json records that NO_FORCE pathways are never counted as a mechanism"
+    ],
+    "scope": "limited to what this evidence establishes; no broader semantics are assigned"
+  },
+  "★_input_contract": {
+    "id": "STMX_EI_VISION_INPUT_COMPATIBILITY_V1",
+    "file": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_V1_CANDIDATE/src/ei_vision_input_compatibility_v1.js",
+    "sha256": "d835df450b3efe48cc9f98dfeefa804e5f60d29d1777a9daef1ace7360e55759",
+    "frozen_runtime_input_contract": "STMX_EI_DIRECTION_RUNTIME_INPUT_CONTRACT_V1",
+    "bound_producer": "STMX_VISION_PRODUCER_V1_1 (unchanged — the frozen EI binding is not rebound)",
+    "source_producer": "STMX_VISION_PRODUCER_V1_3 (current production Vision)",
+    "projection": "structural — selects category · observations · color_observation · scoring_context · gender_or_provenance; drops the DM observation block",
+    "guard": "every V1_1 rules export identical in V1_3 (checked at load; EI_VISION_CONTRACT_BLOCKER otherwise)",
+    "governed_unit_input": "{ scoring_unit_type: 'GARMENT', input } | { scoring_unit_type: 'MATCHING_PAIR', members, … }",
+    "colour": "Colour V1 color_observation is part of the governed EI input; neither Producer V1_1 nor V1_3 emits it (separate Colour V1 artifact)"
+  },
+  "★_supersedes": {
+    "record": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_PRODUCTION_INTEGRATION_AUTHORITY_V1.json",
+    "status": "HISTORICAL integration-candidate record (byte-unchanged); this pointer is the current EI production authority"
+  },
+  "★_resolution_rule": "⛔ BY NAME through the Clean Engine registry (CODE_IDENTITY_SEAL kind — full re-hash at every resolution). ⛔ No latest, no glob, no directory scan, no fallback to any earlier EI runtime or to the retired engine.",
+  "★_rollback_pointer": {
+    "how": "restore the pre-promotion registry bytes (EI entry → the candidate seal, CANDIDATE) with the Final Freeze rollback script; this pointer and the production seal then become historical",
+    "deeper_rollback": {
+      "how": "Remove the EI entry from the Clean Engine registry (restore the pre-integration registry bytes preserved at 04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_SCORING_ENGINE_V1_FOUR_AXIS_PRODUCTION_INTEGRATION/prototypes/historical/axis_binding_contracts_V3_PRODUCTION_PRE_INTEGRATION.js). This record and the successor directory then become historical; nothing frozen needs restoring.",
+      "what_rollback_restores": "EI standalone only (Direction V1.2.7 run / runPair; Numeric via the frozen fixture replay) — the pre-integration state",
+      "deeper_rollback": "unchanged EI engine rollback: STMX_EI_DIRECTION_RUNTIME_V1_2_6 (README)"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "title": "FLDM_FINAL_V1 result",
+ "oneOf": [
+  {
+   "type": "object",
+   "required": [
+    "status",
+    "direction",
+    "direction_reason",
+    "evidence_used",
+    "rule_trace",
+    "candidate_version",
+    "diagnostics"
+   ],
+   "properties": {
+    "status": {
+     "const": "SCORED"
+    },
+    "direction": {
+     "enum": [
+      "D",
+      "M"
+     ]
+    },
+    "direction_reason": {
+     "type": "string"
+    },
+    "evidence_used": {
+     "type": "array"
+    },
+    "evidence_not_deciding": {
+     "type": "array"
+    },
+    "rule_trace": {
+     "type": "array",
+     "items": {
+      "enum": [
+       "DM3-MS1",
+       "DM3-D1",
+       "DM3-D2",
+       "DM3-D3",
+       "DM31-D4",
+       "DM3-M1"
+      ]
+     }
+    },
+    "candidate_version": {
+     "const": "FL_DM_DIRECTION_CANDIDATE_V3_1"
+    },
+    "diagnostics": {
+     "type": "object"
+    }
+   }
+  },
+  {
+   "type": "object",
+   "required": [
+    "status",
+    "direction",
+    "input_failure"
+   ],
+   "properties": {
+    "status": {
+     "const": "INPUT_FAILURE"
+    },
+    "direction": {
+     "const": null
+    },
+    "input_failure": {
+     "type": "string"
+    }
+   }
+  }
+ ]
+}

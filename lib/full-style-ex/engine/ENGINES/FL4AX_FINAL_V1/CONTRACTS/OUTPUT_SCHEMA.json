@@ -1,0 +1,112 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "title": "STMX_FULL_LOOK_FOUR_AXIS_RESULT_V1",
+ "type": "object",
+ "required": [
+  "contract",
+  "runtime",
+  "status",
+  "style_id",
+  "directions",
+  "axes",
+  "reason_ko",
+  "provenance",
+  "diagnostics",
+  "engine_records"
+ ],
+ "properties": {
+  "contract": {
+   "const": "STMX_FULL_LOOK_FOUR_AXIS_RESULT_V1"
+  },
+  "runtime": {
+   "const": "STMX_FULL_LOOK_FOUR_AXIS_INTEGRATED_SCORING_RUNTIME_V1"
+  },
+  "status": {
+   "enum": [
+    "COMPLETE",
+    "INPUT_FAILURE",
+    "CONTRACT_VIOLATION"
+   ]
+  },
+  "style_id": {
+   "oneOf": [
+    {
+     "enum": [
+      "ETSD",
+      "ETSM",
+      "ETRD",
+      "ETRM",
+      "ECSD",
+      "ECSM",
+      "ECRD",
+      "ECRM",
+      "ITSD",
+      "ITSM",
+      "ITRD",
+      "ITRM",
+      "ICSD",
+      "ICSM",
+      "ICRD",
+      "ICRM"
+     ]
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "directions": {
+   "type": "object",
+   "properties": {
+    "EI": {
+     "enum": [
+      "E",
+      "I",
+      null
+     ]
+    },
+    "TC": {
+     "enum": [
+      "T",
+      "C",
+      null
+     ]
+    },
+    "SR": {
+     "enum": [
+      "S",
+      "R",
+      null
+     ]
+    },
+    "DM": {
+     "enum": [
+      "D",
+      "M",
+      null
+     ]
+    }
+   }
+  },
+  "axes": {
+   "type": "object"
+  },
+  "reason_ko": {
+   "type": "string"
+  },
+  "provenance": {
+   "type": "object"
+  },
+  "diagnostics": {
+   "type": "object",
+   "properties": {
+    "non_scoring": {
+     "const": true
+    }
+   }
+  },
+  "engine_records": {
+   "type": "object"
+  }
+ }
+}
