@@ -15,7 +15,10 @@
    v1.1 · v1.2 · v1 · v2 · custom. 사진 오른쪽 아래에 "target:version" 으로 열 값 그대로 보인다(버전을 모르면 target 만). */
 
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ExternalLink, Loader2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ExternalLink, FileJson, Loader2 } from "lucide-react";
+import { FeatureTreeView } from "@/components/style-ex/FeatureTreeView";
+import FullLookFeatureTreeView from "@/components/full-style-ex/FeatureTreeView";
+import { ObservationModal } from "@/components/style-ex/ObservationModal";
 import { authFetch } from "@/lib/auth-client";
 import type { CatalogProduct } from "@/lib/tryon/product-catalog";
 import { StyleIdCard, productRows, type LlmJudgement, type StyleIdResult } from "@/components/style-ex/result-cards";
@@ -183,9 +186,14 @@ export default function ProductStylePage() {
   );
 }
 
-/** 항목 하나 — 위에서 아래로 상품 사진 · 상품 정보 · 판정 결과 · 관찰 결과 */
+/** 항목 하나 — 위에서 아래로 상품 사진 · 상품 정보 · 판정 결과 · 37 Features(관찰 결과의 vision feature 트리) */
 function ProductStyleItem({ row }: { row: ProductStyleRow }) {
   const { observation, styleId, judgement, scoring, vision_model, judge_model, elapsed_ms } = row;
+  const [observationOpen, setObservationOpen] = useState(false);
+  // 아이템 관찰은 { ok, envelope, … } — 트리는 envelope 를 읽는다.
+  const envelope = (observation as { envelope?: unknown } | null)?.envelope ?? null;
+  // Full-Look 관찰은 envelope 대신 Evidence Packet — /full-style-ex 의 37 Features 탭과 같은 트리로 본다.
+  const packet = (observation as { packet?: Record<string, unknown> | null } | null)?.packet ?? null;
   const judged = { styleId, judgement, scoring, vision_model, judge_model, elapsed_ms };
   const productInfo: [string, string][] = row.product
     ? productRows(row.product)
@@ -270,13 +278,38 @@ function ProductStyleItem({ row }: { row: ProductStyleRow }) {
         </pre>
       </section>
 
-      {/* 관찰 결과 — 관찰 envelope */}
+      {/* 37 Features — 관찰 결과의 vision feature 를 계층 트리로. item = 관찰 envelope 트리 · full = Evidence Packet 트리
+          (/full-style-ex 의 37 Features 탭과 같은 FullLookFeatureTreeView). 오른쪽 위 FAB = 관찰 결과 원본(JSON) 모달 */}
       <section>
-        <h2 className="m-0 px-3 pt-2 text-sm font-semibold">관찰 결과</h2>
-        <pre className="m-0 max-h-80 overflow-auto vt-scroll p-3 font-[family-name:var(--font-mono)] text-xs leading-relaxed whitespace-pre-wrap break-all select-text">
-          {JSON.stringify(observation, null, 2)}
-        </pre>
+        <div className="flex items-center gap-2 px-3 pt-2">
+          <h2 className="m-0 text-sm font-semibold">37 Features</h2>
+          <button
+            type="button"
+            onClick={() => setObservationOpen(true)}
+            title="관찰 결과(관찰 envelope 원본 JSON) 보기"
+            className="ml-auto flex items-center gap-1.5 rounded-full shadow-md px-3 py-1 text-xs font-semibold bg-[var(--color-accent-700)] text-white hover:opacity-90"
+          >
+            <FileJson className="w-3.5 h-3.5" />
+            관찰 결과
+          </button>
+        </div>
+        <div className="max-h-96 overflow-auto vt-scroll">
+          {row.target === "full" ? (
+            <FullLookFeatureTreeView packet={packet} />
+          ) : (
+            <FeatureTreeView
+              envelope={envelope}
+              emptyText="이 결과에는 관찰 envelope 가 없습니다 (관찰 실패 등) — [관찰 결과]에서 원본을 보세요."
+            />
+          )}
+        </div>
       </section>
+      <ObservationModal
+        open={observationOpen}
+        onClose={() => setObservationOpen(false)}
+        title={`관찰 결과 — ${row.product?.name ?? row.model_id}`}
+        observation={observation}
+      />
     </article>
   );
 }
