@@ -33,11 +33,12 @@ import { authFetch } from "@/lib/auth-client";
 import ProductPickModal from "@/components/style-ex/ProductPickModal";
 import type { CatalogProduct } from "@/lib/tryon/product-catalog";
 import { SavedChip, StyleIdCard, type SavedResult, type StyleIdResult } from "@/components/style-ex/result-cards";
+import FeatureTreeView from "@/components/full-style-ex/FeatureTreeView";
 import FlowDocModal from "@/components/style-ex/FlowDocModal";
 
 type Status = "idle" | "running" | "done" | "error";
 type Provider = "claude" | "gemini";
-type ResultKey = "observe" | "judge";
+type ResultKey = "observe" | "features" | "judge";
 /** single = 비전 1회 · three = 비전 3회 (프롬프트 버전이 정한다) */
 type Mode = "single" | "three";
 
@@ -47,6 +48,8 @@ const isThreeCallPrompt = (text: string) =>
 
 const RESULT_TABS: { key: ResultKey; label: string }[] = [
   { key: "observe", label: "관찰 결과" },
+  // 관찰 결과의 Evidence Packet 을 vision feature 계층(흐름도의 구성도)으로 펼친 트리
+  { key: "features", label: "37 Features" },
   { key: "judge", label: "판정 결과" },
 ];
 
@@ -120,6 +123,8 @@ export default function FullStyleIdExtractionPage() {
   const [status, setStatus] = useState<Status>("idle");
   const [resultTab, setResultTab] = useState<ResultKey>("judge");
   const [parts, setParts] = useState<{ observe: string; judge: string } | null>(null);
+  /** 관찰 결과의 Evidence Packet — 37 Features 트리가 읽는다 */
+  const [packet, setPacket] = useState<Record<string, unknown> | null>(null);
   const [message, setMessage] = useState("");
   const [packetStatus, setPacketStatus] = useState<string | null>(null);
   const [styleId, setStyleId] = useState<StyleIdResult | null>(null);
@@ -195,6 +200,7 @@ export default function FullStyleIdExtractionPage() {
 
   const resetResult = () => {
     setParts(null);
+    setPacket(null);
     setMessage("");
     setPacketStatus(null);
     setStyleId(null);
@@ -285,6 +291,7 @@ export default function FullStyleIdExtractionPage() {
       if (data.observation) {
         const { observation, ...judged } = data;
         setParts({ observe: JSON.stringify(observation, null, 2), judge: JSON.stringify(judged, null, 2) });
+        setPacket(observation.packet ?? null);
         setPacketStatus(observation.status ?? null);
         setResultTab(observation.status === "PACKET_VALID" ? "judge" : "observe");
       } else {
@@ -637,17 +644,23 @@ export default function FullStyleIdExtractionPage() {
                   {scoring && <DirectionRows scoring={scoring} />}
                 </>
               )}
+              {resultTab === "features" && status !== "running" && parts ? (
+                <FeatureTreeView packet={packet} />
+              ) : (
               <pre className="p-3 font-[family-name:var(--font-mono)] text-xs leading-relaxed whitespace-pre-wrap break-all">
                 {status === "running"
                   ? runMode === "three"
                     ? "① 등록 → ② 외관 ∥ ③ 구조 · 관계 (비전 3회) → 합치기 → Evidence Packet → EI · TC · SR · DM 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
                     : "관찰 → Evidence Packet → EI · TC · SR · DM 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
-                  : parts?.[resultTab] ||
+                  : (resultTab !== "features" && parts?.[resultTab]) ||
                     message ||
                     (resultTab === "observe"
                       ? "관찰 프롬프트의 결과(모델 출력 · Evidence Packet · run_record · 검증)가 여기에 표시됩니다."
-                      : "관찰 결과를 Scoring Engine 에 넣은 결과(EI · TC · SR · DM 방향 · 스타일 아이디)가 여기에 표시됩니다.")}
+                      : resultTab === "features"
+                        ? "관찰 결과를 vision feature 계층(LOOK → 컴포넌트 → 외관 → 의복 구조 → 착용 관계 → 디테일 시스템)으로 펼친 트리가 여기에 표시됩니다."
+                        : "관찰 결과를 Scoring Engine 에 넣은 결과(EI · TC · SR · DM 방향 · 스타일 아이디)가 여기에 표시됩니다.")}
               </pre>
+              )}
             </div>
           </div>
         </section>
