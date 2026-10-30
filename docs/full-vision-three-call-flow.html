@@ -188,6 +188,12 @@
   .ax.sr { color: var(--rule); border-color: var(--rule); background: var(--rule-bg); }
   .ax.dm { color: var(--model); border-color: var(--model); background: var(--model-bg); }
   .legend .ax { margin-left: 0; }
+
+  /* feature 구성도 */
+  .fmap { display: grid; gap: 10px; margin-top: 10px; }
+  .fmap .node > .lv-head { margin-bottom: 4px; }
+  .fmap .vals { display: inline; margin-left: 4px; font: 12px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); }
+  .fmap .htree li { line-height: 1.55; }
 </style>
 </head>
 <body>
@@ -253,7 +259,7 @@
         <tr><td>전송 순서 · 캐시</td><td>승인 V2는 이미지 → 프롬프트, 그 밖은 프롬프트 → 이미지 + 캐시</td><td>호출마다 프롬프트 → 이미지 + 캐시</td></tr>
         <tr><td>한 호출이 답하는 양</td><td>37개 사실 + 관계 + 색 + DM 전부</td><td>① 등록만 · ② 색 + 외관 6 + DM · ③ 구조 + 관계</td></tr>
         <tr><td>규칙 문장</td><td colspan="2">같음 — v1.2는 v1.1의 절을 그대로 잘라 붙이고 호출마다 범위(SCOPE)와 출력 모양만 다름</td></tr>
-        <tr><td>정리 · 추출 · 채점</td><td colspan="2">같음 — <code>normalize()</code> → FLV_RC6_FINAL → FLEI · FLTC · FLSR</td></tr>
+        <tr><td>정리 · 추출 · 채점</td><td colspan="2">같음 — <code>normalize()</code> → FLV_RC6_FINAL → 4축 통합 FL4AX_FINAL_V1 (FLEI · FLTC · FLSR · FLDM)</td></tr>
       </tbody>
     </table>
   </div>
@@ -297,7 +303,7 @@
     <div class="arrow"></div>
     <div class="decision">
       <div class="q"><code>skipRest()</code> — ②③을 부를 필요가 있는가?</div>
-      <div class="branch"><span class="tag no">아니오</span><code>not_a_worn_look</code>이거나 참여 물체가 없음 → ②③ 생략, 빈 모양으로 합침 → 패킷은 유효, 세 축 모두 판정 불가(TECHNICAL_EXCEPTION). 비전 1회로 끝남</div>
+      <div class="branch"><span class="tag no">아니오</span><code>not_a_worn_look</code>이거나 참여 물체가 없음 → ②③ 생략, 빈 모양으로 합침 → 패킷은 유효, 네 축 모두 판정 불가 → 스타일 아이디 없음(INPUT_FAILURE). 비전 1회로 끝남</div>
       <div class="branch"><span class="tag">예</span>참여 물체 등록을 ②③에 넘김</div>
     </div>
     <div class="arrow"></div>
@@ -390,17 +396,232 @@
       <p><code>detail_systems</code> → <code>dm_subsystem.look_detail_systems</code>, 금지 키 삭제 → 동결 변환기 · 검증(FLV_RC6_FINAL) → <code>PACKET_VALID</code> + run_record (<code>prompt_version: FULL_LOOK_OBSERVE_V1_2_THREE_CALL</code>, <code>prompt_hash</code> = v1.2 원문 해시 — 이미지마다 같은 값)</p>
     </div>
     <div class="arrow"></div>
-    <div class="split three">
+    <div class="split">
       <div class="node rule"><div class="who"><span class="ax ei">EI</span> FLEI_FINAL_V1</div><p>EXPRESSIVE · INTROVERT — 주로 ②의 색 · 외관 · ③의 노출</p></div>
       <div class="node rule"><div class="who"><span class="ax tc">TC</span> FLTC_FINAL_V1</div><p>CLASSIC · TRANSFORMATIVE — 주로 ③의 구조 · 레이어</p></div>
       <div class="node rule"><div class="who"><span class="ax sr">SR</span> FLSR_FINAL_V1</div><p>STRUCTURED · RELAXED — ③의 지배 상의 · 조임</p></div>
+      <div class="node rule"><div class="who"><span class="ax dm">DM</span> FLDM_FINAL_V1</div><p>DETAIL · MINIMAL — ②의 디테일 시스템(DM3-D1 · D2 · D3 → D, 그 밖 M)</p></div>
     </div>
+    <p class="note">네 엔진은 4축 통합 Runtime <code>FL4AX_FINAL_V1</code>이 같은 증거로 한꺼번에 부른다. 한 축이라도 판정 불가면 스타일 아이디가 없다(글자를 채우지 않는다).</p>
     <div class="arrow"></div>
     <div class="node out">
       <div class="who">응답</div>
-      <p><code>mode: "three"</code> · <code>visionCalls: 3</code>(②③을 생략했으면 1) · <code>usage</code>(호출별 ms · 토큰) · 관찰 결과 탭의 <code>three_call</code> = 호출별 출력 · 프롬프트 해시 · 소요 시간 + <code>merge_log</code>. 스타일 아이디는 비전 1회와 같은 방식(DM은 D/M 양쪽).</p>
+      <p><code>mode: "three"</code> · <code>visionCalls: 3</code>(②③을 생략했으면 1) · <code>usage</code>(호출별 ms · 토큰) · 관찰 결과 탭의 <code>three_call</code> = 호출별 출력 · 프롬프트 해시 · 소요 시간 + <code>merge_log</code>. 스타일 아이디는 비전 1회와 같은 4축 통합 판정(FL4AX)의 결과 — 네 축 모두 방향이 있을 때만 정해진다.</p>
     </div>
   </div>
+
+  <!-- ───────────── Feature 구성도 ───────────── -->
+  <div class="phase" id="feature-map"><b>구성도</b><h2>관찰 프롬프트가 추출하는 vision feature 구성</h2></div>
+  <p class="trigger">
+    관찰 프롬프트 v1.2 "비전 호출 3+"의 세 호출이 사진 한 장에서 뽑는 feature를 <b>착장 → 컴포넌트 → 사실 → 값</b>의 계층으로 모두 펼쳤습니다.
+    가지마다 <b>답하는 호출</b>(① REGISTRY · ② APPEARANCE · ③ CONSTRUCTION)과 단계(G1–G4 · §9), <b>패킷 블록</b>, <b>쓰는 축</b>을 함께 적었고, 값은 프롬프트의 canonical 토큰 그대로입니다.
+    세 호출의 답은 합치기에서 이 구성 그대로 하나의 관찰 JSON 이 됩니다 — feature 구성은 비전 1회(V2)와 같고, 아래 <b>v1.2</b> 표시만 다릅니다.
+    모든 사실은 값과 함께 상태 <code>OBSERVED</code> · <code>ABSENT</code> · <code>NOT_VISIBLE</code>(+ limitation) · <code>UNKNOWN</code> 중 하나를 가집니다.
+  </p>
+
+  <div class="tree">
+    <svg viewBox="0 0 860 210" role="img" aria-label="vision feature 구성 개요">
+      <rect class="leaf-ok" x="330" y="8" width="200" height="42" rx="8"/>
+      <text x="430" y="27" text-anchor="middle" style="font-weight:700">착장 1장 (LOOK)</text>
+      <text class="lbl" x="430" y="43" text-anchor="middle">frame · SVP-001</text>
+      <path d="M430 50 V72 H86 V96"/><path d="M430 72 H258 V96"/><path d="M430 72 V96"/><path d="M430 72 H602 V96"/><path d="M430 72 H774 V96"/>
+      <rect class="box" x="10" y="96" width="152" height="98" rx="8"/>
+      <text x="86" y="118" text-anchor="middle" style="font-weight:700">① 컴포넌트</text>
+      <text class="lbl" x="86" y="136" text-anchor="middle">호출 ① · G1</text>
+      <text class="lbl" x="86" y="152" text-anchor="middle">정체 · 세분</text>
+      <text class="lbl" x="86" y="168" text-anchor="middle">의복 10 · 액세서리 10</text>
+      <text class="mono" x="86" y="186" text-anchor="middle">EI · TC</text>
+      <rect class="leaf-alt" x="182" y="96" width="152" height="98" rx="8"/>
+      <text x="258" y="118" text-anchor="middle" style="font-weight:700">② 외관</text>
+      <text class="lbl" x="258" y="136" text-anchor="middle">호출 ② · G2</text>
+      <text class="lbl" x="258" y="152" text-anchor="middle">색 영역 · 외관 6사실</text>
+      <text class="lbl" x="258" y="168" text-anchor="middle">색 역할 · MULTI 4</text>
+      <text class="mono" x="258" y="186" text-anchor="middle">EI · TC · SR</text>
+      <rect class="leaf-none" x="354" y="96" width="152" height="98" rx="8"/>
+      <text x="430" y="118" text-anchor="middle" style="font-weight:700">③ 의복 구조</text>
+      <text class="lbl" x="430" y="136" text-anchor="middle">호출 ③ · G3</text>
+      <text class="lbl" x="430" y="152" text-anchor="middle">형태 · 어깨 · 앞판</text>
+      <text class="lbl" x="430" y="168" text-anchor="middle">포켓 · 허리 · 트임 (20)</text>
+      <text class="mono" x="430" y="186" text-anchor="middle">TC · SR</text>
+      <rect class="box" x="526" y="96" width="152" height="98" rx="8"/>
+      <text x="602" y="118" text-anchor="middle" style="font-weight:700">④ 착용 관계</text>
+      <text class="lbl" x="602" y="136" text-anchor="middle">호출 ③ · G4</text>
+      <text class="lbl" x="602" y="152" text-anchor="middle">지배 상의 · 레이어</text>
+      <text class="lbl" x="602" y="168" text-anchor="middle">조임 · 노출</text>
+      <text class="mono" x="602" y="186" text-anchor="middle">EI · TC · SR</text>
+      <rect class="leaf-no" x="698" y="96" width="152" height="98" rx="8"/>
+      <text x="774" y="118" text-anchor="middle" style="font-weight:700">⑤ 디테일 시스템</text>
+      <text class="lbl" x="774" y="136" text-anchor="middle">호출 ② · §9</text>
+      <text class="lbl" x="774" y="152" text-anchor="middle">family A–J</text>
+      <text class="lbl" x="774" y="168" text-anchor="middle">size · contrast · position</text>
+      <text class="mono" x="774" y="186" text-anchor="middle">DM</text>
+    </svg>
+  </div>
+
+  <div class="fmap">
+    <div class="node rule">
+      <div class="lv-head"><span class="lv">LOOK</span><h3>착장 프레임</h3><span class="rule-note">호출 ① · G1 · <code>look_frame</code> · 제어 — <code>not_a_worn_look</code> 이면 ②③ 을 부르지 않음</span></div>
+      <ul class="htree">
+        <li><code>frame.state</code> <span class="vals">OBSERVED · NOT_VISIBLE · UNKNOWN</span></li>
+        <li><code>frame.limits[]</code> <span class="vals">crop · lower_body_cropped · feet_not_visible · occlusion · image_failure · not_a_worn_look</span></li>
+      </ul>
+    </div>
+
+    <div class="node input">
+      <div class="lv-head"><span class="lv">①</span><h3>컴포넌트 — 참여 물체 <code>cN</code></h3><span class="rule-note">호출 ① REGISTRY · G1 · §3 · §8d · <code>component_registry</code></span><span class="ax ei">EI</span><span class="ax tc">TC</span></div>
+      <ul class="htree">
+        <li><span class="grp">SVP-002 identity</span> <span class="scope">보이는 부분으로 정함 — 가려진 속성은 정체를 낮추지 않음</span>
+          <ul>
+            <li>의복 10 <span class="vals">T-Shirt · Shirt · Sweater · Sweatshirt · Jacket · Coat · Trouser · Skirt · Dress · Jumpsuit</span></li>
+            <li>액세서리 10 + other <span class="vals">footwear · bag · headwear · scarf · jewellery · belt · eyewear · hosiery · tie · gloves · other</span></li>
+            <li><code>UNKNOWN</code> <span class="scope">상태 — 어느 카테고리에도 맞지 않거나 둘이 똑같이 지지될 때 (케이프 · 판초 · 브라톱 …)</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">SVP-003 refinement</span> <span class="scope">확실할 때만</span>
+          <ul>
+            <li>footwear <code>product_family</code> <span class="vals">shoe · sneaker (running_sneaker · court_sneaker) · boot (western_boot) · sandal · other</span></li>
+            <li>bag <span class="vals">handbag · shoulder_bag · crossbody · clutch · tote · backpack · belt_bag</span></li>
+            <li>headwear <span class="vals">hat · cap · beanie · hairband · hair_ornament</span></li>
+            <li>scarf <span class="vals">shawl · stole · neckerchief · bandana · handkerchief · pocket_square</span></li>
+            <li>jewellery <span class="vals">necklace · chain · earrings · bracelet · ring · brooch · body_chain · anklet · watch</span></li>
+            <li>belt · tie · eyewear · hosiery <span class="vals">chain_belt · sash · harness / necktie · bow_tie / glasses · sunglasses / socks · tights · stockings · leg_warmer</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">참여</span> <span class="vals">participates true (cN) · false (xN + why)</span> <span class="scope">손에 든 옷 · 다른 사람 · 배경은 제외 · 자기 벨트는 컴포넌트 아님(§8e)</span></li>
+        <li><code>where</code> <span class="pill">v1.2</span> <span class="scope">참여 물체마다 위치 · 모습 설명 — ②③ 의 REGISTERED COMPONENTS 로 넘겨 같은 물체를 가리키게 하고, 합칠 때 지운다(계약 필드 아님)</span></li>
+      </ul>
+    </div>
+
+    <div class="node color">
+      <div class="lv-head"><span class="lv">②</span><h3>외관 — 모든 참여 물체의 표면</h3><span class="rule-note">호출 ② APPEARANCE · G2 · §4 · §6 외관 줄 · <code>colour_composition</code> · <code>component_fact_pool</code></span></div>
+      <ul class="htree">
+        <li><span class="grp">SVP-005 색 영역</span> <span class="ax ei">EI</span> <span class="scope">carrier 마다 하나 이상 — 읽지 못하면 unreadable</span>
+          <ul>
+            <li><code>family</code> 21 <span class="vals">black · white_family · gray · navy · blue · red · pink · yellow · orange · green · purple · brown · camel · beige · khaki · mint · wine · olive · gold · silver · uncertain</span></li>
+            <li><code>lightness</code> <span class="vals">light · normal · dark · UNKNOWN</span> <span class="pill">v1.2</span> <span class="scope">UNKNOWN 은 family 는 읽히는데 밝기를 못 읽을 때만</span> · <code>effect</code> <span class="vals">none · neon · metallic</span></li>
+            <li><code>part</code> <span class="scope">부품 색 = 같은 컴포넌트의 point</span> <span class="vals">closure · attachment · graphic · pattern · pocket · material_component · generic_descriptor</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">SVP-006 색 역할</span> <span class="ax ei">EI</span> <span class="pill">v1.2</span> <span class="scope">같은 호출 ② 에서 모든 컴포넌트를 읽은 뒤 색 영역마다 — 비전 1회(V2)는 G4</span> <span class="vals">role: field · point — contrast (point): Tonal · Subtle · Distinct</span></li>
+        <li><span class="grp">외관 6사실</span> <span class="scope">의복 + 액세서리 + UNKNOWN 물체 · None 토큰 없음 → 없으면 ABSENT</span>
+          <ul>
+            <li><code>121 pattern</code> <span class="ax ei">EI</span> <span class="vals">Linear · Grid · Repeat</span></li>
+            <li><code>122 graphic</code> <span class="ax ei">EI</span> <span class="vals">Localized · Dominant</span></li>
+            <li><code>123 surface</code> <span class="pill">MULTI</span> <span class="ax ei">EI</span><span class="ax tc">TC</span><span class="ax sr">SR</span> <span class="vals">Pleated · Gathered · Quilted · Textured Knit · Lace · Mesh · Treated Surface · Reflective · Glossy · Semi Transparent · Transparent · Exotic-Skin</span></li>
+            <li><code>124 material</code> <span class="pill">MULTI</span> <span class="ax ei">EI</span><span class="ax tc">TC</span><span class="ax sr">SR</span> <span class="vals">Cotton · Wool · Leather · Suede · Knit · Denim · Synthetic · Silk · Velvet · Fur · Padding · Other</span></li>
+            <li><code>125 decorative_detail</code> <span class="pill">MULTI</span> <span class="ax ei">EI</span> <span class="vals">Embroidery · Sequin-Beading · Appliqué · Piping</span></li>
+            <li><code>126 attachment</code> <span class="pill">MULTI</span> <span class="ax ei">EI</span><span class="ax tc">TC</span> <span class="vals">Metal Hardware · Jewelry Attachment · Ribbon · Belt · Epaulette · Storm Flap · Fur Trim · Fringe · Feather · Other</span></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="node model">
+      <div class="lv-head"><span class="lv">③</span><h3>의복 구조 — 의복만, 영역마다 한 번</h3><span class="rule-note">호출 ③ CONSTRUCTION · G3 · §6 구조 줄 · <code>component_fact_pool</code> · 카테고리 적용성 표가 켬 · 액세서리는 사실 없음</span></div>
+      <ul class="htree">
+        <li><span class="grp">형태</span>
+          <ul>
+            <li><code>101 grammar</code> <span class="ax ei">EI</span><span class="ax tc">TC</span> <span class="scope">Jacket · Coat · v1.2 는 보이는 구성으로 정의 (라펠 · 브레스트 앞판 → Tailored / 기능 포켓 · 스톰 플랩 · 후드 → Utility)</span> <span class="vals">Tailored · Casual · Utility</span></li>
+            <li><code>102 trouser_distinction</code> <span class="ax ei">EI</span><span class="ax tc">TC</span> <span class="scope">Trouser</span> <span class="vals">Tailored · Casual · Sport · Jeans · Leggings</span></li>
+            <li><code>103 silhouette</code> <span class="ax tc">TC</span> <span class="vals">Trouser · Jumpsuit: Straight · Flared · Tapered / Skirt: Straight · Widening · Narrowing / Dress: Straight · Widening · Flared · Narrowing</span></li>
+            <li><code>104 fit</code> <span class="ax tc">TC</span> <span class="vals">Slim · Regular · Relaxed · Oversized (+ Voluminous: Skirt · Dress)</span> <span class="scope">v1.2: 몸과의 여유로 읽고, 두 값 경계면 UNKNOWN</span></li>
+            <li><code>107 asymmetry</code> <span class="ax tc">TC</span> <span class="vals">None · Present</span></li>
+            <li><code>108 length</code> <span class="ax tc">TC</span> <span class="vals">상의: Cropped · Regular · Long / Jacket: Cropped · Waist Length · Hip Length / Coat: Hip · Thigh · Knee · Maxi Length / Trouser · Jumpsuit: Short · Knee · Calf · Ankle · Full · Extended Length / Skirt · Dress: Mini · Midi · Maxi Length</span></li>
+            <li><code>114 sleeve</code> <span class="ax tc">TC</span> <span class="vals">Sleeveless · Short · Mid · Long</span> → <code>109 sleeve_volume</code> <span class="scope">소매 있을 때</span> <span class="vals">Regular · Voluminous</span></li>
+            <li><code>113 collar</code> <span class="ax tc">TC</span> <span class="vals">None · Shirt · Stand · Sailor · Peter Pan · Tie · Ruffle · Shawl · Notched · Peak</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">어깨 영역</span> <span class="scope">한 번 보고 넷 — structure 와 drop 은 서로 유도 금지</span>
+          <ul>
+            <li><code>105 shoulder_structure</code> <span class="ax tc">TC</span> <span class="vals">None · Mild · Strong · Extreme</span></li>
+            <li><code>106 shoulder_drop</code> <span class="ax sr">SR</span> <span class="vals">None · Dropped</span> <span class="pill">v1.2</span> <span class="scope">지배 상의(<code>upper.governing_ref</code>)에만 묻는다 — 다른 의복에는 내지 않음</span></li>
+            <li><code>110 shoulder_span</code> <span class="ax tc">TC</span> <span class="vals">Narrow · Regular · Extended</span></li>
+            <li><code>115 shoulder_connection</code> <span class="ax tc">TC</span> <span class="vals">Standard · Strap · Strapless · Halter · One Shoulder</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">앞판 영역</span>
+          <ul>
+            <li><code>112 front_opening_extent</code> <span class="ax tc">TC</span> <span class="vals">None · Partial · Full</span> → <code>111 closure_type</code> <span class="scope">앞트임 있을 때 (Jacket · Coat 는 늘)</span> <span class="vals">Button · Single Breasted Button · Double Breasted Button · Snap Button · Zipper · Hook Closure · Open</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">포켓 영역</span>
+          <ul>
+            <li><code>116 pocket</code> <span class="ax tc">TC</span> <span class="vals">None · Present</span> → <code>pockets[]</code> <span class="scope">묶음마다 한 항목</span>
+              <ul>
+                <li><code>location</code> <span class="vals">Chest · Lower Front · Sleeve · Leg</span></li>
+                <li><code>117 construction</code> <span class="vals">Inset · Applied</span> · <code>118 projection</code> <span class="vals">Flat · Projected · Volumetric</span></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><span class="grp">허리 · 트임</span>
+          <ul>
+            <li><code>119 waist_definition</code> <span class="ax tc">TC</span><span class="ax sr">SR</span> <span class="scope">Jacket · Coat · Dress · Jumpsuit, Cropped · Waist Length 아님</span> <span class="vals">Undefined · Defined · Cinched</span></li>
+            <li><code>120 slit</code> <span class="ax tc">TC</span> <span class="scope">Skirt · Dress</span> <span class="vals">None · Present</span> <span class="scope">보이지 않으면 None 이 아니라 NOT_VISIBLE</span></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="node">
+      <div class="lv-head"><span class="lv">④</span><h3>착용 관계 — 입은 상태의 룩</h3><span class="rule-note">호출 ③ CONSTRUCTION · G4 · §5 · <code>upper_realization</code> · <code>relations</code> · <code>canonical_exposure</code></span></div>
+      <ul class="htree">
+        <li><span class="grp">SVP-007–009 지배 상의</span> <span class="ax sr">SR</span> <span class="scope"><code>governing_ref</code> = 어깨에 걸친 가장 바깥 의복 (Jacket · Coat → 그 밖 상의 → Dress · Jumpsuit, 없으면 null) · 어깨는 같은 호출 ③ 의 G3 관찰에서</span>
+          <ul>
+            <li><code>relation</code> <span class="vals">Slim · Regular · Relaxed · Oversized</span></li>
+            <li><code>shoulder</code> <span class="vals">None · Mild · Strong · Extreme</span></li>
+            <li><code>shape</code> <span class="vals">Structured · Semi-Structured · Semi-Fluid · Fluid</span> <span class="scope">Semi 둘 사이 망설임 → UNKNOWN</span></li>
+          </ul>
+        </li>
+        <li><code>SVP-004 front_state</code> <span class="ax tc">TC</span> <span class="scope">앞트임 의복</span> <span class="vals">fastened · partly_fastened · unfastened_worn_open · closed_by_other_means</span></li>
+        <li><code>SVP-010 layer_relations</code> <span class="ax tc">TC</span> <span class="scope">의복끼리 보이는 쌍만 — over · under · revealed ⊆</span> <span class="vals">Body · Bodice · Skirt Body · Leg · Shoulder · Sleeve · Collar · Lapel · Hood · Cuff · Hem · Waistband · Pocket · Strap</span></li>
+        <li><code>SVP-011 securing_relations</code> <span class="ax sr">SR</span> <span class="scope">별도 장치 → affected · region / 자기 벨트 → device_is_own</span> <span class="vals">visible_constriction: OBSERVED · ABSENT · UNKNOWN</span></li>
+        <li><span class="grp">SVP-012 노출</span> <span class="ax ei">EI</span> <span class="scope">보이는 피부만 · 실현 하나 = 기록 하나</span>
+          <ul>
+            <li>Class A 신체 부위 <span class="vals">Shoulder · Chest / Décolletage · Midriff / Waist · Back · Upper Thigh</span></li>
+            <li>Class B 설계된 개구부 <span class="vals">Open Back · Front Cutout · Side Cutout · Shoulder Cutout</span></li>
+            <li><code>carrier_refs</code> · <code>attribution</code> <span class="vals">item_intrinsic · realized_state · UNKNOWN</span></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="node color">
+      <div class="lv-head"><span class="lv">⑤</span><h3>디자인 디테일 시스템</h3><span class="rule-note">호출 ② APPEARANCE · §9 · 출력 키 <code>detail_systems</code> → 정리 단계에서 <code>dm_subsystem</code> · <code>dm_evidence</code></span><span class="ax dm">DM</span></div>
+      <ul class="htree">
+        <li><span class="grp">DMP-2 look_detail_systems[]</span> <span class="scope">하나의 시각 현상 = 시스템 하나 · [] = 관찰한 것 없음 ≠ 디테일 없음</span>
+          <ul>
+            <li><code>carrier_refs</code> <span class="scope">등록된 cN 1개 이상</span></li>
+            <li><code>look_detail_family</code> <span class="vals">A 표면 적용 · B 소재/구성 표면 · C 하드웨어 · D 트림/마감 · E 장식 · F 3D 장식 구성 · G 액세서리 디테일 · H 스타일링 관계 · I 기능 구성 · J 혼합 표면 분할</span></li>
+            <li><code>relational_form</code> <span class="scope">H 만</span> <span class="vals">accent · composition</span></li>
+            <li><code>size_in_look</code> <span class="vals">small · medium · large</span> · <code>contrast_in_look</code> <span class="vals">low · medium · high</span></li>
+            <li><code>position_in_look</code> <span class="vals">localized · distributed · whole_look</span> · <code>repeated_units</code> <span class="vals">yes · no</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">코드가 조립 — 모델이 내지 않음</span>
+          <ul>
+            <li><code>DMP-1 look_components</code> <span class="scope">carrier_refs 에서</span> · <code>DMP-3 dm_evidence_visibility</code> <span class="scope">frame.limits 에서</span></li>
+          </ul>
+        </li>
+        <li><span class="grp">디테일이 아님</span> <span class="scope">광택 · 소재의 고급스러움 · 투명 · 노출 · 컷아웃 · 슬릿 · 실루엣 · 비대칭 · 볼륨 · 평범한 구성 · 레이어링 · 개수 · 평범한 색 차이 · 매칭 · 반복</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="table-wrap" style="margin-top:10px">
+    <table>
+      <thead><tr><th>가지</th><th>호출</th><th>사실 · 필드</th><th>대상</th><th>패킷 블록</th><th>축</th></tr></thead>
+      <tbody>
+        <tr><td>LOOK</td><td>①</td><td>SVP-001</td><td>착장 1</td><td><code>look_frame</code></td><td>제어</td></tr>
+        <tr><td>① 컴포넌트</td><td>①</td><td>SVP-002 · 003 (+ where)</td><td>참여 물체마다</td><td><code>component_registry</code></td><td>EI · TC</td></tr>
+        <tr><td>② 외관</td><td>②</td><td>SVP-005 · 006 · 121–126</td><td>참여 물체마다</td><td><code>colour_composition</code> · <code>component_fact_pool</code></td><td>EI · TC · SR</td></tr>
+        <tr><td>③ 의복 구조</td><td>③</td><td>SVP-101–120 (117 · 118 은 pockets[] 안)</td><td>의복마다 · 카테고리별 14–24개</td><td><code>component_fact_pool</code></td><td>TC · SR · EI</td></tr>
+        <tr><td>④ 착용 관계</td><td>③</td><td>SVP-004 · 007–012</td><td>착장 1</td><td><code>upper_realization</code> · <code>relations</code> · <code>canonical_exposure</code></td><td>SR · TC · EI</td></tr>
+        <tr><td>⑤ 디테일 시스템</td><td>②</td><td>DMP-2 (DMP-1 · 3 조립)</td><td>착장 1 · 시스템마다</td><td><code>dm_evidence</code></td><td>DM</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">합계: Style Vision 12 (SVP-001–012) + 의복 원사실 26 (SVP-101–126) + DM 3 (DMP-1–3) = 41. 모델이 직접 답하는 것은 37 (117 · 118 은 pockets[] 안, DMP-1 · 3 은 코드가 조립) — 비전 1회와 같은 37개를 세 호출이 나눠 답한다(① 3 · ② 9 · ③ 25).</p>
 
   <!-- ───────────── 확인할 것 ───────────── -->
   <div class="phase"><b>점검</b><h2>실제 호출로 확인할 것</h2></div>
@@ -416,7 +637,7 @@
 
   <footer>
     프롬프트: <code>lib/full-style-ex/prompts/FULL_LOOK_OBSERVE_PROMPT_V1_2_THREE_CALL.txt</code> (버전 표 target='full' v3 "비전 호출 3+", 비활성) ·
-    코드: <code>lib/full-style-ex/three-call.ts</code> · <code>app/api/full-style-id-extraction/route.ts</code> ·
+    코드: <code>lib/full-style-ex/three-call.ts</code> · <code>app/api/full-style-ex/route.ts</code> ·
     관련 문서: <code>docs/full-vision-feature-extraction.html</code> (비전 1회)
   </footer>
 </main>
