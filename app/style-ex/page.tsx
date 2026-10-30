@@ -42,6 +42,7 @@ import {
   type SavedResult,
   type Summary,
 } from "@/components/style-ex/result-cards";
+import { FeatureTreeView } from "@/components/style-ex/FeatureTreeView";
 
 type Status = "idle" | "running" | "done" | "error";
 type PromptKey = "prompt" | "judgePrompt";
@@ -50,10 +51,11 @@ type PromptKey = "prompt" | "judgePrompt";
 // 다시 쓸 때를 위해 남겨 둔다 (LLM 판정 judge.ts · 버전 표는 그대로 있다).
 const PROMPT_TABS: { key: PromptKey; label: string }[] = [{ key: "prompt", label: "관찰 프롬프트" }];
 
-/** 호출 결과 탭 — 관찰 프롬프트의 결과 / 판정 프롬프트의 결과 */
-type ResultKey = "observe" | "judge";
+/** 호출 결과 탭 — 관찰 프롬프트의 결과 / 그 결과의 37개 vision feature 트리 / 판정 프롬프트의 결과 */
+type ResultKey = "observe" | "features" | "judge";
 const RESULT_TABS: { key: ResultKey; label: string }[] = [
   { key: "observe", label: "관찰 결과" },
+  { key: "features", label: "37 Features" },
   { key: "judge", label: "판정 결과" },
 ];
 
@@ -784,14 +786,18 @@ export default function StyleExPage() {
               {/* 관찰 결과 = 관찰 envelope (+ 그 관찰값으로 만든 부위 크롭) · 판정 결과 = 스타일 아이디 · 판정 · 스코어링 */}
               {resultTab === "judge" && summary?.styleId && <StyleIdCard summary={summary} />}
               {resultTab === "observe" && crops && <CropGrid result={crops} />}
+              {/* 37 Features = 관찰 envelope 의 vision feature 를 계층 트리로 */}
+              {resultTab === "features" && status !== "running" && <FeatureTreeView envelope={envelope} />}
+              {(resultTab !== "features" || status === "running") && (
               <pre className="p-3 font-[family-name:var(--font-mono)] text-xs leading-relaxed whitespace-pre-wrap break-all">
                 {status === "running"
                   ? "관찰 → 스코어링 → 판정 중… (수십 초~수 분 걸릴 수 있습니다)"
-                  : (resultParts?.[resultTab] ?? result) ||
+                  : (resultTab !== "features" ? resultParts?.[resultTab] ?? result : result) ||
                     (resultTab === "observe"
                       ? "관찰 프롬프트의 결과(관찰 envelope)가 여기에 표시됩니다."
                       : "판정 프롬프트의 결과(스타일 아이디 · 판정 · 스코어링)가 여기에 표시됩니다.")}
               </pre>
+              )}
             </div>
           </div>
         </section>
