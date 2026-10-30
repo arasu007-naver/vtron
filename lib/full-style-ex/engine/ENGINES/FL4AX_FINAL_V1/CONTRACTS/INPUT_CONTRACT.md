@@ -1,0 +1,3 @@
+# Input contract — FL4AX_FINAL_V1
+
+One look = the output of the Frozen Full-Look Vision Extractor Final V1 (`FLV-FINAL-FREEZE-V1-2026-10-17`, release aggregate `de1e46ce046c960226f9d5258dbe6e5f13731271ed537a17331cd28527c7e5bd`): `packet.json` (`STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET V1_RC4`) + `run_record.json`. Call `scoreFullLook({ packet, run_record })` or `fromExtractorOutputDir(dir)`. EI · TC · SR receive `(packet, run_record)`; DM receives `(packet)` — exactly as each frozen release defines. The integration reads no other field and adds no evidence. Copies of the frozen Vision contract and identity (documentation; the runtime does not read them) are in `CONTRACTS/FROZEN_VISION_INPUT/`. A missing / malformed input yields INPUT_FAILURE on every axis.

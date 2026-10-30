@@ -1,0 +1,11 @@
+{
+ "release": "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1",
+ "freeze_id": "FLV-FINAL-FREEZE-V1-2026-10-17",
+ "component": "FULL_LOOK_STYLE_VISION_EXTRACTOR",
+ "status": "FINAL FROZEN RELEASE — the freeze takes effect when the release QA has passed and is recorded in 04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_FREEZE_V1.md (CEO final closure order 2026-10-17)",
+ "accepted_candidate": "RC6 (SEAL-FLV-RC6-2026-10-17) — promoted without code change; no RC7",
+ "packet_contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET V1_RC4",
+ "prompt": "V2 535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
+ "model": "claude-opus-5-5",
+ "date": "2026-10-17"
+}

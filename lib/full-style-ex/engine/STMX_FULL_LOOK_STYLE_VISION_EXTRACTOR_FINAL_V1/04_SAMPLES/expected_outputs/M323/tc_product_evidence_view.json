@@ -1,0 +1,257 @@
+{
+ "view": "STMX_FULL_LOOK_TC_PRODUCT_EVIDENCE_VIEW",
+ "status": "DERIVED_DIAGNOSTIC_NON_CANONICAL",
+ "packet_version": "V1_RC4",
+ "scope_note": "Vision-side evidence completeness per participating garment for the frozen Item TC Step 2 predicates. No look-level TC, no styling, no score, no Strength.",
+ "excluded": "accessories (TC-D-4b HELD: no product-departure predicate exists)",
+ "garments": [
+  {
+   "component_ref": "c1",
+   "category": "Jacket",
+   "identity_state": "OBSERVED",
+   "archetype_key": "JACKET:Tailored",
+   "key_note": null,
+   "item_record_ref": null,
+   "predicate_read_facts": {
+    "fit": {
+     "state": "OBSERVED",
+     "value": "Relaxed",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Voluminous",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "shoulder_structure": {
+     "state": "OBSERVED",
+     "value": "Strong",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "shoulder_span": {
+     "state": "NOT_APPLICABLE"
+    },
+    "silhouette": {
+     "state": "NOT_APPLICABLE"
+    },
+    "length": {
+     "state": "OBSERVED",
+     "value": "Hip Length",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "sleeve": {
+     "state": "OBSERVED",
+     "value": "Long",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "collar": {
+     "state": "OBSERVED",
+     "value": "Peak",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "closure_type": {
+     "state": "OBSERVED",
+     "value": "Double Breasted Button",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "front_opening_extent": {
+     "state": "OBSERVED",
+     "value": "Full",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "material": {
+     "state": "OBSERVED",
+     "value": [
+      "Wool"
+     ],
+     "route": "observed",
+     "source": "fixture"
+    },
+    "surface": {
+     "state": "ABSENT",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "attachment": {
+     "state": "ABSENT",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "pocket": {
+     "state": "OBSERVED",
+     "value": "Present",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "pocket_construction": {
+     "state": "NESTED_IN_POCKETS",
+     "why": "CA#29: carried inside pocket.pockets[] (passed to the predicate with the pocket token)"
+    },
+    "pocket_projection": {
+     "state": "NESTED_IN_POCKETS",
+     "why": "CA#29: carried inside pocket.pockets[] (passed to the predicate with the pocket token)"
+    },
+    "shoulder_connection": {
+     "state": "NOT_APPLICABLE"
+    },
+    "waist_definition": {
+     "state": "UNKNOWN",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "asymmetry": {
+     "state": "OBSERVED",
+     "value": "Present",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "slit": {
+     "state": "NOT_APPLICABLE"
+    }
+   },
+   "completeness": {
+    "observed": 11,
+    "absent": 2,
+    "not_visible": 0,
+    "unknown": 1,
+    "not_emitted": 0,
+    "not_applicable": 4
+   },
+   "evidence_classes": {
+    "hidden_by_participant": [],
+    "cropped_or_fragmentary": [],
+    "unknown": [
+     "waist_definition"
+    ],
+    "not_emitted": []
+   }
+  },
+  {
+   "component_ref": "c3",
+   "category": "Trouser",
+   "identity_state": "OBSERVED",
+   "archetype_key": "trouser",
+   "key_note": null,
+   "item_record_ref": null,
+   "predicate_read_facts": {
+    "fit": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "sleeve_volume": {
+     "state": "NOT_APPLICABLE"
+    },
+    "shoulder_structure": {
+     "state": "NOT_APPLICABLE"
+    },
+    "shoulder_span": {
+     "state": "NOT_APPLICABLE"
+    },
+    "silhouette": {
+     "state": "OBSERVED",
+     "value": "Straight",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "length": {
+     "state": "NOT_VISIBLE",
+     "limitation": [
+      "TERMINAL_REGION_CROPPED"
+     ],
+     "route": "observed",
+     "source": "fixture"
+    },
+    "sleeve": {
+     "state": "NOT_APPLICABLE"
+    },
+    "collar": {
+     "state": "NOT_APPLICABLE"
+    },
+    "closure_type": {
+     "state": "NOT_APPLICABLE"
+    },
+    "front_opening_extent": {
+     "state": "NOT_APPLICABLE"
+    },
+    "material": {
+     "state": "OBSERVED",
+     "value": [
+      "Wool"
+     ],
+     "route": "observed",
+     "source": "fixture"
+    },
+    "surface": {
+     "state": "ABSENT",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "attachment": {
+     "state": "ABSENT",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "pocket": {
+     "state": "NOT_VISIBLE",
+     "limitation": [
+      "OCCLUDED_BY_OTHER_GARMENT"
+     ],
+     "route": "observed",
+     "source": "fixture"
+    },
+    "pocket_construction": {
+     "state": "NOT_APPLICABLE",
+     "why": "pocket not Present"
+    },
+    "pocket_projection": {
+     "state": "NOT_APPLICABLE",
+     "why": "pocket not Present"
+    },
+    "shoulder_connection": {
+     "state": "NOT_APPLICABLE"
+    },
+    "waist_definition": {
+     "state": "NOT_APPLICABLE"
+    },
+    "asymmetry": {
+     "state": "OBSERVED",
+     "value": "None",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "slit": {
+     "state": "NOT_APPLICABLE"
+    }
+   },
+   "completeness": {
+    "observed": 4,
+    "absent": 2,
+    "not_visible": 2,
+    "unknown": 0,
+    "not_emitted": 0,
+    "not_applicable": 12
+   },
+   "evidence_classes": {
+    "hidden_by_participant": [
+     "pocket"
+    ],
+    "cropped_or_fragmentary": [
+     "length"
+    ],
+    "unknown": [],
+    "not_emitted": []
+   },
+   "trouser_distinction": "Tailored"
+  }
+ ]
+}

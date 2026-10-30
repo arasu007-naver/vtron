@@ -1,0 +1,300 @@
+{
+ "frame": {
+  "state": "OBSERVED",
+  "limits": []
+ },
+ "objects": [
+  {
+   "ref": "c1",
+   "identity": "Jacket",
+   "participates": true
+  },
+  {
+   "ref": "c2",
+   "identity": "UNKNOWN",
+   "participates": true,
+   "why": "dark V-neck top visible only at neckline; T-Shirt vs Sweater equally supported"
+  },
+  {
+   "ref": "c3",
+   "identity": "Trouser",
+   "participates": true
+  },
+  {
+   "ref": "c4",
+   "identity": "jewellery",
+   "participates": true,
+   "subtype": "necklace"
+  },
+  {
+   "ref": "c5",
+   "identity": "footwear",
+   "participates": true,
+   "product_family": "sandal"
+  },
+  {
+   "ref": "x1",
+   "identity": "UNKNOWN",
+   "participates": false,
+   "why": "other person (second model in background)"
+  },
+  {
+   "ref": "x2",
+   "identity": "UNKNOWN",
+   "participates": false,
+   "why": "other people (seated audience)"
+  },
+  {
+   "ref": "x3",
+   "identity": "UNKNOWN",
+   "participates": false,
+   "why": "background / venue"
+  }
+ ],
+ "front_state": {
+  "c1": {
+   "value": "closed_by_other_means",
+   "state": "OBSERVED"
+  }
+ },
+ "layer_relations": [
+  {
+   "over": "c1",
+   "under": "c2",
+   "revealed": [
+    "Body"
+   ],
+   "state": "OBSERVED"
+  },
+  {
+   "over": "c1",
+   "under": "c3",
+   "revealed": [
+    "Leg",
+    "Hem"
+   ],
+   "state": "OBSERVED"
+  }
+ ],
+ "securing_relations": [],
+ "colour_areas": [
+  {
+   "carrier": "c1",
+   "family": "black",
+   "lightness": "dark",
+   "effect": "none",
+   "role": "field"
+  },
+  {
+   "carrier": "c1",
+   "family": "silver",
+   "lightness": "normal",
+   "effect": "metallic",
+   "role": "point",
+   "contrast": "Distinct",
+   "part": {
+    "carrier_kind": "attachment",
+    "carrier_ref": "Metal Hardware"
+   }
+  },
+  {
+   "carrier": "c2",
+   "family": "black",
+   "lightness": "dark",
+   "effect": "none",
+   "role": "point",
+   "contrast": "Tonal"
+  },
+  {
+   "carrier": "c3",
+   "family": "black",
+   "lightness": "dark",
+   "effect": "none",
+   "role": "field"
+  },
+  {
+   "carrier": "c4",
+   "family": "silver",
+   "lightness": "normal",
+   "effect": "metallic",
+   "role": "point",
+   "contrast": "Distinct"
+  },
+  {
+   "carrier": "c5",
+   "family": "black",
+   "lightness": "dark",
+   "effect": "none",
+   "role": "point",
+   "contrast": "Tonal"
+  }
+ ],
+ "upper": {
+  "governing_ref": "c1",
+  "relation": {
+   "value": "Oversized",
+   "state": "OBSERVED"
+  },
+  "shoulder": {
+   "value": "Strong",
+   "state": "OBSERVED"
+  },
+  "shape": {
+   "value": "Structured",
+   "state": "OBSERVED"
+  }
+ },
+ "exposure_supplement": [
+  {
+   "region": "Chest / Décolletage",
+   "carrier_refs": [
+    "c2"
+   ],
+   "attribution": "item_intrinsic"
+  }
+ ],
+ "facts": {
+  "c1": {
+   "material": "UNKNOWN",
+   "surface": "ABSENT",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": [
+    "Metal Hardware",
+    "Jewelry Attachment"
+   ],
+   "asymmetry": "None",
+   "fit": "Oversized",
+   "length": "Hip Length",
+   "sleeve": "Long",
+   "shoulder_drop": "None",
+   "shoulder_structure": "Strong",
+   "collar": "Peak",
+   "front_opening_extent": "Full",
+   "closure_type": "UNKNOWN",
+   "grammar": "Tailored",
+   "waist_definition": "Undefined",
+   "sleeve_volume": "Regular",
+   "pocket": {
+    "value": "Present",
+    "pockets": [
+     {
+      "location": "Chest",
+      "construction": {
+       "state": "OBSERVED",
+       "value": "Inset"
+      },
+      "projection": {
+       "state": "OBSERVED",
+       "value": "Flat"
+      }
+     },
+     {
+      "location": "Lower Front",
+      "construction": {
+       "state": "OBSERVED",
+       "value": "Inset"
+      },
+      "projection": {
+       "state": "OBSERVED",
+       "value": "Flat"
+      }
+     }
+    ]
+   }
+  },
+  "c2": {
+   "material": "UNKNOWN",
+   "surface": "UNKNOWN",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  },
+  "c3": {
+   "material": "UNKNOWN",
+   "surface": "ABSENT",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT",
+   "asymmetry": "UNKNOWN",
+   "trouser_distinction": "Tailored",
+   "silhouette": "Straight",
+   "fit": "Oversized",
+   "length": "Calf Length",
+   "pocket": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "OCCLUDED_BY_OTHER_GARMENT"
+    ]
+   }
+  },
+  "c4": {
+   "material": [
+    "Other"
+   ],
+   "surface": "ABSENT",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  },
+  "c5": {
+   "material": [
+    "Leather"
+   ],
+   "surface": [
+    "Glossy"
+   ],
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  }
+ },
+ "dm_subsystem": {
+  "look_detail_systems": [
+   {
+    "carrier_refs": [
+     "c1"
+    ],
+    "look_detail_family": "C",
+    "size_in_look": {
+     "state": "OBSERVED",
+     "value": "small"
+    },
+    "contrast_in_look": {
+     "state": "OBSERVED",
+     "value": "high"
+    },
+    "position_in_look": {
+     "state": "OBSERVED",
+     "value": "localized"
+    },
+    "repeated_units": "no"
+   },
+   {
+    "carrier_refs": [
+     "c4"
+    ],
+    "look_detail_family": "H",
+    "relational_form": "accent",
+    "size_in_look": {
+     "state": "OBSERVED",
+     "value": "small"
+    },
+    "contrast_in_look": {
+     "state": "OBSERVED",
+     "value": "high"
+    },
+    "position_in_look": {
+     "state": "OBSERVED",
+     "value": "localized"
+    },
+    "repeated_units": "no"
+   }
+  ]
+ }
+}

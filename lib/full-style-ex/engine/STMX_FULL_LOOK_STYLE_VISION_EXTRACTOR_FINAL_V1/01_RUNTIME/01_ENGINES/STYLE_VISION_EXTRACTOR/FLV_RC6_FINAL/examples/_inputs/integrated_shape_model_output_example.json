@@ -1,0 +1,152 @@
+{
+ "frame": {
+  "state": "OBSERVED",
+  "limits": [
+   "feet_not_visible"
+  ]
+ },
+ "objects": [
+  {
+   "ref": "c1",
+   "identity": "Dress",
+   "participates": true
+  },
+  {
+   "ref": "c2",
+   "identity": "footwear",
+   "participates": true,
+   "product_family": "boot"
+  }
+ ],
+ "front_state": {
+  "c1": {
+   "value": "fastened",
+   "state": "OBSERVED"
+  }
+ },
+ "layer_relations": [],
+ "securing_relations": [],
+ "colour_areas": [
+  {
+   "carrier": "c1",
+   "family": "black",
+   "lightness": "dark",
+   "effect": "none",
+   "role": "field"
+  },
+  {
+   "carrier": "c2",
+   "family": "black",
+   "lightness": "dark",
+   "effect": "none",
+   "role": "point",
+   "contrast": "Similar"
+  }
+ ],
+ "upper": {
+  "governing_ref": "c1",
+  "relation": {
+   "value": "Regular",
+   "state": "OBSERVED"
+  },
+  "shoulder": {
+   "value": "None",
+   "state": "OBSERVED"
+  },
+  "shape": {
+   "value": "Structured",
+   "state": "OBSERVED"
+  }
+ },
+ "exposure_supplement": [],
+ "facts": {
+  "c1": {
+   "material": [
+    "Wool"
+   ],
+   "fit": "Regular",
+   "pocket": {
+    "value": "Present",
+    "pockets": [
+     {
+      "location": "Lower Front",
+      "construction": {
+       "state": "OBSERVED",
+       "value": "Inset"
+      },
+      "projection": {
+       "state": "OBSERVED",
+       "value": "Flat"
+      }
+     },
+     {
+      "location": "Chest",
+      "construction": {
+       "state": "NOT_VISIBLE",
+       "value": null
+      },
+      "projection": {
+       "state": "OBSERVED",
+       "value": "Flat"
+      }
+     }
+    ]
+   },
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "surface": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT",
+   "asymmetry": "None",
+   "length": "Midi",
+   "sleeve": "Long",
+   "shoulder_drop": "None",
+   "shoulder_structure": "Mild",
+   "shoulder_span": "Regular",
+   "shoulder_connection": "Standard",
+   "sleeve_volume": "Regular",
+   "collar": "None",
+   "front_opening_extent": "None",
+   "waist_definition": "Defined",
+   "slit": {
+    "state": "NOT_VISIBLE",
+    "limitation": [
+     "TERMINAL_REGION_CROPPED"
+    ]
+   }
+  },
+  "c2": {
+   "material": [
+    "Leather"
+   ],
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "surface": "ABSENT",
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  }
+ },
+ "dm_subsystem": {
+  "look_detail_systems": [
+   {
+    "carrier_refs": [
+     "c1"
+    ],
+    "look_detail_family": "C",
+    "size_in_look": {
+     "state": "OBSERVED",
+     "value": "small"
+    },
+    "contrast_in_look": {
+     "state": "OBSERVED",
+     "value": "low"
+    },
+    "position_in_look": {
+     "state": "OBSERVED",
+     "value": "localized"
+    },
+    "repeated_units": "no"
+   }
+  ]
+ }
+}

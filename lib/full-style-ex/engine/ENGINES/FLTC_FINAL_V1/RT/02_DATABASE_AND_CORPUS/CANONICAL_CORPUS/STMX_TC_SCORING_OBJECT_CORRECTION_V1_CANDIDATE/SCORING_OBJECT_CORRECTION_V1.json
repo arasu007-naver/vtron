@@ -1,0 +1,134 @@
+{
+ "document": "SCORING_OBJECT_CORRECTION_V1",
+ "status": "CANDIDATE — governed versioned scoring-unit membership correction; canonical V1_3 and MASTER are IMMUTABLE and unchanged",
+ "sprint": "STMX TC MAINLINE V2.3.86 (Phase E)",
+ "date": "2026-09-27",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-27 — D-85-3 APPROVED (order V2.3.86 §2)",
+  "Reason": "existing CEO / corpus authority already names the Jacket as the intended target of REF_000010 and REF_000014; the legacy GEN-1 GARMENT units carried an empty member list, so the engine saw several garments and returned no unit Direction",
+  "Affected Scope": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/ (new) · Step 2 successor V4 rule SOR (unit membership only)"
+ },
+ "rules": [
+  "records unit MEMBERSHIP only — no observation, category, label or score is changed",
+  "the other visible garments stay in the record as context, never scored, never aggregated (no look-level TC)",
+  "not a new CEO scoring judgment",
+  "GARMENT = exactly one member (scoring_units_v1.js authority)"
+ ],
+ "entries": [
+  {
+   "anchor_id": "REF_000010#SU1",
+   "scoring_unit_type": "GARMENT",
+   "member_garment_refs": {
+    "before": [],
+    "after": [
+     "target_1"
+    ]
+   },
+   "scored_garment": {
+    "garment_ref": "target_1",
+    "category": "Jacket"
+   },
+   "context_garments": [
+    {
+     "garment_ref": "target_2",
+     "category": "Shirt",
+     "role": "CONTEXT ONLY — not scored, not aggregated"
+    },
+    {
+     "garment_ref": "target_3",
+     "category": "Trouser",
+     "role": "CONTEXT ONLY — not scored, not aggregated"
+    }
+   ],
+   "image": {
+    "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000010__스크린샷 2026-04-27 141834.png",
+    "sha256": "b5a89565efbdfb6682fd124b2ef634d4f4f52b239f19fb0e52369b1dbf998c95",
+    "lineage_hash": "b5a89565efbdfb6682fd124b2ef634d4f4f52b239f19fb0e52369b1dbf998c95"
+   },
+   "corpus_identity": {
+    "category": "Jacket",
+    "corpus_role": "PRODUCT",
+    "source_relative_path": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000010__스크린샷 2026-04-27 141834.png",
+    "batch": "BATCH_001"
+   },
+   "authority_quotes": [
+    {
+     "at": "ceo_adjudication.raw_ledger_record.corpus_canonical_target",
+     "text": "Jacket"
+    },
+    {
+     "at": "ceo_adjudication.raw_ledger_record.target_decision",
+     "text": "PASS — canonical target = JACKET ONLY"
+    },
+    {
+     "at": "ceo_adjudication.raw_ledger_record.producer_targets_returned.0",
+     "text": "target_1 Primary = Jacket"
+    },
+    {
+     "at": "ceo_adjudication.raw_ledger_record.producer_targets_returned.1",
+     "text": "target_2 Secondary-Eligible = Shirt"
+    },
+    {
+     "at": "ceo_adjudication.raw_ledger_record.producer_targets_returned.2",
+     "text": "target_3 Secondary-Eligible = Trouser"
+    },
+    {
+     "at": "ceo_adjudication.raw_ledger_record.target_governance",
+     "text": "CEO: for Reference Corpus REF_000010 the canonical target is Jacket ONLY. The inner Shirt is only partially visible and is not meaningful as an independent Reference Corpus target; the Trouser is likewise not the canonical target. Shirt/Trouser observations are NOT used in the canonical REF_000010 Reference Record. Their per-target extraction remains TECHNICAL EVIDENCE only (Shirt→yellow, Trouser→khaki). The general-purpose multi-target architecture is unchanged."
+    },
+    {
+     "at": "ceo_adjudication.target_decision",
+     "text": "PASS — canonical target = JACKET ONLY"
+    }
+   ],
+   "note": "CEO target decision: canonical target = JACKET ONLY; shirt and trouser not canonical targets"
+  },
+  {
+   "anchor_id": "REF_000014#SU1",
+   "scoring_unit_type": "GARMENT",
+   "member_garment_refs": {
+    "before": [],
+    "after": [
+     "target_1"
+    ]
+   },
+   "scored_garment": {
+    "garment_ref": "target_1",
+    "category": "Jacket"
+   },
+   "context_garments": [
+    {
+     "garment_ref": "target_3",
+     "category": "Trouser",
+     "role": "CONTEXT ONLY — not scored, not aggregated"
+    }
+   ],
+   "image": {
+    "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000014__cropjkmenbk1.jpg",
+    "sha256": "c91624c4a375825c8466b0e5d6a2a5d5d46eebab830b7897b5c032ad705c6377",
+    "lineage_hash": "c91624c4a375825c"
+   },
+   "corpus_identity": {
+    "category": "Jacket",
+    "corpus_role": null,
+    "source_relative_path": "STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000014__cropjkmenbk1.jpg",
+    "batch": "BATCH_002"
+   },
+   "authority_quotes": [
+    {
+     "at": "ceo_adjudication.raw_gt_record.image_path",
+     "text": "01_Jacket/REF_000014__cropjkmenbk1.jpg"
+    },
+    {
+     "at": "ceo_adjudication.raw_gt_record.observation_gt.category",
+     "text": "Jacket"
+    },
+    {
+     "at": "ceo_adjudication.raw_observation_gt.category",
+     "text": "Jacket"
+    }
+   ],
+   "note": "CEO observation GT record is the Jacket's (category Jacket); jeans are not a CEO target"
+  }
+ ]
+}

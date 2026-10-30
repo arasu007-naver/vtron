@@ -1,0 +1,60 @@
+{
+ "tool": "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6/cli/run_offline.js",
+ "architecture": "integrated observation (G1–G4 logical groups in one pass; A1 frozen-DM assembly)",
+ "live_inference": "NONE (G53)",
+ "input": {
+  "kind": "raw_response",
+  "file": "examples/_inputs/integrated_shape_model_output_example.raw_response.json",
+  "sha256": "8553e7e96bef98a52cd62014d8a9150d4f48791e4b4b6a63e04dd9dbc7494329",
+  "model": "OFFLINE_EXAMPLE (no live call; built in code)",
+  "stop_reason": "end_turn",
+  "fences_stripped": false
+ },
+ "outputs": {
+  "packet": "b4a0345950a3c4c069f3f7e444baa4cece09e31a7c33f8bf7a684821f21a2c31",
+  "validation": "def01ee59ed2a10bf3be0d5128281de6ec2bc980b7f895ca1769978296d18cf2",
+  "provenance": "ed9811fae91c8586f55bc3547c810004a416eec0e80925446eef876347fad7e8",
+  "native_check": "530039d675c6a2ea85206ec158d37d41c0c5bca0dc5b2116a701c1a97bf6dccb",
+  "unresolved_fields": "c3ae37a53e731b43732b0390f7e7f1cf874b48f86b19e57f6927fc42550d8bf2",
+  "run_record": "0d8fb952a9c4148d46b7214d3b2d26925391327f7ce291de3bf6af988b975b69",
+  "tc_product_evidence_view": "4fd2dfe34f29e39a80c81903e5ff888b746760a20eb75b77f3521c1991077f5d"
+ },
+ "status": "PACKET_VALID",
+ "transport": {
+  "shape_variant": {
+   "frame": "flat",
+   "objects": "array",
+   "front_state": "map",
+   "colour": "flat",
+   "facts": "map"
+  },
+  "counts": {
+   "UNCONVERTIBLE": 1,
+   "REPRESENTATION_KEPT_AS_EMITTED": 2,
+   "POCKET_INSTANCES_CARRIED": 1,
+   "UNWRAP": 1,
+   "PASSTHROUGH": 1
+  },
+  "unconvertible": 1,
+  "not_emitted": 2
+ },
+ "local_isolation": {
+  "actions": 0,
+  "records": []
+ },
+ "native": {
+  "strict_json_as_emitted": true,
+  "native_conformant": false,
+  "shape_and_vocabulary_conformant": false,
+  "counts": {
+   "PARSE": 0,
+   "REQUIRED_BLOCK": 0,
+   "STATE_REPRESENTATION": 0,
+   "UNSUPPORTED_FIELD": 0,
+   "INVALID_VOCABULARY": 1,
+   "STRUCTURAL_OMISSION": 0,
+   "FORBIDDEN_KEY": 0
+  }
+ },
+ "validation_errors": 0
+}

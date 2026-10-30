@@ -1,0 +1,37 @@
+{
+ "frame": null,
+ "identity_unknown": [],
+ "pool_unknown": [
+  "c3.pattern",
+  "c3.graphic",
+  "c3.surface",
+  "c3.material",
+  "c3.decorative_detail",
+  "c3.attachment"
+ ],
+ "pool_not_visible": [
+  {
+   "key": "c2.pocket",
+   "limitation": [
+    "OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  }
+ ],
+ "colour_unreadable": [],
+ "colour_partial": [],
+ "upper": {},
+ "not_emitted_by_model": [],
+ "unconvertible": [],
+ "dm": null,
+ "dm_visibility_not_established": {
+  "diagnostics": [
+   {
+    "code": "MAPPING_UNRESOLVED",
+    "gap": "D-1",
+    "detail": "OBSERVED G1 record with no limit: the frozen enum offers adjudicable and partially_observable:{small_detail_unresolvable}; the SVP-001 limit vocabulary cannot record small_detail_unresolvable, so the common record cannot tell them apart → DMP-3 not established, never defaulted. RC4 (DM Evidence Transport V2, CEO 2026-10-15): dm_evidence_visibility { state: UNKNOWN } and the observed systems are delivered (the old D-1 option choice is superseded for transport)",
+    "where": "dm_evidence_visibility"
+   }
+  ]
+ },
+ "securing_region_outside_reference_domain": []
+}

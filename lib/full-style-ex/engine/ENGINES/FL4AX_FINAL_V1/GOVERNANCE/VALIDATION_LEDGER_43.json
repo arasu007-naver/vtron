@@ -1,0 +1,1225 @@
+[
+ {
+  "look": "F012",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "ad3f8a7966776e4d"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "M"
+  },
+  "style_id": "ECSM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✗"
+  },
+  "known_limitations": [
+   "FLDM-LIM-001 (CEO D · runtime M)"
+  ],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECSM입니다 — EI Expressive · TC Classic · SR Structured · DM Minimal."
+ },
+ {
+  "look": "F033",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "eabb7de5367457b3"
+  },
+  "status": "INPUT_FAILURE",
+  "directions": {
+   "EI": "I",
+   "TC": null,
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": null,
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [
+   "TC:NO_TC_PRODUCT_EVIDENCE"
+  ],
+  "reason_ko": "TC 입력 실패 때문에 네 축이 모두 채점되지 않아 Style ID를 만들지 않았습니다."
+ },
+ {
+  "look": "F054",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "0a75034dae0d47e3"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ETSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETSD입니다 — EI Expressive · TC Transformative · SR Structured · DM Detail."
+ },
+ {
+  "look": "F065",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "b610d1b2ddddd494"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ETRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRD입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "F074",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "ae1a31d53222dfec"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ETSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETSD입니다 — EI Expressive · TC Transformative · SR Structured · DM Detail."
+ },
+ {
+  "look": "F109",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "e3564b4400d90ce2"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ECRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECRM입니다 — EI Expressive · TC Classic · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "F134",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "8ae2817d82df3176"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "M"
+  },
+  "style_id": "ECSM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECSM입니다 — EI Expressive · TC Classic · SR Structured · DM Minimal."
+ },
+ {
+  "look": "F146",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "1e223684791f41a6"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ETRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRM입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "F147",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "71c211463e3d2d66"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ECRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECRM입니다 — EI Expressive · TC Classic · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "F187",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "7959788fd42c0b34"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "M"
+  },
+  "style_id": "ECSM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECSM입니다 — EI Expressive · TC Classic · SR Structured · DM Minimal."
+ },
+ {
+  "look": "F225",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "9c0165983d60867a"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ECRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECRM입니다 — EI Expressive · TC Classic · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "F228",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "2bafc01e8d80cfc6"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "I",
+   "TC": "C",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ICRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "EI": "E ✗",
+   "DM": "D ✓"
+  },
+  "known_limitations": [
+   "FL-EI-LIM-F228-001 (CEO E · runtime I)"
+  ],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ICRD입니다 — EI Introvert · TC Classic · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "F254",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "276794793a887e8b"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ETSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETSD입니다 — EI Expressive · TC Transformative · SR Structured · DM Detail."
+ },
+ {
+  "look": "F258",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "32a7e1e54c881605"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ECSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECSD입니다 — EI Expressive · TC Classic · SR Structured · DM Detail."
+ },
+ {
+  "look": "F260",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "101a0f8ddda49ce7"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ETRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRM입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "F267",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "a43c2c6e58e18fa5"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "I",
+   "TC": "C",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ICRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "N ✗"
+  },
+  "known_limitations": [
+   "FLDM-HIST-001 (historical N · binary M)"
+  ],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ICRM입니다 — EI Introvert · TC Classic · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "F288",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "f9eb6c0ec6829577"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "I",
+   "TC": "T",
+   "SR": "S",
+   "DM": "M"
+  },
+  "style_id": "ITSM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ITSM입니다 — EI Introvert · TC Transformative · SR Structured · DM Minimal."
+ },
+ {
+  "look": "F293",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "07e1f32fc3f907af"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ETRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRD입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "F298",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "659b90bdd4df5c18"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ETRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRM입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "F372",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "37ab9c7a9d466064"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ECSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECSD입니다 — EI Expressive · TC Classic · SR Structured · DM Detail."
+ },
+ {
+  "look": "F390",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "8b7aa66998b78f62"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ETRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRD입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "F391",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "828741ce357c3448"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ETRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRD입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "F392",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "11ca5ec58751b054"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ETRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRD입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "F418",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "32bc4d5b5a26bbda"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ECRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECRD입니다 — EI Expressive · TC Classic · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "F444",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "fffc92a7119996f7"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ETRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRD입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "F472",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "4065ecb506db975f"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ECRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✗"
+  },
+  "known_limitations": [
+   "FLDM-LIM-002 (CEO D · runtime M)"
+  ],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECRM입니다 — EI Expressive · TC Classic · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "F563",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "1796c17181a9c76f"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ECRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECRM입니다 — EI Expressive · TC Classic · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "M011",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "18fcc9e725306c5f"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ETRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRD입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "M120",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "3488472033f75f85"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "I",
+   "TC": "C",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ICSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ICSD입니다 — EI Introvert · TC Classic · SR Structured · DM Detail."
+ },
+ {
+  "look": "M134",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "d2bd29b8944746d2"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ETSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETSD입니다 — EI Expressive · TC Transformative · SR Structured · DM Detail."
+ },
+ {
+  "look": "M165",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "923c0d7fa4133011"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ETRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRM입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "M178",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "e57cd9de933ac316"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "I",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ITRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "EI": "I ✓",
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ITRD입니다 — EI Introvert · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "M210",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "257af7f79c6e2be0"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "I",
+   "TC": "C",
+   "SR": "S",
+   "DM": "M"
+  },
+  "style_id": "ICSM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ICSM입니다 — EI Introvert · TC Classic · SR Structured · DM Minimal."
+ },
+ {
+  "look": "M214",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "b4401429cd5c504a"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ECSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECSD입니다 — EI Expressive · TC Classic · SR Structured · DM Detail."
+ },
+ {
+  "look": "M269",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "08591307fb90c245"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ECRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECRD입니다 — EI Expressive · TC Classic · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "M270",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "edfc2ee03190ef37"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ECRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECRD입니다 — EI Expressive · TC Classic · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "M303",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "89a692c14b1b47bc"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ECSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECSD입니다 — EI Expressive · TC Classic · SR Structured · DM Detail."
+ },
+ {
+  "look": "M308",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "810c13b336d344eb"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": "S",
+   "DM": "M"
+  },
+  "style_id": "ECSM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "EI": "E ✓",
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ECSM입니다 — EI Expressive · TC Classic · SR Structured · DM Minimal."
+ },
+ {
+  "look": "M309",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "d7326b9131b2852e"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "M"
+  },
+  "style_id": "ETRM",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRM입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Minimal."
+ },
+ {
+  "look": "M317",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "1dc4d9422a81e25d"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ETRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRD입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "M320",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "008526ebec70f802"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "R",
+   "DM": "D"
+  },
+  "style_id": "ETRD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "EI": "E ✓",
+   "SR": "S ✗",
+   "DM": "D ✓"
+  },
+  "known_limitations": [
+   "FLSR known limitation (CEO S · runtime R; same lawful input as M317)"
+  ],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETRD입니다 — EI Expressive · TC Transformative · SR Relaxed · DM Detail."
+ },
+ {
+  "look": "M323",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "8b34f75727e34036"
+  },
+  "status": "COMPLETE",
+  "directions": {
+   "EI": "E",
+   "TC": "T",
+   "SR": "S",
+   "DM": "D"
+  },
+  "style_id": "ETSD",
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "D ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [],
+  "reason_ko": "이 착장의 Style ID는 ETSD입니다 — EI Expressive · TC Transformative · SR Structured · DM Detail."
+ },
+ {
+  "look": "REF_000622",
+  "packet": {
+   "contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET",
+   "version": "V1_RC4",
+   "sha256_16": "e3970f1d1c93008b"
+  },
+  "status": "INPUT_FAILURE",
+  "directions": {
+   "EI": "E",
+   "TC": "C",
+   "SR": null,
+   "DM": "M"
+  },
+  "style_id": null,
+  "engine_match": {
+   "EI": true,
+   "TC": true,
+   "SR": true,
+   "DM": true
+  },
+  "ceo_gt": {
+   "DM": "M ✓"
+  },
+  "known_limitations": [],
+  "input_failure": [
+   "SR:NO_UPPER_SR_EVIDENCE"
+  ],
+  "reason_ko": "SR 입력 실패 때문에 네 축이 모두 채점되지 않아 Style ID를 만들지 않았습니다."
+ }
+]

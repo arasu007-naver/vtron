@@ -1,0 +1,20 @@
+{
+ "tool": "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_V1_RELEASE_CANDIDATE_RC6/cli/run_offline.js",
+ "architecture": "integrated observation (G1–G4 logical groups in one pass; A1 frozen-DM assembly)",
+ "live_inference": "NONE (G53)",
+ "input": {
+  "kind": "fixture",
+  "id": "F109",
+  "mode": "B"
+ },
+ "outputs": {
+  "packet": "87d7c990e8abb9162518108d875cf46a9c6d9d6b510bac592dc8179c17d58c08",
+  "validation": "def01ee59ed2a10bf3be0d5128281de6ec2bc980b7f895ca1769978296d18cf2",
+  "provenance": "73ee8f1ba5c5a0bc0455702c01dbe60e6b11e2f4fe306e73ee1780f958ecc5ae",
+  "unresolved_fields": "f17078aa1dbb2bd38759c4e7fb7dd091be68b110029c2f3c21880442a40faaf1",
+  "run_record": "308ae91d2bff11b603dae5d7154f8095965581d3cf4086c560f6ce936b102cbc",
+  "tc_product_evidence_view": "f6d8bd4bf99cceb04bcdf327459378ea3fbf80423d77c07cae5163581f55fa6d"
+ },
+ "status": "PACKET_VALID",
+ "validation_errors": 0
+}

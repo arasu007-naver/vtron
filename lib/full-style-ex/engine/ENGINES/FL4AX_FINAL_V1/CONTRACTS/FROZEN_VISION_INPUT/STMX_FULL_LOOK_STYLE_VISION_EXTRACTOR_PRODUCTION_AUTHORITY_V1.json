@@ -1,0 +1,18 @@
+{
+ "document": "STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_PRODUCTION_AUTHORITY_V1",
+ "status": "PRODUCTION · COMPLETE_AND_CLOSED_AND_FROZEN",
+ "freeze_id": "FLV-FINAL-FREEZE-V1-2026-10-17",
+ "authority": "Full-Look Style Vision Extractor (observation → canonical Evidence Packet; no scoring)",
+ "release": "01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1",
+ "release_aggregate_sha256": "de1e46ce046c960226f9d5258dbe6e5f13731271ed537a17331cd28527c7e5bd",
+ "entry_point": "01_ENGINES/STYLE_VISION_EXTRACTOR/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_V1/01_RUNTIME/01_ENGINES/STYLE_VISION_EXTRACTOR/FLV_RC6_FINAL/cli/run_offline.js",
+ "prompt": {
+  "name": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
+  "sha256": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba"
+ },
+ "model": "claude-opus-5-5",
+ "packet_contract": "STMX_FULL_LOOK_STYLE_VISION_EVIDENCE_PACKET V1_RC4",
+ "freeze_declaration": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_STYLE_VISION_EXTRACTOR_FINAL_FREEZE_V1.md",
+ "historical_candidates": "RC1 … RC6 directories in 01_ENGINES/STYLE_VISION_EXTRACTOR are historical / provenance only (RC6 = accepted source, unchanged)",
+ "reopen_rule": "separate governed reopening only"
+}

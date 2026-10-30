@@ -1,0 +1,190 @@
+{
+ "frame": {
+  "state": "OBSERVED",
+  "limits": [
+   "lower_body_cropped",
+   "feet_not_visible"
+  ]
+ },
+ "objects": [
+  {
+   "ref": "c1",
+   "identity": "Dress",
+   "participates": true
+  },
+  {
+   "ref": "c2",
+   "identity": "jewellery",
+   "participates": true,
+   "subtype": "earrings"
+  },
+  {
+   "ref": "c3",
+   "identity": "gloves",
+   "participates": true
+  },
+  {
+   "ref": "c4",
+   "identity": "footwear",
+   "participates": true,
+   "product_family": "boot"
+  }
+ ],
+ "front_state": {},
+ "layer_relations": [],
+ "securing_relations": [],
+ "colour_areas": [
+  {
+   "carrier": "c1",
+   "family": "gray",
+   "lightness": "normal",
+   "effect": "none",
+   "role": "field"
+  },
+  {
+   "carrier": "c2",
+   "family": "silver",
+   "lightness": "light",
+   "effect": "metallic",
+   "role": "point",
+   "contrast": "Distinct"
+  },
+  {
+   "carrier": "c3",
+   "family": "gray",
+   "lightness": "dark",
+   "effect": "none",
+   "role": "point",
+   "contrast": "Subtle"
+  },
+  {
+   "carrier": "c4",
+   "family": "gray",
+   "lightness": "dark",
+   "effect": "none",
+   "role": "point",
+   "contrast": "Subtle"
+  }
+ ],
+ "upper": {
+  "governing_ref": "c1",
+  "relation": {
+   "value": "Regular",
+   "state": "OBSERVED"
+  },
+  "shoulder": {
+   "value": "Strong",
+   "state": "OBSERVED"
+  },
+  "shape": {
+   "value": "Structured",
+   "state": "OBSERVED"
+  }
+ },
+ "exposure_supplement": [
+  {
+   "region": "Upper Thigh",
+   "carrier_refs": [
+    "c1"
+   ],
+   "attribution": "item_intrinsic"
+  }
+ ],
+ "facts": {
+  "c1": {
+   "material": [
+    "Knit"
+   ],
+   "surface": "ABSENT",
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "pocket": {
+    "value": "Present",
+    "pockets": [
+     {
+      "location": "Lower Front",
+      "construction": {
+       "state": "UNKNOWN",
+       "value": null
+      },
+      "projection": {
+       "state": "OBSERVED",
+       "value": "Flat"
+      }
+     }
+    ]
+   },
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT",
+   "asymmetry": "None",
+   "silhouette": "Straight",
+   "fit": "Regular",
+   "length": "Mini",
+   "sleeve": "Short",
+   "shoulder_drop": "None",
+   "shoulder_structure": "Strong",
+   "collar": "None",
+   "front_opening_extent": "None",
+   "slit": "None",
+   "waist_definition": "Defined",
+   "shoulder_connection": "Standard",
+   "shoulder_span": "Extended",
+   "sleeve_volume": "Voluminous"
+  },
+  "c2": {
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "surface": "ABSENT",
+   "material": [
+    "Other"
+   ],
+   "decorative_detail": [
+    "Sequin-Beading"
+   ],
+   "attachment": "ABSENT"
+  },
+  "c3": {
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "surface": "ABSENT",
+   "material": [
+    "Leather"
+   ],
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  },
+  "c4": {
+   "pattern": "ABSENT",
+   "graphic": "ABSENT",
+   "surface": "ABSENT",
+   "material": [
+    "Leather"
+   ],
+   "decorative_detail": "ABSENT",
+   "attachment": "ABSENT"
+  }
+ },
+ "dm_subsystem": {
+  "look_detail_systems": [
+   {
+    "carrier_refs": [
+     "c2"
+    ],
+    "look_detail_family": "E",
+    "size_in_look": {
+     "state": "OBSERVED",
+     "value": "small"
+    },
+    "contrast_in_look": {
+     "state": "OBSERVED",
+     "value": "high"
+    },
+    "position_in_look": {
+     "state": "OBSERVED",
+     "value": "localized"
+    },
+    "repeated_units": "yes"
+   }
+  ]
+ }
+}

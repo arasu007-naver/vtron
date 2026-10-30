@@ -1,0 +1,355 @@
+{
+ "view": "STMX_FULL_LOOK_TC_PRODUCT_EVIDENCE_VIEW",
+ "status": "DERIVED_DIAGNOSTIC_NON_CANONICAL",
+ "packet_version": "V1_RC4",
+ "scope_note": "Vision-side evidence completeness per participating garment for the frozen Item TC Step 2 predicates. No look-level TC, no styling, no score, no Strength.",
+ "excluded": "accessories (TC-D-4b HELD: no product-departure predicate exists)",
+ "garments": [
+  {
+   "component_ref": "c1",
+   "category": "Coat",
+   "identity_state": "OBSERVED",
+   "archetype_key": "COAT:Tailored",
+   "key_note": null,
+   "item_record_ref": "REC-M317-C1",
+   "predicate_read_facts": {
+    "fit": {
+     "state": "OBSERVED",
+     "value": "Oversized",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "shoulder_structure": {
+     "state": "OBSERVED",
+     "value": "Extreme",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "shoulder_span": {
+     "state": "NOT_APPLICABLE"
+    },
+    "silhouette": {
+     "state": "NOT_APPLICABLE"
+    },
+    "length": {
+     "state": "OBSERVED",
+     "value": "Maxi Length",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "sleeve": {
+     "state": "OBSERVED",
+     "value": "Long",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "collar": {
+     "state": "OBSERVED",
+     "value": "Peak",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "closure_type": {
+     "state": "OBSERVED",
+     "value": "Double Breasted Button",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "front_opening_extent": {
+     "state": "OBSERVED",
+     "value": "Full",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "material": {
+     "state": "OBSERVED",
+     "value": "Wool",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "surface": {
+     "state": "ABSENT",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "attachment": {
+     "state": "ABSENT",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "pocket": {
+     "state": "OBSERVED",
+     "value": "Present",
+     "route": "observed",
+     "source": "fixture"
+    },
+    "pocket_construction": {
+     "state": "NESTED_IN_POCKETS",
+     "why": "CA#29: carried inside pocket.pockets[] (passed to the predicate with the pocket token)"
+    },
+    "pocket_projection": {
+     "state": "NESTED_IN_POCKETS",
+     "why": "CA#29: carried inside pocket.pockets[] (passed to the predicate with the pocket token)"
+    },
+    "shoulder_connection": {
+     "state": "NOT_APPLICABLE"
+    },
+    "waist_definition": {
+     "state": "OBSERVED",
+     "value": "Undefined",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "asymmetry": {
+     "state": "OBSERVED",
+     "value": "None",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C1"
+     }
+    },
+    "slit": {
+     "state": "NOT_APPLICABLE"
+    }
+   },
+   "completeness": {
+    "observed": 12,
+    "absent": 2,
+    "not_visible": 0,
+    "unknown": 0,
+    "not_emitted": 0,
+    "not_applicable": 4
+   },
+   "evidence_classes": {
+    "hidden_by_participant": [],
+    "cropped_or_fragmentary": [],
+    "unknown": [],
+    "not_emitted": []
+   },
+   "frozen_member_diagnostic": {
+    "scope": "GARMENT-LEVEL READ-ONLY DIAGNOSTIC (frozen Step 2 successor V4 evaluateMember); NOT a Full-Look TC Direction",
+    "member_direction": "TRANSFORMATIVE",
+    "silhouette": {
+     "v": "TRUE",
+     "rule": "SIL-TRUE-OVERSIZED"
+    },
+    "proportion": {
+     "v": "FALSE",
+     "rule": "PRO-FALSE-Q6"
+    },
+    "construction": {
+     "v": "FALSE",
+     "rule": "CON-FALSE-C1-TAILORED"
+    },
+    "asymmetry": {
+     "departure_exists": false,
+     "rule": null
+    },
+    "input_contract_rules": [],
+    "diagnostics": []
+   }
+  },
+  {
+   "component_ref": "c2",
+   "category": "Trouser",
+   "identity_state": "OBSERVED",
+   "archetype_key": "trouser",
+   "key_note": null,
+   "item_record_ref": "REC-M317-C2",
+   "predicate_read_facts": {
+    "fit": {
+     "state": "OBSERVED",
+     "value": "Oversized",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C2"
+     }
+    },
+    "sleeve_volume": {
+     "state": "NOT_APPLICABLE"
+    },
+    "shoulder_structure": {
+     "state": "NOT_APPLICABLE"
+    },
+    "shoulder_span": {
+     "state": "NOT_APPLICABLE"
+    },
+    "silhouette": {
+     "state": "OBSERVED",
+     "value": "Straight",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C2"
+     }
+    },
+    "length": {
+     "state": "OBSERVED",
+     "value": "Full Length",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C2"
+     }
+    },
+    "sleeve": {
+     "state": "NOT_APPLICABLE"
+    },
+    "collar": {
+     "state": "NOT_APPLICABLE"
+    },
+    "closure_type": {
+     "state": "NOT_APPLICABLE"
+    },
+    "front_opening_extent": {
+     "state": "NOT_APPLICABLE"
+    },
+    "material": {
+     "state": "OBSERVED",
+     "value": "Wool",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C2"
+     }
+    },
+    "surface": {
+     "state": "ABSENT",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C2"
+     }
+    },
+    "attachment": {
+     "state": "ABSENT",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C2"
+     }
+    },
+    "pocket": {
+     "state": "NOT_VISIBLE",
+     "limitation": [
+      "OCCLUDED_BY_OTHER_GARMENT"
+     ],
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C2"
+     }
+    },
+    "pocket_construction": {
+     "state": "NOT_APPLICABLE",
+     "why": "pocket not Present"
+    },
+    "pocket_projection": {
+     "state": "NOT_APPLICABLE",
+     "why": "pocket not Present"
+    },
+    "shoulder_connection": {
+     "state": "NOT_APPLICABLE"
+    },
+    "waist_definition": {
+     "state": "NOT_APPLICABLE"
+    },
+    "asymmetry": {
+     "state": "OBSERVED",
+     "value": "None",
+     "route": "derived",
+     "source": "item_record",
+     "lineage": {
+      "item_record_ref": "REC-M317-C2"
+     }
+    },
+    "slit": {
+     "state": "NOT_APPLICABLE"
+    }
+   },
+   "completeness": {
+    "observed": 5,
+    "absent": 2,
+    "not_visible": 1,
+    "unknown": 0,
+    "not_emitted": 0,
+    "not_applicable": 12
+   },
+   "evidence_classes": {
+    "hidden_by_participant": [
+     "pocket"
+    ],
+    "cropped_or_fragmentary": [],
+    "unknown": [],
+    "not_emitted": []
+   },
+   "trouser_distinction": "Tailored",
+   "frozen_member_diagnostic": {
+    "scope": "GARMENT-LEVEL READ-ONLY DIAGNOSTIC (frozen Step 2 successor V4 evaluateMember); NOT a Full-Look TC Direction",
+    "member_direction": "TRANSFORMATIVE",
+    "silhouette": {
+     "v": "TRUE",
+     "rule": "SIL-TRUE-OVERSIZED"
+    },
+    "proportion": {
+     "v": "FALSE",
+     "rule": "PRO-FALSE-Q2"
+    },
+    "construction": {
+     "v": "FALSE",
+     "rule": "CON-FALSE-C1"
+    },
+    "asymmetry": {
+     "departure_exists": false,
+     "rule": null
+    },
+    "input_contract_rules": [],
+    "diagnostics": []
+   }
+  }
+ ]
+}
