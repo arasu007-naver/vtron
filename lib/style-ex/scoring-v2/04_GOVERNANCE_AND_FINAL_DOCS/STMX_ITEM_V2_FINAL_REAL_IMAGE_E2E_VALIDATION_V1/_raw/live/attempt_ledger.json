@@ -1,0 +1,1493 @@
+{
+ "attempts": [
+  {
+   "slot": 1,
+   "kind": "VISION",
+   "test": "01",
+   "ref": "REF_000520",
+   "image_sha256": "cb0aa109390f14e5f8d8353564d7318e81b80a1cc615591cc3b1de6d0602a445",
+   "prompt_sha256": "aa6119bb338000cf7344112f7596cd1656946ea7068f44db5f42cb16cfe1dbd8",
+   "request_body_sha256": "1fc0b0a8ddf25921e7f884915b0af0b074435c68b089cc71a6141bcc04a105b5",
+   "request_started": "2026-10-29T07:52:04.252Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 1.0236,
+   "spent_before_usd": 0,
+   "reserve": false,
+   "latency_ms": 32458,
+   "http_status": 200,
+   "raw_file": "slot01_VISION_REF_000520.json",
+   "raw_sha256": "f13da2538465ff0af35a976e3bfdc17a4e72b860d8a328fd0093cac649362c1a",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 66126,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 2596,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.3955,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 2,
+   "kind": "COLOUR",
+   "test": "01",
+   "ref": "REF_000520",
+   "image_sha256": "cb0aa109390f14e5f8d8353564d7318e81b80a1cc615591cc3b1de6d0602a445",
+   "prompt_sha256": "a8180f114979ed0a392df4fe0551ffdcc9f2fae5663fe3ea41ee7b8f3a40dd54",
+   "request_body_sha256": "1f412d36547559ea70e4f12f5f1c69d3638eea3f601a6825db616e19c4c79cc4",
+   "request_started": "2026-10-29T07:52:36.730Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 0.3955,
+   "reserve": false,
+   "latency_ms": 5992,
+   "http_status": 200,
+   "raw_file": "slot02_COLOUR_REF_000520.json",
+   "raw_sha256": "1cefc8858b7f5575c5fd26f8b2c565ec297382d6519e6e4c5d8ac29f42d2e76c",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 10451,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 375,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.0616,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 3,
+   "kind": "VISION",
+   "test": "02",
+   "ref": "REF_000010",
+   "image_sha256": "b5a89565efbdfb6682fd124b2ef634d4f4f52b239f19fb0e52369b1dbf998c95",
+   "prompt_sha256": "aa6119bb338000cf7344112f7596cd1656946ea7068f44db5f42cb16cfe1dbd8",
+   "request_body_sha256": "4c62c68703fc6c5fce4d2c6064911d000d4237aa3796dc9f8e82a1382864f6fc",
+   "request_started": "2026-10-29T07:52:42.930Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 0.4571,
+   "reserve": false,
+   "latency_ms": 85602,
+   "http_status": 200,
+   "raw_file": "slot03_VISION_REF_000010.json",
+   "raw_sha256": "33c5b614748dbfdbc3f585f1a97918b1504cfe8d3da92298bcca59c97f204f25",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 61968,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 8192,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "max_tokens",
+   "cost_usd": 0.5146,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 5,
+   "kind": "VISION",
+   "test": "03",
+   "ref": "REF_000841",
+   "image_sha256": "7b367a674fba8a111c1e460a0c8d48907f997681a0a08ff8a450899c98ae8333",
+   "prompt_sha256": "aa6119bb338000cf7344112f7596cd1656946ea7068f44db5f42cb16cfe1dbd8",
+   "request_body_sha256": "8b5754f421c24b7a035146f1d93d292db1ac43249041913f00cd417b051851ed",
+   "request_started": "2026-10-29T07:54:08.544Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 0.9717,
+   "reserve": false,
+   "latency_ms": 64400,
+   "http_status": 200,
+   "raw_file": "slot05_VISION_REF_000841.json",
+   "raw_sha256": "2a0ed03ded8820360576620cf7f5109c467658a46aeb22436043a7666491ce5d",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 65598,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 5985,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.4776,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 7,
+   "kind": "VISION",
+   "test": "04",
+   "ref": "REF_000840",
+   "image_sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45",
+   "prompt_sha256": "aa6119bb338000cf7344112f7596cd1656946ea7068f44db5f42cb16cfe1dbd8",
+   "request_body_sha256": "f250a6dbd0404a9fd39c67887f2a3dfe2cfa56d7d0c951ff8731eff9eda68828",
+   "request_started": "2026-10-29T07:55:12.950Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 1.4493,
+   "reserve": false,
+   "latency_ms": 50478,
+   "http_status": 200,
+   "raw_file": "slot07_VISION_REF_000840.json",
+   "raw_sha256": "214ccc1f8c66cc2946fb29fe8ca644f50c5e2c71c6ee465f9f2b962c73664269",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 62104,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 4641,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.4265,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 8,
+   "kind": "COLOUR",
+   "test": "04",
+   "ref": "REF_000840",
+   "image_sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45",
+   "prompt_sha256": "7c64a518835ae8990270996322b56738b9efa94e8fefa766666443d99eaecce5",
+   "request_body_sha256": "6c98f655ae6c9b02ddfd6813bb370b7b72366717a94a62eb2a511fb054ac0658",
+   "request_started": "2026-10-29T07:56:03.434Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 1.8758,
+   "reserve": false,
+   "latency_ms": 4535,
+   "http_status": 200,
+   "raw_file": "slot08_COLOUR_REF_000840.json",
+   "raw_sha256": "6c86d456a25dfcefe7d34ba144a6e76cedbe8c3b2588a84d7142685f104e76b1",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 6498,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 375,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.0419,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 9,
+   "kind": "VISION",
+   "test": "05",
+   "ref": "REF_000810",
+   "image_sha256": "5fbc157593a724f6ad3a6be2d37043084fefdf5a51e2fcdc8017c9d32e07d767",
+   "prompt_sha256": "aa6119bb338000cf7344112f7596cd1656946ea7068f44db5f42cb16cfe1dbd8",
+   "request_body_sha256": "bc1639d9b17eeb830e0fb82cfb047908fd4d5ad09975bb3d8471ca92f36d04b1",
+   "request_started": "2026-10-29T07:56:08.038Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 1.9177,
+   "reserve": false,
+   "latency_ms": 62835,
+   "http_status": 200,
+   "raw_file": "slot09_VISION_REF_000810.json",
+   "raw_sha256": "d3a0ac9efd111bc74d68fa072ebc518960b44cbffd6dd6a0748c1e9202eb104c",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 65469,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 5978,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.4768,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 11,
+   "kind": "VISION",
+   "test": "06",
+   "ref": "REF_000816",
+   "image_sha256": "1f2d237f69fd042f818f721595556375e5052c812c62e39d96a0b05cc8fecfce",
+   "prompt_sha256": "aa6119bb338000cf7344112f7596cd1656946ea7068f44db5f42cb16cfe1dbd8",
+   "request_body_sha256": "c58a92703b0330a02a2bd7379dc058e226dcf6c3dd0c73e9faa0ead089707f29",
+   "request_started": "2026-10-29T07:57:10.881Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 2.3945,
+   "reserve": false,
+   "latency_ms": 43215,
+   "http_status": 200,
+   "raw_file": "slot11_VISION_REF_000816.json",
+   "raw_sha256": "f4308a33c47543d2bc451f1c8a455fa5223f7327661942ab13690b002a0e80bb",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 63150,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 3225,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.3964,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 12,
+   "kind": "COLOUR",
+   "test": "06",
+   "ref": "REF_000816",
+   "image_sha256": "1f2d237f69fd042f818f721595556375e5052c812c62e39d96a0b05cc8fecfce",
+   "prompt_sha256": "dae5948934cd5fcec5ac5b44a93bab558edeca462ff74c44fa355fc4f61a2211",
+   "request_body_sha256": "44916d60487e22c4c1906b8acdaa1d53cdcd560fa8309c9b4c2e68f1cf9adcac",
+   "request_started": "2026-10-29T07:57:54.103Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 2.7909,
+   "reserve": false,
+   "latency_ms": 4362,
+   "http_status": 200,
+   "raw_file": "slot12_COLOUR_REF_000816.json",
+   "raw_sha256": "1c317fbeffa8417e6fc81be96b8add815da1962f85057991da0d2b7f6ad01072",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 7546,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 338,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.0462,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 13,
+   "kind": "VISION",
+   "test": "07",
+   "ref": "REF_000849",
+   "image_sha256": "09e3f9dbe8842fd206f067b98fea72241b3232e76adab7119aa7a4a137466b1e",
+   "prompt_sha256": "aa6119bb338000cf7344112f7596cd1656946ea7068f44db5f42cb16cfe1dbd8",
+   "request_body_sha256": "240ede6d5ea4768a98d0264a751ca426fb3575e9c391ed86882bc58087df2538",
+   "request_started": "2026-10-29T07:57:58.483Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 2.8371,
+   "reserve": false,
+   "latency_ms": 52039,
+   "http_status": 200,
+   "raw_file": "slot13_VISION_REF_000849.json",
+   "raw_sha256": "fae50a8844a5db710ca9d87fef2d19ac35aae15a256d597e1260175348abd8e9",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 63366,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 4782,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.4364,
+   "http_outcome": "OK"
+  },
+  {
+   "slot": 14,
+   "kind": "COLOUR",
+   "test": "07",
+   "ref": "REF_000849",
+   "image_sha256": "09e3f9dbe8842fd206f067b98fea72241b3232e76adab7119aa7a4a137466b1e",
+   "prompt_sha256": "85d14990277e083ee81f7e6375ee5a87dcea7cb43c7db015b4c3f11d8701834a",
+   "request_body_sha256": "27f0098e8ccfae31d9dcbe79ceec4205b710625697f713d16821311ad3129aca",
+   "request_started": "2026-10-29T07:58:50.530Z",
+   "model_requested": "claude-opus-4-8",
+   "max_tokens": 8192,
+   "worst_case_usd_pre_call": 0.5594,
+   "spent_before_usd": 3.2735,
+   "reserve": false,
+   "latency_ms": 4716,
+   "http_status": 200,
+   "raw_file": "slot14_COLOUR_REF_000849.json",
+   "raw_sha256": "930d4f21f55708cc7c7a41ef1fc454cb17aa345834e5776eda7be7b34b6bbcb4",
+   "model_returned": "claude-opus-4-8",
+   "usage": {
+    "input_tokens": 7711,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 342,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+   },
+   "stop_reason": "end_turn",
+   "cost_usd": 0.0471,
+   "http_outcome": "OK"
+  }
+ ],
+ "spent_usd": 3.3206,
+ "run_state": "LIVE_COMPLETE",
+ "results": [
+  {
+   "test": "01",
+   "ref": "REF_000520",
+   "image_sha256": "cb0aa109390f14e5f8d8353564d7318e81b80a1cc615591cc3b1de6d0602a445",
+   "vision": {
+    "attempt": "OK",
+    "guard_refusal": null,
+    "ok": true,
+    "error": null,
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "category": "Trouser",
+      "role": "Primary",
+      "prominence": "dominant"
+     }
+    ]
+   },
+   "units": [
+    {
+     "unit": "U1",
+     "type": "ITEM",
+     "categories": [
+      "Trouser"
+     ],
+     "mapping": {
+      "ok": true,
+      "target_ids": [
+       "target_1"
+      ]
+     }
+    }
+   ],
+   "colour": {
+    "scope": [
+     "target_1"
+    ],
+    "scope_unit": "ITEM",
+    "manifest_ok": true,
+    "manifest_error": null,
+    "attempt": "OK",
+    "guard_refusal": null,
+    "thrown": null,
+    "observations": [
+     {
+      "target_id": "target_1",
+      "category": "Trouser",
+      "status": "OBSERVED",
+      "primary": "gray",
+      "reject_code": null
+     }
+    ],
+    "packet_valid": true
+   },
+   "scored": [
+    {
+     "unit": "U1",
+     "type": "ITEM",
+     "target_ids": [
+      "target_1"
+     ],
+     "dry_run_substitute": false,
+     "result_status": "COMPLETE",
+     "customer_output": {
+      "EI": {
+       "direction": "E",
+       "reason": "그레이 바탕에 가공된 표면이 더해져 시각적 표현이 드러나는 Expressive 방향으로 판단됩니다."
+      },
+      "TC": {
+       "direction": "TRANSFORMATIVE",
+       "reason": "실루엣이 이 아이템 유형의 기본 형태를 벗어나 Transformative 방향으로 판단됩니다."
+      },
+      "SR": {
+       "direction": "S",
+       "reason": "끝이 퍼지는 플레어 실루엣이지만 슬림하게 재단된 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+      },
+      "DM": {
+       "direction": "D",
+       "reason": "옷 전체에 걸친 큰 표면 가공이 주변과 어느 정도 구분되어 옷 전체에 걸쳐 보이므로 옷의 인상을 이끄는 디자인 요소가 되어 Detail 방향으로 판단됩니다."
+      }
+     },
+     "colour_association": {
+      "scoring_unit": {
+       "type": "ITEM",
+       "target_ids": [
+        "target_1"
+       ]
+      },
+      "packet": {
+       "packet_sha256": "68a27872eb69f41d6dcc79a572e2b90d195728771a72d9863d87ee1fcabd91dd",
+       "manifest_sha256": "bffdc22fe1c244e1a1647bd433a0b4501076c57da336a00d4129aab616730304",
+       "packet_unit": {
+        "type": "ITEM",
+        "unit_id": "unit-3ef7d3a97da2d49671a4"
+       },
+       "source": "TARGET_AWARE_ACQUISITION",
+       "successor": {
+        "id": "STMX_COLOUR_TARGET_AWARE_ACQUISITION_V1_CANDIDATE",
+        "status": "CANDIDATE — offline-verified only · not production · not frozen · live extraction accuracy NOT_DEMONSTRATED (CEO order 2026-10-29, G53 ACTIVE)",
+        "seal_directory_aggregate_sha256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b"
+       }
+      },
+      "per_target": [
+       {
+        "target_id": "target_1",
+        "state": "OWN_COLOUR_ATTACHED",
+        "primary_color_family": "gray",
+        "member_role": null,
+        "provenance": {
+         "source": "TARGET_AWARE_ACQUISITION",
+         "request_id": "tac-a80c1ccd5b9447fbb4a9",
+         "prompt_sha256": "a8180f114979ed0a392df4fe0551ffdcc9f2fae5663fe3ea41ee7b8f3a40dd54",
+         "mode": "ONE_CALL",
+         "model": "claude-opus-4-8"
+        }
+       }
+      ],
+      "unused_packet_observations": [],
+      "acquisition_needed_for_unit": null
+     },
+     "evaluation": {
+      "unit": "U1",
+      "type": "ITEM",
+      "result_status": "COMPLETE",
+      "axes": [
+       {
+        "axis": "EI",
+        "actual": "E",
+        "expected": "NEUTRAL",
+        "gt": "EI5",
+        "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+        "verdict": "MISMATCH",
+        "reason": "그레이 바탕에 가공된 표면이 더해져 시각적 표현이 드러나는 Expressive 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "TC",
+        "actual": "TRANSFORMATIVE",
+        "expected": "TRANSFORMATIVE",
+        "gt": "TC6",
+        "basis": "CEO GT TC6",
+        "verdict": "MATCH",
+        "reason": "실루엣이 이 아이템 유형의 기본 형태를 벗어나 Transformative 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "SR",
+        "actual": "S",
+        "expected": "S",
+        "gt": "SR6",
+        "basis": "CEO GT SR6",
+        "verdict": "MATCH",
+        "reason": "끝이 퍼지는 플레어 실루엣이지만 슬림하게 재단된 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "DM",
+        "actual": "D",
+        "expected": "D",
+        "gt": "DM6",
+        "basis": "CEO GT DM6",
+        "verdict": "MATCH",
+        "reason": "옷 전체에 걸친 큰 표면 가공이 주변과 어느 정도 구분되어 옷 전체에 걸쳐 보이므로 옷의 인상을 이끄는 디자인 요소가 되어 Detail 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       }
+      ],
+      "matches": 3,
+      "compared": 4
+     }
+    }
+   ],
+   "extra_items": [],
+   "outcome": "SCORED"
+  },
+  {
+   "test": "02",
+   "ref": "REF_000010",
+   "image_sha256": "b5a89565efbdfb6682fd124b2ef634d4f4f52b239f19fb0e52369b1dbf998c95",
+   "vision": {
+    "attempt": "OK",
+    "guard_refusal": null,
+    "ok": false,
+    "error": {
+     "stage": "model_call",
+     "code": "UNPARSEABLE_RESPONSE",
+     "detail": "model output not parseable as JSON",
+     "attempts": 1
+    }
+   },
+   "outcome": "VISION_FAILED"
+  },
+  {
+   "test": "03",
+   "ref": "REF_000841",
+   "image_sha256": "7b367a674fba8a111c1e460a0c8d48907f997681a0a08ff8a450899c98ae8333",
+   "vision": {
+    "attempt": "OK",
+    "guard_refusal": null,
+    "ok": true,
+    "error": null,
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "category": "Jacket",
+      "role": "Primary",
+      "prominence": "dominant"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "category": null,
+      "role": "Incidental",
+      "prominence": null
+     },
+     {
+      "target_id": "target_3",
+      "eligible": false,
+      "category": null,
+      "role": "Incidental",
+      "prominence": null
+     }
+    ]
+   },
+   "units": [
+    {
+     "unit": "U1",
+     "type": "SUIT",
+     "categories": [
+      "Jacket",
+      "Trouser"
+     ],
+     "mapping": {
+      "ok": false,
+      "code": "UNIT_MAPPING_FAILED",
+      "detail": "Trouser: 0 eligible V1.3 target(s) (need exactly 1) · eligible = target_1 Jacket"
+     }
+    }
+   ],
+   "outcome": "UNIT_MAPPING_FAILED"
+  },
+  {
+   "test": "04",
+   "ref": "REF_000840",
+   "image_sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45",
+   "vision": {
+    "attempt": "OK",
+    "guard_refusal": null,
+    "ok": true,
+    "error": null,
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "category": "Jacket",
+      "role": "Primary",
+      "prominence": "dominant"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "category": null,
+      "role": "Incidental",
+      "prominence": null
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "category": "Trouser",
+      "role": "Primary",
+      "prominence": "secondary"
+     }
+    ]
+   },
+   "units": [
+    {
+     "unit": "U1",
+     "type": "SUIT",
+     "categories": [
+      "Jacket",
+      "Trouser"
+     ],
+     "mapping": {
+      "ok": true,
+      "target_ids": [
+       "target_1",
+       "target_3"
+      ]
+     }
+    }
+   ],
+   "colour": {
+    "scope": [
+     "target_1",
+     "target_3"
+    ],
+    "scope_unit": "SUIT",
+    "manifest_ok": true,
+    "manifest_error": null,
+    "attempt": "OK",
+    "guard_refusal": null,
+    "thrown": null,
+    "observations": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "status": "OBSERVED",
+      "primary": "beige",
+      "reject_code": null
+     },
+     {
+      "target_id": "target_3",
+      "category": "Trouser",
+      "status": "OBSERVED",
+      "primary": "beige",
+      "reject_code": null
+     }
+    ],
+    "packet_valid": true
+   },
+   "scored": [
+    {
+     "unit": "U1",
+     "type": "SUIT",
+     "target_ids": [
+      "target_1",
+      "target_3"
+     ],
+     "dry_run_substitute": false,
+     "result_status": "COMPLETE",
+     "customer_output": {
+      "EI": {
+       "direction": "I",
+       "reason": "베이지 바탕에 시각적 표현이 절제된 Introvert 방향으로 판단됩니다."
+      },
+      "TC": {
+       "direction": "TRANSFORMATIVE",
+       "reason": "재킷은 오버사이즈 핏이 이 아이템 유형의 기본 실루엣을 크게 벗어나 Transformative 방향으로 판단됩니다. 재킷의 이 변형이 수트 전체에 적용되어 수트를 Transformative 방향으로 판단합니다."
+      },
+      "SR": {
+       "direction": "R",
+       "reason": "재킷은 넉넉하게 재단된 오버사이즈 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다. 수트 전체의 방향은 재킷 실루엣이 결정합니다. 바지는 Structured 쪽이지만 수트 방향을 바꾸지 않습니다."
+      },
+      "DM": {
+       "direction": "M",
+       "reason": "재킷은 등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다. 바지는 등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다. 두 구성품 모두에서 충분한 디자인 디테일이 확인되지 않아 수트 전체를 Minimal 방향으로 판단합니다."
+      }
+     },
+     "colour_association": {
+      "scoring_unit": {
+       "type": "SUIT",
+       "target_ids": [
+        "target_1",
+        "target_3"
+       ]
+      },
+      "packet": {
+       "packet_sha256": "33d8ee5b27258c999f92f430274e177682d05e9df712c73352f02448df98c451",
+       "manifest_sha256": "34babc2006f6532045085e5827466b73ec83525ca7a2947fc8082b887d9512de",
+       "packet_unit": {
+        "type": "SUIT",
+        "unit_id": "unit-ab0f7fca0c9417d99285"
+       },
+       "source": "TARGET_AWARE_ACQUISITION",
+       "successor": {
+        "id": "STMX_COLOUR_TARGET_AWARE_ACQUISITION_V1_CANDIDATE",
+        "status": "CANDIDATE — offline-verified only · not production · not frozen · live extraction accuracy NOT_DEMONSTRATED (CEO order 2026-10-29, G53 ACTIVE)",
+        "seal_directory_aggregate_sha256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b"
+       }
+      },
+      "per_target": [
+       {
+        "target_id": "target_1",
+        "state": "OWN_COLOUR_ATTACHED",
+        "primary_color_family": "beige",
+        "member_role": "Jacket",
+        "provenance": {
+         "source": "TARGET_AWARE_ACQUISITION",
+         "request_id": "tac-e723f1a00bb945be9afa",
+         "prompt_sha256": "7c64a518835ae8990270996322b56738b9efa94e8fefa766666443d99eaecce5",
+         "mode": "ONE_CALL",
+         "model": "claude-opus-4-8"
+        }
+       },
+       {
+        "target_id": "target_3",
+        "state": "OWN_COLOUR_ATTACHED",
+        "primary_color_family": "beige",
+        "member_role": "Trouser",
+        "provenance": {
+         "source": "TARGET_AWARE_ACQUISITION",
+         "request_id": "tac-e723f1a00bb945be9afa",
+         "prompt_sha256": "7c64a518835ae8990270996322b56738b9efa94e8fefa766666443d99eaecce5",
+         "mode": "ONE_CALL",
+         "model": "claude-opus-4-8"
+        }
+       }
+      ],
+      "unused_packet_observations": [],
+      "acquisition_needed_for_unit": null
+     },
+     "evaluation": {
+      "unit": "U1",
+      "type": "SUIT",
+      "result_status": "COMPLETE",
+      "axes": [
+       {
+        "axis": "EI",
+        "actual": "I",
+        "expected": "NEUTRAL",
+        "gt": "EI5",
+        "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+        "verdict": "MISMATCH",
+        "reason": "베이지 바탕에 시각적 표현이 절제된 Introvert 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "TC",
+        "actual": "TRANSFORMATIVE",
+        "expected": "TRANSFORMATIVE",
+        "gt": "TC7",
+        "basis": "CEO GT TC7",
+        "verdict": "MATCH",
+        "reason": "재킷은 오버사이즈 핏이 이 아이템 유형의 기본 실루엣을 크게 벗어나 Transformative 방향으로 판단됩니다. 재킷의 이 변형이 수트 전체에 적용되어 수트를 Transformative 방향으로 판단합니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "SR",
+        "actual": "R",
+        "expected": "S",
+        "gt": "SR6",
+        "basis": "CEO GT SR6",
+        "verdict": "MISMATCH",
+        "reason": "재킷은 넉넉하게 재단된 오버사이즈 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다. 수트 전체의 방향은 재킷 실루엣이 결정합니다. 바지는 Structured 쪽이지만 수트 방향을 바꾸지 않습니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "DM",
+        "actual": "M",
+        "expected": "M",
+        "gt": "DM3",
+        "basis": "CEO GT DM3",
+        "verdict": "MATCH",
+        "reason": "재킷은 등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다. 바지는 등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다. 두 구성품 모두에서 충분한 디자인 디테일이 확인되지 않아 수트 전체를 Minimal 방향으로 판단합니다.",
+        "reason_status": "TEXT"
+       }
+      ],
+      "matches": 2,
+      "compared": 4
+     }
+    }
+   ],
+   "extra_items": [],
+   "outcome": "SCORED"
+  },
+  {
+   "test": "05",
+   "ref": "REF_000810",
+   "image_sha256": "5fbc157593a724f6ad3a6be2d37043084fefdf5a51e2fcdc8017c9d32e07d767",
+   "vision": {
+    "attempt": "OK",
+    "guard_refusal": null,
+    "ok": true,
+    "error": null,
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "category": "Jacket",
+      "role": "Primary",
+      "prominence": "dominant"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "category": null,
+      "role": "Incidental",
+      "prominence": null
+     }
+    ]
+   },
+   "units": [
+    {
+     "unit": "U1",
+     "type": "SUIT",
+     "categories": [
+      "Jacket",
+      "Skirt"
+     ],
+     "mapping": {
+      "ok": false,
+      "code": "UNIT_MAPPING_FAILED",
+      "detail": "Skirt: 0 eligible V1.3 target(s) (need exactly 1) · eligible = target_1 Jacket"
+     }
+    }
+   ],
+   "outcome": "UNIT_MAPPING_FAILED"
+  },
+  {
+   "test": "06",
+   "ref": "REF_000816",
+   "image_sha256": "1f2d237f69fd042f818f721595556375e5052c812c62e39d96a0b05cc8fecfce",
+   "vision": {
+    "attempt": "OK",
+    "guard_refusal": null,
+    "ok": true,
+    "error": null,
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "category": "Jacket",
+      "role": "Primary",
+      "prominence": "dominant"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "category": "Trouser",
+      "role": "Primary",
+      "prominence": "secondary"
+     }
+    ]
+   },
+   "units": [
+    {
+     "unit": "U1",
+     "type": "SUIT",
+     "categories": [
+      "Jacket",
+      "Trouser"
+     ],
+     "mapping": {
+      "ok": true,
+      "target_ids": [
+       "target_1",
+       "target_2"
+      ]
+     }
+    }
+   ],
+   "colour": {
+    "scope": [
+     "target_1",
+     "target_2"
+    ],
+    "scope_unit": "SUIT",
+    "manifest_ok": true,
+    "manifest_error": null,
+    "attempt": "OK",
+    "guard_refusal": null,
+    "thrown": null,
+    "observations": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "status": "OBSERVED",
+      "primary": "black",
+      "reject_code": null
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "status": "OBSERVED",
+      "primary": "black",
+      "reject_code": null
+     }
+    ],
+    "packet_valid": true
+   },
+   "scored": [
+    {
+     "unit": "U1",
+     "type": "SUIT",
+     "target_ids": [
+      "target_1",
+      "target_2"
+     ],
+     "dry_run_substitute": false,
+     "result_status": "COMPLETE",
+     "customer_output": {
+      "EI": {
+       "direction": "NEUTRAL",
+       "reason": "블랙은 재킷·바지 세트에서 두루 쓰이는 기본 색 조합이라 Expressive와 Introvert 고객 모두에게 추천할 수 있는 상품으로 지정되어 Neutral 방향으로 분류됩니다."
+      },
+      "TC": {
+       "direction": "CLASSIC",
+       "reason": "재킷은 레귤러 핏, 피크드 칼라와 싱글 브레스트 단추 여밈 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다. 바지는 레귤러 핏과 풀 길이 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다. 두 구성품 모두에서 상품 수준의 변형이 확인되지 않아 수트 전체를 Classic 방향으로 판단합니다."
+      },
+      "SR": {
+       "direction": "S",
+       "reason": "재킷은 기본 폭으로 재단된 레귤러 핏이고 어깨선이 가볍게 잡혀 있고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다. 수트 전체의 방향은 재킷 실루엣이 결정합니다."
+      },
+      "DM": {
+       "direction": "M",
+       "reason": "재킷은 등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다. 바지는 등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다. 두 구성품 모두에서 충분한 디자인 디테일이 확인되지 않아 수트 전체를 Minimal 방향으로 판단합니다."
+      }
+     },
+     "colour_association": {
+      "scoring_unit": {
+       "type": "SUIT",
+       "target_ids": [
+        "target_1",
+        "target_2"
+       ]
+      },
+      "packet": {
+       "packet_sha256": "b86e35d40f427afbd5ae3f92f9a2bc1f526796c7a53632e5146b38d3fb6e44d4",
+       "manifest_sha256": "af206260cf722fc3d827b2540baa231606378a86bb1113aa309bc32fbea89aea",
+       "packet_unit": {
+        "type": "SUIT",
+        "unit_id": "unit-d68c2e1c3f1915964ccc"
+       },
+       "source": "TARGET_AWARE_ACQUISITION",
+       "successor": {
+        "id": "STMX_COLOUR_TARGET_AWARE_ACQUISITION_V1_CANDIDATE",
+        "status": "CANDIDATE — offline-verified only · not production · not frozen · live extraction accuracy NOT_DEMONSTRATED (CEO order 2026-10-29, G53 ACTIVE)",
+        "seal_directory_aggregate_sha256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b"
+       }
+      },
+      "per_target": [
+       {
+        "target_id": "target_1",
+        "state": "OWN_COLOUR_ATTACHED",
+        "primary_color_family": "black",
+        "member_role": "Jacket",
+        "provenance": {
+         "source": "TARGET_AWARE_ACQUISITION",
+         "request_id": "tac-bd4cdc166d58c1f6d076",
+         "prompt_sha256": "dae5948934cd5fcec5ac5b44a93bab558edeca462ff74c44fa355fc4f61a2211",
+         "mode": "ONE_CALL",
+         "model": "claude-opus-4-8"
+        }
+       },
+       {
+        "target_id": "target_2",
+        "state": "OWN_COLOUR_ATTACHED",
+        "primary_color_family": "black",
+        "member_role": "Trouser",
+        "provenance": {
+         "source": "TARGET_AWARE_ACQUISITION",
+         "request_id": "tac-bd4cdc166d58c1f6d076",
+         "prompt_sha256": "dae5948934cd5fcec5ac5b44a93bab558edeca462ff74c44fa355fc4f61a2211",
+         "mode": "ONE_CALL",
+         "model": "claude-opus-4-8"
+        }
+       }
+      ],
+      "unused_packet_observations": [],
+      "acquisition_needed_for_unit": null
+     },
+     "evaluation": {
+      "unit": "U1",
+      "type": "SUIT",
+      "result_status": "COMPLETE",
+      "axes": [
+       {
+        "axis": "EI",
+        "actual": "NEUTRAL",
+        "expected": "NEUTRAL",
+        "gt": "EI5",
+        "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+        "verdict": "MATCH",
+        "reason": "블랙은 재킷·바지 세트에서 두루 쓰이는 기본 색 조합이라 Expressive와 Introvert 고객 모두에게 추천할 수 있는 상품으로 지정되어 Neutral 방향으로 분류됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "TC",
+        "actual": "CLASSIC",
+        "expected": "CLASSIC",
+        "gt": "TC4",
+        "basis": "CEO GT TC4",
+        "verdict": "MATCH",
+        "reason": "재킷은 레귤러 핏, 피크드 칼라와 싱글 브레스트 단추 여밈 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다. 바지는 레귤러 핏과 풀 길이 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다. 두 구성품 모두에서 상품 수준의 변형이 확인되지 않아 수트 전체를 Classic 방향으로 판단합니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "SR",
+        "actual": "S",
+        "expected": "S",
+        "gt": "SR6",
+        "basis": "CEO GT SR6",
+        "verdict": "MATCH",
+        "reason": "재킷은 기본 폭으로 재단된 레귤러 핏이고 어깨선이 가볍게 잡혀 있고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다. 수트 전체의 방향은 재킷 실루엣이 결정합니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "DM",
+        "actual": "M",
+        "expected": "M",
+        "gt": "DM3",
+        "basis": "CEO GT DM3",
+        "verdict": "MATCH",
+        "reason": "재킷은 등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다. 바지는 등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다. 두 구성품 모두에서 충분한 디자인 디테일이 확인되지 않아 수트 전체를 Minimal 방향으로 판단합니다.",
+        "reason_status": "TEXT"
+       }
+      ],
+      "matches": 4,
+      "compared": 4
+     }
+    }
+   ],
+   "extra_items": [],
+   "outcome": "SCORED"
+  },
+  {
+   "test": "07",
+   "ref": "REF_000849",
+   "image_sha256": "09e3f9dbe8842fd206f067b98fea72241b3232e76adab7119aa7a4a137466b1e",
+   "vision": {
+    "attempt": "OK",
+    "guard_refusal": null,
+    "ok": true,
+    "error": null,
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "category": "Jacket",
+      "role": "Primary",
+      "prominence": "dominant"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "category": null,
+      "role": "Incidental",
+      "prominence": null
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "category": "Trouser",
+      "role": "Primary",
+      "prominence": "dominant"
+     }
+    ]
+   },
+   "units": [
+    {
+     "unit": "U1",
+     "type": "ITEM",
+     "categories": [
+      "Jacket"
+     ],
+     "mapping": {
+      "ok": true,
+      "target_ids": [
+       "target_1"
+      ]
+     }
+    },
+    {
+     "unit": "U2",
+     "type": "ITEM",
+     "categories": [
+      "Trouser"
+     ],
+     "mapping": {
+      "ok": true,
+      "target_ids": [
+       "target_3"
+      ]
+     }
+    }
+   ],
+   "colour": {
+    "scope": [
+     "target_1",
+     "target_3"
+    ],
+    "scope_unit": "REQUESTED_TARGETS",
+    "manifest_ok": true,
+    "manifest_error": null,
+    "attempt": "OK",
+    "guard_refusal": null,
+    "thrown": null,
+    "observations": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "status": "OBSERVED",
+      "primary": "black",
+      "reject_code": null
+     },
+     {
+      "target_id": "target_3",
+      "category": "Trouser",
+      "status": "OBSERVED",
+      "primary": "gray",
+      "reject_code": null
+     }
+    ],
+    "packet_valid": true
+   },
+   "scored": [
+    {
+     "unit": "U1",
+     "type": "ITEM",
+     "target_ids": [
+      "target_1"
+     ],
+     "dry_run_substitute": false,
+     "result_status": "COMPLETE",
+     "customer_output": {
+      "EI": {
+       "direction": "NEUTRAL",
+       "reason": "블랙은 재킷에서 두루 쓰이는 기본 색 조합이라 Expressive와 Introvert 고객 모두에게 추천할 수 있는 상품으로 지정되어 Neutral 방향으로 분류됩니다."
+      },
+      "TC": {
+       "direction": "CLASSIC",
+       "reason": "릴랙스드 핏, 노치드 칼라와 싱글 브레스트 단추 여밈 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다."
+      },
+      "SR": {
+       "direction": "S",
+       "reason": "여유 있게 재단된 릴랙스드 핏이지만 어깨선이 가볍게 잡혀 있어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+      },
+      "DM": {
+       "direction": "M",
+       "reason": "등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다."
+      }
+     },
+     "colour_association": {
+      "scoring_unit": {
+       "type": "ITEM",
+       "target_ids": [
+        "target_1"
+       ]
+      },
+      "packet": {
+       "packet_sha256": "8a34ba5c568ec58256eeaece6ea1c6a1b13e185a37f994eb615c18b02f3feda9",
+       "manifest_sha256": "7631dda4eb1dda79354f0d163e3b545a55e34b1a4cbb0146144a5825be5343a7",
+       "packet_unit": {
+        "type": "REQUESTED_TARGETS",
+        "unit_id": "unit-56e4b67c17a0d4076f42"
+       },
+       "source": "TARGET_AWARE_ACQUISITION",
+       "successor": {
+        "id": "STMX_COLOUR_TARGET_AWARE_ACQUISITION_V1_CANDIDATE",
+        "status": "CANDIDATE — offline-verified only · not production · not frozen · live extraction accuracy NOT_DEMONSTRATED (CEO order 2026-10-29, G53 ACTIVE)",
+        "seal_directory_aggregate_sha256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b"
+       }
+      },
+      "per_target": [
+       {
+        "target_id": "target_1",
+        "state": "OWN_COLOUR_ATTACHED",
+        "primary_color_family": "black",
+        "member_role": null,
+        "provenance": {
+         "source": "TARGET_AWARE_ACQUISITION",
+         "request_id": "tac-2ce16eec23f0377243db",
+         "prompt_sha256": "85d14990277e083ee81f7e6375ee5a87dcea7cb43c7db015b4c3f11d8701834a",
+         "mode": "ONE_CALL",
+         "model": "claude-opus-4-8"
+        }
+       }
+      ],
+      "unused_packet_observations": [
+       {
+        "target_id": "target_3",
+        "status": "OBSERVED",
+        "use": "NOT_IN_SCORING_UNIT"
+       }
+      ],
+      "acquisition_needed_for_unit": null
+     },
+     "evaluation": {
+      "unit": "U1",
+      "type": "ITEM",
+      "result_status": "COMPLETE",
+      "axes": [
+       {
+        "axis": "EI",
+        "actual": "NEUTRAL",
+        "expected": "NEUTRAL",
+        "gt": "EI5",
+        "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+        "verdict": "MATCH",
+        "reason": "블랙은 재킷에서 두루 쓰이는 기본 색 조합이라 Expressive와 Introvert 고객 모두에게 추천할 수 있는 상품으로 지정되어 Neutral 방향으로 분류됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "TC",
+        "actual": "CLASSIC",
+        "expected": "TRANSFORMATIVE",
+        "gt": "TC6",
+        "basis": "CEO GT TC6",
+        "verdict": "MISMATCH",
+        "reason": "릴랙스드 핏, 노치드 칼라와 싱글 브레스트 단추 여밈 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "SR",
+        "actual": "S",
+        "expected": null,
+        "gt": "SR5",
+        "basis": "CEO GT SR5 — 5 is not compared on SR",
+        "verdict": "NOT_COMPARED",
+        "reason": "여유 있게 재단된 릴랙스드 핏이지만 어깨선이 가볍게 잡혀 있어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "DM",
+        "actual": "M",
+        "expected": "M",
+        "gt": "DM3",
+        "basis": "CEO GT DM3",
+        "verdict": "MATCH",
+        "reason": "등록된 디자인 디테일 시스템이 관측되지 않은 기본 구성이라 Minimal 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       }
+      ],
+      "matches": 2,
+      "compared": 3
+     }
+    },
+    {
+     "unit": "U2",
+     "type": "ITEM",
+     "target_ids": [
+      "target_3"
+     ],
+     "dry_run_substitute": false,
+     "result_status": "COMPLETE",
+     "customer_output": {
+      "EI": {
+       "direction": "NEUTRAL",
+       "reason": "그레이는 바지에서 두루 쓰이는 기본 색 조합이라 Expressive와 Introvert 고객 모두에게 추천할 수 있는 상품으로 지정되어 Neutral 방향으로 분류됩니다."
+      },
+      "TC": {
+       "direction": "CLASSIC",
+       "reason": "릴랙스드 핏과 풀 길이 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다."
+      },
+      "SR": {
+       "direction": "R",
+       "reason": "여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+      },
+      "DM": {
+       "direction": "M",
+       "reason": "한 곳에 배치된 중간 크기의 표면 가공이 주변과 비슷한 톤이라 디테일로 두드러지지 않아 Minimal 방향으로 판단됩니다."
+      }
+     },
+     "colour_association": {
+      "scoring_unit": {
+       "type": "ITEM",
+       "target_ids": [
+        "target_3"
+       ]
+      },
+      "packet": {
+       "packet_sha256": "8a34ba5c568ec58256eeaece6ea1c6a1b13e185a37f994eb615c18b02f3feda9",
+       "manifest_sha256": "7631dda4eb1dda79354f0d163e3b545a55e34b1a4cbb0146144a5825be5343a7",
+       "packet_unit": {
+        "type": "REQUESTED_TARGETS",
+        "unit_id": "unit-56e4b67c17a0d4076f42"
+       },
+       "source": "TARGET_AWARE_ACQUISITION",
+       "successor": {
+        "id": "STMX_COLOUR_TARGET_AWARE_ACQUISITION_V1_CANDIDATE",
+        "status": "CANDIDATE — offline-verified only · not production · not frozen · live extraction accuracy NOT_DEMONSTRATED (CEO order 2026-10-29, G53 ACTIVE)",
+        "seal_directory_aggregate_sha256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b"
+       }
+      },
+      "per_target": [
+       {
+        "target_id": "target_3",
+        "state": "OWN_COLOUR_ATTACHED",
+        "primary_color_family": "gray",
+        "member_role": null,
+        "provenance": {
+         "source": "TARGET_AWARE_ACQUISITION",
+         "request_id": "tac-2ce16eec23f0377243db",
+         "prompt_sha256": "85d14990277e083ee81f7e6375ee5a87dcea7cb43c7db015b4c3f11d8701834a",
+         "mode": "ONE_CALL",
+         "model": "claude-opus-4-8"
+        }
+       }
+      ],
+      "unused_packet_observations": [
+       {
+        "target_id": "target_1",
+        "status": "OBSERVED",
+        "use": "NOT_IN_SCORING_UNIT"
+       }
+      ],
+      "acquisition_needed_for_unit": null
+     },
+     "evaluation": {
+      "unit": "U2",
+      "type": "ITEM",
+      "result_status": "COMPLETE",
+      "axes": [
+       {
+        "axis": "EI",
+        "actual": "NEUTRAL",
+        "expected": "NEUTRAL",
+        "gt": "EI5",
+        "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+        "verdict": "MATCH",
+        "reason": "그레이는 바지에서 두루 쓰이는 기본 색 조합이라 Expressive와 Introvert 고객 모두에게 추천할 수 있는 상품으로 지정되어 Neutral 방향으로 분류됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "TC",
+        "actual": "CLASSIC",
+        "expected": "TRANSFORMATIVE",
+        "gt": "TC6",
+        "basis": "CEO GT TC6",
+        "verdict": "MISMATCH",
+        "reason": "릴랙스드 핏과 풀 길이 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "SR",
+        "actual": "R",
+        "expected": "R",
+        "gt": "SR4",
+        "basis": "CEO GT SR4",
+        "verdict": "MATCH",
+        "reason": "여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       },
+       {
+        "axis": "DM",
+        "actual": "M",
+        "expected": null,
+        "gt": "DM5",
+        "basis": "CEO GT DM5 — 5 is not compared on DM",
+        "verdict": "NOT_COMPARED",
+        "reason": "한 곳에 배치된 중간 크기의 표면 가공이 주변과 비슷한 톤이라 디테일로 두드러지지 않아 Minimal 방향으로 판단됩니다.",
+        "reason_status": "TEXT"
+       }
+      ],
+      "matches": 2,
+      "compared": 3
+     }
+    }
+   ],
+   "extra_items": [
+    {
+     "category": "T-Shirt",
+     "mapping": {
+      "ok": false,
+      "code": "UNIT_MAPPING_FAILED",
+      "detail": "T-Shirt: 0 eligible V1.3 target(s) (need exactly 1) · eligible = target_1 Jacket, target_3 Trouser"
+     }
+    }
+   ],
+   "outcome": "SCORED"
+  }
+ ],
+ "anchor_sha256": "5b3e8e593ef7f5956a03bbd20aa005706f6ca199e9cbb84593c1d30d374c7e30",
+ "plan_sha256": "2f75a32d88fba3d65d2fe798c8d8243b11aa4c5fbd409a7d40d48db8704bb1b7",
+ "started": "2026-10-29T07:52:04.239Z",
+ "ended": "2026-10-29T07:58:55.259Z"
+}

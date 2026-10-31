@@ -1,0 +1,147 @@
+{
+ "packet_version": "TARGET_AWARE_COLOUR_PACKET_V1",
+ "successor": {
+  "id": "STMX_COLOUR_TARGET_AWARE_ACQUISITION_V1_CANDIDATE",
+  "status": "CANDIDATE — offline-verified only · not production · not frozen · live extraction accuracy NOT_DEMONSTRATED (CEO order 2026-10-29, G53 ACTIVE)",
+  "seal_directory_aggregate_sha256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b"
+ },
+ "colour_v1": {
+  "module": "run/color_recovery/color_contract_v1.js",
+  "module_sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+  "colour_prompt_sha256": "f444d2611e9ae9e693c15ee4f405ce56d445cf430891f719a292340abd44a420"
+ },
+ "image": {
+  "image_sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45",
+  "image_id": "FE-04"
+ },
+ "manifest": {
+  "image": {
+   "image_sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45",
+   "image_id": "FE-04"
+  },
+  "scoring_unit": {
+   "type": "SUIT",
+   "unit_id": "unit-ab0f7fca0c9417d99285"
+  },
+  "targets": [
+   {
+    "target_id": "target_1",
+    "category": "Jacket",
+    "descriptor": "Oversized single-breasted blazer with a long, wide notched lapel that rolls to a low two-button stance sitting around the natural waist; the body hangs straight and loose with substantial drop-shoulder construction so the shoulder line falls well past the wearer's own shoulders and the armhole sits low on the upper arm. Long sleeves nearly reach the knuckles, pushed slightly so the hand enters the lower welt pocket. Flap pockets sit at the lower front hips and a welt pocket sits on the left chest; the overall drape is soft and tailored rather than crisply structured, the cloth falling in gentle folds while holding the jacket's columnar line.",
+    "identification": "CATEGORY_UNIQUE",
+    "member_role": "Jacket",
+    "descriptor_colour_terms": []
+   },
+   {
+    "target_id": "target_3",
+    "category": "Trouser",
+    "descriptor": "Cropped tailored trousers ending at the ankle bone, cut with a clean straight leg that keeps its width to the hem rather than tapering; the fabric breaks softly above the shoe with a relaxed drape through the leg, matching the suiting cloth of the jacket.",
+    "identification": "CATEGORY_UNIQUE",
+    "member_role": "Trouser",
+    "descriptor_colour_terms": []
+   }
+  ],
+  "manifest_sha256": "34babc2006f6532045085e5827466b73ec83525ca7a2947fc8082b887d9512de"
+ },
+ "observations": [
+  {
+   "target_id": "target_1",
+   "category": "Jacket",
+   "member_role": "Jacket",
+   "scoring_unit_id": "unit-ab0f7fca0c9417d99285",
+   "status": "OBSERVED",
+   "color_observation": {
+    "primary_color_family": "beige",
+    "color_lightness": "light",
+    "color_usage": "subtle",
+    "multi_color": false,
+    "color_effect": "none",
+    "additional_colors": [
+     {
+      "color_family": "black",
+      "carrier_kind": "closure",
+      "carrier_ref": "Button",
+      "contrast_with_body": "Distinct"
+     }
+    ],
+    "evidence": {
+     "primary": "light greige tailored jacket cloth",
+     "lightness": "light pale tone",
+     "usage": "single body colour with dark buttons",
+     "effect": "matte, no metallic or neon"
+    },
+    "color_notes": null
+   },
+   "validation": {
+    "contract_errors": [],
+    "inconsistencies": [],
+    "warnings": []
+   },
+   "reject_code": null,
+   "detail": null,
+   "provenance": {
+    "source": "TARGET_AWARE_ACQUISITION",
+    "request_id": "tac-e723f1a00bb945be9afa",
+    "prompt_sha256": "7c64a518835ae8990270996322b56738b9efa94e8fefa766666443d99eaecce5",
+    "mode": "ONE_CALL",
+    "model": "claude-opus-4-8"
+   }
+  },
+  {
+   "target_id": "target_3",
+   "category": "Trouser",
+   "member_role": "Trouser",
+   "scoring_unit_id": "unit-ab0f7fca0c9417d99285",
+   "status": "OBSERVED",
+   "color_observation": {
+    "primary_color_family": "beige",
+    "color_lightness": "light",
+    "color_usage": "single",
+    "multi_color": false,
+    "color_effect": "none",
+    "additional_colors": [],
+    "evidence": {
+     "primary": "light greige trouser cloth",
+     "lightness": "light pale tone",
+     "usage": "uniform single colour",
+     "effect": "matte finish"
+    },
+    "color_notes": null
+   },
+   "validation": {
+    "contract_errors": [],
+    "inconsistencies": [],
+    "warnings": []
+   },
+   "reject_code": null,
+   "detail": null,
+   "provenance": {
+    "source": "TARGET_AWARE_ACQUISITION",
+    "request_id": "tac-e723f1a00bb945be9afa",
+    "prompt_sha256": "7c64a518835ae8990270996322b56738b9efa94e8fefa766666443d99eaecce5",
+    "mode": "ONE_CALL",
+    "model": "claude-opus-4-8"
+   }
+  }
+ ],
+ "acquisition": {
+  "source": "TARGET_AWARE_ACQUISITION",
+  "mode": "ONE_CALL",
+  "model": "claude-opus-4-8",
+  "requests": [
+   {
+    "request_id": "tac-e723f1a00bb945be9afa",
+    "target_ids": [
+     "target_1",
+     "target_3"
+    ],
+    "prompt_sha256": "7c64a518835ae8990270996322b56738b9efa94e8fefa766666443d99eaecce5",
+    "attempts": 1,
+    "response_error": null,
+    "unrequested": []
+   }
+  ],
+  "transport_invocations": 1
+ },
+ "packet_sha256": "33d8ee5b27258c999f92f430274e177682d05e9df712c73352f02448df98c451"
+}

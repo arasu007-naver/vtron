@@ -1,0 +1,114 @@
+{
+ "packet_version": "TARGET_AWARE_COLOUR_PACKET_V1",
+ "successor": {
+  "id": "STMX_COLOUR_TARGET_AWARE_ACQUISITION_V1_CANDIDATE",
+  "status": "CANDIDATE — offline-verified only · not production · not frozen · live extraction accuracy NOT_DEMONSTRATED (CEO order 2026-10-29, G53 ACTIVE)",
+  "seal_directory_aggregate_sha256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b"
+ },
+ "colour_v1": {
+  "module": "run/color_recovery/color_contract_v1.js",
+  "module_sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+  "colour_prompt_sha256": "f444d2611e9ae9e693c15ee4f405ce56d445cf430891f719a292340abd44a420"
+ },
+ "image": {
+  "image_sha256": "cb0aa109390f14e5f8d8353564d7318e81b80a1cc615591cc3b1de6d0602a445",
+  "image_id": "FE-01"
+ },
+ "manifest": {
+  "image": {
+   "image_sha256": "cb0aa109390f14e5f8d8353564d7318e81b80a1cc615591cc3b1de6d0602a445",
+   "image_id": "FE-01"
+  },
+  "scoring_unit": {
+   "type": "ITEM",
+   "unit_id": "unit-3ef7d3a97da2d49671a4"
+  },
+  "targets": [
+   {
+    "target_id": "target_1",
+    "category": "Trouser",
+    "descriptor": "Low-rise flared denim trouser with a distinctive double-stacked waistband: two offset waistband bands each carrying its own shank button at the centre front, so the closure reads as a layered two-button stack rather than a single fly top. Zippered welt pockets sit angled at each front hip just below the waistband, their metal zip teeth exposed with pull tabs. A small diagonal branded tab sits at the left hip below the pocket. The leg runs close through the thigh then opens into a pronounced bootcut/flare toward a frayed raw hem. Washed grey denim with lighter vertical fading down the centre of each leg and darker shading toward the outseams.",
+    "identification": "CATEGORY_UNIQUE",
+    "member_role": null,
+    "descriptor_colour_terms": []
+   }
+  ],
+  "manifest_sha256": "bffdc22fe1c244e1a1647bd433a0b4501076c57da336a00d4129aab616730304"
+ },
+ "observations": [
+  {
+   "target_id": "target_1",
+   "category": "Trouser",
+   "member_role": null,
+   "scoring_unit_id": "unit-3ef7d3a97da2d49671a4",
+   "status": "OBSERVED",
+   "color_observation": {
+    "primary_color_family": "gray",
+    "color_lightness": "normal",
+    "color_usage": "subtle",
+    "multi_color": false,
+    "color_effect": "none",
+    "additional_colors": [
+     {
+      "color_family": "silver",
+      "carrier_kind": "closure",
+      "carrier_ref": "Zipper",
+      "contrast_with_body": "Distinct"
+     },
+     {
+      "color_family": "silver",
+      "carrier_kind": "closure",
+      "carrier_ref": "Button",
+      "contrast_with_body": "Subtle"
+     },
+     {
+      "color_family": "red",
+      "carrier_kind": "graphic",
+      "carrier_ref": "Localized",
+      "contrast_with_body": "Distinct"
+     }
+    ],
+    "evidence": {
+     "primary": "gray faded denim",
+     "lightness": "mid gray tone with lighter washed areas",
+     "usage": "mostly single gray with small contrasting hardware and logo tab",
+     "effect": "flat denim, no neon or metallic cloth"
+    },
+    "color_notes": "washed/faded denim with lighter whiskering on thighs"
+   },
+   "validation": {
+    "contract_errors": [],
+    "inconsistencies": [],
+    "warnings": []
+   },
+   "reject_code": null,
+   "detail": null,
+   "provenance": {
+    "source": "TARGET_AWARE_ACQUISITION",
+    "request_id": "tac-a80c1ccd5b9447fbb4a9",
+    "prompt_sha256": "a8180f114979ed0a392df4fe0551ffdcc9f2fae5663fe3ea41ee7b8f3a40dd54",
+    "mode": "ONE_CALL",
+    "model": "claude-opus-4-8"
+   }
+  }
+ ],
+ "acquisition": {
+  "source": "TARGET_AWARE_ACQUISITION",
+  "mode": "ONE_CALL",
+  "model": "claude-opus-4-8",
+  "requests": [
+   {
+    "request_id": "tac-a80c1ccd5b9447fbb4a9",
+    "target_ids": [
+     "target_1"
+    ],
+    "prompt_sha256": "a8180f114979ed0a392df4fe0551ffdcc9f2fae5663fe3ea41ee7b8f3a40dd54",
+    "attempts": 1,
+    "response_error": null,
+    "unrequested": []
+   }
+  ],
+  "transport_invocations": 1
+ },
+ "packet_sha256": "68a27872eb69f41d6dcc79a572e2b90d195728771a72d9863d87ee1fcabd91dd"
+}

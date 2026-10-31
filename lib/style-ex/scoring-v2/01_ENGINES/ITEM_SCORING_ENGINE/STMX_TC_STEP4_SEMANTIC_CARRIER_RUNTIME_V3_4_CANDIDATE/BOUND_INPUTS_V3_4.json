@@ -1,0 +1,50 @@
+{
+ "artefact": "BOUND_INPUTS_V3_4",
+ "runtime": "STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE",
+ "rule": "additional inputs of V3.4; every input is read by path relative to the master root and must match its sha256 (BoundInputV34Error, fail closed). BOUND_INPUTS.json (V3.3, byte-identical) continues to govern the carried semantic carrier inputs.",
+ "inputs": [
+  {
+   "role": "reference_v2_candidate",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_64_REFERENCE_WHOLE_GRAMMAR_ORGANIZATION_AUTHORING/19_REFERENCE_V2_CANDIDATE.json",
+   "note": "Reference whole-grammar organization blocks (V2.3.64 CANDIDATE · sealed) — read only through generic roles; primary constituent reading only (R-A)",
+   "sha256": "e5ff105324d799e916573d02539cde95cc727dc51f9c4156b142437c2b075820"
+  },
+  {
+   "role": "reference_v2_candidate_seal",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_64_REFERENCE_WHOLE_GRAMMAR_ORGANIZATION_AUTHORING/21_REFERENCE_V2_SEAL.json",
+   "note": "must carry the candidate sha256",
+   "sha256": "643f2c3bb90271a8e307115955ad5165ba1fab92840bfa54c532ff1e51186b7b"
+  },
+  {
+   "role": "step3_predecessor_resolution",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_27_STEP3_FINAL_FREEZE/06_STEP3_FINAL_114_UNIT_REPLAY_LEDGER.json",
+   "note": "the frozen per-unit evaluation of R-GS-1…9 (same file and sha256 as the V3.3 role step3_unit_ledger); consumed ONLY by the Grammar State successor resolver, never by the process relation (G60)",
+   "sha256": "724c5695c810d317f2ab7cf6ddd9420a0b8cd1bdd0ea97037c33cac4366d5ed9"
+  },
+  {
+   "role": "step3_successor_contract",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP3_ARCHITECTURE_SUCCESSOR_V2_CANDIDATE/STEP3_SUCCESSOR_V2_CONTRACT.json",
+   "note": "Step 3 successor V2 CANDIDATE contract",
+   "sha256": "2ef19e15d5b23a5bb20921bd6342e7c1b17a8750ed6951d620aa5d9209ec372a"
+  },
+  {
+   "role": "step3_successor_resolver",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP3_ARCHITECTURE_SUCCESSOR_V2_CANDIDATE/src/step3_grammar_state_successor_v2.js",
+   "note": "category-general Grammar State successor resolver (required as code; hash-bound)",
+   "sha256": "28ecc3285b7e876a3b74647224610e19f40439674400a453c6bc61ab6d166442"
+  }
+ ],
+ "never_bound": [
+  "CEO GT (any version, any field)",
+  "historical TC tier / side",
+  "CEO rationale / re-adjudication records",
+  "REF answer tables",
+  "Descriptor / RG prose",
+  "Vector / embeddings",
+  "R1 corpus",
+  "images",
+  "V2.3.63 / V2.3.64 / V2.3.65 package-local prototypes and their results",
+  "the D1 diagnostic label",
+  "the sealed V3.3 package (V3.4 is self-contained)"
+ ]
+}

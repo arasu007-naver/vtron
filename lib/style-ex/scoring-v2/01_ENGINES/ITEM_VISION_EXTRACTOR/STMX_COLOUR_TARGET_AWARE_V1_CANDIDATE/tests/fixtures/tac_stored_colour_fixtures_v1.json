@@ -1,0 +1,4792 @@
+{
+ "document": "TAC STORED COLOUR FIXTURES V1",
+ "note": "REAL STORED evidence, verbatim (read-only extraction). Not GT. Colour from the historical producers as stored in the CEO corpus; envelopes reduced to target_id · eligible · record.category (the V1.3 shape) · descriptor.",
+ "sources": {
+  "corpus": {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/MASTER/STMX_CEO_CALIBRATION_CORPUS.jsonl",
+   "sha256": "621d6b905fb71b0c265791ccd02d4a3a7e0339d129ff769cef5ccdbf4eace267",
+   "records": 106
+  },
+  "vlv_v1_3_records": "item_v2/tests/_fixtures.js live() — stored VLV Item Vision V1.3 outputs (expired G53 exception; no new call)"
+ },
+ "built_at": "2026-10-29T06:40:25.708Z",
+ "corpus_colour_records": [
+  {
+   "ref": "REF_000139",
+   "image_sha256": "eec21448970b35a4f6c45afe638688a68ed990debb367d645197a849e58545d6",
+   "folder": "02_Coat",
+   "envelope": {
+    "image_id": "REF_000139__00013-jil-sander-fall-2022-ready-to-wear-milan-credit-alessandro-lucioni-gorunway.webp",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "Long sleeveless cream dress with oversized shawl-tie neckline and flap pockets"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "beige",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000141",
+   "image_sha256": "0fc1146f0908f6148cd8b6873e8e68592387f3857349f82518fda6e6a4799637",
+   "folder": "02_Coat",
+   "envelope": {
+    "image_id": "B6-06",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Coat"
+       }
+      },
+      "descriptor": "long brown leather double-breasted trench-style coat, worn open"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "red ribbed knit dress with collared neckline, worn under coat"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Coat",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000152",
+   "image_sha256": "c5965ab781d8c8a7a98c49e87f13448f8f341947d3a7501fc72436300d0672d0",
+   "folder": "02_Coat",
+   "envelope": {
+    "image_id": "B3-12",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Coat"
+       }
+      },
+      "descriptor": "beige double-breasted belted trench coat with check-lined stand collar"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "beige",
+     "color_lightness": "normal",
+     "color_usage": "accent",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [
+      {
+       "color_family": "khaki",
+       "carrier_kind": "pattern",
+       "carrier_ref": "Grid"
+      },
+      {
+       "color_family": "brown",
+       "carrier_kind": "attachment",
+       "carrier_ref": "Belt"
+      }
+     ],
+     "evidence": {
+      "primary": "classic tan/beige trench cloth",
+      "lightness": "mid-tone beige",
+      "usage": "check lining and buckle read as accents",
+      "effect": "matte, no metallic or neon"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000172",
+   "image_sha256": "da74e4f32d4233185c86323da4c85829dcde98a931e9ceb7be4a2cce0b4eb273",
+   "folder": "02_Coat",
+   "envelope": {
+    "image_id": "B5-16",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Coat"
+       }
+      },
+      "descriptor": "dark green long double-breasted wool coat with oversized asymmetric fold-over collar and white contrast buttons"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Coat",
+      "color_observation": {
+       "primary_color_family": "green",
+       "color_lightness": "dark",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "white_family",
+         "carrier_kind": "closure",
+         "carrier_ref": "Button"
+        }
+       ],
+       "evidence": {
+        "primary": "deep dark green coat body",
+        "lightness": "dark green value",
+        "usage": "white buttons form a distinct but limited contrast",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000182",
+   "image_sha256": "adac406cba7756ca3e8437d6df8e01d3c06050c45a76d40eb689414c905a0b0e",
+   "folder": "02_Coat",
+   "envelope": {
+    "image_id": "B5-12",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Coat"
+       }
+      },
+      "descriptor": "long double-breasted taupe wool coat, fitted waist, maxi length"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Coat",
+      "color_observation": {
+       "primary_color_family": "camel",
+       "color_lightness": "normal",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "black",
+         "carrier_kind": "closure",
+         "carrier_ref": "Button"
+        }
+       ],
+       "evidence": {
+        "primary": "warm taupe/camel-brown napped wool body",
+        "lightness": "mid-tone value",
+        "usage": "dark buttons form a distinct but limited contrast against camel body",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000183",
+   "image_sha256": "8335b5b326c27ec135db082e8bacb7309d44f8b6ea3a0e7575007e295335aa7e",
+   "folder": "02_Coat",
+   "envelope": {
+    "image_id": "B5-03",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "Olive-brown leather belted jacket with oversized structured shoulders, spread shirt collar, tie belt, worn over a wine turtleneck"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "olive",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "olive-brown leather body, collar, sleeves and belt all one family",
+        "lightness": "mid-tone value, neither light nor dark",
+        "usage": "one continuous garment color; wine turtleneck and gloves are separate items, not part of this jacket",
+        "effect": "ordinary leather sheen, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000184",
+   "image_sha256": "0d35b0e56813e5db4d5feef11f95a962e289a5bfe516ad8d5810fa3741c2e6cb",
+   "folder": "03_Shirt",
+   "envelope": {
+    "image_id": "B4-08",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "long-sleeve floral-print button-up shirt in ivory with dark branch motif"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Shirt",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "brown",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Repeat"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000185",
+   "image_sha256": "f99b34845abd522fa6b7a22b5d8675d68fd558059d8c12dc64607a71fcf263c2",
+   "folder": "03_Shirt",
+   "envelope": {
+    "image_id": "REF_000185__shirtpt1.jpeg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "Long-sleeve western snap shirt with vertical striped/dobby pattern, two flap chest pockets"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Shirt",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "multi",
+       "multi_color": true,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "white_family",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        },
+        {
+         "color_family": "wine",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        },
+        {
+         "color_family": "blue",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        },
+        {
+         "color_family": "silver",
+         "carrier_kind": "closure",
+         "carrier_ref": "Snap Button"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000190",
+   "image_sha256": "176b20be03df4227d65e212c977631488a86cc409a1de5aa9513ef9489a23a4e",
+   "folder": "03_Shirt",
+   "envelope": {
+    "image_id": "B4-06",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "Black floral lace long-sleeve button-front top"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "Dark blue denim jeans"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Shirt",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "black lace across whole garment",
+        "lightness": "uniformly dark black",
+        "usage": "single black color; buttons same black tone as body",
+        "effect": "matte lace, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "blue",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "dark indigo denim",
+        "lightness": "deep dark blue wash",
+        "usage": "single indigo; topstitching low-contrast tonal",
+        "effect": "matte denim, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000198",
+   "image_sha256": "aa432c707c79f5637fc64a654c297d385d04ea483476f62b1ce1a32c60fe38cc",
+   "folder": "03_Shirt",
+   "envelope": {
+    "image_id": "B3-01",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "blue and white striped long-sleeve button-down shirt with chest embroidery"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "blue",
+     "color_lightness": "light",
+     "color_usage": "multi",
+     "multi_color": true,
+     "color_effect": "none",
+     "additional_colors": [
+      {
+       "color_family": "white_family",
+       "carrier_kind": "pattern",
+       "carrier_ref": "Linear"
+      },
+      {
+       "color_family": "white_family",
+       "carrier_kind": "closure",
+       "carrier_ref": "Button"
+      },
+      {
+       "color_family": "brown",
+       "carrier_kind": "graphic",
+       "carrier_ref": "Localized"
+      }
+     ],
+     "evidence": {
+      "primary": "light blue stripe dominant against white ground",
+      "lightness": "pale blue and white overall",
+      "usage": "two-color stripe composition",
+      "effect": "matte, no metallic or neon"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000221",
+   "image_sha256": "42d978b2753efb2c1848a319014573a19a7f74d2d4ca44b197aae25416d406fa",
+   "folder": "03_Shirt",
+   "envelope": {
+    "image_id": "B3-02",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "oversized white button-front shirt with pointed collar and long deep cuffs"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "navy pinstriped tailored trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "white_family",
+     "color_lightness": "light",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [],
+     "evidence": {
+      "primary": "uniform white woven cloth",
+      "lightness": "bright white",
+      "usage": "one color throughout including buttons",
+      "effect": "matte no metallic or neon"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000246",
+   "image_sha256": "1bf55ea4598579c49eb32b5f4a2a3261228cbf7ae83ec080345e2d3c9d896780",
+   "folder": "03_Shirt",
+   "envelope": {
+    "image_id": "B5-13",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "black eyelet lace short-sleeve top with scalloped hem"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "black trousers/jeans, lower body"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Shirt",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform black eyelet lace fabric",
+        "lightness": "dark black throughout",
+        "usage": "single black tone, no secondary designed color",
+        "effect": "matte fabric, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000323",
+   "image_sha256": "8c42298e3d28caa398ff63163e48f43be72685bafe8784c25ac96d7a7981ec2e",
+   "folder": "04_TShirt",
+   "envelope": {
+    "image_id": "REF_000323__grp1.jpeg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+       }
+      },
+      "descriptor": "dark charcoal short-sleeve graphic T-shirt with Nirvana band print"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "blue denim jeans, hip and upper-leg visible"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "T-Shirt",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "dark",
+       "color_usage": "multi",
+       "multi_color": true,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "red",
+         "carrier_kind": "graphic",
+         "carrier_ref": "Localized"
+        },
+        {
+         "color_family": "yellow",
+         "carrier_kind": "graphic",
+         "carrier_ref": "Localized"
+        },
+        {
+         "color_family": "blue",
+         "carrier_kind": "graphic",
+         "carrier_ref": "Localized"
+        },
+        {
+         "color_family": "green",
+         "carrier_kind": "graphic",
+         "carrier_ref": "Localized"
+        }
+       ]
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "blue",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000335",
+   "image_sha256": "3f73a5912ddc1b8713cd1663c70004abf2882f18fa6771b95586aab1b78d3c6e",
+   "folder": "04_TShirt",
+   "envelope": {
+    "image_id": "B4-09",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+       }
+      },
+      "descriptor": "black semi-sheer short-sleeve crew-neck top over a black camisole/bra"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "dark indigo denim jeans/skirt at hip, partially visible"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "T-Shirt",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniformly black jersey top",
+        "lightness": "deep black throughout",
+        "usage": "single black color",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000338",
+   "image_sha256": "daea4cc3093eeb98a631a466eae886af3cabe726cb8e24e0dab9d14ed1800704",
+   "folder": "04_TShirt",
+   "envelope": {
+    "image_id": "B5-09",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+       }
+      },
+      "descriptor": "washed dark-gray oversized short-sleeve crewneck T-shirt with white college-style print"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "T-Shirt",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "dark",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "white_family",
+         "carrier_kind": "graphic",
+         "carrier_ref": "Localized"
+        }
+       ],
+       "evidence": {
+        "primary": "washed dark charcoal-gray body",
+        "lightness": "dark charcoal tone",
+        "usage": "white printed crest/text against gray ground",
+        "effect": "no metallic or neon"
+       },
+       "color_notes": "washed/faded uneven charcoal tone from garment treatment"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000339",
+   "image_sha256": "c9c1502ff04e7f0daf5ba608bef22bd7905831032ce7b92f4cc2720ac8b887cf",
+   "folder": "04_TShirt",
+   "envelope": {
+    "image_id": "B5-08",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+       }
+      },
+      "descriptor": "black short-sleeve V-neck T-shirt"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "T-Shirt",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform black jersey across garment",
+        "lightness": "deep dark tone",
+        "usage": "one color throughout, no distinct secondary color",
+        "effect": "matte, no neon or metallic"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000368",
+   "image_sha256": "bebf15299af919c673a5d93253ec99b2264147c26a8011020152400a48508599",
+   "folder": "04_TShirt",
+   "envelope": {
+    "image_id": "B3-15",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+       }
+      },
+      "descriptor": "olive-green oversized long-sleeve crewneck top with dropped shoulders"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "white long-sleeve inner layer top visible at neckline and left cuff"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "black wide-leg cargo-style trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "olive",
+     "color_lightness": "normal",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [],
+     "evidence": {
+      "primary": "muted olive-green jersey across whole body",
+      "lightness": "mid value green",
+      "usage": "single uniform color",
+      "effect": "matte, no metallic/neon"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000378",
+   "image_sha256": "f1d06651e2fe87c098ece67362d0c63190696ac6ce24f2cc2cb3615547c2a722",
+   "folder": "04_TShirt",
+   "envelope": {
+    "image_id": "B6-12",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+       }
+      },
+      "descriptor": "White oversized mesh short-sleeve T-shirt"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "Dark gray pinstripe wide straight trousers with drawstring"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "T-Shirt",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "white mesh fabric",
+        "lightness": "bright white",
+        "usage": "one uniform color",
+        "effect": "matte netting"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "dark",
+       "color_usage": "subtle",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "white_family",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        }
+       ],
+       "evidence": {
+        "primary": "dark charcoal gray cloth",
+        "lightness": "dark base",
+        "usage": "light pinstripe over dark base",
+        "effect": "matte"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000397",
+   "image_sha256": "5c2e4bfcc4507556725130ed09b63b7c271019f0a96156c0ee91f4638093e611",
+   "folder": "05_Sweater",
+   "envelope": {
+    "image_id": "REF_000397__dmd2.webp",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "Long-sleeve knit polo-collared pullover with mélange body and multicolor horizontally-striped sleeves"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Sweater",
+      "color_observation": {
+       "primary_color_family": "wine",
+       "color_lightness": "normal",
+       "color_usage": "multi",
+       "multi_color": true,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "white_family",
+         "carrier_kind": "material_component",
+         "carrier_ref": "Knit"
+        },
+        {
+         "color_family": "white_family",
+         "carrier_kind": "closure",
+         "carrier_ref": "Button"
+        },
+        {
+         "color_family": "yellow",
+         "carrier_kind": "graphic",
+         "carrier_ref": "Localized"
+        },
+        {
+         "color_family": "pink",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        },
+        {
+         "color_family": "blue",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        },
+        {
+         "color_family": "green",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        },
+        {
+         "color_family": "yellow",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        },
+        {
+         "color_family": "red",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        },
+        {
+         "color_family": "brown",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        },
+        {
+         "color_family": "black",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Linear"
+        }
+       ],
+       "evidence": {
+        "primary": "wine/burgundy mélange knit body",
+        "lightness": "mid-tone burgundy",
+        "usage": "multicolor striped sleeves plus mélange body",
+        "effect": "no metallic or neon appearance"
+       },
+       "color_notes": "body is a burgundy-and-white mélange (heather) knit; sleeves carry dense multicolor horizontal stripes"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000399",
+   "image_sha256": "42d310777e31eb743ff5cf69e6e44173d378f4451a6bbb4e4f661482e2911a08",
+   "folder": "05_Sweater",
+   "envelope": {
+    "image_id": "B4-11",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "beige ribbed short-sleeve knit polo top"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Sweater",
+      "color_observation": {
+       "primary_color_family": "beige",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "white_family",
+         "carrier_kind": "closure",
+         "carrier_ref": "Button"
+        }
+       ],
+       "evidence": {
+        "primary": "light beige/oatmeal ribbed knit throughout",
+        "lightness": "pale neutral tone",
+        "usage": "one continuous garment color",
+        "effect": "matte knit, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000410",
+   "image_sha256": "b6f257fad6b8a9bfbd611c7ae13cfbc4a35b7bec374e71fde97c205e189568fb",
+   "folder": "05_Sweater",
+   "envelope": {
+    "image_id": "B6-08",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "light gray long-sleeve knit polo-collar top with three-button placket"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Sweater",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "light gray knit body, sleeves, collar and hem",
+        "lightness": "pale gray, light value",
+        "usage": "one uniform color with tonal buttons matching body",
+        "effect": "matte knit, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000414",
+   "image_sha256": "af8f535a7553eadabc1e7b597fe41e90af2892c336aa29fb4868ebe7d5038f54",
+   "folder": "05_Sweater",
+   "envelope": {
+    "image_id": "B5-18",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "taupe/brown hooded knit pullover sweater with long sleeves and ribbed hem"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Sweater",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "taupe/greige-brown melange knit across whole garment",
+        "lightness": "mid value, neither light nor dark",
+        "usage": "one uniform color throughout",
+        "effect": "matte knit, no metallic or neon"
+       },
+       "color_notes": "melange/heathered yarn gives a subtle tonal fleck but stays one brown family"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000430",
+   "image_sha256": "87d87855be563abaa54d08cc25bebf8bf046a4f791f4f4216abef35829415732",
+   "folder": "05_Sweater",
+   "envelope": {
+    "image_id": "B6-09",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "black ribbed knit two-way full-zip cardigan with tall funnel collar"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "white long-sleeve crew-neck top worn under the cardigan"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "beige pleated-front trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "silver",
+         "carrier_kind": "attachment",
+         "carrier_ref": "Metal Hardware"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000432",
+   "image_sha256": "e2863ac3ff687c18ec870cfd86b37df27f93bfb84e24b43ac1fc44a34e144261",
+   "folder": "05_Sweater",
+   "envelope": {
+    "image_id": "B3-14",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "light gray oversized cable-knit turtleneck sweater"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "black faux-leather mini skirt"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "gray",
+     "color_lightness": "light",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [],
+     "evidence": {
+      "primary": "light heather gray knit throughout",
+      "lightness": "pale light-value gray",
+      "usage": "one uniform color across garment",
+      "effect": "matte knit, no metallic or neon"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000447",
+   "image_sha256": "466c429d4d00fb82c28fe172e50cd98462c4b7e53da9f48418e81b94238ce3ea",
+   "folder": "05_Sweater",
+   "envelope": {
+    "image_id": "B4-10",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "cream/ivory ribbed off-shoulder long-sleeve knit top with wide foldover band"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "medium-wash blue denim wide-leg jeans"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Sweater",
+      "color_observation": {
+       "primary_color_family": "beige",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": []
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "blue",
+       "color_lightness": "normal",
+       "color_usage": "subtle",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "gold",
+         "carrier_kind": "attachment",
+         "carrier_ref": "Metal Hardware"
+        }
+       ],
+       "color_notes": "washed/faded denim with lighter thigh areas"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000469",
+   "image_sha256": "b0d0971583a01dd748a569ed08a362eb600aa2ddd0119a37c4e9cd65ba038424",
+   "folder": "06_Sweatshirt",
+   "envelope": {
+    "image_id": "B4-12",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "zebra-print zip-front lightweight track jacket with rainbow velvet side stripes"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "multi",
+       "multi_color": true,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "black",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Repeat"
+        },
+        {
+         "color_family": "red",
+         "carrier_kind": "generic_descriptor",
+         "carrier_ref": "Panel"
+        },
+        {
+         "color_family": "orange",
+         "carrier_kind": "generic_descriptor",
+         "carrier_ref": "Panel"
+        },
+        {
+         "color_family": "gold",
+         "carrier_kind": "generic_descriptor",
+         "carrier_ref": "Panel"
+        },
+        {
+         "color_family": "blue",
+         "carrier_kind": "generic_descriptor",
+         "carrier_ref": "Panel"
+        },
+        {
+         "color_family": "gold",
+         "carrier_kind": "closure",
+         "carrier_ref": "Zipper"
+        },
+        {
+         "color_family": "uncertain",
+         "carrier_kind": "graphic",
+         "carrier_ref": "Localized"
+        }
+       ],
+       "evidence": {
+        "primary": "black-and-white zebra print dominated by white ground",
+        "lightness": "overall light with white base",
+        "usage": "zebra black/white plus multicolor velvet sleeve stripes",
+        "effect": "no neon or metallic body color"
+       },
+       "color_notes": "rainbow velvet side stripe runs through red, orange, gold, and blue down each sleeve"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000475",
+   "image_sha256": "a3c3791fcb32e4e1587b8716ea5906445707b3b2638563c85b5e834ac3fd1ebf",
+   "folder": "06_Sweatshirt",
+   "envelope": {
+    "image_id": "B5-15",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweatshirt"
+       }
+      },
+      "descriptor": "oversized black hooded zip-up sweatshirt with drawstrings and front kangaroo pocket"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Sweatshirt",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "silver",
+         "carrier_kind": "closure",
+         "carrier_ref": "Zipper"
+        }
+       ],
+       "evidence": {
+        "primary": "uniform black fleece body and sleeves",
+        "lightness": "deep black tone",
+        "usage": "single black color across garment",
+        "effect": "matte, no neon or metallic color"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000493",
+   "image_sha256": "6b7423498d131fea77bb6832beea70a74d810cf065e53525bd1a75c6cfdc47a1",
+   "folder": "06_Sweatshirt",
+   "envelope": {
+    "image_id": "B3-16",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweatshirt"
+       }
+      },
+      "descriptor": "black oversized hooded zip-up sweatshirt with front patch pockets and asymmetric hem"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "light blue wide-leg denim trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "black",
+     "color_lightness": "dark",
+     "color_usage": "accent",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [
+      {
+       "color_family": "silver",
+       "carrier_kind": "closure",
+       "carrier_ref": "Zipper"
+      }
+     ],
+     "evidence": {
+      "primary": "uniform black cloth",
+      "lightness": "deep black",
+      "usage": "black body with metallic zipper accent",
+      "effect": "matte, no neon or metallic body"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000494",
+   "image_sha256": "9da267f5a332a6ac213682ea9562ba47190b86f8d831b450a350bef3537bd9df",
+   "folder": "06_Sweatshirt",
+   "envelope": {
+    "image_id": "B6-02",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweatshirt"
+       }
+      },
+      "descriptor": "Gray oversized full-zip hooded sweatshirt"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "Taupe wide-leg pull-on trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Sweatshirt",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "light heather gray fleece body",
+        "lightness": "pale gray value",
+        "usage": "single uniform color, tonal zipper and logo",
+        "effect": "matte fleece, no metallic/neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "taupe",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "warm taupe/khaki-brown cloth",
+        "lightness": "mid value",
+        "usage": "single uniform color",
+        "effect": "soft matte sheen, no metallic/neon"
+       },
+       "color_notes": "warm greige/taupe tone between beige and khaki-brown"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000496",
+   "image_sha256": "7a56842adc318c7526d1dea9ac8bed9e2bb974412f52f9f25fecf4695a4fd6c0",
+   "folder": "06_Sweatshirt",
+   "envelope": {
+    "image_id": "B6-01",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweatshirt"
+       }
+      },
+      "descriptor": "beige oversized hooded sweatshirt with contrast zip-neck"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "dark brown pleated wide-leg trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Sweatshirt",
+      "color_observation": {
+       "primary_color_family": "beige",
+       "color_lightness": "light",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "black",
+         "carrier_family": null,
+         "carrier_kind": "closure",
+         "carrier_ref": "Zipper"
+        }
+       ],
+       "evidence": {
+        "primary": "light heathered beige body",
+        "lightness": "pale overall tone",
+        "usage": "dark zip and inner neck contrast",
+        "effect": "matte fleece, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "deep dark brown suiting",
+        "lightness": "dark overall value",
+        "usage": "one uniform color",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000499",
+   "image_sha256": "e24e8656edc3ed922bf75234a1a8658ac96e4f5d09db3935314d4eed281a0179",
+   "folder": "07_Vest",
+   "envelope": {
+    "image_id": "REF_000499__fleeceworn2.jpeg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "cream/off-white fleece full-zip vest with chest logo label"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "beige",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform light cream/off-white fleece body",
+        "lightness": "pale cream reads light",
+        "usage": "one continuous garment color including zipper tape",
+        "effect": "matte fleece, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000500",
+   "image_sha256": "d511017c447f1f927ade7d7fab5e030780eebb69648ae3d1e291fe2e83b1a9f0",
+   "folder": "07_Vest",
+   "envelope": {
+    "image_id": "REF_000500__peddingvestworn1.jpeg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "dark olive-green quilted down vest, full-zip, stand collar"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "green and yellow plaid flannel shirt, visible only at sleeves"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "olive",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "white_family",
+         "carrier_kind": "graphic",
+         "carrier_ref": "Localized"
+        }
+       ],
+       "evidence": {
+        "primary": "dark olive-green shell throughout",
+        "lightness": "deep dark green",
+        "usage": "one garment color body-wide",
+        "effect": "matte-to-soft-sheen shell, no metallic/neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": null,
+      "color_observation": null
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000503",
+   "image_sha256": "d836f9514b781f2f0b497ae99c4093754e01d1ebd105779a6b140b0a9a1b6338",
+   "folder": "07_Vest",
+   "envelope": {
+    "image_id": "B6-05",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "Sleeveless diamond-quilted vest with corduroy stand collar and snap front"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "Blue cable-knit crew sweater worn under vest"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "navy",
+       "color_lightness": "dark",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "brown",
+         "carrier_kind": "generic_descriptor",
+         "carrier_ref": "Collar"
+        },
+        {
+         "color_family": "gray",
+         "carrier_kind": "closure",
+         "carrier_ref": "Snap Button"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000508",
+   "image_sha256": "b5091eb58fe21e4633acc135c47de20aabe7710439e766b7c354263a5996f652",
+   "folder": "07_Vest",
+   "envelope": {
+    "image_id": "B3-03",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "pink sleeveless notched-lapel vest/waistcoat with single-button closure and flap pockets"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "white ribbed sleeveless inner top"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "gray denim jeans"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "pink",
+     "color_lightness": "normal",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [
+      {
+       "color_family": "gray",
+       "carrier_kind": "closure",
+       "carrier_ref": "Button"
+      }
+     ],
+     "evidence": {
+      "primary": "uniform muted rose-pink cloth across body and lapels",
+      "lightness": "mid-value pink, neither light pastel nor dark",
+      "usage": "one garment color throughout",
+      "effect": "matte non-metallic, no neon"
+     },
+     "color_notes": "muted rose/dusty pink tone"
+    }
+   }
+  },
+  {
+   "ref": "REF_000520",
+   "image_sha256": "cb0aa109390f14e5f8d8353564d7318e81b80a1cc615591cc3b1de6d0602a445",
+   "folder": "08_Trouser",
+   "envelope": {
+    "image_id": "REF_000520__denimlowrise1.jpeg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "gray washed low-rise bootcut/flared denim jeans with dual zip front pockets, double-button waist, frayed hem"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "silver",
+         "carrier_kind": "attachment",
+         "carrier_ref": "Metal Hardware"
+        },
+        {
+         "color_family": "red",
+         "carrier_kind": "generic_descriptor",
+         "carrier_ref": "Panel"
+        }
+       ],
+       "evidence": {
+        "primary": "washed gray denim body",
+        "lightness": "mid-tone gray with faded zones",
+        "usage": "single dominant denim color",
+        "effect": "no neon or metallic color in cloth"
+       },
+       "color_notes": "washed/faded gray denim with whiskering; base family retained despite fading"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000541",
+   "image_sha256": "255b245c14a8abd1c2a54ec95e2534a6bf53bf4b0b7c893d37d57679409d1722",
+   "folder": "08_Trouser",
+   "envelope": {
+    "image_id": "B5-10",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "light gray fine-knit button-front cardigan with stand/crew neck"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "charcoal gray wide-leg pleated tailored trousers, high waist"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Sweater",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "light heather gray knit",
+        "lightness": "pale gray tone",
+        "usage": "one color throughout including buttons",
+        "effect": "matte knit, no metallic or neon"
+       },
+       "color_notes": "heather/melange gray yarn"
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "charcoal gray suiting",
+        "lightness": "dark charcoal tone",
+        "usage": "one color throughout",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000575",
+   "image_sha256": "c4ba2d3af5594aa2204fdcbe46f917bc8c313ab73f453fa532b79dc9d3de06be",
+   "folder": "08_Trouser",
+   "envelope": {
+    "image_id": "B6-13",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "black wide-leg drawstring trousers, cropped balloon leg"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform black cloth across waist and legs",
+        "lightness": "deep black in shadow and highlight",
+        "usage": "no distinct secondary color; drawstring same black",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000586",
+   "image_sha256": "f9968e627984cbff12c21bdc6654552775eb2eafe63251d6c8fbb93fd68ddd2d",
+   "folder": "08_Trouser",
+   "envelope": {
+    "image_id": "B3-08",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "beige sleeveless linen V-neck top"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "white wide-leg elastic-waist linen trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "beige",
+     "color_lightness": "light",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [],
+     "evidence": {
+      "primary": "warm light beige natural linen tone",
+      "lightness": "pale light value",
+      "usage": "one uniform color",
+      "effect": "matte, no metallic/neon"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000590",
+   "image_sha256": "547477b5b5aa47c157e6dcf3ab4a69672689e5643ff3c72565963c8fbcc13b8e",
+   "folder": "09_Shorts",
+   "envelope": {
+    "image_id": "B3-06",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "Olive cotton cargo shorts with button-fly and multiple utility pockets"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "olive",
+     "color_lightness": "normal",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [
+      {
+       "color_family": "brown",
+       "carrier_kind": "closure",
+       "carrier_ref": "Button"
+      }
+     ],
+     "evidence": {
+      "primary": "muted olive-green twill throughout",
+      "lightness": "mid-tone value",
+      "usage": "one dominant colour across garment",
+      "effect": "matte, no metallic or neon"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000593",
+   "image_sha256": "d0b8d29ed1dfc768d15922f502127374a2b708f98f8d2fc2f1c7280de02c3ba0",
+   "folder": "10_Legging",
+   "envelope": {
+    "image_id": "B3-07",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+       }
+      },
+      "descriptor": "black spaghetti-strap cropped tank top / camisole"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "black high-waist cropped/capri leggings"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "black",
+     "color_lightness": "dark",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [],
+     "evidence": {
+      "primary": "uniform black jersey",
+      "lightness": "deep black tone",
+      "usage": "single solid color",
+      "effect": "matte no metallic or neon"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000598",
+   "image_sha256": "cf42bd3756f61ed85300c60189424de11b0303d089a8d191b8fa6c357b6d4586",
+   "folder": "11_Skirt",
+   "envelope": {
+    "image_id": "REF_000598__WEB_B02_0029__primary.jpg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "cropped washed-beige denim bomber-style jacket with distressed patches and elasticated hem"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "washed-beige denim skirt with distressed patch and heavily frayed shredded fringe hem"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "beige",
+       "color_lightness": "light",
+       "color_usage": "subtle",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "gray",
+         "carrier_kind": "closure",
+         "carrier_ref": "Button"
+        }
+       ]
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Skirt",
+      "color_observation": {
+       "primary_color_family": "beige",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000599",
+   "image_sha256": "23d6fde1c96555d32a05f44561d6283b9eec6832cededec3db24d7f520c25230",
+   "folder": "11_Skirt",
+   "envelope": {
+    "image_id": "REF_000599__metaskt1.jpeg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "metallic gold pleated midi skirt with black elastic waistband"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Skirt",
+      "color_observation": {
+       "primary_color_family": "gold",
+       "color_lightness": "normal",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "metallic",
+       "additional_colors": [
+        {
+         "color_family": "black",
+         "carrier_kind": "generic_descriptor",
+         "carrier_ref": "Waistband"
+        }
+       ],
+       "evidence": {
+        "primary": "metallic gold foiled skirt body",
+        "lightness": "mid-value metallic gold with silvery highlights",
+        "usage": "black waistband is a distinct limited-extent contrast",
+        "effect": "clear metallic sheen"
+       },
+       "color_notes": "silver/gray highlights are metallic reflection of the same gold fabric, not a separate color"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000608",
+   "image_sha256": "754f08b12563616eaecd6b5f1a42cd66d035e015695ca8c9b31d9ccc8e0ae4b9",
+   "folder": "11_Skirt",
+   "envelope": {
+    "image_id": "B5-11",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "Beige and black plaid/check asymmetric-hem midi skirt"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Skirt",
+      "color_observation": {
+       "primary_color_family": "camel",
+       "color_lightness": "normal",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "black",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Grid"
+        }
+       ],
+       "evidence": {
+        "primary": "beige/camel base cloth dominates the skirt",
+        "lightness": "mid-tone tan base",
+        "usage": "black check lines are distinct but limited against the camel ground",
+        "effect": "matte woven, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000616",
+   "image_sha256": "5143f33f2678f6dc219d42994a89857378607ecbed79e7aeffed55ad8b24c4c7",
+   "folder": "11_Skirt",
+   "envelope": {
+    "image_id": "B4-13",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "Black oversized cotton shirt with open V front, exaggerated split/flared cuffs"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "Washed blue denim mini skirt with belted waistband and tiered ruffle panels"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Shirt",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniformly black cloth",
+        "lightness": "deep dark tone",
+        "usage": "one color throughout",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Skirt",
+      "color_observation": {
+       "primary_color_family": "blue",
+       "color_lightness": "normal",
+       "color_usage": "subtle",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "navy",
+         "carrier_kind": "material_component",
+         "carrier_ref": "Denim"
+        }
+       ],
+       "evidence": {
+        "primary": "washed indigo denim body",
+        "lightness": "mid blue tone",
+        "usage": "darker denim tail panel at side",
+        "effect": "no metallic or neon"
+       },
+       "color_notes": "washed/faded indigo denim with a darker raw denim panel at one side"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000622",
+   "image_sha256": "91e3654fb1ed4d70c1bc3c54c39083bf727de08b88415b1e53ddfc014f144009",
+   "folder": "11_Skirt",
+   "envelope": {
+    "image_id": "B3-05",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "black maxi skirt with high front side slit and back zipper"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "black",
+     "color_lightness": "dark",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [],
+     "evidence": {
+      "primary": "uniform black cloth across whole skirt",
+      "lightness": "deep dark tone",
+      "usage": "one continuous color, no secondary designed color",
+      "effect": "matte, no neon or metallic"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000642",
+   "image_sha256": "c1dca78da39b25f7a4a0cbdc6d3d51251d748c1a78766b2504d68b4a7c4720fc",
+   "folder": "11_Skirt",
+   "envelope": {
+    "image_id": "B6-11",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "metallic pleated midi skirt in champagne/bronze tone"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Skirt",
+      "color_observation": {
+       "primary_color_family": "gold",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "metallic",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "champagne/bronze metallic gold across whole skirt",
+        "lightness": "mid-value metallic, neither light nor dark",
+        "usage": "one continuous metallic color",
+        "effect": "clear metallic sheen-as-color"
+       },
+       "color_notes": "metallic champagne/bronze with strong highlight-to-shadow shift along pleat faces from reflectivity"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000657",
+   "image_sha256": "c9fe5b28928c4f6803f382d9359cbf1e8975775e007c21a405b4abc8afad188c",
+   "folder": "11_Skirt",
+   "envelope": {
+    "image_id": "B3-04",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "light blue long-sleeve button-front shirt"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "white floral-print full skirt"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "blue",
+     "color_lightness": "light",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [],
+     "evidence": {
+      "primary": "light blue shirting",
+      "lightness": "pale tone",
+      "usage": "one color throughout",
+      "effect": "matte cloth"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000660",
+   "image_sha256": "eba7c97e4e112198f90ba9e19b87498d9dc5fc23a20134a1b0f852303fd04b55",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "REF_000660__WEB_B02_0128__primary.jpg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "olive-green halter-neck dress with fitted bodice and asymmetric high-low draped skirt"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "olive",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform olive-green cloth across bodice and skirt",
+        "lightness": "mid-tone green, neither light nor dark",
+        "usage": "one color throughout, no contrast trims or closures",
+        "effect": "matte finish, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000661",
+   "image_sha256": "bccfc8a6191ba20572fd6c0b82c272707403d81096e66a919075c7b6da5693e0",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "REF_000661__lacedr2.jpeg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "Black floor-length column gown with sheer lace-appliqué yoke, high mock neck, and cap sleeves"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniformly black body, bodice, lace and net",
+        "lightness": "deep black throughout",
+        "usage": "one color across all components including lace appliqué",
+        "effect": "matte black, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000671",
+   "image_sha256": "f9311f12a3b74b4c9e7ad25b0bcec38ff3c5e73082f646b1c62897fbe021a12f",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "B5-07",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "Black floor-length short-sleeve column gown with sheer striped yoke"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000689",
+   "image_sha256": "c7e74c03b87e5a15a1f9c4826f20d918e6f93eabda4208f481598371f2e9c4bb",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "B4-15",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "black fitted mini slip dress with thin shoulder straps and scoop neckline"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniformly black jersey across whole garment",
+        "lightness": "deep black tone",
+        "usage": "one color, no distinct secondary",
+        "effect": "matte, no neon or metallic"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000694",
+   "image_sha256": "b012964ed80cf4fd706ddff349025213cde8ed9f7525275b6ba39235ccb83efe",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "B3-09",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "silver-gray satin slip midi dress with thin straps and V-neckline"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "silver",
+     "color_lightness": "light",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [],
+     "evidence": {
+      "primary": "pale silver-gray satin across whole dress",
+      "lightness": "bright light-toned surface with highlights",
+      "usage": "one continuous color, no distinct secondary",
+      "effect": "sheen is satin finish, not a metallic color family"
+     },
+     "color_notes": "high satin luster gives strong bright highlights but color reads as light silver-gray"
+    }
+   }
+  },
+  {
+   "ref": "REF_000697",
+   "image_sha256": "2e9f6063a8cb273ea8344d8c7fbdca7abb617cf21a15ada46546c2f623a2dc33",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "B5-06",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "light blue sleeveless halter-neck floor-length chiffon dress"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "blue",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "pale light blue across bodice and skirt",
+        "lightness": "high value, soft pastel tone",
+        "usage": "one uniform color throughout",
+        "effect": "matte chiffon, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000698",
+   "image_sha256": "15ce4da6c417f1e44502f3a852af8c287c9a37e00440b273e4254f38808094ce",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "B3-10",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "long pink pleated draped dress with cape-like upper overlay"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "pink",
+     "color_lightness": "normal",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [],
+     "evidence": {
+      "primary": "saturated bright pink throughout garment",
+      "lightness": "mid-value pink, neither pale nor dark",
+      "usage": "single continuous pink, tonal shading from folds only",
+      "effect": "no neon or metallic appearance"
+     },
+     "color_notes": "tonal light-to-dark variation across pleats caused by folds and translucency, not separate colors"
+    }
+   }
+  },
+  {
+   "ref": "REF_000701",
+   "image_sha256": "1030894dd32de50bd226eb9d82a0e6774a58e298e7f0029afe5a6dde86e2f1a3",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "B5-05",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "Metallic silver halter-neck floor-length gown with gathered chain neckline and side slit"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "silver",
+       "color_lightness": "normal",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "metallic",
+       "additional_colors": [
+        {
+         "color_family": "gold",
+         "carrier_kind": "attachment",
+         "carrier_ref": "Jewelry Attachment"
+        }
+       ],
+       "evidence": {
+        "primary": "metallic silver body with mirror-like light return",
+        "lightness": "mid-value metallic reflecting bright and dark",
+        "usage": "single garment color with distinct gold chain accent at neck",
+        "effect": "metallic silver color-family sheen"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000734",
+   "image_sha256": "165a6529003047e8687a8364fc2210fdd4d728c547423164247b430e5a6e735b",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "B6-10",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "red fringed V-neck mini dress with all-over long tassel fringe"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "red",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "saturated red fringe throughout",
+        "lightness": "mid-value red, neither pale nor deep",
+        "usage": "one uniform color across the whole garment",
+        "effect": "matte-to-slight-sheen fringe, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000744",
+   "image_sha256": "a60e06602b313f3da9a6ab9e2e514d6f1c72be86148d654a2aab63d1303174b6",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "B6-07",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "Black spaghetti-strap sheer lace maxi slip dress with opaque bodysuit underlay"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "black lace fabric throughout bodice and skirt",
+        "lightness": "dark black tone",
+        "usage": "single uniform black across whole garment",
+        "effect": "matte lace, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000775",
+   "image_sha256": "33deb4aeed18997b887214f301188735dbe698950582bdf3ea3cd0a3c4d51a41",
+   "folder": "12_Dress",
+   "envelope": {
+    "image_id": "B5-14",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "sleeveless white fitted mini dress with crew neckline"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform off-white garment across whole body",
+        "lightness": "bright light-toned fabric",
+        "usage": "one continuous color, no secondary color",
+        "effect": "matte fabric, no neon or metallic"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000787",
+   "image_sha256": "8896fcf835ca01e90481234095c4c086c58aebadbad19f8b0759147ca14c21bf",
+   "folder": "13_Jumpsuit",
+   "envelope": {
+    "image_id": "B4-16",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "pink sleeveless wide flowing maxi dress with tie shoulder straps"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Dress",
+      "color_observation": {
+       "primary_color_family": "pink",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "bright saturated pink across whole garment",
+        "lightness": "medium value pink, neither pale nor deep",
+        "usage": "one uniform color throughout",
+        "effect": "matte woven, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000788",
+   "image_sha256": "0ec6eefb91b41f5139b35830b5d3e8dcd727853f6f998cb6dfc4bdf7861ebf1f",
+   "folder": "13_Jumpsuit",
+   "envelope": {
+    "image_id": "REF_000788__jump1.jpeg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jumpsuit"
+       }
+      },
+      "descriptor": "black sleeveless wide-leg jumpsuit with V-neck and thin shoulder straps"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jumpsuit",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform black cloth across bodice and legs",
+        "lightness": "deep dark tone throughout",
+        "usage": "no distinct secondary color",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000790",
+   "image_sha256": "46ec03c1acf901efb97b9d090f0cafe5734a57ef16759400705456535f74cf0a",
+   "folder": "13_Jumpsuit",
+   "envelope": {
+    "image_id": "REF_000790__WEB_B02_0092__primary.jpg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jumpsuit"
+       }
+      },
+      "descriptor": "black short-sleeve V-neck wrap-front tapered jumpsuit"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jumpsuit",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform black cloth across bodice and legs",
+        "lightness": "deep black, no light areas",
+        "usage": "one continuous garment color with no designed secondary color",
+        "effect": "matte finish, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000791",
+   "image_sha256": "3a141536d5f1d4f71e6bf0a55c4e1389a269c229856ab74de31d0edba57fd86c",
+   "folder": "13_Jumpsuit",
+   "envelope": {
+    "image_id": "B6-04",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jumpsuit"
+       }
+      },
+      "descriptor": "Sleeveless dark denim wide-leg jumpsuit with V-neck and matching belt"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jumpsuit",
+      "color_observation": {
+       "primary_color_family": "navy",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000793",
+   "image_sha256": "427fd6f98e19943f84463b3b460e843106e4ce6e44dc39d0d05f9467ef39db50",
+   "folder": "13_Jumpsuit",
+   "envelope": {
+    "image_id": "B6-03",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jumpsuit"
+       }
+      },
+      "descriptor": "black short-sleeve collared boiler suit / coverall jumpsuit with front button placket and utility pockets"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jumpsuit",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniformly black coverall throughout",
+        "lightness": "deep black cloth",
+        "usage": "single black color, buttons also dark/tonal",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000802",
+   "image_sha256": "baa326b96d249b432b61913cb84bafdf0f54ec94c86e70ddc2115a49118d81bd",
+   "folder": "13_Jumpsuit",
+   "envelope": {
+    "image_id": "B3-11",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jumpsuit"
+       }
+      },
+      "descriptor": "white halter-neck wide-leg jumpsuit with O-ring bust detail"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "white_family",
+     "color_lightness": "light",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [
+      {
+       "color_family": "gold",
+       "carrier_kind": "attachment",
+       "carrier_ref": "Metal Hardware"
+      }
+     ],
+     "evidence": {
+      "primary": "uniform white cloth throughout",
+      "lightness": "bright light-toned garment",
+      "usage": "one continuous color across bodice and legs",
+      "effect": "no neon or metallic color on cloth"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000806",
+   "image_sha256": "8864e337e00c62f5990c0f709c968e990d71c6f572447666d56403bcda76eb4c",
+   "folder": "13_Jumpsuit",
+   "envelope": {
+    "image_id": "B5-17",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jumpsuit"
+       }
+      },
+      "descriptor": "off-white short-sleeve zip-front belted playsuit/romper"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jumpsuit",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "accent",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "gold",
+         "carrier_kind": "closure",
+         "carrier_ref": "Zipper"
+        }
+       ],
+       "evidence": {
+        "primary": "off-white/cream cotton twill body",
+        "lightness": "high overall value",
+        "usage": "single body color with gold zip accent",
+        "effect": "matte, no neon or metallic body color"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000807",
+   "image_sha256": "ee081422c3d8db71b869566ca510212ea9b30423a8877e8523f509b9df388258",
+   "folder": "14_Suit",
+   "envelope": {
+    "image_id": "REF_000807__0073_MDV1_jpg_537b21eb-94b3-4bee-9bd6-e030ebdbf98e.webp",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "cropped dark brown tailored jacket with notched lapels, wrap/overlapping front, flap pockets"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "white collared dress shirt worn under jacket, visible at collar and center placket"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "dark brown pleated tailored trousers, visible at waist and upper thigh"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform dark brown tailoring cloth across body, lapels and sleeves",
+        "lightness": "deep dark brown tone",
+        "usage": "single continuous color, no contrast trims or closures",
+        "effect": "matte finish, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": null,
+      "color_observation": null
+     },
+     {
+      "target_id": "target_3",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "dark brown suiting matching the jacket",
+        "lightness": "deep dark brown",
+        "usage": "single uniform color",
+        "effect": "matte finish"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000810",
+   "image_sha256": "5fbc157593a724f6ad3a6be2d37043084fefdf5a51e2fcdc8017c9d32e07d767",
+   "folder": "14_Suit",
+   "envelope": {
+    "image_id": "REF_000810__embrojk1.jpeg",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "White tweed cropped jacket with braided trim, floral embroidery, and gold buttons"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "White tweed mini skirt with braided trim and two applied front patch pockets"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "multi",
+       "multi_color": true,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "pink",
+         "carrier_kind": "material_component",
+         "carrier_ref": "Cotton"
+        },
+        {
+         "color_family": "green",
+         "carrier_kind": "material_component",
+         "carrier_ref": "Cotton"
+        },
+        {
+         "color_family": "yellow",
+         "carrier_kind": "material_component",
+         "carrier_ref": "Cotton"
+        },
+        {
+         "color_family": "gold",
+         "carrier_kind": "closure",
+         "carrier_ref": "Button"
+        }
+       ],
+       "evidence": {
+        "primary": "white tweed body cloth",
+        "lightness": "bright white base",
+        "usage": "floral embroidery in multiple co-equal colors across body and sleeves",
+        "effect": "no neon or metallic finish on body"
+       },
+       "color_notes": "multicolor floral embroidery (pink, yellow, green foliage) distributed over white body and sleeves"
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Skirt",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "white tweed cloth",
+        "lightness": "bright white",
+        "usage": "single uniform white with tonal braided trim",
+        "effect": "no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000811",
+   "image_sha256": "dc68e9c3351003292755ecf81e6f58d66958185b0a938c77cfeaf735d0339682",
+   "folder": "14_Suit",
+   "envelope": {
+    "image_id": "B5-04",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "burgundy sequined wrap blazer jacket with peaked lapel and self-tie belt"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "matching burgundy sequined trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "wine",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000816",
+   "image_sha256": "1f2d237f69fd042f818f721595556375e5052c812c62e39d96a0b05cc8fecfce",
+   "folder": "14_Suit",
+   "envelope": {
+    "image_id": "B4-05",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "Black tailored single-breasted suit jacket with peaked lapels"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "White dress shirt visible at collar and chest under jacket"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "Black tailored suit trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform black cloth",
+        "lightness": "deep black",
+        "usage": "single tone throughout",
+        "effect": "matte, no metallic/neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_3",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform black trousers",
+        "lightness": "deep black",
+        "usage": "single tone",
+        "effect": "matte, no metallic/neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000817",
+   "image_sha256": "8d88deb17153b446dbf74791d75a7834e77a093a88aff9e8a109771ecfe07b23",
+   "folder": "14_Suit",
+   "envelope": {
+    "image_id": "B4-04",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "gray tailored single-breasted suit jacket with peaked lapels"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "white dress shirt worn under the jacket"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "gray tailored suit trousers, straight leg"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "medium gray suiting cloth",
+        "lightness": "mid-value gray",
+        "usage": "one uniform color throughout",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_3",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "medium gray suiting matching jacket",
+        "lightness": "mid-value gray",
+        "usage": "uniform color",
+        "effect": "matte"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000834",
+   "image_sha256": "688794a3eec4d2d42e7edab2719949875949388ea9da9215e015180862bee90a",
+   "folder": "14_Suit",
+   "envelope": {
+    "image_id": "B3-13",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "black zip-front tailored jacket worn with belt at waist"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "white dress shirt visible at collar and neck under jacket"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "black slim tailored trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "SINGLE_UNKEYED",
+    "colour": {
+     "primary_color_family": "black",
+     "color_lightness": "dark",
+     "color_usage": "single",
+     "multi_color": false,
+     "color_effect": "none",
+     "additional_colors": [
+      {
+       "color_family": "silver",
+       "carrier_kind": "attachment",
+       "carrier_ref": "Belt"
+      }
+     ],
+     "evidence": {
+      "primary": "uniform black cloth",
+      "lightness": "deep black",
+      "usage": "single garment color",
+      "effect": "matte, no chromatic effect"
+     },
+     "color_notes": null
+    }
+   }
+  },
+  {
+   "ref": "REF_000840",
+   "image_sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45",
+   "folder": "14_Suit",
+   "envelope": {
+    "image_id": "B5-01",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "oversized beige tailored single-breasted blazer worn open"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "cream fine-knit turtleneck top worn under the blazer"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "beige tailored cropped trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "beige",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "black",
+         "carrier_kind": "closure",
+         "carrier_ref": "Button"
+        }
+       ],
+       "evidence": {
+        "primary": "uniform light beige tailoring cloth",
+        "lightness": "pale neutral tone",
+        "usage": "one garment color throughout",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_3",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "beige",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform light beige suiting",
+        "lightness": "pale neutral",
+        "usage": "single color",
+        "effect": "matte"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000841",
+   "image_sha256": "7b367a674fba8a111c1e460a0c8d48907f997681a0a08ff8a450899c98ae8333",
+   "folder": "14_Suit",
+   "envelope": {
+    "image_id": "B5-02",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "brown double-breasted tailored suit jacket, oversized, peak lapels, worn open over shirt and tie"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "brown wide-leg tailored trousers, full length"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "white dress shirt visible at collar under jacket"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "brown",
+         "carrier_kind": "closure",
+         "carrier_ref": "Button"
+        }
+       ],
+       "evidence": {
+        "primary": "uniform muted brown tailoring cloth",
+        "lightness": "medium-dark brown",
+        "usage": "one garment color across body and sleeves",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform muted brown suiting cloth matching jacket",
+        "lightness": "medium-dark brown",
+        "usage": "single continuous color across both legs",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000845",
+   "image_sha256": "488cff2751f93aacdc31e8ee477a7f6b0066a8ccd07e70dd673ab4e6653dc0b8",
+   "folder": "15_STYLE_FULL_LOOK",
+   "envelope": {
+    "image_id": "B4-01",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "taupe/khaki hooded down puffer jacket, cropped, full-zip"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "brown wide-leg trousers"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "gray knit top worn under jacket"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "khaki",
+       "color_lightness": "normal",
+       "color_usage": "subtle",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "gray",
+         "carrier_kind": "graphic",
+         "carrier_ref": "Localized"
+        },
+        {
+         "color_family": "khaki",
+         "carrier_kind": "closure",
+         "carrier_ref": "Zipper"
+        }
+       ],
+       "evidence": {
+        "primary": "muted taupe-khaki shell",
+        "lightness": "mid-tone",
+        "usage": "small reflective chest bar only",
+        "effect": "matte, no metallic/neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "solid muted brown",
+        "lightness": "mid-tone",
+        "usage": "one color throughout",
+        "effect": "matte"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000846",
+   "image_sha256": "e0125db87f0c0b745b211d9bf944059bbe50b71377a41280bf0104ba34fecc20",
+   "folder": "15_STYLE_FULL_LOOK",
+   "envelope": {
+    "image_id": "B4-02",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "dark gray hooded zip-front jacket with utility straps and belt"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "black wide-leg cargo trousers with belt straps"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": "black knit top worn under the jacket"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "silver",
+         "carrier_kind": "closure",
+         "carrier_ref": "Zipper"
+        }
+       ],
+       "evidence": {
+        "primary": "dark charcoal gray shell",
+        "lightness": "deep dark tone",
+        "usage": "one garment color",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "solid black cargo cloth",
+        "lightness": "dark",
+        "usage": "one garment color",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000847",
+   "image_sha256": "28e92cd1d4b8f530c29a7e881776c2ecf172777a7d0a45889e2d1fb1b2270db1",
+   "folder": "15_STYLE_FULL_LOOK",
+   "envelope": {
+    "image_id": "REF_000847__00003-toteme-spring-2025-ready-to-wear-credit-brand.webp",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Coat"
+       }
+      },
+      "descriptor": "black open-front collarless coat worn over other garments"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "cream sleeveless knit top with scoop neckline"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "cream knit midi skirt"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Coat",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "solid black cloth",
+        "lightness": "deep dark tone",
+        "usage": "one uniform color",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Sweater",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "cream/off-white knit",
+        "lightness": "light tone",
+        "usage": "one uniform color",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_3",
+      "category": "Skirt",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "cream/off-white knit",
+        "lightness": "light tone",
+        "usage": "one uniform color",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000849",
+   "image_sha256": "09e3f9dbe8842fd206f067b98fea72241b3232e76adab7119aa7a4a137466b1e",
+   "folder": "15_STYLE_FULL_LOOK",
+   "envelope": {
+    "image_id": "B4-03",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Jacket"
+       }
+      },
+      "descriptor": "black open tailored blazer with notched lapel"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+       }
+      },
+      "descriptor": "white crew-neck fitted top"
+     },
+     {
+      "target_id": "target_3",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Trouser"
+       }
+      },
+      "descriptor": "gray wide-leg cargo trousers"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "color_observation": {
+       "primary_color_family": "black",
+       "color_lightness": "dark",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "uniform black cloth",
+        "lightness": "deep dark tone",
+        "usage": "one color throughout",
+        "effect": "matte, no metallic or neon"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "T-Shirt",
+      "color_observation": {
+       "primary_color_family": "white_family",
+       "color_lightness": "light",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [],
+       "evidence": {
+        "primary": "clean white jersey",
+        "lightness": "bright light tone",
+        "usage": "one color",
+        "effect": "matte"
+       },
+       "color_notes": null
+      }
+     },
+     {
+      "target_id": "target_3",
+      "category": "Trouser",
+      "color_observation": {
+       "primary_color_family": "gray",
+       "color_lightness": "normal",
+       "color_usage": "single",
+       "multi_color": false,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "gray",
+         "carrier_kind": "closure",
+         "carrier_ref": "Button"
+        }
+       ],
+       "evidence": {
+        "primary": "heathered mid gray cloth",
+        "lightness": "medium tone",
+        "usage": "one color, low-contrast fly button",
+        "effect": "matte"
+       },
+       "color_notes": "melange/heathered yarn appearance"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000851",
+   "image_sha256": "5807c94a967b5eccf8b621d49b799f6cd6068fbb2435e569dc770bf386c12841",
+   "folder": "15_STYLE_FULL_LOOK",
+   "envelope": {
+    "image_id": "B4-14",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "Long-sleeve floral-print draped top with waist tie, cropped hem"
+     },
+     {
+      "target_id": "target_2",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Skirt"
+       }
+      },
+      "descriptor": "Floral-print asymmetric draped skirt with high-low hem"
+     }
+    ]
+   },
+   "stored_colour": {
+    "shape": "KEYED",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "category": "Shirt",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "dark",
+       "color_usage": "multi",
+       "multi_color": true,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "orange",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Repeat"
+        }
+       ]
+      }
+     },
+     {
+      "target_id": "target_2",
+      "category": "Skirt",
+      "color_observation": {
+       "primary_color_family": "brown",
+       "color_lightness": "dark",
+       "color_usage": "multi",
+       "multi_color": true,
+       "color_effect": "none",
+       "additional_colors": [
+        {
+         "color_family": "orange",
+         "carrier_kind": "pattern",
+         "carrier_ref": "Repeat"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "v1_3_live_envelopes": [
+  {
+   "ref": "REF_000246",
+   "vlv_call": "P1|call01",
+   "image_sha256": "1bf55ea4598579c49eb32b5f4a2a3261228cbf7ae83ec080345e2d3c9d896780",
+   "image_file_sha256": "1bf55ea4598579c49eb32b5f4a2a3261228cbf7ae83ec080345e2d3c9d896780",
+   "envelope": {
+    "image_id": "VLV-call01",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "An openwork lace blouse built from a large-scale scalloped fan motif with sizable pierced oval and circular cutouts arranged in radiating panels across the body; the cutwork is dense enough that the skin reads through the open ground over the torso and down the sleeves. A separate small ring-and-loop crochet-like trim edges the round neckline, and the lower body terminates in a pronounced scalloped, pointed-tab hem rather than a straight edge. The elbow-length sleeves end in a narrow banded cuff gathered slightly, and the same openwork cutting continues through the sleeve body."
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000185",
+   "vlv_call": "P1|call04",
+   "image_sha256": "f99b34845abd522fa6b7a22b5d8675d68fd558059d8c12dc64607a71fcf263c2",
+   "image_file_sha256": "f99b34845abd522fa6b7a22b5d8675d68fd558059d8c12dc64607a71fcf263c2",
+   "envelope": {
+    "image_id": "VLV-call04",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "Western-style snap-front shirt with pointed yokes front and back and two flap-closed chest pockets whose flaps follow a sawtooth/western point; the pattern is a dense vertical arrangement of narrow woven stripes interspersed with small square dot motifs running the full length of the body and sleeves, and the snap placket sits on a center front opening between the collar points and the hem."
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000323",
+   "vlv_call": "P1|call05",
+   "image_sha256": "8c42298e3d28caa398ff63163e48f43be72685bafe8784c25ac96d7a7981ec2e",
+   "image_file_sha256": "8c42298e3d28caa398ff63163e48f43be72685bafe8784c25ac96d7a7981ec2e",
+   "envelope": {
+    "image_id": "VLV-call05",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "T-Shirt"
+       }
+      },
+      "descriptor": "A large rectangular photographic graphic dominates the center-front chest-to-lower-torso area: a dusk-toned stage photograph of a band performing amid lit evergreen trees, set below an arched 'NIRVANA' wordmark rendered in a red-to-yellow vertical gradient. The graphic block sits as a single contained panel rather than bleeding to the garment edges, with the faded black body cloth framing it on all sides. Overlock/coverstitch topstitching is visible along the shoulder and sleeve seams, reading as exposed contrast stitching against the washed-black ground."
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000398",
+   "vlv_call": "P1|call06",
+   "image_sha256": "d0f53d5d50e82e87",
+   "image_file_sha256": "d0f53d5d50e82e87472f56141f8d93a1a451ba31e861188285c83a5811f48cf4",
+   "envelope": {
+    "image_id": "VLV-call06",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Sweater"
+       }
+      },
+      "descriptor": "Fine-gauge smooth knit short-sleeve polo with an open (buttonless) placketless V-neck where the collar stands away in a soft Johnny-collar manner, the two collar leaves parting into a shallow V at centre front. A thin white tipping line traces the collar edge and continues down both sides of the open V-notch, giving a contrast outline against the mid-grey body. Sleeve ends and lower body finish in narrow ribbed bands, with a deeper ribbed hem band at the bottom edge."
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000190",
+   "vlv_call": "P1|call07",
+   "image_sha256": "176b20be03df4227d65e212c977631488a86cc409a1de5aa9513ef9489a23a4e",
+   "image_file_sha256": "176b20be03df4227d65e212c977631488a86cc409a1de5aa9513ef9489a23a4e",
+   "envelope": {
+    "image_id": "VLV-call07",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Shirt"
+       }
+      },
+      "descriptor": "Sheer corded-lace blouse constructed with a dense floral-lace ground carried across the whole body and sleeves, with the open lace mesh letting skin and an inner garment read through across the torso. A single centre-front column of spaced round buttons runs the full length of the front. The long sleeves finish in a widening bell at the wrist, ending in a scalloped, picot/eyelash lace edge; the same scalloped edge finishes the lower hem. The neckline is a plain rounded crew with no collar. The body reads as softly shaped to the torso with slight puff at the sleeve head."
+     },
+     {
+      "target_id": "target_2",
+      "eligible": false,
+      "record": {
+       "category": null
+      },
+      "descriptor": null
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000661",
+   "vlv_call": "P1|call08",
+   "image_sha256": "bccfc8a6191ba20572fd6c0b82c272707403d81096e66a919075c7b6da5693e0",
+   "image_file_sha256": "bccfc8a6191ba20572fd6c0b82c272707403d81096e66a919075c7b6da5693e0",
+   "envelope": {
+    "image_id": "VLV-call08",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "Floor-length column gown in matte black jersey-like cloth with a high mock neck. The yoke across the upper chest and shoulders is sheer net carrying a dense black floral lace appliqué that reads as leaves and blossoms, climbing to the neck band and over the cap-sleeve shoulders; below this illusion yoke a deep V of the same lace plunges toward the solid bodice, so the central chest reads as sheer net filled with lace rather than bare skin. The solid opaque body begins at the bust and runs uninterrupted as a close column down past the hips, the cloth skimming the figure before releasing into a slight widening sweep at the floor-length hem."
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000671",
+   "vlv_call": "P1|call09",
+   "image_sha256": "f9311f12a3b74b4c9e7ad25b0bcec38ff3c5e73082f646b1c62897fbe021a12f",
+   "image_file_sha256": "f9311f12a3b74b4c9e7ad25b0bcec38ff3c5e73082f646b1c62897fbe021a12f",
+   "envelope": {
+    "image_id": "VLV-call09",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "Floor-length column gown in matte black jersey-type cloth, cut with a bateau/boat neckline that runs high and wide across the collarbones. The defining feature is a yoke of sheer illusion mesh across the upper chest and shoulders, divided into three horizontal bands by two solid self-fabric stripes that curve parallel to the neckline, so the solid bodice begins below the bust while skin reads through the sheer bands above. Short set-in sleeves are solid self-fabric. The torso carries horizontal shirring/ruching gathered toward one side at the waist, softly defining it, and the skirt falls straight and narrow to the floor."
+     }
+    ]
+   }
+  },
+  {
+   "ref": "REF_000694",
+   "vlv_call": "P1|call10",
+   "image_sha256": "b012964ed80cf4fd706ddff349025213cde8ed9f7525275b6ba39235ccb83efe",
+   "image_file_sha256": "b012964ed80cf4fd706ddff349025213cde8ed9f7525275b6ba39235ccb83efe",
+   "envelope": {
+    "image_id": "VLV-call10",
+    "targets": [
+     {
+      "target_id": "target_1",
+      "eligible": true,
+      "record": {
+       "category": {
+        "state": "OBSERVED",
+        "value": "Dress"
+       }
+      },
+      "descriptor": "Bias-cut slip dress in a fluid silver satin that catches light along its draped folds; the body falls close over the hips then widens gently toward the lower hem, reading as a bias-draped column rather than a seamed A-line. The front is held by two very fine spaghetti straps that cross the shoulders into a narrow V-front, with the satin falling in a soft inverted-V drape from the bust seam. No visible closure or seam detailing interrupts the smooth body front."
+     }
+    ]
+   }
+  }
+ ]
+}

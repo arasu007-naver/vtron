@@ -1,0 +1,132 @@
+{
+ "at": "2026-10-29T08:37:07.225Z",
+ "pass": 8,
+ "total": 8,
+ "live_verified": false,
+ "note": "offline only — Correction A is NOT live-verified until REF_000010 is actually rerun under a new CEO-approved exception",
+ "checks": [
+  {
+   "id": "A-01",
+   "desc": "invocation config: model claude-opus-4-8 · Vision V1.3 max_tokens 16384 (was 8192) · colour 8192 unchanged · the plan pins the config sha256 · the successor reads max_tokens ONLY from the config (no literal 8192 / 16384 in its code)",
+   "pass": true,
+   "detail": {
+    "plan_max_tokens": {
+     "VISION": 16384,
+     "COLOUR": 8192
+    }
+   }
+  },
+  {
+   "id": "A-02",
+   "desc": "the provider request body carries the configured value: V1.3 Vision request max_tokens 16384 · model claude-opus-4-8 · prompt = the approved V1.3 built prompt · image = REF_000010 bytes; colour transport 8192; the transport default (no cfg) is still 8192 (predecessor behaviour unchanged)",
+   "pass": true,
+   "detail": {
+    "vision": 16384,
+    "colour": 8192,
+    "transport_default": 8192,
+    "prompt_sha16": "aa6119bb338000cf"
+   }
+  },
+  {
+   "id": "A-03",
+   "desc": "the UNMODIFIED V1.3 parser + validator accept every complete stored V1.3 response (6 Order P end_turn responses) delivered through the 16384 transport",
+   "pass": true,
+   "detail": [
+    {
+     "ref": "REF_000520",
+     "raw": "slot01_VISION_REF_000520.json",
+     "output_tokens": 2596,
+     "ok": true,
+     "targets": 1,
+     "request_max_tokens": 16384
+    },
+    {
+     "ref": "REF_000841",
+     "raw": "slot05_VISION_REF_000841.json",
+     "output_tokens": 5985,
+     "ok": true,
+     "targets": 3,
+     "request_max_tokens": 16384
+    },
+    {
+     "ref": "REF_000840",
+     "raw": "slot07_VISION_REF_000840.json",
+     "output_tokens": 4641,
+     "ok": true,
+     "targets": 3,
+     "request_max_tokens": 16384
+    },
+    {
+     "ref": "REF_000810",
+     "raw": "slot09_VISION_REF_000810.json",
+     "output_tokens": 5978,
+     "ok": true,
+     "targets": 2,
+     "request_max_tokens": 16384
+    },
+    {
+     "ref": "REF_000816",
+     "raw": "slot11_VISION_REF_000816.json",
+     "output_tokens": 3225,
+     "ok": true,
+     "targets": 2,
+     "request_max_tokens": 16384
+    },
+    {
+     "ref": "REF_000849",
+     "raw": "slot13_VISION_REF_000849.json",
+     "output_tokens": 4782,
+     "ok": true,
+     "targets": 3,
+     "request_max_tokens": 16384
+    }
+   ]
+  },
+  {
+   "id": "A-04",
+   "desc": "the stored truncated REF_000010 response (stop_reason max_tokens · output 8192 · 22462 chars) is still refused by the unchanged parser (UNPARSEABLE_RESPONSE) — truncated JSON is never evidence",
+   "pass": true,
+   "detail": {
+    "stage": "model_call",
+    "code": "UNPARSEABLE_RESPONSE",
+    "detail": "model output not parseable as JSON",
+    "attempts": 1
+   }
+  },
+  {
+   "id": "A-05",
+   "desc": "successor dry run (stub fetch, no credential): DRY_RUN_COMPLETE · 2 attempts · Vision request max_tokens 16384 / colour 8192 accepted by the guard · Vision prompt = plan · R4 scored the declared unit (stub content — wiring proof only, NOT evidence about REF_000010)",
+   "pass": true,
+   "detail": {
+    "attempts": [
+     "VISION 16384 OK",
+     "COLOUR 8192 OK"
+    ],
+    "scored": [
+     "COMPLETE"
+    ]
+   }
+  },
+  {
+   "id": "A-06",
+   "desc": "the successor refuses live execution (exit 3, before any credential read): no FQ anchor exists; it accepts only exception id FQ-REF010 recorded in Guard 08 — the expired Order P FE-E2E anchor can never satisfy it",
+   "pass": true,
+   "detail": "LIVE_NOT_EXECUTED · NO_APPROVAL_ANCHOR"
+  },
+  {
+   "id": "A-07",
+   "desc": "preserved: the Order O/P runner == its package manifest · transport run/anthropic_vision_fn.js == plan (620c8f9e…) · every V1.3 module == plan · V1.3 built prompt == plan",
+   "pass": true,
+   "detail": {
+    "runner_sha16": "f5be8a3149e9ae0d",
+    "transport_sha16": "620c8f9e2d81d9de"
+   }
+  },
+  {
+   "id": "A-08",
+   "desc": "no network: every request went to the local capture stub (0 unanswered)",
+   "pass": true,
+   "detail": null
+  }
+ ]
+}

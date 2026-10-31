@@ -1,0 +1,91 @@
+{
+ "document": "CODE_IDENTITY_SEAL_COLOUR_TARGET_AWARE_V1_CANDIDATE",
+ "engine_id": "STMX_COLOUR_TARGET_AWARE_ACQUISITION_V1_CANDIDATE",
+ "parent": {
+  "frozen_colour_v1": {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+   "sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+   "relation": "required read-only after a sha256 pin check; COLOR_PROMPT body carried byte-for-byte; validator reused"
+  },
+  "item_vision_v1_3": "target identities consumed from the V1.3 envelope (no Vision file loaded)"
+ },
+ "status": "CANDIDATE — identity record only · NOT a freeze · NOT production · live accuracy NOT_DEMONSTRATED (CEO order 2026-10-29)",
+ "sealed_at": "2026-10-29T06:41:54.624Z",
+ "order": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_TARGET_AWARE_COLOUR_AND_R4_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md",
+ "location": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/",
+ "aggregate_rule": "sha256 over \"file:sha256\\n\" (sorted) — all files except this seal; src aggregate = runtime *.js outside tests/ (verify_identity.js excluded)",
+ "files": [
+  {
+   "file": "README_KO.md",
+   "bytes": 1900,
+   "sha256": "37cc6b16a14582770197608ccc177e20ea355f045758864543cd9b446b26f758"
+  },
+  {
+   "file": "TARGET_AWARE_COLOUR_CONTRACT_V1.md",
+   "bytes": 5790,
+   "sha256": "d3469e1125303ed2d985833287fe88a7a120ea30bb449220b2a6271e0e41e3f5"
+  },
+  {
+   "file": "index.js",
+   "bytes": 1763,
+   "sha256": "982ab134e0ea30f0da2476398fea97a328d49c210801b7d3d39f072b4201d4d3"
+  },
+  {
+   "file": "src/tac_acquisition.js",
+   "bytes": 4270,
+   "sha256": "484e90d0502e81cbb895f38ed3915550cffd721d5aeaf66cec3ca7d11b8987cf"
+  },
+  {
+   "file": "src/tac_contracts.js",
+   "bytes": 4385,
+   "sha256": "b7891d5ef7727e178e74974bae54c4d44355f074e0c04b91592e6d292ab8b7df"
+  },
+  {
+   "file": "src/tac_frozen_colour_pin.js",
+   "bytes": 2542,
+   "sha256": "84d7cbc76a083ba667bfa6214327057a2a44d31bb3974e2c6894c2d16dfcc768"
+  },
+  {
+   "file": "src/tac_governance.js",
+   "bytes": 4532,
+   "sha256": "4778dd14c7635625ed0a70255ad2a2ec6a0bf88ead74e7ccc89ccec3b7162d52"
+  },
+  {
+   "file": "src/tac_manifest.js",
+   "bytes": 5784,
+   "sha256": "a85831fceec99de95ef0d49b2e072aa43b70112d3641a8972cc0b778f64fd6d2"
+  },
+  {
+   "file": "src/tac_packet.js",
+   "bytes": 4767,
+   "sha256": "b9d2ce4a6a9fd0e1e4275c3ad46a040b8d40ea9f599ec3b4c97b2906d92f0fb9"
+  },
+  {
+   "file": "src/tac_request.js",
+   "bytes": 6041,
+   "sha256": "a5790a07e5b1837364b41b7c072d37f995b8d4b189f498f4d5c22d91e2973c03"
+  },
+  {
+   "file": "src/tac_stored_association.js",
+   "bytes": 6837,
+   "sha256": "e5874f7a90d5a42d36530484813b36b7c0ab4c2ef56d2d4ac6cef5df3290b8d5"
+  },
+  {
+   "file": "tests/fixtures/tac_stored_colour_fixtures_v1.json",
+   "bytes": 125752,
+   "sha256": "3ffcbba8cc7a3dce8554fadf1df29ec33ea11535eded2f1680eab50fbc241e69"
+  },
+  {
+   "file": "tests/run_all.js",
+   "bytes": 22193,
+   "sha256": "7e1363b50bd55c0300cea88b03b3f36b5fe924f4865a428e399a43cc0067757a"
+  },
+  {
+   "file": "verify_identity.js",
+   "bytes": 1265,
+   "sha256": "2b29012c6e52ec47b7d4d41a7101d7f2b78a3c00caa1697c2cb9cc2287943416"
+  }
+ ],
+ "DIRECTORY_AGGREGATE_SHA256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b",
+ "RUNTIME_SRC_AGGREGATE_SHA256": "ff6f113364825ecdc9507d00de76e7ed3868c4a5a3a743f10d538bdef0a1734f"
+}

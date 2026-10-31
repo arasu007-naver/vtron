@@ -1,0 +1,638 @@
+{
+ "document": "STMX_ITEM_DM_V2_FINAL_FREEZE_AUTHORITY_V1",
+ "freeze_id": "ITEM-DM-V2-FINAL-FREEZE-V1-2026-10-28",
+ "date": "2026-10-28",
+ "created": "2026-10-28T00:59:48.838Z",
+ "approval_anchor": {
+  "CEO Decision": "2026-10-28",
+  "Order": "STMX ITEM DM V2 — CEO Final Approval, Final Freeze & Verified Backup (§1 · §2 · §6 · §7), verbatim `04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_DM_V2_FINAL_FREEZE_AND_VERIFIED_BACKUP_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md` sha256 a34a6bef9423770509d47c43ea16d798b5b2f3d97b91380dd014154523a04224",
+  "Reason": "CEO ratified DM-Q1 · DM-Q2 · DM-Q3 · ZE-1 and accepted Known Limitations L-2 … L-5; the unchanged DM V2 candidate passed the pre-freeze design review (18/18) and the re-executed final regression (16 gates) — frozen in place.",
+  "Affected Scope": "this freeze record + 3 CURRENT_CONSTITUTION files (new). The candidate directory is frozen in place, unchanged. NOT changed: DM production pointer (Item DM V1), Item Scoring Engine V1 manifest / registry, frozen DM V1, SR V2, EI / TC, Vision V1.3, CEO GT."
+ },
+ "status": "FINAL_FROZEN_WITH_ACCEPTED_KNOWN_LIMITATIONS",
+ "status_note": "\"accepted\" = the CEO decided to freeze with L-2 … L-5 recorded (order §2). It does NOT mean they are resolved.",
+ "production_status": "PRODUCTION_PROMOTION = NOT_AUTHORIZED · DM_PRODUCTION = EXISTING_ITEM_DM_V1 — the pointer STMX_DM_ENGINE_PRODUCTION_AUTHORITY_V1.json is unchanged; promotion needs the four-axis integration + a separate CEO approval (order §7).",
+ "ceo_decisions": [
+  {
+   "id": "DM-Q1",
+   "subject": "Neutral Center Retirement",
+   "decision": "APPROVED",
+   "record": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_DM_V2_FINAL_FREEZE_AND_VERIFIED_BACKUP_V1/D2_CEO_DECISION_RATIFICATION_RECORD.md"
+  },
+  {
+   "id": "DM-Q2",
+   "subject": "Detail Direction Semantics",
+   "decision": "APPROVED — RETAIN EXISTING DM V2 RULE",
+   "record": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_DM_V2_FINAL_FREEZE_AND_VERIFIED_BACKUP_V1/D2_CEO_DECISION_RATIFICATION_RECORD.md"
+  },
+  {
+   "id": "DM-Q3",
+   "subject": "Partial / Range / Unknown Evidence",
+   "decision": "APPROVED",
+   "record": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_DM_V2_FINAL_FREEZE_AND_VERIFIED_BACKUP_V1/D2_CEO_DECISION_RATIFICATION_RECORD.md"
+  },
+  {
+   "id": "ZE-1",
+   "subject": "Valid Zero-Evidence Policy",
+   "decision": "APPROVED WITH STRICT SCOPE LIMITATION",
+   "record": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_DM_V2_FINAL_FREEZE_AND_VERIFIED_BACKUP_V1/D2_CEO_DECISION_RATIFICATION_RECORD.md"
+  }
+ ],
+ "engine": {
+  "engine_id": "STMX_DM_ENGINE_V2_DIRECTION_REASON",
+  "scope": "Item DM V2 Direction + Korean Reason Engine (Detail / Minimal)",
+  "frozen_directory": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/",
+  "directory_name_note": "⚠ the `_CANDIDATE` directory name is the historical physical name of this frozen engine, bound here by explicit name and hash (freeze in place, as SR V2). ⛔ Do not rename, move, edit or delete it.",
+  "src_aggregate_sha256": "89a90a0e66fb80a45c7909b11bca10757ec8389c9b9285f3709d1cfc2fcc130e",
+  "src_aggregate_rule": "selfIdentity(): sha256 over \"src/<file>:<sha256>\\n\" for every src/*.js, sorted",
+  "src_modules": [
+   {
+    "file": "src/dm_v2_binding.js",
+    "sha256": "b3be4e7bb2ae3e6fee35996ab98924c6244b5f5fe408626e976900829096ecdb"
+   },
+   {
+    "file": "src/dm_v2_direction_resolver.js",
+    "sha256": "6ef98fb714043f6758c6cdab0e8db25ccc2d31d7873ac00a5438728c6f9e1081"
+   },
+   {
+    "file": "src/dm_v2_engine.js",
+    "sha256": "ccdb5460d5eccd94120cbac135f3a662d754526142a23035240af6ad62437f93"
+   },
+   {
+    "file": "src/dm_v2_reason_composer.js",
+    "sha256": "0b3dc44e3b29bc2aecd268cacb51bff26c03ddf0c9f1b55891e99abbb0e92d85"
+   },
+   {
+    "file": "src/dm_v2_reason_lexicon.js",
+    "sha256": "d77c13da8441dc1b5847838160784c2191dfa905070f2935dbb0c304f6e44bf9"
+   },
+   {
+    "file": "src/dm_v2_reason_verifier.js",
+    "sha256": "c9b800835dd7e51fadf4933fcbfeafb37f729962d429e07043e43ffb0371b457"
+   },
+   {
+    "file": "src/dm_v2_serializer.js",
+    "sha256": "8c2c345df93a0cdd371d1b78c1040fef846a0e2139cb6e5844388abf4c44b104"
+   }
+  ],
+  "directory_files": [
+   {
+    "file": "BOUND_INPUTS.json",
+    "bytes": 908,
+    "sha256": "5aa0bc362147618b613a90916e3057f9c8bc82fc670848f92c25d45494b77b9d"
+   },
+   {
+    "file": "CODE_IDENTITY_SEAL_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE.json",
+    "bytes": 4342,
+    "sha256": "9e8239e0a5f2cfca756c525c4c13a88c44b6ac69fd02ce91bff19b71daa70fa0"
+   },
+   {
+    "file": "README.md",
+    "bytes": 2576,
+    "sha256": "605c6d83c9b2dbb4bd502cbff0addb6788b54a5556cef92fd2a63a2fb653d189"
+   },
+   {
+    "file": "src/dm_v2_binding.js",
+    "bytes": 3601,
+    "sha256": "b3be4e7bb2ae3e6fee35996ab98924c6244b5f5fe408626e976900829096ecdb"
+   },
+   {
+    "file": "src/dm_v2_direction_resolver.js",
+    "bytes": 5013,
+    "sha256": "6ef98fb714043f6758c6cdab0e8db25ccc2d31d7873ac00a5438728c6f9e1081"
+   },
+   {
+    "file": "src/dm_v2_engine.js",
+    "bytes": 3233,
+    "sha256": "ccdb5460d5eccd94120cbac135f3a662d754526142a23035240af6ad62437f93"
+   },
+   {
+    "file": "src/dm_v2_reason_composer.js",
+    "bytes": 8843,
+    "sha256": "0b3dc44e3b29bc2aecd268cacb51bff26c03ddf0c9f1b55891e99abbb0e92d85"
+   },
+   {
+    "file": "src/dm_v2_reason_lexicon.js",
+    "bytes": 3180,
+    "sha256": "d77c13da8441dc1b5847838160784c2191dfa905070f2935dbb0c304f6e44bf9"
+   },
+   {
+    "file": "src/dm_v2_reason_verifier.js",
+    "bytes": 4063,
+    "sha256": "c9b800835dd7e51fadf4933fcbfeafb37f729962d429e07043e43ffb0371b457"
+   },
+   {
+    "file": "src/dm_v2_serializer.js",
+    "bytes": 1320,
+    "sha256": "8c2c345df93a0cdd371d1b78c1040fef846a0e2139cb6e5844388abf4c44b104"
+   },
+   {
+    "file": "tests/_harness.js",
+    "bytes": 7586,
+    "sha256": "21d4d8b36d23dddb43fd9eb1faf5e0da7041592e122085817a71a7222c4e3788"
+   },
+   {
+    "file": "tests/run_all.js",
+    "bytes": 1731,
+    "sha256": "97e0b007f4f2fe24ccf6a640347d01f02b3416f53b093a7a8e5208b6b2ac887d"
+   },
+   {
+    "file": "tests/test_guards.js",
+    "bytes": 5857,
+    "sha256": "d8a60008ef942716d7f51532bbc78ff2ac2faeac9498190b088bed31a72cd87d"
+   },
+   {
+    "file": "tests/test_lattice.js",
+    "bytes": 2232,
+    "sha256": "c0400610582483d8531cc0a6265e7129294877800abd5f1105604af28781a965"
+   },
+   {
+    "file": "tests/test_mandatory.js",
+    "bytes": 6446,
+    "sha256": "36dcf901a44b8cb63beee8ac6217e46eda7ecf2aabcae58e1db07512f6981b93"
+   },
+   {
+    "file": "tests/test_reason.js",
+    "bytes": 5169,
+    "sha256": "b314978090b90fe369a0adb498fb59745c836b75b253d0afb2171fca5275351c"
+   },
+   {
+    "file": "tests/test_regression.js",
+    "bytes": 5838,
+    "sha256": "1252ecfe03e3a70997a83cb068c4adc7d87537a39fd180f1e2b4b4b021c3dcbf"
+   }
+  ],
+  "directory_aggregate_sha256": "4e8548dd65beb0f3bbb54237133a6c68a88ca209445238a54b3f592c7c44dd3d",
+  "directory_aggregate_rule": "sha256 of \"relative/path:sha256\" lines, sorted, joined by \\n",
+  "candidate_seal_file": {
+   "file": "CODE_IDENTITY_SEAL_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE.json",
+   "sha256": "9e8239e0a5f2cfca756c525c4c13a88c44b6ac69fd02ce91bff19b71daa70fa0"
+  }
+ },
+ "frozen_components": {
+  "engine_entry": "src/dm_v2_engine.js",
+  "binding": "src/dm_v2_binding.js + BOUND_INPUTS.json",
+  "direction_resolver": "src/dm_v2_direction_resolver.js (rules T0 · M0 · D1 · D2 · Z0 · M2 · M1 + open-reading adjudication DM-V2-O)",
+  "reason_composer": [
+   "src/dm_v2_reason_composer.js",
+   "src/dm_v2_reason_lexicon.js"
+  ],
+  "reason_verifier": "src/dm_v2_reason_verifier.js",
+  "customer_serializer": "src/dm_v2_serializer.js",
+  "tests": [
+   "tests/_harness.js",
+   "tests/run_all.js",
+   "tests/test_guards.js",
+   "tests/test_lattice.js",
+   "tests/test_mandatory.js",
+   "tests/test_reason.js",
+   "tests/test_regression.js"
+  ]
+ },
+ "bound_runtime_dependencies": [
+  {
+   "role": "dm_admission",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_admission_v1.js",
+   "sha256": "2fb03acb211dcff99fa0ab757cbfed01ba3b9a1b306e3a44dee5ca86a8b62058",
+   "verified_now": true,
+   "why": "frozen DM observation reading (three Primitives, frozen domains, establishes / allows) — STMX_DM_DIRECTION_FIRST_ENGINE_V1, read-only"
+  }
+ ],
+ "runtime_dependency_trace": {
+  "files": [
+   "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_admission_v1.js",
+   "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/BOUND_INPUTS.json",
+   "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_binding.js",
+   "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_direction_resolver.js",
+   "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_engine.js",
+   "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_reason_composer.js",
+   "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_reason_lexicon.js",
+   "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_reason_verifier.js"
+  ],
+  "foreign": [],
+  "note": "traced load + evaluation: no other file is opened"
+ },
+ "vision_contract": {
+  "producer": "STMX_VISION_PRODUCER_V1_3",
+  "production_authority": {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_PRODUCTION_AUTHORITY_V1.json",
+   "sha256": "123365a2323b18a9a04a3b294f864b9fe51c539abfcb7675843578a4f568be6d"
+  },
+  "rules": {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+  },
+  "block": "dm_designed_detail_evidence",
+  "primitives": "Relative Size {small, medium, large} · Contrast {low, medium, high} · Spatial Position {localized, distributed, whole_garment} (frozen domains, checked by the binding at load)"
+ },
+ "customer_output_contract": {
+  "scoring_unit": "Single Governed Item Product",
+  "dm_direction": "DETAIL or MINIMAL (customer field direction = \"D\" | \"M\")",
+  "numeric_score": "NONE",
+  "strength": "NONE",
+  "ordinal": "NONE",
+  "neutral": "NOT ALLOWED",
+  "final_unresolved": "NOT ALLOWED",
+  "final_not_scorable": "NOT ALLOWED",
+  "evidence_source": "Available Governed Item Vision Evidence — the dm_designed_detail_evidence block of one product record (Vision Producer V1.3 shape { evidence, excluded })",
+  "korean_reason": "Vision-Grounded (lexicon-checked verifier; failed Reason → grounded fallback → withheld; the Direction is never withdrawn)",
+  "zero_evidence_policy": "Approved Restricted M Fallback (ZE-1 = DM-V2-Z0; never for partial evidence, an UNKNOWN field alone or a transport defect)",
+  "gt_ref_lookup": "PROHIBITED (none in the source; GD-02 · GD-03 · GD-09)",
+  "customer_shape": "{ direction, reason } — serializer whitelist src/dm_v2_serializer.js",
+  "transport": "absent / malformed block → TRANSPORT_ERROR (not a product result, no Direction)",
+  "cross_axis": "⛔ no other Item axis Direction and no Full-Look judgement is used as DM evidence"
+ },
+ "test_dependencies": [
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_admission_v1.js",
+   "bytes": 7903,
+   "sha256": "2fb03acb211dcff99fa0ab757cbfed01ba3b9a1b306e3a44dee5ca86a8b62058",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_direction_resolver_v1.js",
+   "bytes": 19480,
+   "sha256": "7f0c54a9bd4b1c7786cf56664b7f5b665b5bed30e1f1c4821d78eb31617c0058",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_engine_v1.js",
+   "bytes": 6012,
+   "sha256": "96407c555d55f6dd67108ecda8da9a5620f2ec3e7f93f7218caa9bf24b1b7ddd",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_m1_m2_refinement_v1.js",
+   "bytes": 6509,
+   "sha256": "af5b64ddcf0630b040f8abbbae127652ad1e69d8f9f2eb9218fc320c46b2707c",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_ordinal_projector_v1.js",
+   "bytes": 10262,
+   "sha256": "4b6f5aecf1b6e9b8f293c53105c420b33a795d4883e5ac481d8e78473c6a0ff9",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_strength_resolver_v1.js",
+   "bytes": 16819,
+   "sha256": "69f6e5c0b3eed926ba662ecfdd5888be2926a048ff6e72a96d04553726772bc0",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/tests/dm_gt47_direction_fixtures_v1.js",
+   "bytes": 27340,
+   "sha256": "3608e456888374c94252214fa2830dc7d564b8019f06895c2bd3f008353bb715",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/tests/dm_live8_replay_fixtures_v1.js",
+   "bytes": 6946,
+   "sha256": "4e787b451e7354eda9857d4812f53fcd1edb85ca578fe9c3dd9decddd63593a2",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_STRENGTH_CLOSURE_V2/tests/dm_setA_calibration_authority_v2.js",
+   "bytes": 9156,
+   "sha256": "718fc4daa0c5ed0b56b4a8f128ab88b30e8bc42879e4def8c98b61210f5d99da",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_STRENGTH_CLOSURE_V2/tests/dm_setC_phase1_final_v2.js",
+   "bytes": 7200,
+   "sha256": "48329bdaecac5c9bdef1f5c91f2488d41f24b174153bff83eda6d757c8db5980",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_DM_ENGINE_V1_FINAL.json",
+   "bytes": 8414,
+   "sha256": "909f9f90c25a21d2461218d2219c0ff2d62c82eb4da9d33d20a4654f5670ed17",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V1_FINAL_FREEZE/production/dm_engine_binding_v1.js",
+   "bytes": 5546,
+   "sha256": "69fdbd6aaf8d5f935e860abe89ffa3b229067d906974ead7273aefc4bd3fe962",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_OBSERVATION_INTEGRATION_CLOSURE_LIVE_VALIDATION_V1/live/governed_L1_basicvnkwt1.json",
+   "bytes": 11489,
+   "sha256": "01e7ace3c308e72bbb9fc16627b906f66b2aaea924e6c57f8d62bc091b03d1aa",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_OBSERVATION_INTEGRATION_CLOSURE_LIVE_VALIDATION_V1/live/governed_L2_logotee5.json",
+   "bytes": 11602,
+   "sha256": "1b59385f93c5916f58d5827af0a5b1b1a05272112517cae926dc4656db7d6232",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_OBSERVATION_INTEGRATION_CLOSURE_LIVE_VALIDATION_V1/live/governed_L3_mono2.json",
+   "bytes": 12373,
+   "sha256": "9e2d2fc6b6d73eb087ab97d7658d0b9850ec698865ee7433f67f739f72f3625c",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_OBSERVATION_INTEGRATION_CLOSURE_LIVE_VALIDATION_V1/live/governed_L8_mtdr3.json",
+   "bytes": 17248,
+   "sha256": "10da0b25832f6c158f90b5ad964ce95dfd8f3afeb7b39441da58b1004ef9ce66",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_OBSERVATION_INTEGRATION_CLOSURE_LIVE_VALIDATION_V1/live/rerun_governed_L4_techybrid4.json",
+   "bytes": 16042,
+   "sha256": "80ebb5ad7f90a2ac32f9044e3a7faec64c6934475e983421ba045165d7cdb0f9",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_OBSERVATION_INTEGRATION_CLOSURE_LIVE_VALIDATION_V1/live/rerun_governed_L5_grp1.json",
+   "bytes": 14827,
+   "sha256": "45ef65fc2e0d1503c276765fa92cdb263413094cacbc77c378bf1e99d6f6c384",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_OBSERVATION_INTEGRATION_CLOSURE_LIVE_VALIDATION_V1/live/rerun_governed_L6_shirtsprint1.json",
+   "bytes": 12800,
+   "sha256": "eafda947240b951f2e644e86d3937ff6892ce6788fe1eb20ab16134fb8d42450",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_OBSERVATION_INTEGRATION_CLOSURE_LIVE_VALIDATION_V1/live/rerun_governed_L7_mtdr1.json",
+   "bytes": 17645,
+   "sha256": "f518e55d7af025f47e93e0434b72878751932412e008fc13f9baa99e93a1b827",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_OBSERVATION_LAYER_IMPLEMENTATION_V1/engine/dm_m1_predicate_v1.js",
+   "bytes": 6430,
+   "sha256": "2ae30206eb27921da5d5606c242c0278769dfac5c42cb05bee0366dda29ef295",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_controller_v1.js",
+   "bytes": 45575,
+   "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_model_adapter_v1.js",
+   "bytes": 3881,
+   "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_prompt_v1.js",
+   "bytes": 161641,
+   "sha256": "9779cc44716a241d23127bedf8ab9fb79ff7a3e73f2e2e642b6083779996f23f",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "bytes": 74550,
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_validator_v1.js",
+   "bytes": 69678,
+   "sha256": "26ad25a8a2b3477e83f4858ec5fe6450040025a26a2efab9bb4599d8416e2d81",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/MASTER/STMX_CEO_CALIBRATION_CORPUS.jsonl",
+   "bytes": 6600580,
+   "sha256": "621d6b905fb71b0c265791ccd02d4a3a7e0339d129ff769cef5ccdbf4eace267",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/TOOLS/scoring_units_v1.js",
+   "bytes": 15261,
+   "sha256": "b46d4c9fe8bb9a8349c6d1d4cb4aab9eaec0c0ec961ed1242dc81acddc1fd723",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_DM_DIRECTION_BSC1_CONTRACT_CORRECTION_FULL_FREEZE_V1/15_STMX_DM_75_CASE_FINAL_REPLAY_V1.json",
+   "bytes": 79357,
+   "sha256": "6cad8e9872af56b74382b5e94467b8fb54b843b20b7c633d80555b3ddc40874f",
+   "protection": "HASH_PINNED_HERE"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_DM_DIRECTION_BSC1_CONTRACT_CORRECTION_FULL_FREEZE_V1/tests/direction_guard_220_bsc1_v1.js",
+   "bytes": 5843,
+   "sha256": "df4fe828483bb7b4a670296e937afeed5e9fafd26c183abb40fb901e5e3c843d",
+   "protection": "HASH_PINNED_HERE"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_DM_DIRECTION_BSC1_CONTRACT_CORRECTION_FULL_FREEZE_V1/tests/dm_bsc1_targeted_corpus_v1.js",
+   "bytes": 10931,
+   "sha256": "8981796cd23457c9d1297ca9828fb5b046a60946daf3e38cfb6b9a2479a5f0c2",
+   "protection": "HASH_PINNED_HERE"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_FOUR_AXIS_MANDATORY_DIRECTION_REASON_ARCHITECTURE_CLOSURE_V1/_raw/data/dm_cases_75.json",
+   "bytes": 75578,
+   "sha256": "f301b5f18accbdc87942a4a94fc253ddf435b3b3f1d27078683123f9b952d6d9",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_V2_FOUR_AXIS_MANDATORY_DIRECTION_REASON_ARCHITECTURE_CLOSURE_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_FOUR_AXIS_MANDATORY_DIRECTION_REASON_ARCHITECTURE_CLOSURE_V1/_raw/data/dm_cases_bsc77.json",
+   "bytes": 74223,
+   "sha256": "de62a9fcc99960ee58b619a318efcca107478be951ddaf35f01ed5ff07769b95",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_V2_FOUR_AXIS_MANDATORY_DIRECTION_REASON_ARCHITECTURE_CLOSURE_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_FOUR_AXIS_MANDATORY_DIRECTION_REASON_ARCHITECTURE_CLOSURE_V1/_raw/data/dm_cases_guard220.json",
+   "bytes": 192870,
+   "sha256": "e533046e08b37f82aec3bfbd22d183f7779566ef2c9b3ecfd60ba055ebf4964e",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_V2_FOUR_AXIS_MANDATORY_DIRECTION_REASON_ARCHITECTURE_CLOSURE_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call01_REF_000246_producer_output.json",
+   "bytes": 12768,
+   "sha256": "8915ac763e65e406e8a75f61fc7a2aecb2e588264a381e220073e89b4120aa2f",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call02_REF_000246_producer_output.json",
+   "bytes": 12728,
+   "sha256": "dbd306830a5e96a0a1757819e11ea35dc7b47051c2c2a681d96e6baf329255e9",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call03_REF_000246_producer_output.json",
+   "bytes": 10695,
+   "sha256": "858f17a18b48cb1cbec113e5497c57b1716fd85bbb2e05b3155de3241f311f8f",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call04_REF_000185_producer_output.json",
+   "bytes": 11274,
+   "sha256": "d681d2d95e7e59d8374bfe186d96e2784a95c7042ab0bec5e8550c63eb97f5c7",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call05_REF_000323_producer_output.json",
+   "bytes": 9712,
+   "sha256": "c854246395af9f4c6a484e49971cd7faeb774ea18de575420b1cb9d75f90065b",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call06_REF_000398_producer_output.json",
+   "bytes": 10281,
+   "sha256": "960b0e6c7c76763cd0d6ac85c38eafa34fb3b81d5cbfb06b4f47ef25862b5111",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call07_REF_000190_producer_output.json",
+   "bytes": 10906,
+   "sha256": "5bc632338bad4cdcc5d1f5c0b7dda15e5bfd3e05e786cc1656e5adb447e7a805",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call08_REF_000661_producer_output.json",
+   "bytes": 13958,
+   "sha256": "b4d9c3c81a52cee41941cd667496cfb5541a3c661dd9457dcc516a2ed7454144",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call09_REF_000671_producer_output.json",
+   "bytes": 14529,
+   "sha256": "888ca23fb5f01d69a33791d33bde2c2fdcff3ac8edcc13a352272ed14d52a1a9",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call10_REF_000694_producer_output.json",
+   "bytes": 13272,
+   "sha256": "3072a3e03b1447a3a6d2061c761da4955c8935b6c73a09fca5d883a369b69d6a",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call11_REF_000185_producer_output.json",
+   "bytes": 11997,
+   "sha256": "c9821686ec9cd4b6d9055b0121652b492b0e40a271b33ddcb6d9c114d5ec98df",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call12_REF_000190_producer_output.json",
+   "bytes": 10311,
+   "sha256": "80af6dc1dd052511796d85d6c3bb9d695a33c5f6170e2d66b42a726c76f90080",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call13_REF_000661_producer_output.json",
+   "bytes": 15064,
+   "sha256": "6a275e1bd26f8c2299589b4e75eb78c8a35f7856aa7aa33803ca72910cecf077",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call14_REF_000671_producer_output.json",
+   "bytes": 14573,
+   "sha256": "4853024532b57c50f805a118c4836e7cbcc502943a5d237d0bff61e0189ad084",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call15_REF_000671_producer_output.json",
+   "bytes": 13111,
+   "sha256": "c92bd1edc3236987b3843f8300ea251ce8e1139b15513fee73fe2fc8445e34c9",
+   "protection": "PREDECESSOR_MANIFEST (STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1)"
+  }
+ ],
+ "final_regression": {
+  "package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_DM_V2_FINAL_FREEZE_AND_VERIFIED_BACKUP_V1/",
+  "result_file": "_raw/manifests/k4_regression.json",
+  "result_sha256": "b29ad8bfce4f9282cf1b8ea8f567d52f8b4703c32312024eace95a92ba54c5f9",
+  "run_all": "67/67",
+  "valid_direction_coverage": "386/386 (D 232 · M 154)",
+  "distinct_input_blocks": 296,
+  "neutral": 0,
+  "unresolved": 0,
+  "not_scorable": 0,
+  "numeric_strength_output": "NONE (customer whitelist 386/386)",
+  "gt75_side": "58/58",
+  "bsc1_77_side": "6/6",
+  "v1_dm_reversals": 0,
+  "reason_verified": "386/386",
+  "historical_dm5": "17 → D 5 / M 12",
+  "lattice_violations": 0,
+  "deterministic": "387/387",
+  "live_v1_3_gt": "10/12 (LIVE|slot8|REF_000661 V2 M · CEO DM6 · LIVE|slot10|REF_000694 V2 D · CEO DM3 = L-3 · L-2)",
+  "delta_vs_dmr": 0,
+  "delta_vs_dmv2": 0,
+  "coverage_note": "386/386 = Direction COVERAGE over 386 valid input rows (296 distinct blocks; populations overlap). It is NOT an accuracy over 386 independent images. CEO GT agreement is measured only where a side GT exists (75: 58 · BSC-1 77: where recorded · live: 12).",
+  "gates": [
+   "G-01 run_all 67/67 re-executed now",
+   "G-02 every valid input → D / M (386/386)",
+   "G-03 Neutral / Unresolved / Not Scorable / null = 0; only the absent probe is a transport error",
+   "G-04 customer output = { direction, reason } only, no number / rule ID / Neutral word (independent evaluation)",
+   "G-05 existing V1 D / M reversals 0",
+   "G-06 75 CEO side GT 58/58 (DM5 not compared)",
+   "G-07 historical DM5 17 → D 5 / M 12 (history kept)",
+   "G-08 Reason verified 386/386; false-claim mutations caught",
+   "G-09 27-cell monotonicity violations 0",
+   "G-10 GT / REF runtime lookup 0 (GD-02 · GD-03 · GD-09)",
+   "G-11 deterministic (GD-01 + independent double evaluation)",
+   "G-12 independent evaluation == run_all rows",
+   "G-13 delta vs DMR re-run = 0 and vs original DMV2 run = 0",
+   "G-14 candidate byte-identical before / after the runs",
+   "G-15 src aggregate == DMR == sealed",
+   "G-16 live V1_3 GT 10/12 with the two declared limitations only (REF_000661 slot 8 · REF_000694)"
+  ]
+ },
+ "freeze_gates": [
+  "F-1 design review 18/18 (D3)",
+  "F-2 final regression gates 16/16 (D4)",
+  "F-3 Mandatory D/M: 386/386 · Neutral 0 · transport only the absent probe",
+  "F-4 runtime dependency identity exact (traced: candidate src + BOUND_INPUTS + dm_admission_v1.js only)",
+  "F-5 candidate byte-identical to PRE and unchanged by every run",
+  "F-6 predecessors intact (77)"
+ ],
+ "accepted_known_limitations": [
+  {
+   "id": "L-2",
+   "title": "REF_000694 — Vision Evidence Admission Defect",
+   "disposition": "ACCEPTED_KNOWN_LIMITATION"
+  },
+  {
+   "id": "L-3",
+   "title": "REF_000661 — Vision Observation Variance",
+   "disposition": "ACCEPTED_KNOWN_LIMITATION"
+  },
+  {
+   "id": "L-4",
+   "title": "DM Evidence Transport / Four-Axis Integration Gap",
+   "disposition": "ACCEPTED_FOR_DM_FREEZE — OPEN_FOR_INTEGRATION"
+  },
+  {
+   "id": "L-5",
+   "title": "ZE-1 Real-Data Usage = 0",
+   "disposition": "ACCEPTED_KNOWN_LIMITATION"
+  }
+ ],
+ "notes": [
+  {
+   "id": "N-1",
+   "subject": "candidate-era labels inside the frozen source",
+   "text": "ENGINE_STATUS reads \"IMPLEMENTATION_CANDIDATE — NOT PRODUCTION\"; README.md lists the four decisions under \"CEO decisions pending\"; internal trace fields are named ceo_decision_pending / provisional_policy; the seal file says \"NOT FROZEN\". The source was NOT edited (order §5.3 / §6.2: no freeze metadata inside the candidate). After this record: the four decisions are APPROVED (2026-10-28); ceo_decision_pending names the CEO decision governing the branch; provisional_policy = true marks the ZE-1 branch. Internal only — never in the customer output."
+  },
+  {
+   "id": "N-2",
+   "subject": "execution model",
+   "text": "all phases ran on Opus 5.5; the order assigned Phase B to Fable 5.1 and the model could not be switched inside the running session. All Phase B results are deterministic script outputs."
+  }
+ ],
+ "backup_status_at_freeze": {
+  "local": "NOT YET CREATED at the time of this record — created and verified after it (governance package _raw/manifests/k8_backup.json · k8_recovery.json); this record is not edited afterwards",
+  "google_drive": "GOOGLE_DRIVE_BACKUP_PENDING (no Drive access means in this environment)"
+ },
+ "not_changed": [
+  "Item DM V1 (production) and its pointer",
+  "frozen DM V1 engines (Direction-First V1 · V1 Final Freeze)",
+  "Item Scoring Engine V1 manifest / Clean Engine registry",
+  "Item SR V2 (frozen) · EI · TC",
+  "Item Vision Producer V1.3",
+  "CEO GT",
+  "Full-Look engines"
+ ],
+ "rule": "⛔ No change to the frozen directory, its bound dependency or this record without an explicit CEO DM V2 reopen decision (reason · affected authority · migration plan · regression plan). ⛔ This record is NOT a production pointer."
+}

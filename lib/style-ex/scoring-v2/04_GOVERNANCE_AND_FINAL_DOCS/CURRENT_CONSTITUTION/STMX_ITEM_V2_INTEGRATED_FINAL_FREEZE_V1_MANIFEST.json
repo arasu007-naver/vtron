@@ -1,0 +1,32 @@
+{
+ "document": "STMX_ITEM_V2_INTEGRATED_FINAL_FREEZE_V1_MANIFEST",
+ "freeze_id": "ITEM-V2-INTEGRATED-FINAL-FREEZE-V1-2026-10-29",
+ "record": {
+  "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_ITEM_V2_INTEGRATED_FINAL_FREEZE_AUTHORITY_V1.json",
+  "sha256": "21750eb471d55dc1263f1338bbef43372e7d882ed56c0388313cfcbca66d3066"
+ },
+ "components": {
+  "item_vision_v1_3": "10e31d399cb18728d806958b14b5e3b4a01b126257965621f18c61bede69a1f9",
+  "vision_invocation_configuration": "1e5f01c377af9bdcd413a568116ffb78c2061bea2f7ba72be1cb7b61e4d160e7",
+  "target_aware_colour": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b",
+  "product_selection": null,
+  "suit_tc": "7bea12b478e3231d7954b5ed73f58b2ec25a8036092ca781e5a198f2606481c7",
+  "suit_sr": "09807059fcf7c0620d2326a38d562f7c78914af8302ef95258d21928543ebef8",
+  "suit_dm": "65cd173afb34c6185633d878d2bde081cb19d07ab1e09e157b4acd3acce9f39f",
+  "item_ei_v2": "ITEM-EI-V2-FINAL-FREEZE-V1-2026-10-29",
+  "item_tc_v2": "ITEM-TC-V2-FINAL-FREEZE-V1-2026-10-28",
+  "item_sr_v2": "ITEM-SR-V2-FINAL-FREEZE-V1-2026-10-27",
+  "item_dm_v2": "ITEM-DM-V2-FINAL-FREEZE-V1-2026-10-28",
+  "integrated_r4": "be96c77d987815f15443ab1e635da07ff95a408d19d3373e4cb648ef7a7111a6"
+ },
+ "dependency_files": 259,
+ "dependency_aggregate_sha256": "f2fdc4b1130e951c5677d2eca0b39d11ceb34a81ada1f417ed15b77da4d9ff51",
+ "limitation_register": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_ITEM_V2_INTEGRATED_KNOWN_LIMITATION_REGISTER_V1.md",
+ "status": [
+  "ITEM_V2_INTEGRATED_FINAL_FROZEN (ITEM-V2-INTEGRATED-FINAL-FREEZE-V1-2026-10-29)",
+  "FINAL_FROZEN_WITH_DOCUMENTED_KNOWN_LIMITATIONS",
+  "NOT_PROMOTED — STMX ITEM SCORING ENGINE V1 remains the production composition (no pointer change)",
+  "VISION_INVOCATION_CONFIG = OFFLINE_VERIFIED · NOT_LIVE_VERIFIED",
+  "G53 = FULLY ACTIVE · paid calls in this order 0"
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "sr840": {
+  "image_sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45",
+  "live": {
+   "source": "Order P live V1.3 (claude-opus-4-8) · test04_REF_000840_vision_producer_output.json",
+   "producer": "v1",
+   "members": [
+    "target_1",
+    "target_3"
+   ],
+   "jacket_carriers": {
+    "fit": "Oversized",
+    "shoulder_structure": "None",
+    "shoulder_drop": "Dropped",
+    "fabric_behavior": "Semi-Structured",
+    "length": "Hip Length",
+    "grammar": "Tailored",
+    "collar_scale": "Enlarged"
+   },
+   "trouser_carriers": {
+    "fit": "Regular",
+    "fabric_behavior": "Semi-Structured",
+    "length": "Ankle Length",
+    "silhouette": "Straight"
+   },
+   "suit_direction": "R",
+   "governing_rule": "SR-V2-P2b",
+   "governing_values": [
+    {
+     "path": "observations.fit",
+     "value": "Oversized"
+    }
+   ],
+   "bottom_rule": "SR-V2-P4",
+   "bottom_direction": "S",
+   "reason": "재킷은 넉넉하게 재단된 오버사이즈 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다. 수트 전체의 방향은 재킷 실루엣이 결정합니다. 바지는 Structured 쪽이지만 수트 방향을 바꾸지 않습니다.",
+   "ok": true
+  },
+  "historical": {
+   "source": "stored historical record pair (SCV sc5 input P2|REF_000840 · image_id B5-01)",
+   "producer": "Producer-37 (frozen)",
+   "members": [
+    "target_1",
+    "target_3"
+   ],
+   "jacket_carriers": {
+    "fit": "Oversized",
+    "shoulder_structure": "Strong",
+    "shoulder_drop": "None",
+    "fabric_behavior": "Structured",
+    "waist_definition": "Undefined",
+    "length": "Hip Length",
+    "grammar": "Tailored",
+    "collar_scale": "Regular"
+   },
+   "trouser_carriers": {
+    "fit": "Relaxed",
+    "fabric_behavior": "Semi-Structured",
+    "length": "Calf Length",
+    "silhouette": "Straight"
+   },
+   "suit_direction": "S",
+   "governing_rule": "SR-V2-P1a",
+   "governing_values": [
+    {
+     "path": "observations.fit",
+     "value": "Oversized"
+    },
+    {
+     "path": "observations.shoulder_structure",
+     "value": "Strong"
+    }
+   ],
+   "bottom_rule": "SR-V2-P2b",
+   "bottom_direction": "R",
+   "reason": "재킷은 넉넉하게 재단된 오버사이즈 핏이지만 어깨 구조가 분명하게 잡혀 있어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다. 수트 전체의 방향은 재킷 실루엣이 결정합니다. 바지는 Relaxed 쪽이지만 수트 방향을 바꾸지 않습니다.",
+   "ok": true
+  },
+  "ceo": {
+   "gt": "SR6",
+   "rationale_verbatim": "Structured jacket · strong shoulder structure · the oversized frame does not erase the significant structured signals. The trouser contributes a more relaxed/semi-structured counter-signal, but the CEO final whole-scoring-unit result is SR6."
+  },
+  "frozen_rule_text": {
+   "SR-V2-P1a": "governance observed (FIT_SLIM · SHOULDER_STRONG / EXTREME · WAIST_STRONG) → S",
+   "SR-V2-P2a": "released fit held by full structure, or a moderate release held by form retention (padding / quilting / leather) → S",
+   "SR-V2-P2b": "released fit not held → R"
+  },
+  "differing_jacket_carriers": [
+   {
+    "carrier": "shoulder_structure",
+    "historical": "Strong",
+    "live": "None"
+   },
+   {
+    "carrier": "shoulder_drop",
+    "historical": "None",
+    "live": "Dropped"
+   },
+   {
+    "carrier": "fabric_behavior",
+    "historical": "Structured",
+    "live": "Semi-Structured"
+   },
+   {
+    "carrier": "waist_definition",
+    "historical": "Undefined"
+   },
+   {
+    "carrier": "collar_scale",
+    "historical": "Regular",
+    "live": "Enlarged"
+   }
+  ],
+  "classification": "VISION_OBSERVATION_DIFFERENCE",
+  "explanation": "Same image, same frozen rule. Historical record: shoulder_structure Strong = SR governance → SR-V2-P1a → S (the CEO rationale \"strong shoulder structure · the oversized frame does not erase the structured signals\" is exactly this branch). Live record: shoulder_structure None (shoulder_drop Dropped, fabric Semi-Structured) → no governance; fit Oversized is a release not held by full structure or form retention → SR-V2-P2b → R. The frozen rule is applied correctly to each record (no implementation defect); the outcome follows the Vision observation of the Jacket shoulder.",
+  "ceo_decision_item": "D-Q2 — REF_000840 SR: the live V1.3 observation (shoulder_structure None) contradicts the CEO reading (strong shoulder structure) on the same image. Choose: accept the live governed result R as a disclosed Vision-observation limitation for the freeze, or treat Vision run-to-run variance on shoulder_structure as a known limitation that blocks an unconditional freeze. No SR / GT change either way."
+ },
+ "others": [
+  {
+   "ref": "REF_000520",
+   "unit": "U1",
+   "axis": "EI",
+   "expected": "NEUTRAL",
+   "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+   "live": "E",
+   "reproduced_offline": true,
+   "governed_path": "frozen EI V2: one MEANINGFUL expressive reading (live colour: red@graphic additional; treated surface reading) disqualifies Commercial Neutral → underlying E; same Direction in the offline replay",
+   "classification": "CONSISTENT_WITH_FROZEN_RULES_AND_ACTUAL_EVIDENCE",
+   "gt_note": "historical CEO GT differs (CEO GT EI5 (EI5 = NEUTRAL)); disclosed, GT not rewritten; covered by the existing D-FE-4 acceptance (no new visual adjudication requested)",
+   "defect": "NONE"
+  },
+  {
+   "ref": "REF_000840",
+   "unit": "U1",
+   "axis": "EI",
+   "expected": "NEUTRAL",
+   "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+   "live": "I",
+   "reproduced_offline": true,
+   "governed_path": "frozen EI V2: Suit unit (target_1 + target_3), beige / beige, NO_REGISTRY_OR_DENIM_HIT → Commercial Neutral not eligible → underlying I; same Direction in the offline replay",
+   "classification": "CONSISTENT_WITH_FROZEN_RULES_AND_ACTUAL_EVIDENCE",
+   "gt_note": "historical CEO GT differs (CEO GT EI5 (EI5 = NEUTRAL)); disclosed, GT not rewritten; covered by the existing D-FE-4 acceptance (no new visual adjudication requested)",
+   "defect": "NONE"
+  },
+  {
+   "ref": "REF_000849",
+   "unit": "U1",
+   "axis": "TC",
+   "expected": "TRANSFORMATIVE",
+   "basis": "CEO GT TC6",
+   "live": "CLASSIC",
+   "reproduced_offline": true,
+   "governed_path": "frozen TC V2 (FROZEN_V1 path): every observed carrier follows the item-type archetype (Relaxed fit · notched collar · single-breasted / Relaxed · Full Length · Straight · Casual) — no departure evidence observed → C; same Direction in the offline replay",
+   "classification": "CONSISTENT_WITH_FROZEN_RULES_AND_ACTUAL_EVIDENCE",
+   "gt_note": "historical CEO GT differs (CEO GT TC6); disclosed, GT not rewritten; covered by the existing D-FE-4 acceptance (no new visual adjudication requested)",
+   "defect": "NONE"
+  },
+  {
+   "ref": "REF_000849",
+   "unit": "U2",
+   "axis": "TC",
+   "expected": "TRANSFORMATIVE",
+   "basis": "CEO GT TC6",
+   "live": "CLASSIC",
+   "reproduced_offline": true,
+   "governed_path": "frozen TC V2 (FROZEN_V1 path): every observed carrier follows the item-type archetype (Relaxed fit · notched collar · single-breasted / Relaxed · Full Length · Straight · Casual) — no departure evidence observed → C; same Direction in the offline replay",
+   "classification": "CONSISTENT_WITH_FROZEN_RULES_AND_ACTUAL_EVIDENCE",
+   "gt_note": "historical CEO GT differs (CEO GT TC6); disclosed, GT not rewritten; covered by the existing D-FE-4 acceptance (no new visual adjudication requested)",
+   "defect": "NONE"
+  }
+ ]
+}

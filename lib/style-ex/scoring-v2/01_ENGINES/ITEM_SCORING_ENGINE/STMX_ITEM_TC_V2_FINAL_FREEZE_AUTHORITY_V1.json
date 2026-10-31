@@ -1,0 +1,1168 @@
+{
+ "document": "STMX_ITEM_TC_V2_FINAL_FREEZE_AUTHORITY_V1",
+ "freeze_id": "ITEM-TC-V2-FINAL-FREEZE-V1-2026-10-28",
+ "date": "2026-10-28",
+ "created": "2026-10-28T05:41:19.284Z",
+ "approval_anchor": {
+  "CEO Decision": "2026-10-28",
+  "Order": "STMX ITEM TC V2 — R4 Final Freeze, Constitution Closure & Verified Backup (§0 · §1 · §6), verbatim `04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_TC_V2_R4_FINAL_FREEZE_CONSTITUTION_CLOSURE_AND_VERIFIED_BACKUP_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md` sha256 201b382d17503380e7b1003629dc9994d08c478b0ea641bec9ace79cb2513587",
+  "Reason": "CEO approved the TC V2 R4 candidate as the final freeze target with the §1.3 policies; the unchanged R4 passed the 26-item final design review and the re-executed final regression — frozen in place.",
+  "Affected Scope": "this record + 3 CURRENT_CONSTITUTION files (new); the R4 directory is frozen in place, unchanged"
+ },
+ "status": "COMPLETE_AND_CLOSED_AND_FROZEN",
+ "status_condition": "effective as frozen now; the order makes COMPLETE_AND_CLOSED_AND_FROZEN conditional also on the verified local backup + independent recovery, which are recorded after this record in 04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_TC_V2_R4_FINAL_FREEZE_CONSTITUTION_CLOSURE_AND_VERIFIED_BACKUP_V1/_raw/manifests/y8_backup.json · y9_recovery.json (this record is not edited afterwards)",
+ "production_status": "PRODUCTION_PROMOTION = NOT_AUTHORIZED · TC_PRODUCTION = EXISTING_STMX_TC_ENGINE_V1 — the pointer STMX_TC_ENGINE_PRODUCTION_AUTHORITY_V1.json is unchanged",
+ "engine": {
+  "engine_name": "STMX_TC_ENGINE_V2_DIRECTION_REASON — Item TC V2 Direction (Transformative / Classic) + Korean Reason",
+  "final_version": "R4",
+  "frozen_directory": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/",
+  "directory_files": [
+   {
+    "file": "BOUND_INPUTS.json",
+    "bytes": 3644,
+    "sha256": "90fb16a02f4b86a5c946911746c2913e07adfbee76cacb5c1f437460800b4754"
+   },
+   {
+    "file": "CODE_IDENTITY_SEAL_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE.json",
+    "bytes": 6307,
+    "sha256": "41bc6b55fcbd9177883e58c46606d0f3d3e4fb9ffd49448f4cf0b5f7ffba7402"
+   },
+   {
+    "file": "README.md",
+    "bytes": 6245,
+    "sha256": "153b3d58323dfad4d8383171498ac781afac40276db83a53c64b9c9b85590336"
+   },
+   {
+    "file": "src/tc_v2_binding.js",
+    "bytes": 5439,
+    "sha256": "37e617b5b4431cc2d00401e318bc9112ffb57d68b83e50f29a428bc95071344a"
+   },
+   {
+    "file": "src/tc_v2_category_independence.js",
+    "bytes": 5838,
+    "sha256": "989019eab8ed09e3f96dba50f0488e82a7f3671a5237a0ad9d32b605e9c34004"
+   },
+   {
+    "file": "src/tc_v2_domain_invariance.js",
+    "bytes": 5052,
+    "sha256": "99b3dca4db2ee776cdcaa96fa1d33f129e32ef3d88ff7e8315b85cc3e395ff3c"
+   },
+   {
+    "file": "src/tc_v2_engine.js",
+    "bytes": 7173,
+    "sha256": "71052065fa11ce21505d48392e33076f2577c2e65aad742329921fc06ebac005"
+   },
+   {
+    "file": "src/tc_v2_frozen_chain.js",
+    "bytes": 3874,
+    "sha256": "1ae52ffc087adf74a2f9e65bc68f8ad884305389c9352407180b609aa10214fc"
+   },
+   {
+    "file": "src/tc_v2_reason_composer.js",
+    "bytes": 13941,
+    "sha256": "bc8890e25d363853bb8e30e25e372a3d9ed3fdbfcfa19ac6d94485a9f8bc600a"
+   },
+   {
+    "file": "src/tc_v2_reason_lexicon.js",
+    "bytes": 5381,
+    "sha256": "933b1c8cedd4a7239f5999c68fc6cc950e42dba740598c86956f26366642ec7b"
+   },
+   {
+    "file": "src/tc_v2_reason_verifier.js",
+    "bytes": 9161,
+    "sha256": "2935ea57da09a387a4c7218cdf6a7c9431416ba017d045985c2c317b1051a03a"
+   },
+   {
+    "file": "src/tc_v2_resolver.js",
+    "bytes": 9921,
+    "sha256": "dbf7108e556b1848c3965ef8034a93c5eb2cccbe4880610aff25d258a813db62"
+   },
+   {
+    "file": "src/tc_v2_serializer.js",
+    "bytes": 1274,
+    "sha256": "81d48b826744222a86590564a8b46dff9925965d0c6990fa749203ca30a286f7"
+   },
+   {
+    "file": "src/tc_v2_vision_adapter.js",
+    "bytes": 10683,
+    "sha256": "ce38756ec070ee077d1b44414e1565fc0f5154a9ee1ce37716a2fc0359c9023d"
+   },
+   {
+    "file": "tests/_harness.js",
+    "bytes": 4901,
+    "sha256": "734467b67460632851c46b39953c8371727e0d0800685e0ad650d0bdd58385c2"
+   },
+   {
+    "file": "tests/run_all.js",
+    "bytes": 1874,
+    "sha256": "1b11797cf2b84766a3aa522a0935627ba2019ba0c41fe56f728d0230c55c0a5b"
+   },
+   {
+    "file": "tests/test_adapter.js",
+    "bytes": 8457,
+    "sha256": "7ee717d8b24dd02f006a98269bef2503c3ab19a0a67124ad9fe6268193424e79"
+   },
+   {
+    "file": "tests/test_domain_invariance.js",
+    "bytes": 4802,
+    "sha256": "a26e35791b79128c534748072fe6266f0b4629d8ef97e92b08f99f97b5c6e413"
+   },
+   {
+    "file": "tests/test_guards.js",
+    "bytes": 2820,
+    "sha256": "5648a19d1e9184a370440c2334f20c0d24b8a8b6bd9934dbf1e46a28b8cc6919"
+   },
+   {
+    "file": "tests/test_live_controls.js",
+    "bytes": 12858,
+    "sha256": "2e0fafee11eb8452a2ce1361cf3d585e069e9a32e031b1af6186652aa8145065"
+   },
+   {
+    "file": "tests/test_mandatory_boundary.js",
+    "bytes": 13736,
+    "sha256": "831732ec2abb7b5e3cd923f7c34d942db14839d19e3cfd06f9e7e8a72e807030"
+   },
+   {
+    "file": "tests/test_mutation.js",
+    "bytes": 13188,
+    "sha256": "7aeb0ec24ae7a2e7f50904a0bb2bf6ce496d5680e5ef927a02b95ab724ffe7bb"
+   },
+   {
+    "file": "tests/test_r4_corrections.js",
+    "bytes": 22107,
+    "sha256": "ded270e565d07da5c2637c44f80236dbfd63763483f57129bfcce7486008320b"
+   },
+   {
+    "file": "tests/test_reason.js",
+    "bytes": 6084,
+    "sha256": "efea0d5dc9b6a64c31a105bb8c779db4afa811f8362464f4d82a7c304ec1cfbf"
+   },
+   {
+    "file": "tests/test_regression.js",
+    "bytes": 7117,
+    "sha256": "d8f3a7936d8445705bea3f3db3001b65314f9685cc34cbb2b216f602e12965a0"
+   },
+   {
+    "file": "tests/test_transport.js",
+    "bytes": 6604,
+    "sha256": "294ba92220777ccd491c6071e8c1cf5e283a68051012b1c0ca4f99fca4c5eb7b"
+   }
+  ],
+  "directory_aggregate_sha256": "d04baa6bb9cf56a40f0487d78211b326e4f923d5e57d47c39719c72a2ef021f5",
+  "directory_aggregate_rule": "sha256 over \"file:sha256\\n\" for every file, sorted",
+  "src_aggregate_sha256": "c340e66f165d908949a167e59801f41928ba8f05f15975bac604807a1c2c8c4f",
+  "src_aggregate_rule": "tc_v2_binding.selfIdentity(): sha256 over \"src/<file>:sha256\\n\" for src/*.js, sorted",
+  "code_identity_seal": {
+   "file": "CODE_IDENTITY_SEAL_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE.json",
+   "sha256": "41bc6b55fcbd9177883e58c46606d0f3d3e4fb9ffd49448f4cf0b5f7ffba7402"
+  }
+ },
+ "tc_v1_read_only_binding": {
+  "rule": "the frozen TC V1 Direction chain (Step 2 successor V4 → shadow binding V3 → runtime V3.4, registry BOUND) and the frozen V2.3.2 evaluator are bound read-only by name and hash; any drift throws (fail closed); Strength / ordinal / score not loaded",
+  "bound_inputs": [
+   {
+    "role": "successor_v4",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/src/step2_semantic_successor_v4.js",
+    "sha256": "868850fdc40221c48437e24011c716d412f902d1a4fe79d590ba7cc960e2b9e1"
+   },
+   {
+    "role": "shadow_binding_v3",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/shadow/step2_successor_shadow_binding_v3.js",
+    "sha256": "594fa5479630bcd12cd6e59171d33c1c026e27d87ebd3c42b593a91a24465fa4"
+   },
+   {
+    "role": "successor_v4_bound_inputs",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/BOUND_INPUTS_STEP2_SUCCESSOR_V4.json",
+    "sha256": "1165bdaaab8f6ef74de23f9bd696741516a46cb1dd1003925c6455ef89af17fe"
+   },
+   {
+    "role": "successor_v2_contract",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/STEP2_SUCCESSOR_V2_CONTRACT.json",
+    "sha256": "5331cc2fb3beffe4bde878854a64511b419479b52e99556063bc177c0305a4e1"
+   },
+   {
+    "role": "vision_v1_3_rules",
+    "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+    "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+   },
+   {
+    "role": "projection_allowlist_v1",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V1_CANDIDATE/PROJECTION_ALLOWLIST_V1.json",
+    "sha256": "7795ea22b96585ec8e3c5c40580c2d3f048e10122840043ff22bbdb635b83ae3"
+   },
+   {
+    "role": "projection_allowlist_v5_amendment",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/PROJECTION_ALLOWLIST_V5_AMENDMENT.json",
+    "sha256": "baf06276706457394280bc9aee54497fbdee5b0a9d5ca2b5ca0db4e9129e2313"
+   },
+   {
+    "role": "tc_direction_freeze_manifest",
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_DIRECTION_FREEZE_V1_MANIFEST.json",
+    "sha256": "1f6d6552847c3ec8ef0db954e39d7b83ddc92695609a53360f574214dbe3ecca"
+   }
+  ],
+  "successor_v4_bound_inputs": [
+   {
+    "role": "successor_v4_contract",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/STEP2_SUCCESSOR_V4_CONTRACT.json",
+    "sha256": "bad306ec6fed0f883d65fa7399bbc8279f88c6cb89a608a8a6873261b48ee615"
+   },
+   {
+    "role": "strong_shoulder_clarification_freeze",
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_STRONG_SHOULDER_CLARIFICATION_FREEZE_V1.md",
+    "sha256": "3b111acf6f31d44101e08bb9381b46e056b142d7ee7b4f42a22a455933ec4885"
+   },
+   {
+    "role": "scoring_object_correction",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/SCORING_OBJECT_CORRECTION_V1.json",
+    "sha256": "10f53c472064472f67dcc9b70434309428b773122eed2801fe679292ca3f9a09"
+   },
+   {
+    "role": "scoring_object_correction_seal",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/SEAL_SCORING_OBJECT_CORRECTION_V1.json",
+    "sha256": "03d814078b43aca8e229305ca6114e2b1e93a56ab0385079276b5d2d6a8d0b91"
+   },
+   {
+    "role": "successor_v3_contract",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V3_CANDIDATE/STEP2_SUCCESSOR_V3_CONTRACT.json",
+    "sha256": "e849a3a2f46c314efb65793323c4eb61e16ace19ab046a22eb5c7996c6773dc9"
+   },
+   {
+    "role": "whole_garment_contract_freeze",
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_WHOLE_GARMENT_DIRECTION_CONTRACT_FREEZE_V1.md",
+    "sha256": "294d903fd081af7142b643bb4dc9b31ee0b76d5199c0e44d2827f728d78d7c26"
+   },
+   {
+    "role": "successor_v2_contract",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/STEP2_SUCCESSOR_V2_CONTRACT.json",
+    "sha256": "5331cc2fb3beffe4bde878854a64511b419479b52e99556063bc177c0305a4e1"
+   },
+   {
+    "role": "supersession_registry_loader_v1",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/src/supersession_registry_v1.js",
+    "sha256": "e9943d6fed3b7a5dbc5c055db195daee4cb2a8c16cfe5545542357556106b5a4"
+   },
+   {
+    "role": "supersession_registry",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/SUPERSESSION_REGISTRY_V1.json",
+    "sha256": "64468c92aeef00ad585df74f5845ec5df487ad2c715fd58c1f2853aa29aef4dd"
+   },
+   {
+    "role": "frozen_step2_predicates:evaluator_v2_3_2.js",
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_3_2.js",
+    "sha256": "5832ae6dc14bfd93ffdf96f57a9f75e04b69667e69a7b142bb442bd7826219bd"
+   },
+   {
+    "role": "frozen_step2_predicates:evaluator_v2_2_1.js",
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_2_1.js",
+    "sha256": "1c0697161975066d5a8aed302959478147671a35f8b7132661278bd1d2da3a1c"
+   },
+   {
+    "role": "frozen_step2_predicates:evaluator_v2_2_base.js",
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_2_base.js",
+    "sha256": "662f5cbf8fdbe481dd644c09cdb26a4c3c34fca48c2bd6fe1d0861d7c5d80c9e"
+   },
+   {
+    "role": "frozen_observation_domain_source",
+    "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_VISION_EXTRACTION_SCHEMA_FROZEN_V1.md",
+    "sha256": "379c89a19b8098d3709d1db95233a9606561c2d13b0ef3fe497976dce4fcd31a"
+   },
+   {
+    "role": "mc1_length_token_compatibility",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+    "sha256": "c79af905e0e70861dcd24594433d25b14ef8cbab19e983b4742797373871f419"
+   },
+   {
+    "role": "mc1_length_token_compatibility_seal",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/SEAL_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+    "sha256": "5fdef8038455b7341031a42a8f7974acefc407a0d278e92be3354bbe054c5dec"
+   },
+   {
+    "role": "projection_v5",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+    "sha256": "8becb1b405e06d430514b64c432ea7965b53cd5e892173765c3fb1b895a093d8"
+   },
+   {
+    "role": "projection_v5_seal",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/SEAL_TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+    "sha256": "4f82c9185f2493f11fb52da26f92a5c79d9560cd975587d7a8a6130e2508c433"
+   },
+   {
+    "role": "governed_correction:REF000671_CONSTRUCTION_REPRESENTATION_CORRECTION_V1",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_GOVERNED_REPRESENTATION_CORRECTION_V1_CANDIDATE/REF000671_CONSTRUCTION_REPRESENTATION_CORRECTION_V1.json",
+    "sha256": "5b47e4410253c57a5f8e18f8f7ecd86c7069cf6521ce0855c6a70edf3f10df4f"
+   },
+   {
+    "role": "governed_correction_seal",
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_GOVERNED_REPRESENTATION_CORRECTION_V1_CANDIDATE/SEAL_GOVERNED_REPRESENTATION_CORRECTION_V1.json",
+    "sha256": "f87bd9e14cad383a38870bd5a35b4cec28354fbac819f06d697fd9dc34bd7e51"
+   },
+   {
+    "role": "historical_materialization_reader",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_binding_adapter_v3_3.js",
+    "sha256": "35757d950320f94b743871031c1805e9db4e7e6453e2d8da12695d777cbb9217"
+   },
+   {
+    "role": "downstream_runtime_v3_4",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_runtime_v3_4.js",
+    "sha256": "d5c95184819608fe8a9580d1daa0795b600c027ec9371155581aaad86bb3b1b7"
+   }
+  ],
+  "frozen_evaluator": {
+   "role": "frozen_step2_predicates:evaluator_v2_3_2.js",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_3_2.js",
+   "sha256": "5832ae6dc14bfd93ffdf96f57a9f75e04b69667e69a7b142bb442bd7826219bd"
+  },
+  "freeze_manifest_pins": [
+   {
+    "manifest": "STMX_TC_DIRECTION_FREEZE_V1_MANIFEST.json",
+    "pinned": 65,
+    "ok": 65
+   },
+   {
+    "manifest": "STMX_TC_ENGINE_FINAL_FREEZE_V1_MANIFEST.json",
+    "pinned": 102,
+    "ok": 102
+   }
+  ],
+  "projection_v5": [
+   {
+    "file": "build_tc_upstream_token_projection_v5.js",
+    "sha256": "5bcecf6cda37454a9935c6c6ccd1bcef1ce68105a88ed8b34a4d79e2c0098ddf"
+   },
+   {
+    "file": "PROJECTION_ALLOWLIST_V5_AMENDMENT.json",
+    "sha256": "baf06276706457394280bc9aee54497fbdee5b0a9d5ca2b5ca0db4e9129e2313"
+   },
+   {
+    "file": "PROJECTION_V5_LEAKAGE_AUDIT.json",
+    "sha256": "74daaf5b20502e56f3104fbceb14f0b62e0c74d4606ac7f25955fee0fcaeda1c"
+   },
+   {
+    "file": "SEAL_TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+    "sha256": "4f82c9185f2493f11fb52da26f92a5c79d9560cd975587d7a8a6130e2508c433"
+   },
+   {
+    "file": "TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+    "sha256": "8becb1b405e06d430514b64c432ea7965b53cd5e892173765c3fb1b895a093d8"
+   }
+  ]
+ },
+ "runtime_dependencies": [
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/STEP2_SUCCESSOR_V2_CONTRACT.json",
+   "bytes": 6961,
+   "sha256": "5331cc2fb3beffe4bde878854a64511b419479b52e99556063bc177c0305a4e1",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/SUPERSESSION_REGISTRY_V1.json",
+   "bytes": 8273,
+   "sha256": "64468c92aeef00ad585df74f5845ec5df487ad2c715fd58c1f2853aa29aef4dd",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/src/supersession_registry_v1.js",
+   "bytes": 6103,
+   "sha256": "e9943d6fed3b7a5dbc5c055db195daee4cb2a8c16cfe5545542357556106b5a4",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V3_CANDIDATE/STEP2_SUCCESSOR_V3_CONTRACT.json",
+   "bytes": 6401,
+   "sha256": "e849a3a2f46c314efb65793323c4eb61e16ace19ab046a22eb5c7996c6773dc9",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/BOUND_INPUTS_STEP2_SUCCESSOR_V4.json",
+   "bytes": 7228,
+   "sha256": "1165bdaaab8f6ef74de23f9bd696741516a46cb1dd1003925c6455ef89af17fe",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/STEP2_SUCCESSOR_V4_CONTRACT.json",
+   "bytes": 2718,
+   "sha256": "bad306ec6fed0f883d65fa7399bbc8279f88c6cb89a608a8a6873261b48ee615",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/shadow/step2_successor_shadow_binding_v3.js",
+   "bytes": 10536,
+   "sha256": "594fa5479630bcd12cd6e59171d33c1c026e27d87ebd3c42b593a91a24465fa4",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/src/step2_semantic_successor_v4.js",
+   "bytes": 20880,
+   "sha256": "868850fdc40221c48437e24011c716d412f902d1a4fe79d590ba7cc960e2b9e1",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP3_ARCHITECTURE_SUCCESSOR_V2_CANDIDATE/STEP3_SUCCESSOR_V2_CONTRACT.json",
+   "bytes": 6932,
+   "sha256": "2ef19e15d5b23a5bb20921bd6342e7c1b17a8750ed6951d620aa5d9209ec372a",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP3_ARCHITECTURE_SUCCESSOR_V2_CANDIDATE/src/step3_grammar_state_successor_v2.js",
+   "bytes": 6892,
+   "sha256": "28ecc3285b7e876a3b74647224610e19f40439674400a453c6bc61ab6d166442",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/BOUND_INPUTS.json",
+   "bytes": 10111,
+   "sha256": "37646e0e7433e7c91b2f374ea43570e772410a68a0276936895cc9926dad8c1d",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/BOUND_INPUTS_V3_4.json",
+   "bytes": 2662,
+   "sha256": "e7b037b169e4c5b6d0ba3432dba47dbf192b2caa397332265649108c1995d596",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_classic_evaluator_v3.js",
+   "bytes": 6801,
+   "sha256": "d949219b73272437a406589d5070695b5f6f75481908543de2f185abfa6a2b5b",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_output_assembler_v3_3.js",
+   "bytes": 14094,
+   "sha256": "ec75afe6bcef48dcfae3d7792dd749aa1cfae191a870a2bdbb2245551e84de0c",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_prominence_derivation_v3.js",
+   "bytes": 14128,
+   "sha256": "32a47210d42df23463f3d2e1710adf7a7f92689d9b1bbf455fb6d9544332c32a",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_salience_admission_v3.js",
+   "bytes": 3045,
+   "sha256": "07bd216eeb40832321189f8dcb72039e5b63f2e4b2e4a34c9efe71b8d2c2a939",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_binding_adapter_v3_3.js",
+   "bytes": 16929,
+   "sha256": "35757d950320f94b743871031c1805e9db4e7e6453e2d8da12695d777cbb9217",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_runtime_v3_3.js",
+   "bytes": 2576,
+   "sha256": "f4afbeb101e1b2067215674e37872f0c1a5fe6f1a1a4e3e426051e9da40e6888",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_runtime_v3_4.js",
+   "bytes": 3843,
+   "sha256": "d5c95184819608fe8a9580d1daa0795b600c027ec9371155581aaad86bb3b1b7",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_vocabulary_v3.js",
+   "bytes": 3035,
+   "sha256": "e65b4beb057ecfb4fcd9457b2d30a5ea568fd37261974c47fcb77dfcc0ffb546",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_transformative_evaluator_v3_3.js",
+   "bytes": 26277,
+   "sha256": "0ab5037f817563061b67b5806f695de5bb8bfd65a6d98eac984b3933783a316a",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_whole_unit_organizational_relation_v3_4.js",
+   "bytes": 10908,
+   "sha256": "231b32e020efccbd8b5c567b8f0fb7231b3c5444aabf28686b0baef38bbd9d37",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "bytes": 74550,
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA1_CONSTRUCTION_OBSERVATION_CORPUS_V1.json",
+   "bytes": 155218,
+   "sha256": "f0d16099c2b60ba080e38228f9c9031c3c5c6337aa4a36ba5fc74dd7c060f03c",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA1_CONSTRUCTION_REFERENT_CONTRACT_V1.json",
+   "bytes": 2791,
+   "sha256": "6db8df9b2efe549aabf42c1b58e3cd1722a2616947a7a491247f9b0220dc44e3",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA2_DESIGNED_DETAIL_OBSERVATION_CORPUS_V1.json",
+   "bytes": 214154,
+   "sha256": "83b92f9370d3dae5e3d7378bbcd4d505d2860f3fe96564e908aeb8a00a5bae7b",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA2_TC_CONSUMPTION_RECORD_V1.json",
+   "bytes": 2530,
+   "sha256": "1a433f2d1f51596b4c2367c8a416ad88018c1785868ae9bf5990880165eba016",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_GOVERNED_REPRESENTATION_CORRECTION_V1_CANDIDATE/REF000671_CONSTRUCTION_REPRESENTATION_CORRECTION_V1.json",
+   "bytes": 12459,
+   "sha256": "5b47e4410253c57a5f8e18f8f7ecd86c7069cf6521ce0855c6a70edf3f10df4f",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_GOVERNED_REPRESENTATION_CORRECTION_V1_CANDIDATE/SEAL_GOVERNED_REPRESENTATION_CORRECTION_V1.json",
+   "bytes": 515,
+   "sha256": "f87bd9e14cad383a38870bd5a35b4cec28354fbac819f06d697fd9dc34bd7e51",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_REALIZATION_BACKFILL_V2_CANDIDATE/CONSTITUTIVE_REALIZATION_EVIDENCE_V3.json",
+   "bytes": 68851,
+   "sha256": "338bb2d120bae31f5c9082a3c7f3f1a967e794fd0bead431e3792ed3bf04b1ff",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/SCORING_OBJECT_CORRECTION_V1.json",
+   "bytes": 5073,
+   "sha256": "10f53c472064472f67dcc9b70434309428b773122eed2801fe679292ca3f9a09",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/SEAL_SCORING_OBJECT_CORRECTION_V1.json",
+   "bytes": 450,
+   "sha256": "03d814078b43aca8e229305ca6114e2b1e93a56ab0385079276b5d2d6a8d0b91",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/SEAL_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+   "bytes": 392,
+   "sha256": "5fdef8038455b7341031a42a8f7974acefc407a0d278e92be3354bbe054c5dec",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+   "bytes": 7744,
+   "sha256": "c79af905e0e70861dcd24594433d25b14ef8cbab19e983b4742797373871f419",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_TROUSER_FIT_REOBSERVATION_V1_CANDIDATE/SEAL_TROUSER_FIT_REOBSERVATION_V1.json",
+   "bytes": 935,
+   "sha256": "b9ea82aa24ac53f0718998998d16705bebfc17db8e6b1cf09112457f7bd67d67",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_TROUSER_FIT_REOBSERVATION_V1_CANDIDATE/TROUSER_FIT_OBSERVATION_SUCCESSOR_V1.json",
+   "bytes": 11514,
+   "sha256": "e5a6ebc5a83bbfb4f1abfbb82ac019727063275a7407a7909a38e1acaded3e26",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_TROUSER_FIT_REOBSERVATION_V1_CANDIDATE/TROUSER_REOBSERVATION_PROTOCOL_V1.json",
+   "bytes": 8502,
+   "sha256": "a86170554550e7d9b43e6b5be1783d82bf4d73e01f0f5bb594bcad9f5a1c3450",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_OBSERVATION_V1_CANDIDATE/TC_CRITERIA_SUCCESSORS_V1.json",
+   "bytes": 7683,
+   "sha256": "1df84886af9d20dea7bc79557674c8690679404c2630b0b960fec43db9ace781",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V1_CANDIDATE/PROJECTION_ALLOWLIST_V1.json",
+   "bytes": 2816,
+   "sha256": "7795ea22b96585ec8e3c5c40580c2d3f048e10122840043ff22bbdb635b83ae3",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V4_CANDIDATE/SEAL_TC_UPSTREAM_TOKEN_PROJECTION_V4.json",
+   "bytes": 1124,
+   "sha256": "ba03922bf144a600f76bce957a733c565a2d7e64092c69dc31c106ec51b048ff",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V4_CANDIDATE/TC_UPSTREAM_TOKEN_PROJECTION_V4.json",
+   "bytes": 195720,
+   "sha256": "81d9040fad309b3cdd816b47969d3fe5110a1e8085ed48e307e0499405dfb52d",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/PROJECTION_ALLOWLIST_V5_AMENDMENT.json",
+   "bytes": 1384,
+   "sha256": "baf06276706457394280bc9aee54497fbdee5b0a9d5ca2b5ca0db4e9129e2313",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/SEAL_TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+   "bytes": 1448,
+   "sha256": "4f82c9185f2493f11fb52da26f92a5c79d9560cd975587d7a8a6130e2508c433",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+   "bytes": 198158,
+   "sha256": "8becb1b405e06d430514b64c432ea7965b53cd5e892173765c3fb1b895a093d8",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_DIRECTION_FREEZE_V1_MANIFEST.json",
+   "bytes": 27441,
+   "sha256": "1f6d6552847c3ec8ef0db954e39d7b83ddc92695609a53360f574214dbe3ecca",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_STRONG_SHOULDER_CLARIFICATION_FREEZE_V1.md",
+   "bytes": 2865,
+   "sha256": "3b111acf6f31d44101e08bb9381b46e056b142d7ee7b4f42a22a455933ec4885",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_WHOLE_GARMENT_DIRECTION_CONTRACT_FREEZE_V1.md",
+   "bytes": 4896,
+   "sha256": "294d903fd081af7142b643bb4dc9b31ee0b76d5199c0e44d2827f728d78d7c26",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_VISION_EXTRACTION_SCHEMA_FROZEN_V1.md",
+   "bytes": 189246,
+   "sha256": "379c89a19b8098d3709d1db95233a9606561c2d13b0ef3fe497976dce4fcd31a",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_27_STEP3_FINAL_FREEZE/06_STEP3_FINAL_114_UNIT_REPLAY_LEDGER.json",
+   "bytes": 135123,
+   "sha256": "724c5695c810d317f2ab7cf6ddd9420a0b8cd1bdd0ea97037c33cac4366d5ed9",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_42_BOUNDED_POPULATION_CRITERIA_FINAL_CLOSURE/08_TRANSFORMATIVE_FIVE_CLASS_CRITERIA.json",
+   "bytes": 27122,
+   "sha256": "9fc2bdd202423351a67022b6a1022eac2d9a240c96280e63d597b1736add5953",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_42_BOUNDED_POPULATION_CRITERIA_FINAL_CLOSURE/15_CLASSIC_D7_PARTIAL_BASELINE_V1_1.json",
+   "bytes": 27209,
+   "sha256": "f2df37c46c272667f71f941952c59fc1f8ff9b751463953e5defe61fbe9ea141",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_53_ATOMIC_EVIDENCE_SUFFICIENCY_AND_POPULATION_GAP_RESOLUTION/prototypes/lane_derivation_specifications.json",
+   "bytes": 4933,
+   "sha256": "333edd1ea3e949a1a956f8f1f96f1e067f2a9a6af62d22a8d79c55ed78b5476e",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_54_ATOMIC_REFERENT_SCOPE_AMENDMENT_AND_EVIDENCE_POPULATION/SEAL_ATOMIC_CORPUS_V1.json",
+   "bytes": 4222,
+   "sha256": "ffe021a5b97295eb1614972625e75704d4bf251387d43462eff45b520ab2baea",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_61_CONSTITUTIVE_GRAMMAR_COVERAGE_V1_IMPLEMENTATION/07_REFERENCE_SUCCESSOR.json",
+   "bytes": 42000,
+   "sha256": "625f0193837a92feb573f9010dab2f4bddf618b3fea3d05cd754326216abb370",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_61_CONSTITUTIVE_GRAMMAR_COVERAGE_V1_IMPLEMENTATION/prototypes/REFERENCE_SUCCESSOR_SEAL.json",
+   "bytes": 471,
+   "sha256": "74b31222d3f868c25be76d91403df1c4d7cd6c5f4f99b561b90e6c5fe353e830",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_64_REFERENCE_WHOLE_GRAMMAR_ORGANIZATION_AUTHORING/19_REFERENCE_V2_CANDIDATE.json",
+   "bytes": 65035,
+   "sha256": "e5ff105324d799e916573d02539cde95cc727dc51f9c4156b142437c2b075820",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_64_REFERENCE_WHOLE_GRAMMAR_ORGANIZATION_AUTHORING/21_REFERENCE_V2_SEAL.json",
+   "bytes": 656,
+   "sha256": "643f2c3bb90271a8e307115955ad5165ba1fab92840bfa54c532ff1e51186b7b",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/04_STMX_TC_STEP2_V2_3_2_RELATIONAL_RULESET.json",
+   "bytes": 12864,
+   "sha256": "350b5e7aba6eac4d72dd4503949251b5e365a980cbb9f3af3415784c924200a3",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_2_1.js",
+   "bytes": 4468,
+   "sha256": "1c0697161975066d5a8aed302959478147671a35f8b7132661278bd1d2da3a1c",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_2_base.js",
+   "bytes": 11571,
+   "sha256": "662f5cbf8fdbe481dd644c09cdb26a4c3c34fca48c2bd6fe1d0861d7c5d80c9e",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_3_2.js",
+   "bytes": 25168,
+   "sha256": "5832ae6dc14bfd93ffdf96f57a9f75e04b69667e69a7b142bb442bd7826219bd",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/08_STMX_TC_STEP2_V2_3_2_CLEAN_VALIDATION_LEDGER.json",
+   "bytes": 545562,
+   "sha256": "cc51a5c1cf8df0f4f240ee83af1d1a5aa37b9938465a863f2ee38a7a796caeb5",
+   "protection": "PROTECTED_SNAPSHOT"
+  }
+ ],
+ "test_dependencies": [
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/BOUND_INPUTS.json",
+   "bytes": 3238,
+   "sha256": "ee650d20202b509c5ad85bb94c1414c43d4a7d5abf89e0321f72c3da3f2fbb1f",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/tc_v2_binding.js",
+   "bytes": 4310,
+   "sha256": "38ac61e9d0b0b4e0cc255e57da8035a33ef8128e740e4248e7844fa4825b85d2",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/tc_v2_domain_invariance.js",
+   "bytes": 5052,
+   "sha256": "99b3dca4db2ee776cdcaa96fa1d33f129e32ef3d88ff7e8315b85cc3e395ff3c",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/tc_v2_engine.js",
+   "bytes": 5501,
+   "sha256": "ef122f6bbf1cda0c7c0bf3f51e32ef99881c3612f60ed91f54bd79a6342f0396",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/tc_v2_frozen_chain.js",
+   "bytes": 3874,
+   "sha256": "1ae52ffc087adf74a2f9e65bc68f8ad884305389c9352407180b609aa10214fc",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/tc_v2_reason_composer.js",
+   "bytes": 9412,
+   "sha256": "4f892e1efa7ce6b269327ec00c9d1e4739517c1214cd3fd6a9926db12fd638ac",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/tc_v2_reason_lexicon.js",
+   "bytes": 4338,
+   "sha256": "61a6b2001588895b99c1e45a0769b11bce4b1a3b1f259be35e4f38af28a7f961",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/tc_v2_reason_verifier.js",
+   "bytes": 6446,
+   "sha256": "3d6b0a43f2cbd2daded73c55452c96ce0925d2a75ed755877f60e4c9850e80fd",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/tc_v2_resolver.js",
+   "bytes": 7561,
+   "sha256": "4a853c0bb50bcaaa88cec83ee180497dcb74b57576638b2cdcacaef1d8c0560a",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/tc_v2_vision_adapter.js",
+   "bytes": 5772,
+   "sha256": "879554c55241bcc6fb5057c33200747d29348dba17774ec73ed249b0e9af2983",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/BOUND_INPUTS.json",
+   "bytes": 3568,
+   "sha256": "25e0b638e6147ce7355a6000815d4e2788292190b3bfd5464f36dffa08d4c7bf",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/src/tc_v2_binding.js",
+   "bytes": 4776,
+   "sha256": "5f60d1f1b41814b158cdd47801a6a4431526ea0bd1c8f75a50f7f34e7a5ef672",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/src/tc_v2_domain_invariance.js",
+   "bytes": 5052,
+   "sha256": "99b3dca4db2ee776cdcaa96fa1d33f129e32ef3d88ff7e8315b85cc3e395ff3c",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/src/tc_v2_engine.js",
+   "bytes": 6566,
+   "sha256": "d8632f3ae483b523f84e1bbe660f8ffad6dcae7be0d7b591fb64fcebec756b70",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/src/tc_v2_frozen_chain.js",
+   "bytes": 3874,
+   "sha256": "1ae52ffc087adf74a2f9e65bc68f8ad884305389c9352407180b609aa10214fc",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/src/tc_v2_reason_composer.js",
+   "bytes": 9412,
+   "sha256": "4f892e1efa7ce6b269327ec00c9d1e4739517c1214cd3fd6a9926db12fd638ac",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/src/tc_v2_reason_lexicon.js",
+   "bytes": 4338,
+   "sha256": "61a6b2001588895b99c1e45a0769b11bce4b1a3b1f259be35e4f38af28a7f961",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/src/tc_v2_reason_verifier.js",
+   "bytes": 6446,
+   "sha256": "3d6b0a43f2cbd2daded73c55452c96ce0925d2a75ed755877f60e4c9850e80fd",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/src/tc_v2_resolver.js",
+   "bytes": 7561,
+   "sha256": "4a853c0bb50bcaaa88cec83ee180497dcb74b57576638b2cdcacaef1d8c0560a",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE/src/tc_v2_vision_adapter.js",
+   "bytes": 6491,
+   "sha256": "8c1ecdbeb2aa1112a44d448eab5b88c5b322e39e321794d8e399c4993cfa1d88",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/FINAL_REPRESENTATION/CANONICAL_FINAL_REPRESENTATION_V1_2.jsonl",
+   "bytes": 825587,
+   "sha256": "0fe90ea170081370e8d03f5aae566bb433a101b10b62e2ac68ce341cc4077f76",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/MASTER/STMX_CEO_CALIBRATION_CORPUS.jsonl",
+   "bytes": 6600580,
+   "sha256": "621d6b905fb71b0c265791ccd02d4a3a7e0339d129ff769cef5ccdbf4eace267",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/TOOLS/scoring_units_v1.js",
+   "bytes": 15261,
+   "sha256": "b46d4c9fe8bb9a8349c6d1d4cb4aab9eaec0c0ec961ed1242dc81acddc1fd723",
+   "protection": "PROTECTED_SNAPSHOT"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_TC_V2_FROZEN_V1_AUDIT_AND_MANDATORY_DIRECTION_GAP_ANALYSIS_V1/_raw/data/t4_decisions.json",
+   "bytes": 60108,
+   "sha256": "d39cbe7060c0d479441ff2342e96a01a5cd88de84e90b8a8a73914499da26419",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call01_REF_000246_producer_output.json",
+   "bytes": 12768,
+   "sha256": "8915ac763e65e406e8a75f61fc7a2aecb2e588264a381e220073e89b4120aa2f",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call02_REF_000246_producer_output.json",
+   "bytes": 12728,
+   "sha256": "dbd306830a5e96a0a1757819e11ea35dc7b47051c2c2a681d96e6baf329255e9",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call03_REF_000246_producer_output.json",
+   "bytes": 10695,
+   "sha256": "858f17a18b48cb1cbec113e5497c57b1716fd85bbb2e05b3155de3241f311f8f",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call04_REF_000185_producer_output.json",
+   "bytes": 11274,
+   "sha256": "d681d2d95e7e59d8374bfe186d96e2784a95c7042ab0bec5e8550c63eb97f5c7",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call05_REF_000323_producer_output.json",
+   "bytes": 9712,
+   "sha256": "c854246395af9f4c6a484e49971cd7faeb774ea18de575420b1cb9d75f90065b",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call06_REF_000398_producer_output.json",
+   "bytes": 10281,
+   "sha256": "960b0e6c7c76763cd0d6ac85c38eafa34fb3b81d5cbfb06b4f47ef25862b5111",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call07_REF_000190_producer_output.json",
+   "bytes": 10906,
+   "sha256": "5bc632338bad4cdcc5d1f5c0b7dda15e5bfd3e05e786cc1656e5adb447e7a805",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call08_REF_000661_producer_output.json",
+   "bytes": 13958,
+   "sha256": "b4d9c3c81a52cee41941cd667496cfb5541a3c661dd9457dcc516a2ed7454144",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call09_REF_000671_producer_output.json",
+   "bytes": 14529,
+   "sha256": "888ca23fb5f01d69a33791d33bde2c2fdcff3ac8edcc13a352272ed14d52a1a9",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call10_REF_000694_producer_output.json",
+   "bytes": 13272,
+   "sha256": "3072a3e03b1447a3a6d2061c761da4955c8935b6c73a09fca5d883a369b69d6a",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call11_REF_000185_producer_output.json",
+   "bytes": 11997,
+   "sha256": "c9821686ec9cd4b6d9055b0121652b492b0e40a271b33ddcb6d9c114d5ec98df",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call12_REF_000190_producer_output.json",
+   "bytes": 10311,
+   "sha256": "80af6dc1dd052511796d85d6c3bb9d695a33c5f6170e2d66b42a726c76f90080",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call13_REF_000661_producer_output.json",
+   "bytes": 15064,
+   "sha256": "6a275e1bd26f8c2299589b4e75eb78c8a35f7856aa7aa33803ca72910cecf077",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call14_REF_000671_producer_output.json",
+   "bytes": 14573,
+   "sha256": "4853024532b57c50f805a118c4836e7cbcc502943a5d237d0bff61e0189ad084",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_VISION_V1_3_G53_LIMITED_LIVE_VALIDATION_AND_SR_V2_R3_INTEGRATION_V1/_raw/processed/call15_REF_000671_producer_output.json",
+   "bytes": 13111,
+   "sha256": "c92bd1edc3236987b3843f8300ea251ce8e1139b15513fee73fe2fc8445e34c9",
+   "protection": "HASH_PINNED_IN_THIS_RECORD (outside the snapshot walk)"
+  }
+ ],
+ "final_output_contract": {
+  "scoring_unit": "Single Governed Item Product (one V1.3 target record) · the 114 governed corpus units (pair / set rule frozen)",
+  "customer_output": "{ \"direction\": \"TRANSFORMATIVE\" | \"CLASSIC\", \"reason\": Korean text grounded in observed Vision evidence }",
+  "allowed_directions": [
+   "TRANSFORMATIVE",
+   "CLASSIC"
+  ],
+  "forbidden_directions": [
+   "UNKNOWN",
+   "UNRESOLVED",
+   "NOT_SCORABLE",
+   "NEUTRAL",
+   "LIMITATION",
+   "EVIDENCE_INSUFFICIENT",
+   "null"
+  ],
+  "numeric_score": "NONE",
+  "strength": "NONE",
+  "ordinal": "NONE",
+  "forbidden_in_customer_output": [
+   "GT",
+   "REF id",
+   "internal rule / path id",
+   "numeric score",
+   "Strength",
+   "ordinal",
+   "TC1–TC9"
+  ],
+  "technical_error": "CONTRACT_ERROR only when the product envelope cannot be read (record or observation container not a plain object) — not a product result",
+  "principle": "CEO \"5.1 up / 4.9 down\": a near-boundary case still receives one Direction; no numeric scoring"
+ },
+ "ceo_final_policies": [
+  {
+   "id": "TC-Q1′",
+   "subject": "Evidence-Bounded Classic",
+   "decision": "ADOPTED",
+   "implementation": "EVIDENCE_BOUNDED — key resolved, no open Departure candidate, Construction conventional on an OBSERVED carrier → CLASSIC"
+  },
+  {
+   "id": "TC-Q2",
+   "subject": "UNKNOWN subtype — no arbitrary type substitution; existing V2 decision policy retained",
+   "decision": "ADOPTED",
+   "implementation": "MANDATORY_FALLBACK (TC-Q2) — never a hypothetical key as evidence"
+  },
+  {
+   "id": "TC-Q3",
+   "subject": "Verified frozen Domain Invariance",
+   "decision": "ADOPTED",
+   "implementation": "DOMAIN_INVARIANT — every admissible completion gives one Direction; T only on a channel independent of the completion"
+  },
+  {
+   "id": "TC-ZE",
+   "subject": "Deterministic default for a valid complete-zero-evidence product",
+   "decision": "ADOPTED",
+   "implementation": "ZERO_EVIDENCE → CLASSIC; the Reason states the limitation and never denies an observed feature"
+  },
+  {
+   "id": "TC-L",
+   "subject": "Every product receives T / C; GT disagreement kept in internal records",
+   "decision": "ADOPTED",
+   "implementation": "no exception path; GT never read at runtime"
+  },
+  {
+   "id": "R3-B1",
+   "subject": "Individually corrupted observation isolated; remaining evidence decides",
+   "decision": "ADOPTED",
+   "implementation": "field-level validation · exclusion ≡ absence · only an unreadable envelope is a technical CONTRACT_ERROR"
+  },
+  {
+   "id": "R3-B2",
+   "subject": "Category-independent frozen Departure evidence preserved",
+   "decision": "ADOPTED",
+   "implementation": "CATEGORY_INDEPENDENT_DEPARTURE — the same audited frozen rule TRUE in all 14 admissible archetype keys"
+  },
+  {
+   "id": "TC-LV-1~3",
+   "subject": "Vision observation / input-contract follow-up",
+   "decision": "DEFERRED — no change at this stage",
+   "implementation": "four-axis integration / TC reopen"
+  }
+ ],
+ "final_regression": {
+  "package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_TC_V2_R4_FINAL_FREEZE_CONSTITUTION_CLOSURE_AND_VERIFIED_BACKUP_V1/",
+  "result_file": "_raw/manifests/y4_regression.json",
+  "result_sha256": "ef06ee0899ab090d7e7b2b09c34e63c65948a4b5ff05a3f8af647e176667af28",
+  "command": "node tests/run_all.js --json   (cwd = the R4 directory)",
+  "environment": {
+   "node": "v24.18.0",
+   "platform": "win32 10.0.26200",
+   "arch": "x64"
+  },
+  "tests": "163/163",
+  "metrics": {
+   "tests": "163/163",
+   "historical_direction": "114/114",
+   "frozen_v1_preserved": "97/97",
+   "historical_gt": "98/114",
+   "gt_v1_decided": "86/97",
+   "gt_former_unresolved": "12/17",
+   "former_unresolved": 17,
+   "opposite_five": [
+    "REF_000139#SU1",
+    "REF_000141#SU1",
+    "REF_000430#SU1",
+    "REF_000469#SU1",
+    "REF_000599#SU1"
+   ],
+   "live_direction": "15/15",
+   "live_gt": "9/15",
+   "salvage_sweep": "353/353",
+   "salvage_manufactured_t": 0,
+   "masking": {
+    "members": 126,
+    "independent": 10,
+    "mismatch": 0,
+    "withheld": 0
+   },
+   "final_unresolved": 0,
+   "numeric_output": 0,
+   "withheld": 0,
+   "paths": {
+    "FROZEN_V1": 97,
+    "EVIDENCE_BOUNDED": 12,
+    "MANDATORY_FALLBACK": 3,
+    "DOMAIN_INVARIANT": 2
+   },
+   "distribution": {
+    "CLASSIC": 61,
+    "TRANSFORMATIVE": 53
+   }
+  },
+  "second_run_identical": true,
+  "identical_to_r4_package_run": true
+ },
+ "design_review": {
+  "result_file": "_raw/manifests/y5_review.json",
+  "result_sha256": "4d074e5d5f67a7b234b843d28dc30874d466969d5d4a968aba20d8ef362b2dbe",
+  "pass": "26/26"
+ },
+ "freeze_gates": [
+  "F-1 final design review 26/26 (D2)",
+  "F-2 final regression 163/163, two runs identical, rows identical to the R4 package run, §5 baseline all match (D4)",
+  "F-3 dependency trace complete: runtime 62 + tests 39 files, all inside the master root",
+  "F-4 R4 byte-identical to its seal and unchanged by every run (trace · regression)",
+  "F-5 predecessors intact (83)"
+ ],
+ "internal_technical_risks": [
+  {
+   "id": "TR-1",
+   "title": "Accuracy vs CEO GT",
+   "text": "historical 98/114 · live 9/15 — 100% Direction coverage is not 100% accuracy; GT disagreements (incl. the five former-UNRESOLVED opposites REF_000139#SU1 · REF_000141#SU1 · REF_000430#SU1 · REF_000469#SU1 · REF_000599#SU1) are kept internally",
+   "note": "internal record — NOT a customer limitation output; never blocks a valid Direction"
+  },
+  {
+   "id": "TR-2",
+   "title": "Vision observation instability",
+   "text": "REF_000246 · REF_000671: lace D-4 location / mesh material vary between runs, the Direction follows (TC-LV-1 · TC-LV-2) — Vision scope",
+   "note": "internal record — NOT a customer limitation output; never blocks a valid Direction"
+  },
+  {
+   "id": "TR-3",
+   "title": "Frozen TC input contract",
+   "text": "asymmetry evidence · pocket instances · shoulder connection · waist definition are outside the TC projection (TC-LV-3); a category-dependent Departure (e.g. REF_000139 · REF_000469, tailored keys only) cannot be used when the subtype is not observed — no new semantics",
+   "note": "internal record — NOT a customer limitation output; never blocks a valid Direction"
+  },
+  {
+   "id": "TR-4",
+   "title": "Vision output deviation",
+   "text": "live V1.3 records emit graphic = OBSERVED \"None\" (outside the V1.3 domain) in 4 of 15 → excluded field-level; graphic is not a TC input (no Direction impact)",
+   "note": "internal record — NOT a customer limitation output; never blocks a valid Direction"
+  },
+  {
+   "id": "TR-5",
+   "title": "Integration",
+   "text": "four-axis integration must evaluate TR-2 … TR-4; promotion requires a separate CEO decision",
+   "note": "internal record — NOT a customer limitation output; never blocks a valid Direction"
+  }
+ ],
+ "notes": [
+  {
+   "id": "N-1",
+   "subject": "candidate-era labels inside the frozen source",
+   "text": "ENGINE_STATUS reads \"IMPLEMENTATION_CANDIDATE — NOT PRODUCTION\", the README \"Status: IMPLEMENTATION CANDIDATE\", and resolver comments call the policies \"candidate policy\". Not edited (order §6.1: no source change); this record and the constitution are the authority — the policies are now ADOPTED."
+  },
+  {
+   "id": "N-2",
+   "subject": "directory name",
+   "text": "the `_CANDIDATE` directory name is the historical physical name of the frozen engine, bound here by explicit name and hash — never rename or delete it."
+  }
+ ],
+ "backup_status_at_freeze": {
+  "local": "NOT YET CREATED at the time of this record — created and verified after it (y8_backup.json · y9_recovery.json); this record is not edited afterwards",
+  "google_drive": "GOOGLE_DRIVE_BACKUP_PENDING_CEO_UPLOAD unless confirmed later by a separate record",
+  "local_target": "C:/STMX_UPLOAD/02_TC_V2_DIRECTION_REASON/",
+  "drive_target": "20_ITEM_SCORING_ENGINES/02_TC_V2_DIRECTION_REASON/ (sibling of 02_TC)"
+ },
+ "not_changed": [
+  "Item TC V1 (production) and its pointer · TC V1 registry · frozen TC V1 chain",
+  "R1 / R2 / R3 candidates (protected)",
+  "Item SR V2 (frozen) · Item DM V2 (frozen) · Item EI",
+  "Item Scoring Engine V1 manifest / Clean Engine registry",
+  "Item Vision Producer V1.3",
+  "CEO GT originals",
+  "Full-Look engines",
+  "existing backups / Drive folders"
+ ],
+ "rule": "⛔ No change to the frozen directory, its bound dependencies or this record without an explicit CEO TC V2 reopen decision (reason · affected authority · migration plan · regression plan). ⛔ This record is NOT a production pointer."
+}

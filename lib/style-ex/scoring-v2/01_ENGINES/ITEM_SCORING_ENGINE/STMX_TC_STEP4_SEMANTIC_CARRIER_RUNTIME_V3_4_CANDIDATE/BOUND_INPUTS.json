@@ -1,0 +1,178 @@
+{
+ "artefact": "BOUND_INPUTS",
+ "runtime": "STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_3_CANDIDATE",
+ "replaced_inputs": [
+  "upstream_token_projection",
+  "upstream_token_projection_seal"
+ ],
+ "evidence_successor_seal": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_REALIZATION_BACKFILL_V2_CANDIDATE/SEAL_REALIZATION_BACKFILL_V2.json",
+ "rule": "every input is read by path relative to the master root and must match its sha256, else BoundInputError (fail-closed); forbidden-source path guard in the adapter",
+ "never_bound": [
+  "R1 corpus / read_organiser (diagnostic oracle only)",
+  "Producer V1_4 / CA#39 R1 branch",
+  "CEO GT (any field)",
+  "historical TC tier / side",
+  "anchor scores",
+  "Descriptor / RG prose (incl. the free-text \"detail\" of an SA-2 evidence)",
+  "Vector / embeddings",
+  "pattern.visual_dominance",
+  "finish_realization",
+  "motif_complexity",
+  "Coverage as an observation",
+  "DM score / tier / density / Direction / Strength / M1 / M2",
+  "colour_v1 contrast_with_body as a completeness source (supplementary reference only — 27_)",
+  "any EI / SR / DM axis output",
+  "canonical GT successor CANONICAL_FINAL_REPRESENTATION_V1_3 (any field)",
+  "CEO re-adjudication records (V2.3.59)",
+  "V2.3.61 blind trouser batch / member map / protocol working files",
+  "V2.3.60 841 blind batch",
+  "CEO GT V1_3 (any field) — opened only after the V3.3 seal",
+  "J2 / Contemporary-Rewritten restoration (D-60.6 HARD STOP)"
+ ],
+ "not_bound_by_design": {
+  "colour_contrast": "colour_v1 contrast_with_body — SUPPLEMENTARY REFERENCE ONLY (V2.3.54 27_); no clause of the preregistered specification references it, so V3 binds no colour input"
+ },
+ "spec39": {
+  "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_54_ATOMIC_REFERENT_SCOPE_AMENDMENT_AND_EVIDENCE_POPULATION/39_FUTURE_V3_INPUT_PACKAGE_SPECIFICATION.json",
+  "sha256": "ae88bb1b94312cdb8b3aba8a0e19da35ae608c58d9d2bb88b1e58638c1635638"
+ },
+ "inputs": [
+  {
+   "role": "step2_member_ledger",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/08_STMX_TC_STEP2_V2_3_2_CLEAN_VALIDATION_LEDGER.json",
+   "sha256": "cc51a5c1cf8df0f4f240ee83af1d1a5aa37b9938465a863f2ee38a7a796caeb5",
+   "source": "39_ bound_inputs",
+   "note": "observed{} tokens only; historical_tc / historical_side / vs_historical projected out (as in V2)"
+  },
+  {
+   "role": "step2_relational_ruleset",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/04_STMX_TC_STEP2_V2_3_2_RELATIONAL_RULESET.json",
+   "sha256": "350b5e7aba6eac4d72dd4503949251b5e365a980cbb9f3af3415784c924200a3",
+   "source": "39_ bound_inputs"
+  },
+  {
+   "role": "step3_unit_ledger",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_27_STEP3_FINAL_FREEZE/06_STEP3_FINAL_114_UNIT_REPLAY_LEDGER.json",
+   "sha256": "724c5695c810d317f2ab7cf6ddd9420a0b8cd1bdd0ea97037c33cac4366d5ed9",
+   "source": "39_ bound_inputs",
+   "note": "direction / grammar fields only; historical_tc / vs_historical projected out"
+  },
+  {
+   "role": "transformative_criteria",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_42_BOUNDED_POPULATION_CRITERIA_FINAL_CLOSURE/08_TRANSFORMATIVE_FIVE_CLASS_CRITERIA.json",
+   "sha256": "9fc2bdd202423351a67022b6a1022eac2d9a240c96280e63d597b1736add5953",
+   "source": "39_ bound_inputs"
+  },
+  {
+   "role": "classic_reference_baseline",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_42_BOUNDED_POPULATION_CRITERIA_FINAL_CLOSURE/15_CLASSIC_D7_PARTIAL_BASELINE_V1_1.json",
+   "sha256": "f2df37c46c272667f71f941952c59fc1f8ff9b751463953e5defe61fbe9ea141",
+   "source": "39_ bound_inputs"
+  },
+  {
+   "role": "constitutive_realization_evidence",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_REALIZATION_BACKFILL_V2_CANDIDATE/CONSTITUTIVE_REALIZATION_EVIDENCE_V3.json",
+   "sha256": "338bb2d120bae31f5c9082a3c7f3f1a967e794fd0bead431e3792ed3bf04b1ff"
+  },
+  {
+   "role": "criteria_successors",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_OBSERVATION_V1_CANDIDATE/TC_CRITERIA_SUCCESSORS_V1.json",
+   "sha256": "1df84886af9d20dea7bc79557674c8690679404c2630b0b960fec43db9ace781",
+   "source": "39_ bound_inputs",
+   "note": "inherited as design authority ONLY for S1–S5 / D7-S1 steps (1)–(2); its R1 read in step (3) is NOT bound — replaced by the atomic lane relation below"
+  },
+  {
+   "role": "lane_derivation_specification",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_53_ATOMIC_EVIDENCE_SUFFICIENCY_AND_POPULATION_GAP_RESOLUTION/prototypes/lane_derivation_specifications.json",
+   "sha256": "333edd1ea3e949a1a956f8f1f96f1e067f2a9a6af62d22a8d79c55ed78b5476e",
+   "source": "39_ bound_inputs",
+   "note": "sealed V2.3.53 preregistered PROMINENT(system) predicates + Classic / Transformative relations (no tie rule)"
+  },
+  {
+   "role": "sa1_construction_observation_corpus",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA1_CONSTRUCTION_OBSERVATION_CORPUS_V1.json",
+   "sha256": "f0d16099c2b60ba080e38228f9c9031c3c5c6337aa4a36ba5fc74dd7c060f03c",
+   "source": "39_ bound_inputs",
+   "note": "CA#40 SA-1 instances · 126 members · 188 instances · sealed in 95d6246425ad3840…"
+  },
+  {
+   "role": "sa2_designed_detail_observation_corpus",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA2_DESIGNED_DETAIL_OBSERVATION_CORPUS_V1.json",
+   "sha256": "83b92f9370d3dae5e3d7378bbcd4d505d2860f3fe96564e908aeb8a00a5bae7b",
+   "source": "39_ bound_inputs",
+   "note": "DM designed-detail blocks · consumed under SA-2 (evidence_family · relative_size · contrast · spatial_position · source_observation_refs · evidence: [] only)"
+  },
+  {
+   "role": "sa2_consumption_record",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA2_TC_CONSUMPTION_RECORD_V1.json",
+   "sha256": "1a433f2d1f51596b4c2367c8a416ad88018c1785868ae9bf5990880165eba016",
+   "source": "39_ bound_inputs"
+  },
+  {
+   "role": "sa1_referent_contract",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA1_CONSTRUCTION_REFERENT_CONTRACT_V1.json",
+   "sha256": "6db8df9b2efe549aabf42c1b58e3cd1722a2616947a7a491247f9b0220dc44e3",
+   "source": "39_ bound_inputs"
+  },
+  {
+   "role": "atomic_corpus_seal",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_54_ATOMIC_REFERENT_SCOPE_AMENDMENT_AND_EVIDENCE_POPULATION/SEAL_ATOMIC_CORPUS_V1.json",
+   "sha256": "ffe021a5b97295eb1614972625e75704d4bf251387d43462eff45b520ab2baea",
+   "source": "39_ bound_inputs",
+   "note": "V3 must verify ATOMIC_CORPUS_AGGREGATE_SHA256 = 95d6246425ad38406469d9cfa2e299e0945dfcfe5ec72e425df2d72cc6d1dbfd before any read (fail-closed)"
+  },
+  {
+   "role": "upstream_token_projection",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V4_CANDIDATE/TC_UPSTREAM_TOKEN_PROJECTION_V4.json",
+   "sha256": "81d9040fad309b3cdd816b47969d3fe5110a1e8085ed48e307e0499405dfb52d",
+   "note": "V3 + V2.3.61 trouser fit observation successor (fit only)",
+   "predecessor": {
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V3_CANDIDATE/TC_UPSTREAM_TOKEN_PROJECTION_V3.json",
+    "sha256": "4f73c7d40862caf0e472c45d0ba1f8154bcaec06d6b829e3e9c8fe6e26d8042e"
+   }
+  },
+  {
+   "role": "upstream_token_projection_seal",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V4_CANDIDATE/SEAL_TC_UPSTREAM_TOKEN_PROJECTION_V4.json",
+   "sha256": "ba03922bf144a600f76bce957a733c565a2d7e64092c69dc31c106ec51b048ff",
+   "predecessor": {
+    "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V3_CANDIDATE/SEAL_TC_UPSTREAM_TOKEN_PROJECTION_V3.json",
+    "sha256": "bbea1c653c405138f46114934bb937df51fbc8f63da90d16761017fea3bc7654"
+   }
+  },
+  {
+   "role": "constitutive_reference_successor",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_61_CONSTITUTIVE_GRAMMAR_COVERAGE_V1_IMPLEMENTATION/07_REFERENCE_SUCCESSOR.json",
+   "sha256": "625f0193837a92feb573f9010dab2f4bddf618b3fea3d05cd754326216abb370",
+   "note": "P-1 · D-7 baseline rows verbatim + constitutive_systems per key (sealed step 1)"
+  },
+  {
+   "role": "constitutive_reference_successor_seal",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_61_CONSTITUTIVE_GRAMMAR_COVERAGE_V1_IMPLEMENTATION/prototypes/REFERENCE_SUCCESSOR_SEAL.json",
+   "sha256": "74b31222d3f868c25be76d91403df1c4d7cd6c5f4f99b561b90e6c5fe353e830"
+  },
+  {
+   "role": "length_token_compatibility",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+   "sha256": "c79af905e0e70861dcd24594433d25b14ef8cbab19e983b4742797373871f419",
+   "note": "OSF-7 · frozen Step 2 prop() re-applied to the frozen envelope spelling (6 members)"
+  },
+  {
+   "role": "length_token_compatibility_seal",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/SEAL_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+   "sha256": "5fdef8038455b7341031a42a8f7974acefc407a0d278e92be3354bbe054c5dec"
+  }
+ ],
+ "successor_of": "STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_1_BINDING_V2_CANDIDATE (sealed 09598c93…) — 12 of 15 inputs identical; 3 inputs replaced by their sealed V2.3.59 OSF successors; src: L-1 / L-2 defect corrections only",
+ "v3_2_evidence_successor_seal": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_REALIZATION_BACKFILL_V2_CANDIDATE/SEAL_REALIZATION_BACKFILL_V2.json",
+ "added_inputs": [
+  "constitutive_reference_successor",
+  "constitutive_reference_successor_seal",
+  "length_token_compatibility",
+  "length_token_compatibility_seal"
+ ],
+ "predecessor_manifest": {
+  "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_2_CANDIDATE/BOUND_INPUTS.json",
+  "sha256": "7dd560891d3f3e36d8a3e58ce63088253d457315f78d0a9a1b3ab89aadc95be7"
+ }
+}

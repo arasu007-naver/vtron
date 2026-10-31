@@ -1,0 +1,4980 @@
+{
+ "real_holdout": {
+  "note": "REAL unused corpus target records — no product GT exists; coverage / grounding only, NOT accuracy",
+  "records": [
+   {
+    "corpus_record_id": "B1-10::REF_000010",
+    "target_id": "target_2",
+    "ref": "REF_000010",
+    "category": "Shirt",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-Z0",
+    "reason": "사진에서 핏과 어깨선과 소재감은 확인되지 않아 형태 방향을 관측 근거로 설명할 수 없습니다. 확인되지 않은 특징을 근거로 삼지 않고, 제한된 정보에 따른 기본 분류로 Structured 방향으로 표시됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": [
+     {
+      "path": "observations.fit",
+      "state": "UNKNOWN"
+     },
+     {
+      "path": "observations.shoulder_drop",
+      "state": "MISSING"
+     },
+     {
+      "path": "observations.fabric_behavior",
+      "state": "MISSING"
+     }
+    ]
+   },
+   {
+    "corpus_record_id": "B1-10::REF_000010",
+    "target_id": "target_3",
+    "ref": "REF_000010",
+    "category": "Trouser",
+    "direction": "RELAXED",
+    "rule": "SR-V2-M2",
+    "reason": "사진에서 소재감은 확인되지 않지만 여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": [
+     {
+      "path": "observations.fabric_behavior",
+      "state": "MISSING"
+     }
+    ]
+   },
+   {
+    "corpus_record_id": "B2-01::REF_000014",
+    "target_id": "target_3",
+    "ref": "REF_000014",
+    "category": "Trouser",
+    "direction": "RELAXED",
+    "rule": "SR-V2-M2",
+    "reason": "사진에서 소재감은 확인되지 않지만 여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": [
+     {
+      "path": "observations.fabric_behavior",
+      "state": "MISSING"
+     }
+    ]
+   },
+   {
+    "corpus_record_id": "STMX_B006_B6_06",
+    "target_id": "target_2",
+    "ref": "REF_000141",
+    "category": "Dress",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P1a",
+    "reason": "상체 부분은 슬림하게 재단된 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "STMX_B004_B4_06",
+    "target_id": "target_2",
+    "ref": "REF_000190",
+    "category": "Trouser",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P4",
+    "reason": "사진에서 핏은 확인되지 않지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": [
+     {
+      "path": "observations.fit",
+      "state": "UNKNOWN"
+     }
+    ]
+   },
+   {
+    "corpus_record_id": "B3-02::REF_000221",
+    "target_id": "target_2",
+    "ref": "REF_000221",
+    "category": "Trouser",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "STMX_B007_B7_15",
+    "target_id": "target_2",
+    "ref": "REF_000323",
+    "category": "Trouser",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "B3-15::REF_000368",
+    "target_id": "target_3",
+    "ref": "REF_000368",
+    "category": "Trouser",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "STMX_B006_B6_09",
+    "target_id": "target_3",
+    "ref": "REF_000430",
+    "category": "Trouser",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "STMX_B004_B4_10",
+    "target_id": "target_2",
+    "ref": "REF_000447",
+    "category": "Trouser",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "B3-16::REF_000493",
+    "target_id": "target_2",
+    "ref": "REF_000493",
+    "category": "Trouser",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "여유 있게 재단된 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "STMX_B006_B6_05",
+    "target_id": "target_2",
+    "ref": "REF_000503",
+    "category": "Sweater",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P4",
+    "reason": "기본 폭으로 재단된 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "B3-04::REF_000657",
+    "target_id": "target_1",
+    "ref": "REF_000657",
+    "category": "Shirt",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P5",
+    "reason": "부드럽게 떨어지는 소재이지만 기본 폭으로 재단된 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "STMX_B007_B7_05",
+    "target_id": "target_3",
+    "ref": "REF_000807",
+    "category": "Trouser",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "여유 있게 재단된 릴랙스드 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "B2-08::REF_000808",
+    "target_id": "target_3",
+    "ref": "REF_000808",
+    "category": "Trouser",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P4",
+    "reason": "기본 폭으로 재단된 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "B3-13::REF_000834",
+    "target_id": "target_3",
+    "ref": "REF_000834",
+    "category": "Trouser",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P1a",
+    "reason": "슬림하게 재단된 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "STMX_B007_B7_16",
+    "target_id": "target_2",
+    "ref": "REF_000847",
+    "category": "Sweater",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "여유 있게 재단된 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "STMX_B007_B7_16",
+    "target_id": "target_3",
+    "ref": "REF_000847",
+    "category": "Skirt",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P4",
+    "reason": "기본 폭으로 재단된 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   },
+   {
+    "corpus_record_id": "STMX_B004_B4_03",
+    "target_id": "target_2",
+    "ref": "REF_000849",
+    "category": "T-Shirt",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P1a",
+    "reason": "슬림하게 재단된 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verification": {
+     "status": "PASS",
+     "findings": []
+    },
+    "limitations": []
+   }
+  ],
+  "one_piece_count": 1
+ },
+ "synthetic": {
+  "note": "SYNTHETIC governed-field tests — never human GT",
+  "grid": {
+   "configurations": 512,
+   "directions": {
+    "STRUCTURED": 232,
+    "RELAXED": 280
+   },
+   "rules": {
+    "SR-V2-P1a": 160,
+    "SR-V2-P1b": 64,
+    "SR-V2-P4": 32,
+    "SR-V2-P2a": 40,
+    "SR-V2-P2b": 216
+   },
+   "rows": [
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Slim/Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Regular/Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Slim/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Slim/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재이고 스커트 부분은 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재이고 스커트 부분은 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Relaxed/Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Slim/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Slim/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재이고 스커트 부분은 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재이고 스커트 부분은 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 스커트 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 스커트 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Dress",
+     "upper": "Oversized/Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 스커트 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Semi-Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Slim/Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P4",
+     "verified": "PASS",
+     "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 하의 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Semi-Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Regular/Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Slim/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Slim/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재이고 하의 부분은 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 형태를 잡아 주는 탄탄한 소재이고 하의 부분은 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Semi-Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Relaxed/Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Slim/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Slim/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Slim/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P1a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 하의 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Slim/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Slim/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Slim/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Slim/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Slim/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P1b",
+     "verified": "PASS",
+     "reason": "하의 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Regular/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Regular/Fluid",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Regular/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Regular/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Regular/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Regular/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재이고 하의 부분은 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Relaxed/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Relaxed/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Relaxed/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Relaxed/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Oversized/Structured",
+     "direction": "STRUCTURED",
+     "rule": "SR-V2-P2a",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이지만 형태를 잡아 주는 탄탄한 소재이고 하의 부분은 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 하의 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Structured",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Semi-Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Oversized/Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Oversized/Semi-Structured",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Oversized/Semi-Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    },
+    {
+     "cat": "Jumpsuit",
+     "upper": "Oversized/Fluid",
+     "lower": "Oversized/Fluid",
+     "direction": "RELAXED",
+     "rule": "SR-V2-P2b",
+     "verified": "PASS",
+     "reason": "상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재이고 하의 부분은 넉넉한 오버사이즈 핏이라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다."
+    }
+   ]
+  },
+  "tension": [
+   {
+    "title": "bodice Slim + lower Relaxed Fluid (744-like)",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P1b",
+    "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verified": "PASS"
+   },
+   {
+    "title": "bodice Slim + lower Relaxed Semi-Structured (791-like)",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P1a",
+    "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verified": "PASS"
+   },
+   {
+    "title": "bodice Regular Dropped + lower Regular Structured (790-like)",
+    "direction": "STRUCTURED",
+    "rule": "SR-V2-P3b",
+    "reason": "어깨선이 아래로 떨어지는 드롭 숄더이지만 하의 부분은 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+    "verified": "PASS"
+   },
+   {
+    "title": "bodice Oversized + lower Slim",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P1b",
+    "reason": "스커트 부분은 몸선을 따라 붙는 슬림 핏이지만 상체 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verified": "PASS"
+   },
+   {
+    "title": "both regions Relaxed, upper Structured cloth only",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verified": "PASS"
+   },
+   {
+    "title": "upper fit UNKNOWN, lower Relaxed Fluid",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P2b",
+    "reason": "스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verified": "PASS"
+   },
+   {
+    "title": "upper Regular Strong shoulder, lower Oversized Fluid",
+    "direction": "RELAXED",
+    "rule": "SR-V2-P1b",
+    "reason": "어깨 구조가 분명하게 잡혀 있지만 하의 부분은 넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+    "verified": "PASS"
+   }
+  ]
+ }
+}

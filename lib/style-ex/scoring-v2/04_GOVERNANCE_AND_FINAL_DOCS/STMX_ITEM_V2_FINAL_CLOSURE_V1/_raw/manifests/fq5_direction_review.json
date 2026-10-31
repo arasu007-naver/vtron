@@ -1,0 +1,89 @@
+{
+ "at": "2026-10-29T08:38:58.727Z",
+ "pass": 4,
+ "total": 4,
+ "sr840_classification": "VISION_OBSERVATION_DIFFERENCE",
+ "ceo_decision_item": "D-Q2 — REF_000840 SR: the live V1.3 observation (shoulder_structure None) contradicts the CEO reading (strong shoulder structure) on the same image. Choose: accept the live governed result R as a disclosed Vision-observation limitation for the freeze, or treat Vision run-to-run variance on shoulder_structure as a known limitation that blocks an unconditional freeze. No SR / GT change either way.",
+ "others": [
+  "REF_000520 U1 EI → CONSISTENT_WITH_FROZEN_RULES_AND_ACTUAL_EVIDENCE",
+  "REF_000840 U1 EI → CONSISTENT_WITH_FROZEN_RULES_AND_ACTUAL_EVIDENCE",
+  "REF_000849 U1 TC → CONSISTENT_WITH_FROZEN_RULES_AND_ACTUAL_EVIDENCE",
+  "REF_000849 U2 TC → CONSISTENT_WITH_FROZEN_RULES_AND_ACTUAL_EVIDENCE"
+ ],
+ "checks": [
+  {
+   "id": "C-01",
+   "desc": "live REF_000840 Suit SR reproduced from stored evidence = R via the governing Jacket rule SR-V2-P2b (fit Oversized)",
+   "pass": true,
+   "detail": {
+    "rule": "SR-V2-P2b",
+    "values": [
+     {
+      "path": "observations.fit",
+      "value": "Oversized"
+     }
+    ]
+   }
+  },
+  {
+   "id": "C-02",
+   "desc": "the same sealed rule on the stored historical record pair of the same image = S via SR-V2-P1a (shoulder_structure Strong) — equals CEO GT SR6",
+   "pass": true,
+   "detail": {
+    "rule": "SR-V2-P1a",
+    "values": [
+     {
+      "path": "observations.fit",
+      "value": "Oversized"
+     },
+     {
+      "path": "observations.shoulder_structure",
+      "value": "Strong"
+     }
+    ]
+   }
+  },
+  {
+   "id": "C-03",
+   "desc": "the decisive difference is the Jacket shoulder observation (historical Strong → live None) — a Vision observation difference, not a rule or implementation defect",
+   "pass": true,
+   "detail": [
+    {
+     "carrier": "shoulder_structure",
+     "historical": "Strong",
+     "live": "None"
+    },
+    {
+     "carrier": "shoulder_drop",
+     "historical": "None",
+     "live": "Dropped"
+    },
+    {
+     "carrier": "fabric_behavior",
+     "historical": "Structured",
+     "live": "Semi-Structured"
+    },
+    {
+     "carrier": "waist_definition",
+     "historical": "Undefined"
+    },
+    {
+     "carrier": "collar_scale",
+     "historical": "Regular",
+     "live": "Enlarged"
+    }
+   ]
+  },
+  {
+   "id": "C-04",
+   "desc": "the other four disagreements are each reproduced offline with the same Direction (stored fp5b evidence) and follow the frozen rule on the actual live evidence",
+   "pass": true,
+   "detail": [
+    "REF_000520 U1 EI E vs NEUTRAL",
+    "REF_000840 U1 EI I vs NEUTRAL",
+    "REF_000849 U1 TC CLASSIC vs TRANSFORMATIVE",
+    "REF_000849 U2 TC CLASSIC vs TRANSFORMATIVE"
+   ]
+  }
+ ]
+}

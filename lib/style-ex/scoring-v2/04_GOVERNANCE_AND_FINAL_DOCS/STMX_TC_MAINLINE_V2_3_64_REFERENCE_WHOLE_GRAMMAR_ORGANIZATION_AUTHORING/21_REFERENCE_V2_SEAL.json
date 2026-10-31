@@ -1,0 +1,14 @@
+{
+ "artefact": "21_REFERENCE_V2_SEAL",
+ "sealed_at": "2026-09-26T01:03:00.804Z",
+ "file": "19_REFERENCE_V2_CANDIDATE.json",
+ "sha256": "e5ff105324d799e916573d02539cde95cc727dc51f9c4156b142437c2b075820",
+ "provenance_file": "20_REFERENCE_AUTHORING_PROVENANCE.json",
+ "provenance_sha256": "f957f3c50926528d1132bddb5627c9977dff4c9cf5a52d43b488bb9f3d7ac5aa",
+ "reference_text_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+ "focus_anchors_read_during_authoring": 0,
+ "gt_read_during_authoring": 0,
+ "ceo_rationale_read_during_authoring": 0,
+ "prototype_run_before_seal": 0,
+ "status": "CANDIDATE · NOT FROZEN · NOT PRODUCTION"
+}

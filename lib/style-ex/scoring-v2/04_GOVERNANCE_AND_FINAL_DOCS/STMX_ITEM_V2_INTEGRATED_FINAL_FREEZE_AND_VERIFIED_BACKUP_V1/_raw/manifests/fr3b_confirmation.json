@@ -1,0 +1,73 @@
+{
+ "at": "2026-10-29T09:09:07.273Z",
+ "suites": {
+  "r4": {
+   "exit": 0,
+   "pass": 26,
+   "total": 26,
+   "failed": []
+  },
+  "colour_successor": {
+   "exit": 0,
+   "pass": 17,
+   "total": 17,
+   "failed": []
+  },
+  "r3": {
+   "exit": 0,
+   "pass": 31,
+   "total": 31,
+   "failed": []
+  },
+  "TC_suit": {
+   "exit": 0,
+   "pass": 19,
+   "total": 19,
+   "failed": []
+  },
+  "SR_suit": {
+   "exit": 0,
+   "pass": 18,
+   "total": 18,
+   "failed": []
+  },
+  "DM_suit": {
+   "exit": 0,
+   "pass": 15,
+   "total": 15,
+   "failed": []
+  }
+ },
+ "capsules": [
+  {
+   "capsule": "TAC_COLOUR_TARGET_AWARE_V1",
+   "ok": true
+  },
+  {
+   "capsule": "TAC_INTEGRATED_ITEM_SCORING_RUNTIME_V2_R4",
+   "ok": true
+  },
+  {
+   "capsule": "SCV_TC_SUIT_SUCCESSOR_V1",
+   "ok": true
+  },
+  {
+   "capsule": "SCV_SR_SUIT_SUCCESSOR_V1",
+   "ok": true
+  },
+  {
+   "capsule": "SCV_DM_SUIT_SUCCESSOR_V1",
+   "ok": true
+  },
+  {
+   "capsule": "SCV_INTEGRATED_ITEM_SCORING_RUNTIME_V2_R2",
+   "ok": true
+  },
+  {
+   "capsule": "FVC_INTEGRATED_ITEM_SCORING_RUNTIME_V2_R3",
+   "ok": true
+  }
+ ],
+ "network_attempts": 0,
+ "all_ok": true
+}

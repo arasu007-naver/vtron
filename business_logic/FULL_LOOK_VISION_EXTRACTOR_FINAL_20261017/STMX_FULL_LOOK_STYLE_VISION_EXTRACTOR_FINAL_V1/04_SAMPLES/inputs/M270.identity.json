@@ -1,8 +1,0 @@
-{
- "image_ref": "M270",
- "image_hash": "d7aac1f29c93ac1a461da7c7cedea3b1aa4164ad6598332a733bfb7b070bfa37",
- "prompt_version": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
- "prompt_hash": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
- "model_id": "claude-opus-5-5",
- "run_id": "RUN-EX04-0007"
-}

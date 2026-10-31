@@ -1,0 +1,25 @@
+{
+ "document": "STMX_ITEM_VISION_V1_3_INVOCATION_CONFIG_FQ_V2",
+ "date": "2026-10-29",
+ "status": "CANDIDATE launcher configuration — offline-verified only; NOT live-verified until REF_000010 is actually rerun",
+ "approval_anchor": {
+  "CEO Decision": "2026-10-29",
+  "Order": "CLAUDE EXECUTION ORDER — ITEM V2 FINAL CLOSURE §2 (Correction A — REF_000010 output truncation)",
+  "Reason": "The Order P live V1.3 response for REF_000010 stopped at max_tokens 8192 (stop_reason max_tokens, 22,462 chars, JSON incomplete). The order directs a supported maximum-output setting in a narrowly versioned launcher successor, predecessor preserved.",
+  "Affected Scope": "this file + the launcher successor fq_live_runner_GATED_V2.js in this package only. ⛔ run/anthropic_vision_fn.js, STMX_VISION_PRODUCER_V1_3 (prompt · rules · controller · validator · contract) and the Order O/P runner fe_live_runner_GATED.js are untouched."
+ },
+ "model": "claude-opus-4-8",
+ "vision_v1_3_max_tokens": 16384,
+ "vision_v1_3_previous_max_tokens": 8192,
+ "colour_successor_max_tokens": 8192,
+ "colour_successor_max_tokens_note": "unchanged — the colour call keeps the exact value it used in Order P (no colour response was truncated)",
+ "basis": {
+  "precedent": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_4_5_OUTPUT_HEADROOM/STMX_VISION_PRODUCER_RUNTIME_V1_4_5.json — CEO 2026-09-20 (STMX TC STEP 2 V2.3.9 §11): same model claude-opus-4-8, same image REF_000010 truncated at 8192; bounded increase to 12288 with ceiling_authorised_upper_bound 16384",
+  "model_limit": "claude-opus-4-8 maximum output 128K tokens (claude-api skill reference) — 16384 is within the supported range",
+  "observed": "Order P slot 3 (REF_000010): output_tokens 8192 · stop_reason max_tokens · 22,462 chars (≈ 2.74 chars / token); the JSON stopped inside the third garment target",
+  "why_16384_not_12288": "12288 ≈ 33.7k chars at the observed density — only 1.5× the truncated (incomplete) output; 16384 ≈ 44.9k chars = 2× the truncated output and equals the CEO-recorded upper bound for this model and image",
+  "transport_mechanism": "makeAnthropicVisionFn({ model, maxTokens }) — the existing documented cfg.maxTokens parameter (run/anthropic_vision_fn.js line 73); no transport edit"
+ },
+ "no_shadow_config": "the launcher successor MUST read both values from this file and pass them into makeAnthropicVisionFn; the fetch guard refuses any request whose max_tokens differs from the value for its kind",
+ "semantics_unchanged": "V1.3 prompt, parameters, value domains, eligibility, output contract and parser are unchanged; a truncated response is still UNPARSEABLE_RESPONSE and is never used as evidence"
+}

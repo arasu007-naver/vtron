@@ -1,0 +1,11 @@
+{
+ "artefact": "REFERENCE_SUCCESSOR_SEAL",
+ "sealed_at": "2026-09-25T22:34:24.043Z",
+ "file": "07_REFERENCE_SUCCESSOR.json",
+ "sha256": "625f0193837a92feb573f9010dab2f4bddf618b3fea3d05cd754326216abb370",
+ "seal_order_step": 1,
+ "predecessor_sha256": "f2df37c46c272667f71f941952c59fc1f8ff9b751463953e5defe61fbe9ea141",
+ "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+ "runtime_written_before_seal": 0,
+ "gt_opened_before_seal": 0
+}

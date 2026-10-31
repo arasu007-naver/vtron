@@ -1,0 +1,58 @@
+{
+ "document": "CODE_IDENTITY_SEAL_ITEM_V2_INTEGRATED_RUNTIME_V2_R2_CANDIDATE",
+ "engine_id": "STMX_INTEGRATED_ITEM_SCORING_RUNTIME_V2_R2_CANDIDATE",
+ "parent": {
+  "location": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/",
+  "directory_aggregate_sha256": "6020ab57f3241ab850206a75977d8572a02fac281984b8b051a0edfffd841f96",
+  "relation": "predecessor (and through it src/item_v2) reused unchanged after pin verification"
+ },
+ "status": "CANDIDATE — identity record only · NOT a freeze · NOT production (CEO order 2026-10-29)",
+ "sealed_at": "2026-10-29T04:47:58.539Z",
+ "order": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_SUIT_CAPABLE_SUCCESSOR_IMPLEMENTATION_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md",
+ "location": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/",
+ "aggregate_rule": "sha256 over \"file:sha256\\n\" (sorted) — all files except this seal; src aggregate = runtime *.js outside tests/ (verify_identity.js excluded)",
+ "files": [
+  {
+   "file": "README.md",
+   "bytes": 4691,
+   "sha256": "1f4a0213b9268d4b9d76a335b8a24be5f83db91f0ea451a20d30a506dcd7707d"
+  },
+  {
+   "file": "item_v2_r2_cli.js",
+   "bytes": 2163,
+   "sha256": "58994b8cb67e842608d3a58e938abdfb9ca3a949aa283b93391a979349e41063"
+  },
+  {
+   "file": "item_v2_r2_contracts.js",
+   "bytes": 2963,
+   "sha256": "8f7ccef208f6ea965df59e177f255bb2ec858df4fce856d2998eb1a8ee5eed96"
+  },
+  {
+   "file": "item_v2_r2_entry.js",
+   "bytes": 7540,
+   "sha256": "df9b321eeef02e322cc3e121782e431615e6813afddd91459d0e8218f3fc19e9"
+  },
+  {
+   "file": "item_v2_r2_predecessor_pin.js",
+   "bytes": 3984,
+   "sha256": "be07a794cc3e31d9d7cb7b43405711e88b6d0e2a71f5835258fe4fe11d6e08bb"
+  },
+  {
+   "file": "item_v2_r2_suit_binding.js",
+   "bytes": 6763,
+   "sha256": "578bdd7d74504b4e6bf8f54509973c27cbdc0c6a96db246b4b6a034aabf8717d"
+  },
+  {
+   "file": "item_v2_r2_suit_registry.js",
+   "bytes": 2629,
+   "sha256": "7a2eefa4e528b673ccba9edd0d50d81a479e03f9d2fa1519ed4de25e5cb416fe"
+  },
+  {
+   "file": "tests/run_all.js",
+   "bytes": 25223,
+   "sha256": "ab78f8650c61c365718a466bb9d94a2ce0148bdd6cf482994aa66bf1a3126e63"
+  }
+ ],
+ "DIRECTORY_AGGREGATE_SHA256": "6d3d77722e252222b234fdcd44dbab04e264891d1cb8df5b9c42d7f6f74581e7",
+ "RUNTIME_SRC_AGGREGATE_SHA256": "d64e1a3073c3fad84c6221bd3ae7bd9244af7772e4b734321353c551b4048c93"
+}

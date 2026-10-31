@@ -1,0 +1,104 @@
+{
+ "at": "2026-10-26T15:17:43.974Z",
+ "engine": {
+  "engine_id": "STMX_SR_ENGINE_V2_DIRECTION_REASON",
+  "engine_directory": "STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE",
+  "engine_status": "IMPLEMENTATION_CANDIDATE — NOT PRODUCTION",
+  "modules": [
+   {
+    "file": "src/sr_v2_binding.js",
+    "sha256": "854c2faa5d23904c2ff2b4f79bf5c63200482d82d1433542284d514430e1d67e"
+   },
+   {
+    "file": "src/sr_v2_direction_resolver.js",
+    "sha256": "21f65c8c2e13d60330dc549bc8ade4513aaefcfb0ecc179ecd55845774d6bd2a"
+   },
+   {
+    "file": "src/sr_v2_engine.js",
+    "sha256": "e92841636831385ec84fae80d8c8c8bebffe5d97a8d049842c89c6081bd81c6e"
+   },
+   {
+    "file": "src/sr_v2_evidence.js",
+    "sha256": "b8ada4f953c2a0264a0aeefe63bada95c328b488bd1451cb38dcaadd5c66df73"
+   },
+   {
+    "file": "src/sr_v2_reason_composer.js",
+    "sha256": "4a69745298b12b67bf61dcfbcfd883c35c5c5ed939b66ea3fc59ed78fa689f2e"
+   },
+   {
+    "file": "src/sr_v2_reason_lexicon.js",
+    "sha256": "ffab42040475850c88fbdad65ae6f81e26971cc7f02a95aef790ab90fa604fb2"
+   },
+   {
+    "file": "src/sr_v2_reason_verifier.js",
+    "sha256": "8f4968f92aa206ae581db0afb015663f6bcb5dae12bd56ed1dc65f7d1c3ba400"
+   }
+  ],
+  "aggregate_sha256": "3bcc45bc4170e11b87c9da0d059f92c9311f2ede3ea925ed52b056da9239c466",
+  "bound_inputs": [
+   {
+    "role": "producer_binding",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_producer_binding_v1.js",
+    "sha256": "487cad4ec11fe66c1a61be74659cfdd59262d0275f8e50af4f8767d1b81cef3c"
+   },
+   {
+    "role": "input_adapter",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_input_adapter_v1.js",
+    "sha256": "a46dd16800804d04bae154132dd6da4ed92410be682fef5b065a77b2de4cb961"
+   },
+   {
+    "role": "evidence_admission",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_evidence_admission_v1.js",
+    "sha256": "4bd774a883dd7de1760196b34badc1599b87b001c2b2e5b939b51171a77138b4"
+   },
+   {
+    "role": "observation_contract_rules",
+    "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+    "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+   },
+   {
+    "role": "sr_v1_final_seal",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_SR_ENGINE_V1_FINAL.json",
+    "sha256": "9a8f6db4b50aa75fbfd6a3455bb97e4c2d81d2e79834aaa9a95a14c12f572a26"
+   },
+   {
+    "role": "sr_v1_production_pointer",
+    "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+    "sha256": "6a670aa417c9692364352303aa760a4a6ec7441f60dcac73c2316f7689c36db7"
+   }
+  ]
+ },
+ "suites": [
+  {
+   "suite": "replay_123.js",
+   "pass": 11,
+   "total": 11,
+   "fail": 0,
+   "exit": 0
+  },
+  {
+   "suite": "test_guards.js",
+   "pass": 55,
+   "total": 55,
+   "fail": 0,
+   "exit": 0
+  },
+  {
+   "suite": "test_holdout.js",
+   "pass": 4,
+   "total": 4,
+   "fail": 0,
+   "exit": 0
+  },
+  {
+   "suite": "test_r3.js",
+   "pass": 16,
+   "total": 16,
+   "fail": 0,
+   "exit": 0
+  }
+ ],
+ "pass": 86,
+ "total": 86,
+ "all_pass": true
+}

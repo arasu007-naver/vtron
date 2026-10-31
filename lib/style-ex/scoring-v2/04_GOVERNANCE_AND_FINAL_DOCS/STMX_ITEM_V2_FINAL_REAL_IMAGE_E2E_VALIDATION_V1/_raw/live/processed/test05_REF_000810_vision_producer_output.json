@@ -1,0 +1,445 @@
+{
+ "runProducer_returned": {
+  "ok": true,
+  "envelope": {
+   "image_id": "FE-05",
+   "producer": {
+    "version": "v1",
+    "vision_calls": 1,
+    "one_call_default": true,
+    "model": "claude-opus-4-8"
+   },
+   "targets": [
+    {
+     "target_id": "target_1",
+     "role": "Primary",
+     "extraction_depth": "FULL",
+     "role_basis": "scoring-target candidate; all applicable MANDATORY morphology readable",
+     "prominence": "dominant",
+     "descriptor": "A cropped collarless jacket with a round neck finished in a self-fabric braided/cord trim that also runs the full front edge, the sleeve ends and the lower hem. A single centre column of round gold-tone buttons runs from neck to hem. Over the pale textured ground, naturalistic multicolour botanical sprays are worked across the two front panels and up both sleeves — each spray a tall stem with mixed blossoms (pink, yellow, coral, lilac) and olive foliage — reading as hand-embroidered placed motifs rather than a regular repeat. A matching braided-cord trim band also appears below the hem, part of the coordinating skirt beneath.",
+     "eligible": true,
+     "record": {
+      "category": {
+       "state": "OBSERVED",
+       "value": "Jacket"
+      },
+      "observations": {
+       "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "pale nubby woven cloth with visible tweed-like texture"
+        ],
+        "values": [
+         {
+          "value": "Cotton",
+          "evidence": [
+           "matte nubby woven tweed-like ground"
+          ]
+         }
+        ]
+       },
+       "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "pronounced raised bouclé/tweed texture across the body"
+        ],
+        "values": [
+         {
+          "value": "Textured Knit",
+          "evidence": [
+           "nubby bouclé/tweed surface relief across whole body"
+          ],
+          "coverage": "Dominant"
+         }
+        ]
+       },
+       "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "botanical motifs are placed sprays, not an all-over repeat; ground is solid"
+        ]
+       },
+       "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no logo, slogan or printed image; floral work is embroidery not a placed graphic"
+        ]
+       },
+       "pocket": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+         "front panels show no pocket opening; plain braided-edge fronts"
+        ]
+       },
+       "decorative_detail": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "multicolour floral needlework across fronts and sleeves",
+         "braided cord trim along edges"
+        ],
+        "values": [
+         {
+          "value": "Embroidery",
+          "evidence": [
+           "naturalistic multicolour floral stems worked onto the body and sleeves"
+          ],
+          "locations": [
+           {
+            "component": "Body"
+           },
+           {
+            "component": "Sleeve"
+           }
+          ]
+         },
+         {
+          "value": "Piping",
+          "evidence": [
+           "braided self-cord trim running along front edge, neckline, cuffs and hem"
+          ],
+          "locations": [
+           {
+            "descriptor": "Edge"
+           }
+          ]
+         }
+        ]
+       },
+       "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no belt, hardware, fringe, feather or applied trim beyond the buttons and cord edging"
+        ]
+       },
+       "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+         "centre front closure, symmetric hem and sleeves; floral sprays balanced side to side"
+        ]
+       },
+       "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "closed buttoned front, long sleeves, no bared body region from the garment's own cut"
+        ]
+       },
+       "fit": {
+        "state": "OBSERVED",
+        "value": "Slim",
+        "region": "upper",
+        "evidence": [
+         "body follows the torso closely through chest and waist",
+         "narrow sleeves tracing the arm"
+        ]
+       },
+       "length": {
+        "state": "OBSERVED",
+        "value": "Cropped",
+        "region": "upper",
+        "evidence": [
+         "hem sits at the natural waist, above the hip, front pocket zone fully exposed below"
+        ]
+       },
+       "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+         "cloth holds a soft shaped body, follows the torso with slight structure, no stiff self-standing volume"
+        ]
+       },
+       "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+         "sleeves run to the wrist on both arms"
+        ]
+       },
+       "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "shoulder forms a clear endpoint at the natural shoulder before the sleeve begins"
+        ]
+       },
+       "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Mild",
+        "region": "upper",
+        "evidence": [
+         "readable shoulder-line endpoint, modest, neither rounded-continuous nor extended outward"
+        ]
+       },
+       "collar": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "round collarless neckline finished only with braided cord trim, no collar structure"
+        ]
+       },
+       "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "lower edge finished with braided cord trim, not a ribbed knit band"
+        ]
+       },
+       "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+         "plain collarless neckline, no hood at neck or back"
+        ]
+       },
+       "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+         "button column runs full length of front from neck to hem"
+        ]
+       },
+       "closure_type": {
+        "state": "OBSERVED",
+        "value": "Single Breasted Button",
+        "region": "upper",
+        "evidence": [
+         "single centre column of round gold-tone buttons"
+        ]
+       },
+       "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+         "fitted collarless jacket with braided edging and button front, structured ladylike construction"
+        ]
+       },
+       "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+         "narrow sleeve envelope tracing the arm, no deliberate enlargement"
+        ]
+       },
+       "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "sleeve ends in a braided-cord-trimmed edge, no constructed cuff band"
+        ]
+       }
+      },
+      "completeness": {
+       "U": 9,
+       "M": 13,
+       "C": 7,
+       "N": 8,
+       "total": 37,
+       "reported": 23,
+       "conditional_na": 5,
+       "unreported": 1,
+       "reconciled": true
+      },
+      "dm_designed_detail_evidence": {
+       "evidence": [
+        {
+         "evidence_id": "dd-1",
+         "evidence_family": "attached_detail",
+         "detail": "multicolour naturalistic floral embroidery across front panels and both sleeves",
+         "source_observation_refs": [
+          "observations.decorative_detail"
+         ],
+         "relative_size": {
+          "state": "OBSERVED",
+          "value": "large"
+         },
+         "contrast": {
+          "state": "OBSERVED",
+          "value": "high"
+         },
+         "spatial_position": {
+          "state": "OBSERVED",
+          "value": "distributed"
+         },
+         "m1_supporting_realization": {
+          "internal_chromatic_composition": {
+           "state": "OBSERVED",
+           "value": "multi_colour_compound"
+          },
+          "internal_fill_realization": {
+           "state": "OBSERVED",
+           "value": "dense_varied"
+          }
+         }
+        },
+        {
+         "evidence_id": "dd-2",
+         "evidence_family": "surface_treatment",
+         "detail": "braided self-cord trim running along front edge, neckline, cuffs and hem",
+         "source_observation_refs": [
+          "observations.decorative_detail"
+         ],
+         "relative_size": {
+          "state": "OBSERVED",
+          "value": "medium"
+         },
+         "contrast": {
+          "state": "OBSERVED",
+          "value": "low"
+         },
+         "spatial_position": {
+          "state": "OBSERVED",
+          "value": "distributed"
+         },
+         "m1_supporting_realization": {
+          "internal_chromatic_composition": {
+           "state": "OBSERVED",
+           "value": "limited_or_uniform"
+          },
+          "internal_fill_realization": {
+           "state": "OBSERVED",
+           "value": "uniform_or_sparse"
+          }
+         }
+        },
+        {
+         "evidence_id": "dd-3",
+         "evidence_family": "attached_hardware",
+         "detail": "single centre column of round gold-tone buttons",
+         "source_observation_refs": [
+          "observations.closure_type"
+         ],
+         "relative_size": {
+          "state": "OBSERVED",
+          "value": "small"
+         },
+         "contrast": {
+          "state": "OBSERVED",
+          "value": "medium"
+         },
+         "spatial_position": {
+          "state": "OBSERVED",
+          "value": "localized"
+         },
+         "m1_supporting_realization": {
+          "internal_chromatic_composition": {
+           "state": "OBSERVED",
+           "value": "limited_or_uniform"
+          },
+          "internal_fill_realization": {
+           "state": "OBSERVED",
+           "value": "uniform_or_sparse"
+          }
+         }
+        }
+       ],
+       "excluded": [
+        {
+         "value": "single_base_colour",
+         "reason": "single_base_colour"
+        }
+       ]
+      }
+     },
+     "diagnostics": {
+      "unreported": [
+       "category"
+      ],
+      "conditional_na": [
+       {
+        "param": "waist_definition",
+        "reason": "CA#27 + SR-CLOSEOUT (CEO 2026-08-21) · TWO GATES — (1) CATEGORY gate: Jacket/Coat/Dress/Jumpsuit. (2) LENGTH gate: Hip Length or longer MAY be applicable; Waist Length or shorter (Cropped / Waist Length) = N/A, because insufficient garment extends below the waist to evaluate shaping. Hip Length is an applicability THRESHOLD, not evidence that waist definition exists. Readability still via NOT_VISIBLE/UNKNOWN; no parent parameter exists and no waist value is ever inferred"
+       },
+       {
+        "param": "pocket_construction",
+        "reason": "pocket === Present (CA#28: readability is a Vision STATE, not an applicability condition)"
+       },
+       {
+        "param": "pocket_projection",
+        "reason": "pocket === Present (CA#28: readability is a Vision STATE, not an applicability condition)"
+       },
+       {
+        "param": "cuff_scale",
+        "reason": "cuff_type OBSERVED ∧ cuff_type ≠ 'None' (readability is a Vision STATE, not an applicability condition — mirrors pocket_construction)"
+       },
+       {
+        "param": "collar_scale",
+        "reason": "collar OBSERVED ∧ collar ≠ 'None' (readability is a Vision STATE, not an applicability condition — mirrors cuff_scale)"
+       }
+      ],
+      "not_applicable_count": 8,
+      "notes": [
+       "DM observation layer carried verbatim: 3 evidence, 1 excluded"
+      ]
+     },
+     "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+       {
+        "code": "DESCRIPTOR_NEED_ABSENT_LEGACY",
+        "param": null,
+        "message": "pre-protocol extraction — descriptor_need not asserted"
+       }
+      ]
+     },
+     "readability": {
+      "value": true,
+      "basis": "RECONSTRUCTABLE",
+      "limitation": [
+       "CONTINUOUS_STRUCTURE_VISIBLE"
+      ],
+      "contract_error": null
+     }
+    },
+    {
+     "target_id": "target_2",
+     "role": "Incidental",
+     "descriptor": "A short pale textured tweed-like mini skirt coordinating with the jacket above. A braided self-cord trim runs along the waist/upper edge and outlines two patch pockets set symmetrically on the lower front. The visible skirt body is plain pale cloth with no floral embroidery, in contrast to the jacket. Hemline falls out of frame.",
+     "eligible": false,
+     "extraction_depth": "NONE",
+     "reason": "not a Target: identity=true readability=false (C2∧C3 unmet)",
+     "readability": {
+      "value": false,
+      "basis": "NOT_RECONSTRUCTABLE",
+      "limitation": [
+       "TERMINAL_REGION_CROPPED",
+       "OCCLUDED_BY_OTHER_GARMENT"
+      ],
+      "contract_error": null
+     }
+    }
+   ],
+   "relationships": [],
+   "image_validation_status": "ALL_GARMENTS_VALID"
+  },
+  "contract_valid": true
+ },
+ "thrown": null
+}

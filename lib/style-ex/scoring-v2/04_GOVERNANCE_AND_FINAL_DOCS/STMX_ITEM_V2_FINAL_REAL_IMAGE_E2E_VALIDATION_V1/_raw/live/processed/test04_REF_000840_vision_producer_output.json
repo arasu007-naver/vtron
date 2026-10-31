@@ -1,0 +1,565 @@
+{
+ "runProducer_returned": {
+  "ok": true,
+  "envelope": {
+   "image_id": "FE-04",
+   "producer": {
+    "version": "v1",
+    "vision_calls": 1,
+    "one_call_default": true,
+    "model": "claude-opus-4-8"
+   },
+   "targets": [
+    {
+     "target_id": "target_1",
+     "role": "Primary",
+     "extraction_depth": "FULL",
+     "role_basis": "scoring-target candidate; all applicable MANDATORY morphology readable",
+     "prominence": "dominant",
+     "descriptor": "Oversized single-breasted blazer with a long, wide notched lapel that rolls to a low two-button stance sitting around the natural waist; the body hangs straight and loose with substantial drop-shoulder construction so the shoulder line falls well past the wearer's own shoulders and the armhole sits low on the upper arm. Long sleeves nearly reach the knuckles, pushed slightly so the hand enters the lower welt pocket. Flap pockets sit at the lower front hips and a welt pocket sits on the left chest; the overall drape is soft and tailored rather than crisply structured, the cloth falling in gentle folds while holding the jacket's columnar line.",
+     "eligible": true,
+     "record": {
+      "category": {
+       "state": "OBSERVED",
+       "value": "Jacket"
+      },
+      "observations": {
+       "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "matte tailoring cloth with soft drape"
+        ],
+        "values": [
+         {
+          "value": "Wool",
+          "evidence": [
+           "matte suiting-weight cloth consistent with wool tailoring"
+          ]
+         }
+        ]
+       },
+       "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "plain uniform cloth, no constructed or optical surface treatment"
+        ]
+       },
+       "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "solid tonal cloth, no repeating motif"
+        ]
+       },
+       "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no placed graphic element"
+        ]
+       },
+       "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+         "flap pockets at lower front",
+         "welt pocket at left chest"
+        ],
+        "pockets": [
+         {
+          "location": "Chest",
+          "construction": {
+           "state": "OBSERVED",
+           "value": "Inset",
+           "evidence": [
+            "slim welt set into chest, no patch body"
+           ]
+          },
+          "projection": {
+           "state": "OBSERVED",
+           "value": "Flat",
+           "evidence": [
+            "flush with chest panel"
+           ]
+          }
+         },
+         {
+          "location": "Lower Front",
+          "construction": {
+           "state": "OBSERVED",
+           "value": "Inset",
+           "evidence": [
+            "set-in pocket with flap, no applied patch body"
+           ]
+          },
+          "projection": {
+           "state": "OBSERVED",
+           "value": "Flat",
+           "evidence": [
+            "pocket lies flat against front, flap only"
+           ]
+          }
+         }
+        ]
+       },
+       "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no embroidery, beading, appliqué or piping visible"
+        ]
+       },
+       "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no belt, hardware or applied trim"
+        ]
+       },
+       "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+         "front, hem and lapels mirror side to side; only the conventional single-breasted overlap"
+        ]
+       },
+       "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "worn open but inner top covers torso; no garment-intrinsic exposure"
+        ]
+       },
+       "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+         "shoulder line drafted well past wearer's shoulders",
+         "body stands away loosely through chest to hip",
+         "low armhole junction on upper arm"
+        ]
+       },
+       "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+         "hem descends past the waist into the hip zone, covering the pocket region"
+        ]
+       },
+       "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+         "holds a tailored line yet yields into soft folds at body and sleeves"
+        ]
+       },
+       "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+         "sleeves reach to the hand"
+        ]
+       },
+       "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "Dropped",
+        "region": "upper",
+        "evidence": [
+         "no clear shoulder endpoint at the wearer's own shoulder; shoulder line continues onto upper arm before the sleeve"
+        ]
+       },
+       "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "rounded continuous shoulder contour, no held endpoint on the line itself"
+        ]
+       },
+       "collar": {
+        "state": "OBSERVED",
+        "value": "Notched",
+        "region": "upper",
+        "evidence": [
+         "visible notch at the collar-to-lapel seam, lapel edge does not rise into a point"
+        ]
+       },
+       "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "plain tailored self-fabric hem, no ribbed band"
+        ]
+       },
+       "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+         "collared neckline with no hood"
+        ]
+       },
+       "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+         "opening runs the full front length"
+        ]
+       },
+       "closure_type": {
+        "state": "OBSERVED",
+        "value": "Single Breasted Button",
+        "region": "upper",
+        "evidence": [
+         "single column of two visible front buttons"
+        ]
+       },
+       "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+         "notched lapel, welt and flap pockets, tailored suiting construction"
+        ]
+       },
+       "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+         "ordinary sleeve envelope, not deliberately enlarged"
+        ]
+       },
+       "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Enlarged",
+        "region": "upper",
+        "evidence": [
+         "lapel breadth covers a large share of the chest panel and runs long down the front"
+        ]
+       }
+      },
+      "completeness": {
+       "U": 9,
+       "M": 13,
+       "C": 7,
+       "N": 8,
+       "total": 37,
+       "reported": 23,
+       "conditional_na": 3,
+       "unreported": 3,
+       "reconciled": true
+      },
+      "dm_designed_detail_evidence": {
+       "evidence": []
+      }
+     },
+     "diagnostics": {
+      "unreported": [
+       "category",
+       "waist_definition",
+       "cuff_type"
+      ],
+      "conditional_na": [
+       {
+        "param": "pocket_construction",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       },
+       {
+        "param": "pocket_projection",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       },
+       {
+        "param": "cuff_scale",
+        "reason": "cuff_type OBSERVED ∧ cuff_type ≠ 'None' (readability is a Vision STATE, not an applicability condition — mirrors pocket_construction)"
+       }
+      ],
+      "not_applicable_count": 8,
+      "notes": [
+       "pocket Present → morphology carried by pockets[] only; scalar carrier retired (CA#29): pocket_construction, pocket_projection",
+       "DM observation layer carried verbatim: 0 evidence, excluded NOT AN ARRAY"
+      ]
+     },
+     "validation": {
+      "ok": false,
+      "errors": [
+       {
+        "code": "APPLICABLE_KEY_MISSING",
+        "param": "cuff_type",
+        "message": "'cuff_type' is CONDITIONAL for Jacket and its applicability trigger has FIRED (deterministic governed predicate) — a triggered conditional must be EMITTED with a state (OBSERVED, or NOT_VISIBLE / UNKNOWN when unreadable; semantic 'None' where its domain contains None). Key omission is reserved for N/A (trigger not fired) only.",
+        "f": "F5"
+       },
+       {
+        "code": "APPLICABLE_KEY_MISSING",
+        "param": "waist_definition",
+        "message": "'waist_definition' is CONDITIONAL for Jacket and its applicability trigger has FIRED (deterministic governed predicate) — a triggered conditional must be EMITTED with a state (OBSERVED, or NOT_VISIBLE / UNKNOWN when unreadable; semantic 'None' where its domain contains None). Key omission is reserved for N/A (trigger not fired) only.",
+        "f": "F5"
+       }
+      ],
+      "warnings": [
+       {
+        "code": "DESCRIPTOR_NEED_ABSENT_LEGACY",
+        "param": null,
+        "message": "pre-protocol extraction — descriptor_need not asserted"
+       }
+      ]
+     },
+     "readability": {
+      "value": true,
+      "basis": "RECONSTRUCTABLE",
+      "limitation": [
+       "CONTINUOUS_STRUCTURE_VISIBLE"
+      ],
+      "contract_error": null
+     }
+    },
+    {
+     "target_id": "target_2",
+     "role": "Incidental",
+     "descriptor": null,
+     "eligible": false,
+     "extraction_depth": "NONE",
+     "reason": "not a Target: identity=true readability=false (C2∧C3 unmet)",
+     "readability": {
+      "value": false,
+      "basis": "NOT_RECONSTRUCTABLE",
+      "limitation": [
+       "OCCLUDED_BY_OTHER_GARMENT"
+      ],
+      "contract_error": null
+     }
+    },
+    {
+     "target_id": "target_3",
+     "role": "Primary",
+     "extraction_depth": "PARTIAL",
+     "role_basis": "scoring-target candidate; extraction PARTIAL — unreadable mandatory morphology: trouser_distinction (readability does NOT determine scoring role)",
+     "prominence": "secondary",
+     "descriptor": "Cropped tailored trousers ending at the ankle bone, cut with a clean straight leg that keeps its width to the hem rather than tapering; the fabric breaks softly above the shoe with a relaxed drape through the leg, matching the suiting cloth of the jacket.",
+     "eligible": true,
+     "record": {
+      "category": {
+       "state": "OBSERVED",
+       "value": "Trouser"
+      },
+      "observations": {
+       "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "matte suiting cloth consistent with wool tailoring"
+        ],
+        "values": [
+         {
+          "value": "Wool",
+          "evidence": [
+           "matte suiting-weight drape"
+          ]
+         }
+        ]
+       },
+       "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "plain cloth, no constructed or optical surface treatment"
+        ]
+       },
+       "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "solid tonal cloth, no repeating motif"
+        ]
+       },
+       "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no placed graphic"
+        ]
+       },
+       "pocket": {
+        "state": "NOT_VISIBLE",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "hip/waist pocket region hidden under jacket"
+        ]
+       },
+       "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no embroidery, beading, appliqué or piping on visible legs"
+        ]
+       },
+       "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no applied trim or hardware on visible legs"
+        ]
+       },
+       "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+         "both legs mirror, even hem"
+        ]
+       },
+       "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "full-length legs, no intrinsic exposure"
+        ]
+       },
+       "trouser_distinction": {
+        "state": "UNKNOWN",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "waistband, front closure and hip-pocket treatment hidden by jacket; leg reads tailored but assembly not confirmable"
+        ]
+       },
+       "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+         "leg keeps its width down to the cropped hem, no taper or flare"
+        ]
+       },
+       "fit": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "lower",
+        "evidence": [
+         "ordinary room through the visible leg, cloth hangs near the leg without close tracing or wide standoff"
+        ]
+       },
+       "length": {
+        "state": "OBSERVED",
+        "value": "Ankle Length",
+        "region": "lower",
+        "evidence": [
+         "hem sits at the ankle bone above the shoe"
+        ]
+       },
+       "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+         "leg holds a tailored line with soft break above the shoe"
+        ]
+       }
+      },
+      "completeness": {
+       "U": 9,
+       "M": 6,
+       "C": 2,
+       "N": 20,
+       "total": 37,
+       "reported": 14,
+       "conditional_na": 2,
+       "unreported": 1,
+       "reconciled": true
+      },
+      "dm_designed_detail_evidence": {
+       "evidence": []
+      }
+     },
+     "diagnostics": {
+      "unreported": [
+       "category"
+      ],
+      "conditional_na": [
+       {
+        "param": "pocket_construction",
+        "reason": "pocket === Present (CA#28: readability is a Vision STATE, not an applicability condition)"
+       },
+       {
+        "param": "pocket_projection",
+        "reason": "pocket === Present (CA#28: readability is a Vision STATE, not an applicability condition)"
+       }
+      ],
+      "not_applicable_count": 20,
+      "notes": [
+       "DM observation layer carried verbatim: 0 evidence, excluded NOT AN ARRAY"
+      ]
+     },
+     "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+       {
+        "code": "DESCRIPTOR_NEED_ABSENT_LEGACY",
+        "param": null,
+        "message": "pre-protocol extraction — descriptor_need not asserted"
+       }
+      ]
+     },
+     "readability": {
+      "value": true,
+      "basis": "RECONSTRUCTABLE",
+      "limitation": [
+       "OCCLUDED_BY_OTHER_GARMENT"
+      ],
+      "contract_error": null
+     }
+    }
+   ],
+   "relationships": [
+    {
+     "type": "Suit",
+     "status": "CANDIDATE — requires CEO adjudication",
+     "members": [
+      "target_1",
+      "target_3"
+     ],
+     "member_categories": [
+      "Jacket",
+      "Trouser"
+     ],
+     "evidence": {
+      "matching_material": [
+       "Wool"
+      ],
+      "colour": "NOT ESTABLISHED — Colour V1 is an image-level payload; per-garment tone matching is unavailable"
+     },
+     "note": "Relationship does not determine role and does not replace either garment record."
+    }
+   ],
+   "image_validation_status": "PARTIAL"
+  },
+  "contract_valid": false
+ },
+ "thrown": null
+}

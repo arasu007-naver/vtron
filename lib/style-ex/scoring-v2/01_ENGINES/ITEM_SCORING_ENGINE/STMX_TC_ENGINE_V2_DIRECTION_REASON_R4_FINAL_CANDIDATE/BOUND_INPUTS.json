@@ -1,0 +1,66 @@
+{
+ "artefact": "BOUND_INPUTS",
+ "engine_id": "STMX_TC_ENGINE_V2_DIRECTION_REASON",
+ "engine_directory": "STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE",
+ "predecessor": {
+  "engine_directory": "STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE",
+  "bound_inputs_sha256": "25e0b638e6147ce7355a6000815d4e2788292190b3bfd5464f36dffa08d4c7bf"
+ },
+ "lineage": [
+  "STMX_TC_ENGINE_V2_DIRECTION_REASON_CANDIDATE",
+  "STMX_TC_ENGINE_V2_DIRECTION_REASON_R2_CANDIDATE",
+  "STMX_TC_ENGINE_V2_DIRECTION_REASON_R3_FINAL_CANDIDATE"
+ ],
+ "order": "STMX ITEM TC V2 — R3-B1 / R3-B2 FINAL CORRECTION, BEST-SUPPORTED DIRECTION VALIDATION & FULL REGRESSION (CEO 2026-10-28)",
+ "rule": "every input is re-hashed at module load; any drift throws TCV2BindingError (fail closed). Read-only; nothing is copied or edited. The TC Strength resolver, ordinal projector and score are NOT bound.",
+ "inputs": [
+  {
+   "role": "successor_v4",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/src/step2_semantic_successor_v4.js",
+   "why": "frozen TC Step 2 successor V4 (frozen Direction predicates · createSuccessor / evaluateMember)",
+   "sha256": "868850fdc40221c48437e24011c716d412f902d1a4fe79d590ba7cc960e2b9e1"
+  },
+  {
+   "role": "shadow_binding_v3",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/shadow/step2_successor_shadow_binding_v3.js",
+   "why": "frozen chain: successor V4 → Step 3 successor V2 → runtime V3.4 (runShadow, registry BOUND)",
+   "sha256": "594fa5479630bcd12cd6e59171d33c1c026e27d87ebd3c42b593a91a24465fa4"
+  },
+  {
+   "role": "successor_v4_bound_inputs",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/BOUND_INPUTS_STEP2_SUCCESSOR_V4.json",
+   "why": "the successor's own bound-input manifest (pins evaluator V2.3.2, projection V5, adapter V3.3, runtime V3.4, governed corrections, registry)",
+   "sha256": "1165bdaaab8f6ef74de23f9bd696741516a46cb1dd1003925c6455ef89af17fe"
+  },
+  {
+   "role": "successor_v2_contract",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/STEP2_SUCCESSOR_V2_CONTRACT.json",
+   "why": "frozen observation domain (fit domain by key)",
+   "sha256": "5331cc2fb3beffe4bde878854a64511b419479b52e99556063bc177c0305a4e1"
+  },
+  {
+   "role": "vision_v1_3_rules",
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "why": "Item Vision Producer V1.3 rules (length domain by category · grammar domain · 37 parameters)",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+  },
+  {
+   "role": "projection_allowlist_v1",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V1_CANDIDATE/PROJECTION_ALLOWLIST_V1.json",
+   "why": "frozen TC upstream projection allowlist (adapter field / sub-field rule)",
+   "sha256": "7795ea22b96585ec8e3c5c40580c2d3f048e10122840043ff22bbdb635b83ae3"
+  },
+  {
+   "role": "projection_allowlist_v5_amendment",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/PROJECTION_ALLOWLIST_V5_AMENDMENT.json",
+   "why": "fit.byRegion carried as observation (upper / lower)",
+   "sha256": "baf06276706457394280bc9aee54497fbdee5b0a9d5ca2b5ca0db4e9129e2313"
+  },
+  {
+   "role": "tc_direction_freeze_manifest",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_DIRECTION_FREEZE_V1_MANIFEST.json",
+   "why": "identity of the frozen TC Direction (65 pinned files)",
+   "sha256": "1f6d6552847c3ec8ef0db954e39d7b83ddc92695609a53360f574214dbe3ecca"
+  }
+ ]
+}

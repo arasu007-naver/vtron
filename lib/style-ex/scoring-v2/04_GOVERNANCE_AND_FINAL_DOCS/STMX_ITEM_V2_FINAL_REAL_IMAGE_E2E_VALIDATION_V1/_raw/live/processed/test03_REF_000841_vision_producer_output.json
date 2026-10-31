@@ -1,0 +1,382 @@
+{
+ "runProducer_returned": {
+  "ok": true,
+  "envelope": {
+   "image_id": "FE-03",
+   "producer": {
+    "version": "v1",
+    "vision_calls": 1,
+    "one_call_default": true,
+    "model": "claude-opus-4-8"
+   },
+   "targets": [
+    {
+     "target_id": "target_1",
+     "role": "Primary",
+     "extraction_depth": "FULL",
+     "role_basis": "scoring-target candidate; all applicable MANDATORY morphology readable",
+     "prominence": "dominant",
+     "descriptor": "Double-breasted-like jacket with a wide overlapping front and two visible vertical columns of buttons; broad peaked lapels roll low toward the mid-torso buttoning point. The body is cut long and generously, hanging past the hip in large soft folds, with hands tucked into lower pockets pulling the front panels into deep drapes. A matching dark tie and white shirt collar sit at the neck, read as a separate layer beneath.",
+     "eligible": true,
+     "record": {
+      "category": {
+       "state": "OBSERVED",
+       "value": "Jacket"
+      },
+      "observations": {
+       "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "matte tailoring cloth with soft drape"
+        ],
+        "values": [
+         {
+          "value": "Wool",
+          "evidence": [
+           "matte suiting-type cloth, soft heavy drape consistent with wool tailoring"
+          ]
+         }
+        ]
+       },
+       "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "plain matte cloth, no constructed or optical surface treatment visible"
+        ]
+       },
+       "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "solid brown cloth, no repeating motif"
+        ]
+       },
+       "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no placed graphic or logo visible"
+        ]
+       },
+       "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+         "welt-type opening with hand inserted at left chest area and lower front pockets",
+         "hands tucked into lower front pockets"
+        ],
+        "pockets": [
+         {
+          "location": "Chest",
+          "construction": {
+           "state": "OBSERVED",
+           "value": "Inset",
+           "evidence": [
+            "flat welt slit at left chest, no patch body"
+           ]
+          },
+          "projection": {
+           "state": "OBSERVED",
+           "value": "Flat",
+           "evidence": [
+            "flush with jacket front"
+           ]
+          }
+         },
+         {
+          "location": "Lower Front",
+          "construction": {
+           "state": "NOT_VISIBLE",
+           "value": null,
+           "evidence": [
+            "pocket openings obscured by inserted hands and fabric drape"
+           ]
+          },
+          "projection": {
+           "state": "NOT_VISIBLE",
+           "value": null,
+           "evidence": [
+            "pocket body hidden behind hands and folds"
+           ]
+          }
+         }
+        ]
+       },
+       "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no embroidery, beading, appliqué or piping visible on edges"
+        ]
+       },
+       "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no belt, hardware, epaulette or trim attachment visible"
+        ]
+       },
+       "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+         "double-breasted overlap is conventional closure geometry",
+         "hem level and symmetric side to side apart from pose-driven folds"
+        ]
+       },
+       "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "jacket covers torso; shirt and tie beneath; no intrinsic body-region exposure from garment cut"
+        ]
+       },
+       "fit": {
+        "state": "OBSERVED",
+        "value": "Oversized",
+        "region": "upper",
+        "evidence": [
+         "shoulder line extends past wearer's own shoulders",
+         "body stands well away from torso through chest and waist",
+         "large soft volume continuing to the hem"
+        ]
+       },
+       "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+         "hem descends past the waist into the hip region, covering the hip/pocket zone",
+         "worn on standing body with hem clearly visible"
+        ]
+       },
+       "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+         "jacket holds a soft overall shape but body and sleeves fold and crease readily",
+         "large soft drapes form where hands pull the front"
+        ]
+       },
+       "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+         "sleeves run full length to the wrist"
+        ]
+       },
+       "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "clear structural shoulder endpoint formed before the sleeve begins, despite extended frame",
+         "sleeve junction sits at a readable shoulder corner"
+        ]
+       },
+       "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Strong",
+        "region": "upper",
+        "evidence": [
+         "shoulder line held near-horizontal across a span with a clear endpoint",
+         "sleeve turns distinctly downward after the shoulder corner"
+        ]
+       },
+       "collar": {
+        "state": "OBSERVED",
+        "value": "Peak",
+        "region": "upper",
+        "evidence": [
+         "notch-less lapel whose lower edge rises into a point above the collar seam"
+        ]
+       },
+       "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "plain tailored hem edge, no ribbed band"
+        ]
+       },
+       "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "upper",
+        "evidence": [
+         "tailored neck and lapels, no hood at neck or upper back"
+        ]
+       },
+       "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+         "front opening runs the full length of the jacket front with two button columns"
+        ]
+       },
+       "closure_type": {
+        "state": "OBSERVED",
+        "value": "Double Breasted Button",
+        "region": "upper",
+        "evidence": [
+         "two parallel columns of buttons with wide front overlap"
+        ]
+       },
+       "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+         "peaked lapels, double-breasted closure, structured shoulder, welt chest pocket"
+        ]
+       },
+       "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+         "Hip-Length jacket; body falls in a straight column with no visible waist shaping or suppression"
+        ]
+       },
+       "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+         "ordinary tailored sleeve envelope, no deliberate enlargement"
+        ]
+       },
+       "cuff_type": {
+        "state": "OBSERVED",
+        "value": "Standard",
+        "region": "upper",
+        "evidence": [
+         "ordinary tailored sleeve end with button cuff visible at right wrist"
+        ]
+       },
+       "cuff_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+         "cuff depth an ordinary fraction of sleeve width at the wrist"
+        ]
+       },
+       "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Enlarged",
+        "region": "upper",
+        "evidence": [
+         "lapel breadth covers a large share of the chest panel"
+        ]
+       }
+      },
+      "completeness": {
+       "U": 9,
+       "M": 13,
+       "C": 7,
+       "N": 8,
+       "total": 37,
+       "reported": 26,
+       "conditional_na": 2,
+       "unreported": 1,
+       "reconciled": true
+      },
+      "dm_designed_detail_evidence": {
+       "evidence": []
+      }
+     },
+     "diagnostics": {
+      "unreported": [
+       "category"
+      ],
+      "conditional_na": [
+       {
+        "param": "pocket_construction",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       },
+       {
+        "param": "pocket_projection",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       }
+      ],
+      "not_applicable_count": 8,
+      "notes": [
+       "pocket Present → morphology carried by pockets[] only; scalar carrier retired (CA#29): pocket_construction, pocket_projection",
+       "DM observation layer carried verbatim: 0 evidence, excluded NOT AN ARRAY"
+      ]
+     },
+     "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+       {
+        "code": "DESCRIPTOR_NEED_ABSENT_LEGACY",
+        "param": null,
+        "message": "pre-protocol extraction — descriptor_need not asserted"
+       }
+      ]
+     },
+     "readability": {
+      "value": true,
+      "basis": "RECONSTRUCTABLE",
+      "limitation": [
+       "CONTINUOUS_STRUCTURE_VISIBLE"
+      ],
+      "contract_error": null
+     }
+    },
+    {
+     "target_id": "target_2",
+     "role": "Incidental",
+     "descriptor": null,
+     "eligible": false,
+     "extraction_depth": "NONE",
+     "reason": "not a Target: identity=true readability=false (C2∧C3 unmet)",
+     "readability": {
+      "value": false,
+      "basis": "NOT_RECONSTRUCTABLE",
+      "limitation": [
+       "OCCLUDED_BY_OTHER_GARMENT"
+      ],
+      "contract_error": null
+     }
+    },
+    {
+     "target_id": "target_3",
+     "role": "Incidental",
+     "descriptor": "Very wide, high-volume trousers that fall in a long straight column from the waist to the floor, breaking heavily over the shoes with deep vertical folds and extra length pooling at the hem.",
+     "eligible": false,
+     "extraction_depth": "NONE",
+     "reason": "not a Target: identity=true readability=false (C2∧C3 unmet)",
+     "readability": {
+      "value": false,
+      "basis": "NOT_RECONSTRUCTABLE",
+      "limitation": [
+       "OCCLUDED_BY_OTHER_GARMENT"
+      ],
+      "contract_error": null
+     }
+    }
+   ],
+   "relationships": [],
+   "image_validation_status": "ALL_GARMENTS_VALID"
+  },
+  "contract_valid": true
+ },
+ "thrown": null
+}

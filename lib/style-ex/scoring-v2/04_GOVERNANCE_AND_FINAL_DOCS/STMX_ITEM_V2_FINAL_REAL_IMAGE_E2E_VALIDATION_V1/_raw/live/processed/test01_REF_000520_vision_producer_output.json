@@ -1,0 +1,322 @@
+{
+ "runProducer_returned": {
+  "ok": true,
+  "envelope": {
+   "image_id": "FE-01",
+   "producer": {
+    "version": "v1",
+    "vision_calls": 1,
+    "one_call_default": true,
+    "model": "claude-opus-4-8"
+   },
+   "targets": [
+    {
+     "target_id": "target_1",
+     "role": "Primary",
+     "extraction_depth": "FULL",
+     "role_basis": "scoring-target candidate; all applicable MANDATORY morphology readable",
+     "prominence": "dominant",
+     "descriptor": "Low-rise flared denim trouser with a distinctive double-stacked waistband: two offset waistband bands each carrying its own shank button at the centre front, so the closure reads as a layered two-button stack rather than a single fly top. Zippered welt pockets sit angled at each front hip just below the waistband, their metal zip teeth exposed with pull tabs. A small diagonal branded tab sits at the left hip below the pocket. The leg runs close through the thigh then opens into a pronounced bootcut/flare toward a frayed raw hem. Washed grey denim with lighter vertical fading down the centre of each leg and darker shading toward the outseams.",
+     "eligible": true,
+     "record": {
+      "category": {
+       "state": "OBSERVED",
+       "value": "Trouser"
+      },
+      "observations": {
+       "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "woven denim twill with faded wash"
+        ],
+        "values": [
+         {
+          "value": "Denim",
+          "evidence": [
+           "bottomweight twill, denim fade and whiskering"
+          ]
+         }
+        ]
+       },
+       "surface": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "faded, whiskered wash across legs"
+        ],
+        "values": [
+         {
+          "value": "Treated Surface",
+          "evidence": [
+           "vertical fade down leg centres, darker outseam shading, frayed hem"
+          ],
+          "coverage": "Dominant",
+          "treated_surface_realization": "Distressed"
+         }
+        ]
+       },
+       "pattern": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "solid denim, no repeating motif"
+        ]
+       },
+       "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no placed logo or print on the body, only a small hip tab"
+        ]
+       },
+       "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+         "angled zippered welt pockets at both front hips"
+        ],
+        "pockets": [
+         {
+          "location": "Lower Front",
+          "construction": {
+           "state": "OBSERVED",
+           "value": "Inset",
+           "evidence": [
+            "set-in welt pockets with zip closures, no patch body"
+           ]
+          },
+          "projection": {
+           "state": "OBSERVED",
+           "value": "Flat",
+           "evidence": [
+            "pockets lie flush with the hip front"
+           ]
+          }
+         }
+        ]
+       },
+       "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "no embroidery, beading, applique or piping visible"
+        ]
+       },
+       "attachment": {
+        "state": "OBSERVED",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "exposed metal zip pulls on pockets, metal shank buttons"
+        ],
+        "values": [
+         {
+          "value": "Metal Hardware",
+          "evidence": [
+           "two shank buttons at waistband stack, zip pulls with exposed teeth on both hip pockets"
+          ],
+          "coverage": "Localized"
+         }
+        ]
+       },
+       "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "whole_garment",
+        "evidence": [
+         "left and right halves mirror; hem and waistband level across both sides, hip tab is a conventional directional label"
+        ]
+       },
+       "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "region": "whole_garment",
+        "evidence": [
+         "trouser covers legs fully; low rise exposes torso of wearer but that is bodice/top region not this garment's cut baring a lower region"
+        ]
+       },
+       "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Jeans",
+        "region": "whole_garment",
+        "evidence": [
+         "denim bottomweight, constructed non-elastic waistband with belt loops, button/fly front, shaped hip pockets"
+        ]
+       },
+       "silhouette": {
+        "state": "OBSERVED",
+        "value": "Flared",
+        "region": "whole_garment",
+        "evidence": [
+         "leg contracts through thigh then expands outward toward the hem (bootcut/flare)"
+        ]
+       },
+       "fit": {
+        "state": "OBSERVED",
+        "value": "Slim",
+        "region": "lower",
+        "evidence": [
+         "close through hip and thigh, following the leg, before flaring at hem"
+        ]
+       },
+       "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+         "hem reaches the foot/ground level on standing body, frayed at the shoe"
+        ]
+       },
+       "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+         "denim holds the flared leg shape while yielding into soft creases at the knee"
+        ]
+       }
+      },
+      "completeness": {
+       "U": 9,
+       "M": 6,
+       "C": 2,
+       "N": 20,
+       "total": 37,
+       "reported": 14,
+       "conditional_na": 2,
+       "unreported": 1,
+       "reconciled": true
+      },
+      "dm_designed_detail_evidence": {
+       "evidence": [
+        {
+         "evidence_id": "dd1",
+         "evidence_family": "surface_treatment",
+         "detail": "designed vertical fade/wash with frayed hem",
+         "source_observation_refs": [
+          "observations.surface"
+         ],
+         "relative_size": {
+          "state": "OBSERVED",
+          "value": "large"
+         },
+         "contrast": {
+          "state": "OBSERVED",
+          "value": "medium"
+         },
+         "spatial_position": {
+          "state": "OBSERVED",
+          "value": "whole_garment"
+         },
+         "m1_supporting_realization": {
+          "internal_chromatic_composition": {
+           "state": "OBSERVED",
+           "value": "limited_or_uniform"
+          },
+          "internal_fill_realization": {
+           "state": "OBSERVED",
+           "value": "uniform_or_sparse"
+          }
+         }
+        },
+        {
+         "evidence_id": "dd2",
+         "evidence_family": "attached_hardware",
+         "detail": "double-stacked waistband buttons plus exposed zip-pull hip pockets",
+         "source_observation_refs": [
+          "observations.attachment"
+         ],
+         "relative_size": {
+          "state": "OBSERVED",
+          "value": "small"
+         },
+         "contrast": {
+          "state": "OBSERVED",
+          "value": "medium"
+         },
+         "spatial_position": {
+          "state": "OBSERVED",
+          "value": "localized"
+         },
+         "m1_supporting_realization": {
+          "internal_chromatic_composition": {
+           "state": "OBSERVED",
+           "value": "limited_or_uniform"
+          },
+          "internal_fill_realization": {
+           "state": "OBSERVED",
+           "value": "uniform_or_sparse"
+          }
+         }
+        }
+       ],
+       "excluded": [
+        {
+         "item": "denim base colour",
+         "reason": "single_base_colour"
+        }
+       ]
+      }
+     },
+     "diagnostics": {
+      "unreported": [
+       "category"
+      ],
+      "conditional_na": [
+       {
+        "param": "pocket_construction",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       },
+       {
+        "param": "pocket_projection",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       }
+      ],
+      "not_applicable_count": 20,
+      "notes": [
+       "pocket Present → morphology carried by pockets[] only; scalar carrier retired (CA#29): pocket_construction, pocket_projection",
+       "DM observation layer carried verbatim: 2 evidence, 1 excluded"
+      ]
+     },
+     "validation": {
+      "ok": false,
+      "errors": [
+       {
+        "code": "OBSERVED_NO_VALUE",
+        "param": "pattern",
+        "message": "state OBSERVED but no value",
+        "f": "F3"
+       }
+      ],
+      "warnings": [
+       {
+        "code": "DESCRIPTOR_NEED_ABSENT_LEGACY",
+        "param": null,
+        "message": "pre-protocol extraction — descriptor_need not asserted"
+       }
+      ]
+     },
+     "readability": {
+      "value": true,
+      "basis": "RECONSTRUCTABLE",
+      "limitation": [
+       "CONTINUOUS_STRUCTURE_VISIBLE"
+      ],
+      "contract_error": null
+     }
+    }
+   ],
+   "relationships": [],
+   "image_validation_status": "ALL_GARMENTS_INVALID"
+  },
+  "contract_valid": false
+ },
+ "thrown": null
+}

@@ -1,0 +1,20 @@
+{
+ "document": "PROJECTION_ALLOWLIST_V1",
+ "sprint": "V2.3.55",
+ "date": "2026-09-25",
+ "status": "CANDIDATE · governs TC_UPSTREAM_TOKEN_PROJECTION_V1 · allowlist = V2.3.54 39_ prerequisite_projection.whitelist verbatim (not expanded)",
+ "authority": {
+  "spec39_path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_54_ATOMIC_REFERENT_SCOPE_AMENDMENT_AND_EVIDENCE_POPULATION/39_FUTURE_V3_INPUT_PACKAGE_SPECIFICATION.json",
+  "spec39_sha256": "ae88bb1b94312cdb8b3aba8a0e19da35ae608c58d9d2bb88b1e58638c1635638",
+  "rule_verbatim_from_39": "for each of the 126 Step 2 members: copy final_observations[garment_ref].observations[p] for p in the whitelist; delete every other key of the record before writing; the projection file never contains ceo_ground_truth* / score_rationale / history / target_descriptors / ceo_adjudication / historical TC"
+ },
+ "record_keys": ["anchor_id", "garment_ref", "observations"],
+ "parameter_whitelist": ["fit", "sleeve_volume", "shoulder_structure", "silhouette", "length", "collar", "closure_type", "cuff_type", "pocket", "collar_scale", "cuff_scale", "pocket_projection", "surface", "material", "pattern", "graphic", "decorative_detail", "attachment"],
+ "observation_sub_field_allowlist": ["state", "value", "values", "values_detail"],
+ "values_detail_item_allowlist": ["value", "coverage", "locations"],
+ "location_item_allowlist": ["component", "descriptor"],
+ "location_item_note": "inside values_detail[].locations[] the key 'descriptor' is the governed D-4 LOCATION descriptor (Producer V1_3 LOCATION_DESCRIPTORS = Panel · Edge), NOT the Visual Reconstruction Descriptor; the audit requires its value to be one of those two tokens",
+ "narrowing_note": "sub-field allowlists NARROW the 39_ copy (never expand it): per-observation provenance strings (source · domain_legal · byRegion) and the excluded judgment sub-fields (finish_realization · visual_dominance · motif_complexity · count · density) are dropped, so no adjudication text, no excluded judgment and no free text can travel",
+ "member_source": "Step 2 FINAL FROZEN member ledger — only anchor_id and garment_ref are read; every other key (incl. historical_tc / tier_evidence / historical_side / vs_historical) is deleted at parse",
+ "forbidden_keys_anywhere": ["ceo_ground_truth", "ceo_ground_truth_numeric", "score_rationale", "history", "target_descriptors", "ceo_adjudication", "unresolved", "validation", "historical_tc", "historical_side", "historical_direction_correction", "vs_historical", "tier_evidence", "tier", "score", "expected", "expected_result", "anchor_expected", "read_organiser", "r1", "evidence_note", "descriptor", "descriptors", "rationale", "adjudication", "source", "finish_realization", "visual_dominance", "motif_complexity", "canonical_record_id", "identity", "provenance"]
+}

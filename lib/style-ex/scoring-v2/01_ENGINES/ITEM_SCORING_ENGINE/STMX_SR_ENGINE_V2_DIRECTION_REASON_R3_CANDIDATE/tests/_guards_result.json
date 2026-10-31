@@ -1,0 +1,411 @@
+{
+ "incomplete": [
+  {
+   "title": "fit missing (Jacket, cloth Semi-Structured, shoulder Mild)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "limitations": [
+    {
+     "path": "observations.fit",
+     "state": "UNKNOWN"
+    }
+   ],
+   "reason": "사진에서 핏은 확인되지 않지만 어깨선이 가볍게 잡혀 있고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "fabric missing (Trouser, Regular, Straight)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "limitations": [],
+   "reason": "기본 폭으로 재단된 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "fabric missing + released fit (Shirt Oversized)",
+   "direction": "RELAXED",
+   "rule": "SR-V2-M2",
+   "limitations": [
+    {
+     "path": "observations.fabric_behavior",
+     "state": "UNKNOWN"
+    }
+   ],
+   "reason": "사진에서 소재감은 확인되지 않지만 넉넉하게 재단된 오버사이즈 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "shoulder missing (Coat Regular Structured)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "limitations": [],
+   "reason": "기본 폭으로 재단된 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "waist missing (Dress regional, waist NOT_VISIBLE)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "limitations": [],
+   "reason": "상체 부분은 슬림하게 재단된 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "fit and fabric both missing (Shirt, shoulder_drop None only)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-Z1",
+   "limitations": [
+    {
+     "path": "observations.fit",
+     "state": "UNKNOWN"
+    },
+    {
+     "path": "observations.fabric_behavior",
+     "state": "UNKNOWN"
+    }
+   ],
+   "reason": "사진에서 핏과 소재감은 확인되지 않지만 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "fit and fabric both missing (Trouser, Straight only)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "limitations": [
+    {
+     "path": "observations.fit",
+     "state": "NOT_VISIBLE"
+    }
+   ],
+   "reason": "사진에서 핏은 확인되지 않지만 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "out-of-domain fit value \"Regular/Relaxed\" (not coerced → UNKNOWN; cloth decides nothing alone)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "limitations": [
+    {
+     "path": "observations.fit",
+     "state": "OBSERVED"
+    }
+   ],
+   "reason": "사진에서 핏은 확인되지 않지만 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "competing: Slim fit + Dropped shoulder + Fluid cloth (T-Shirt)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "limitations": [],
+   "reason": "어깨선이 아래로 떨어지는 드롭 숄더이지만 슬림하게 재단된 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "competing: Oversized + Structured cloth + Strong shoulder (Jacket)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "limitations": [],
+   "reason": "넉넉하게 재단된 오버사이즈 핏이지만 어깨 구조가 분명하게 잡혀 있어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "competing: Relaxed + Padding + Quilted, cloth Semi-Structured (Jacket)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P2a",
+   "limitations": [],
+   "reason": "여유 있게 재단된 릴랙스드 핏이지만 패딩 구성으로 형태가 유지되고 퀼팅 처리로 형태가 유지되어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "competing: Regular + Widening (Skirt, Semi-Structured)",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P3c",
+   "limitations": [],
+   "reason": "아래로 넓어지는 실루엣이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "no release observed vs observed structure: Regular + Semi-Fluid only (Shirt, drop None)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P5",
+   "limitations": [],
+   "reason": "부드럽게 떨어지는 소재이지만 기본 폭으로 재단된 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "frozen contradictory pair set aside (Jacket Extreme + Dropped, Regular, Structured)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "limitations": [],
+   "reason": "기본 폭으로 재단된 레귤러 핏이고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "extreme: only shoulder_drop None (Sweater) — no fit, no cloth",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-Z1",
+   "limitations": [
+    {
+     "path": "observations.fit",
+     "state": "MISSING"
+    },
+    {
+     "path": "observations.fabric_behavior",
+     "state": "MISSING"
+    }
+   ],
+   "reason": "사진에서 핏과 소재감은 확인되지 않지만 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "extreme: only silhouette Flared (Trouser) — no fit, no cloth",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P3c",
+   "limitations": [],
+   "reason": "끝이 퍼지는 플레어 실루엣이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "extreme: NO SR carrier at all (Shirt, only length + collar) — zero-evidence policy Z0",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-Z0",
+   "limitations": [
+    {
+     "path": "observations.fit",
+     "state": "UNKNOWN"
+    },
+    {
+     "path": "observations.shoulder_drop",
+     "state": "MISSING"
+    },
+    {
+     "path": "observations.fabric_behavior",
+     "state": "MISSING"
+    }
+   ],
+   "reason": "사진에서 핏과 어깨선과 소재감은 확인되지 않아 형태 방향을 관측 근거로 설명할 수 없습니다. 확인되지 않은 특징을 근거로 삼지 않고, 제한된 정보에 따른 기본 분류로 Structured 방향으로 표시됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   }
+  },
+  {
+   "title": "R2 · one-piece: upper Regular fit observed, lower fit UNKNOWN, cloth unobserved — partial, NOT Z0",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-Z1",
+   "limitations": [
+    {
+     "path": "observations.fit.byRegion.lower",
+     "state": "UNKNOWN"
+    },
+    {
+     "path": "observations.fabric_behavior",
+     "state": "MISSING"
+    }
+   ],
+   "reason": "사진에서 핏과 소재감은 확인되지 않지만 상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   },
+   "provisional": false,
+   "grounding": "PHYSICAL"
+  },
+  {
+   "title": "R2 · only drape cloth observed (Shirt, fabric Fluid, fit UNKNOWN) — Z0 acknowledges the cloth, never claims it unobserved",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-Z0",
+   "limitations": [
+    {
+     "path": "observations.fit",
+     "state": "UNKNOWN"
+    },
+    {
+     "path": "observations.shoulder_drop",
+     "state": "MISSING"
+    }
+   ],
+   "reason": "흐르듯 떨어지는 소재이지만 사진에서 핏과 어깨선은 확인되지 않아, 소재만으로는 형태 방향을 정할 수 없습니다. 확인되지 않은 특징을 근거로 삼지 않고, 제한된 정보에 따른 기본 분류로 Structured 방향으로 표시됩니다.",
+   "verification": {
+    "status": "PASS",
+    "findings": []
+   },
+   "provisional": true,
+   "grounding": "LIMITATION_ONLY"
+  }
+ ],
+ "mutations": {
+  "gt_label_altered": {
+   "tested": 123,
+   "changed": 0,
+   "list": []
+  },
+  "ref_and_filename_shuffled": {
+   "tested": 123,
+   "changed": 0,
+   "list": []
+  },
+  "irrelevant_evidence_added": {
+   "tested": 123,
+   "changed": 0,
+   "list": []
+  },
+  "non_scoring_metadata": {
+   "tested": 123,
+   "changed": 0,
+   "list": []
+  },
+  "input_order_shuffled": {
+   "tested": 123,
+   "changed": 0
+  },
+  "category_swap": {
+   "tested": 123,
+   "changed": 4,
+   "category_only_default_violations": [],
+   "changed_through_governed_carrier_applicability": [
+    "REF_000599 Skirt→Trouser",
+    "REF_000608 Skirt→Trouser",
+    "REF_000616 Skirt→Trouser",
+    "REF_000642 Skirt→Trouser"
+   ]
+  }
+ },
+ "reason_mutations": {
+  "invented_shoulder_structure": {
+   "injected": 117,
+   "caught": 117
+  },
+  "invented_waist_definition": {
+   "injected": 109,
+   "caught": 109
+  },
+  "fabric_not_in_vision": {
+   "injected": 101,
+   "caught": 101
+  },
+  "worn_body_claim_on_flat": {
+   "injected": 13,
+   "caught": 13
+  },
+  "regular_described_as_slim": {
+   "injected": 39,
+   "caught": 39
+  },
+  "incorrect_source_value": {
+   "injected": 123,
+   "caught": 123
+  },
+  "wrong_item_evidence_copied_reason": {
+   "injected": 123,
+   "caught": 123
+  },
+  "wrong_axis_evidence": {
+   "injected": 123,
+   "caught": 123
+  },
+  "contradictory_direction_reason": {
+   "injected": 123,
+   "caught": 123
+  },
+  "unsupported_certainty_generic": {
+   "injected": 123,
+   "caught": 123
+  },
+  "zero_evidence_flag_spoofed": {
+   "injected": 123,
+   "caught": 123
+  },
+  "constriction_without_observation": {
+   "injected": 119,
+   "caught": 119
+  },
+  "internal_rule_terminology": {
+   "injected": 123,
+   "caught": 123
+  },
+  "score_or_strength_leak": {
+   "injected": 123,
+   "caught": 123
+  },
+  "direction_missing": {
+   "injected": 123,
+   "caught": 123
+  },
+  "missing_as_observed_absence": {
+   "injected": 86,
+   "caught": 86
+  },
+  "opposing_evidence_omitted": {
+   "injected": 24,
+   "caught": 24
+  }
+ },
+ "determinism": {
+  "run1_sha256": "c08c661d817b1f9653401db4df9dd5484f6f54662e7b221f98b0028e8cf1b2f8",
+  "run2_shuffled_sha256": "c08c661d817b1f9653401db4df9dd5484f6f54662e7b221f98b0028e8cf1b2f8",
+  "run3_renamed_sha256": "c08c661d817b1f9653401db4df9dd5484f6f54662e7b221f98b0028e8cf1b2f8",
+  "identical": true
+ },
+ "contract": {
+  "customer_keys": [
+   "direction",
+   "reason"
+  ],
+  "transport": [
+   "SRV2TransportError",
+   "SRV2TransportError",
+   "SRV2TransportError",
+   "SRV2TransportError"
+  ]
+ }
+}

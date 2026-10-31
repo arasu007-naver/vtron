@@ -1,0 +1,36 @@
+{
+ "document": "PROJECTION_ALLOWLIST_V5_AMENDMENT",
+ "sprint": "V2.3.84",
+ "date": "2026-09-27",
+ "base": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V1_CANDIDATE/PROJECTION_ALLOWLIST_V1.json",
+ "base_sha256": "7795ea22b96585ec8e3c5c40580c2d3f048e10122840043ff22bbdb635b83ae3",
+ "approval_anchor": {
+  "CEO Decision": "2026-09-27 — D-83-2 IMPLEMENTATION AUTHORIZED · D-83-1 APPROVED (WG-7)",
+  "Reason": "V2.3.83 root cause: the V1 allowlist narrowing note filed byRegion among per-observation provenance strings and dropped it; byRegion is the regional FORM of the fit observation (Vision placement authority: Dress / Jumpsuit fit upper / lower), not provenance",
+  "Affected Scope": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/ (new) — projection V5 only; V1–V4 sealed and unchanged"
+ },
+ "change": {
+  "observation_sub_field_allowlist_added": {
+   "field": "fit",
+   "sub_field": "byRegion",
+   "form": "{ region: value }",
+   "regions_allowed": [
+    "upper",
+    "lower"
+   ]
+  },
+  "unchanged": [
+   "parameter_whitelist",
+   "values_detail_item_allowlist",
+   "location_item_allowlist",
+   "every provenance string (source · domain_legal) still dropped"
+  ]
+ },
+ "never": [
+  "collapse to one value",
+  "average",
+  "choose a region",
+  "emit a regional Direction",
+  "carry evidence text"
+ ]
+}

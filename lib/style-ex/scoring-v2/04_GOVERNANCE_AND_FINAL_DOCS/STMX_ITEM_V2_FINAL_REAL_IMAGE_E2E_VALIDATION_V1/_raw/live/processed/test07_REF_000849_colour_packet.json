@@ -1,0 +1,140 @@
+{
+ "packet_version": "TARGET_AWARE_COLOUR_PACKET_V1",
+ "successor": {
+  "id": "STMX_COLOUR_TARGET_AWARE_ACQUISITION_V1_CANDIDATE",
+  "status": "CANDIDATE — offline-verified only · not production · not frozen · live extraction accuracy NOT_DEMONSTRATED (CEO order 2026-10-29, G53 ACTIVE)",
+  "seal_directory_aggregate_sha256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b"
+ },
+ "colour_v1": {
+  "module": "run/color_recovery/color_contract_v1.js",
+  "module_sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+  "colour_prompt_sha256": "f444d2611e9ae9e693c15ee4f405ce56d445cf430891f719a292340abd44a420"
+ },
+ "image": {
+  "image_sha256": "09e3f9dbe8842fd206f067b98fea72241b3232e76adab7119aa7a4a137466b1e",
+  "image_id": "FE-07"
+ },
+ "manifest": {
+  "image": {
+   "image_sha256": "09e3f9dbe8842fd206f067b98fea72241b3232e76adab7119aa7a4a137466b1e",
+   "image_id": "FE-07"
+  },
+  "scoring_unit": {
+   "type": "REQUESTED_TARGETS",
+   "unit_id": "unit-56e4b67c17a0d4076f42"
+  },
+  "targets": [
+   {
+    "target_id": "target_1",
+    "category": "Jacket",
+    "descriptor": "An open-front single-button-stance blazer with a notched lapel rolling to a low button position near the natural waist; the lower button sits engaged while the front hangs open above it. The body falls long and straight past the hip with a flap pocket visible low on the right front. Shoulders read soft and lightly extended, the sleeves falling in a relaxed column rather than a tailored taper.",
+    "identification": "CATEGORY_UNIQUE",
+    "member_role": null,
+    "descriptor_colour_terms": []
+   },
+   {
+    "target_id": "target_3",
+    "category": "Trouser",
+    "descriptor": "High-rise wide cargo trousers in a heathered grey cloth, closed with a single front button and belt loops at the waist. Large flap cargo pockets sit on the outer thigh of each leg, with shaped front-hip pockets above. The leg falls wide and straight from hip to a full-length hem that breaks over the shoe.",
+    "identification": "CATEGORY_UNIQUE",
+    "member_role": null,
+    "descriptor_colour_terms": []
+   }
+  ],
+  "manifest_sha256": "7631dda4eb1dda79354f0d163e3b545a55e34b1a4cbb0146144a5825be5343a7"
+ },
+ "observations": [
+  {
+   "target_id": "target_1",
+   "category": "Jacket",
+   "member_role": null,
+   "scoring_unit_id": "unit-56e4b67c17a0d4076f42",
+   "status": "OBSERVED",
+   "color_observation": {
+    "primary_color_family": "black",
+    "color_lightness": "dark",
+    "color_usage": "single",
+    "multi_color": false,
+    "color_effect": "none",
+    "additional_colors": [],
+    "evidence": {
+     "primary": "uniformly black blazer cloth",
+     "lightness": "deep black tone",
+     "usage": "single solid color throughout",
+     "effect": "matte, no metallic or neon"
+    },
+    "color_notes": null
+   },
+   "validation": {
+    "contract_errors": [],
+    "inconsistencies": [],
+    "warnings": []
+   },
+   "reject_code": null,
+   "detail": null,
+   "provenance": {
+    "source": "TARGET_AWARE_ACQUISITION",
+    "request_id": "tac-2ce16eec23f0377243db",
+    "prompt_sha256": "85d14990277e083ee81f7e6375ee5a87dcea7cb43c7db015b4c3f11d8701834a",
+    "mode": "ONE_CALL",
+    "model": "claude-opus-4-8"
+   }
+  },
+  {
+   "target_id": "target_3",
+   "category": "Trouser",
+   "member_role": null,
+   "scoring_unit_id": "unit-56e4b67c17a0d4076f42",
+   "status": "OBSERVED",
+   "color_observation": {
+    "primary_color_family": "gray",
+    "color_lightness": "normal",
+    "color_usage": "single",
+    "multi_color": false,
+    "color_effect": "none",
+    "additional_colors": [],
+    "evidence": {
+     "primary": "mid-gray cargo trouser fabric",
+     "lightness": "medium gray value",
+     "usage": "single solid color including waistband and pockets",
+     "effect": "matte finish, no metallic or neon"
+    },
+    "color_notes": null
+   },
+   "validation": {
+    "contract_errors": [],
+    "inconsistencies": [],
+    "warnings": []
+   },
+   "reject_code": null,
+   "detail": null,
+   "provenance": {
+    "source": "TARGET_AWARE_ACQUISITION",
+    "request_id": "tac-2ce16eec23f0377243db",
+    "prompt_sha256": "85d14990277e083ee81f7e6375ee5a87dcea7cb43c7db015b4c3f11d8701834a",
+    "mode": "ONE_CALL",
+    "model": "claude-opus-4-8"
+   }
+  }
+ ],
+ "acquisition": {
+  "source": "TARGET_AWARE_ACQUISITION",
+  "mode": "ONE_CALL",
+  "model": "claude-opus-4-8",
+  "requests": [
+   {
+    "request_id": "tac-2ce16eec23f0377243db",
+    "target_ids": [
+     "target_1",
+     "target_3"
+    ],
+    "prompt_sha256": "85d14990277e083ee81f7e6375ee5a87dcea7cb43c7db015b4c3f11d8701834a",
+    "attempts": 1,
+    "response_error": null,
+    "unrequested": []
+   }
+  ],
+  "transport_invocations": 1
+ },
+ "packet_sha256": "8a34ba5c568ec58256eeaece6ea1c6a1b13e185a37f994eb615c18b02f3feda9"
+}

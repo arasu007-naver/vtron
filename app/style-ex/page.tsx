@@ -47,7 +47,7 @@ import { FeatureTreeView } from "@/components/style-ex/FeatureTreeView";
 type Status = "idle" | "running" | "done" | "error";
 type PromptKey = "prompt" | "judgePrompt";
 
-// 판정은 코드(엔진 · tc-rules)가 하므로 판정 프롬프트 탭은 두지 않는다. judgePrompt 키는 판정 프롬프트 버전을
+// 판정은 코드(판정 함수 V2 — lib/style-ex/judge-v2.ts)가 하므로 판정 프롬프트 탭은 두지 않는다. judgePrompt 키는 판정 프롬프트 버전을
 // 다시 쓸 때를 위해 남겨 둔다 (LLM 판정 judge.ts · 버전 표는 그대로 있다).
 const PROMPT_TABS: { key: PromptKey; label: string }[] = [{ key: "prompt", label: "관찰 프롬프트" }];
 

@@ -1,0 +1,430 @@
+{
+  "artefact": "04_STMX_TC_STEP2_V2_3_2_RELATIONAL_RULESET",
+  "generated": "2026-09-19",
+  "version": "STMX_TC_STEP2_V2_3_2_RELATIONAL_RULESET",
+  "order": "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19",
+  "classes": {
+    "BODY_COMPONENTS": [
+      "Body",
+      "Bodice",
+      "Skirt Body",
+      "Leg",
+      "Sleeve",
+      "Hood",
+      "Shoulder"
+    ],
+    "TRIM_COMPONENTS": [
+      "Collar",
+      "Lapel",
+      "Cuff",
+      "Hem",
+      "Waistband",
+      "Pocket",
+      "Strap"
+    ],
+    "ATTACH_ADJUST_COMPONENTS": [
+      "Hood",
+      "Waistband",
+      "Cuff",
+      "Hem",
+      "Collar",
+      "Pocket",
+      "Strap",
+      "Lapel"
+    ],
+    "FILL_MATERIAL": [
+      "Padding"
+    ],
+    "OPENWORK_SURFACE": [
+      "Transparent",
+      "Semi Transparent",
+      "Lace",
+      "Mesh"
+    ],
+    "ATT_UNIVERSAL_FUNCTIONAL": [
+      "Belt",
+      "Metal Hardware"
+    ],
+    "ATT_GRAMMAR_FUNCTIONAL": [
+      "Epaulette",
+      "Storm Flap"
+    ],
+    "GRAMMAR_FUNCTIONAL_KEYS": [
+      "JACKET:Utility",
+      "COAT:Utility"
+    ],
+    "ATT_DECORATIVE": [
+      "Jewelry Attachment",
+      "Fringe",
+      "Feather",
+      "Ribbon",
+      "Fur Trim"
+    ],
+    "TAILORED_KEYS": [
+      "JACKET:Tailored",
+      "COAT:Tailored"
+    ],
+    "TOPS": [
+      "tshirt",
+      "shirt",
+      "sweater",
+      "sweatshirt"
+    ],
+    "SUBSTANTIAL_BODY": [
+      "Body",
+      "Bodice",
+      "Skirt Body",
+      "Leg",
+      "Sleeve"
+    ],
+    "MINOR_BODY": [
+      "Hood",
+      "Shoulder"
+    ]
+  },
+  "rules": [
+    {
+      "id": "REL-F1-FILL",
+      "family": "F1",
+      "outcome": "CLEARED",
+      "text": "shell + Padding (+Quilted) = one padded realisation",
+      "src": [
+        "S5 §2",
+        "S18 Layer 3",
+        "S1 TC-F6"
+      ]
+    },
+    {
+      "id": "REL-F1-TRIM",
+      "family": "F1",
+      "outcome": "CLEARED",
+      "text": "non-fill material bound only to TRIM-class components = component trim (corduroy-collar case)",
+      "src": [
+        "S2 §5.4 실증 대조",
+        "S1 TC-F6"
+      ]
+    },
+    {
+      "id": "REL-F1-PANEL",
+      "family": "F1",
+      "outcome": "CLEARED",
+      "text": "material bound only as Panel of a component another material realises = contrast panel / blocking",
+      "src": [
+        "S2 §5.4 ✗ contrast panel · ✗ material blocking",
+        "S12 D-4 Panel"
+      ]
+    },
+    {
+      "id": "CON-UNRES-D4-LOCATION-NOT-OBSERVED",
+      "family": "F1",
+      "outcome": "UNRESOLVED",
+      "text": "≥2 non-fill materials (or a fill) without observed D-4 locations: spatial relationship not observed",
+      "src": [
+        "S12 D-4"
+      ]
+    },
+    {
+      "id": "REL-F3-UNIVERSAL-FUNCTIONAL",
+      "family": "F3",
+      "outcome": "CLEARED",
+      "text": "Belt · Metal Hardware = functional waist / fastening attachment on every key",
+      "src": [
+        "S1 TC-F6",
+        "S1 TC-F2 Functionality",
+        "S4 §3"
+      ]
+    },
+    {
+      "id": "REL-F3-GRAMMAR-FUNCTIONAL",
+      "family": "F3",
+      "outcome": "CLEARED",
+      "text": "Epaulette · Storm Flap conventional on Utility keys",
+      "src": [
+        "S5 §2 Attachment",
+        "S5 §4"
+      ]
+    },
+    {
+      "id": "CON-UNRES-C2-TRANSPLANT-CANDIDATE",
+      "family": "F3",
+      "outcome": "UNRESOLVED",
+      "text": "Epaulette · Storm Flap outside Utility keys = C-2 candidate (recontextualisation is a design reading)",
+      "src": [
+        "S2 §5.3"
+      ]
+    },
+    {
+      "id": "REL-F3-DECORATIVE",
+      "family": "F3",
+      "outcome": "CLEARED",
+      "text": "Jewelry · Fringe · Feather · Ribbon · Fur Trim = decorative (DM / EI owned)",
+      "src": [
+        "S15 §5",
+        "S1 TC-F6",
+        "S12 COVERAGE_EVIDENCE_MAP"
+      ]
+    },
+    {
+      "id": "REL-F3-OTHER-BOUND",
+      "family": "F3",
+      "outcome": "CLEARED",
+      "text": "Other bound (observed or recovered) to Hood / Waistband / Cuff / Hem / Collar / Pocket / Strap / Lapel / Edge = component adjustment / trim",
+      "src": [
+        "S12 D-4",
+        "S5 §2 Attachment"
+      ]
+    },
+    {
+      "id": "CON-UNRES-ATTACHMENT-OTHER-UNBOUND",
+      "family": "F3",
+      "outcome": "UNRESOLVED",
+      "text": "Other without a governed component binding: role not representable",
+      "src": [
+        "S12 D-4",
+        "S9 §3"
+      ]
+    },
+    {
+      "id": "CON-UNRES-POCKET-SYSTEM-NOT-ADJUDICATED",
+      "family": "B",
+      "outcome": "UNRESOLVED",
+      "text": "Volumetric pocket system off a cargo-native key (CEO B: no \"materially reorganises\" carrier) — unchanged from V2.1",
+      "src": [
+        "CEO STEP 2 Relational Evidence Gap Closure / V2.3 Candidate Order 2026-09-19 §5.B",
+        "S7 §6"
+      ]
+    },
+    {
+      "id": "REL-F4-STRAP",
+      "family": "F4",
+      "outcome": "CLEARED",
+      "text": "tshirt + shoulder_connection = Strap = conventional (CEO §2)",
+      "src": [
+        "CEO STEP 2 Relational Evidence Gap Closure / V2.3 Candidate Order 2026-09-19 §2"
+      ]
+    },
+    {
+      "id": "CON-TRUE-CEO-A-OFF-SHOULDER",
+      "family": "A",
+      "outcome": "TRUE",
+      "text": "sweater + shoulder_connection = Off Shoulder = shoulder / neck connection replaced (CEO A)",
+      "src": [
+        "CEO STEP 2 Relational Evidence Gap Closure / V2.3 Candidate Order 2026-09-19 §5.A"
+      ]
+    },
+    {
+      "id": "CON-UNRES-SHOULDER-CONNECTION-NOT-ADJUDICATED",
+      "family": "F4",
+      "outcome": "UNRESOLVED",
+      "text": "other non-standard shoulder connections on TOP keys (V2 G-2) — unchanged",
+      "src": [
+        "V2 G-2"
+      ]
+    },
+    {
+      "id": "CON-FALSE-C1-RELATIONAL",
+      "family": "C-1",
+      "outcome": "FALSE",
+      "text": "every relational candidate cleared by a named positive relationship; every other carrier conventional ⇒ C-1 FALSE",
+      "src": [
+        "S2 §5.2 (C-1)",
+        "S9 §5"
+      ]
+    },
+    {
+      "id": "CON-TRUE-C3-BODY-ZONE-HYBRID",
+      "family": "F1",
+      "outcome": "TRUE",
+      "text": "≥2 distinct body-realising material systems (component-level substantial BODY bindings; zones exclusive or shared / sectional) → hybrid",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §2",
+        "S2 §5.4",
+        "S1 TC-F6"
+      ]
+    },
+    {
+      "id": "CON-UNRES-C3-PANEL-PARENT-NOT-OBSERVED",
+      "family": "F1",
+      "outcome": "UNRESOLVED",
+      "text": "Panel-bound material whose parent component no other material realises: substantial section vs ordinary panel not decidable",
+      "src": [
+        "CEO STEP 2 V2.3 CEO Correction & Closure Order 2026-09-19 §1",
+        "S12 D-4 Panel"
+      ]
+    },
+    {
+      "id": "REL-F1-COMPONENT-SCALE",
+      "family": "F1",
+      "outcome": "CLEARED",
+      "text": "second material bound only to component-scale BODY parts (Hood / Shoulder) = component material, not a substantial zone",
+      "src": [
+        "CEO STEP 2 V2.3 CEO Correction & Closure Order 2026-09-19 §1 (not sufficient by itself)"
+      ]
+    },
+    {
+      "id": "REL-F1-SINGLE-MATERIAL",
+      "family": "F1",
+      "outcome": "CLEARED",
+      "text": "identical material values on several components = ONE material system (colour blocking has no TC carrier)",
+      "src": [
+        "CEO STEP 2 V2.3 CEO Correction & Closure Order 2026-09-19 §9 (different colours never TRUE)",
+        "S1 TC-F2 (no colour carrier in TC)"
+      ]
+    },
+    {
+      "id": "CON-TRUE-R1-LAYERED-STRUCTURAL-BODY",
+      "family": "F1",
+      "outcome": "TRUE",
+      "text": "two material systems sharing a substantial zone with an openwork / transparent outer surface on it = transparent outer body + inner body (Layered Structural Body)",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §7"
+      ]
+    },
+    {
+      "id": "CON-TRUE-R1-OPENWORK-BODY-CONSTRUCTION",
+      "family": "F2",
+      "outcome": "TRUE",
+      "text": "Lace / Mesh openwork bound at component level to a substantial BODY / SLEEVE zone = openwork body construction",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §3"
+      ]
+    },
+    {
+      "id": "CON-UNRES-OPENWORK-ROLE-NOT-OBSERVED",
+      "family": "F2",
+      "outcome": "UNRESOLVED",
+      "text": "Lace / Mesh without canonical binding: body construction vs trim not observed",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §3",
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §14"
+      ]
+    },
+    {
+      "id": "REL-F2-TRANSPARENCY-EI",
+      "family": "F2",
+      "outcome": "CLEARED",
+      "text": "Transparent / Semi Transparent alone = EI-owned transparency, never a TC carrier by itself",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §3",
+        "S1 TC-F2 G19/G20"
+      ]
+    },
+    {
+      "id": "REL-F2-OPENWORK-LOCAL",
+      "family": "F2",
+      "outcome": "CLEARED",
+      "text": "openwork bound to trim / Edge / Panel / component-scale part = decorative role",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §3"
+      ]
+    },
+    {
+      "id": "CON-TRUE-R1-STRUCTURAL-ATTACHMENT-BODY-SYSTEM",
+      "family": "F3",
+      "outcome": "TRUE",
+      "text": "decorative-class attachment bound at component level to a substantial BODY zone with coverage Dominant = body / envelope system",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §6"
+      ]
+    },
+    {
+      "id": "CON-UNRES-ATTACHMENT-ROLE-NOT-OBSERVED",
+      "family": "F3",
+      "outcome": "UNRESOLVED",
+      "text": "decorative-class attachment without canonical binding: trim vs body system not observed",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §6"
+      ]
+    },
+    {
+      "id": "CON-TRUE-R1-POCKET-SYSTEM",
+      "family": "B",
+      "outcome": "TRUE",
+      "text": "applied volumetric pocket instances on body locations with density = dense",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §5",
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §9",
+        "CEO decision B"
+      ]
+    },
+    {
+      "id": "REL-B-CARGO-PAIR-CONVENTIONAL",
+      "family": "B",
+      "outcome": "CLEARED",
+      "text": "volumetric applied pocket group without dense multiplicity on trouser / jumpsuit = conventional cargo pair",
+      "src": [
+        "S7 §6"
+      ]
+    },
+    {
+      "id": "REL-B-CARGO-GRAMMAR-NATIVE",
+      "family": "B",
+      "outcome": "CLEARED",
+      "text": "cargo pocket system on Utility keys = grammar-native",
+      "src": [
+        "S5 §4",
+        "S7 §6"
+      ]
+    },
+    {
+      "id": "REL-B-POCKET-CONVENTIONAL",
+      "family": "B",
+      "outcome": "CLEARED",
+      "text": "pocket organisation within the key's conventional range",
+      "src": [
+        "S5 §5"
+      ]
+    },
+    {
+      "id": "CON-TRUE-R1-FRONT-CLOSURE-POCKET-SYSTEM",
+      "family": "B",
+      "outcome": "TRUE",
+      "text": "applied front pockets on trouser / jumpsuit with Metal Hardware bound to Pocket = organised front closure / pocket system",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §4.2"
+      ]
+    },
+    {
+      "id": "CON-UNRES-FRONT-POCKET-ORGANISATION-NOT-ADJUDICATED",
+      "family": "B",
+      "outcome": "UNRESOLVED",
+      "text": "applied front pockets without integrated closure: not adjudicated",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §4.2"
+      ]
+    },
+    {
+      "id": "SIL-TRUE-FLARE-CONTRAST",
+      "family": "S",
+      "outcome": "TRUE",
+      "text": "trouser / jumpsuit silhouette Flared with fit Slim = bootcut / flare reinterpretation",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §4.1"
+      ]
+    },
+    {
+      "id": "CON-TRUE-C3-ARCHETYPAL-HYBRID-BODICE-TROUSER",
+      "family": "H",
+      "outcome": "TRUE",
+      "text": "jumpsuit: Halter / Strapless upper + Defined / Cinched waist = bodice × trouser archetypal hybrid",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §8"
+      ]
+    },
+    {
+      "id": "REL-H-SUSPENSION-VARIATION",
+      "family": "H",
+      "outcome": "CLEARED",
+      "text": "Halter / Strapless upper without articulated waist = conventional variation",
+      "src": [
+        "CEO STEP 2 V2.3.2 CEO Visual Adjudication Integration Order 2026-09-19 §8"
+      ]
+    }
+  ],
+  "statement_census": {
+    "DIRECT": 324,
+    "DERIVED": 47,
+    "CEO": 172,
+    "UNRESOLVED": 1
+  }
+}

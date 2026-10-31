@@ -1,0 +1,3097 @@
+{
+ "document": "CONSTITUTIVE_REALIZATION_EVIDENCE_V3",
+ "status": "CANDIDATE — additive successor of CONSTITUTIVE_REALIZATION_EVIDENCE_V2 (sha256 087def326ab0cf8f05659a56adcc78c58af9f18db1233affa3044f01dc5a5e36) · V2.3.59 OSF governed cuff_scale / sleeve_volume backfill overlaid · V2 untouched",
+ "admission_authority": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_OBSERVATION_V1_CANDIDATE/TC_CRITERIA_SUCCESSORS_V1.json :: realization_evidence_admission",
+ "source": {
+  "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/FINAL_REPRESENTATION/CANONICAL_FINAL_REPRESENTATION_V1_2.jsonl",
+  "sha256": "0fe90ea170081370e8d03f5aae566bb433a101b10b62e2ac68ce341cc4077f76",
+  "projection": "final_observations[garment_ref].observations.{collar_scale, cuff_scale, sleeve_volume}",
+  "scrubbed_at_parse_never_read": [
+   "ceo_ground_truth",
+   "ceo_ground_truth_numeric",
+   "score_rationale",
+   "history",
+   "target_descriptors",
+   "ceo_adjudication",
+   "validation"
+  ]
+ },
+ "member_ledger": {
+  "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/08_STMX_TC_STEP2_V2_3_2_CLEAN_VALIDATION_LEDGER.json",
+  "sha256": "cc51a5c1cf8df0f4f240ee83af1d1a5aa37b9938465a863f2ee38a7a796caeb5"
+ },
+ "use": "constitutive-system RELATION resolution only (after the Statement / departure context exists)",
+ "never": [
+  "Step 2 Departure trigger",
+  "magnitude",
+  "STRONG",
+  "Salience",
+  "TC tier evidence by itself"
+ ],
+ "presence_tokens": "consumed from the frozen Step 2 member ledger (already D1-legal) — not duplicated here",
+ "runtime_v2_reads": "collar_scale · cuff_scale · sleeve_volume from this projection (one admitted realization source); presence tokens from the Step 2 member ledger",
+ "sleeve_volume_cross_check": {
+  "rows": 126,
+  "agree": 126,
+  "disagree": []
+ },
+ "counts": {
+  "collar_scale:KEY_OMITTED": 97,
+  "cuff_scale:KEY_OMITTED": 114,
+  "sleeve_volume:OBSERVED/Regular": 54,
+  "sleeve_volume:KEY_OMITTED": 65,
+  "sleeve_volume:EXCLUDED_ILLEGAL_SOURCE": 2,
+  "collar_scale:OBSERVED/Enlarged": 7,
+  "cuff_scale:OBSERVED/Regular": 9,
+  "collar_scale:OBSERVED/Regular": 22,
+  "cuff_scale:OBSERVED/Enlarged": 3,
+  "sleeve_volume:OBSERVED/Voluminous": 5,
+  "v2358_collar_scale_backfilled": 23,
+  "v2359_cuff_scale_backfilled": 10,
+  "v2359_sleeve_volume_backfilled": 14
+ },
+ "rows": [
+  {
+   "anchor_id": "REF_000001#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000002#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Reduced",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000003#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Reduced",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000004#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000005#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000006#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000007#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000008#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000009#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000010#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000010#SU1",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000010#SU1",
+   "garment_ref": "target_3",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000011#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "EXCLUDED_ILLEGAL_SOURCE",
+     "value": null,
+     "source": "RAW (no active adjudication)",
+     "domain_legal": false
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000012#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "EXCLUDED_ILLEGAL_SOURCE",
+     "value": null,
+     "source": "RAW (no active adjudication)",
+     "domain_legal": false
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000013#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (declared accepted_observation notation, parsed)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000014#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000014#SU1",
+   "garment_ref": "target_3",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000020#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000021#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000139#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000141#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000143#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000145#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000152#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "UNKNOWN",
+     "value": null,
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000172#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000182#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000183#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "CEO FINAL adjudication (B005)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000184#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000185#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000190#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000198#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000221#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000246#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Voluminous",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000323#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000325#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000335#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000338#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000339#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000368#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000378#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000378#SU2",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000397#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000398#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000399#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000410#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000414#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000430#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "CEO FINAL adjudication (B005)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Voluminous",
+     "source": "CEO FINAL adjudication (B005)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000432#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000447#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000466#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000469#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000475#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Voluminous",
+     "source": "CEO FINAL adjudication (B005)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000493#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000494#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000494#SU2",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000496#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000496#SU2",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000499#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000500#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000503#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000508#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000520#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000521#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000525#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000541#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000541#SU2",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000575#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000586#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000586#SU1",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000590#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000593#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000593#SU1",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000598#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000598#SU1",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000599#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000608#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000616#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000616#SU2",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000622#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000642#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000657#SU1",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000660#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000661#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000664#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000667#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000671#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000689#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000694#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000697#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000698#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Voluminous",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000701#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000734#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "UNKNOWN",
+     "value": null,
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000744#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000775#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000787#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000788#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000789#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000790#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000791#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000793#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000802#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000806#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000807#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000808#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000809#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000810#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000810#SU1",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000811#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000816#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000816#SU1",
+   "garment_ref": "target_3",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000817#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000817#SU1",
+   "garment_ref": "target_3",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000834#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Reduced",
+     "source": "V2.3.58 governed firsthand backfill (CEO 1-B · protocol f078b2262c00d8e0)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000840#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000840#SU1",
+   "garment_ref": "target_3",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000841#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Enlarged",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000841#SU1",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000845#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000845#SU2",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000846#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000846#SU2",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000847#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "V2.3.59 governed firsthand backfill (OSF · protocol fc7ab2bee08fc5fe)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000849#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Regular",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000849#SU2",
+   "garment_ref": "target_3",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000851#SU1",
+   "garment_ref": "target_1",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "OBSERVED",
+     "value": "Voluminous",
+     "source": "RAW (no active adjudication)",
+     "domain_legal": true
+    }
+   }
+  },
+  {
+   "anchor_id": "REF_000851#SU1",
+   "garment_ref": "target_2",
+   "evidence": {
+    "collar_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "cuff_scale": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    },
+    "sleeve_volume": {
+     "state": "KEY_OMITTED",
+     "value": null,
+     "source": null,
+     "domain_legal": null
+    }
+   }
+  }
+ ],
+ "successor_of": {
+  "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_REALIZATION_BACKFILL_V1_CANDIDATE/CONSTITUTIVE_REALIZATION_EVIDENCE_V2.json",
+  "sha256": "087def326ab0cf8f05659a56adcc78c58af9f18db1233affa3044f01dc5a5e36"
+ },
+ "overlay": {
+  "source": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_REALIZATION_BACKFILL_V1_CANDIDATE/COLLAR_SCALE_BACKFILL_LEDGER_V1.json",
+  "rows_overlaid": 23,
+  "field": "collar_scale",
+  "rule": "KEY_OMITTED → governed observed state (OBSERVED value · UNKNOWN · NOT_VISIBLE); every other row and field byte-for-byte equal to V1"
+ },
+ "overlay_v2359": {
+  "sources": [
+   "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_REALIZATION_BACKFILL_V2_CANDIDATE/CUFF_SCALE_BACKFILL_LEDGER_V2.json",
+   "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_REALIZATION_BACKFILL_V2_CANDIDATE/SLEEVE_VOLUME_BACKFILL_LEDGER_V1.json"
+  ],
+  "rule": "KEY_OMITTED → governed observed state (OBSERVED value · UNKNOWN · NOT_VISIBLE); every other row and field byte-for-byte equal to V2",
+  "cuff_type_note": "cuff_type is not a realization key of this evidence (presence parameter) — it lives in the projection only"
+ }
+}

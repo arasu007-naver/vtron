@@ -1,0 +1,1430 @@
+{
+ "document": "19_REFERENCE_V2_CANDIDATE",
+ "name": "STMX_TC_REFERENCE_KNOWLEDGE_WHOLE_GRAMMAR_V2_CANDIDATE",
+ "status": "CANDIDATE · NOT FROZEN · NOT PRODUCTION · NOT SCORING AUTHORITY BY ITSELF · package-local",
+ "sprint": "V2.3.64",
+ "date": "2026-09-26",
+ "ceo_direction": "D-63 APPROVED (whole-grammar Reference model + conjunctive TC8 form as DESIGN DIRECTION; organization-level relations authored here as a CANDIDATE)",
+ "predecessors": {
+  "frozen_reference_text": {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md",
+   "sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+   "preserved": "byte-for-byte, untouched"
+  },
+  "constitutive_successor_v1": {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_61_CONSTITUTIVE_GRAMMAR_COVERAGE_V1_IMPLEMENTATION/07_REFERENCE_SUCCESSOR.json",
+   "sha256": "625f0193837a92feb573f9010dab2f4bddf618b3fea3d05cd754326216abb370",
+   "preserved": "untouched"
+  },
+  "projection_allowlist": {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V4_CANDIDATE/TC_UPSTREAM_TOKEN_PROJECTION_V4.json",
+   "projected_tokens": [
+    "attachment",
+    "closure_type",
+    "collar",
+    "collar_scale",
+    "cuff_scale",
+    "cuff_type",
+    "decorative_detail",
+    "fit",
+    "graphic",
+    "length",
+    "material",
+    "pattern",
+    "pocket",
+    "pocket_projection",
+    "shoulder_structure",
+    "silhouette",
+    "sleeve_volume",
+    "surface"
+   ]
+  }
+ },
+ "rule": "criteria only; every executable criterion cites a Reference line that occurs exactly once in its key section (build refuses otherwise); no counts / weights / thresholds; unsupported relations = REFERENCE_AUTHORITY_INSUFFICIENT; no REF · tier · expected state",
+ "block_schema": {
+  "A_identity_bearing": "relations necessary for the archetype to remain traceable (roles: TRACEABILITY_BEARING · ORGANIZING [with constituents] · IDENTITY_CONSTITUENT)",
+  "B_organizational_relation": "how the identity relations work together as ONE grammar",
+  "C_dependencies": "which relation organizes / depends on / is realized within another",
+  "D_supporting_conventional": "relations that vary without reorganizing identity",
+  "E_local_reconstruction_tolerance": "which relations may be transformed while the original whole organization remains principal",
+  "F_whole_organization_reorganization": "what relational reorganization substantially dismantles / reorganizes the original grammar while the archetype remains traceable"
+ },
+ "organization_model": {
+  "name": "WHOLE_GRAMMAR_ORGANIZATION_MODEL_V2_CANDIDATE",
+  "compositions": {
+   "ARCHETYPE_GRAMMAR": {
+    "applies_to": [
+     "JACKET:Tailored",
+     "JACKET:Casual",
+     "JACKET:Utility",
+     "COAT:Tailored",
+     "COAT:Casual",
+     "COAT:Utility"
+    ],
+    "statement": "An outerwear key is a composition of an ARCHETYPE relation (the short / long outerwear body — jacket and coat are separated by length) and a GRAMMAR relation (the tailored / casual / utility register that organizes that body). The archetype relation bears traceability; the grammar relation bears the organization (\"Short / Long outerwear IN the <register> — the <register> grammar\").",
+    "basis": [
+     {
+      "reference_line": "L19",
+      "quote": "the reference is selected by archetype (+ grammar for outerwear), not by product category label"
+     },
+     {
+      "reference_line": "L1305",
+      "quote": "The jacket and coat categories are separated by length, so the coat domain begins where the jacket domain ends"
+     },
+     {
+      "reference_line": "L916",
+      "quote": "Short outerwear in the casual register — the everyday non-tailored jacket grammar"
+     },
+     {
+      "reference_line": "L1101",
+      "quote": "Long outerwear in the tailored register — the tailored-coat grammar"
+     }
+    ]
+   },
+   "CONJUNCTION": {
+    "applies_to": [
+     "tshirt",
+     "shirt",
+     "sweater",
+     "sweatshirt",
+     "trouser",
+     "skirt"
+    ],
+    "statement": "A non-outerwear key names its archetype as a conjunction of identity constituents (\"the X garment with Y and Z\"); no frozen authority names a grammar / register relation distinct from the constituents (the trouser register is explicitly \"a governed observation inside the one key, not a set of separate archetypes\"; the sweatshirt \"athletic origin\" is provenance). Traceability and organization are therefore carried by the SAME relations — they are NOT SEPARABLE on frozen authority.",
+    "basis": [
+     {
+      "reference_line": "L419",
+      "quote": "Its register — tailored, casual, sport, jeans, leggings — is a governed observation inside the one key, not a set of separate archetypes"
+     },
+     {
+      "reference_line": "L428",
+      "quote": "`trouser_distinction` across its full governed range is register, not departure"
+     },
+     {
+      "reference_line": "L336",
+      "quote": "The pulled-on jersey/fleece upper-body garment of athletic origin"
+     }
+    ]
+   },
+   "ONE_PIECE_COMPOSITION": {
+    "applies_to": [
+     "dress",
+     "jumpsuit"
+    ],
+    "statement": "A one-piece key names a JOINING relation (upper body joined to a lower body across a waist) organizing two body relations — a textually separable organization whose joining relation has no executable carrier (waist_definition is not projected).",
+    "basis": [
+     {
+      "reference_line": "L565",
+      "quote": "The one-piece garment joining an upper body and a skirt body across a waist"
+     },
+     {
+      "reference_line": "L651",
+      "quote": "It shares the one-piece composition principle with the dress but takes the trouser lower vocabulary"
+     }
+    ]
+   }
+  },
+  "roles": {
+   "TRACEABILITY_BEARING": "the relation whose presence keeps the archetype traceable (outerwear: the archetype body)",
+   "ORGANIZING": "the relation that organizes the archetype body into THIS grammar (outerwear: the register); its constituents are the register's named build elements",
+   "IDENTITY_CONSTITUENT": "a conjunction member of a non-separable key (bears both traceability and organization)",
+   "CONSTITUTIVE_FROZEN": "a CEO Q8 / V2.3.61 constitutive system not named by the intro (supporting)",
+   "SUPPORTING_CONVENTIONAL": "conventional realization listed by the Reference; may vary without reorganizing identity"
+  },
+  "relation_status_rule": "per relation: RETAINED iff every executable evidence RETAINED · SUBORDINATED iff some SUBORDINATED and none DISPLACED (present, re-proportioned) · DISPLACED iff some DISPLACED (the Reference form of the relation is replaced) · UNRESOLVED iff any executable evidence UNRESOLVED or no executable evidence. NOT_EXECUTABLE evidence is recorded, never assumed.",
+  "organizing_relation_status_rule": "ORGANIZING relation (register) over its constituents: PRESENT iff some executable constituent is RETAINED / SUBORDINATED · DISPLACED iff every constituent is executable and DISPLACED · UNRESOLVED otherwise (including: every executable constituent DISPLACED while some constituent is NOT_EXECUTABLE — fail closed). Universal / existential quantification only; no count.",
+  "whole_organization_reorganization_criterion": "F (outerwear keys): the original grammar is substantially dismantled / reorganized iff the ORGANIZING relation is DISPLACED while the TRACEABILITY-BEARING relation remains present (RETAINED / SUBORDINATED). Non-separable keys: NOT EXECUTABLE — dismantling the identity constituents removes traceability, so the frozen TC8 conjunction (traceable ∧ dismantled) cannot be evaluated; fail closed (PROPOSED_UNRESOLVED).",
+  "what_the_model_refuses": [
+   "counts / weights / thresholds",
+   "a criterion without a verbatim Reference citation (build fails)",
+   "REF identity · tier labels · any per-item Grammar State answer (G61)",
+   "a second whole-garment Statement layer (G48)",
+   "new canonical vocabulary — roles are authoring metadata inside existing Reference criteria"
+  ]
+ },
+ "keys": {
+  "COAT:Casual": {
+   "composition": "ARCHETYPE_GRAMMAR",
+   "intro": {
+    "reference_line": "L1271",
+    "quote": "Long outerwear in the casual register — the soft, non-tailored long-outerwear grammar"
+   },
+   "A_identity_bearing": {
+    "long_outerwear_body": {
+     "role": "TRACEABILITY_BEARING",
+     "meaning": "LONG OUTERWEAR: a front-opening outerwear body worn over other garments whose length lies in the coat envelope (the coat domain begins where the jacket domain ends)",
+     "evidence": [
+      {
+       "kind": "channel_body",
+       "channel": "proportion",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      },
+      {
+       "kind": "channel_body",
+       "channel": "construction",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L1271",
+       "quote": "Long outerwear in the casual register"
+      },
+      {
+       "reference_line": "L1301",
+       "quote": "CONVENTIONAL LENGTH ENVELOPE — `Hip Length · Thigh Length · Knee Length · Maxi Length` are all conventional for this grammar"
+      },
+      {
+       "reference_line": "L1305",
+       "quote": "The jacket and coat categories are separated by length, so the coat domain begins where the jacket domain ends"
+      },
+      {
+       "reference_line": "L1318",
+       "quote": "Conventional realization: zip, snap or button front with any governed extent; stand, shirt or absent collar; hood present or absent; applied or inset pockets; soft to semi-structured fabric behaviour"
+      }
+     ]
+    },
+    "casual_register": {
+     "role": "ORGANIZING",
+     "meaning": "the CASUAL register that organizes the long outerwear body: a soft, non-tailored build — its named executable constituent is the ordinary (soft) outerwear shoulder; the tailored build (lapel · breasted button front · structured shoulder) is what it is NOT built on",
+     "constituents": {
+      "soft_shoulder": {
+       "evidence": [
+        {
+         "kind": "constitutive_system",
+         "system": "soft_shoulder_system",
+         "origin": "REFERENCE_SUCCESSOR_V1 (V2.3.61)"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L1271",
+         "quote": "the soft, non-tailored long-outerwear grammar"
+        },
+        {
+         "reference_line": "L1276",
+         "quote": "`shoulder_structure ∈ {None, Mild}` — ordinary outerwear shoulder construction"
+        },
+        {
+         "reference_line": "L1290",
+         "quote": "`shoulder_structure ∈ {Strong, Extreme}` — power shoulder, a governed Silhouette departure grammar"
+        }
+       ]
+      }
+     },
+     "alternative_reading_R_B": {
+      "constituent": "soft_cloth",
+      "evidence": [
+       {
+        "kind": "NOT_EXECUTABLE",
+        "token": "fabric_behavior",
+        "why": "token not in the GT-free projection allowlist (V4)"
+       }
+      ],
+      "why": "AUTHORITY AMBIGUITY (recorded, not resolved here): \"soft\" in the intro can be read as soft construction (the shoulder — reading R-A, adopted as primary because \"soft to semi-structured fabric behaviour\" is listed with the closure / collar / hood / pocket conventional realizations, none of which is a register constituent) or as soft cloth (reading R-B). Under R-B the register has a NOT_EXECUTABLE constituent and can never read DISPLACED (fail closed). Both readings are preregistered and reported; the CEO rules (53_).",
+      "basis": [
+       {
+        "reference_line": "L1318",
+        "quote": "soft to semi-structured fabric behaviour; any governed material or surface"
+       }
+      ]
+     },
+     "basis": [
+      {
+       "reference_line": "L1326",
+       "quote": "Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key beyond the per-archetype vocabulary narrowing already applied. The JACKET:Tailored semantics are NOT copied by analogy"
+      }
+     ]
+    }
+   },
+   "B_organizational_relation": {
+    "status": "AUTHORED",
+    "statement": "The casual register ORGANIZES the long outerwear body (\"Long outerwear IN the casual register\"): the body is what the garment IS (coat); the register is HOW that body is built (soft, non-tailored). The register presupposes the body; the body does not presuppose the register (COAT:Tailored · COAT:Casual · COAT:Utility share the body relation and differ only in register).",
+    "basis": [
+     {
+      "reference_line": "L1271",
+      "quote": "Long outerwear in the casual register — the soft, non-tailored long-outerwear grammar"
+     },
+     {
+      "reference_line": "L19",
+      "quote": "the reference is selected by archetype (+ grammar for outerwear), not by product category label"
+     }
+    ]
+   },
+   "C_dependencies": [
+    {
+     "relation": "casual_register",
+     "depends_on": "long_outerwear_body",
+     "kind": "ORGANIZES",
+     "why": "a register without an outerwear body is not a coat grammar; the body carries traceability independently of the register"
+    },
+    {
+     "relation": "supporting relations",
+     "depends_on": "casual_register",
+     "kind": "REALIZED_WITHIN",
+     "why": "closure · collar · hood · pockets · belt · waist · sleeve length are conventional realizations of the register, not organizers of it"
+    }
+   ],
+   "D_supporting_conventional": {
+    "front_closure": {
+     "why": "zip / snap / button front with any governed extent — conventional; no constitutive closure system on this key",
+     "basis": [
+      {
+       "reference_line": "L1320",
+       "quote": "`zipper` and `full opening` are named in the frozen C-1 conventional list"
+      }
+     ]
+    },
+    "collar_hood_pocket": {
+     "why": "stand / shirt / absent collar; hood present or absent; applied or inset pockets — conventional realization"
+    },
+    "belt_hardware": {
+     "why": "universal functional attachments — conventional on every key",
+     "basis": [
+      {
+       "reference_line": "L41",
+       "quote": "UNIVERSAL FUNCTIONAL `Belt` · `Metal Hardware` → conventional on every key"
+      }
+     ]
+    },
+    "waist_relation": {
+     "why": "waist_definition is applicable but no conventional value is stated and the carrier is not projected",
+     "basis": [
+      {
+       "reference_line": "L1284",
+       "quote": "`waist_definition` is applicable across this key's whole length domain, because every coat zone is Hip Length or longer"
+      }
+     ]
+    },
+    "sleeve_length": {
+     "why": "native variation",
+     "basis": [
+      {
+       "reference_line": "L1309",
+       "quote": "The full governed outerwear `sleeve` range is native sleeve-length variation"
+      }
+     ]
+    },
+    "fabric_behaviour_material_surface": {
+     "why": "soft to semi-structured fabric behaviour; any governed material or surface; padding / quilting are material / surface observations (see alternative reading R-B above)",
+     "basis": [
+      {
+       "reference_line": "L1332",
+       "quote": "`Padding` is a material and quilting is a surface; neither constitutes a distinct archetype and neither fires Construction alone"
+      }
+     ]
+    }
+   },
+   "E_local_reconstruction_tolerance": {
+    "statement": "The original organization remains principal while the casual register still organizes the body: any supporting relation may be transformed (closure · collar · hood · pockets · belt · waist · sleeve length / volume · material / surface); the body may be re-proportioned (Oversized fit; any conventional length; a Proportion departure) or reconstructed through construction (hybrid / transplant / pocket system) — these are modifications OF the casual coat organization. A departure on the shoulder that leaves the soft shoulder present (re-proportioning) is likewise a modification.",
+    "basis": [
+     {
+      "reference_line": "L1282",
+      "quote": "Preserved shoulder structure does not cancel an established Oversized reading — the frozen anti-reduction row says so explicitly"
+     },
+     {
+      "reference_line": "L1288",
+      "quote": "`fit = Oversized` — frozen TRUE, sufficient on its own"
+     }
+    ]
+   },
+   "F_whole_organization_reorganization": {
+    "status": "AUTHORED (FORM) · THIN-KEY ARTEFACT DISCLOSED",
+    "criterion": "The original Casual Coat grammar is substantially dismantled / reorganized iff the casual register no longer organizes the body — the register relation DISPLACED (every executable constituent replaced by its governed departure grammar) — while the long outerwear body remains present (traceable as a coat).",
+    "evidence_rule": "register DISPLACED per the organizing-relation status rule; body present per the traceability reading",
+    "thin_key_artefact": "the register has ONE executable constituent (soft shoulder) — the criterion therefore collapses, on this key, onto one system's DISPLACED status; this is a Reference-content limitation (the register is defined negatively against the tailored build), not a rule. Reported per §38; the alternative reading R-B makes the criterion NOT EXECUTABLE.",
+    "basis": [
+     {
+      "reference_line": "L1290",
+      "quote": "`shoulder_structure ∈ {Strong, Extreme}` — power shoulder, a governed Silhouette departure grammar. `Extreme` is a legitimate canonical state"
+     }
+    ]
+   },
+   "separability": "SEPARABLE",
+   "whole_organization_status": "WHOLE_ORGANIZATION_AUTHORABLE_NOW (thin executable register)"
+  },
+  "JACKET:Casual": {
+   "composition": "ARCHETYPE_GRAMMAR",
+   "intro": {
+    "reference_line": "L916",
+    "quote": "Short outerwear in the casual register — the everyday non-tailored jacket grammar, typically built on a zip or snap front, ribbed or plain hem finishes and a soft shoulder"
+   },
+   "A_identity_bearing": {
+    "short_outerwear_body": {
+     "role": "TRACEABILITY_BEARING",
+     "meaning": "SHORT OUTERWEAR: a front-opening outerwear body worn over other garments whose hem lies in the waist / hip zone (Cropped is a Proportion departure — a re-proportioned body, still a jacket body)",
+     "evidence": [
+      {
+       "kind": "channel_body",
+       "channel": "proportion",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      },
+      {
+       "kind": "channel_body",
+       "channel": "construction",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L916",
+       "quote": "Short outerwear in the casual register"
+      },
+      {
+       "reference_line": "L944",
+       "quote": "CONVENTIONAL LENGTH ENVELOPE — `Waist Length` → FALSE · `Hip Length` → FALSE"
+      },
+      {
+       "reference_line": "L956",
+       "quote": "`length = Cropped` → Proportion Departure TRUE"
+      },
+      {
+       "reference_line": "L965",
+       "quote": "Conventional realization: a zip, snap or button front with any governed extent; a stand, shirt or absent collar; rib hem and rib cuff present or absent; hood present or absent; applied or inset pockets with a flat or projected reading; soft to semi-structured fabric behaviour"
+      }
+     ]
+    },
+    "casual_register": {
+     "role": "ORGANIZING",
+     "meaning": "the CASUAL register organizing the short outerwear body: the everyday non-tailored build whose named executable constituent is the soft shoulder. The intro's \"typically built on a zip or snap front, ribbed or plain hem finishes\" is qualified by \"typically\" and by CEO §19 (no constitutive construction system; Zipper not automatically a departure) — the front and the hem finish are conventional realizations, not register constituents.",
+     "constituents": {
+      "soft_shoulder": {
+       "evidence": [
+        {
+         "kind": "constitutive_system",
+         "system": "soft_shoulder_system",
+         "origin": "REFERENCE_SUCCESSOR_V1 (V2.3.61)"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L916",
+         "quote": "and a soft shoulder"
+        },
+        {
+         "reference_line": "L921",
+         "quote": "`shoulder_structure ∈ {None, Mild}` — ordinary outerwear shoulder construction"
+        },
+        {
+         "reference_line": "L933",
+         "quote": "`shoulder_structure ∈ {Strong, Extreme}` — power shoulder, a governed Silhouette departure grammar"
+        }
+       ]
+      }
+     },
+     "not_constituents": {
+      "zip_or_snap_front": {
+       "why": "AUTHORITY CONFLICT resolved fail-closed: the intro lists it (\"typically built on\"), CEO §19 rules no constitutive construction system and Zipper not automatically a departure → conventional realization",
+       "basis": [
+        {
+         "reference_line": "L916",
+         "quote": "typically built on a zip or snap front"
+        },
+        {
+         "reference_line": "L975",
+         "quote": "Existing authority identifies no constitutive construction system for this grammar; the V1 conventional set stands and C-1 applies to it"
+        }
+       ]
+      },
+      "hem_finish": {
+       "why": "\"ribbed or plain\" — both conventional; rib_hem not projected",
+       "basis": [
+        {
+         "reference_line": "L916",
+         "quote": "ribbed or plain hem finishes"
+        }
+       ]
+      }
+     },
+     "alternative_reading_R_B": {
+      "constituent": "soft_cloth",
+      "evidence": [
+       {
+        "kind": "NOT_EXECUTABLE",
+        "token": "fabric_behavior",
+        "why": "token not in the GT-free projection allowlist (V4)"
+       }
+      ],
+      "why": "same ambiguity as COAT:Casual (\"soft\" = construction vs cloth); preregistered sensitivity"
+     }
+    }
+   },
+   "B_organizational_relation": {
+    "status": "AUTHORED",
+    "statement": "The casual register organizes the short outerwear body; the body carries traceability (jacket vs coat by length); the register presupposes the body.",
+    "basis": [
+     {
+      "reference_line": "L916",
+      "quote": "Short outerwear in the casual register — the everyday non-tailored jacket grammar"
+     }
+    ]
+   },
+   "C_dependencies": [
+    {
+     "relation": "casual_register",
+     "depends_on": "short_outerwear_body",
+     "kind": "ORGANIZES"
+    },
+    {
+     "relation": "zip / snap front · hem finish · collar · hood · pockets · rib cuff",
+     "depends_on": "casual_register",
+     "kind": "REALIZED_WITHIN"
+    }
+   ],
+   "D_supporting_conventional": {
+    "front_closure": {
+     "why": "zip bomber is conventional; corduroy collar on a barn / chore jacket is conventional",
+     "basis": [
+      {
+       "reference_line": "L969",
+       "quote": "`zipper` is named in the frozen C-1 conventional list, and the frozen guardrail adds that a zip bomber is conventional"
+      }
+     ]
+    },
+    "hem_and_cuff_finish": {
+     "why": "rib hem / rib cuff present or absent"
+    },
+    "collar_hood_pocket": {
+     "why": "stand / shirt / absent collar; hood; applied / inset pockets flat or projected",
+     "basis": [
+      {
+       "reference_line": "L981",
+       "quote": "Hood presence is a governed mandatory observation for this category and is conventional realization, not evidence"
+      }
+     ]
+    },
+    "product_names": {
+     "why": "bomber · barn · chore · biker · moto carry no authority",
+     "basis": [
+      {
+       "reference_line": "L983",
+       "quote": "⛔ Product names — bomber, barn, chore, biker, moto — are not grammar and may not be scored"
+      }
+     ]
+    }
+   },
+   "E_local_reconstruction_tolerance": {
+    "statement": "Original organization principal while the soft shoulder still organizes: Cropped / Oversized / sleeve volume / closure / collar / hood / pocket / material transformations and construction reconstructions (sectional body hybrid, transplant) are modifications of the casual jacket organization.",
+    "basis": [
+     {
+      "reference_line": "L967",
+      "quote": "a corduroy collar on a barn/chore jacket is the archetype's conventional realization — two materials, and still C-1 FALSE"
+     },
+     {
+      "reference_line": "L987",
+      "quote": "Hybridisation (C-3): two or more distinct garment / construction / material-construction systems integrated into one hybrid identity"
+     }
+    ]
+   },
+   "F_whole_organization_reorganization": {
+    "status": "AUTHORED (FORM) · THIN-KEY ARTEFACT DISCLOSED",
+    "criterion": "Dismantled / reorganized iff the casual register is DISPLACED (soft shoulder replaced by the power-shoulder grammar; under R-B also the cloth) while the short outerwear body remains present.",
+    "thin_key_artefact": "one executable constituent — same disclosure as COAT:Casual"
+   },
+   "separability": "SEPARABLE",
+   "whole_organization_status": "WHOLE_ORGANIZATION_AUTHORABLE_NOW (thin executable register)"
+  },
+  "sweatshirt": {
+   "composition": "CONJUNCTION",
+   "intro": {
+    "reference_line": "L336",
+    "quote": "The pulled-on jersey/fleece upper-body garment of athletic origin. The hooded realization is this archetype plus a hood, not a separate garment"
+   },
+   "A_identity_bearing": {
+    "upper_body_organization": {
+     "role": "IDENTITY_CONSTITUENT",
+     "meaning": "a PULLED-ON upper body: front organization (none / partial / full opening with a governed closure; zip-through = governed combination), neckline (crew / funnel), rib finishes, hood and pocket are its conventional realization",
+     "evidence": [
+      {
+       "kind": "channel_conventionality",
+       "channel": "construction",
+       "reading": "RETAINED iff the frozen Step 2 verdict on this channel is FALSE; DISPLACED (departed) iff TRUE; UNRESOLVED otherwise"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L387",
+       "quote": "Rib cuff and rib hem, a crew or funnel neckline, a partial or full front opening with a governed closure, and any governed material or surface — conventional realization"
+      },
+      {
+       "reference_line": "L399",
+       "quote": "A zip-through realization is a governed front-opening + closure combination, not a new grammar"
+      },
+      {
+       "reference_line": "L383",
+       "quote": "Hood present or absent is conventional: \"Hoodie = Sweatshirt + Hood Present · 별도 Category 아님\""
+      }
+     ]
+    },
+    "jersey_fleece_body": {
+     "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+     "why": "\"jersey / fleece\" names a knit body construction; no governed token carries it (material tokens are fibre, not construction) — NOT_EXECUTABLE",
+     "basis": []
+    },
+    "athletic_origin": {
+     "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+     "why": "a register / provenance statement, not an observable relation — the sweatshirt has NO organizing register distinct from its body constituent",
+     "basis": []
+    }
+   },
+   "sleeve_audit": {
+    "verdict": "SUPPORTING (CONSTITUTIVE_FROZEN) — verified independently of any anchor",
+    "why": "the intro does not name the sleeve; the sleeve appears only in the departure grammar (\"Replacement of the shoulder / sleeve architecture itself\") and in the native-variation line (\"The full governed `sleeve` range is native sleeve-length variation\"); its scale (Voluminous) is \"never an automatic trigger\". Its importance is NOT upgraded.",
+    "evidence": [
+     {
+      "kind": "constitutive_system",
+      "system": "sleeve_system",
+      "origin": "REFERENCE_SUCCESSOR_V1 (V2.3.61)"
+     }
+    ],
+    "basis": [
+     {
+      "reference_line": "L353",
+      "quote": "Replacement of the shoulder / sleeve architecture itself (the architecture, not its scale) — preserved Silhouette evidence"
+     },
+     {
+      "reference_line": "L370",
+      "quote": "The full governed `sleeve` range is native sleeve-length variation"
+     },
+     {
+      "reference_line": "L355",
+      "quote": "`sleeve_volume = Voluminous` — preserved Silhouette morphology; read as a departure-eligible morphology, never as an automatic trigger"
+     }
+    ]
+   },
+   "B_organizational_relation": {
+    "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+    "why": "no frozen authority names a relation that organizes the pulled-on body other than the body itself; \"athletic origin\" is provenance and \"jersey / fleece\" is not executable — traceability and organization are carried by ONE constituent",
+    "basis": [
+     {
+      "reference_line": "L393",
+      "quote": "Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key beyond the per-archetype vocabulary narrowing already applied"
+     }
+    ]
+   },
+   "C_dependencies": [
+    {
+     "relation": "sleeve_system · hood · neckline · rib finishes · pocket · front opening",
+     "depends_on": "upper_body_organization",
+     "kind": "REALIZED_WITHIN"
+    }
+   ],
+   "D_supporting_conventional": {
+    "hood": {
+     "why": "archetype plus a hood"
+    },
+    "pocket": {
+     "why": "kangaroo pocket named as conventional example",
+     "basis": [
+      {
+       "reference_line": "L385",
+       "quote": "A pocket present or absent is conventional, and the kangaroo pocket is named as an example of the conventional realization rather than as a separate vocabulary item"
+      }
+     ]
+    },
+    "neckline_rib_front": {
+     "why": "crew / funnel; rib cuff / hem; partial / full opening with governed closure"
+    },
+    "graphic_surface": {
+     "why": "DM / EI, not TC",
+     "basis": [
+      {
+       "reference_line": "L401",
+       "quote": "Graphic dominance of any magnitude is DM/EI, not TC"
+      }
+     ]
+    }
+   },
+   "E_local_reconstruction_tolerance": {
+    "statement": "Original organization principal while the pulled-on body organization holds: sleeve architecture re-proportioned (Voluminous) or replaced, Oversized / Cropped body, hood / pocket / neckline / front variations, material / surface changes are modifications of the sweatshirt organization.",
+    "basis": [
+     {
+      "reference_line": "L351",
+      "quote": "`fit = Oversized` — frozen TRUE. Sufficient on its own, and it is not cancelled by a preserved shoulder structure"
+     }
+    ]
+   },
+   "F_whole_organization_reorganization": {
+    "status": "NOT EXECUTABLE — NOT SEPARABLE",
+    "criterion": "The frozen text describes whole-identity change only as C-2 recontextualisation (\"tailoring or formal construction grammar imported into the athletic body so that the reading is recontextualised\") and C-3 combined identity — both are Step 2 Construction departures whose CEO-integrated instances sit at TC6 / pending, so they are NOT a TC8 criterion. With a single identity constituent, dismantling it removes traceability; the TC8 conjunction (traceable ∧ dismantled) cannot be evaluated → fail closed.",
+    "basis": [
+     {
+      "reference_line": "L403",
+      "quote": "Transplantation (C-2): tailoring or formal construction grammar imported into the athletic body so that the reading is recontextualised"
+     },
+     {
+      "reference_line": "L405",
+      "quote": "Hybridisation (C-3): the sweatshirt system integrated with a distinct outerwear or tailoring construction system into one combined identity"
+     }
+    ]
+   },
+   "separability": "NOT_SEPARABLE",
+   "whole_organization_status": "PARTIAL_ONLY (A · D · E authorable; B · F REFERENCE_AUTHORITY_INSUFFICIENT)"
+  },
+  "trouser": {
+   "composition": "CONJUNCTION",
+   "intro": {
+    "reference_line": "L419",
+    "quote": "The two-leg lower-body garment"
+   },
+   "A_identity_bearing": {
+    "leg_division": {
+     "role": "IDENTITY_CONSTITUENT",
+     "meaning": "the two-leg division of the lower body; every governed lower geometry (Straight / Flared / Tapered) keeps it; its realization is the leg ease (fit) — Voluminous re-proportions it, it is not special",
+     "evidence": [
+      {
+       "kind": "constitutive_system",
+       "system": "leg_system",
+       "origin": "REFERENCE_SUCCESSOR_V1 (V2.3.61)"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L424",
+       "quote": "Lower Geometry `silhouette ∈ {Straight, Flared, Tapered}` is objective directional morphology and is not by itself a Silhouette departure for this key"
+      },
+      {
+       "reference_line": "L434",
+       "quote": "Architectural sculpting of the lower body form — a form built rather than fitted — is a governed Silhouette grammar"
+      }
+     ]
+    },
+    "lower_body_coverage": {
+     "role": "IDENTITY_CONSTITUENT",
+     "meaning": "a lower-body garment whose length lies in the trouser envelope (Short … Full Length all conventional; Extended Length observation only)",
+     "evidence": [
+      {
+       "kind": "channel_conventionality",
+       "channel": "proportion",
+       "reading": "RETAINED iff the frozen Step 2 verdict on this channel is FALSE; DISPLACED (departed) iff TRUE; UNRESOLVED otherwise"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L443",
+       "quote": "CONVENTIONAL LENGTH ENVELOPE — `Short · Knee Length · Calf · Ankle · Full Length` are all conventional trouser length variations"
+      },
+      {
+       "reference_line": "L445",
+       "quote": "`length = Extended Length` — observation only, NOT an automatic Proportion Departure trigger"
+      }
+     ]
+    },
+    "rise_upper_control": {
+     "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+     "why": "rise / vertical waist placement / upper control — accepted residual gap, no governed carrier; no new Producer parameter is created (D-61-2 untouched)",
+     "basis": [
+      {
+       "reference_line": "L455",
+       "quote": "Trouser rise / vertical waist placement is an accepted residual gap"
+      }
+     ]
+    },
+    "volume_distribution_termination": {
+     "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+     "why": "volume distribution and termination are carried inside leg_division (fit realization · lower geometry) and lower_body_coverage (length) — no separate relation authority",
+     "basis": []
+    }
+   },
+   "B_organizational_relation": {
+    "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+    "why": "the register (tailored · casual · sport · jeans · leggings) is explicitly a governed observation inside the one key and \"register, not departure\" — it does NOT organize the archetype; no other organizing relation is named → traceability and organization are the same constituents",
+    "basis": [
+     {
+      "reference_line": "L428",
+      "quote": "A jeans or legging register is native identity, and product-name taxonomy is forbidden"
+     }
+    ]
+   },
+   "C_dependencies": [
+    {
+     "relation": "pocket organisation · material · surface · attachment",
+     "depends_on": "leg_division + lower_body_coverage",
+     "kind": "REALIZED_WITHIN",
+     "basis": [
+      {
+       "reference_line": "L458",
+       "quote": "This key has no governed closure, collar, cuff or front-opening carrier at all — \"Trouser/Skirt N/A\" for closure applicability. Its construction carriers are pocket organisation, material, surface, attachment, asymmetry and fabric behaviour"
+      }
+     ]
+    }
+   ],
+   "D_supporting_conventional": {
+    "pocket_organisation": {
+     "why": "Inset / Applied; Flat / Projected / Volumetric conventional; cargo pair conventional",
+     "basis": [
+      {
+       "reference_line": "L460",
+       "quote": "Pocket construction `Inset · Applied` and projection `Flat · Projected · Volumetric` across their full governed range are conventional pocket organisation for this key"
+      },
+      {
+       "reference_line": "L472",
+       "quote": "A cargo pocket is conventional on a cargo trouser — the frozen guardrail names exactly this case"
+      }
+     ]
+    },
+    "register": {
+     "why": "register, not departure"
+    },
+    "material": {
+     "why": "Denim is material, not archetype",
+     "basis": [
+      {
+       "reference_line": "L474",
+       "quote": "`material = Denim` is material, not a distinct archetype; `Jeans` is a governed trouser register and `jeans` is a display-only category"
+      }
+     ]
+    }
+   },
+   "E_local_reconstruction_tolerance": {
+    "statement": "Original organization principal while the two-leg division and lower-body coverage hold: Oversized / Voluminous leg ease, Flared-contrast, any conventional length, pocket-system reconstruction, material change are modifications of the trouser organization (Voluminous is not special — leg_system realization re-proportioned, present).",
+    "basis": [
+     {
+      "reference_line": "L432",
+      "quote": "`fit = Oversized` — frozen TRUE"
+     },
+     {
+      "reference_line": "L438",
+      "quote": "`silhouette = Flared` ∧ `fit = Slim` — bootcut / flare lower-body reinterpretation → Silhouette TRUE (CEO §4.1). Flared alone FALSE; Slim alone FALSE; rise not carried (accepted residual)"
+     }
+    ]
+   },
+   "F_whole_organization_reorganization": {
+    "status": "NOT EXECUTABLE — NOT SEPARABLE",
+    "criterion": "Dismantling the leg division = losing the trouser archetype (skirt / one-piece territory); the register cannot be an organizing relation; C-2 / C-3 lines describe Construction departures, not TC8. Fail closed.",
+    "basis": [
+     {
+      "reference_line": "L478",
+      "quote": "Hybridisation (C-3): the trouser system integrated with a distinct second garment or construction system into one identity"
+     },
+     {
+      "reference_line": "L480",
+      "quote": "R1: a component system that materially reorganises this archetype's conventional realization — the frozen wording is \"materially reorganizes\", never \"is present\""
+     }
+    ]
+   },
+   "separability": "NOT_SEPARABLE",
+   "whole_organization_status": "PARTIAL_ONLY (A · D · E authorable; B · F REFERENCE_AUTHORITY_INSUFFICIENT)"
+  },
+  "shirt": {
+   "composition": "CONJUNCTION",
+   "intro": {
+    "reference_line": "L166",
+    "quote": "The buttoned upper-body garment with a collar and a front opening — men's shirt and women's blouse are one archetype, not two"
+   },
+   "A_identity_bearing": {
+    "buttoned_front": {
+     "role": "IDENTITY_CONSTITUENT",
+     "meaning": "a front opening closed by buttons; full-length buttoning is the defining conventional realization",
+     "evidence": [
+      {
+       "kind": "constitutive_system",
+       "system": "closure_system",
+       "origin": "D7_BASELINE_FROZEN"
+      },
+      {
+       "kind": "constitutive_system",
+       "system": "front_opening_extent",
+       "origin": "D7_BASELINE_FROZEN"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L215",
+       "quote": "full-length buttoning is this archetype's defining conventional realization"
+      }
+     ]
+    },
+    "collar": {
+     "role": "IDENTITY_CONSTITUENT",
+     "meaning": "a collar from the full Collar Shape Library (the archetype that owns collar variety); collar = None departs; Enlarged re-proportions",
+     "evidence": [
+      {
+       "kind": "constitutive_system",
+       "system": "collar_system",
+       "origin": "REFERENCE_SUCCESSOR_V1 (V2.3.61)"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L213",
+       "quote": "Collar: the full Collar Shape Library is conventional for this key — this is the archetype that owns collar variety"
+      }
+     ]
+    },
+    "upper_body": {
+     "role": "IDENTITY_CONSTITUENT",
+     "meaning": "an upper-body garment of conventional length (Regular / Long); Cropped departs",
+     "evidence": [
+      {
+       "kind": "channel_conventionality",
+       "channel": "proportion",
+       "reading": "RETAINED iff the frozen Step 2 verdict on this channel is FALSE; DISPLACED (departed) iff TRUE; UNRESOLVED otherwise"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L198",
+       "quote": "`length = Long` — token alone is FALSE; Long may remain conventional archetype variation"
+      },
+      {
+       "reference_line": "L204",
+       "quote": "`length = Cropped` → Proportion Departure TRUE. For the four TOP archetypes, Cropped IS archetype-relative body shortening and a meaningful Proportion Departure"
+      }
+     ]
+    }
+   },
+   "B_organizational_relation": {
+    "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+    "why": "the intro is a conjunction (\"with a collar and a front opening\"); no organizing relation distinct from the constituents is named; no register",
+    "basis": []
+   },
+   "C_dependencies": [
+    {
+     "relation": "cuff · placket · pocket · button configuration",
+     "depends_on": "buttoned_front + collar + upper_body",
+     "kind": "REALIZED_WITHIN",
+     "basis": [
+      {
+       "reference_line": "L229",
+       "quote": "Patch or welt pocket, button configuration and placket variants are conventional options and do not fire Construction on their own"
+      }
+     ]
+    }
+   ],
+   "D_supporting_conventional": {
+    "cuff": {
+     "why": "French cuff present or absent conventional; ordinary sleeve endings not observed as a cuff",
+     "basis": [
+      {
+       "reference_line": "L217",
+       "quote": "French cuff present or absent is conventional; ordinary sleeve endings are not observed as a cuff, and no barrel/button-cuff taxonomy exists"
+      }
+     ]
+    },
+    "sleeve_length": {
+     "why": "native",
+     "basis": [
+      {
+       "reference_line": "L200",
+       "quote": "The full governed `sleeve` range is native sleeve-length variation"
+      }
+     ]
+    }
+   },
+   "E_local_reconstruction_tolerance": {
+    "statement": "Original organization principal while the buttoned front, the collar and the upper body hold: Oversized, Voluminous sleeve, Enlarged collar (re-proportioned), cuff / placket / pocket variation are modifications.",
+    "basis": [
+     {
+      "reference_line": "L181",
+      "quote": "`fit = Oversized` — frozen TRUE. Sufficient on its own, and it is not cancelled by a preserved shoulder structure"
+     }
+    ]
+   },
+   "F_whole_organization_reorganization": {
+    "status": "NOT EXECUTABLE — NOT SEPARABLE",
+    "criterion": "The whole-grammar model is expressible from existing authority for A · C · D · E; B and F are not: the frozen C-2 / C-3 / R1 lines are Construction-departure paths. Fail closed.",
+    "basis": [
+     {
+      "reference_line": "L233",
+      "quote": "Hybridisation (C-3): shirt grammar integrated with a distinct second system — shirt × sweater, shirt × jacket — inside one garment identity, not as layering"
+     },
+     {
+      "reference_line": "L235",
+      "quote": "A construction reorganisation that materially rewrites how this archetype fastens or is assembled — the R1 archetype-relative transformation path"
+     }
+    ]
+   },
+   "separability": "NOT_SEPARABLE",
+   "whole_organization_status": "PARTIAL_ONLY (control: A · C · D · E from existing authority; B · F REFERENCE_AUTHORITY_INSUFFICIENT)"
+  },
+  "JACKET:Tailored": {
+   "composition": "ARCHETYPE_GRAMMAR",
+   "intro": {
+    "reference_line": "L734",
+    "quote": "built on a lapel collar, a breasted button front and a structured shoulder"
+   },
+   "A_identity_bearing": {
+    "short_outerwear_body": {
+     "role": "TRACEABILITY_BEARING",
+     "meaning": "SHORT OUTERWEAR body (front-opening outerwear worn over other garments; length in the jacket envelope)",
+     "evidence": [
+      {
+       "kind": "channel_body",
+       "channel": "proportion",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      },
+      {
+       "kind": "channel_body",
+       "channel": "construction",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L734",
+       "quote": "Short outerwear in the tailored register"
+      }
+     ]
+    },
+    "tailored_register": {
+     "role": "ORGANIZING",
+     "meaning": "the TAILORED register organizing the outerwear body: built on a lapel collar, a breasted button front and a structured shoulder (three constituents; native variation inside them is not displacement)",
+     "constituents": {
+      "lapel_collar": {
+       "evidence": [
+        {
+         "kind": "constitutive_system",
+         "system": "lapel_system",
+         "origin": "D7_BASELINE_FROZEN"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L734",
+         "quote": "built on a lapel collar, a breasted button front and a structured shoulder"
+        }
+       ]
+      },
+      "breasted_button_front": {
+       "evidence": [
+        {
+         "kind": "constitutive_system",
+         "system": "closure_system",
+         "origin": "D7_BASELINE_FROZEN"
+        },
+        {
+         "kind": "constitutive_system",
+         "system": "front_opening_extent",
+         "origin": "D7_BASELINE_FROZEN"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L805",
+         "quote": "Single- or double-breasted buttoning · notch, peak or shawl lapel · lapel width · button count and configuration · welt or patch pockets — all native variation inside the three constitutive systems"
+        }
+       ]
+      },
+      "structured_shoulder": {
+       "evidence": [
+        {
+         "kind": "NOT_EXECUTABLE",
+         "token": "structured_shoulder",
+         "why": "no governed value DISPLACES a structured shoulder: {None, Mild} is the ordinary outerwear shoulder and {Strong, Extreme} is a power shoulder — still a structured shoulder (V2.3.60 S3 E1; V2.3.63 V2 correction)"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L739",
+         "quote": "`shoulder_structure ∈ {None, Mild}` — ordinary outerwear shoulder construction"
+        },
+        {
+         "reference_line": "L751",
+         "quote": "`shoulder_structure ∈ {Strong, Extreme}` — power shoulder, a governed Silhouette departure grammar"
+        }
+       ]
+      }
+     }
+    }
+   },
+   "constitutive_frozen_supporting": {
+    "sleeve_system": {
+     "evidence": [
+      {
+       "kind": "constitutive_system",
+       "system": "sleeve_system",
+       "origin": "D7_BASELINE_FROZEN"
+      }
+     ],
+     "why": "CEO Q8 constitutive system not named by the intro — supporting"
+    }
+   },
+   "B_organizational_relation": {
+    "status": "AUTHORED",
+    "statement": "The tailored register organizes the outerwear body (\"Short / Long outerwear IN the tailored register — built on …\"); the body carries traceability; the register presupposes the body.",
+    "basis": [
+     {
+      "reference_line": "L734",
+      "quote": "Short outerwear in the tailored register — the blazer/tailored-jacket grammar"
+     }
+    ]
+   },
+   "C_dependencies": [
+    {
+     "relation": "tailored_register",
+     "depends_on": "short_outerwear_body",
+     "kind": "ORGANIZES"
+    },
+    {
+     "relation": "sleeve_system · pockets · button configuration · lapel width",
+     "depends_on": "tailored_register",
+     "kind": "REALIZED_WITHIN"
+    }
+   ],
+   "D_supporting_conventional": {
+    "native_variation": {
+     "why": "single / double breasted · notch / peak / shawl · lapel width · button count · welt / patch pockets"
+    },
+    "leather": {
+     "why": "Leather alone never a departure",
+     "basis": [
+      {
+       "reference_line": "L833",
+       "quote": "⛔ NOT a departure by presence: `Transparent` · `Leather` · `Zipper` · a cargo pocket · `Cutout` · `Reflective`"
+      }
+     ]
+    }
+   },
+   "E_local_reconstruction_tolerance": {
+    "statement": "Original organization principal while some register constituent still organizes: a re-proportioned lapel (Enlarged), a replaced lapel with the breasted front present, a replaced closure with the lapel present, a removed sleeve system, Oversized / Cropped body, power shoulder — all modifications of the tailored organization (the register is present while any constituent is present)."
+   },
+   "F_whole_organization_reorganization": {
+    "status": "AUTHORED (FORM) · NOT FULLY EXECUTABLE",
+    "criterion": "Dismantled / reorganized iff the tailored register is DISPLACED (every constituent replaced) while the outerwear body remains. Because the structured-shoulder constituent is NOT_EXECUTABLE, the register can never read DISPLACED on current evidence: lapel + breasted front both DISPLACED → UNRESOLVED (fail closed)."
+   },
+   "separability": "SEPARABLE",
+   "whole_organization_status": "WHOLE_ORGANIZATION_AUTHORABLE_NOW (register displacement not fully executable)"
+  },
+  "COAT:Tailored": {
+   "composition": "ARCHETYPE_GRAMMAR",
+   "intro": {
+    "reference_line": "L1101",
+    "quote": "built on a lapel collar, a breasted button front and a structured shoulder"
+   },
+   "A_identity_bearing": {
+    "long_outerwear_body": {
+     "role": "TRACEABILITY_BEARING",
+     "meaning": "LONG OUTERWEAR body (front-opening outerwear worn over other garments; length in the coat envelope)",
+     "evidence": [
+      {
+       "kind": "channel_body",
+       "channel": "proportion",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      },
+      {
+       "kind": "channel_body",
+       "channel": "construction",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L1101",
+       "quote": "Long outerwear in the tailored register"
+      }
+     ]
+    },
+    "tailored_register": {
+     "role": "ORGANIZING",
+     "meaning": "the TAILORED register organizing the outerwear body: built on a lapel collar, a breasted button front and a structured shoulder (three constituents; native variation inside them is not displacement)",
+     "constituents": {
+      "lapel_collar": {
+       "evidence": [
+        {
+         "kind": "constitutive_system",
+         "system": "lapel_system",
+         "origin": "D7_BASELINE_FROZEN"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L1101",
+         "quote": "built on a lapel collar, a breasted button front and a structured shoulder"
+        }
+       ]
+      },
+      "breasted_button_front": {
+       "evidence": [
+        {
+         "kind": "constitutive_system",
+         "system": "closure_system",
+         "origin": "D7_BASELINE_FROZEN"
+        },
+        {
+         "kind": "constitutive_system",
+         "system": "front_opening_extent",
+         "origin": "D7_BASELINE_FROZEN"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L1172",
+         "quote": "Single- or double-breasted buttoning, notch or peak lapel, welt or patch pockets, lapel width variation and a defined or cinched waist are conventional options"
+        }
+       ]
+      },
+      "structured_shoulder": {
+       "evidence": [
+        {
+         "kind": "NOT_EXECUTABLE",
+         "token": "structured_shoulder",
+         "why": "no governed value DISPLACES a structured shoulder: {None, Mild} is the ordinary outerwear shoulder and {Strong, Extreme} is a power shoulder — still a structured shoulder (V2.3.60 S3 E1; V2.3.63 V2 correction)"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L1106",
+         "quote": "`shoulder_structure ∈ {None, Mild}` — ordinary outerwear shoulder construction"
+        },
+        {
+         "reference_line": "L1120",
+         "quote": "`shoulder_structure ∈ {Strong, Extreme}` — power shoulder, a governed Silhouette departure grammar"
+        }
+       ]
+      }
+     }
+    }
+   },
+   "constitutive_frozen_supporting": {
+    "sleeve_system": {
+     "evidence": [
+      {
+       "kind": "constitutive_system",
+       "system": "sleeve_system",
+       "origin": "D7_BASELINE_FROZEN"
+      }
+     ],
+     "why": "CEO Q8 constitutive system not named by the intro — supporting"
+    }
+   },
+   "B_organizational_relation": {
+    "status": "AUTHORED",
+    "statement": "The tailored register organizes the outerwear body (\"Short / Long outerwear IN the tailored register — built on …\"); the body carries traceability; the register presupposes the body.",
+    "basis": [
+     {
+      "reference_line": "L1101",
+      "quote": "Long outerwear in the tailored register — the tailored-coat grammar"
+     }
+    ]
+   },
+   "C_dependencies": [
+    {
+     "relation": "tailored_register",
+     "depends_on": "long_outerwear_body",
+     "kind": "ORGANIZES"
+    },
+    {
+     "relation": "sleeve_system · pockets · button configuration · lapel width",
+     "depends_on": "tailored_register",
+     "kind": "REALIZED_WITHIN"
+    }
+   ],
+   "D_supporting_conventional": {
+    "native_variation": {
+     "why": "single / double breasted · notch / peak / shawl · lapel width · button count · welt / patch pockets"
+    },
+    "leather": {
+     "why": "Leather alone never a departure",
+     "basis": [
+      {
+       "reference_line": "L1198",
+       "quote": "⛔ NOT a departure by presence: `Transparent` · `Leather` · `Zipper` · a cargo pocket · `Cutout` · `Reflective`"
+      }
+     ]
+    }
+   },
+   "E_local_reconstruction_tolerance": {
+    "statement": "Original organization principal while some register constituent still organizes: a re-proportioned lapel (Enlarged), a replaced lapel with the breasted front present, a replaced closure with the lapel present, a removed sleeve system, Oversized / Cropped body, power shoulder — all modifications of the tailored organization (the register is present while any constituent is present)."
+   },
+   "F_whole_organization_reorganization": {
+    "status": "AUTHORED (FORM) · NOT FULLY EXECUTABLE",
+    "criterion": "Dismantled / reorganized iff the tailored register is DISPLACED (every constituent replaced) while the outerwear body remains. Because the structured-shoulder constituent is NOT_EXECUTABLE, the register can never read DISPLACED on current evidence: lapel + breasted front both DISPLACED → UNRESOLVED (fail closed)."
+   },
+   "separability": "SEPARABLE",
+   "whole_organization_status": "WHOLE_ORGANIZATION_AUTHORABLE_NOW (register displacement not fully executable)"
+  },
+  "JACKET:Utility": {
+   "composition": "ARCHETYPE_GRAMMAR",
+   "intro": {
+    "reference_line": "L1008",
+    "quote": "Short outerwear in the utility / technical register — the functional-outerwear grammar, carrying load-bearing pockets, protective flaps and technical materials"
+   },
+   "A_identity_bearing": {
+    "short_outerwear_body": {
+     "role": "TRACEABILITY_BEARING",
+     "meaning": "SHORT OUTERWEAR body",
+     "evidence": [
+      {
+       "kind": "channel_body",
+       "channel": "proportion",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      },
+      {
+       "kind": "channel_body",
+       "channel": "construction",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L1008",
+       "quote": "Short outerwear in the utility / technical register"
+      }
+     ]
+    },
+    "utility_register": {
+     "role": "ORGANIZING",
+     "meaning": "the UTILITY register: load-bearing pockets · protective flaps (storm flap) · epaulettes / belts · technical materials",
+     "constituents": {
+      "load_bearing_pockets_flaps_attachments": {
+       "evidence": [
+        {
+         "kind": "NOT_EXECUTABLE",
+         "token": "utility apparatus",
+         "why": "presence of the apparatus is conventional; ABSENCE is not a governed departure (\"Presence of a feature is never itself a departure\"; absence of a token is never evidence) → the register's displacement has no governed test"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L1057",
+         "quote": "Conventional realization: zip or snap front with a storm flap; stand or shirt collar; hood present or absent; multiple applied pockets, including volumetric cargo pockets; epaulettes, belts and technical materials; structured to semi-structured fabric behaviour"
+        },
+        {
+         "reference_line": "L1059",
+         "quote": "Functionality is explicitly not a gate — protective and load-bearing elements doing their job is never, by itself, TC evidence"
+        }
+       ]
+      }
+     }
+    }
+   },
+   "B_organizational_relation": {
+    "status": "AUTHORED",
+    "statement": "The utility register organizes the outerwear body; the body carries traceability."
+   },
+   "F_whole_organization_reorganization": {
+    "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+    "criterion": "register displacement has no governed departure value → never DISPLACED; the TC8 form is not executable on this key"
+   },
+   "separability": "SEPARABLE",
+   "whole_organization_status": "PARTIAL_ONLY (structure authorable; register displacement REFERENCE_AUTHORITY_INSUFFICIENT)"
+  },
+  "COAT:Utility": {
+   "composition": "ARCHETYPE_GRAMMAR",
+   "intro": {
+    "reference_line": "L1360",
+    "quote": "Long outerwear in the utility / technical register — the functional long-outerwear grammar, carrying storm flaps, belts, epaulettes and load-bearing pockets"
+   },
+   "A_identity_bearing": {
+    "long_outerwear_body": {
+     "role": "TRACEABILITY_BEARING",
+     "meaning": "LONG OUTERWEAR body",
+     "evidence": [
+      {
+       "kind": "channel_body",
+       "channel": "proportion",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      },
+      {
+       "kind": "channel_body",
+       "channel": "construction",
+       "reading": "traceability reading: RETAINED iff the frozen Step 2 verdict is FALSE; SUBORDINATED iff TRUE (the body is re-proportioned / reconstructed but no governed value replaces the outerwear body itself); UNRESOLVED otherwise; never DISPLACED on current evidence"
+      }
+     ],
+     "basis": [
+      {
+       "reference_line": "L1360",
+       "quote": "Long outerwear in the utility / technical register"
+      }
+     ]
+    },
+    "utility_register": {
+     "role": "ORGANIZING",
+     "meaning": "the UTILITY register: load-bearing pockets · protective flaps (storm flap) · epaulettes / belts · technical materials",
+     "constituents": {
+      "load_bearing_pockets_flaps_attachments": {
+       "evidence": [
+        {
+         "kind": "NOT_EXECUTABLE",
+         "token": "utility apparatus",
+         "why": "presence of the apparatus is conventional; ABSENCE is not a governed departure (\"Presence of a feature is never itself a departure\"; absence of a token is never evidence) → the register's displacement has no governed test"
+        }
+       ],
+       "basis": [
+        {
+         "reference_line": "L1407",
+         "quote": "Conventional realization: a button or zip front, frequently double-breasted; a lapel, stand or shirt collar; storm flap, belt and epaulette attachments; multiple applied pockets; structured to semi-structured technical materials"
+        },
+        {
+         "reference_line": "L1409",
+         "quote": "Functionality is not a gate — a storm flap, a belt or a load-bearing pocket performing its function is never TC evidence on its own"
+        }
+       ]
+      }
+     }
+    }
+   },
+   "B_organizational_relation": {
+    "status": "AUTHORED",
+    "statement": "The utility register organizes the outerwear body; the body carries traceability."
+   },
+   "F_whole_organization_reorganization": {
+    "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+    "criterion": "register displacement has no governed departure value → never DISPLACED; the TC8 form is not executable on this key"
+   },
+   "separability": "SEPARABLE",
+   "whole_organization_status": "PARTIAL_ONLY (structure authorable; register displacement REFERENCE_AUTHORITY_INSUFFICIENT)"
+  },
+  "tshirt": {
+   "composition": "CONJUNCTION",
+   "intro": {
+    "reference_line": "L79",
+    "quote": "The plainest upper-body knit garment: a pulled-on body with a minimal neck finish and no tailoring apparatus. Its grammar is defined by what it does not carry"
+   },
+   "whole_organization_status": "REFERENCE_AUTHORITY_INSUFFICIENT (grammar defined by absence; no organizing relation; single body constituent)",
+   "separability": "NOT_SEPARABLE"
+  },
+  "sweater": {
+   "composition": "CONJUNCTION",
+   "intro": {
+    "reference_line": "L250",
+    "quote": "The knit upper-body garment. One archetype covering both the pulled-on and the open-front realization"
+   },
+   "whole_organization_status": "REFERENCE_AUTHORITY_INSUFFICIENT (knit body constituent not executable; front-opening combination conventional)",
+   "separability": "NOT_SEPARABLE"
+  },
+  "skirt": {
+   "composition": "CONJUNCTION",
+   "intro": {
+    "reference_line": "L497",
+    "quote": "The single-body lower garment with no leg division"
+   },
+   "whole_organization_status": "REFERENCE_AUTHORITY_INSUFFICIENT (single body constituent; defined against the trouser by absence of leg division)",
+   "separability": "NOT_SEPARABLE"
+  },
+  "dress": {
+   "composition": "ONE_PIECE_COMPOSITION",
+   "intro": {
+    "reference_line": "L565",
+    "quote": "The one-piece garment joining an upper body and a skirt body across a waist"
+   },
+   "whole_organization_status": "PARTIAL_ONLY (joining relation textually separable; waist carrier not projected → NOT_EXECUTABLE)",
+   "separability": "SEPARABLE_IN_TEXT_NOT_EXECUTABLE"
+  },
+  "jumpsuit": {
+   "composition": "ONE_PIECE_COMPOSITION",
+   "intro": {
+    "reference_line": "L651",
+    "quote": "The one-piece garment joining an upper body to a two-leg lower body across a waist"
+   },
+   "whole_organization_status": "PARTIAL_ONLY (as dress; the CEO archetypal-hybrid path is a Step 2 Construction rule, not TC8)",
+   "separability": "SEPARABLE_IN_TEXT_NOT_EXECUTABLE"
+  }
+ },
+ "suit_whole_unit": {
+  "note": "NO Suit key · NO Suit answer row (§18). Whole-Suit organization = P-3 composition of the JACKET:Tailored organization block and the trouser organization block.",
+  "composition_rule": "unit traceable iff every member traceable; unit original organization principal iff ANY member's original organization is principal (a member whose organization holds keeps the whole unit organized); unit primacy shift iff EVERY member reads primacy shift (one member never decides); a NOT_SEPARABLE member with a displaced identity constituent → unit UNRESOLVED",
+  "member_coordination": {
+   "status": "REFERENCE_AUTHORITY_INSUFFICIENT",
+   "why": "SUIT_COORDINATION_AUTHORITY_INSUFFICIENT — the frozen pair doctrine composes Direction only; no governed relation binds the members' organizations (matched cloth = context)",
+   "basis": [
+    {
+     "reference_line": "L29",
+     "quote": "MATCHING_PAIR — ONE scoring unit, ONE TC Direction"
+    }
+   ]
+  },
+  "consequence": "because the trouser member is NOT_SEPARABLE, a whole-Suit primacy shift is unreachable on current authority (a Suit can read ORIGINAL_ORGANIZATION_PRINCIPAL or UNRESOLVED, never TRACEABLE_RADICAL_REORGANIZATION)"
+ }
+}

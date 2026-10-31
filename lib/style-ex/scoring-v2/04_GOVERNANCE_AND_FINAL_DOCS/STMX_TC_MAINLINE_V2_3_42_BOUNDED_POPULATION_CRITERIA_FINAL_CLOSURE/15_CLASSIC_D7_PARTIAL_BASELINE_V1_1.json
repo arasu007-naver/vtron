@@ -1,0 +1,540 @@
+{
+ "artefact": "15_CLASSIC_D7_PARTIAL_BASELINE_V1_1",
+ "status": "PARTIAL AUTHORITY BASELINE V1.1 — NOT COMPLETE REFERENCE CONTENT",
+ "ceo_decision": "2026-09-23 (V2.3.42 §1.3 BOUNDED GO — source-supported characteristic only)",
+ "supersedes": {
+  "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_41_POPULATION_CRITERIA_CLOSURE/14_CLASSIC_D7_REFERENCE_KNOWLEDGE_PARTIAL_BASELINE_V1.json",
+  "sha256": "cffa0990544dfb00210b3f8d01fea992e076b8f4413d9acad3560c1ec85c20ad",
+  "note": "V1 preserved; V1.1 is additive (shirt construction characteristic added)"
+ },
+ "owner": "TC (D-7 semantic layer) · reference knowledge · non-score · non-GT · no per-item field",
+ "coverage": {
+  "keys": 14,
+  "full": 1,
+  "partial": 13,
+  "unsupported": 0,
+  "partial_with_characteristic_content": 2
+ },
+ "must_not_contain": [
+  "identity_participation",
+  "TC tier",
+  "Classic intensity",
+  "per-item judgment"
+ ],
+ "rows": [
+  {
+   "key": "tshirt",
+   "grammar_description": {
+    "value": "T-Shirt · The plainest upper-body knit garment: a pulled-on body with a minimal neck finish and no tailoring apparatus. Its grammar is defined by what it does not carry.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `tshirt`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "status": "NOT_AUTHORED",
+    "reason": "no register or origin named in governed text; not inferred from the key name"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "shirt",
+   "grammar_description": {
+    "value": "Shirt · The buttoned upper-body garment with a collar and a front opening — men's shirt and women's blouse are one archetype, not two.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `shirt`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "construction": {
+     "front_opening_extent": [
+      "Full"
+     ],
+     "closure_system": [
+      "Button"
+     ],
+     "provenance": "sealed reference L215 [DIRECT_FROZEN_AUTHORITY]: \"Front opening None · Partial · Full with any governed closure type — full-length buttoning is this archetype's defining conventional realization\" (S5 §3 Shirt · S2 §5.2)",
+     "status": "AUTHORED_FROM_GOVERNED_TEXT (V2.3.42 §1.3 BOUNDED GO)"
+    },
+    "silhouette": {
+     "status": "NOT_AUTHORED",
+     "reason": "no governed silhouette characteristic for shirt"
+    },
+    "proportion": {
+     "status": "NOT_AUTHORED",
+     "reason": "no single standard named; Regular / Long conventional (Q7)"
+    },
+    "status": "PARTIAL_AUTHORED"
+   },
+   "grammar_lineage": {
+    "status": "NOT_AUTHORED",
+    "reason": "no register or origin named in governed text; not inferred from the key name"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL+ (construction characteristic; silhouette / proportion NOT_AUTHORED)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "sweater",
+   "grammar_description": {
+    "value": "Sweater · The knit upper-body garment. One archetype covering both the pulled-on and the open-front realization — the frozen vocabulary treats the cardigan as a front-opening combination, not as a separate garment.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `sweater`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "status": "NOT_AUTHORED",
+    "reason": "no register or origin named in governed text; not inferred from the key name"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "sweatshirt",
+   "grammar_description": {
+    "value": "Sweatshirt · The pulled-on jersey/fleece upper-body garment of athletic origin. The hooded realization is this archetype plus a hood, not a separate garment.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `sweatshirt`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "value": [
+     "athletic origin"
+    ],
+    "provenance": "named in the governed key / intro text",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT",
+    "note": "descriptive · unordered · non-scoring"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range + lineage)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "trouser",
+   "grammar_description": {
+    "value": "Trouser · The two-leg lower-body garment. Its register — tailored, casual, sport, jeans, leggings — is a governed observation inside the one key, not a set of separate archetypes.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `trouser`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "status": "NOT_AUTHORED",
+    "reason": "the trouser register (tailored · casual · sport · jeans · leggings) is a governed OBSERVATION inside the key, not key-level knowledge"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "skirt",
+   "grammar_description": {
+    "value": "Skirt · The single-body lower garment with no leg division.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `skirt`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "status": "NOT_AUTHORED",
+    "reason": "no register or origin named in governed text; not inferred from the key name"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "dress",
+   "grammar_description": {
+    "value": "Dress · The one-piece garment joining an upper body and a skirt body across a waist.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `dress`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "status": "NOT_AUTHORED",
+    "reason": "no register or origin named in governed text; not inferred from the key name"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "jumpsuit",
+   "grammar_description": {
+    "value": "Jumpsuit · The one-piece garment joining an upper body to a two-leg lower body across a waist. It shares the one-piece composition principle with the dress but takes the trouser lower vocabulary.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `jumpsuit`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "status": "NOT_AUTHORED",
+    "reason": "no register or origin named in governed text; not inferred from the key name"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "JACKET:Tailored",
+   "grammar_description": {
+    "value": "JACKET × Tailored · Short outerwear in the tailored register — the blazer/tailored-jacket grammar, built on a lapel collar, a breasted button front and a structured shoulder.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `JACKET:Tailored`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "silhouette": {
+     "shoulder_structure": [
+      "Mild"
+     ],
+     "provenance": "intro: \"built on … a structured shoulder\"; reference: shoulder_structure ∈ {None, Mild} = ordinary outerwear shoulder — Mild = the structured realisation; fit NOT authored (range only)",
+     "status": "AUTHORED_FROM_GOVERNED_TEXT"
+    },
+    "proportion": {
+     "length": [
+      "Hip Length"
+     ],
+     "provenance": "reference: \"length = Hip Length — the archetype-standard zone for this key\"",
+     "status": "AUTHORED_FROM_GOVERNED_TEXT"
+    },
+    "construction": {
+     "lapel_system": [
+      "Notched",
+      "Peak",
+      "Shawl"
+     ],
+     "closure_system": [
+      "Button",
+      "Single Breasted Button",
+      "Double Breasted Button"
+     ],
+     "sleeve_system": [
+      "Short",
+      "Long"
+     ],
+     "front_opening_extent": [
+      "Full"
+     ],
+     "provenance": "CEO Q8 §11 / G-1: constitutive construction grammar = sleeve system + lapel system + breasted button-front; constitutive systems JSON of the key",
+     "status": "AUTHORED_FROM_GOVERNED_TEXT"
+    }
+   },
+   "grammar_lineage": {
+    "value": [
+     "tailored register"
+    ],
+    "provenance": "named in the governed key / intro text",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT",
+    "note": "descriptive · unordered · non-scoring"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "FULL (all channels except COAT:Tailored proportion)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "FULL"
+  },
+  {
+   "key": "JACKET:Casual",
+   "grammar_description": {
+    "value": "JACKET × Casual · Short outerwear in the casual register — the everyday non-tailored jacket grammar, typically built on a zip or snap front, ribbed or plain hem finishes and a soft shoulder.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `JACKET:Casual`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "value": [
+     "casual register"
+    ],
+    "provenance": "named in the governed key / intro text",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT",
+    "note": "descriptive · unordered · non-scoring"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range + lineage)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "JACKET:Utility",
+   "grammar_description": {
+    "value": "JACKET × Utility · Short outerwear in the utility / technical register — the functional-outerwear grammar, carrying load-bearing pockets, protective flaps and technical materials.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `JACKET:Utility`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "value": [
+     "utility / technical register"
+    ],
+    "provenance": "named in the governed key / intro text",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT",
+    "note": "descriptive · unordered · non-scoring"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range + lineage)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "COAT:Tailored",
+   "grammar_description": {
+    "value": "COAT × Tailored · Long outerwear in the tailored register — the tailored-coat grammar, built on a lapel collar, a breasted button front and a structured shoulder.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `COAT:Tailored`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "silhouette": {
+     "shoulder_structure": [
+      "Mild"
+     ],
+     "provenance": "intro: \"built on … a structured shoulder\"; reference: shoulder_structure ∈ {None, Mild} = ordinary outerwear shoulder — Mild = the structured realisation; fit NOT authored (range only)",
+     "status": "AUTHORED_FROM_GOVERNED_TEXT"
+    },
+    "proportion": {
+     "status": "NOT_AUTHORED",
+     "reason": "reference: \"No single Coat length token is the unique standard\" (CEO Q6)"
+    },
+    "construction": {
+     "lapel_system": [
+      "Notched",
+      "Peak",
+      "Shawl"
+     ],
+     "closure_system": [
+      "Button",
+      "Single Breasted Button",
+      "Double Breasted Button"
+     ],
+     "sleeve_system": [
+      "Short",
+      "Long"
+     ],
+     "front_opening_extent": [
+      "Full"
+     ],
+     "provenance": "CEO Q8 §11 / G-1: constitutive construction grammar = sleeve system + lapel system + breasted button-front; constitutive systems JSON of the key",
+     "status": "AUTHORED_FROM_GOVERNED_TEXT"
+    }
+   },
+   "grammar_lineage": {
+    "value": [
+     "tailored register"
+    ],
+    "provenance": "named in the governed key / intro text",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT",
+    "note": "descriptive · unordered · non-scoring"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL+ (construction + silhouette characteristic; proportion NOT_AUTHORED)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "COAT:Casual",
+   "grammar_description": {
+    "value": "COAT × Casual · Long outerwear in the casual register — the soft, non-tailored long-outerwear grammar.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `COAT:Casual`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "value": [
+     "casual register"
+    ],
+    "provenance": "named in the governed key / intro text",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT",
+    "note": "descriptive · unordered · non-scoring"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range + lineage)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  },
+  {
+   "key": "COAT:Utility",
+   "grammar_description": {
+    "value": "COAT × Utility · Long outerwear in the utility / technical register — the functional long-outerwear grammar, carrying storm flaps, belts, epaulettes and load-bearing pockets.",
+    "provenance": "sealed Step 2 V2.3.2 reference — KEY intro line",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT"
+   },
+   "conventional_realization_range": {
+    "value": "BY_REFERENCE",
+    "pointer": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/03_STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2.md :: ## KEY: `COAT:Utility`",
+    "reference_sha256": "baf263201f5eb560ba484bfd80e28c3c1f7c39a35b0ce03bb7c3186e17128d9b",
+    "status": "EXISTS"
+   },
+   "characteristic_realization": {
+    "status": "NOT_AUTHORED",
+    "reason": "reference: \"Constitutive-system audit: existing frozen authority identifies no constitutive construction system for this key … not copied by analogy\" — characteristic vs merely-conventional is not distinguishable from existing authority; the governed grammar_description is preserved as an authoring seed for the CEO"
+   },
+   "grammar_lineage": {
+    "value": [
+     "utility / technical register"
+    ],
+    "provenance": "named in the governed key / intro text",
+    "status": "AUTHORED_FROM_GOVERNED_TEXT",
+    "note": "descriptive · unordered · non-scoring"
+   },
+   "heritage_or_canon_provenance": {
+    "status": "NOT_AUTHORED",
+    "reason": "no governed authority establishes heritage or canon lineage for any key; absence ≠ FALSE"
+   },
+   "authoring_class": "PARTIAL (description + range + lineage)",
+   "tier_shadow_audit": "no field encodes TC1–TC4; characteristic forms are grammar facts, not scores",
+   "baseline_class": "PARTIAL"
+  }
+ ]
+}

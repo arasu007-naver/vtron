@@ -1,0 +1,94 @@
+{
+ "document": "SA1_CONSTRUCTION_REFERENT_CONTRACT_V1",
+ "date": "2026-09-25",
+ "status": "GOVERNED CONTRACT — Vision Schema CA#40 · CEO approved 2026-09-25",
+ "principle": "existing Atomic primitives instantiated on a new lawful referent family; no new physical concept; no derived field",
+ "referents": {
+  "collar": {
+   "carrier": "observations.collar",
+   "applicable_when": "OBSERVED and value ≠ None",
+   "locations": [
+    "Collar",
+    "Lapel"
+   ],
+   "physical_referent": "the realised collar / lapel"
+  },
+  "closure_type": {
+   "carrier": "observations.closure_type",
+   "applicable_when": "OBSERVED",
+   "locations": [],
+   "physical_referent": "the realised front closure / opening system (placket · zip · button stand · front edges)"
+  },
+  "cuff_type": {
+   "carrier": "observations.cuff_type",
+   "applicable_when": "OBSERVED and value ≠ None",
+   "locations": [
+    "Cuff"
+   ],
+   "physical_referent": "the realised cuffs"
+  },
+  "pocket": {
+   "carrier": "observations.pocket",
+   "applicable_when": "OBSERVED = Present",
+   "locations": [
+    "Pocket"
+   ],
+   "physical_referent": "the realised pocket system (all pockets together)"
+  }
+ },
+ "excluded_referents": {
+  "shoulder_construction": "degree already governed (shoulder_structure · shoulder_span · shoulder_drop)",
+  "waist_construction": "degree already governed (waist_definition)",
+  "seam_panel": "no 37-parameter carrier — a new referent would exceed CA#40",
+  "sleeve": "degree already governed (sleeve_volume)"
+ },
+ "primitives": {
+  "relative_size": {
+   "domain": [
+    "small",
+    "medium",
+    "large"
+   ],
+   "meaning": "how large the referent is relative to the whole garment (DM definition, unchanged)"
+  },
+  "contrast": {
+   "domain": [
+    "low",
+    "medium",
+    "high"
+   ],
+   "meaning": "how visually separated it is from the surrounding garment field — relief, edge, stitching or surface change count; never from colour names (DM definition, unchanged)"
+  },
+  "spatial_position": {
+   "domain": [
+    "localized",
+    "distributed",
+    "whole_garment"
+   ],
+   "meaning": "how the referent is deployed on the garment (DM definition, unchanged)"
+  }
+ },
+ "states": [
+  "OBSERVED",
+  "NOT_VISIBLE",
+  "UNKNOWN"
+ ],
+ "illegal": [
+  "ABSENT",
+  "none",
+  "zero",
+  "free text",
+  "any prominence / dominance / organiser / TC semantic"
+ ],
+ "non_applicable": "instance omitted (key-omission = N/A, existing schema convention); recorded as NOT_APPLICABLE only in the population ledger",
+ "record_fields": [
+  "referent identity",
+  "primitive name",
+  "value / state",
+  "location (D-4 component where one exists)",
+  "target garment / member",
+  "source image (path + hash)",
+  "adjudicability",
+  "provenance (observer · contract · prereg · batch · observed_at)"
+ ]
+}

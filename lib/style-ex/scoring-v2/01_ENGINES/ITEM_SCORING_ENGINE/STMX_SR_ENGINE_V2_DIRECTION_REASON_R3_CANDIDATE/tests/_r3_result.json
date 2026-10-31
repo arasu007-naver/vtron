@@ -1,0 +1,636 @@
+{
+ "cases": [
+  {
+   "id": "R3-01",
+   "title": "246 with CEO overlay (Semi-Fluid)",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 부드럽게 떨어지는 소재이고 소매가 부드럽게 부풀어 있고 레이스로 구멍이 뚫린 오픈워크 구조라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-02",
+   "title": "246 without overlay (Vision Semi-Structured)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000694",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "아래로 넓어지는 실루엣이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000185",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000660",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "아래로 넓어지는 실루엣이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000697",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "아래로 넓어지는 실루엣이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000701",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "아래로 넓어지는 실루엣이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000323",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P5",
+   "reason": "부드럽게 떨어지는 소재이지만 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000398",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P5",
+   "reason": "부드럽게 떨어지는 소재이지만 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000004",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000499",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000500",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 패딩 구성으로 형태가 유지되어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000503",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 패딩 구성으로 형태가 유지되어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000744",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P1b",
+   "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 스커트 부분은 여유 있게 떨어지는 릴랙스드 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000791",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "하의 부분은 여유 있게 떨어지는 릴랙스드 핏이지만 상체 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000802",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P1b",
+   "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이지만 하의 부분은 여유 있게 떨어지는 릴랙스드 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000190",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000661",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000671",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "상체 부분은 몸선을 따라 붙는 슬림 핏이고 스커트 부분은 몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-04",
+   "title": "REF_000378",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P2b",
+   "reason": "넉넉한 오버사이즈 핏이고 부드럽게 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + Fluid + soft Voluminous sleeve (no openwork)",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 흐르듯 떨어지는 소재이고 소매가 부드럽게 부풀어 있어 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + Semi-Fluid + Lace (sleeve Regular)",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 부드럽게 떨어지는 소재이고 레이스로 구멍이 뚫린 오픈워크 구조라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + Fluid + Mesh",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 흐르듯 떨어지는 소재이고 메시로 구멍이 뚫린 오픈워크 구조라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + Semi-Fluid + Semi Transparent only (optical, not openwork)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P5",
+   "reason": "부드럽게 떨어지는 소재이지만 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + Semi-Fluid, sleeve Regular, no surface",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P5",
+   "reason": "부드럽게 떨어지는 소재이지만 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + Semi-Structured + Voluminous + Lace (structural volume)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + Structured + Voluminous (structural volume)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 가볍게 잡혀 있고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Slim + Fluid + Voluminous + Lace (governance wins)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + Fluid + Voluminous + Lace + waist Cinched (Dress)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "허리가 뚜렷하게 조여 있어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + cloth UNKNOWN + Voluminous + Lace",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P5b",
+   "reason": "사진에서 소재감은 확인되지 않지만 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Oversized + Fluid + Voluminous (already released)",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P2b",
+   "reason": "넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "one-piece Regular / Regular + Fluid / Fluid + Lace (silhouette not observed)",
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 흐르듯 떨어지는 소재이고 레이스로 구멍이 뚫린 오픈워크 구조이고 스커트 부분은 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "one-piece Regular / Regular + Fluid / Fluid + Lace + silhouette Straight (maintained lower geometry)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  },
+  {
+   "id": "R3-SYN",
+   "title": "Regular + Semi-Fluid + Voluminous + Padding (form retention)",
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 패딩 구성으로 형태가 유지되어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS"
+  }
+ ],
+ "synthetic": {
+  "vol_only": {
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 흐르듯 떨어지는 소재이고 소매가 부드럽게 부풀어 있어 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    [
+     "SLEEVE_VOLUMINOUS_SOFT"
+    ]
+   ],
+   "volume_held": [
+    []
+   ]
+  },
+  "lace_only": {
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 부드럽게 떨어지는 소재이고 레이스로 구멍이 뚫린 오픈워크 구조라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    [
+     "SURFACE_LACE"
+    ]
+   ],
+   "volume_held": [
+    []
+   ]
+  },
+  "mesh_only": {
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 흐르듯 떨어지는 소재이고 메시로 구멍이 뚫린 오픈워크 구조라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    [
+     "SURFACE_MESH"
+    ]
+   ],
+   "volume_held": [
+    []
+   ]
+  },
+  "sheer_only": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P5",
+   "reason": "부드럽게 떨어지는 소재이지만 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    []
+   ],
+   "volume_held": [
+    []
+   ]
+  },
+  "plain": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P5",
+   "reason": "부드럽게 떨어지는 소재이지만 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    []
+   ],
+   "volume_held": [
+    []
+   ]
+  },
+  "held_vol": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    []
+   ],
+   "volume_held": [
+    [
+     "SLEEVE_VOLUMINOUS_HELD"
+    ]
+   ]
+  },
+  "struct_vol": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 가볍게 잡혀 있고 형태를 잡아 주는 탄탄한 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    []
+   ],
+   "volume_held": [
+    [
+     "SLEEVE_VOLUMINOUS_HELD"
+    ]
+   ]
+  },
+  "slim_all": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "몸선을 따라 붙는 슬림 핏이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    [
+     "SLEEVE_VOLUMINOUS_SOFT",
+     "SURFACE_LACE"
+    ]
+   ],
+   "volume_held": [
+    []
+   ]
+  },
+  "cinched": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P1a",
+   "reason": "허리가 뚜렷하게 조여 있어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    [
+     "SLEEVE_VOLUMINOUS_SOFT",
+     "SURFACE_LACE"
+    ],
+    [
+     "SURFACE_LACE"
+    ]
+   ],
+   "volume_held": [
+    [],
+    []
+   ]
+  },
+  "cloth_unobs": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P5b",
+   "reason": "사진에서 소재감은 확인되지 않지만 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어깨선이 내려가지 않아 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    []
+   ],
+   "volume_held": [
+    []
+   ]
+  },
+  "oversized": {
+   "direction": "RELAXED",
+   "rule": "SR-V2-P2b",
+   "reason": "넉넉한 오버사이즈 핏이고 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    [
+     "SLEEVE_VOLUMINOUS_SOFT"
+    ]
+   ],
+   "volume_held": [
+    []
+   ]
+  },
+  "onepiece": {
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 흐르듯 떨어지는 소재이고 레이스로 구멍이 뚫린 오픈워크 구조이고 스커트 부분은 흐르듯 떨어지는 소재라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    [
+     "SURFACE_LACE"
+    ],
+    [
+     "SURFACE_LACE"
+    ]
+   ],
+   "volume_held": [
+    [],
+    []
+   ]
+  },
+  "onepiece_held": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "상체 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 스커트 부분은 몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    [
+     "SURFACE_LACE"
+    ],
+    [
+     "SURFACE_LACE"
+    ]
+   ],
+   "volume_held": [
+    [],
+    []
+   ]
+  },
+  "padded": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 패딩 구성으로 형태가 유지되어 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+   "verification": "PASS",
+   "release_corroboration": [
+    [
+     "SLEEVE_VOLUMINOUS_SOFT"
+    ]
+   ],
+   "volume_held": [
+    []
+   ]
+  }
+ },
+ "ref246": {
+  "with_overlay": {
+   "direction": "RELAXED",
+   "rule": "SR-V2-P5r",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이지만 부드럽게 떨어지는 소재이고 소매가 부드럽게 부풀어 있고 레이스로 구멍이 뚫린 오픈워크 구조라 전체적으로 몸에서 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+   "clauses": [
+    [
+     "opposing",
+     "fit",
+     "Regular",
+     "observations.fit"
+    ],
+    [
+     "decisive",
+     "fabric_behavior",
+     "Semi-Fluid",
+     "observations.fabric_behavior"
+    ],
+    [
+     "decisive",
+     "sleeve_volume",
+     "Voluminous",
+     "observations.sleeve_volume"
+    ],
+    [
+     "decisive",
+     "surface",
+     "Lace",
+     "observations.surface.values"
+    ]
+   ]
+  },
+  "without_overlay": {
+   "direction": "STRUCTURED",
+   "rule": "SR-V2-P4",
+   "reason": "몸에 과하게 붙지도 넉넉하게 남지도 않는 레귤러 핏이고 어느 정도 형태를 유지하는 소재라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다."
+  },
+  "mutations": {
+   "no_sleeve_no_surface": "SR-V2-P5 STRUCTURED",
+   "no_surface": "SR-V2-P5r RELAXED",
+   "no_sleeve": "SR-V2-P5r RELAXED",
+   "fit_slim": "SR-V2-P1a STRUCTURED"
+  }
+ },
+ "anchors": [
+  {
+   "ref": "REF_000694",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P1a"
+  },
+  {
+   "ref": "REF_000185",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P4"
+  },
+  {
+   "ref": "REF_000660",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P1a"
+  },
+  {
+   "ref": "REF_000697",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P1a"
+  },
+  {
+   "ref": "REF_000701",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P1a"
+  },
+  {
+   "ref": "REF_000323",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P5"
+  },
+  {
+   "ref": "REF_000398",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P5"
+  },
+  {
+   "ref": "REF_000004",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P4"
+  },
+  {
+   "ref": "REF_000499",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P4"
+  },
+  {
+   "ref": "REF_000500",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P4"
+  },
+  {
+   "ref": "REF_000503",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P4"
+  },
+  {
+   "ref": "REF_000744",
+   "want": "RELAXED",
+   "got": "RELAXED",
+   "rule": "SR-V2-P1b"
+  },
+  {
+   "ref": "REF_000791",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P1a"
+  },
+  {
+   "ref": "REF_000802",
+   "want": "RELAXED",
+   "got": "RELAXED",
+   "rule": "SR-V2-P1b"
+  },
+  {
+   "ref": "REF_000190",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P1a"
+  },
+  {
+   "ref": "REF_000661",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P1a"
+  },
+  {
+   "ref": "REF_000671",
+   "want": "STRUCTURED",
+   "got": "STRUCTURED",
+   "rule": "SR-V2-P1a"
+  },
+  {
+   "ref": "REF_000378",
+   "want": "RELAXED",
+   "got": "RELAXED",
+   "rule": "SR-V2-P2b"
+  }
+ ]
+}

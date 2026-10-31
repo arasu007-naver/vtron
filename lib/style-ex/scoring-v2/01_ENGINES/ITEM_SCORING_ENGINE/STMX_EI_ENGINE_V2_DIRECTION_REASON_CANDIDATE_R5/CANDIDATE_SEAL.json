@@ -1,0 +1,88 @@
+{
+ "document": "CANDIDATE_SEAL",
+ "engine": "STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5",
+ "predecessor": "STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R4 (src 24b5de3c…, immutable)",
+ "status": "CANDIDATE — not production, not frozen (CEO review of the R5 final scoring-unit audit pending)",
+ "sealed_at": "2026-10-28T13:43:21.759Z",
+ "src_aggregate_sha256": "8266b0bac6b1fa3dcfbca3bb9c9bc8634e30010609ffa58f278457865a9ae22b",
+ "directory_aggregate_sha256": "a42805e1732424044efca936dea846a2bc22ac6619f0a5db0d88cab389fbf1c0",
+ "files": [
+  {
+   "file": "src/ei_v2_commercial_neutral.js",
+   "sha256": "21d128b1bd5e4c24db771825698e4fa2bfa88d6842410e454469a9b93bf91079"
+  },
+  {
+   "file": "src/ei_v2_engine.js",
+   "sha256": "ed7e27db8168f6814fceb343c52dd2bfa12ec00640a82cdddf78620c2a8a1894"
+  },
+  {
+   "file": "src/ei_v2_frozen_bindings.js",
+   "sha256": "0ff81b7db593a8d7b1d97673234e0f7512e899887200884d28b5f5c9109a792f"
+  },
+  {
+   "file": "src/ei_v2_historical_overlay.js",
+   "sha256": "9719e9e4dad9be4bba63628b7bf49597bb7e488943001373b82736e293ea41e4"
+  },
+  {
+   "file": "src/ei_v2_input_adapter.js",
+   "sha256": "0becb8fd3b8e0726b14c47b73f2680e3123c7fcdcd13bef302939e9fd0a60a29"
+  },
+  {
+   "file": "src/ei_v2_product_unit.js",
+   "sha256": "667f171bfc3f94f1cb41470539876c159baccd17c17d47ecbab30b6a42f38bd2"
+  },
+  {
+   "file": "src/ei_v2_readings.js",
+   "sha256": "dd85197a67b449f5e1f3cbb6bfda338e191b7e093b6ce8a106383fbb6c66752f"
+  },
+  {
+   "file": "src/ei_v2_reason_ko.js",
+   "sha256": "988cad4885624a97cb07ad0d815427dfacb9d663e607685f6ef8d4317e777499"
+  },
+  {
+   "file": "src/ei_v2_underlying_resolver.js",
+   "sha256": "574142685fe224b55cde516cc813954a4a719170bc313deb781d16bb9844be10"
+  },
+  {
+   "file": "contracts/EI_V2_BOUND_INPUTS.json",
+   "sha256": "490d721ee3d117cde52dc24720bd2965144b7ecbfd7d2fe23040b5a274707f9e"
+  },
+  {
+   "file": "contracts/EI_V2_HISTORICAL_PRODUCT_IDENTITY_OVERLAY_V2.json",
+   "sha256": "124f932420b877c6376227a00384e81645db8e4f2f5cdb5eeb23aee829170831"
+  },
+  {
+   "file": "tests/run_all.js",
+   "sha256": "e1f5c0f7af4dc8d23df4dd4393ebc2ffab8e43b241a002f538a22d988e9dbef9"
+  },
+  {
+   "file": "README.md",
+   "sha256": "e5961249ff4dc9a4327e43b8a676061f6ecd0d24580502a4c95e0a17b3c8dcab"
+  }
+ ],
+ "suite": {
+  "pass": 81,
+  "total": 81,
+  "all_pass": true
+ },
+ "ledger_a_r4_replay": "114/114",
+ "ledger_b": {
+  "active_scored": 109,
+  "excluded": [
+   "REF_000378#SU2",
+   "REF_000494#SU2",
+   "REF_000496#SU2",
+   "REF_000541#SU1",
+   "REF_000616#SU1"
+  ],
+  "distribution": {
+   "I": 21,
+   "NEUTRAL": 31,
+   "E": 57
+  },
+  "unaffected_identical": "107/107",
+  "hold": []
+ },
+ "independent_harness": "1191/1191",
+ "closure_files": 27
+}

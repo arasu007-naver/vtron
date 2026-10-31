@@ -1,0 +1,610 @@
+{
+ "runProducer_returned": {
+  "ok": true,
+  "envelope": {
+   "image_id": "FE-07",
+   "producer": {
+    "version": "v1",
+    "vision_calls": 1,
+    "one_call_default": true,
+    "model": "claude-opus-4-8"
+   },
+   "targets": [
+    {
+     "target_id": "target_1",
+     "role": "Primary",
+     "extraction_depth": "FULL",
+     "role_basis": "scoring-target candidate; all applicable MANDATORY morphology readable",
+     "prominence": "dominant",
+     "descriptor": "An open-front single-button-stance blazer with a notched lapel rolling to a low button position near the natural waist; the lower button sits engaged while the front hangs open above it. The body falls long and straight past the hip with a flap pocket visible low on the right front. Shoulders read soft and lightly extended, the sleeves falling in a relaxed column rather than a tailored taper.",
+     "eligible": true,
+     "record": {
+      "category": {
+       "state": "OBSERVED",
+       "value": "Jacket"
+      },
+      "observations": {
+       "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "values": [
+         {
+          "value": "Synthetic",
+          "evidence": [
+           "matte smooth suiting cloth with soft drape"
+          ]
+         }
+        ],
+        "region": "whole_garment"
+       },
+       "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "plain matte cloth, no constructed or optical surface treatment visible"
+        ],
+        "region": "whole_garment"
+       },
+       "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "solid black cloth, no repeating motif"
+        ],
+        "region": "whole_garment"
+       },
+       "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "no placed graphic element"
+        ],
+        "region": "whole_garment"
+       },
+       "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+         "flap pocket visible low on right front"
+        ],
+        "pockets": [
+         {
+          "location": "Lower Front",
+          "construction": {
+           "state": "UNKNOWN",
+           "value": null,
+           "evidence": [
+            "flap visible but opening seam not readable"
+           ]
+          },
+          "projection": {
+           "state": "OBSERVED",
+           "value": "Flat",
+           "evidence": [
+            "flap lies flush against body"
+           ]
+          }
+         }
+        ]
+       },
+       "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "no applied embroidery, beading, appliqué or piping"
+        ],
+        "region": "whole_garment"
+       },
+       "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "no belt, hardware, trim or epaulette"
+        ],
+        "region": "whole_garment"
+       },
+       "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+         "left and right fronts mirror; conventional single-breasted overlap only; hem level side to side"
+        ],
+        "region": "whole_garment"
+       },
+       "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "worn open over an opaque top; no designed opening and no bared body region from the jacket's own cut"
+        ],
+        "region": "whole_garment"
+       },
+       "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "upper",
+        "evidence": [
+         "body stands away from torso with generous room",
+         "sleeves hang in a loose column; shoulder reaches slightly past the wearer"
+        ]
+       },
+       "length": {
+        "state": "OBSERVED",
+        "value": "Hip Length",
+        "region": "upper",
+        "evidence": [
+         "hem descends into the hip/pocket region and covers the trouser upper-hip area"
+        ]
+       },
+       "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+         "holds a soft shape at the shoulder but body and sleeves yield and fold readily"
+        ]
+       },
+       "sleeve": {
+        "state": "OBSERVED",
+        "value": "Long",
+        "region": "upper",
+        "evidence": [
+         "sleeves run to the wrist"
+        ]
+       },
+       "shoulder_drop": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "a clear shoulder endpoint forms at the shoulder line before the sleeve turns down"
+        ]
+       },
+       "shoulder_structure": {
+        "state": "OBSERVED",
+        "value": "Mild",
+        "region": "upper",
+        "evidence": [
+         "a readable but modest shoulder-line endpoint, not held strongly straight"
+        ]
+       },
+       "collar": {
+        "state": "OBSERVED",
+        "value": "Notched",
+        "region": "upper",
+        "evidence": [
+         "visible notch/step where collar meets lapel; lapel edge does not rise into a point"
+        ]
+       },
+       "rib_hem": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "plain tailored hem edge, no ribbed band"
+        ]
+       },
+       "hood": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "notched lapel neckline, no hood"
+        ],
+        "region": "upper"
+       },
+       "front_opening_extent": {
+        "state": "OBSERVED",
+        "value": "Full",
+        "region": "upper",
+        "evidence": [
+         "opening runs the full length of the front with a button stance"
+        ]
+       },
+       "closure_type": {
+        "state": "OBSERVED",
+        "value": "Single Breasted Button",
+        "region": "upper",
+        "evidence": [
+         "single column of buttons, centre overlap; lower button engaged"
+        ]
+       },
+       "grammar": {
+        "state": "OBSERVED",
+        "value": "Tailored",
+        "region": "whole_garment",
+        "evidence": [
+         "notched lapel, tailored suiting construction, flap pocket"
+        ]
+       },
+       "waist_definition": {
+        "state": "OBSERVED",
+        "value": "Undefined",
+        "region": "whole_garment",
+        "evidence": [
+         "worn open, body hangs straight with no waist shaping"
+        ]
+       },
+       "sleeve_volume": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+         "ordinary sleeve envelope, not deliberately enlarged"
+        ]
+       },
+       "cuff_type": {
+        "state": "OBSERVED",
+        "value": "None",
+        "region": "upper",
+        "evidence": [
+         "sleeve ends plainly with no constructed cuff band"
+        ]
+       },
+       "collar_scale": {
+        "state": "OBSERVED",
+        "value": "Regular",
+        "region": "upper",
+        "evidence": [
+         "lapel breadth covers an ordinary share of the chest panel"
+        ]
+       }
+      },
+      "completeness": {
+       "U": 9,
+       "M": 13,
+       "C": 7,
+       "N": 8,
+       "total": 37,
+       "reported": 25,
+       "conditional_na": 3,
+       "unreported": 1,
+       "reconciled": true
+      },
+      "dm_designed_detail_evidence": {
+       "evidence": []
+      }
+     },
+     "diagnostics": {
+      "unreported": [
+       "category"
+      ],
+      "conditional_na": [
+       {
+        "param": "pocket_construction",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       },
+       {
+        "param": "pocket_projection",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       },
+       {
+        "param": "cuff_scale",
+        "reason": "cuff_type OBSERVED ∧ cuff_type ≠ 'None' (readability is a Vision STATE, not an applicability condition — mirrors pocket_construction)"
+       }
+      ],
+      "not_applicable_count": 8,
+      "notes": [
+       "pocket Present → morphology carried by pockets[] only; scalar carrier retired (CA#29): pocket_construction, pocket_projection",
+       "DM observation layer carried verbatim: 0 evidence, excluded NOT AN ARRAY"
+      ]
+     },
+     "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+       {
+        "code": "DESCRIPTOR_NEED_ABSENT_LEGACY",
+        "param": null,
+        "message": "pre-protocol extraction — descriptor_need not asserted"
+       }
+      ]
+     },
+     "readability": {
+      "value": true,
+      "basis": "RECONSTRUCTABLE",
+      "limitation": [
+       "CONTINUOUS_STRUCTURE_VISIBLE"
+      ],
+      "contract_error": null
+     }
+    },
+    {
+     "target_id": "target_2",
+     "role": "Incidental",
+     "descriptor": null,
+     "eligible": false,
+     "extraction_depth": "NONE",
+     "reason": "not a Target: identity=true readability=false (C2∧C3 unmet)",
+     "readability": {
+      "value": false,
+      "basis": "NOT_RECONSTRUCTABLE",
+      "limitation": [
+       "OCCLUDED_BY_OTHER_GARMENT"
+      ],
+      "contract_error": null
+     }
+    },
+    {
+     "target_id": "target_3",
+     "role": "Primary",
+     "extraction_depth": "FULL",
+     "role_basis": "scoring-target candidate; all applicable MANDATORY morphology readable",
+     "prominence": "dominant",
+     "descriptor": "High-rise wide cargo trousers in a heathered grey cloth, closed with a single front button and belt loops at the waist. Large flap cargo pockets sit on the outer thigh of each leg, with shaped front-hip pockets above. The leg falls wide and straight from hip to a full-length hem that breaks over the shoe.",
+     "eligible": true,
+     "record": {
+      "category": {
+       "state": "OBSERVED",
+       "value": "Trouser"
+      },
+      "observations": {
+       "material": {
+        "state": "OBSERVED",
+        "value": null,
+        "values": [
+         {
+          "value": "Synthetic",
+          "evidence": [
+           "smooth heathered grey woven cloth with slight sheen"
+          ]
+         }
+        ],
+        "region": "whole_garment"
+       },
+       "surface": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "plain heathered cloth; melange yarn is not a surface treatment"
+        ],
+        "region": "whole_garment"
+       },
+       "pattern": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "tonal heather only, no repeating motif"
+        ],
+        "region": "whole_garment"
+       },
+       "graphic": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "no placed graphic"
+        ],
+        "region": "whole_garment"
+       },
+       "pocket": {
+        "state": "OBSERVED",
+        "value": "Present",
+        "region": "whole_garment",
+        "evidence": [
+         "front-hip pockets and large flap cargo pockets on the legs"
+        ],
+        "pockets": [
+         {
+          "location": "Lower Front",
+          "construction": {
+           "state": "OBSERVED",
+           "value": "Inset",
+           "evidence": [
+            "shaped slash opening set into the front hip"
+           ]
+          },
+          "projection": {
+           "state": "OBSERVED",
+           "value": "Flat",
+           "evidence": [
+            "lies flush against the hip"
+           ]
+          }
+         },
+         {
+          "location": "Leg",
+          "construction": {
+           "state": "OBSERVED",
+           "value": "Applied",
+           "evidence": [
+            "patch flap pocket sewn onto outer thigh"
+           ]
+          },
+          "projection": {
+           "state": "OBSERVED",
+           "value": "Flat",
+           "evidence": [
+            "flap lies flush against the leg, no gusset depth visible"
+           ]
+          }
+         }
+        ]
+       },
+       "decorative_detail": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "no embroidery, beading, appliqué or piping"
+        ],
+        "region": "whole_garment"
+       },
+       "attachment": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "no belt worn; no hardware trim beyond functional button"
+        ],
+        "region": "whole_garment"
+       },
+       "asymmetry": {
+        "state": "OBSERVED",
+        "value": "None",
+        "evidence": [
+         "left and right legs and cargo pockets mirror; hem level"
+        ],
+        "region": "whole_garment"
+       },
+       "exposure_opening": {
+        "state": "ABSENT",
+        "value": null,
+        "evidence": [
+         "full-length opaque trousers; no bared body region"
+        ],
+        "region": "whole_garment"
+       },
+       "trouser_distinction": {
+        "state": "OBSERVED",
+        "value": "Casual",
+        "region": "whole_garment",
+        "evidence": [
+         "cargo/utility construction with flap thigh pockets on non-denim twill, constructed button waistband"
+        ]
+       },
+       "silhouette": {
+        "state": "OBSERVED",
+        "value": "Straight",
+        "region": "whole_garment",
+        "evidence": [
+         "leg keeps its wide width from hip to hem without flaring or tapering"
+        ]
+       },
+       "fit": {
+        "state": "OBSERVED",
+        "value": "Relaxed",
+        "region": "lower",
+        "evidence": [
+         "wide leg stands away from the body through hip and leg with generous room"
+        ]
+       },
+       "length": {
+        "state": "OBSERVED",
+        "value": "Full Length",
+        "region": "lower",
+        "evidence": [
+         "hem reaches the ankle and breaks over the shoe"
+        ]
+       },
+       "fabric_behavior": {
+        "state": "OBSERVED",
+        "value": "Semi-Structured",
+        "region": "whole_garment",
+        "evidence": [
+         "holds a wide column but the cloth yields into soft vertical folds"
+        ]
+       }
+      },
+      "completeness": {
+       "U": 9,
+       "M": 6,
+       "C": 2,
+       "N": 20,
+       "total": 37,
+       "reported": 14,
+       "conditional_na": 2,
+       "unreported": 1,
+       "reconciled": true
+      },
+      "dm_designed_detail_evidence": {
+       "evidence": [
+        {
+         "evidence_id": "dd-cargo-pockets",
+         "evidence_family": "surface_treatment",
+         "detail": "large flap cargo pockets on both outer thighs forming a utility pocket system",
+         "relative_size": {
+          "state": "OBSERVED",
+          "value": "medium"
+         },
+         "contrast": {
+          "state": "OBSERVED",
+          "value": "low"
+         },
+         "spatial_position": {
+          "state": "OBSERVED",
+          "value": "localized"
+         },
+         "source_observation_refs": [
+          "observations.pocket"
+         ],
+         "m1_supporting_realization": {
+          "internal_chromatic_composition": {
+           "state": "OBSERVED",
+           "value": "limited_or_uniform"
+          },
+          "internal_fill_realization": {
+           "state": "OBSERVED",
+           "value": "uniform_or_sparse"
+          }
+         },
+         "excluded": []
+        }
+       ]
+      }
+     },
+     "diagnostics": {
+      "unreported": [
+       "category"
+      ],
+      "conditional_na": [
+       {
+        "param": "pocket_construction",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       },
+       {
+        "param": "pocket_projection",
+        "reason": "construction-triggered N/A (redundant observation · CA#11)"
+       }
+      ],
+      "not_applicable_count": 20,
+      "notes": [
+       "pocket Present → morphology carried by pockets[] only; scalar carrier retired (CA#29): pocket_construction, pocket_projection",
+       "DM observation layer carried verbatim: 1 evidence, excluded NOT AN ARRAY"
+      ]
+     },
+     "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+       {
+        "code": "DESCRIPTOR_NEED_ABSENT_LEGACY",
+        "param": null,
+        "message": "pre-protocol extraction — descriptor_need not asserted"
+       }
+      ]
+     },
+     "readability": {
+      "value": true,
+      "basis": "RECONSTRUCTABLE",
+      "limitation": [
+       "CONTINUOUS_STRUCTURE_VISIBLE"
+      ],
+      "contract_error": null
+     }
+    }
+   ],
+   "relationships": [
+    {
+     "type": "Suit",
+     "status": "CANDIDATE — requires CEO adjudication",
+     "members": [
+      "target_1",
+      "target_3"
+     ],
+     "member_categories": [
+      "Jacket",
+      "Trouser"
+     ],
+     "evidence": {
+      "matching_material": [
+       "Synthetic"
+      ],
+      "colour": "NOT ESTABLISHED — Colour V1 is an image-level payload; per-garment tone matching is unavailable"
+     },
+     "note": "Relationship does not determine role and does not replace either garment record."
+    }
+   ],
+   "image_validation_status": "ALL_GARMENTS_VALID"
+  },
+  "contract_valid": true
+ },
+ "thrown": null
+}

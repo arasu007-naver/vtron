@@ -1,0 +1,47 @@
+{
+ "document": "EI_V2_BOUND_INPUTS",
+ "status": "CANDIDATE — read-only frozen dependencies, verified at load",
+ "bound_at": "2026-10-28T08:03:59.464Z",
+ "files": [
+  {
+   "role": "FROZEN_EI_DIRECTION_RUNTIME",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_direction_runtime_v1_2_7.js",
+   "sha256": "3f210adbb709a8183f0c42631239b17e5549ae6363fae81d2f39ae52b7fd6e74"
+  },
+  {
+   "role": "FROZEN_EI_P3_FORCE_RESOLVER",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_p3_general_force_resolver_v1_1.js",
+   "sha256": "fdf7f9410b130a4ee09bf8953bed88b7941bd3044d0212d6758f01d8a4fb448f"
+  },
+  {
+   "role": "FROZEN_EI_PRODUCER_BINDING",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/producer_contract_binding_v1.js",
+   "sha256": "a3b1bd526b59d9c2250203de9cc781316b3bc16c3e64da314a19060fa533a95a"
+  },
+  {
+   "role": "FROZEN_EI_STATE_MACHINE",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_STATE_MACHINE_V1_1_1.json",
+   "sha256": "3d9907bcf29adeaefec9c78c016f163c2f2c7d4a4a61fc09d7688c9c24f01e6f"
+  },
+  {
+   "role": "FROZEN_NEUTRAL_REGISTRY_V3",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V3_TABLE.json",
+   "sha256": "6ba8f01080c5a22a6a652175a7fc3295656a38846c05f7ac0aa98efc121dbc4a"
+  },
+  {
+   "role": "FROZEN_DENIM_ELIGIBILITY",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DENIM_NEUTRAL_ELIGIBILITY_AUTHORITY_V1.json",
+   "sha256": "be1209508dd6fe4b02dc0e31201a130b311210cfa0752837f3c390a6651aa0a1"
+  },
+  {
+   "role": "FROZEN_COLOUR_V1_CONTRACT",
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+   "sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52"
+  },
+  {
+   "role": "FROZEN_VISION_V1_3_RULES",
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+  }
+ ]
+}

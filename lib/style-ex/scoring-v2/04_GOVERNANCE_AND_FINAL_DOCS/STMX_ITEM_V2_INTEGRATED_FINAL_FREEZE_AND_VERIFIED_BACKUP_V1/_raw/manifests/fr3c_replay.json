@@ -1,0 +1,19 @@
+{
+ "at": "2026-10-29T09:09:08.411Z",
+ "inputs": 5,
+ "children": [
+  {
+   "exit": 0,
+   "stderr": ""
+  },
+  {
+   "exit": 0,
+   "stderr": ""
+  }
+ ],
+ "byte_identical_across_processes": true,
+ "equal_to_recorded_live_outputs": "5 / 5",
+ "gt_or_legacy_reads": [],
+ "network_attempts": 0,
+ "all_ok": true
+}

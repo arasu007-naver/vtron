@@ -1,0 +1,4249 @@
+{
+ "artefact": "06_STEP3_FINAL_114_UNIT_REPLAY_LEDGER",
+ "order": "STMX TC MAINLINE V2.3.27",
+ "date": "2026-09-21",
+ "source": "STMX_TC_MAINLINE_V2_3_26_RUNTIME_STATE_TERMINOLOGY_CLARIFICATION/11_STEP3_POST_BRIDGE_114_UNIT_REPLAY.json",
+ "method": "deterministic offline replay of the exact freeze candidate. 0 new rule, 0 model inference, 0 GT fitting, 0 Step 2 write.",
+ "units": 114,
+ "rows": [
+  {
+   "anchor_id": "REF_000001#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Tailored",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-TAILORED",
+      "carrier": "sleeve+collar+closure_type+front_opening_extent"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000002#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Casual",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-RELATIONAL",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000003#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-C3-BODY-ZONE-HYBRID",
+     "carrier": "material"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-C3-BODY-ZONE-HYBRID"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-4",
+   "grammar_reason": "C-3 Material-Construction System x System",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED_CANDIDATE",
+    "authority_class": "FROZEN_CONCEPTS",
+    "authority": "TC-F2 C-3 + TC-F4; ⚠ recovered J2 corroboration WITHDRAWN this order — P1 trigger scope ambiguous",
+    "state_label_step": {
+     "before": "DEDUCTIVE (same closure)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000004#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Utility",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000005#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Casual",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000006#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Utility",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "CONFLICTS",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000007#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC3",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000008#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Casual",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-RELATIONAL",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000009#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000010#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": null,
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction null",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000011#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC8",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000012#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-C3-BODY-ZONE-HYBRID",
+     "carrier": "material"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-C3-BODY-ZONE-HYBRID"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-4",
+   "grammar_reason": "C-3 Material-Construction System x System",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED_CANDIDATE",
+    "authority_class": "FROZEN_CONCEPTS",
+    "authority": "TC-F2 C-3 + TC-F4; ⚠ recovered J2 corroboration WITHDRAWN this order — P1 trigger scope ambiguous",
+    "state_label_step": {
+     "before": "DEDUCTIVE (same closure)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000013#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000014#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": null,
+   "valid_departure_set": [
+    {
+     "channel": "PROPORTION",
+     "rule": "PRO-TRUE-Q5",
+     "carrier": "length"
+    }
+   ],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [
+    "PROPORTION:PRO-TRUE-Q5"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction null",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000020#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-C3-BODY-ZONE-HYBRID",
+     "carrier": "material"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-C3-BODY-ZONE-HYBRID"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-4",
+   "grammar_reason": "C-3 Material-Construction System x System",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED_CANDIDATE",
+    "authority_class": "FROZEN_CONCEPTS",
+    "authority": "TC-F2 C-3 + TC-F4; ⚠ recovered J2 corroboration WITHDRAWN this order — P1 trigger scope ambiguous",
+    "state_label_step": {
+     "before": "DEDUCTIVE (same closure)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": true,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000021#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000139#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC8",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000141#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000143#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "COAT:Casual",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q6",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-RELATIONAL",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000145#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000152#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "COAT:Utility",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q6",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000172#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-CONSTITUTIVE",
+     "carrier": "collar"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-CONSTITUTIVE"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": true,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000182#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000183#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000184#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "shirt",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000185#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000190#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-R1-OPENWORK-BODY-CONSTRUCTION",
+     "carrier": "surface"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-R1-OPENWORK-BODY-CONSTRUCTION"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000198#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000221#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000246#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-R1-OPENWORK-BODY-CONSTRUCTION",
+     "carrier": "surface"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-R1-OPENWORK-BODY-CONSTRUCTION"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000323#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000325#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "CONFLICTS",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000335#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000338#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "CONFLICTS",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000339#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000368#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000378#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    },
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-R1-OPENWORK-BODY-CONSTRUCTION",
+     "carrier": "surface"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED",
+    "CONSTRUCTION:CON-TRUE-R1-OPENWORK-BODY-CONSTRUCTION"
+   ],
+   "statement_set_size": 2,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000378#SU2",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "trouser",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000397#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000398#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "sweater",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000399#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000410#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "sweater",
+     "silhouette": {
+      "rule": "SIL-FALSE-SLIM-Q1",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC3",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000414#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "sweater",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000430#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000432#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "sweater",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000447#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "sweater",
+     "silhouette": {
+      "rule": "SIL-FALSE-SLIM-Q1",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "CONFLICTS",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000466#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "sweatshirt",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000469#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000475#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000493#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000494#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000494#SU2",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000496#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "sweatshirt",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC3",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000496#SU2",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "trouser",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC3",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000499#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Casual",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000500#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Utility",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-RELATIONAL",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000503#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Casual",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-RELATIONAL",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000508#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-CONSTITUTIVE",
+     "carrier": "sleeve"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-CONSTITUTIVE"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000520#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-FLARE-CONTRAST",
+     "carrier": "silhouette+fit"
+    },
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-R1-FRONT-CLOSURE-POCKET-SYSTEM",
+     "carrier": "pocket"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-FLARE-CONTRAST",
+    "CONSTRUCTION:CON-TRUE-R1-FRONT-CLOSURE-POCKET-SYSTEM"
+   ],
+   "statement_set_size": 2,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000521#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-R1-POCKET-SYSTEM",
+     "carrier": "pocket"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-R1-POCKET-SYSTEM"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000525#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-9",
+   "grammar_reason": "OWNERLESS_DEPARTURE_NO_CHANNEL",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+    "authority": "ownerless asymmetry — departure_exists with no owning channel"
+   },
+   "ownerless": true,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000541#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "sweater",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000541#SU2",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "trouser",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000575#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000586#SU1",
+   "scoring_unit_type": "MATCHING_PAIR",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "shirt",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q7",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    },
+    {
+     "key": "trouser",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000590#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000593#SU1",
+   "scoring_unit_type": "MATCHING_PAIR",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "PROPORTION",
+     "rule": "PRO-TRUE-Q7",
+     "carrier": "length"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "PROPORTION:PRO-TRUE-Q7"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000598#SU1",
+   "scoring_unit_type": "MATCHING_PAIR",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "PROPORTION",
+     "rule": "PRO-TRUE-Q5",
+     "carrier": "length"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "PROPORTION:PRO-TRUE-Q5"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000599#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000608#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-9",
+   "grammar_reason": "OWNERLESS_DEPARTURE_NO_CHANNEL",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+    "authority": "ownerless asymmetry — departure_exists with no owning channel"
+   },
+   "ownerless": true,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000616#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000616#SU2",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-9",
+   "grammar_reason": "OWNERLESS_DEPARTURE_NO_CHANNEL",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+    "authority": "ownerless asymmetry — departure_exists with no owning channel"
+   },
+   "ownerless": true,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000622#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "skirt",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000642#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "skirt",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "CONFLICTS",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000657#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "skirt",
+     "silhouette": {
+      "rule": "SIL-FALSE-VOLUM-Q3",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "CONFLICTS",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000660#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-9",
+   "grammar_reason": "OWNERLESS_DEPARTURE_NO_CHANNEL",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+    "authority": "ownerless asymmetry — departure_exists with no owning channel"
+   },
+   "ownerless": true,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000661#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-C3-BODY-ZONE-HYBRID",
+     "carrier": "material"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-C3-BODY-ZONE-HYBRID"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-4",
+   "grammar_reason": "C-3 Material-Construction System x System",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED_CANDIDATE",
+    "authority_class": "FROZEN_CONCEPTS",
+    "authority": "TC-F2 C-3 + TC-F4; ⚠ recovered J2 corroboration WITHDRAWN this order — P1 trigger scope ambiguous",
+    "state_label_step": {
+     "before": "DEDUCTIVE (same closure)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000664#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-9",
+   "grammar_reason": "OWNERLESS_DEPARTURE_NO_CHANNEL",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+    "authority": "ownerless asymmetry — departure_exists with no owning channel"
+   },
+   "ownerless": true,
+   "historical_tc": "TC4",
+   "vs_historical": "CONFLICTS",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000667#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000671#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000689#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000694#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000697#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000698#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-9",
+   "grammar_reason": "OWNERLESS_DEPARTURE_NO_CHANNEL",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+    "authority": "ownerless asymmetry — departure_exists with no owning channel"
+   },
+   "ownerless": true,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000701#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000734#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-R1-STRUCTURAL-ATTACHMENT-BODY-SYSTEM",
+     "carrier": "attachment"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-R1-STRUCTURAL-ATTACHMENT-BODY-SYSTEM"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC8",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000744#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-R1-LAYERED-STRUCTURAL-BODY",
+     "carrier": "material"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-R1-LAYERED-STRUCTURAL-BODY"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000775#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000787#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000788#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000789#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000790#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-9",
+   "grammar_reason": "OWNERLESS_DEPARTURE_NO_CHANNEL",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+    "authority": "ownerless asymmetry — departure_exists with no owning channel"
+   },
+   "ownerless": true,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000791#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000793#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "jumpsuit",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC3",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000802#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-C3-ARCHETYPAL-HYBRID-BODICE-TROUSER",
+     "carrier": "shoulder_connection+waist_definition"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-C3-ARCHETYPAL-HYBRID-BODICE-TROUSER"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-8",
+   "grammar_reason": "C3_GARMENT_X_GARMENT_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_AUTHORITY_LIMIT",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_AUTHORITY_LIMIT",
+    "authority": "C-3 trigger scope ambiguous across surviving witnesses — D1 §0.1(2) bars extrapolation"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000806#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "jumpsuit",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-RELATIONAL",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000807#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "PROPORTION",
+     "rule": "PRO-TRUE-Q5",
+     "carrier": "length"
+    },
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-CONSTITUTIVE",
+     "carrier": "closure_type"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "PROPORTION:PRO-TRUE-Q5",
+    "CONSTRUCTION:CON-TRUE-CONSTITUTIVE"
+   ],
+   "statement_set_size": 2,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000808#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "PROPORTION",
+     "rule": "PRO-TRUE-Q5",
+     "carrier": "length"
+    },
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-CONSTITUTIVE",
+     "carrier": "closure_type"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "PROPORTION:PRO-TRUE-Q5",
+    "CONSTRUCTION:CON-TRUE-CONSTITUTIVE"
+   ],
+   "statement_set_size": 2,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000809#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Tailored",
+     "silhouette": {
+      "rule": "SIL-FALSE-SLIM-Q1",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-TAILORED",
+      "carrier": "sleeve+collar+closure_type+front_opening_extent"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC3",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000810#SU1",
+   "scoring_unit_type": "MATCHING_PAIR",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "PROPORTION",
+     "rule": "PRO-TRUE-Q5",
+     "carrier": "length"
+    },
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-CONSTITUTIVE",
+     "carrier": "collar"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "PROPORTION:PRO-TRUE-Q5",
+    "CONSTRUCTION:CON-TRUE-CONSTITUTIVE"
+   ],
+   "statement_set_size": 2,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000811#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-CONSTITUTIVE",
+     "carrier": "closure_type"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-CONSTITUTIVE"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": true,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000816#SU1",
+   "scoring_unit_type": "MATCHING_PAIR",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Tailored",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-TAILORED",
+      "carrier": "sleeve+collar+closure_type+front_opening_extent"
+     }
+    },
+    {
+     "key": "trouser",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000817#SU1",
+   "scoring_unit_type": "MATCHING_PAIR",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "JACKET:Tailored",
+     "silhouette": {
+      "rule": "SIL-FALSE-SLIM-Q1",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q5",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1-TAILORED",
+      "carrier": "sleeve+collar+closure_type+front_opening_extent"
+     }
+    },
+    {
+     "key": "trouser",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000834#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-CONSTITUTIVE",
+     "carrier": "closure_type"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-CONSTITUTIVE"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000840#SU1",
+   "scoring_unit_type": "MATCHING_PAIR",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000841#SU1",
+   "scoring_unit_type": "MATCHING_PAIR",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000845#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "DIRECTION_UNRESOLVED",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "NOT_EVALUATED",
+   "grammar_rule": null,
+   "grammar_reason": "unit direction DIRECTION_UNRESOLVED",
+   "classic_conformity_profile": null,
+   "resolution_status": "NOT_EVALUATED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "NOT_EVALUATED",
+    "authority_class": "n/a",
+    "authority": "archetype key unresolved or direction unresolved — no Grammar State rule reached"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "NOT_COMPARABLE",
+   "v2_3_23_grammar_state": "NOT_EVALUATED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "NOT_EVALUATED"
+  },
+  {
+   "anchor_id": "REF_000845#SU2",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "trouser",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC4",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000846#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "UNRESOLVED",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-9",
+   "grammar_reason": "OWNERLESS_DEPARTURE_NO_CHANNEL",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+    "authority": "ownerless asymmetry — departure_exists with no owning channel"
+   },
+   "ownerless": true,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000846#SU2",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-R1-POCKET-SYSTEM",
+     "carrier": "pocket"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-R1-POCKET-SYSTEM"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000847#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "CONSTRUCTION",
+     "rule": "CON-TRUE-CONSTITUTIVE",
+     "carrier": "collar"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "CONSTRUCTION:CON-TRUE-CONSTITUTIVE"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-7",
+   "grammar_reason": "R1_TRANSFORMATION_SCOPE_NOT_ADJUDICATED",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_SCOPE_BOUNDARY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_SCOPE_BOUNDARY",
+    "authority": "R1 transformation scope not adjudicated (TC-F2 R1)"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  },
+  {
+   "anchor_id": "REF_000849#SU1",
+   "scoring_unit_type": "GARMENT",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "SILHOUETTE",
+     "rule": "SIL-TRUE-OVERSIZED",
+     "carrier": "fit"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "SILHOUETTE:SIL-TRUE-OVERSIZED"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "CONTEMPORARY_PRESERVED",
+   "grammar_rule": "R-GS-5",
+   "grammar_reason": "valid departure(s) only in Silhouette and/or Proportion",
+   "classic_conformity_profile": null,
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "AUTHORIZED_RECONSTRUCTED_RULE",
+    "authority_class": "AUTHORIZED_RECONSTRUCTED",
+    "authority": "Direction-First + frozen Step 2 channel set + recovered J2-P3 (D1-authorised, trace-complete) + TC-F4 corroboration",
+    "state_label_step": {
+     "before": "DEDUCTIVE — closure over the frozen 4-member enum (V2.3.25 05_ §2)",
+     "after": "EXPLICITLY GOVERNED — TC-V2325-D1 (CEO 2026-09-21) — explicit terminology compatibility: Direction TRANSFORMATIVE + J2 PRESERVED -> historical frozen Runtime State Contemporary-Preserved"
+    }
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "CONTEMPORARY_PRESERVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CONTEMPORARY_PRESERVED"
+  },
+  {
+   "anchor_id": "REF_000849#SU2",
+   "scoring_unit_type": "GARMENT",
+   "direction": "CLASSIC",
+   "valid_departure_set": [],
+   "magnitude": null,
+   "magnitude_resolution_status": "NOT_APPLICABLE",
+   "statement_set": [],
+   "statement_set_size": 0,
+   "grammar_state": "CLASSIC",
+   "grammar_rule": "R-GS-1",
+   "grammar_reason": "no valid departure",
+   "classic_conformity_profile": [
+    {
+     "key": "trouser",
+     "silhouette": {
+      "rule": "SIL-FALSE-LADDER",
+      "carrier": "fit"
+     },
+     "proportion": {
+      "rule": "PRO-FALSE-Q2",
+      "carrier": "length"
+     },
+     "construction": {
+      "rule": "CON-FALSE-C1",
+      "carrier": "all"
+     }
+    }
+   ],
+   "resolution_status": "RESOLVED",
+   "unresolved_category": null,
+   "authority_provenance": {
+    "rule_status": "GOVERNED",
+    "authority_class": "FROZEN",
+    "authority": "TC-F3 (C-side) + Direction-First (CEO 2026-09-16) + frozen Step 2 resolver"
+   },
+   "ownerless": false,
+   "historical_tc": "TC6",
+   "vs_historical": "CONFLICTS",
+   "v2_3_23_grammar_state": "CLASSIC",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "CLASSIC"
+  },
+  {
+   "anchor_id": "REF_000851#SU1",
+   "scoring_unit_type": "MATCHING_PAIR",
+   "direction": "TRANSFORMATIVE",
+   "valid_departure_set": [
+    {
+     "channel": "PROPORTION",
+     "rule": "PRO-TRUE-Q7",
+     "carrier": "length"
+    }
+   ],
+   "magnitude": "MEANINGFUL",
+   "magnitude_resolution_status": "RESOLVED",
+   "statement_set": [
+    "PROPORTION:PRO-TRUE-Q7"
+   ],
+   "statement_set_size": 1,
+   "grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "grammar_rule": "R-GS-9",
+   "grammar_reason": "OWNERLESS_DEPARTURE_NO_CHANNEL",
+   "classic_conformity_profile": null,
+   "resolution_status": "GOVERNED_UNRESOLVED",
+   "unresolved_category": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+   "authority_provenance": {
+    "rule_status": "FAIL_CLOSED",
+    "authority_class": "GOVERNED_EVIDENCE_INSUFFICIENCY",
+    "authority": "ownerless asymmetry — departure_exists with no owning channel"
+   },
+   "ownerless": true,
+   "historical_tc": "TC7",
+   "vs_historical": "AGREES",
+   "v2_3_23_grammar_state": "GRAMMAR_STATE_UNRESOLVED",
+   "changed_this_order": false,
+   "change_reason": null,
+   "v2_3_25_grammar_state": "GRAMMAR_STATE_UNRESOLVED"
+  }
+ ]
+}

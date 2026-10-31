@@ -1,0 +1,367 @@
+{
+ "document": "STMX_ITEM_SR_V2_FINAL_FREEZE_AUTHORITY_V1",
+ "freeze_id": "ITEM-SR-V2-FINAL-FREEZE-V1-2026-10-27",
+ "date": "2026-10-27",
+ "created": "2026-10-27T13:56:27.269Z",
+ "approval_anchor": {
+  "CEO Decision": "2026-10-27",
+  "Order": "STMX Item SR V2 R3 — Final Closure, Freeze & Verified Backup (§0 · §3 · §7), verbatim `04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_SR_V2_R3_FINAL_CLOSURE_FREEZE_AND_VERIFIED_BACKUP_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md` sha256 8a3361212ab3d71d65ad2253bd5e42389b2dacf544b8969427244df25c0eac0a",
+  "Reason": "CEO closed the Item SR V2 workstream on the verified R3 implementation; the REF_000246 Vision reading instability is HELD (deferred), not resolved; the final regression reproduced R3 and found no other blocking SR defect (12 freeze gates).",
+  "Affected Scope": "this freeze record + 3 CURRENT_CONSTITUTION files (new). The R3 candidate directory is frozen in place, unchanged. NOT changed: SR production pointer (Item SR V1), Item Scoring Engine V1 manifest / registry, other axes, Vision, GT, overlay."
+ },
+ "status": "FINAL_FROZEN_WITH_ACCEPTED_KNOWN_LIMITATION",
+ "status_note": "\"accepted\" = the CEO decided to freeze with the limitations recorded (order §0). It does NOT mean REF_000246 is resolved or that the current Vision behaviour is approved.",
+ "production_status": "NOT_PROMOTED — the SR production pointer STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1.json (Item SR V1) is unchanged; service integration of SR V2 is a separate future gate (order §7).",
+ "engine": {
+  "engine_id": "STMX_SR_ENGINE_V2_DIRECTION_REASON",
+  "scope": "Item SR V2 Direction + Korean Reason Engine",
+  "frozen_directory": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/",
+  "directory_name_note": "⚠ the `_R3_CANDIDATE` directory name is the historical physical name of this frozen engine, bound here by explicit name and hash. ⛔ Do not rename, move, edit or delete it.",
+  "self_reported_status_note": "the source string ENGINE_STATUS still reads \"IMPLEMENTATION_CANDIDATE — NOT PRODUCTION\": source was not edited (frozen as verified); this record is the freeze authority.",
+  "src_aggregate_sha256": "3bcc45bc4170e11b87c9da0d059f92c9311f2ede3ea925ed52b056da9239c466",
+  "src_modules": [
+   {
+    "file": "src/sr_v2_binding.js",
+    "sha256": "854c2faa5d23904c2ff2b4f79bf5c63200482d82d1433542284d514430e1d67e"
+   },
+   {
+    "file": "src/sr_v2_direction_resolver.js",
+    "sha256": "21f65c8c2e13d60330dc549bc8ade4513aaefcfb0ecc179ecd55845774d6bd2a"
+   },
+   {
+    "file": "src/sr_v2_engine.js",
+    "sha256": "e92841636831385ec84fae80d8c8c8bebffe5d97a8d049842c89c6081bd81c6e"
+   },
+   {
+    "file": "src/sr_v2_evidence.js",
+    "sha256": "b8ada4f953c2a0264a0aeefe63bada95c328b488bd1451cb38dcaadd5c66df73"
+   },
+   {
+    "file": "src/sr_v2_reason_composer.js",
+    "sha256": "4a69745298b12b67bf61dcfbcfd883c35c5c5ed939b66ea3fc59ed78fa689f2e"
+   },
+   {
+    "file": "src/sr_v2_reason_lexicon.js",
+    "sha256": "ffab42040475850c88fbdad65ae6f81e26971cc7f02a95aef790ab90fa604fb2"
+   },
+   {
+    "file": "src/sr_v2_reason_verifier.js",
+    "sha256": "8f4968f92aa206ae581db0afb015663f6bcb5dae12bd56ed1dc65f7d1c3ba400"
+   }
+  ],
+  "directory_files": [
+   {
+    "file": "BOUND_INPUTS.json",
+    "bytes": 2566,
+    "sha256": "959a11f2b8bf403634188b0543e3c1acd975d0a4bef13be643217f8b42de1af0"
+   },
+   {
+    "file": "CODE_IDENTITY_SEAL_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE.json",
+    "bytes": 4824,
+    "sha256": "cae2750262802f0b0dbfa6296a4e065c8bd789f58f2fd7c053be0144ce9c03e2"
+   },
+   {
+    "file": "README.md",
+    "bytes": 3975,
+    "sha256": "18182766fac11b356196d2deea862c6c4f214cc23e9c3773b41115e8b598b40f"
+   },
+   {
+    "file": "src/sr_v2_binding.js",
+    "bytes": 4168,
+    "sha256": "854c2faa5d23904c2ff2b4f79bf5c63200482d82d1433542284d514430e1d67e"
+   },
+   {
+    "file": "src/sr_v2_direction_resolver.js",
+    "bytes": 10955,
+    "sha256": "21f65c8c2e13d60330dc549bc8ade4513aaefcfb0ecc179ecd55845774d6bd2a"
+   },
+   {
+    "file": "src/sr_v2_engine.js",
+    "bytes": 5242,
+    "sha256": "e92841636831385ec84fae80d8c8c8bebffe5d97a8d049842c89c6081bd81c6e"
+   },
+   {
+    "file": "src/sr_v2_evidence.js",
+    "bytes": 5829,
+    "sha256": "b8ada4f953c2a0264a0aeefe63bada95c328b488bd1451cb38dcaadd5c66df73"
+   },
+   {
+    "file": "src/sr_v2_reason_composer.js",
+    "bytes": 6027,
+    "sha256": "4a69745298b12b67bf61dcfbcfd883c35c5c5ed939b66ea3fc59ed78fa689f2e"
+   },
+   {
+    "file": "src/sr_v2_reason_lexicon.js",
+    "bytes": 8344,
+    "sha256": "ffab42040475850c88fbdad65ae6f81e26971cc7f02a95aef790ab90fa604fb2"
+   },
+   {
+    "file": "src/sr_v2_reason_verifier.js",
+    "bytes": 7903,
+    "sha256": "8f4968f92aa206ae581db0afb015663f6bcb5dae12bd56ed1dc65f7d1c3ba400"
+   },
+   {
+    "file": "tests/_guards_result.json",
+    "bytes": 12127,
+    "sha256": "f1b9096d13b67f3c6c1053b2cfeeef41ef7730fdbe482edd31bccd0de734a59d"
+   },
+   {
+    "file": "tests/_harness.js",
+    "bytes": 8893,
+    "sha256": "1ef34c3eaffa21d02da2c2fb6227cc8172cc803cbfa3fbc7c65d6e80f70b3dac"
+   },
+   {
+    "file": "tests/_holdout_result.json",
+    "bytes": 222279,
+    "sha256": "bb518ee48ab7c4a1d53f210bcf325d83e3d2c0ef840f6982964f9ea3a2fad6d1"
+   },
+   {
+    "file": "tests/_r3_result.json",
+    "bytes": 22659,
+    "sha256": "807c810de81b22c31cafe285aadb12133f9a51932d3f0f4ef8b1c7d492764ea7"
+   },
+   {
+    "file": "tests/_replay_123_raw.json",
+    "bytes": 284336,
+    "sha256": "f23d7c39a80c75346ebe1ac6e1e87e68d76233256dcf17961223d3a60566ca48"
+   },
+   {
+    "file": "tests/_run_all_result.json",
+    "bytes": 3151,
+    "sha256": "96604dec6af476f03252b557b77773731a0d29389581e97b19a59bb667eab6fd"
+   },
+   {
+    "file": "tests/replay_123.js",
+    "bytes": 11734,
+    "sha256": "dafd205aef101a078fd559485c5767796ecd04083b478de487766b1cbda6cb96"
+   },
+   {
+    "file": "tests/run_all.js",
+    "bytes": 1307,
+    "sha256": "3088caf3901d7428b8997dbca70842789f91b120380f6d8afe8e9acd09cf0aa2"
+   },
+   {
+    "file": "tests/test_guards.js",
+    "bytes": 22681,
+    "sha256": "54f20b4dd05d586d4b2c8397fac02641e3c07363f87d228201ad582dfd1fb201"
+   },
+   {
+    "file": "tests/test_holdout.js",
+    "bytes": 6111,
+    "sha256": "21052a6c75d6631b73fbc0642e4e4bd09338b903e64be60e6bc784304f1927f2"
+   },
+   {
+    "file": "tests/test_r3.js",
+    "bytes": 13668,
+    "sha256": "1db45fd378fdee6c53eaf3c8acfa4e148aabc46547a38c55150788ceccaef263"
+   }
+  ],
+  "directory_aggregate_sha256": "e4adb6c6b001ffbf46a24ca0d06923e9b026c896ec451ada24cad0713951d82d",
+  "directory_aggregate_rule": "sha256 of \"relative/path:sha256\" lines, sorted, joined by \\n"
+ },
+ "frozen_components": {
+  "direction_resolver": "src/sr_v2_direction_resolver.js",
+  "evidence_admission_binding": [
+   "src/sr_v2_binding.js",
+   "src/sr_v2_evidence.js",
+   "BOUND_INPUTS.json (+ the 4 bound files below)"
+  ],
+  "p5r": "src/sr_v2_direction_resolver.js (SR-V2-P5r) + src/sr_v2_evidence.js corroborate()",
+  "reason_composer": [
+   "src/sr_v2_reason_composer.js",
+   "src/sr_v2_reason_lexicon.js"
+  ],
+  "reason_verifier": "src/sr_v2_reason_verifier.js",
+  "engine_entry": "src/sr_v2_engine.js",
+  "test_fixtures": [
+   "tests/_guards_result.json",
+   "tests/_harness.js",
+   "tests/_holdout_result.json",
+   "tests/_r3_result.json",
+   "tests/_replay_123_raw.json",
+   "tests/_run_all_result.json",
+   "tests/replay_123.js",
+   "tests/run_all.js",
+   "tests/test_guards.js",
+   "tests/test_holdout.js",
+   "tests/test_r3.js"
+  ]
+ },
+ "bound_runtime_dependencies": [
+  {
+   "role": "producer_binding",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_producer_binding_v1.js",
+   "sha256": "487cad4ec11fe66c1a61be74659cfdd59262d0275f8e50af4f8767d1b81cef3c",
+   "verified_now": true
+  },
+  {
+   "role": "input_adapter",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_input_adapter_v1.js",
+   "sha256": "a46dd16800804d04bae154132dd6da4ed92410be682fef5b065a77b2de4cb961",
+   "verified_now": true
+  },
+  {
+   "role": "evidence_admission",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_evidence_admission_v1.js",
+   "sha256": "4bd774a883dd7de1760196b34badc1599b87b001c2b2e5b939b51171a77138b4",
+   "verified_now": true
+  },
+  {
+   "role": "observation_contract_rules",
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+   "verified_now": true
+  },
+  {
+   "role": "sr_v1_final_seal",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_SR_ENGINE_V1_FINAL.json",
+   "sha256": "9a8f6db4b50aa75fbfd6a3455bb97e4c2d81d2e79834aaa9a95a14c12f572a26",
+   "verified_now": true
+  },
+  {
+   "role": "sr_v1_production_pointer",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "sha256": "6a670aa417c9692364352303aa760a4a6ec7441f60dcac73c2316f7689c36db7",
+   "verified_now": true
+  }
+ ],
+ "test_dependencies": [
+  {
+   "role": "CEO overlay (tests only, hash-pinned)",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_SR_V2_FINAL_EVIDENCE_AND_SCORING_CORRECTION_R3/CEO_OVERLAY/STMX_ITEM_SR_V2_R3_CEO_OVERLAY_V1.json",
+   "sha256": "9cf546502baa1e797fda1f224bcabb2d21edc015680e1855109748ff7ad6235d"
+  },
+  {
+   "role": "CEO calibration corpus master",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/MASTER/STMX_CEO_CALIBRATION_CORPUS.jsonl",
+   "sha256": "621d6b905fb71b0c265791ccd02d4a3a7e0339d129ff769cef5ccdbf4eace267"
+  },
+  {
+   "role": "scoring-unit tool",
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CEO_CALIBRATION_CORPUS/TOOLS/scoring_units_v1.js",
+   "sha256": "b46d4c9fe8bb9a8349c6d1d4cb4aab9eaec0c0ec961ed1242dc81acddc1fd723"
+  },
+  {
+   "role": "direct CEO ordinal authority",
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_SR_ENGINE_FINAL_FREEZE_V1/02_STMX_SR_DIRECT_CEO_ORDINAL_AUTHORITY_FINAL_V1.json",
+   "sha256": "d311a477ff1c4e4dbde9a8d470770ef5f8ebc429322a3912e7e1689ce1347f3f"
+  },
+  {
+   "role": "frozen SR V1 engine (diagnostic comparison)",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/src/sr_engine_v1_final.js",
+   "sha256": "700931fef86fd40da40c4c024955fe1fef75883f27062c61dfbc0ac5bae51390"
+  }
+ ],
+ "final_regression": {
+  "package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_SR_V2_R3_FINAL_CLOSURE_FREEZE_AND_VERIFIED_BACKUP_V1/",
+  "result_file": "_raw/manifests/f4_result.json",
+  "result_sha256": "1db130f25c9a952a3ccd8cbfe5aeaf0389eee26df8122ca10fff6376ffebbb42",
+  "run_all": "86/86",
+  "products": "123 S/R (S 77 · R 46) · Reasons verified 123",
+  "current_ceo_gt_ceo_corrected_evidence": "92/92",
+  "current_ceo_gt_stored_vision": "91/92 (REF_000246 S≠R)",
+  "direct_anchors": "27/27",
+  "holdout_19": {
+   "STRUCTURED": 9,
+   "RELAXED": 10
+  },
+  "synthetic_grid_512": {
+   "STRUCTURED": 232,
+   "RELAXED": 280
+  },
+  "gates": [
+   "G-1 run_all 86/86 reproduced",
+   "G-2 123 S/R · 0 prohibited final states · 123 verified Reasons",
+   "G-3 per-product reproduction of the stored R3 = 123/123",
+   "G-4 current CEO GT 92/92 (CEO-corrected 246 evidence)",
+   "G-5 direct anchors 27/27",
+   "G-6 REF_000694 = S",
+   "G-7 holdout 19 + grid 512 identical to stored; incomplete-input cases all S/R verified",
+   "G-8 runtime reads no GT / REF / overlay / corpus; deterministic",
+   "G-9 no other SR Direction error: the only overlay-OFF difference is REF_000246",
+   "G-10 Vision validator failures never used / filled / cited by SR",
+   "G-11 candidate byte-identical to PRE (the run changed nothing)",
+   "G-12 design review 14/14"
+  ]
+ },
+ "open_item_classification": [
+  {
+   "id": "SR-D2",
+   "what": "Z0 / no-evidence",
+   "classification": "current R3 implementation kept — closed",
+   "note": "provisional S + limitation-only Reason (LIM-Z0-004)"
+  },
+  {
+   "id": "SR-Q1",
+   "what": "P5 / P5b Regular fit + drape or unobserved cloth → S",
+   "classification": "current R3 implementation kept — closed",
+   "note": "protects direct SR6 anchors 323 · 398"
+  },
+  {
+   "id": "SR-Q2",
+   "what": "P1b one-piece governed bodice + released lower → R",
+   "classification": "current R3 implementation kept — closed",
+   "note": "744 · 802"
+  },
+  {
+   "id": "SR-Q3",
+   "what": "historical SR5 migration",
+   "classification": "non-blocking — review after integration",
+   "note": "GT layer only (LIM-SR5-007)"
+  },
+  {
+   "id": "SR-Q4",
+   "what": "Z1 held-line carrier only → S",
+   "classification": "current R3 implementation kept — closed",
+   "note": "REF_000198 agrees with GT"
+  },
+  {
+   "id": "SR-R3-D1",
+   "what": "release corroboration (soft sleeve volume or Lace / Mesh in drape cloth; either suffices)",
+   "classification": "current R3 implementation kept — closed",
+   "note": "LIM-P5R-003"
+  },
+  {
+   "id": "SR-R3-D2",
+   "what": "openwork scope Lace · Mesh only (Semi Transparent inert)",
+   "classification": "current R3 implementation kept — closed",
+   "note": "no effect on the 123 / holdout"
+  },
+  {
+   "id": "SR-R3-D3",
+   "what": "REF_000694 CEO re-decision S, SR4 history kept",
+   "classification": "already implemented + verified — closed",
+   "note": "CEO decision in the R3 order; G-6"
+  },
+  {
+   "id": "SR-D1 (R2)",
+   "what": "694 boundary",
+   "classification": "already implemented + verified — closed",
+   "note": "answered by the 694 S re-decision"
+  },
+  {
+   "id": "SR-D3 (R2)",
+   "what": "R2 candidate acceptance",
+   "classification": "superseded by R3 + this freeze",
+   "note": "—"
+  }
+ ],
+ "known_limitations": [
+  "ITEM-SR-V2-LIM-246-001",
+  "ITEM-SR-V2-LIM-VAL-002",
+  "ITEM-SR-V2-LIM-P5R-003",
+  "ITEM-SR-V2-LIM-Z0-004",
+  "ITEM-SR-V2-LIM-GT-005",
+  "ITEM-SR-V2-LIM-DOM-006",
+  "ITEM-SR-V2-LIM-SR5-007"
+ ],
+ "not_changed": [
+  "Item SR V1 (production) and its pointer",
+  "Item Scoring Engine V1 manifest / Clean Engine registry",
+  "EI · TC · DM",
+  "Item Vision Extractor (V1_3 and all)",
+  "CEO GT / overlay",
+  "Full-Look engines"
+ ],
+ "rule": "⛔ No change to the frozen directory, its bound dependencies or this record without an explicit CEO SR V2 reopen decision (reason · affected authority · migration plan · regression plan)."
+}

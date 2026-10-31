@@ -1,0 +1,113 @@
+{
+ "document": "TC_CRITERIA_SUCCESSORS_V1",
+ "date": "2026-09-24",
+ "status": "SUCCESSOR CRITERIA — CEO approved 2026-09-24 (V2.3.51 §12 · §18) · FIXED BEFORE BACKFILL · successor of V2.3.41 16_ (D-7) and V2.3.42 08_ (D-FWD-2); predecessors untouched",
+ "design_authority": "MATERIAL iff (1) characteristic_realization authored ∧ (2) construction realization_relation = CHARACTERISTIC ∧ (3) R1.class = CONSTRUCTION ∧ (R1.components absent ∨ R1.components ∩ constitutive-system components ≠ ∅); INCIDENTAL iff (1) ∧ (2) ∧ R1.class ∈ {BODY_FORM · MATERIAL_SURFACE · DECORATION} (the characteristic system is positively peripheral); UNRESOLVED otherwise — R1 NOT_VISIBLE / UNKNOWN / BALANCED → ITEM_OBSERVATION_RESOLUTION_GAP; (1) fails → REFERENCE_CONTENT_GAP || per constitutive system: DISPLACED if presence token absent / outside the characteristic set; SUBORDINATED if present and its realization parameter is re-proportioned (collar_scale Enlarged · sleeve_volume Voluminous · cuff_scale Enlarged where constitutive); RETAINED if present with conventional realization or with no realization parameter (token presence, current reading). whole_garment_reading: INTERVENTION_PRINCIPAL iff SCOPE ∧ ≥1 system SUBORDINATED / DISPLACED ∧ R1 organiser = the intervention's class (BODY_FORM for Silhouette / Proportion; CONSTRUCTION on the departure locus for Construction) ∧ evidence completeness; BASE_GRAMMAR_PRINCIPAL iff all RETAINED ∧ non-intervened channels conventional ∧ R1 organiser ≠ the intervention's class ∧ completeness; UNRESOLVED otherwise with cause (REFERENCE_CONTENT_GAP · ITEM_OBSERVATION_RESOLUTION_GAP · SEMANTIC_AUTHORITY_GAP for mixed evidence the CEO has not ruled on). Quantifier (≥1 vs all) = CEO decision inside the criteria successor. Never INTERVENTION by scale / STRONG / count alone; never BASE by absence.",
+ "classic_d7_identity_participation": {
+  "owner": "D-7 Classic relational reading (TC semantic runtime V2 candidate · readIdentity)",
+  "outputs": [
+   "MATERIAL",
+   "INCIDENTAL",
+   "UNRESOLVED"
+  ],
+  "rule": [
+   "(1) reference characteristic_realization NOT authored for the key (row NOT_AUTHORED or construction content absent) → UNRESOLVED / REFERENCE_CONTENT_GAP",
+   "(2) construction realization_relation UNRESOLVED → UNRESOLVED / ITEM_OBSERVATION_RESOLUTION_GAP (\"(2) construction realization undecidable\")",
+   "(2) construction realization_relation decidable but not CHARACTERISTIC → UNRESOLVED / SEMANTIC_AUTHORITY_GAP (\"(2) characteristic construction system not realised — criteria define no reading\")",
+   "(3) R1 missing / NOT_VISIBLE / UNKNOWN / BALANCED → UNRESOLVED / ITEM_OBSERVATION_RESOLUTION_GAP (\"(3) organiser not established\")",
+   "(3) R1 = CONSTRUCTION (components absent — corpus V1) → MATERIAL",
+   "(3) R1 ∈ {BODY_FORM, MATERIAL_SURFACE, DECORATION} → INCIDENTAL"
+  ],
+  "provenance": "reference row · construction realization tokens · R1 {value, state, observation_id} · rule id D7-S1",
+  "forbidden": [
+   "Tailored → MATERIAL",
+   "CHARACTERISTIC×3 → MATERIAL",
+   "conformity → MATERIAL",
+   "SR physics → MATERIAL",
+   "descriptor → any value",
+   "tier / score"
+  ]
+ },
+ "transformative_dfwd2_whole_garment_reading": {
+  "owner": "D-FWD-2 Grammar Transformation process (TC semantic runtime V2 candidate)",
+  "outputs": [
+   "BASE_GRAMMAR_PRINCIPAL",
+   "INTERVENTION_PRINCIPAL",
+   "UNRESOLVED"
+  ],
+  "precedence_preserved_from_v1": [
+   "no Statement → ITEM_OBSERVATION_RESOLUTION_GAP",
+   "held class → GOVERNED_SCOPE_BOUNDARY",
+   "no criterion → SEMANTIC_AUTHORITY_GAP",
+   "reference construction content not authored → REFERENCE_CONTENT_GAP",
+   "any UNRESOLVED channel or ownerless departure → ITEM_OBSERVATION_RESOLUTION_GAP",
+   "STRONG magnitude or a non-intervened whole-garment channel TRUE → SEMANTIC_AUTHORITY_GAP"
+  ],
+  "constitutive_system_status": {
+   "vocabulary": [
+    "RETAINED",
+    "SUBORDINATED",
+    "DISPLACED",
+    "UNRESOLVED"
+   ],
+   "nature": "process-trace detail inside whole_garment_reading.process_trace — NOT a carrier, NOT a score, never counted into magnitude",
+   "systems": "the key's Reference Knowledge A construction content (V2.3.42 15_): lapel_system · closure_system · sleeve_system · front_opening_extent (only those authored for the key)",
+   "presence_token": {
+    "lapel_system": "collar",
+    "closure_system": "closure_type",
+    "sleeve_system": "sleeve",
+    "front_opening_extent": "front_opening_extent"
+   },
+   "realization_parameter": {
+    "lapel_system": "collar_scale",
+    "sleeve_system": "sleeve_volume",
+    "closure_system": null,
+    "front_opening_extent": null
+   },
+   "rule": [
+    "presence token not observed (missing / n/a) → UNRESOLVED",
+    "presence token <ABSENT> or outside the characteristic set (closure: Button family) → DISPLACED",
+    "present · realization parameter state NOT_VISIBLE / UNKNOWN → UNRESOLVED",
+    "present · realization value re-proportioned (collar_scale Enlarged · sleeve_volume Voluminous) → SUBORDINATED",
+    "present · realization value otherwise (Regular / Reduced) or realization parameter not emitted / no parameter for the system → RETAINED (token-presence reading)"
+   ]
+  },
+  "intervention_class": {
+   "SILHOUETTE": "BODY_FORM",
+   "PROPORTION": "BODY_FORM",
+   "CONSTRUCTION": "CONSTRUCTION on the departure locus — components not recorded in corpus V1, so alignment with CONSTRUCTION is undeterminable → UNRESOLVED / ITEM_OBSERVATION_RESOLUTION_GAP when R1 = CONSTRUCTION"
+  },
+  "successor_steps": [
+   "S1 R1 of the intervening member missing / NOT_VISIBLE / UNKNOWN → UNRESOLVED / ITEM_OBSERVATION_RESOLUTION_GAP",
+   "S2 any constitutive system UNRESOLVED → UNRESOLVED / ITEM_OBSERVATION_RESOLUTION_GAP",
+   "S3 INTERVENTION_PRINCIPAL iff for every Statement: ≥1 constitutive system SUBORDINATED or DISPLACED ∧ R1 aligned with the Statement's intervention class; with ≥2 Statements also statement_relation = COORDINATED, else UNRESOLVED / RELATIONAL_EVIDENCE_GAP",
+   "S4 BASE_GRAMMAR_PRINCIPAL iff for every Statement: all constitutive systems RETAINED ∧ R1 not aligned with the intervention class (BALANCED counts as not aligned) ∧ the V1 BASE conditions hold",
+   "S5 otherwise (mixed evidence) → UNRESOLVED / SEMANTIC_AUTHORITY_GAP"
+  ],
+  "quantifier": "\"at least one\" (CEO 2026-09-24 · V2.3.51 §18) — a semantic eligibility condition, never a count → score / magnitude",
+  "forbidden": [
+   "absence of evidence → BASE",
+   "scale / STRONG / count → INTERVENTION",
+   "BASE → TC6",
+   "INTERVENTION → TC7",
+   "grammar_state as input (G60)"
+  ]
+ },
+ "realization_evidence_admission": {
+  "admitted": [
+   "collar_scale (incl. lapel SCALE) — lapel_system realization",
+   "sleeve_volume — sleeve_system realization (already D1-legal)",
+   "cuff_scale — admitted for a constitutive cuff system; no key's Reference A content names one → inert in V2 (recorded)",
+   "presence tokens collar · closure_type · sleeve · front_opening_extent (already D1-legal)"
+  ],
+  "use": "constitutive-system RELATION resolution only (RELATION_TO_BASE), after the Statement / departure context exists",
+  "never": [
+   "Step 2 Departure trigger (S2 §3.2 \"the architecture, not its scale\" stands)",
+   "magnitude",
+   "STRONG",
+   "Salience",
+   "TC tier evidence by itself"
+  ],
+  "source": "GT-free projection of canonical V1_2 final_observations (garment_ref · admitted keys only) — 02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_OBSERVATION_V1_CANDIDATE/CONSTITUTIVE_REALIZATION_EVIDENCE_V1.json"
+ }
+}

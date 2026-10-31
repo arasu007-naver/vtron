@@ -1,0 +1,268 @@
+[
+ {
+  "ref": "REF_000841",
+  "declared_unit": {
+   "type": "SUIT",
+   "categories": [
+    "Jacket",
+    "Trouser"
+   ],
+   "basis": "EI V2 OVERLAY_V2 SUIT (target_1 + target_2)"
+  },
+  "member_facts": [
+   {
+    "target_id": "target_1",
+    "role": "Primary",
+    "eligible": true,
+    "extraction_depth": "FULL",
+    "readability": {
+     "value": true,
+     "basis": "RECONSTRUCTABLE",
+     "limitation": [
+      "CONTINUOUS_STRUCTURE_VISIBLE"
+     ],
+     "contract_error": null
+    },
+    "record_present": true,
+    "category": "Jacket",
+    "observations": 26,
+    "dm_block": true,
+    "descriptor": "Double-breasted-like jacket with a wide overlapping front and two visible vertical columns of buttons; broad peaked lapels roll low toward the mid-torso buttoning point. The body is cut long and generously, hanging past the hip in large soft folds, with hands tucked into lower pockets pulling the front panels into deep drapes. A matching dark tie and white shirt collar sit at the neck, read as a separate layer beneath."
+   },
+   {
+    "target_id": "target_2",
+    "role": "Incidental",
+    "eligible": false,
+    "extraction_depth": "NONE",
+    "readability": {
+     "value": false,
+     "basis": "NOT_RECONSTRUCTABLE",
+     "limitation": [
+      "OCCLUDED_BY_OTHER_GARMENT"
+     ],
+     "contract_error": null
+    },
+    "record_present": false,
+    "category": null,
+    "observations": 0,
+    "dm_block": false,
+    "descriptor": null
+   },
+   {
+    "target_id": "target_3",
+    "role": "Incidental",
+    "eligible": false,
+    "extraction_depth": "NONE",
+    "readability": {
+     "value": false,
+     "basis": "NOT_RECONSTRUCTABLE",
+     "limitation": [
+      "OCCLUDED_BY_OTHER_GARMENT"
+     ],
+     "contract_error": null
+    },
+    "record_present": false,
+    "category": null,
+    "observations": 0,
+    "dm_block": false,
+    "descriptor": "Very wide, high-volume trousers that fall in a long straight column from the waist to the floor, breaking heavily over the shoes with deep vertical folds and extra length pooling at the hem."
+   }
+  ],
+  "r4": [
+   {
+    "suit_members": [
+     "target_1",
+     "target_2"
+    ],
+    "result_status": "INVALID_PRODUCT_INPUT",
+    "input_issue": {
+     "code": "SUIT_MEMBER_ASSOCIATION_FAILED",
+     "detail": "Suit member target(s) not eligible garment records: target_2"
+    },
+    "customer_output": null,
+    "incomplete_axes": [
+     {
+      "axis": "EI",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     },
+     {
+      "axis": "TC",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     },
+     {
+      "axis": "SR",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     },
+     {
+      "axis": "DM",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     }
+    ]
+   },
+   {
+    "suit_members": [
+     "target_1",
+     "target_3"
+    ],
+    "result_status": "INVALID_PRODUCT_INPUT",
+    "input_issue": {
+     "code": "SUIT_MEMBER_ASSOCIATION_FAILED",
+     "detail": "Suit member target(s) not eligible garment records: target_3"
+    },
+    "customer_output": null,
+    "incomplete_axes": [
+     {
+      "axis": "EI",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     },
+     {
+      "axis": "TC",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     },
+     {
+      "axis": "SR",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     },
+     {
+      "axis": "DM",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     }
+    ]
+   }
+  ],
+  "downstream_contracts": [
+   {
+    "suit_members": [
+     "target_1",
+     "target_2"
+    ],
+    "EI_R5_product_unit": "TECHNICAL_INVALID_REQUEST — a suit component is not among the targets",
+    "TC_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+    "SR_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+    "DM_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category"
+   },
+   {
+    "suit_members": [
+     "target_1",
+     "target_3"
+    ],
+    "EI_R5_product_unit": "TECHNICAL_INVALID_REQUEST — a suit component is not among the targets",
+    "TC_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+    "SR_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+    "DM_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category"
+   }
+  ],
+  "envelope_sha256_before": "30dcee4a56c3cfdfffc5d73ef9b74c42ddb40b350a262bab822bbca19bbf1ed2",
+  "envelope_sha256_after": "30dcee4a56c3cfdfffc5d73ef9b74c42ddb40b350a262bab822bbca19bbf1ed2"
+ },
+ {
+  "ref": "REF_000810",
+  "declared_unit": {
+   "type": "SUIT",
+   "categories": [
+    "Jacket",
+    "Skirt"
+   ],
+   "basis": "EI V2 OVERLAY_V2 SUIT (target_1 + target_2)"
+  },
+  "member_facts": [
+   {
+    "target_id": "target_1",
+    "role": "Primary",
+    "eligible": true,
+    "extraction_depth": "FULL",
+    "readability": {
+     "value": true,
+     "basis": "RECONSTRUCTABLE",
+     "limitation": [
+      "CONTINUOUS_STRUCTURE_VISIBLE"
+     ],
+     "contract_error": null
+    },
+    "record_present": true,
+    "category": "Jacket",
+    "observations": 23,
+    "dm_block": true,
+    "descriptor": "A cropped collarless jacket with a round neck finished in a self-fabric braided/cord trim that also runs the full front edge, the sleeve ends and the lower hem. A single centre column of round gold-tone buttons runs from neck to hem. Over the pale textured ground, naturalistic multicolour botanical sprays are worked across the two front panels and up both sleeves — each spray a tall stem with mixed blossoms (pink, yellow, coral, lilac) and olive foliage — reading as hand-embroidered placed motifs rather than a regular repeat. A matching braided-cord trim band also appears below the hem, part of the coordinating skirt beneath."
+   },
+   {
+    "target_id": "target_2",
+    "role": "Incidental",
+    "eligible": false,
+    "extraction_depth": "NONE",
+    "readability": {
+     "value": false,
+     "basis": "NOT_RECONSTRUCTABLE",
+     "limitation": [
+      "TERMINAL_REGION_CROPPED",
+      "OCCLUDED_BY_OTHER_GARMENT"
+     ],
+     "contract_error": null
+    },
+    "record_present": false,
+    "category": null,
+    "observations": 0,
+    "dm_block": false,
+    "descriptor": "A short pale textured tweed-like mini skirt coordinating with the jacket above. A braided self-cord trim runs along the waist/upper edge and outlines two patch pockets set symmetrically on the lower front. The visible skirt body is plain pale cloth with no floral embroidery, in contrast to the jacket. Hemline falls out of frame."
+   }
+  ],
+  "r4": [
+   {
+    "suit_members": [
+     "target_1",
+     "target_2"
+    ],
+    "result_status": "INVALID_PRODUCT_INPUT",
+    "input_issue": {
+     "code": "SUIT_MEMBER_ASSOCIATION_FAILED",
+     "detail": "Suit member target(s) not eligible garment records: target_2"
+    },
+    "customer_output": null,
+    "incomplete_axes": [
+     {
+      "axis": "EI",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     },
+     {
+      "axis": "TC",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     },
+     {
+      "axis": "SR",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     },
+     {
+      "axis": "DM",
+      "outcome": "NOT_EXECUTED",
+      "code": "SUIT_MEMBER_ASSOCIATION_FAILED"
+     }
+    ]
+   }
+  ],
+  "downstream_contracts": [
+   {
+    "suit_members": [
+     "target_1",
+     "target_2"
+    ],
+    "EI_R5_product_unit": "TECHNICAL_INVALID_REQUEST — a suit component is not among the targets",
+    "TC_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+    "SR_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+    "DM_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category"
+   }
+  ],
+  "envelope_sha256_before": "e97b8710b5886a6164452368eea723dd7d6d26fb84dd48a149ae712e286bd507",
+  "envelope_sha256_after": "e97b8710b5886a6164452368eea723dd7d6d26fb84dd48a149ae712e286bd507"
+ }
+]

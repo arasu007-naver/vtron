@@ -1,0 +1,418 @@
+{
+ "at": "2026-10-29T07:59:07.125Z",
+ "run_state": "LIVE_COMPLETE",
+ "images_processed": 7,
+ "vision_ok": 7,
+ "colour_ok": 4,
+ "http_attempts": 11,
+ "reserve_retries": 0,
+ "failures": [],
+ "usage": {
+  "input": 479987,
+  "output": 36829
+ },
+ "spent_usd": 3.3206,
+ "per_call": [
+  {
+   "slot": 1,
+   "kind": "VISION",
+   "ref": "REF_000520",
+   "http": 200,
+   "outcome": "OK",
+   "in": 66126,
+   "out": 2596,
+   "cost": 0.3955,
+   "stop_reason": "end_turn",
+   "latency_s": 32
+  },
+  {
+   "slot": 2,
+   "kind": "COLOUR",
+   "ref": "REF_000520",
+   "http": 200,
+   "outcome": "OK",
+   "in": 10451,
+   "out": 375,
+   "cost": 0.0616,
+   "stop_reason": "end_turn",
+   "latency_s": 6
+  },
+  {
+   "slot": 3,
+   "kind": "VISION",
+   "ref": "REF_000010",
+   "http": 200,
+   "outcome": "OK",
+   "in": 61968,
+   "out": 8192,
+   "cost": 0.5146,
+   "stop_reason": "max_tokens",
+   "latency_s": 86
+  },
+  {
+   "slot": 5,
+   "kind": "VISION",
+   "ref": "REF_000841",
+   "http": 200,
+   "outcome": "OK",
+   "in": 65598,
+   "out": 5985,
+   "cost": 0.4776,
+   "stop_reason": "end_turn",
+   "latency_s": 64
+  },
+  {
+   "slot": 7,
+   "kind": "VISION",
+   "ref": "REF_000840",
+   "http": 200,
+   "outcome": "OK",
+   "in": 62104,
+   "out": 4641,
+   "cost": 0.4265,
+   "stop_reason": "end_turn",
+   "latency_s": 50
+  },
+  {
+   "slot": 8,
+   "kind": "COLOUR",
+   "ref": "REF_000840",
+   "http": 200,
+   "outcome": "OK",
+   "in": 6498,
+   "out": 375,
+   "cost": 0.0419,
+   "stop_reason": "end_turn",
+   "latency_s": 5
+  },
+  {
+   "slot": 9,
+   "kind": "VISION",
+   "ref": "REF_000810",
+   "http": 200,
+   "outcome": "OK",
+   "in": 65469,
+   "out": 5978,
+   "cost": 0.4768,
+   "stop_reason": "end_turn",
+   "latency_s": 63
+  },
+  {
+   "slot": 11,
+   "kind": "VISION",
+   "ref": "REF_000816",
+   "http": 200,
+   "outcome": "OK",
+   "in": 63150,
+   "out": 3225,
+   "cost": 0.3964,
+   "stop_reason": "end_turn",
+   "latency_s": 43
+  },
+  {
+   "slot": 12,
+   "kind": "COLOUR",
+   "ref": "REF_000816",
+   "http": 200,
+   "outcome": "OK",
+   "in": 7546,
+   "out": 338,
+   "cost": 0.0462,
+   "stop_reason": "end_turn",
+   "latency_s": 4
+  },
+  {
+   "slot": 13,
+   "kind": "VISION",
+   "ref": "REF_000849",
+   "http": 200,
+   "outcome": "OK",
+   "in": 63366,
+   "out": 4782,
+   "cost": 0.4364,
+   "stop_reason": "end_turn",
+   "latency_s": 52
+  },
+  {
+   "slot": 14,
+   "kind": "COLOUR",
+   "ref": "REF_000849",
+   "http": 200,
+   "outcome": "OK",
+   "in": 7711,
+   "out": 342,
+   "cost": 0.0471,
+   "stop_reason": "end_turn",
+   "latency_s": 5
+  }
+ ],
+ "scoring_units": 5,
+ "complete_units": 5,
+ "comparable": 18,
+ "match": 13,
+ "mismatch": 5,
+ "no_direction": 0,
+ "accuracy_pct": 72.2,
+ "by_axis": [
+  {
+   "axis": "EI",
+   "comparable": 5,
+   "match": 3
+  },
+  {
+   "axis": "TC",
+   "comparable": 5,
+   "match": 3
+  },
+  {
+   "axis": "SR",
+   "comparable": 4,
+   "match": 3
+  },
+  {
+   "axis": "DM",
+   "comparable": 4,
+   "match": 4
+  }
+ ],
+ "mismatches": [
+  {
+   "ref": "REF_000520",
+   "unit": "U1",
+   "axis": "EI",
+   "actual": "E",
+   "expected": "NEUTRAL",
+   "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+   "reason": "그레이 바탕에 가공된 표면이 더해져 시각적 표현이 드러나는 Expressive 방향으로 판단됩니다."
+  },
+  {
+   "ref": "REF_000840",
+   "unit": "U1",
+   "axis": "EI",
+   "actual": "I",
+   "expected": "NEUTRAL",
+   "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+   "reason": "베이지 바탕에 시각적 표현이 절제된 Introvert 방향으로 판단됩니다."
+  },
+  {
+   "ref": "REF_000840",
+   "unit": "U1",
+   "axis": "SR",
+   "actual": "R",
+   "expected": "S",
+   "basis": "CEO GT SR6",
+   "reason": "재킷은 넉넉하게 재단된 오버사이즈 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다. 수트 전체의 방향은 재킷 실루엣이 결정합니다. 바지는 Structured 쪽이지만 수트 방향을 바꾸지 않습니다."
+  },
+  {
+   "ref": "REF_000849",
+   "unit": "U1",
+   "axis": "TC",
+   "actual": "CLASSIC",
+   "expected": "TRANSFORMATIVE",
+   "basis": "CEO GT TC6",
+   "reason": "릴랙스드 핏, 노치드 칼라와 싱글 브레스트 단추 여밈 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다."
+  },
+  {
+   "ref": "REF_000849",
+   "unit": "U2",
+   "axis": "TC",
+   "actual": "CLASSIC",
+   "expected": "TRANSFORMATIVE",
+   "basis": "CEO GT TC6",
+   "reason": "릴랙스드 핏과 풀 길이 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다."
+  }
+ ],
+ "reasons": {
+  "total": 20,
+  "ok": 20,
+  "withheld": [],
+  "issues": []
+ },
+ "colour": [
+  {
+   "ref": "REF_000520",
+   "requested": [
+    "target_1"
+   ],
+   "scope_unit": "ITEM",
+   "attempt": "OK",
+   "packet_valid": true,
+   "observations": [
+    {
+     "target_id": "target_1",
+     "category": "Trouser",
+     "status": "OBSERVED",
+     "primary": "gray",
+     "reject_code": null
+    }
+   ],
+   "unit_states": [
+    "U1: OWN_COLOUR_ATTACHED gray"
+   ],
+   "contamination": []
+  },
+  {
+   "ref": "REF_000010",
+   "unit_states": [],
+   "contamination": []
+  },
+  {
+   "ref": "REF_000841",
+   "unit_states": [],
+   "contamination": []
+  },
+  {
+   "ref": "REF_000840",
+   "requested": [
+    "target_1",
+    "target_3"
+   ],
+   "scope_unit": "SUIT",
+   "attempt": "OK",
+   "packet_valid": true,
+   "observations": [
+    {
+     "target_id": "target_1",
+     "category": "Jacket",
+     "status": "OBSERVED",
+     "primary": "beige",
+     "reject_code": null
+    },
+    {
+     "target_id": "target_3",
+     "category": "Trouser",
+     "status": "OBSERVED",
+     "primary": "beige",
+     "reject_code": null
+    }
+   ],
+   "unit_states": [
+    "U1: OWN_COLOUR_ATTACHED beige + OWN_COLOUR_ATTACHED beige"
+   ],
+   "contamination": []
+  },
+  {
+   "ref": "REF_000810",
+   "unit_states": [],
+   "contamination": []
+  },
+  {
+   "ref": "REF_000816",
+   "requested": [
+    "target_1",
+    "target_2"
+   ],
+   "scope_unit": "SUIT",
+   "attempt": "OK",
+   "packet_valid": true,
+   "observations": [
+    {
+     "target_id": "target_1",
+     "category": "Jacket",
+     "status": "OBSERVED",
+     "primary": "black",
+     "reject_code": null
+    },
+    {
+     "target_id": "target_2",
+     "category": "Trouser",
+     "status": "OBSERVED",
+     "primary": "black",
+     "reject_code": null
+    }
+   ],
+   "unit_states": [
+    "U1: OWN_COLOUR_ATTACHED black + OWN_COLOUR_ATTACHED black"
+   ],
+   "contamination": []
+  },
+  {
+   "ref": "REF_000849",
+   "requested": [
+    "target_1",
+    "target_3"
+   ],
+   "scope_unit": "REQUESTED_TARGETS",
+   "attempt": "OK",
+   "packet_valid": true,
+   "observations": [
+    {
+     "target_id": "target_1",
+     "category": "Jacket",
+     "status": "OBSERVED",
+     "primary": "black",
+     "reject_code": null
+    },
+    {
+     "target_id": "target_3",
+     "category": "Trouser",
+     "status": "OBSERVED",
+     "primary": "gray",
+     "reject_code": null
+    }
+   ],
+   "unit_states": [
+    "U1: OWN_COLOUR_ATTACHED black",
+    "U2: OWN_COLOUR_ATTACHED gray"
+   ],
+   "contamination": []
+  }
+ ],
+ "known_mismatches": [
+  {
+   "ref": "REF_000520",
+   "unit": "U1",
+   "axis": "EI",
+   "expected": "NEUTRAL",
+   "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+   "live_actual": "E",
+   "live_verdict": "MISMATCH",
+   "reason": "그레이 바탕에 가공된 표면이 더해져 시각적 표현이 드러나는 Expressive 방향으로 판단됩니다.",
+   "diagnostics": null
+  },
+  {
+   "ref": "REF_000010",
+   "unit": "U1",
+   "axis": "EI",
+   "expected": null,
+   "basis": null,
+   "live_actual": null,
+   "live_verdict": "NOT_COMPLETED",
+   "reason": null,
+   "diagnostics": null
+  },
+  {
+   "ref": "REF_000840",
+   "unit": "U1",
+   "axis": "EI",
+   "expected": "NEUTRAL",
+   "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+   "live_actual": "I",
+   "live_verdict": "MISMATCH",
+   "reason": "베이지 바탕에 시각적 표현이 절제된 Introvert 방향으로 판단됩니다.",
+   "diagnostics": null
+  },
+  {
+   "ref": "REF_000849",
+   "unit": "U1",
+   "axis": "TC",
+   "expected": "TRANSFORMATIVE",
+   "basis": "CEO GT TC6",
+   "live_actual": "CLASSIC",
+   "live_verdict": "MISMATCH",
+   "reason": "릴랙스드 핏, 노치드 칼라와 싱글 브레스트 단추 여밈 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다.",
+   "diagnostics": null
+  },
+  {
+   "ref": "REF_000849",
+   "unit": "U2",
+   "axis": "TC",
+   "expected": "TRANSFORMATIVE",
+   "basis": "CEO GT TC6",
+   "live_actual": "CLASSIC",
+   "live_verdict": "MISMATCH",
+   "reason": "릴랙스드 핏과 풀 길이 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다.",
+   "diagnostics": null
+  }
+ ]
+}

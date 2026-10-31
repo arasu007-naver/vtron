@@ -1,0 +1,208 @@
+{
+ "document": "PREREGISTERED_PLAN_E2E",
+ "created": "2026-10-29T07:33:20.660Z",
+ "order_sha256": "69d7d69786c6f9b582788f8aead5fd62b09ab0423534a074894c39a156d0fbe1",
+ "model": "claude-opus-4-8",
+ "max_tokens": 8192,
+ "url": "https://api.anthropic.com/v1/messages",
+ "transport": {
+  "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/anthropic_vision_fn.js",
+  "sha256": "620c8f9e2d81d9de74a4a26ed1c1ca23df694081a2855057aa18f37ce07cc4d8",
+  "equal_vlv": true,
+  "default_model": "claude-opus-4-8",
+  "max_tokens_default": 8192,
+  "media_types": "sniffed from bytes (jpeg · png · webp · gif; no silent fallback)"
+ },
+ "vision_modules": [
+  {
+   "file": "producer_rules_v1.js",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+  },
+  {
+   "file": "producer_prompt_v1.js",
+   "sha256": "9779cc44716a241d23127bedf8ab9fb79ff7a3e73f2e2e642b6083779996f23f"
+  },
+  {
+   "file": "producer_validator_v1.js",
+   "sha256": "26ad25a8a2b3477e83f4858ec5fe6450040025a26a2efab9bb4599d8416e2d81"
+  },
+  {
+   "file": "producer_controller_v1.js",
+   "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b"
+  },
+  {
+   "file": "producer_model_adapter_v1.js",
+   "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb"
+  }
+ ],
+ "vision_built_prompt_sha256": "aa6119bb338000cf7344112f7596cd1656946ea7068f44db5f42cb16cfe1dbd8",
+ "colour_successor": {
+  "seal": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b",
+  "frozen_colour_module_sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+  "frozen_body_sha256": "53c96a901aa4ab30fbf93773195033d8fe3b93bd9fb1e0754a2f67c54f4a41e3",
+  "mode": "ONE_CALL",
+  "prompt_rule": "built by the sealed successor from the manifest of the live envelope; the guard requires prompt == successor build (sha256), the frozen body verbatim inside, no REF id / GT token"
+ },
+ "r4_seal": "be96c77d987815f15443ab1e635da07ff95a408d19d3373e4cb648ef7a7111a6",
+ "protocol_sha256": "23fc2c6508a3977506c441de76affdebd810cc34dbc50b0ff07d4461c4637e4d",
+ "images": [
+  {
+   "test": "01",
+   "ref": "REF_000520",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/08_Trouser/REF_000520__denimlowrise1.jpeg",
+   "sha256": "cb0aa109390f14e5f8d8353564d7318e81b80a1cc615591cc3b1de6d0602a445",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "02",
+   "ref": "REF_000010",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000010__스크린샷 2026-04-27 141834.png",
+   "sha256": "b5a89565efbdfb6682fd124b2ef634d4f4f52b239f19fb0e52369b1dbf998c95",
+   "media_type": "image/png"
+  },
+  {
+   "test": "03",
+   "ref": "REF_000841",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000841__suitov2.jpeg",
+   "sha256": "7b367a674fba8a111c1e460a0c8d48907f997681a0a08ff8a450899c98ae8333",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "04",
+   "ref": "REF_000840",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000840__suitov1.jpeg",
+   "sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "05",
+   "ref": "REF_000810",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000810__embrojk1.jpeg",
+   "sha256": "5fbc157593a724f6ad3a6be2d37043084fefdf5a51e2fcdc8017c9d32e07d767",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "06",
+   "ref": "REF_000816",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000816__tomford1.jpeg",
+   "sha256": "1f2d237f69fd042f818f721595556375e5052c812c62e39d96a0b05cc8fecfce",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "07",
+   "ref": "REF_000849",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/15_STYLE_FULL_LOOK/REF_000849__WEB_B02_0100__primary.jpg",
+   "sha256": "09e3f9dbe8842fd206f067b98fea72241b3232e76adab7119aa7a4a137466b1e",
+   "media_type": "image/jpeg"
+  }
+ ],
+ "slots": [
+  {
+   "slot": 1,
+   "kind": "VISION",
+   "test": "01",
+   "ref": "REF_000520"
+  },
+  {
+   "slot": 2,
+   "kind": "COLOUR",
+   "test": "01",
+   "ref": "REF_000520"
+  },
+  {
+   "slot": 3,
+   "kind": "VISION",
+   "test": "02",
+   "ref": "REF_000010"
+  },
+  {
+   "slot": 4,
+   "kind": "COLOUR",
+   "test": "02",
+   "ref": "REF_000010"
+  },
+  {
+   "slot": 5,
+   "kind": "VISION",
+   "test": "03",
+   "ref": "REF_000841"
+  },
+  {
+   "slot": 6,
+   "kind": "COLOUR",
+   "test": "03",
+   "ref": "REF_000841"
+  },
+  {
+   "slot": 7,
+   "kind": "VISION",
+   "test": "04",
+   "ref": "REF_000840"
+  },
+  {
+   "slot": 8,
+   "kind": "COLOUR",
+   "test": "04",
+   "ref": "REF_000840"
+  },
+  {
+   "slot": 9,
+   "kind": "VISION",
+   "test": "05",
+   "ref": "REF_000810"
+  },
+  {
+   "slot": 10,
+   "kind": "COLOUR",
+   "test": "05",
+   "ref": "REF_000810"
+  },
+  {
+   "slot": 11,
+   "kind": "VISION",
+   "test": "06",
+   "ref": "REF_000816"
+  },
+  {
+   "slot": 12,
+   "kind": "COLOUR",
+   "test": "06",
+   "ref": "REF_000816"
+  },
+  {
+   "slot": 13,
+   "kind": "VISION",
+   "test": "07",
+   "ref": "REF_000849"
+  },
+  {
+   "slot": 14,
+   "kind": "COLOUR",
+   "test": "07",
+   "ref": "REF_000849"
+  }
+ ],
+ "calls_max_accepted": 14,
+ "attempts_max": 16,
+ "retry_rule": "maxTechnicalRetries 0 · a reserve attempt (max 2 in total) only after a NON-BILLED transport failure (no HTTP 200) of the same slot",
+ "cost_rule": {
+  "price_in_per_mtok": 5,
+  "price_out_per_mtok": 25,
+  "ceiling_usd": 8,
+  "initial_input_bound_tokens": 163770,
+  "tightened_bound": "largest observed input_tokens + 4784",
+  "check": "spent + worst case of the next attempt ≤ ceiling, else STOP"
+ },
+ "stop_rules": [
+  "ceiling (pre-call)",
+  "model returned ≠ claude-opus-4-8",
+  "HTTP 400 / 401 / 403 / 404",
+  "two consecutive failed slots",
+  "image or prompt ≠ plan / successor build",
+  "GT / REF token in a request",
+  "cost not establishable",
+  "16 attempts"
+ ],
+ "colour_call_skipped_when": "UNIT_MAPPING_FAILED on the Vision envelope (no colour call, reported)",
+ "scoring": "offline R4 scoreItemV2R4 on the live envelope + live packet + declared unit; additional ITEM scores for extra_items (no extra call)"
+}

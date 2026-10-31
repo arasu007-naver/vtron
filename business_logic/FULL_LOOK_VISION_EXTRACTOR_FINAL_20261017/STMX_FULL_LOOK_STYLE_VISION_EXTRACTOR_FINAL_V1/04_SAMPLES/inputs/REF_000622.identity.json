@@ -1,8 +1,0 @@
-{
- "image_ref": "REF_000622",
- "image_hash": "91e3654fb1ed4d70c1bc3c54c39083bf727de08b88415b1e53ddfc014f144009",
- "prompt_version": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
- "prompt_hash": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
- "model_id": "claude-opus-5-5",
- "run_id": "RUN-EX04-0012"
-}

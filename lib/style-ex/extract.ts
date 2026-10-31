@@ -10,10 +10,8 @@ import Anthropic from "@anthropic-ai/sdk";
 import { governEnvelope } from "./scoring/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_controller_v1.js";
 import { runOneCall } from "./scoring/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_model_adapter_v1.js";
 import { buildPrompt as buildProducerPrompt } from "./scoring/01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_prompt_v1.js";
-// 색상 관찰(Colour V1)과 결합 프롬프트 — 엔진 스냅샷의 원본을 그대로 쓴다.
+// 색상 관찰(Colour V1) 검증기 — v1–v4 관찰 프롬프트처럼 관찰 호출에 색상을 함께 받았을 때 envelope 에 붙인다.
 import { validateColorObservation } from "./engine/run/color_recovery/color_contract_v1.js";
-import { buildCombinedPromptV2 } from "./engine/run/onecall_prototype/onecall_prototype_v1.js";
-import { buildPrompt as buildRootPrompt } from "./engine/producer_prompt_v1.js";
 import { imageToBlock } from "./engine/run/anthropic_vision_fn.js";
 import {
   anthropicApiKey,
@@ -34,18 +32,19 @@ import { STYLE_IDS, styleIdCandidates } from "./style-ids";
 import { splitProductContext } from "./product-context";
 import { fillFocus, focusOf, isEligible, isMultiCallPrompt, merge, multiCallPrompts, numberTargets } from "./multi-call";
 import { judgeTcRules, tcSummaryOf, type TcRuleResult } from "./tc-rules";
+import { judgeStyleIdByEngineV2, representativeOf } from "./judge-v2";
+
+export { representativeOf, type RepresentativeBasis } from "./judge-v2";
 
 /**
  * 의류 스타일 추출 (style-ex).
  *
- * 1. 관찰  : 이미지 1장 → Vision 호출(Claude 또는 Gemini 3.8 Flash) → 의복별 37개 파라미터 + DM 디테일 + 색상 + 연출 유형.
+ * 1. 관찰  : 이미지 1장 → Vision 호출(Claude 또는 Gemini 3.8 Flash) → 의복별 37개 파라미터 + DM 디테일 (Item Vision V1.3).
  *           프롬프트가 다회 호출용(multi-call.ts)이면 식별 1회 + 적격 의복마다 관찰 1회(동시에), 아니면 1회.
- * 2. 스코어링: EI · SR · DM 은 STMX ITEM SCORING ENGINE V1 (scoring.ts), TC 는 규칙 판정 (tc-rules.ts)
- * 3. 미결  : 엔진 · 규칙이 글자를 정하지 못한 축은 엔진 방향이 있으면 그 글자, 없으면 기본 글자(DEFAULT_LETTER)
- * 4. 조합  : 대표 의복의 네 글자 → 스타일 아이디
+ * 2. 판정  : judgeStyleIdByEngineV2 (judge-v2.ts) — 채점 단위 → 대상 지정 색상 호출 1회 → Item Scoring V2 R4
+ *           (동결 EI · TC · SR · DM V2) → 축마다 방향 + 한국어 근거 → 글자 → 스타일 아이디
  *
- * LLM 판정(judge.ts)은 부르지 않는다 — 판정 프롬프트의 규칙은
- * 2. 의 엔진(EI · SR · DM)과 tc-rules.ts(TC)가 코드로 갖고 있다.
+ * V1 판정(judgeStyleIdByRules — EI · SR · DM 엔진 V1 + tc-rules.ts)은 되돌릴 때를 위해 남겨 둔다. LLM 판정(judge.ts)도 부르지 않는다.
  */
 
 export type StyleExProvider = "claude" | "gemini";
@@ -83,29 +82,12 @@ export const geminiThinkingConfig = (): { thinkingBudget?: number } | undefined 
   return undefined;
 };
 
-// 색상 관찰 지시문 — onecall 프로토타입의 Sequential One-Call V2 추가 지시를 그대로 떼어 쓴다.
-// (결합 프롬프트 = 루트 Producer 프롬프트 + 추가 지시. 앞부분을 잘라내면 추가 지시만 남는다.)
-const COLOUR_ADDENDUM = (() => {
-  const base = buildRootPrompt();
-  const combined = buildCombinedPromptV2();
-  if (!combined.startsWith(base)) throw new Error("onecall 결합 프롬프트 구조가 바뀌었습니다");
-  return combined.slice(base.length);
-})();
-
-// SR 판정 가능 여부를 정하는 연출 유형. 파라미터가 아니라 색상처럼 target 의 형제 메타데이터다.
-// 값은 SR 레지스트리의 presentation_type 과 같다.
-const PRESENTATION_ADDENDUM = `
-
-═══════════════════════════════════════════════════════════════
-PRESENTATION TYPE (metadata — NOT a garment parameter; it must not change any observation).
-For EACH eligible target ALSO add "presentation_type" as a sibling of "observations":
-  "WORN"         = the garment is worn on a visible real human body, so its relationship to the body can be seen
-  "FLAT_LAY"     = the garment is laid flat on a surface, with no wearer
-  "PRODUCT_ONLY" = the garment is shown without a real wearer: on a hanger, ghost / invisible mannequin, mannequin or body form, or a packshot of the product alone
-Choose exactly one token.`;
-
-/** Vision 모델에 보내는 기본 관찰 프롬프트 */
-export const defaultPrompt = (): string => buildProducerPrompt() + COLOUR_ADDENDUM + PRESENTATION_ADDENDUM;
+/**
+ * Vision 모델에 보내는 기본 관찰 프롬프트 = Item Vision V1.3 프롬프트 원문 (동결 기록의 built_prompt_sha256 aa6119bb… 와 같다).
+ * V2 판정은 색상을 대상 지정 색상 호출로 따로 받고(judge-v2.ts) 연출 유형을 쓰지 않으므로, v1–v4 에 붙어 있던
+ * 색상 · 연출 유형 추가 지시는 없다.
+ */
+export const defaultPrompt = (): string => buildProducerPrompt();
 
 type Obj = Record<string, unknown>;
 type Source = "ENGINE" | "ENGINE_NEUTRAL" | "ENGINE_NEUTRAL_FIXED" | "ENGINE_DIRECTION" | "RULE_DEFAULT" | "LLM" | "LLM_FALLBACK";
@@ -383,24 +365,8 @@ async function observe(
   return { ok: true as const, envelope, contract_valid: governed.contract_valid, visionModel: activeModel, visionCalls };
 }
 
-/** 대표 의복을 고른 근거 — 상품 정보로 고정(PRODUCT_MATCH) · 가장 두드러진 의복(DOMINANT) · 첫 적격 의복(FIRST_ELIGIBLE) */
-export type RepresentativeBasis = "PRODUCT_MATCH" | "DOMINANT" | "FIRST_ELIGIBLE";
-
 /**
- * 스타일 아이디를 정할 대표 의복 — 상품 정보로 고정된 의복(product_match), 없으면 prominence 가 dominant 인
- * 첫 의복, 그것도 없으면 첫 적격 의복
- */
-export function representativeOf(targets: Obj[]): { target: Obj; basis: RepresentativeBasis } | null {
-  const eligible = targets.filter((t) => t.eligible && t.record);
-  const byProduct = eligible.find((t) => t.product_match === true);
-  if (byProduct) return { target: byProduct, basis: "PRODUCT_MATCH" };
-  const dominant = eligible.find((t) => t.prominence === "dominant");
-  if (dominant) return { target: dominant, basis: "DOMINANT" };
-  return eligible[0] ? { target: eligible[0], basis: "FIRST_ELIGIBLE" } : null;
-}
-
-/**
- * 추출 = 관찰(Claude 또는 Gemini 3.8 Flash) → 판정 함수(judgeStyleIdByRules, API 호출 없음).
+ * 추출 = 관찰(Claude 또는 Gemini 3.8 Flash) → 판정 함수 V2(judgeStyleIdByEngineV2 — 색상 호출 1회 + 엔진, 같은 모델).
  * judgement 는 LLM 판정을 하지 않으므로 늘 null — 응답 · product_style 모양을 지키려고 남겨 둔다.
  */
 export async function extractStyle({ image, fileName, prompt, provider = "claude" }: ExtractInput) {
@@ -408,12 +374,13 @@ export async function extractStyle({ image, fileName, prompt, provider = "claude
   const observation = await observe(image, fileName, base.trim() ? base : defaultPrompt(), addendum, provider);
   const activeModel = observation.visionModel || (provider === "gemini" ? geminiVisionModel() : visionModel());
   if (!observation.ok) return { styleId: null, scoring: null, judgement: null, observation, provider, visionModel: activeModel };
-  const { styleId, scoring } = judgeStyleIdByRules(observation.envelope.targets, fileName);
+  const { styleId, scoring } = await judgeStyleIdByEngineV2({ envelope: observation.envelope, image, provider, model: activeModel });
   return { styleId, scoring, judgement: null, observation, provider, visionModel: activeModel };
 }
 
 /**
- * 판정 함수 — 관찰 envelope 의 targets 만으로 스타일 아이디를 정한다. Claude API 를 부르지 않는다.
+ * V1 판정 함수 (지금은 부르지 않는다 — 되돌릴 때 extractStyle 에서 judgeStyleIdByEngineV2 대신 부른다).
+ * 관찰 envelope 의 targets 만으로 스타일 아이디를 정한다. Claude API 를 부르지 않는다.
  * 판정 프롬프트(judge.ts DEFAULT_JUDGE_PROMPT)의 축별 규칙을 코드로 가진 것:
  *   EI · SR · DM = STMX ITEM SCORING ENGINE V1 (scoring.ts) · TC = tc-rules.ts
  * 저장된 관찰(product_style.observation.envelope.targets)로 다시 판정할 때도 이것을 부른다.

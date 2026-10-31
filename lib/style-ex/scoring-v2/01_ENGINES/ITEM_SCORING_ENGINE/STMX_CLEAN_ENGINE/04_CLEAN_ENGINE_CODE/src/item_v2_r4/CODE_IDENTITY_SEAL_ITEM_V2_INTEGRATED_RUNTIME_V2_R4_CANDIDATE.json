@@ -1,0 +1,65 @@
+{
+ "document": "CODE_IDENTITY_SEAL_ITEM_V2_INTEGRATED_RUNTIME_V2_R4_CANDIDATE",
+ "engine_id": "STMX_INTEGRATED_ITEM_SCORING_RUNTIME_V2_R4_CANDIDATE",
+ "parent": {
+  "r3": {
+   "location": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/",
+   "directory_aggregate_sha256": "368ba72d67b0a660c600bf95b0829c1c01b5bb6766e3cb76474f6e50b58dafc8",
+   "relation": "predecessor reused unchanged after pin verification (and through it R2 → R1 → item_v2 + the V1.3 DM gate)"
+  },
+  "colour_successor": {
+   "location": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/",
+   "relation": "packet verifier + manifest builder, pinned by seal aggregate",
+   "directory_aggregate_sha256": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b"
+  }
+ },
+ "status": "CANDIDATE — identity record only · NOT a freeze · NOT production · live accuracy NOT_DEMONSTRATED (CEO order 2026-10-29)",
+ "sealed_at": "2026-10-29T06:48:28.844Z",
+ "order": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_TARGET_AWARE_COLOUR_AND_R4_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md",
+ "location": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/",
+ "aggregate_rule": "sha256 over \"file:sha256\\n\" (sorted) — all files except this seal; src aggregate = runtime *.js outside tests/ (verify_identity.js excluded)",
+ "files": [
+  {
+   "file": "README.md",
+   "bytes": 3035,
+   "sha256": "98e2c961c2f8baa75c9318721e5668a6bc0a6a3e0bf70ac6e3e3c3a50f5d620e"
+  },
+  {
+   "file": "item_v2_r4_cli.js",
+   "bytes": 2622,
+   "sha256": "317ed3a14e7b3d50d3b7b5f17b614a7179cb3aeb2fd1630774ba16bacda9338d"
+  },
+  {
+   "file": "item_v2_r4_colour_binding.js",
+   "bytes": 3981,
+   "sha256": "96fe79d5c11b4a0b61c0f75c9f77923595175045b7702e27718ceb0f681860ac"
+  },
+  {
+   "file": "item_v2_r4_contracts.js",
+   "bytes": 3053,
+   "sha256": "6903f4e80291ad04f094cc1263ae090ec86a3a26e8fe2da8cf7f1167a99e4d44"
+  },
+  {
+   "file": "item_v2_r4_entry.js",
+   "bytes": 8541,
+   "sha256": "a66b9c4f0e659424db77b69963c88f0641d000874629f442369079ad46217a53"
+  },
+  {
+   "file": "item_v2_r4_predecessor_pin.js",
+   "bytes": 5030,
+   "sha256": "93bdebcb384df41502ec45b052f8c62e91c1dd75048aa77a79b8d10a1f221c4c"
+  },
+  {
+   "file": "tests/run_all.js",
+   "bytes": 36096,
+   "sha256": "bb1e65cf14619f37bfc5deedada199643fb9199a1c267ee206c1ec1031585ab2"
+  },
+  {
+   "file": "verify_identity.js",
+   "bytes": 1275,
+   "sha256": "d4e798be4be2ded96d2f7d857283f98dd5c122e42dfeaf93c8ac6c960e7cb4ab"
+  }
+ ],
+ "DIRECTORY_AGGREGATE_SHA256": "be96c77d987815f15443ab1e635da07ff95a408d19d3373e4cb648ef7a7111a6",
+ "RUNTIME_SRC_AGGREGATE_SHA256": "f6e5a41297f4ed0ca504f7698aa4968c4fd3bee8625ac3fbccf3eabb0deae77a"
+}

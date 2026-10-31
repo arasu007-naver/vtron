@@ -1,0 +1,97 @@
+{
+ "at": "2026-10-29T08:38:11.805Z",
+ "pass": 6,
+ "total": 6,
+ "outcome": "GOVERNED_SUIT_INPUT_CONTRACT_NOT_SATISFIED — the Suit identity is preserved, but every Suit scorer requires each member to hold its own V1.3 record with an observed category; V1.3 emits no record for a non-eligible (occluded / cropped) member. Scoring would require a CEO decision (Suit contract reopen or another governed unit); not implemented here.",
+ "no_successor_created": true,
+ "checks": [
+  {
+   "id": "B-01",
+   "desc": "commercial Suit membership is preserved as declared (SUIT · Jacket + Trouser / Jacket + Skirt · basis EI V2 OVERLAY_V2) and is NOT derived from visibility; the declared identity is passed unchanged into R4 for every candidate bottom target",
+   "pass": true,
+   "detail": [
+    "REF_000841 Jacket+Trouser",
+    "REF_000810 Jacket+Skirt"
+   ]
+  },
+  {
+   "id": "B-02",
+   "desc": "independent eligibility (V1.3, unchanged): the Jacket is an eligible FULL target with its own record; every bottom-candidate target is Incidental · extraction_depth NONE · readability NOT_RECONSTRUCTABLE (OCCLUDED_BY_OTHER_GARMENT / TERMINAL_REGION_CROPPED) · NO record (no category, no observations, no DM block) — by the V1.3 output contract",
+   "pass": true,
+   "detail": [
+    "target_1:Jacket/26obs · target_2:NO_RECORD OCCLUDED_BY_OTHER_GARMENT · target_3:NO_RECORD OCCLUDED_BY_OTHER_GARMENT",
+    "target_1:Jacket/23obs · target_2:NO_RECORD TERMINAL_REGION_CROPPED+OCCLUDED_BY_OTHER_GARMENT"
+   ]
+  },
+  {
+   "id": "B-03",
+   "desc": "available member evidence = the Jacket record only (841: 26 observations + DM block · 810: 23 observations + DM block); for the bottom only a free-text descriptor exists (841 target_2 descriptor null, target_3 describes the trousers; 810 target_2 describes the skirt) — a descriptor is not a governed observation and is not used",
+   "pass": true,
+   "detail": [
+    "target_1 descriptor TEXT · target_2 descriptor null · target_3 descriptor TEXT",
+    "target_1 descriptor TEXT · target_2 descriptor TEXT"
+   ]
+  },
+  {
+   "id": "B-04",
+   "desc": "the sealed R4 keeps the Suit identity and refuses with the governed input issue SUIT_MEMBER_ASSOCIATION_FAILED (\"Suit member target(s) not eligible garment records\"); no axis executed, customer_output null — no Direction is invented",
+   "pass": true,
+   "detail": [
+    [
+     "target_1+target_2 → INVALID_PRODUCT_INPUT / SUIT_MEMBER_ASSOCIATION_FAILED",
+     "target_1+target_3 → INVALID_PRODUCT_INPUT / SUIT_MEMBER_ASSOCIATION_FAILED"
+    ],
+    [
+     "target_1+target_2 → INVALID_PRODUCT_INPUT / SUIT_MEMBER_ASSOCIATION_FAILED"
+    ]
+   ]
+  },
+  {
+   "id": "B-05",
+   "desc": "PRECISE INCOMPATIBILITY: every downstream governed Suit input contract also refuses the actual available evidence (bottom without its own record) — frozen EI V2 R5 product unit TECHNICAL_INVALID_REQUEST · TC / SR / DM Suit successors SUIT_MEMBER_RECORD_INVALID (\"every member needs its own Vision record with an observed category\"). An R4 successor that forwarded the Suit would still be refused by all four scorers — so none was created",
+   "pass": true,
+   "detail": [
+    [
+     {
+      "suit_members": [
+       "target_1",
+       "target_2"
+      ],
+      "EI_R5_product_unit": "TECHNICAL_INVALID_REQUEST — a suit component is not among the targets",
+      "TC_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+      "SR_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+      "DM_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category"
+     },
+     {
+      "suit_members": [
+       "target_1",
+       "target_3"
+      ],
+      "EI_R5_product_unit": "TECHNICAL_INVALID_REQUEST — a suit component is not among the targets",
+      "TC_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+      "SR_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+      "DM_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category"
+     }
+    ],
+    [
+     {
+      "suit_members": [
+       "target_1",
+       "target_2"
+      ],
+      "EI_R5_product_unit": "TECHNICAL_INVALID_REQUEST — a suit component is not among the targets",
+      "TC_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+      "SR_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category",
+      "DM_suit_successor": "SUIT_MEMBER_RECORD_INVALID — every member needs its own Vision record with an observed category"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "B-06",
+   "desc": "no fabrication: the stored live envelopes are byte-identical before / after; no observation block, category or record was added to any member",
+   "pass": true,
+   "detail": null
+  }
+ ]
+}

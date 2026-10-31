@@ -7,21 +7,31 @@ export const AXIS_ORDER = ["EI", "TC", "SR", "DM"] as const;
 export type AxisKey = (typeof AXIS_ORDER)[number];
 
 /** 축별 글자의 출처 */
-export type Source = "ENGINE" | "ENGINE_NEUTRAL" | "ENGINE_NEUTRAL_FIXED" | "ENGINE_DIRECTION" | "RULE_DEFAULT" | "LLM" | "LLM_FALLBACK";
+export type Source =
+  | "ENGINE_V2"
+  | "ENGINE_V2_NEUTRAL"
+  | "ENGINE"
+  | "ENGINE_NEUTRAL"
+  | "ENGINE_NEUTRAL_FIXED"
+  | "ENGINE_DIRECTION"
+  | "RULE_DEFAULT"
+  | "LLM"
+  | "LLM_FALLBACK";
 
 export interface AxisResult {
   letter: string | null;
   /** 이 축이 가질 수 있는 글자 전부 — 중립이면 양쪽 두 글자(OR). 예전 결과에는 없다 */
   letters?: string[];
   source: Source | null;
-  label: string | null; // 엔진 점수 (예: EI4)
-  detail: string | null;
+  label: string | null; // V2: 엔진 방향 토큰 (예: TRANSFORMATIVE) · V1: 엔진 점수 (예: EI4)
+  detail: string | null; // V2: 엔진의 한국어 근거
 }
 
-/** 대표 의복을 고른 근거 — 상품 정보로 고정 · 가장 두드러진 의복 · 첫 적격 의복 */
-export type TargetBasis = "PRODUCT_MATCH" | "DOMINANT" | "FIRST_ELIGIBLE";
+/** 대표 의복을 고른 근거 — 상품 정보로 고정 · 엔진 자동 선택(V2) · 가장 두드러진 의복 · 첫 적격 의복 */
+export type TargetBasis = "PRODUCT_MATCH" | "ENGINE_AUTOMATIC" | "DOMINANT" | "FIRST_ELIGIBLE";
 export const TARGET_BASIS_LABEL: Record<TargetBasis, string> = {
   PRODUCT_MATCH: "상품 정보로 고정",
+  ENGINE_AUTOMATIC: "엔진 자동 선택 (Primary)",
   DOMINANT: "이미지에서 가장 두드러진 의복",
   FIRST_ELIGIBLE: "첫 적격 의복",
 };
@@ -55,6 +65,8 @@ export type Strength = "strong" | "moderate" | "weak";
 export const STRENGTH_LABEL: Record<Strength, string> = { strong: "강", moderate: "중", weak: "약" };
 
 export const SOURCE_LABEL: Record<Source, string> = {
+  ENGINE_V2: "엔진 V2",
+  ENGINE_V2_NEUTRAL: "엔진 V2 · 중립 (양쪽)",
   ENGINE: "엔진",
   ENGINE_NEUTRAL: "엔진 · 중립 (양쪽)",
   ENGINE_NEUTRAL_FIXED: "엔진 · 중립 고정",

@@ -1,0 +1,48 @@
+{
+ "document": "CODE_IDENTITY_SEAL_STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE",
+ "engine_id": "STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1",
+ "parent": {
+  "freeze_id": "ITEM-SR-V2-FINAL-FREEZE-V1-2026-10-27",
+  "freeze_record": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_ITEM_SR_V2_FINAL_FREEZE_AUTHORITY_V1.json",
+  "relation": "frozen parent reused unchanged after pin verification"
+ },
+ "status": "CANDIDATE — identity record only · NOT a freeze · NOT production (CEO order 2026-10-29)",
+ "sealed_at": "2026-10-29T04:42:47.942Z",
+ "order": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_SUIT_CAPABLE_SUCCESSOR_IMPLEMENTATION_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md",
+ "location": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/",
+ "aggregate_rule": "sha256 over \"file:sha256\\n\" (sorted) — all files except this seal; src aggregate = runtime *.js outside tests/ (verify_identity.js excluded)",
+ "files": [
+  {
+   "file": "README.md",
+   "bytes": 5449,
+   "sha256": "a6cdd37f9ad4122e89c8fb90fa74b77cfddc7aa6984c81b99779c9ddcc0ccae9"
+  },
+  {
+   "file": "src/sr_v2_suit_engine.js",
+   "bytes": 9101,
+   "sha256": "086ef0c62700cb5b802683f049f60105e6a518de48be6303eeca1f738dde9d90"
+  },
+  {
+   "file": "src/sr_v2_suit_parent_pin.js",
+   "bytes": 4084,
+   "sha256": "2a9dea39726affa6a2e2410bc85000a99701830714ff3688f2a7fd91260c453a"
+  },
+  {
+   "file": "tests/fixtures/suit_fixtures_v1.json",
+   "bytes": 262800,
+   "sha256": "54a2791caac3220dce0627f53d92ba11524bde25853f0057cb7c9f352600b5f7"
+  },
+  {
+   "file": "tests/run_tests.js",
+   "bytes": 13398,
+   "sha256": "e008336dcfce92fceed14500cb733c3d391563034bf704076e6020bad58aa7da"
+  },
+  {
+   "file": "verify_identity.js",
+   "bytes": 1396,
+   "sha256": "abbb01dd2f189012ae00b21cc180afcbf14b9f68f2ee692f0587038b47e06299"
+  }
+ ],
+ "DIRECTORY_AGGREGATE_SHA256": "09807059fcf7c0620d2326a38d562f7c78914af8302ef95258d21928543ebef8",
+ "RUNTIME_SRC_AGGREGATE_SHA256": "b547427cadad2e0d0ab1e2f9d55f7027a6a315741f5856aec64de15c58b26421"
+}

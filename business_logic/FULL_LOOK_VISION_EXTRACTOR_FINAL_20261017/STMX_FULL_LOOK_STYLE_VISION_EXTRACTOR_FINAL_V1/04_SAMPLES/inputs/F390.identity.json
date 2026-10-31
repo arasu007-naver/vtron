@@ -1,8 +1,0 @@
-{
- "image_ref": "F390",
- "image_hash": "65001292ad7de2c055110f7c353be16368651b9dbe692521d092989eeb4af041",
- "prompt_version": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
- "prompt_hash": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
- "model_id": "claude-opus-5-5",
- "run_id": "RUN-EX04-0004"
-}

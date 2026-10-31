@@ -1,0 +1,45 @@
+{
+ "artefact": "BOUND_INPUTS",
+ "engine_id": "STMX_SR_ENGINE_V2_DIRECTION_REASON",
+ "engine_directory": "STMX_SR_ENGINE_V2_DIRECTION_REASON_CANDIDATE",
+ "order": "STMX ITEM SCORING ENGINE V2 — SR BINARY DIRECTION + VISION-GROUNDED REASON CANDIDATE IMPLEMENTATION & FULL REGRESSION (CEO 2026-10-26)",
+ "rule": "every input is re-hashed at module load; any drift throws SRV2BindingError (fail closed). No latest, no glob, no fallback. ⛔ The frozen Direction resolver, Strength sidecar and ordinal projector are NOT bound: Direction is decided by the V2 resolver from evidence classes.",
+ "inputs": [
+  {
+   "role": "producer_binding",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_producer_binding_v1.js",
+   "why": "named STMX_VISION_PRODUCER_V1_3 contract binding (carrier applicability / domains) — frozen V1.2 module",
+   "sha256": "487cad4ec11fe66c1a61be74659cfdd59262d0275f8e50af4f8767d1b81cef3c"
+  },
+  {
+   "role": "input_adapter",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_input_adapter_v1.js",
+   "why": "carrier read · KEY_OMITTED ≠ None · Waist Two-Gate · byRegion · MULTI support sets — frozen V1.2 module",
+   "sha256": "a46dd16800804d04bae154132dd6da4ed92410be682fef5b065a77b2de4cb961"
+  },
+  {
+   "role": "evidence_admission",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_evidence_admission_v1.js",
+   "why": "governed evidence classes — frozen V1.2 module",
+   "sha256": "4bd774a883dd7de1760196b34badc1599b87b001c2b2e5b939b51171a77138b4"
+  },
+  {
+   "role": "observation_contract_rules",
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "why": "the bound Vision contract (loaded by producer_binding) — pinned here too",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+  },
+  {
+   "role": "sr_v1_final_seal",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_SR_ENGINE_V1_FINAL.json",
+   "why": "the frozen V1 seal the three modules belong to (identity reference; not executed)",
+   "sha256": "9a8f6db4b50aa75fbfd6a3455bb97e4c2d81d2e79834aaa9a95a14c12f572a26"
+  },
+  {
+   "role": "sr_v1_production_pointer",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "why": "current SR production authority (must stay unchanged; the candidate is not bound into it)",
+   "sha256": "6a670aa417c9692364352303aa760a4a6ec7441f60dcac73c2316f7689c36db7"
+  }
+ ]
+}

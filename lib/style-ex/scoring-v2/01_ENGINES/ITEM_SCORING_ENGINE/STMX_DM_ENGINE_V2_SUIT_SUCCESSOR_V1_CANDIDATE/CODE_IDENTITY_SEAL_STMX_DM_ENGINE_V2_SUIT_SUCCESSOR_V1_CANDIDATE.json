@@ -1,0 +1,48 @@
+{
+ "document": "CODE_IDENTITY_SEAL_STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE",
+ "engine_id": "STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1",
+ "parent": {
+  "freeze_id": "ITEM-DM-V2-FINAL-FREEZE-V1-2026-10-28",
+  "freeze_record": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_ITEM_DM_V2_FINAL_FREEZE_AUTHORITY_V1.json",
+  "relation": "frozen parent reused unchanged after pin verification"
+ },
+ "status": "CANDIDATE — identity record only · NOT a freeze · NOT production (CEO order 2026-10-29)",
+ "sealed_at": "2026-10-29T04:42:47.945Z",
+ "order": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_SUIT_CAPABLE_SUCCESSOR_IMPLEMENTATION_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md",
+ "location": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/",
+ "aggregate_rule": "sha256 over \"file:sha256\\n\" (sorted) — all files except this seal; src aggregate = runtime *.js outside tests/ (verify_identity.js excluded)",
+ "files": [
+  {
+   "file": "README.md",
+   "bytes": 5595,
+   "sha256": "84edbc624f62054413762a55698b7d812328bf9e6cc6e6f373e435db70d2796b"
+  },
+  {
+   "file": "src/dm_v2_suit_engine.js",
+   "bytes": 9906,
+   "sha256": "948f7083e22be1bd4d3d9754b2f9b23bb458def9efc5b4da11d7bfc1955c5a69"
+  },
+  {
+   "file": "src/dm_v2_suit_parent_pin.js",
+   "bytes": 4081,
+   "sha256": "448f078d0f1cdfcfa620aff5f2c77fb26ac9145d970ab05ec215939cca84b2da"
+  },
+  {
+   "file": "tests/fixtures/suit_fixtures_v1.json",
+   "bytes": 262800,
+   "sha256": "54a2791caac3220dce0627f53d92ba11524bde25853f0057cb7c9f352600b5f7"
+  },
+  {
+   "file": "tests/run_tests.js",
+   "bytes": 13514,
+   "sha256": "a680b0cc0a00eab6e2242e31e47e64cb004bc65c22791ca1812e97c0ce9cd76f"
+  },
+  {
+   "file": "verify_identity.js",
+   "bytes": 1396,
+   "sha256": "f615841552591186eb69d85f3c19fd745714e7670bf68faad5c7fc575090da79"
+  }
+ ],
+ "DIRECTORY_AGGREGATE_SHA256": "65cd173afb34c6185633d878d2bde081cb19d07ab1e09e157b4acd3acce9f39f",
+ "RUNTIME_SRC_AGGREGATE_SHA256": "f6b907384cf84e350af93e55da0ec7ce3588f4f6ae1fdb886241d334849aa7ec"
+}

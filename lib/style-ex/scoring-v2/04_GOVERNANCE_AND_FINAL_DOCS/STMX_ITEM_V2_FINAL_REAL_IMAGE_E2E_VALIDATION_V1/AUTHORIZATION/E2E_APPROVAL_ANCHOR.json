@@ -1,0 +1,141 @@
+{
+ "document": "G53_TEMPORARY_EXCEPTION_FE_E2E_CEO_APPROVAL_ANCHOR",
+ "status": "EXPIRED",
+ "created": "2026-10-29T07:51:53.854Z",
+ "decision_date": "2026-10-29",
+ "order": "STMX ITEM SCORING V2 — CEO-APPROVED FINAL LIVE E2E EXECUTION, FOUR-AXIS VALIDATION & FREEZE READINESS (§0)",
+ "provenance": {
+  "channel": "current user instruction (chat) — Claude Code session d52cd3cb-be5a-44f7-aee2-f65ecae03cc9, 2026-10-29",
+  "issued_by": "the session user (CEO), as the pasted order",
+  "read_from_file_or_historical_report": false,
+  "how_authenticated": "the order arrived as the user's own message directly after the Order O report asked for exactly one decision (D-E2E-FINAL: this G53 exception, 7 images · 14 calls · 16 attempts · USD 8 · plan 2f75a32d88fb…); §0 quotes the CEO's approval words verbatim and limits it to this experiment. No signature, timestamp or approval history is invented; expired exceptions are not reused."
+ },
+ "ceo_statement_verbatim": "# §0. CEO AUTHORIZATION — G53 TEMPORARY EXCEPTION\n\nThe CEO explicitly approves a one-time, bounded exception to Architecture Guard G53 for the final Item Scoring V2 real-image End-to-End validation.\n\n**Approval Anchor**\n\nCEO decision, 2026-10-29:\n\n> \"좋아 승인, 승인하고 오더 작성해 줘.\"\n\nThis approval refers specifically to the immediately preceding proposal:\n\n- Seven fixed real product images\n- Production Item Vision V1.3\n- Sealed Target-Aware Colour successor\n- Integrated Item Scoring V2 R4\n- Model `claude-opus-4-8`\n- Four-axis Direction validation\n- 14 planned successful API calls\n- 16 maximum HTTP attempts\n- USD 8.00 absolute spending ceiling\n\n**This approval is for this experiment only.**\n\nIt does not authorize any general relaxation of G53.\n\n## §0.1 Authorized Images\n\nExactly the following seven images are authorized:\n\n1. REF_000520\n2. REF_000010\n3. REF_000841\n4. REF_000840\n5. REF_000810\n6. REF_000816\n7. REF_000849\n\nUse their exact local source files and SHA-256 identities as recorded in:\n\n`STMX_ITEM_V2_FINAL_REAL_IMAGE_E2E_VALIDATION_V1/AUTHORIZATION/PREREGISTERED_PLAN_E2E.json`\n\nNo other images are authorized.\n\n## §0.2 API Limits\n\n```text\nPROVIDER = ANTHROPIC MESSAGES API\nMODEL = claude-opus-4-8\n\nVISION_PRODUCER = STMX_VISION_PRODUCER_V1_3\nCOLOUR_PRODUCER = SEALED_TARGET_AWARE_COLOUR_SUCCESSOR\nSCORING_RUNTIME = INTEGRATED_ITEM_V2_R4\n\nAUTHORIZED_IMAGES = 7\n\nPLANNED_VISION_CALLS = 7\nPLANNED_COLOUR_CALLS = 7\n\nMAX_ACCEPTED_INFERENCE_OUTPUTS = 14\nMAX_HTTP_ATTEMPTS = 16\nMAX_INFRASTRUCTURE_RETRIES = 2\n\nHARD_COST_CEILING_USD = 8.00\n\nSCORING_API_CALLS = 0\nADDITIONAL_IMAGES = 0\nMODEL_SUBSTITUTIONS = 0\nFROZEN_ENGINE_MODIFICATIONS = 0\n```\n\nThe two additional HTTP attempts are permitted only for transport failures confirmed not to have produced a billable inference.\n\nIf billing status is uncertain, do not retry automatically.\n\nNo retries for unfavorable or incorrect scoring results.\n\nNever exceed 14 accepted inference outputs or 16 total HTTP attempts.\n\nBefore each request, verify that cumulative expenditure plus a conservative upper-bound cost for the next attempt remains within USD 8.00.\n\nStop before any attempt that could violate the cap.\n\n## §0.3 Exception Registration\n\nBefore the first API call:\n\n1. Save this entire CEO order verbatim.\n2. Verify the CEO Approval Anchor.\n3. Register a scope-limited G53 temporary exception using the established append-only governance procedure.\n4. Record the seven image hashes, model, producer versions, request limits, cost ceiling and expiry rules.\n5. Verify the executable runner is identical to the prepared gated runner.\n6. Verify all predecessor seals and protected hashes.\n\nThe temporary exception expires automatically at the earliest of:\n\n- 14 accepted outputs\n- 16 total HTTP attempts\n- USD 8.00 spending ceiling\n- Completion or termination of this execution order\n- Model, prompt or image identity mismatch\n- Governance or authorization violation\n\nOn expiry:\n\n`G53 = FULLY ACTIVE`\n\nDo not leave a reusable exception.\n\n---\n\n",
+ "ceo_quote": "좋아 승인, 승인하고 오더 작성해 줘.",
+ "ceo_statement_sha256": "a30b3326f077ced17126f9e3cfddfc03eb070ab542e690a62f7b4ff12319874e",
+ "full_order_file": "AUTHORIZATION/CEO_ORDER_LIVE_APPROVAL_VERBATIM.md",
+ "full_order_sha256": "ee4551fe993a881b6766cacb225c49c951faeceff3d4f36ea6c5048016dba30e",
+ "order_o_sha256": "69d7d69786c6f9b582788f8aead5fd62b09ab0423534a074894c39a156d0fbe1",
+ "model": "claude-opus-4-8",
+ "max_tokens": 8192,
+ "plan_sha256": "2f75a32d88fba3d65d2fe798c8d8243b11aa4c5fbd409a7d40d48db8704bb1b7",
+ "cost_ceiling_usd": 8,
+ "attempts_max": 16,
+ "calls_max_accepted": 14,
+ "infrastructure_retries_max": 2,
+ "images": [
+  {
+   "test": "01",
+   "ref": "REF_000520",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/08_Trouser/REF_000520__denimlowrise1.jpeg",
+   "sha256": "cb0aa109390f14e5f8d8353564d7318e81b80a1cc615591cc3b1de6d0602a445",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "02",
+   "ref": "REF_000010",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000010__스크린샷 2026-04-27 141834.png",
+   "sha256": "b5a89565efbdfb6682fd124b2ef634d4f4f52b239f19fb0e52369b1dbf998c95",
+   "media_type": "image/png"
+  },
+  {
+   "test": "03",
+   "ref": "REF_000841",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000841__suitov2.jpeg",
+   "sha256": "7b367a674fba8a111c1e460a0c8d48907f997681a0a08ff8a450899c98ae8333",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "04",
+   "ref": "REF_000840",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000840__suitov1.jpeg",
+   "sha256": "d8870354beeb4a12270317ab1f7c32ab8b0500352c3f4b8e76fde39f1f9e7a45",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "05",
+   "ref": "REF_000810",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000810__embrojk1.jpeg",
+   "sha256": "5fbc157593a724f6ad3a6be2d37043084fefdf5a51e2fcdc8017c9d32e07d767",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "06",
+   "ref": "REF_000816",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/14_Suit/REF_000816__tomford1.jpeg",
+   "sha256": "1f2d237f69fd042f818f721595556375e5052c812c62e39d96a0b05cc8fecfce",
+   "media_type": "image/jpeg"
+  },
+  {
+   "test": "07",
+   "ref": "REF_000849",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/15_STYLE_FULL_LOOK/REF_000849__WEB_B02_0100__primary.jpg",
+   "sha256": "09e3f9dbe8842fd206f067b98fea72241b3232e76adab7119aa7a4a137466b1e",
+   "media_type": "image/jpeg"
+  }
+ ],
+ "expiry_utc": "2026-10-29T13:51:53.854Z",
+ "expiry_rule": "14 accepted · 16 attempts · USD 8.00 · completion / termination · identity mismatch · governance violation · 2026-10-29T13:51:53.854Z",
+ "recorded_in": {
+  "guard_register": {
+   "file": "00_STMX_CHATGPT_PROJECT_CONTEXT/08_STMX_ARCHITECTURE_GUARD.md",
+   "entry": "G53 — TEMPORARY EXCEPTION FE-E2E"
+  },
+  "frozen_decision_log": {
+   "file": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CANONICAL_MASTER_PACK/03_STMX_FROZEN_DECISION_LOG.md",
+   "entry": "STMX-2026-10-G53-FE-E2E"
+  },
+  "appends": [
+   {
+    "file": "00_STMX_CHATGPT_PROJECT_CONTEXT/08_STMX_ARCHITECTURE_GUARD.md",
+    "pre_size": 381979,
+    "pre_sha256": "674ca3f0117c121208f4c5b85c8a946298bfe9214c0e2e4b8a7f789d06cabafb",
+    "appended_bytes": 3156,
+    "post_size": 385135,
+    "post_sha256": "8e07ace3b397190bebb9991583201ea7dd0ae78fca6e0f1a0eaa17e996449f56",
+    "prefix_unchanged": true,
+    "mark": "G53 — TEMPORARY EXCEPTION FE-E2E"
+   },
+   {
+    "file": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CANONICAL_MASTER_PACK/03_STMX_FROZEN_DECISION_LOG.md",
+    "pre_size": 123720,
+    "pre_sha256": "c51acbc90e58555424643cbdb8d6e148904afac589e1fd3d155637381799c839",
+    "appended_bytes": 1540,
+    "post_size": 125260,
+    "post_sha256": "b75960f09bfb1bcb5b081d43f9d382048582ac91bcec42f9f1cd36773fa32808",
+    "prefix_unchanged": true,
+    "mark": "STMX-2026-10-G53-FE-E2E"
+   }
+  ],
+  "verified_present": true
+ },
+ "expired_at": "2026-10-29T07:58:59.842Z",
+ "expiry_record": {
+  "reason": "run completed (LIVE_COMPLETE)",
+  "attempts": 11,
+  "accepted": 11,
+  "spent_usd": 3.3206,
+  "appends": [
+   {
+    "file": "00_STMX_CHATGPT_PROJECT_CONTEXT/08_STMX_ARCHITECTURE_GUARD.md",
+    "pre_size": 385135,
+    "pre_sha256": "8e07ace3b397190bebb9991583201ea7dd0ae78fca6e0f1a0eaa17e996449f56",
+    "appended_bytes": 337,
+    "post_size": 385472,
+    "post_sha256": "6392250e22537510211e19dbdc3ed71a4047390eef6dc866eb604eda56f5d7ca",
+    "prefix_unchanged": true,
+    "mark": "G53 — FE-E2E EXPIRED"
+   },
+   {
+    "file": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_CANONICAL_MASTER_PACK/03_STMX_FROZEN_DECISION_LOG.md",
+    "pre_size": 125260,
+    "pre_sha256": "b75960f09bfb1bcb5b081d43f9d382048582ac91bcec42f9f1cd36773fa32808",
+    "appended_bytes": 199,
+    "post_size": 125459,
+    "post_sha256": "d63353e45dfef26c4cc0d0929414c5fc2d5a213cfa9b8fcc8fa290bb5a55b6bc",
+    "prefix_unchanged": true,
+    "mark": "FE-E2E expiry"
+   }
+  ]
+ }
+}

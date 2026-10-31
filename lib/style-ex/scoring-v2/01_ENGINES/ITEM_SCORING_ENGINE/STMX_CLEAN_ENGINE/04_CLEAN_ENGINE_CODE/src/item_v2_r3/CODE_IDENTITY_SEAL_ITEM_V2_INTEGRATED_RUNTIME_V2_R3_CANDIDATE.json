@@ -1,0 +1,53 @@
+{
+ "document": "CODE_IDENTITY_SEAL_ITEM_V2_INTEGRATED_RUNTIME_V2_R3_CANDIDATE",
+ "engine_id": "STMX_INTEGRATED_ITEM_SCORING_RUNTIME_V2_R3_CANDIDATE",
+ "parent": {
+  "location": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/",
+  "directory_aggregate_sha256": "6d3d77722e252222b234fdcd44dbab04e264891d1cb8df5b9c42d7f6f74581e7",
+  "relation": "predecessor (and through it item_v2_r1 → item_v2) reused unchanged after pin verification; Vision V1.3 validator + rules pinned"
+ },
+ "status": "CANDIDATE — identity record only · NOT a freeze · NOT production (CEO order 2026-10-29)",
+ "sealed_at": "2026-10-29T05:22:21.515Z",
+ "order": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_SUIT_DM_ROOT_CAUSE_AND_FINAL_VALIDATION_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md",
+ "location": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/",
+ "aggregate_rule": "sha256 over \"file:sha256\\n\" (sorted) — all files except this seal; src aggregate = runtime *.js outside tests/ (verify_identity.js excluded)",
+ "files": [
+  {
+   "file": "README.md",
+   "bytes": 3999,
+   "sha256": "4819c434eb662e4beb8a6c8959380446edbc7318c84397ea6107454d48f48b20"
+  },
+  {
+   "file": "item_v2_r3_cli.js",
+   "bytes": 1985,
+   "sha256": "256fc801bba31203febca9e425f42b0cb76669b02fa882859582211233997532"
+  },
+  {
+   "file": "item_v2_r3_contracts.js",
+   "bytes": 3013,
+   "sha256": "4731eb5c8fe9b4e334af7302a163870739bb22abe810dabdb7a2d912e499bfde"
+  },
+  {
+   "file": "item_v2_r3_entry.js",
+   "bytes": 7536,
+   "sha256": "8d882261ebf95ae36203f0ca90daa43466405b4d403bf19f8fe74d05330ad168"
+  },
+  {
+   "file": "item_v2_r3_input_gates.js",
+   "bytes": 3287,
+   "sha256": "5b28c793f3cce6728fe2942739c1e37b4c6fe34e0308603145ffa82b4172254e"
+  },
+  {
+   "file": "item_v2_r3_predecessor_pin.js",
+   "bytes": 4946,
+   "sha256": "b1fdd2885b1cb61db73d56d343b7c1a95991359ded29559a675dc352b6d19e87"
+  },
+  {
+   "file": "tests/run_all.js",
+   "bytes": 32342,
+   "sha256": "cbd817d29373924ba2a435981ab165bb6022985c0486c3a60e577df69ab9aabf"
+  }
+ ],
+ "DIRECTORY_AGGREGATE_SHA256": "368ba72d67b0a660c600bf95b0829c1c01b5bb6766e3cb76474f6e50b58dafc8",
+ "RUNTIME_SRC_AGGREGATE_SHA256": "7c6141a13f8251f5e705b27debd1b2fae5e6f394f473d994dbe1c8c7b9da5fdc"
+}

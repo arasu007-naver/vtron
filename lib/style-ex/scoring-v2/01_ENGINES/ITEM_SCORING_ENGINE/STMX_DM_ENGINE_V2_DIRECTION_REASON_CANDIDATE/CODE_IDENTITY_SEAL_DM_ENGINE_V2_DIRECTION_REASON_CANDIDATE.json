@@ -1,0 +1,153 @@
+{
+ "document": "CODE_IDENTITY_SEAL_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE",
+ "status": "IMPLEMENTATION_CANDIDATE — NOT PRODUCTION · NOT FROZEN (sealed for identity / reproducibility only)",
+ "created": "2026-10-27T15:26:20.034Z",
+ "order": "STMX ITEM DM V2 — BINARY DIRECTION ENGINE IMPLEMENTATION, NEUTRAL ELIMINATION & FULL REGRESSION (CEO 2026-10-28)",
+ "src_aggregate_sha256": "89a90a0e66fb80a45c7909b11bca10757ec8389c9b9285f3709d1cfc2fcc130e",
+ "src_modules": [
+  {
+   "file": "src/dm_v2_binding.js",
+   "sha256": "b3be4e7bb2ae3e6fee35996ab98924c6244b5f5fe408626e976900829096ecdb"
+  },
+  {
+   "file": "src/dm_v2_direction_resolver.js",
+   "sha256": "6ef98fb714043f6758c6cdab0e8db25ccc2d31d7873ac00a5438728c6f9e1081"
+  },
+  {
+   "file": "src/dm_v2_engine.js",
+   "sha256": "ccdb5460d5eccd94120cbac135f3a662d754526142a23035240af6ad62437f93"
+  },
+  {
+   "file": "src/dm_v2_reason_composer.js",
+   "sha256": "0b3dc44e3b29bc2aecd268cacb51bff26c03ddf0c9f1b55891e99abbb0e92d85"
+  },
+  {
+   "file": "src/dm_v2_reason_lexicon.js",
+   "sha256": "d77c13da8441dc1b5847838160784c2191dfa905070f2935dbb0c304f6e44bf9"
+  },
+  {
+   "file": "src/dm_v2_reason_verifier.js",
+   "sha256": "c9b800835dd7e51fadf4933fcbfeafb37f729962d429e07043e43ffb0371b457"
+  },
+  {
+   "file": "src/dm_v2_serializer.js",
+   "sha256": "8c2c345df93a0cdd371d1b78c1040fef846a0e2139cb6e5844388abf4c44b104"
+  }
+ ],
+ "bound_inputs": [
+  {
+   "role": "dm_admission",
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_admission_v1.js",
+   "sha256": "2fb03acb211dcff99fa0ab757cbfed01ba3b9a1b306e3a44dee5ca86a8b62058"
+  }
+ ],
+ "files": [
+  {
+   "file": "BOUND_INPUTS.json",
+   "sha256": "5aa0bc362147618b613a90916e3057f9c8bc82fc670848f92c25d45494b77b9d"
+  },
+  {
+   "file": "README.md",
+   "sha256": "605c6d83c9b2dbb4bd502cbff0addb6788b54a5556cef92fd2a63a2fb653d189"
+  },
+  {
+   "file": "src/dm_v2_binding.js",
+   "sha256": "b3be4e7bb2ae3e6fee35996ab98924c6244b5f5fe408626e976900829096ecdb"
+  },
+  {
+   "file": "src/dm_v2_direction_resolver.js",
+   "sha256": "6ef98fb714043f6758c6cdab0e8db25ccc2d31d7873ac00a5438728c6f9e1081"
+  },
+  {
+   "file": "src/dm_v2_engine.js",
+   "sha256": "ccdb5460d5eccd94120cbac135f3a662d754526142a23035240af6ad62437f93"
+  },
+  {
+   "file": "src/dm_v2_reason_composer.js",
+   "sha256": "0b3dc44e3b29bc2aecd268cacb51bff26c03ddf0c9f1b55891e99abbb0e92d85"
+  },
+  {
+   "file": "src/dm_v2_reason_lexicon.js",
+   "sha256": "d77c13da8441dc1b5847838160784c2191dfa905070f2935dbb0c304f6e44bf9"
+  },
+  {
+   "file": "src/dm_v2_reason_verifier.js",
+   "sha256": "c9b800835dd7e51fadf4933fcbfeafb37f729962d429e07043e43ffb0371b457"
+  },
+  {
+   "file": "src/dm_v2_serializer.js",
+   "sha256": "8c2c345df93a0cdd371d1b78c1040fef846a0e2139cb6e5844388abf4c44b104"
+  },
+  {
+   "file": "tests/_harness.js",
+   "sha256": "21d4d8b36d23dddb43fd9eb1faf5e0da7041592e122085817a71a7222c4e3788"
+  },
+  {
+   "file": "tests/run_all.js",
+   "sha256": "97e0b007f4f2fe24ccf6a640347d01f02b3416f53b093a7a8e5208b6b2ac887d"
+  },
+  {
+   "file": "tests/test_guards.js",
+   "sha256": "d8a60008ef942716d7f51532bbc78ff2ac2faeac9498190b088bed31a72cd87d"
+  },
+  {
+   "file": "tests/test_lattice.js",
+   "sha256": "c0400610582483d8531cc0a6265e7129294877800abd5f1105604af28781a965"
+  },
+  {
+   "file": "tests/test_mandatory.js",
+   "sha256": "36dcf901a44b8cb63beee8ac6217e46eda7ecf2aabcae58e1db07512f6981b93"
+  },
+  {
+   "file": "tests/test_reason.js",
+   "sha256": "b314978090b90fe369a0adb498fb59745c836b75b253d0afb2171fca5275351c"
+  },
+  {
+   "file": "tests/test_regression.js",
+   "sha256": "1252ecfe03e3a70997a83cb068c4adc7d87537a39fd180f1e2b4b4b021c3dcbf"
+  }
+ ],
+ "directory_aggregate_sha256": "c30590735456295ab705fceb163265d68de2af5d8220ed1b16f1f82051b6f86d",
+ "regression": {
+  "pass": 67,
+  "total": 67,
+  "all_pass": true,
+  "suites": [
+   {
+    "suite": "test_regression",
+    "pass": 12,
+    "total": 12,
+    "fail": 0,
+    "exit": 0
+   },
+   {
+    "suite": "test_lattice",
+    "pass": 5,
+    "total": 5,
+    "fail": 0,
+    "exit": 0
+   },
+   {
+    "suite": "test_mandatory",
+    "pass": 25,
+    "total": 25,
+    "fail": 0,
+    "exit": 0
+   },
+   {
+    "suite": "test_reason",
+    "pass": 13,
+    "total": 13,
+    "fail": 0,
+    "exit": 0
+   },
+   {
+    "suite": "test_guards",
+    "pass": 12,
+    "total": 12,
+    "fail": 0,
+    "exit": 0
+   }
+  ]
+ }
+}

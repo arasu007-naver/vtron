@@ -1,0 +1,75 @@
+{
+ "artefact": "LANE_DERIVATION_SPECIFICATIONS_V2353",
+ "status": "ARCHITECTURE ONLY — preregistered before the R1 diagnostic comparison · NOT implemented · no runtime V3",
+ "constraints": [
+  "no TC tier",
+  "no GT",
+  "no REF-specific result",
+  "no numeric weight",
+  "no nearest neighbour",
+  "no numeric prominence score",
+  "no count formula",
+  "inputs must pass Observation-Constitution compliance (32_)"
+ ],
+ "prominence_predicate": {
+  "name": "PROMINENT(system)",
+  "nature": "deterministic categorical predicate over governed atomic facts of that system — one system at a time; never compares systems; never sums",
+  "BODY_FORM": [
+   "fit ∈ {Oversized, Voluminous}",
+   "sleeve_volume = Voluminous",
+   "shoulder_structure ∈ {Strong, Extreme}",
+   "silhouette ∈ {Flared, Widening, Wide, Voluminous} (lower garments)"
+  ],
+  "CONSTRUCTION": [
+   "collar_scale = Enlarged",
+   "cuff_scale = Enlarged",
+   "pocket_projection = Volumetric",
+   "axis-neutral primitive instance on a constitutive construction referent (collar/lapel · closure/placket · cuff · pocket system · shoulder · waist construction): relative_size = large ∨ contrast = high  [REQUIRES SCOPE AMENDMENT SA-1]",
+   "DM designed-detail evidence whose source_observation_refs name a construction parameter (collar · closure_type · cuff_type · pocket · attachment) with relative_size = large ∨ contrast = high  [REQUIRES CONSUMPTION AMENDMENT SA-2]"
+  ],
+  "MATERIAL_SURFACE": [
+   "DM evidence family surface_pattern / surface_treatment with relative_size = large ∨ spatial_position = whole_garment  [SA-2]",
+   "surface / material value with coverage = Dominant (coverage read as Derived from size + position when the triple exists; the stored adjudicated coverage token is admissible as the same fact)"
+  ],
+  "DECORATION": [
+   "graphic = Dominant",
+   "DM evidence family graphic / attached_detail / attached_hardware / decorative_construction / designed_color_contrast with relative_size = large ∨ spatial_position ∈ {distributed, whole_garment}  [SA-2]",
+   "decorative_detail / attachment value with coverage ∈ {Partial, Dominant}"
+  ],
+  "UNKNOWN": "any required fact NOT_VISIBLE / UNKNOWN, or the system's prominence fact not governed for its referent (today: structural construction apparatus without SA-1) → UNKNOWN",
+  "excluded_inputs": [
+   "pattern.visual_dominance (Art. 6.2 dominance judgment)",
+   "finish_realization (norm-relative judgment \"ordinary for this material\")",
+   "motif_complexity (element counting, Art. 6.4)",
+   "P1 C1 Visual Dominance (scene role)",
+   "Descriptor / RG prose",
+   "R1 values",
+   "any SR / DM / EI axis output"
+  ]
+ },
+ "classic_organising_role": {
+  "owner": "D-7 Classic evaluator (TC semantic runtime successor)",
+  "precondition": "D7-S1 (1) reference authored ∧ (2) construction realization CHARACTERISTIC",
+  "relation": [
+   "MOST_PROMINENT iff PROMINENT(CONSTRUCTION) ∧ ¬PROMINENT(BODY_FORM) ∧ ¬PROMINENT(MATERIAL_SURFACE) ∧ ¬PROMINENT(DECORATION) — OR ¬PROMINENT for every system while the characteristic system is realised CHARACTERISTIC and every competitor prominence fact is OBSERVED-absent (the plain-tailored case: construction is the only structured system)",
+   "ANOTHER_SYSTEM_MORE_PROMINENT iff ¬PROMINENT(CONSTRUCTION) ∧ exactly one other system PROMINENT",
+   "UNDETERMINED otherwise: any UNKNOWN among the four, or two or more PROMINENT systems (tie), or ¬PROMINENT(CONSTRUCTION) with two or more PROMINENT competitors"
+  ],
+  "completeness": "all four prominence predicates must be evaluable (no UNKNOWN); the requiredness gate of the DM block (evidence: [] = observed, nothing admitted) is what makes competitor absence an observation rather than a missing answer",
+  "output": "D7-S1 step (3): MOST_PROMINENT → MATERIAL · ANOTHER_SYSTEM_MORE_PROMINENT → INCIDENTAL · UNDETERMINED → UNRESOLVED / ITEM_OBSERVATION_RESOLUTION_GAP",
+  "provenance": "per-system predicate result + the governed facts (parameter · value · state · source) + rule id"
+ },
+ "transformative_organising_reading": {
+  "owner": "D-FWD-2 evaluator (TC semantic runtime successor)",
+  "precondition": "V1 precedence P1–P6 passed; constitutive_system_status computed (unchanged)",
+  "referent": "BODY_FORM for Silhouette / Proportion Statements; the departure-locus construction system for Construction Statements",
+  "relation": [
+   "MOST_PROMINENT iff PROMINENT(referent) ∧ no other system PROMINENT",
+   "NOT iff ¬PROMINENT(referent) ∧ all four predicates evaluable",
+   "UNDETERMINED otherwise (UNKNOWN, or tie)"
+  ],
+  "output": "S3 alignment (MOST_PROMINENT) · S4 non-alignment (NOT) · S1-equivalent UNRESOLVED (UNDETERMINED)",
+  "provenance": "as Classic"
+ },
+ "tie_rule": "none preregistered — two PROMINENT systems → UNDETERMINED (fail-closed). A tie rule, if ever wanted, is a CEO semantic decision, not an observation."
+}

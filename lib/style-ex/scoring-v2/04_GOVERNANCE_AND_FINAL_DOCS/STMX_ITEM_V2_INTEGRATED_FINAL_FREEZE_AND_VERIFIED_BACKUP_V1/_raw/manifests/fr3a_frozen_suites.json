@@ -1,0 +1,277 @@
+{
+ "at": "2026-10-29T09:09:01.596Z",
+ "runs": [
+  {
+   "axis": "EI",
+   "freeze_id": "ITEM-EI-V2-FINAL-FREEZE-V1-2026-10-29",
+   "copied_files": 146,
+   "missing_from_master": [],
+   "exit": 0,
+   "final_tally_in_output": "81/81",
+   "all_tallies": [
+    "81/81"
+   ],
+   "recorded_final_regression": {
+    "package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_EI_V2_R5_FINAL_FREEZE_AND_VERIFIED_BACKUP_V1/",
+    "suite": "81/81",
+    "harness": "1191/1191",
+    "benchmark": {
+     "units": 114,
+     "distribution": {
+      "I": 25,
+      "NEUTRAL": 32,
+      "E": 57
+     },
+     "gt": "94/110",
+     "comparable": 110,
+     "agree": 94,
+     "disagree": 16
+    },
+    "routing": "109/109",
+    "reason_gate": "1098 evaluations / 0 failures",
+    "g9_g10": "1098 / 0",
+    "determinism": "114/114",
+    "neutral_off": "58/58",
+    "closure": 27,
+    "result_files": [
+     {
+      "file": "_raw/manifests/s5_r5_suite_raw.json",
+      "sha256": "7b8319f1aedcec37ff477acfcf9094b3bb4b494a77a5186c3614cb447a3ad6a0"
+     },
+     {
+      "file": "_raw/manifests/s6_replay.json",
+      "sha256": "264388b7c864721b10b8fadb863ccd02c83ea19b2f42de0894e3a7a7eccb335a"
+     },
+     {
+      "file": "_raw/manifests/s7_reason_gate.json",
+      "sha256": "c0b2017389c32910fe428a9381321fc2e08be202ab6a10574685a32b75d08e11"
+     },
+     {
+      "file": "_raw/manifests/s8_harness.json",
+      "sha256": "982e20f1bf1e96a951d66566a6652479499df071a2faf72411120338fc3c9129"
+     },
+     {
+      "file": "_raw/manifests/s9_closure.json",
+      "sha256": "8e6fa20bce08a1f5027338444c9a3818fdf17fd5612aef07b3eb8436a5288f7f"
+     },
+     {
+      "file": "_raw/manifests/s3_dependencies.json",
+      "sha256": "8ade1d2eb8fc218a41689cfc84c92293a906850f73f2b88cccfe6dda7c0461b6"
+     }
+    ]
+   },
+   "undeclared_test_dependencies": [],
+   "network_attempts": 0,
+   "reads_outside_isolated_root": [],
+   "reads_outside_count": 0,
+   "temp_removed": true
+  },
+  {
+   "axis": "TC",
+   "freeze_id": "ITEM-TC-V2-FINAL-FREEZE-V1-2026-10-28",
+   "copied_files": 128,
+   "missing_from_master": [],
+   "exit": 0,
+   "final_tally_in_output": "163/163",
+   "all_tallies": [
+    "8/8",
+    "8/8",
+    "20/20",
+    "26/26",
+    "40/40",
+    "163/163"
+   ],
+   "recorded_final_regression": {
+    "package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_TC_V2_R4_FINAL_FREEZE_CONSTITUTION_CLOSURE_AND_VERIFIED_BACKUP_V1/",
+    "result_file": "_raw/manifests/y4_regression.json",
+    "result_sha256": "ef06ee0899ab090d7e7b2b09c34e63c65948a4b5ff05a3f8af647e176667af28",
+    "command": "node tests/run_all.js --json   (cwd = the R4 directory)",
+    "environment": {
+     "node": "v24.18.0",
+     "platform": "win32 10.0.26200",
+     "arch": "x64"
+    },
+    "tests": "163/163",
+    "metrics": {
+     "tests": "163/163",
+     "historical_direction": "114/114",
+     "frozen_v1_preserved": "97/97",
+     "historical_gt": "98/114",
+     "gt_v1_decided": "86/97",
+     "gt_former_unresolved": "12/17",
+     "former_unresolved": 17,
+     "opposite_five": [
+      "REF_000139#SU1",
+      "REF_000141#SU1",
+      "REF_000430#SU1",
+      "REF_000469#SU1",
+      "REF_000599#SU1"
+     ],
+     "live_direction": "15/15",
+     "live_gt": "9/15",
+     "salvage_sweep": "353/353",
+     "salvage_manufactured_t": 0,
+     "masking": {
+      "members": 126,
+      "independent": 10,
+      "mismatch": 0,
+      "withheld": 0
+     },
+     "final_unresolved": 0,
+     "numeric_output": 0,
+     "withheld": 0,
+     "paths": {
+      "FROZEN_V1": 97,
+      "EVIDENCE_BOUNDED": 12,
+      "MANDATORY_FALLBACK": 3,
+      "DOMAIN_INVARIANT": 2
+     },
+     "distribution": {
+      "CLASSIC": 61,
+      "TRANSFORMATIVE": 53
+     }
+    },
+    "second_run_identical": true,
+    "identical_to_r4_package_run": true
+   },
+   "undeclared_test_dependencies": [],
+   "network_attempts": 0,
+   "reads_outside_isolated_root": [],
+   "reads_outside_count": 0,
+   "temp_removed": true
+  },
+  {
+   "axis": "SR",
+   "freeze_id": "ITEM-SR-V2-FINAL-FREEZE-V1-2026-10-27",
+   "copied_files": 33,
+   "missing_from_master": [],
+   "exit": 0,
+   "final_tally_in_output": "86/86",
+   "all_tallies": [
+    "86/86",
+    "24/24",
+    "55/55",
+    "4/4",
+    "16/16",
+    "86/86"
+   ],
+   "recorded_final_regression": {
+    "package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_SR_V2_R3_FINAL_CLOSURE_FREEZE_AND_VERIFIED_BACKUP_V1/",
+    "result_file": "_raw/manifests/f4_result.json",
+    "result_sha256": "1db130f25c9a952a3ccd8cbfe5aeaf0389eee26df8122ca10fff6376ffebbb42",
+    "run_all": "86/86",
+    "products": "123 S/R (S 77 · R 46) · Reasons verified 123",
+    "current_ceo_gt_ceo_corrected_evidence": "92/92",
+    "current_ceo_gt_stored_vision": "91/92 (REF_000246 S≠R)",
+    "direct_anchors": "27/27",
+    "holdout_19": {
+     "STRUCTURED": 9,
+     "RELAXED": 10
+    },
+    "synthetic_grid_512": {
+     "STRUCTURED": 232,
+     "RELAXED": 280
+    },
+    "gates": [
+     "G-1 run_all 86/86 reproduced",
+     "G-2 123 S/R · 0 prohibited final states · 123 verified Reasons",
+     "G-3 per-product reproduction of the stored R3 = 123/123",
+     "G-4 current CEO GT 92/92 (CEO-corrected 246 evidence)",
+     "G-5 direct anchors 27/27",
+     "G-6 REF_000694 = S",
+     "G-7 holdout 19 + grid 512 identical to stored; incomplete-input cases all S/R verified",
+     "G-8 runtime reads no GT / REF / overlay / corpus; deterministic",
+     "G-9 no other SR Direction error: the only overlay-OFF difference is REF_000246",
+     "G-10 Vision validator failures never used / filled / cited by SR",
+     "G-11 candidate byte-identical to PRE (the run changed nothing)",
+     "G-12 design review 14/14"
+    ]
+   },
+   "undeclared_test_dependencies": [
+    {
+     "module": "../production/sr_engine_binding_v1",
+     "from": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/src/sr_engine_v1_final.js",
+     "added": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/"
+    },
+    {
+     "module": "STMX_SR_DIRECTION_FIRST_ENGINE_V1_2 (directory binding)",
+     "from": "fail-closed binding message",
+     "added": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/"
+    },
+    {
+     "module": "STMX_SR_STRENGTH_TERNARY_V1_3_CANDIDATE (directory binding)",
+     "from": "fail-closed binding message",
+     "added": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_STRENGTH_TERNARY_V1_3_CANDIDATE/"
+    }
+   ],
+   "network_attempts": 0,
+   "reads_outside_isolated_root": [],
+   "reads_outside_count": 0,
+   "temp_removed": true
+  },
+  {
+   "axis": "DM",
+   "freeze_id": "ITEM-DM-V2-FINAL-FREEZE-V1-2026-10-28",
+   "copied_files": 67,
+   "missing_from_master": [],
+   "exit": 0,
+   "final_tally_in_output": "67/67",
+   "all_tallies": [
+    "386/386",
+    "380/380",
+    "386/386",
+    "13/13",
+    "12/12",
+    "67/67"
+   ],
+   "recorded_final_regression": {
+    "package": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_DM_V2_FINAL_FREEZE_AND_VERIFIED_BACKUP_V1/",
+    "result_file": "_raw/manifests/k4_regression.json",
+    "result_sha256": "b29ad8bfce4f9282cf1b8ea8f567d52f8b4703c32312024eace95a92ba54c5f9",
+    "run_all": "67/67",
+    "valid_direction_coverage": "386/386 (D 232 · M 154)",
+    "distinct_input_blocks": 296,
+    "neutral": 0,
+    "unresolved": 0,
+    "not_scorable": 0,
+    "numeric_strength_output": "NONE (customer whitelist 386/386)",
+    "gt75_side": "58/58",
+    "bsc1_77_side": "6/6",
+    "v1_dm_reversals": 0,
+    "reason_verified": "386/386",
+    "historical_dm5": "17 → D 5 / M 12",
+    "lattice_violations": 0,
+    "deterministic": "387/387",
+    "live_v1_3_gt": "10/12 (LIVE|slot8|REF_000661 V2 M · CEO DM6 · LIVE|slot10|REF_000694 V2 D · CEO DM3 = L-3 · L-2)",
+    "delta_vs_dmr": 0,
+    "delta_vs_dmv2": 0,
+    "coverage_note": "386/386 = Direction COVERAGE over 386 valid input rows (296 distinct blocks; populations overlap). It is NOT an accuracy over 386 independent images. CEO GT agreement is measured only where a side GT exists (75: 58 · BSC-1 77: where recorded · live: 12).",
+    "gates": [
+     "G-01 run_all 67/67 re-executed now",
+     "G-02 every valid input → D / M (386/386)",
+     "G-03 Neutral / Unresolved / Not Scorable / null = 0; only the absent probe is a transport error",
+     "G-04 customer output = { direction, reason } only, no number / rule ID / Neutral word (independent evaluation)",
+     "G-05 existing V1 D / M reversals 0",
+     "G-06 75 CEO side GT 58/58 (DM5 not compared)",
+     "G-07 historical DM5 17 → D 5 / M 12 (history kept)",
+     "G-08 Reason verified 386/386; false-claim mutations caught",
+     "G-09 27-cell monotonicity violations 0",
+     "G-10 GT / REF runtime lookup 0 (GD-02 · GD-03 · GD-09)",
+     "G-11 deterministic (GD-01 + independent double evaluation)",
+     "G-12 independent evaluation == run_all rows",
+     "G-13 delta vs DMR re-run = 0 and vs original DMV2 run = 0",
+     "G-14 candidate byte-identical before / after the runs",
+     "G-15 src aggregate == DMR == sealed",
+     "G-16 live V1_3 GT 10/12 with the two declared limitations only (REF_000661 slot 8 · REF_000694)"
+    ]
+   },
+   "undeclared_test_dependencies": [],
+   "network_attempts": 0,
+   "reads_outside_isolated_root": [],
+   "reads_outside_count": 0,
+   "temp_removed": true
+  }
+ ],
+ "all_exit_zero": true,
+ "no_network": true
+}

@@ -1,0 +1,385 @@
+{
+ "artefact": "08_TRANSFORMATIVE_FIVE_CLASS_CRITERIA",
+ "contract": "TC_GRAMMAR_TRANSFORMATION_DECISION_CRITERIA_V1_FIVE_CLASS_CLOSURE",
+ "date": "2026-09-23",
+ "classes": 5,
+ "scope_withheld_untouched": [
+  "CON-TRUE-CONSTITUTIVE",
+  "CON-TRUE-R1-OPENWORK-BODY-CONSTRUCTION",
+  "CON-TRUE-R1-FRONT-CLOSURE-POCKET-SYSTEM",
+  "CON-TRUE-R1-POCKET-SYSTEM",
+  "CON-TRUE-R1-STRUCTURAL-ATTACHMENT-BODY-SYSTEM",
+  "CON-TRUE-R1-LAYERED-STRUCTURAL-BODY",
+  "CON-TRUE-C3-ARCHETYPAL-HYBRID-BODICE-TROUSER"
+ ],
+ "answer_leak_audit": "no criterion field holds BASE_GRAMMAR_PRINCIPAL / INTERVENTION_PRINCIPAL / COORDINATED / UNRELATED as content; conditions only (negative tests 6 · 14 · 15 · 16)",
+ "criteria": [
+  {
+   "relation_class": "SIL-TRUE-OVERSIZED",
+   "channel": "silhouette",
+   "reference_keys": [
+    "JACKET:Casual",
+    "JACKET:Tailored",
+    "COAT:Casual",
+    "shirt",
+    "tshirt",
+    "sweatshirt",
+    "trouser"
+   ],
+   "keys_with_characteristic_content": [
+    "JACKET:Tailored",
+    "shirt (V2.3.42 15_)"
+   ],
+   "scope_condition": "fit = Oversized on the intervening member (fit = whole-garment form; Step 2 reference S2 §3.1; no intermediate state, G5)",
+   "class_specific_note": "oversized feature presence ≠ whole-garment reconstruction: the criterion asks whether the oversized realisation changes the organising grammar (the key's constitutive systems, its proportion) rather than only increasing ease / volume — evidenced by displacement of those systems, never by the token",
+   "semantic_question": "Has this intervention substantively reorganised the base garment grammar of the whole garment (TC-F4 T7 reading), or does the base grammar remain recognisably principal (T6 reading)? — answered only from this item's evidence",
+   "base_grammar_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "RELATION_TO_BASE: the key's governed constitutive / defining construction systems are positively retained on the intervening member (construction channel FALSE under C-1 AND the characteristic construction tokens of the key are present — source: CEO Q8 G-1 / C-1 sufficiency L799 / shirt L215)",
+     "WHOLE_GARMENT_CONSEQUENCE: every non-intervened whole-garment channel of the intervening member is positively conventional (FALSE rule with governed why), so the reorganisation is confined to the intervention's own channel",
+     "EVIDENCE_COMPLETENESS: no member of the unit carries an UNRESOLVED channel or an ownerless departure (a Difference whose gate or owner is undetermined blocks a positive base reading)"
+    ],
+    "reads_as": "meaningful transformation with the base grammar substantively recognisable (TC-F4 T6 wording) — recorded as the carrier value, never as a tier"
+   },
+   "intervention_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "SCOPE: the class scope condition (below) is evidenced on this item",
+     "RELATION_TO_BASE: the key's constitutive / defining construction systems are positively displaced or subordinated by the intervention on this item",
+     "WHOLE_GARMENT_CONSEQUENCE: the garment's organising reading is positively shown to run through the intervention rather than the base systems"
+    ],
+    "current_evidence_status": "displacement is evidenced at the frozen resolution only through the scope-withheld construction classes (HOLD); subordination / organising-reading has no governed carrier → CURRENT_REPRESENTATION_LIMIT — INTERVENTION_PRINCIPAL cannot be concluded for these classes this sprint (lawful)"
+   },
+   "supporting_g48_evidence": [
+    "valid_departure_set (channel · rule · carrier)",
+    "statement_set + Step 2 {rule, why, carrier, strong}",
+    "observed D1 tokens (fit · length · collar · closure_type · sleeve · front_opening_extent · shoulder_structure)",
+    "per-channel FALSE rules with why (positive conventionality)",
+    "magnitude (MEANINGFUL / STRONG) and strong — inputs only",
+    "asymmetry object · ownerless flag",
+    "reference characteristic_realization of the key (15_)"
+   ],
+   "disqualifying_evidence": [
+    "class membership alone",
+    "feature presence alone (Oversized / flare / hybrid present ≠ reorganisation)",
+    "magnitude · STRONG · strong · Salience as sufficient conditions",
+    "Statement count · departure count",
+    "co-location / composition type",
+    "grammar_state · CONTEMPORARY_* · GT · historical TC · REF identity"
+   ],
+   "insufficient_evidence_conditions": [
+    "key characteristic construction content NOT_AUTHORED → REFERENCE_CONTENT_GAP",
+    "UNRESOLVED channel or ownerless departure on any member → ITEM_OBSERVATION_RESOLUTION_GAP",
+    "a second Statement of a scope-withheld class on the unit → GOVERNED_SCOPE_BOUNDARY",
+    "non-intervened whole-garment channel also TRUE (multi-channel reorganisation) without governed relation → SEMANTIC_AUTHORITY_GAP (frozen authority does not decide the consequence)",
+    "governed STRONG magnitude on the intervention → SEMANTIC_AUTHORITY_GAP (frozen authority does not state the consequence; STRONG is not a rule either way)"
+   ],
+   "provenance_requirements": "every non-UNRESOLVED value cites: criterion id · the retained / displaced characteristic tokens · the FALSE rules of the non-intervened channels · the reference row (15_) · the Statement — never a tier, GT or REF",
+   "no_threshold": "no numeric, count, percentage or categorical threshold; no automatic class → value",
+   "authoring_status": "CRITERIA_CLOSED — semantic-effect conditions authored from TC-F4 · CEO Q8 G-1 · C-1 sufficiency · Q5 / Q7 · BODY-zone rule · D-CONST-R3; INTERVENTION_PRINCIPAL evidence path = CURRENT_REPRESENTATION_LIMIT (lawful)",
+   "provenance": {
+    "authored_from": [
+     "TC-F4 T6/T7",
+     "CEO Q8 G-1 (L787)",
+     "C-1 sufficiency (L799)",
+     "shirt defining realization (L215)",
+     "CEO Q5 (L762–777)",
+     "CEO Q7 (L107–118)",
+     "BODY-zone hybrid rule (CEO V2.3.1)",
+     "D-CONST-R3 Option B",
+     "G48 / G61"
+    ],
+    "gt_used": 0
+   }
+  },
+  {
+   "relation_class": "SIL-TRUE-FLARE-CONTRAST",
+   "channel": "silhouette",
+   "reference_keys": [
+    "trouser"
+   ],
+   "keys_with_characteristic_content": [],
+   "scope_condition": "the governed silhouette-contrast realisation on the trouser member (Step 2 SIL-TRUE-FLARE-CONTRAST definition)",
+   "class_specific_note": "localised / contained silhouette alteration (a leg-shape contrast within the trouser grammar) ≠ whole-garment grammar re-read through the intervention; distinguishing them requires the trouser's characteristic realization (NOT_AUTHORED → REFERENCE_CONTENT_GAP); no angle / degree threshold",
+   "semantic_question": "Has this intervention substantively reorganised the base garment grammar of the whole garment (TC-F4 T7 reading), or does the base grammar remain recognisably principal (T6 reading)? — answered only from this item's evidence",
+   "base_grammar_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "RELATION_TO_BASE: the key's governed constitutive / defining construction systems are positively retained on the intervening member (construction channel FALSE under C-1 AND the characteristic construction tokens of the key are present — source: CEO Q8 G-1 / C-1 sufficiency L799 / shirt L215)",
+     "WHOLE_GARMENT_CONSEQUENCE: every non-intervened whole-garment channel of the intervening member is positively conventional (FALSE rule with governed why), so the reorganisation is confined to the intervention's own channel",
+     "EVIDENCE_COMPLETENESS: no member of the unit carries an UNRESOLVED channel or an ownerless departure (a Difference whose gate or owner is undetermined blocks a positive base reading)"
+    ],
+    "reads_as": "meaningful transformation with the base grammar substantively recognisable (TC-F4 T6 wording) — recorded as the carrier value, never as a tier"
+   },
+   "intervention_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "SCOPE: the class scope condition (below) is evidenced on this item",
+     "RELATION_TO_BASE: the key's constitutive / defining construction systems are positively displaced or subordinated by the intervention on this item",
+     "WHOLE_GARMENT_CONSEQUENCE: the garment's organising reading is positively shown to run through the intervention rather than the base systems"
+    ],
+    "current_evidence_status": "displacement is evidenced at the frozen resolution only through the scope-withheld construction classes (HOLD); subordination / organising-reading has no governed carrier → CURRENT_REPRESENTATION_LIMIT — INTERVENTION_PRINCIPAL cannot be concluded for these classes this sprint (lawful)"
+   },
+   "supporting_g48_evidence": [
+    "valid_departure_set (channel · rule · carrier)",
+    "statement_set + Step 2 {rule, why, carrier, strong}",
+    "observed D1 tokens (fit · length · collar · closure_type · sleeve · front_opening_extent · shoulder_structure)",
+    "per-channel FALSE rules with why (positive conventionality)",
+    "magnitude (MEANINGFUL / STRONG) and strong — inputs only",
+    "asymmetry object · ownerless flag",
+    "reference characteristic_realization of the key (15_)"
+   ],
+   "disqualifying_evidence": [
+    "class membership alone",
+    "feature presence alone (Oversized / flare / hybrid present ≠ reorganisation)",
+    "magnitude · STRONG · strong · Salience as sufficient conditions",
+    "Statement count · departure count",
+    "co-location / composition type",
+    "grammar_state · CONTEMPORARY_* · GT · historical TC · REF identity"
+   ],
+   "insufficient_evidence_conditions": [
+    "key characteristic construction content NOT_AUTHORED → REFERENCE_CONTENT_GAP",
+    "UNRESOLVED channel or ownerless departure on any member → ITEM_OBSERVATION_RESOLUTION_GAP",
+    "a second Statement of a scope-withheld class on the unit → GOVERNED_SCOPE_BOUNDARY",
+    "non-intervened whole-garment channel also TRUE (multi-channel reorganisation) without governed relation → SEMANTIC_AUTHORITY_GAP (frozen authority does not decide the consequence)",
+    "governed STRONG magnitude on the intervention → SEMANTIC_AUTHORITY_GAP (frozen authority does not state the consequence; STRONG is not a rule either way)"
+   ],
+   "provenance_requirements": "every non-UNRESOLVED value cites: criterion id · the retained / displaced characteristic tokens · the FALSE rules of the non-intervened channels · the reference row (15_) · the Statement — never a tier, GT or REF",
+   "no_threshold": "no numeric, count, percentage or categorical threshold; no automatic class → value",
+   "authoring_status": "CRITERIA_CLOSED — semantic-effect conditions authored from TC-F4 · CEO Q8 G-1 · C-1 sufficiency · Q5 / Q7 · BODY-zone rule · D-CONST-R3; INTERVENTION_PRINCIPAL evidence path = CURRENT_REPRESENTATION_LIMIT (lawful)",
+   "provenance": {
+    "authored_from": [
+     "TC-F4 T6/T7",
+     "CEO Q8 G-1 (L787)",
+     "C-1 sufficiency (L799)",
+     "shirt defining realization (L215)",
+     "CEO Q5 (L762–777)",
+     "CEO Q7 (L107–118)",
+     "BODY-zone hybrid rule (CEO V2.3.1)",
+     "D-CONST-R3 Option B",
+     "G48 / G61"
+    ],
+    "gt_used": 0
+   }
+  },
+  {
+   "relation_class": "PRO-TRUE-Q5",
+   "channel": "proportion",
+   "reference_keys": [
+    "JACKET:Tailored",
+    "JACKET:Casual"
+   ],
+   "keys_with_characteristic_content": [
+    "JACKET:Tailored"
+   ],
+   "scope_condition": "length ∈ {Waist Length, Cropped} on the intervening JACKET member (CEO Q5: Hip Length = archetype-standard zone → FALSE; Waist Length / Cropped → TRUE; CA#22 body-relative zones)",
+   "class_specific_note": "the frozen anchor case \"waist-line shortening from the Normal Blazer is a Proportion Departure\" is stated at Direction level only; whether the shortening reorganises the whole garment is read from the retained / displaced constitutive systems and the silhouette channel, never from the length token",
+   "semantic_question": "Has this intervention substantively reorganised the base garment grammar of the whole garment (TC-F4 T7 reading), or does the base grammar remain recognisably principal (T6 reading)? — answered only from this item's evidence",
+   "base_grammar_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "RELATION_TO_BASE: the key's governed constitutive / defining construction systems are positively retained on the intervening member (construction channel FALSE under C-1 AND the characteristic construction tokens of the key are present — source: CEO Q8 G-1 / C-1 sufficiency L799 / shirt L215)",
+     "WHOLE_GARMENT_CONSEQUENCE: every non-intervened whole-garment channel of the intervening member is positively conventional (FALSE rule with governed why), so the reorganisation is confined to the intervention's own channel",
+     "EVIDENCE_COMPLETENESS: no member of the unit carries an UNRESOLVED channel or an ownerless departure (a Difference whose gate or owner is undetermined blocks a positive base reading)"
+    ],
+    "reads_as": "meaningful transformation with the base grammar substantively recognisable (TC-F4 T6 wording) — recorded as the carrier value, never as a tier"
+   },
+   "intervention_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "SCOPE: the class scope condition (below) is evidenced on this item",
+     "RELATION_TO_BASE: the key's constitutive / defining construction systems are positively displaced or subordinated by the intervention on this item",
+     "WHOLE_GARMENT_CONSEQUENCE: the garment's organising reading is positively shown to run through the intervention rather than the base systems"
+    ],
+    "current_evidence_status": "displacement is evidenced at the frozen resolution only through the scope-withheld construction classes (HOLD); subordination / organising-reading has no governed carrier → CURRENT_REPRESENTATION_LIMIT — INTERVENTION_PRINCIPAL cannot be concluded for these classes this sprint (lawful)"
+   },
+   "supporting_g48_evidence": [
+    "valid_departure_set (channel · rule · carrier)",
+    "statement_set + Step 2 {rule, why, carrier, strong}",
+    "observed D1 tokens (fit · length · collar · closure_type · sleeve · front_opening_extent · shoulder_structure)",
+    "per-channel FALSE rules with why (positive conventionality)",
+    "magnitude (MEANINGFUL / STRONG) and strong — inputs only",
+    "asymmetry object · ownerless flag",
+    "reference characteristic_realization of the key (15_)"
+   ],
+   "disqualifying_evidence": [
+    "class membership alone",
+    "feature presence alone (Oversized / flare / hybrid present ≠ reorganisation)",
+    "magnitude · STRONG · strong · Salience as sufficient conditions",
+    "Statement count · departure count",
+    "co-location / composition type",
+    "grammar_state · CONTEMPORARY_* · GT · historical TC · REF identity"
+   ],
+   "insufficient_evidence_conditions": [
+    "key characteristic construction content NOT_AUTHORED → REFERENCE_CONTENT_GAP",
+    "UNRESOLVED channel or ownerless departure on any member → ITEM_OBSERVATION_RESOLUTION_GAP",
+    "a second Statement of a scope-withheld class on the unit → GOVERNED_SCOPE_BOUNDARY",
+    "non-intervened whole-garment channel also TRUE (multi-channel reorganisation) without governed relation → SEMANTIC_AUTHORITY_GAP (frozen authority does not decide the consequence)",
+    "governed STRONG magnitude on the intervention → SEMANTIC_AUTHORITY_GAP (frozen authority does not state the consequence; STRONG is not a rule either way)"
+   ],
+   "provenance_requirements": "every non-UNRESOLVED value cites: criterion id · the retained / displaced characteristic tokens · the FALSE rules of the non-intervened channels · the reference row (15_) · the Statement — never a tier, GT or REF",
+   "no_threshold": "no numeric, count, percentage or categorical threshold; no automatic class → value",
+   "authoring_status": "CRITERIA_CLOSED — semantic-effect conditions authored from TC-F4 · CEO Q8 G-1 · C-1 sufficiency · Q5 / Q7 · BODY-zone rule · D-CONST-R3; INTERVENTION_PRINCIPAL evidence path = CURRENT_REPRESENTATION_LIMIT (lawful)",
+   "provenance": {
+    "authored_from": [
+     "TC-F4 T6/T7",
+     "CEO Q8 G-1 (L787)",
+     "C-1 sufficiency (L799)",
+     "shirt defining realization (L215)",
+     "CEO Q5 (L762–777)",
+     "CEO Q7 (L107–118)",
+     "BODY-zone hybrid rule (CEO V2.3.1)",
+     "D-CONST-R3 Option B",
+     "G48 / G61"
+    ],
+    "gt_used": 0
+   }
+  },
+  {
+   "relation_class": "PRO-TRUE-Q7",
+   "channel": "proportion",
+   "reference_keys": [
+    "tshirt",
+    "shirt"
+   ],
+   "keys_with_characteristic_content": [
+    "shirt (V2.3.42 15_)"
+   ],
+   "scope_condition": "length = Cropped on the intervening TOP member (CEO Q7: Cropped IS archetype-relative body shortening on the four TOP keys; Long alone FALSE; Regular FALSE)",
+   "class_specific_note": "Cropped is a meaningful Proportion Departure by CEO decision; its whole-garment consequence is read from the retained / displaced defining construction of the TOP key (authored for shirt only) and the silhouette channel — never from the token",
+   "semantic_question": "Has this intervention substantively reorganised the base garment grammar of the whole garment (TC-F4 T7 reading), or does the base grammar remain recognisably principal (T6 reading)? — answered only from this item's evidence",
+   "base_grammar_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "RELATION_TO_BASE: the key's governed constitutive / defining construction systems are positively retained on the intervening member (construction channel FALSE under C-1 AND the characteristic construction tokens of the key are present — source: CEO Q8 G-1 / C-1 sufficiency L799 / shirt L215)",
+     "WHOLE_GARMENT_CONSEQUENCE: every non-intervened whole-garment channel of the intervening member is positively conventional (FALSE rule with governed why), so the reorganisation is confined to the intervention's own channel",
+     "EVIDENCE_COMPLETENESS: no member of the unit carries an UNRESOLVED channel or an ownerless departure (a Difference whose gate or owner is undetermined blocks a positive base reading)"
+    ],
+    "reads_as": "meaningful transformation with the base grammar substantively recognisable (TC-F4 T6 wording) — recorded as the carrier value, never as a tier"
+   },
+   "intervention_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "SCOPE: the class scope condition (below) is evidenced on this item",
+     "RELATION_TO_BASE: the key's constitutive / defining construction systems are positively displaced or subordinated by the intervention on this item",
+     "WHOLE_GARMENT_CONSEQUENCE: the garment's organising reading is positively shown to run through the intervention rather than the base systems"
+    ],
+    "current_evidence_status": "displacement is evidenced at the frozen resolution only through the scope-withheld construction classes (HOLD); subordination / organising-reading has no governed carrier → CURRENT_REPRESENTATION_LIMIT — INTERVENTION_PRINCIPAL cannot be concluded for these classes this sprint (lawful)"
+   },
+   "supporting_g48_evidence": [
+    "valid_departure_set (channel · rule · carrier)",
+    "statement_set + Step 2 {rule, why, carrier, strong}",
+    "observed D1 tokens (fit · length · collar · closure_type · sleeve · front_opening_extent · shoulder_structure)",
+    "per-channel FALSE rules with why (positive conventionality)",
+    "magnitude (MEANINGFUL / STRONG) and strong — inputs only",
+    "asymmetry object · ownerless flag",
+    "reference characteristic_realization of the key (15_)"
+   ],
+   "disqualifying_evidence": [
+    "class membership alone",
+    "feature presence alone (Oversized / flare / hybrid present ≠ reorganisation)",
+    "magnitude · STRONG · strong · Salience as sufficient conditions",
+    "Statement count · departure count",
+    "co-location / composition type",
+    "grammar_state · CONTEMPORARY_* · GT · historical TC · REF identity"
+   ],
+   "insufficient_evidence_conditions": [
+    "key characteristic construction content NOT_AUTHORED → REFERENCE_CONTENT_GAP",
+    "UNRESOLVED channel or ownerless departure on any member → ITEM_OBSERVATION_RESOLUTION_GAP",
+    "a second Statement of a scope-withheld class on the unit → GOVERNED_SCOPE_BOUNDARY",
+    "non-intervened whole-garment channel also TRUE (multi-channel reorganisation) without governed relation → SEMANTIC_AUTHORITY_GAP (frozen authority does not decide the consequence)",
+    "governed STRONG magnitude on the intervention → SEMANTIC_AUTHORITY_GAP (frozen authority does not state the consequence; STRONG is not a rule either way)"
+   ],
+   "provenance_requirements": "every non-UNRESOLVED value cites: criterion id · the retained / displaced characteristic tokens · the FALSE rules of the non-intervened channels · the reference row (15_) · the Statement — never a tier, GT or REF",
+   "no_threshold": "no numeric, count, percentage or categorical threshold; no automatic class → value",
+   "authoring_status": "CRITERIA_CLOSED — semantic-effect conditions authored from TC-F4 · CEO Q8 G-1 · C-1 sufficiency · Q5 / Q7 · BODY-zone rule · D-CONST-R3; INTERVENTION_PRINCIPAL evidence path = CURRENT_REPRESENTATION_LIMIT (lawful)",
+   "provenance": {
+    "authored_from": [
+     "TC-F4 T6/T7",
+     "CEO Q8 G-1 (L787)",
+     "C-1 sufficiency (L799)",
+     "shirt defining realization (L215)",
+     "CEO Q5 (L762–777)",
+     "CEO Q7 (L107–118)",
+     "BODY-zone hybrid rule (CEO V2.3.1)",
+     "D-CONST-R3 Option B",
+     "G48 / G61"
+    ],
+    "gt_used": 0
+   }
+  },
+  {
+   "relation_class": "CON-TRUE-C3-BODY-ZONE-HYBRID",
+   "channel": "construction",
+   "reference_keys": [
+    "JACKET:Casual",
+    "JACKET:Utility",
+    "dress"
+   ],
+   "keys_with_characteristic_content": [],
+   "scope_condition": "the governed BODY-zone hybrid trace on the intervening member (CEO V2.3.1 BODY-zone rule: a second grammar occupying the BODY zone)",
+   "class_specific_note": "C-3 firewall: hybrid presence ≠ TC7 and ≠ reconstruction; an intervention-principal reading needs positive item evidence that the second grammar structurally participates at whole-garment level by displacing the base key's constitutive systems — which requires the key's characteristic content (JACKET:Casual · JACKET:Utility · dress: NOT_AUTHORED → REFERENCE_CONTENT_GAP)",
+   "semantic_question": "Has this intervention substantively reorganised the base garment grammar of the whole garment (TC-F4 T7 reading), or does the base grammar remain recognisably principal (T6 reading)? — answered only from this item's evidence",
+   "base_grammar_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "RELATION_TO_BASE: the key's governed constitutive / defining construction systems are positively retained on the intervening member (construction channel FALSE under C-1 AND the characteristic construction tokens of the key are present — source: CEO Q8 G-1 / C-1 sufficiency L799 / shirt L215)",
+     "WHOLE_GARMENT_CONSEQUENCE: every non-intervened whole-garment channel of the intervening member is positively conventional (FALSE rule with governed why), so the reorganisation is confined to the intervention's own channel",
+     "EVIDENCE_COMPLETENESS: no member of the unit carries an UNRESOLVED channel or an ownerless departure (a Difference whose gate or owner is undetermined blocks a positive base reading)"
+    ],
+    "reads_as": "meaningful transformation with the base grammar substantively recognisable (TC-F4 T6 wording) — recorded as the carrier value, never as a tier"
+   },
+   "intervention_principal_conditions": {
+    "all_required": true,
+    "conditions": [
+     "SCOPE: the class scope condition (below) is evidenced on this item",
+     "RELATION_TO_BASE: the key's constitutive / defining construction systems are positively displaced or subordinated by the intervention on this item",
+     "WHOLE_GARMENT_CONSEQUENCE: the garment's organising reading is positively shown to run through the intervention rather than the base systems"
+    ],
+    "current_evidence_status": "displacement is evidenced at the frozen resolution only through the scope-withheld construction classes (HOLD); subordination / organising-reading has no governed carrier → CURRENT_REPRESENTATION_LIMIT — INTERVENTION_PRINCIPAL cannot be concluded for these classes this sprint (lawful)"
+   },
+   "supporting_g48_evidence": [
+    "valid_departure_set (channel · rule · carrier)",
+    "statement_set + Step 2 {rule, why, carrier, strong}",
+    "observed D1 tokens (fit · length · collar · closure_type · sleeve · front_opening_extent · shoulder_structure)",
+    "per-channel FALSE rules with why (positive conventionality)",
+    "magnitude (MEANINGFUL / STRONG) and strong — inputs only",
+    "asymmetry object · ownerless flag",
+    "reference characteristic_realization of the key (15_)"
+   ],
+   "disqualifying_evidence": [
+    "class membership alone",
+    "feature presence alone (Oversized / flare / hybrid present ≠ reorganisation)",
+    "magnitude · STRONG · strong · Salience as sufficient conditions",
+    "Statement count · departure count",
+    "co-location / composition type",
+    "grammar_state · CONTEMPORARY_* · GT · historical TC · REF identity"
+   ],
+   "insufficient_evidence_conditions": [
+    "key characteristic construction content NOT_AUTHORED → REFERENCE_CONTENT_GAP",
+    "UNRESOLVED channel or ownerless departure on any member → ITEM_OBSERVATION_RESOLUTION_GAP",
+    "a second Statement of a scope-withheld class on the unit → GOVERNED_SCOPE_BOUNDARY",
+    "non-intervened whole-garment channel also TRUE (multi-channel reorganisation) without governed relation → SEMANTIC_AUTHORITY_GAP (frozen authority does not decide the consequence)",
+    "governed STRONG magnitude on the intervention → SEMANTIC_AUTHORITY_GAP (frozen authority does not state the consequence; STRONG is not a rule either way)"
+   ],
+   "provenance_requirements": "every non-UNRESOLVED value cites: criterion id · the retained / displaced characteristic tokens · the FALSE rules of the non-intervened channels · the reference row (15_) · the Statement — never a tier, GT or REF",
+   "no_threshold": "no numeric, count, percentage or categorical threshold; no automatic class → value",
+   "authoring_status": "CRITERIA_CLOSED — semantic-effect conditions authored from TC-F4 · CEO Q8 G-1 · C-1 sufficiency · Q5 / Q7 · BODY-zone rule · D-CONST-R3; INTERVENTION_PRINCIPAL evidence path = CURRENT_REPRESENTATION_LIMIT (lawful)",
+   "provenance": {
+    "authored_from": [
+     "TC-F4 T6/T7",
+     "CEO Q8 G-1 (L787)",
+     "C-1 sufficiency (L799)",
+     "shirt defining realization (L215)",
+     "CEO Q5 (L762–777)",
+     "CEO Q7 (L107–118)",
+     "BODY-zone hybrid rule (CEO V2.3.1)",
+     "D-CONST-R3 Option B",
+     "G48 / G61"
+    ],
+    "gt_used": 0
+   }
+  }
+ ]
+}

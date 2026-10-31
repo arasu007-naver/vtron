@@ -42,7 +42,7 @@ export async function GET(request: Request) {
     const product = await productContextOf(modelId);
     return NextResponse.json({ productContext: product ? productAddendum(product) : null });
   }
-  // 판정은 코드(엔진 · tc-rules)가 하므로 판정 프롬프트는 내려보내지 않는다.
+  // 판정은 코드(판정 함수 V2 — judge-v2.ts)가 하므로 판정 프롬프트는 내려보내지 않는다.
   const observe = await resolvePrompt("observe", null, "item");
   return NextResponse.json({ prompt: observe.content, versions: { prompt: observe.version } });
 }
@@ -57,7 +57,8 @@ export async function GET(request: Request) {
  *   modelId     : 상품 사진으로 추출할 때 그 상품의 카탈로그 모델 id (선택 — 있으면 결과를 product_style 에 저장한다)
  *   imageUrl    : 그 상품 사진의 원본 URL (modelId 와 함께)
  *
- * 응답: { styleId: 대표 의복의 스타일 아이디(축별 글자 · 출처 · TC 규칙 판정), scoring: 의복별 EI·SR·DM 엔진 결과,
+ * 응답: { styleId: 채점 의복의 스타일 아이디(축별 글자 · 출처 · 엔진 방향 · 한국어 근거),
+ *        scoring: 판정 함수 V2 의 기록(채점 단위 · 대상 지정 색상 패킷 · Item Scoring V2 R4 결과, lib/style-ex/judge-v2.ts),
  *        judgement: LLM 판정(엔진 · TC 규칙이 미결인 축이 있을 때만, 없으면 null), observation: 관찰 envelope,
  *        provider: 'claude' | 'gemini', visionModel: 모델명,
  *        customPrompt: 관찰 프롬프트(상품 정보 뺀 앞부분)를 따로 보냈는지, productContext: 상품 정보가 붙어 있었는지,

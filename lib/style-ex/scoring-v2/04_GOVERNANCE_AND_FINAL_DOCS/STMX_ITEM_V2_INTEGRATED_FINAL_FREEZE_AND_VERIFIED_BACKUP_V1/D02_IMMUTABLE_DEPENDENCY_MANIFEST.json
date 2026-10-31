@@ -1,0 +1,1820 @@
+{
+ "freeze_id": "ITEM-V2-INTEGRATED-FINAL-FREEZE-V1-2026-10-29",
+ "files": 259,
+ "aggregate_sha256": "f2fdc4b1130e951c5677d2eca0b39d11ceb34a81ada1f417ed15b77da4d9ff51",
+ "entries": [
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/CODE_IDENTITY_SEAL_ITEM_V2_INTEGRATED_RUNTIME_V1_CANDIDATE.json",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 2451,
+   "sha256": "d6f17f3d4a6513d6c9c80dbcc6615bc6e7cadd9254b4955a198166fded750e7b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/item_v2_axis_binding.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 9083,
+   "sha256": "daae2e08dcb0e8a8a8f8da2a01be3a2ef5efd5c0e813f960c341e2758d9be46a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/item_v2_axis_registry.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 4005,
+   "sha256": "7a990d1ba27e6f52e3d17526ba7cf1034b2a34c5a947e594ea953bc1185ed332",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/item_v2_contracts.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 5757,
+   "sha256": "f429f01cd061ce3ae2c0efdd23d7fd8cb9711c4369b6b7f83ee6ebb681605230",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/item_v2_entry.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 3540,
+   "sha256": "126c800202b102fe5d896e067ebc3cd3227142d4fd4fdd2f3cc88f341a527453",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/item_v2_evidence_adapter.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 3187,
+   "sha256": "3c41fed52b92d592250524414cd3713973ff89fc3509705e46f4e0997769a077",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/item_v2_input_contract.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 4590,
+   "sha256": "b33c87519ff069761462c9cb2dcee0d4716cfce58391eed9ef58e68c854fd284",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/item_v2_product_selector.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 8515,
+   "sha256": "3687353ccd2ec161a3ad44a2be9098338fcf736d5fc9e42e8713e63ead231f82",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/item_v2_result_composer.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 2857,
+   "sha256": "1b1035bd5a46e6888d87db8b712f037cc83d8a306f8f53f76967d6d7bf27d828",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/README.md",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 2383,
+   "sha256": "72639e4fde62915f18452a5a3200ac7f2497455528b167e0c3f63a1751dee623",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/tests/run_all.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 39434,
+   "sha256": "36d0abd8d450299a599e9cce070c90bf999ec229bea336b8739fb4441adbdd03",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2/tests/_fixtures.js",
+   "role": "CLEAN_ENGINE_ITEM_V2",
+   "bytes": 5886,
+   "sha256": "fb6b73b61649c4b0145b4428fd89e5931c92cc540d31c4014c27178468f0942e",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/CODE_IDENTITY_SEAL_ITEM_V2_INTEGRATED_RUNTIME_V2_R1_CANDIDATE.json",
+   "role": "CLEAN_ENGINE_ITEM_V2_R1",
+   "bytes": 2336,
+   "sha256": "0bba246f2d083dd753d32fb2d5e91ad4937b120d2f325b39855d8a05b03562eb",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/item_v2_r1_contracts.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R1",
+   "bytes": 4278,
+   "sha256": "80e6007843457866dc0150174d3ea3da3242804a3306fbf00d017a8e3cbdc959",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/item_v2_r1_entry.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R1",
+   "bytes": 4791,
+   "sha256": "85aae916e97e9db89b8bbf921b870cec791330b59b046fc12f2fdb70d1fcc0cb",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/item_v2_r1_input_contract.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R1",
+   "bytes": 1905,
+   "sha256": "c0c3e8e657e48152a8b1ed5a62627c067f9d52fced3a0a548d168e3048f6ce6d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/item_v2_r1_predecessor_pin.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R1",
+   "bytes": 3651,
+   "sha256": "74d5731ede2476769da836560f3ea56ab7258dd7c482cc540c5fbd0b4ee7a413",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/item_v2_r1_product_selector.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R1",
+   "bytes": 13756,
+   "sha256": "b605c691da7416faea55e228ec2a2fac3c88ac17dc6a9af3948ab8e926725536",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/README.md",
+   "role": "CLEAN_ENGINE_ITEM_V2_R1",
+   "bytes": 2997,
+   "sha256": "56b7387398815dc3c7c16fa12daca4fe4fe9f489d6a302e51ce73b1aedfa3d92",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/tests/run_all.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R1",
+   "bytes": 29551,
+   "sha256": "d8273d48dd8ad4ecd882f7b90daaf9a127f74a2b907773559dbb55eb40439cfa",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r1/tests/_labels.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R1",
+   "bytes": 3906,
+   "sha256": "a251c388f7a6154929333079a5647488e4645c7a1c5f4797a7600f461da97642",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/CODE_IDENTITY_SEAL_ITEM_V2_INTEGRATED_RUNTIME_V2_R2_CANDIDATE.json",
+   "role": "CLEAN_ENGINE_ITEM_V2_R2",
+   "bytes": 2376,
+   "sha256": "d2f1ae58015a8160f64b812cf0030af820619fa2e311994de381c28621d25195",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/item_v2_r2_cli.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R2",
+   "bytes": 2163,
+   "sha256": "58994b8cb67e842608d3a58e938abdfb9ca3a949aa283b93391a979349e41063",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/item_v2_r2_contracts.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R2",
+   "bytes": 2963,
+   "sha256": "8f7ccef208f6ea965df59e177f255bb2ec858df4fce856d2998eb1a8ee5eed96",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/item_v2_r2_entry.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R2",
+   "bytes": 7540,
+   "sha256": "df9b321eeef02e322cc3e121782e431615e6813afddd91459d0e8218f3fc19e9",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/item_v2_r2_predecessor_pin.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R2",
+   "bytes": 3984,
+   "sha256": "be07a794cc3e31d9d7cb7b43405711e88b6d0e2a71f5835258fe4fe11d6e08bb",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/item_v2_r2_suit_binding.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R2",
+   "bytes": 6763,
+   "sha256": "578bdd7d74504b4e6bf8f54509973c27cbdc0c6a96db246b4b6a034aabf8717d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/item_v2_r2_suit_registry.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R2",
+   "bytes": 2629,
+   "sha256": "7a2eefa4e528b673ccba9edd0d50d81a479e03f9d2fa1519ed4de25e5cb416fe",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/README.md",
+   "role": "CLEAN_ENGINE_ITEM_V2_R2",
+   "bytes": 4691,
+   "sha256": "1f4a0213b9268d4b9d76a335b8a24be5f83db91f0ea451a20d30a506dcd7707d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r2/tests/run_all.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R2",
+   "bytes": 25223,
+   "sha256": "ab78f8650c61c365718a466bb9d94a2ce0148bdd6cf482994aa66bf1a3126e63",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/CODE_IDENTITY_SEAL_ITEM_V2_INTEGRATED_RUNTIME_V2_R3_CANDIDATE.json",
+   "role": "CLEAN_ENGINE_ITEM_V2_R3",
+   "bytes": 2277,
+   "sha256": "4821ecb0289fc03293ef7434324f04ea46f7791cde429ed5364b0e3dea35dc9f",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/item_v2_r3_cli.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R3",
+   "bytes": 1985,
+   "sha256": "256fc801bba31203febca9e425f42b0cb76669b02fa882859582211233997532",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/item_v2_r3_contracts.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R3",
+   "bytes": 3013,
+   "sha256": "4731eb5c8fe9b4e334af7302a163870739bb22abe810dabdb7a2d912e499bfde",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/item_v2_r3_entry.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R3",
+   "bytes": 7536,
+   "sha256": "8d882261ebf95ae36203f0ca90daa43466405b4d403bf19f8fe74d05330ad168",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/item_v2_r3_input_gates.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R3",
+   "bytes": 3287,
+   "sha256": "5b28c793f3cce6728fe2942739c1e37b4c6fe34e0308603145ffa82b4172254e",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/item_v2_r3_predecessor_pin.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R3",
+   "bytes": 4946,
+   "sha256": "b1fdd2885b1cb61db73d56d343b7c1a95991359ded29559a675dc352b6d19e87",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/README.md",
+   "role": "CLEAN_ENGINE_ITEM_V2_R3",
+   "bytes": 3999,
+   "sha256": "4819c434eb662e4beb8a6c8959380446edbc7318c84397ea6107454d48f48b20",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r3/tests/run_all.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R3",
+   "bytes": 32342,
+   "sha256": "cbd817d29373924ba2a435981ab165bb6022985c0486c3a60e577df69ab9aabf",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/CODE_IDENTITY_SEAL_ITEM_V2_INTEGRATED_RUNTIME_V2_R4_CANDIDATE.json",
+   "role": "CLEAN_ENGINE_ITEM_V2_R4",
+   "bytes": 2736,
+   "sha256": "ad107481522f2c3a6f8ce9e564aee948f75a3e100c8f772dd1193a57b624fcd5",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/item_v2_r4_cli.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R4",
+   "bytes": 2622,
+   "sha256": "317ed3a14e7b3d50d3b7b5f17b614a7179cb3aeb2fd1630774ba16bacda9338d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/item_v2_r4_colour_binding.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R4",
+   "bytes": 3981,
+   "sha256": "96fe79d5c11b4a0b61c0f75c9f77923595175045b7702e27718ceb0f681860ac",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/item_v2_r4_contracts.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R4",
+   "bytes": 3053,
+   "sha256": "6903f4e80291ad04f094cc1263ae090ec86a3a26e8fe2da8cf7f1167a99e4d44",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/item_v2_r4_entry.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R4",
+   "bytes": 8541,
+   "sha256": "a66b9c4f0e659424db77b69963c88f0641d000874629f442369079ad46217a53",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/item_v2_r4_predecessor_pin.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R4",
+   "bytes": 5030,
+   "sha256": "93bdebcb384df41502ec45b052f8c62e91c1dd75048aa77a79b8d10a1f221c4c",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/README.md",
+   "role": "CLEAN_ENGINE_ITEM_V2_R4",
+   "bytes": 3035,
+   "sha256": "98e2c961c2f8baa75c9318721e5668a6bc0a6a3e0bf70ac6e3e3c3a50f5d620e",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/tests/run_all.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R4",
+   "bytes": 36096,
+   "sha256": "bb1e65cf14619f37bfc5deedada199643fb9199a1c267ee206c1ec1031585ab2",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_CLEAN_ENGINE/04_CLEAN_ENGINE_CODE/src/item_v2_r4/verify_identity.js",
+   "role": "CLEAN_ENGINE_ITEM_V2_R4",
+   "bytes": 1275,
+   "sha256": "d4e798be4be2ded96d2f7d857283f98dd5c122e42dfeaf93c8ac6c960e7cb4ab",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/CODE_IDENTITY_SEAL_STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE.json",
+   "role": "TC_SUIT_SUCCESSOR",
+   "bytes": 2006,
+   "sha256": "285c6e43c304a21815e9a6e82d3a9fadd84bd101ccacc94f2916bece9f020adf",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/README.md",
+   "role": "TC_SUIT_SUCCESSOR",
+   "bytes": 5741,
+   "sha256": "26584d7be2c4341899a2a4ec0157af773cb4ada3f449e12f53fbd6cc1cb647eb",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/src/tc_v2_suit_engine.js",
+   "role": "TC_SUIT_SUCCESSOR",
+   "bytes": 12944,
+   "sha256": "a76596b25f4105099cb6de457f10e245c55329edcc8f00d0a61e32d706ccc0ce",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/src/tc_v2_suit_parent_pin.js",
+   "role": "TC_SUIT_SUCCESSOR",
+   "bytes": 4085,
+   "sha256": "be2e54b4ea081222a6fc738e481663de9af168a452715418b438292ef36bcd32",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/tests/fixtures/suit_fixtures_v1.json",
+   "role": "TC_SUIT_SUCCESSOR",
+   "bytes": 262800,
+   "sha256": "54a2791caac3220dce0627f53d92ba11524bde25853f0057cb7c9f352600b5f7",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/tests/run_tests.js",
+   "role": "TC_SUIT_SUCCESSOR",
+   "bytes": 15637,
+   "sha256": "8a0f615e005d4a40bf8440a2e2caa69688762159789705d9145d30dcb9e41972",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/verify_identity.js",
+   "role": "TC_SUIT_SUCCESSOR",
+   "bytes": 1396,
+   "sha256": "b9daa95fc18036c91347950fc55650e04b30a35c9f91bd708ff3c9594b5a1cc1",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/CODE_IDENTITY_SEAL_STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE.json",
+   "role": "SR_SUIT_SUCCESSOR",
+   "bytes": 2005,
+   "sha256": "55468186e82ad985f70db4a377f5fc126687bf79ccba410dd77eedd9d28f9a76",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/README.md",
+   "role": "SR_SUIT_SUCCESSOR",
+   "bytes": 5449,
+   "sha256": "a6cdd37f9ad4122e89c8fb90fa74b77cfddc7aa6984c81b99779c9ddcc0ccae9",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/src/sr_v2_suit_engine.js",
+   "role": "SR_SUIT_SUCCESSOR",
+   "bytes": 9101,
+   "sha256": "086ef0c62700cb5b802683f049f60105e6a518de48be6303eeca1f738dde9d90",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/src/sr_v2_suit_parent_pin.js",
+   "role": "SR_SUIT_SUCCESSOR",
+   "bytes": 4084,
+   "sha256": "2a9dea39726affa6a2e2410bc85000a99701830714ff3688f2a7fd91260c453a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/tests/fixtures/suit_fixtures_v1.json",
+   "role": "SR_SUIT_SUCCESSOR",
+   "bytes": 262800,
+   "sha256": "54a2791caac3220dce0627f53d92ba11524bde25853f0057cb7c9f352600b5f7",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/tests/run_tests.js",
+   "role": "SR_SUIT_SUCCESSOR",
+   "bytes": 13398,
+   "sha256": "e008336dcfce92fceed14500cb733c3d391563034bf704076e6020bad58aa7da",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/verify_identity.js",
+   "role": "SR_SUIT_SUCCESSOR",
+   "bytes": 1396,
+   "sha256": "abbb01dd2f189012ae00b21cc180afcbf14b9f68f2ee692f0587038b47e06299",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/CODE_IDENTITY_SEAL_STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE.json",
+   "role": "DM_SUIT_SUCCESSOR",
+   "bytes": 2005,
+   "sha256": "45c05c78f8def3832733ecff50179590e4b35a6943454e5eba55c8d316480455",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/README.md",
+   "role": "DM_SUIT_SUCCESSOR",
+   "bytes": 5595,
+   "sha256": "84edbc624f62054413762a55698b7d812328bf9e6cc6e6f373e435db70d2796b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/src/dm_v2_suit_engine.js",
+   "role": "DM_SUIT_SUCCESSOR",
+   "bytes": 9906,
+   "sha256": "948f7083e22be1bd4d3d9754b2f9b23bb458def9efc5b4da11d7bfc1955c5a69",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/src/dm_v2_suit_parent_pin.js",
+   "role": "DM_SUIT_SUCCESSOR",
+   "bytes": 4081,
+   "sha256": "448f078d0f1cdfcfa620aff5f2c77fb26ac9145d970ab05ec215939cca84b2da",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/tests/fixtures/suit_fixtures_v1.json",
+   "role": "DM_SUIT_SUCCESSOR",
+   "bytes": 262800,
+   "sha256": "54a2791caac3220dce0627f53d92ba11524bde25853f0057cb7c9f352600b5f7",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/tests/run_tests.js",
+   "role": "DM_SUIT_SUCCESSOR",
+   "bytes": 13514,
+   "sha256": "a680b0cc0a00eab6e2242e31e47e64cb004bc65c22791ca1812e97c0ce9cd76f",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/verify_identity.js",
+   "role": "DM_SUIT_SUCCESSOR",
+   "bytes": 1396,
+   "sha256": "f615841552591186eb69d85f3c19fd745714e7670bf68faad5c7fc575090da79",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_ITEM_EI_V2_FINAL_FREEZE_AUTHORITY_V1.json",
+   "role": "EI_V2_FREEZE_RECORD",
+   "bytes": 48678,
+   "sha256": "14a5caa0dc6503288203147f0b9800ce59d0e822ac0cf897167fe0ba2ae810d7",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/CANDIDATE_SEAL.json",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 2696,
+   "sha256": "c2345a754f0551db47876b57b89bf3f8c1d09485c02c23fa7942389477d1a358",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/contracts/EI_V2_BOUND_INPUTS.json",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 2155,
+   "sha256": "490d721ee3d117cde52dc24720bd2965144b7ecbfd7d2fe23040b5a274707f9e",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/contracts/EI_V2_HISTORICAL_PRODUCT_IDENTITY_OVERLAY_V2.json",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 48092,
+   "sha256": "124f932420b877c6376227a00384e81645db8e4f2f5cdb5eeb23aee829170831",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/README.md",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 1808,
+   "sha256": "e5961249ff4dc9a4327e43b8a676061f6ecd0d24580502a4c95e0a17b3c8dcab",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/src/ei_v2_commercial_neutral.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 3012,
+   "sha256": "21d128b1bd5e4c24db771825698e4fa2bfa88d6842410e454469a9b93bf91079",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/src/ei_v2_engine.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 6174,
+   "sha256": "ed7e27db8168f6814fceb343c52dd2bfa12ec00640a82cdddf78620c2a8a1894",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/src/ei_v2_frozen_bindings.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 1446,
+   "sha256": "0ff81b7db593a8d7b1d97673234e0f7512e899887200884d28b5f5c9109a792f",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/src/ei_v2_historical_overlay.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 4086,
+   "sha256": "9719e9e4dad9be4bba63628b7bf49597bb7e488943001373b82736e293ea41e4",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/src/ei_v2_input_adapter.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 3901,
+   "sha256": "0becb8fd3b8e0726b14c47b73f2680e3123c7fcdcd13bef302939e9fd0a60a29",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/src/ei_v2_product_unit.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 4246,
+   "sha256": "667f171bfc3f94f1cb41470539876c159baccd17c17d47ecbab30b6a42f38bd2",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/src/ei_v2_readings.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 8109,
+   "sha256": "dd85197a67b449f5e1f3cbb6bfda338e191b7e093b6ce8a106383fbb6c66752f",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/src/ei_v2_reason_ko.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 10368,
+   "sha256": "988cad4885624a97cb07ad0d815427dfacb9d663e607685f6ef8d4317e777499",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/src/ei_v2_underlying_resolver.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 3781,
+   "sha256": "574142685fe224b55cde516cc813954a4a719170bc313deb781d16bb9844be10",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_ENGINE_V2_DIRECTION_REASON_CANDIDATE_R5/tests/run_all.js",
+   "role": "EI_V2_FROZEN_DIRECTORY",
+   "bytes": 47684,
+   "sha256": "e1f5c0f7af4dc8d23df4dd4393ebc2ffab8e43b241a002f538a22d988e9dbef9",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DENIM_NEUTRAL_ELIGIBILITY_AUTHORITY_V1.json",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 5674,
+   "sha256": "be1209508dd6fe4b02dc0e31201a130b311210cfa0752837f3c390a6651aa0a1",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_NEUTRAL_REGISTRY_V3_TABLE.json",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 9128,
+   "sha256": "6ba8f01080c5a22a6a652175a7fc3295656a38846c05f7ac0aa98efc121dbc4a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_DIRECTION_RUNTIME_STATE_MACHINE_V1_1_1.json",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 7348,
+   "sha256": "3d9907bcf29adeaefec9c78c016f163c2f2c7d4a4a61fc09d7688c9c24f01e6f",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_1.json",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 159281,
+   "sha256": "ec237705d19fa6eedba4879fbc7f5ce5e84f1099164ae569083c8273aa12d346",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_P3_GENERAL_FORCE_RESOLUTION_CONTRACT_V1_6.json",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 25201,
+   "sha256": "e16fcb301fdf1aa53987afde6718deef411fd6bbe862cf613d8cda81b8fd22e0",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/contracts/STMX_EI_TC_PARAMETER_OWNERSHIP_GUARD_V1.json",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 1749,
+   "sha256": "cfa63484f8df488e65afc6017f04170593c695ecb74e13fc06e34d35b2f74d67",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_direction_runtime_v1_2_7.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 73038,
+   "sha256": "3f210adbb709a8183f0c42631239b17e5549ae6363fae81d2f39ae52b7fd6e74",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/ei_p3_general_force_resolver_v1_1.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 50710,
+   "sha256": "fdf7f9410b130a4ee09bf8953bed88b7941bd3044d0212d6758f01d8a4fb448f",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_EI_DIRECTION_RUNTIME_V1_2_7/src/producer_contract_binding_v1.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 3020,
+   "sha256": "a3b1bd526b59d9c2250203de9cc781316b3bc16c3e64da314a19060fa533a95a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_controller_v1.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 42326,
+   "sha256": "7a2aa66e2f278e22857b8de51bab467f2a221883734bf50d96dbd0308ab71944",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_model_adapter_v1.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 3881,
+   "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_prompt_v1.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 154376,
+   "sha256": "0d3016e084d5f6f0749bb1a87dda8eef2b9cf65579ceba06e1646ec46f996d84",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_rules_v1.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 66546,
+   "sha256": "c4190ece1408854d039eda4d9a1c3f4de2c5209ae1eefb7f8a461ba5825bf98f",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_1/producer_validator_v1.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 56972,
+   "sha256": "c261d36b4905928efe7cda14c76194d13f0ac4cd357919f0e18faf27d01e2462",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_rules_v1.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 74550,
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/color_recovery/color_contract_v1.js",
+   "role": "EI_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 20327,
+   "sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_ITEM_TC_V2_FINAL_FREEZE_AUTHORITY_V1.json",
+   "role": "TC_V2_FREEZE_RECORD",
+   "bytes": 55224,
+   "sha256": "d6560c01d0fcbe15cbcd61a632466cccd784e6e0c13af0706069cde885c6c087",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/BOUND_INPUTS.json",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 3644,
+   "sha256": "90fb16a02f4b86a5c946911746c2913e07adfbee76cacb5c1f437460800b4754",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/CODE_IDENTITY_SEAL_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE.json",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 6307,
+   "sha256": "41bc6b55fcbd9177883e58c46606d0f3d3e4fb9ffd49448f4cf0b5f7ffba7402",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/README.md",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 6245,
+   "sha256": "153b3d58323dfad4d8383171498ac781afac40276db83a53c64b9c9b85590336",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_binding.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 5439,
+   "sha256": "37e617b5b4431cc2d00401e318bc9112ffb57d68b83e50f29a428bc95071344a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_category_independence.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 5838,
+   "sha256": "989019eab8ed09e3f96dba50f0488e82a7f3671a5237a0ad9d32b605e9c34004",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_domain_invariance.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 5052,
+   "sha256": "99b3dca4db2ee776cdcaa96fa1d33f129e32ef3d88ff7e8315b85cc3e395ff3c",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_engine.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 7173,
+   "sha256": "71052065fa11ce21505d48392e33076f2577c2e65aad742329921fc06ebac005",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_frozen_chain.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 3874,
+   "sha256": "1ae52ffc087adf74a2f9e65bc68f8ad884305389c9352407180b609aa10214fc",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_reason_composer.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 13941,
+   "sha256": "bc8890e25d363853bb8e30e25e372a3d9ed3fdbfcfa19ac6d94485a9f8bc600a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_reason_lexicon.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 5381,
+   "sha256": "933b1c8cedd4a7239f5999c68fc6cc950e42dba740598c86956f26366642ec7b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_reason_verifier.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 9161,
+   "sha256": "2935ea57da09a387a4c7218cdf6a7c9431416ba017d045985c2c317b1051a03a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_resolver.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 9921,
+   "sha256": "dbf7108e556b1848c3965ef8034a93c5eb2cccbe4880610aff25d258a813db62",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_serializer.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 1274,
+   "sha256": "81d48b826744222a86590564a8b46dff9925965d0c6990fa749203ca30a286f7",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/src/tc_v2_vision_adapter.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 10683,
+   "sha256": "ce38756ec070ee077d1b44414e1565fc0f5154a9ee1ce37716a2fc0359c9023d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/run_all.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 1874,
+   "sha256": "1b11797cf2b84766a3aa522a0935627ba2019ba0c41fe56f728d0230c55c0a5b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_adapter.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 8457,
+   "sha256": "7ee717d8b24dd02f006a98269bef2503c3ab19a0a67124ad9fe6268193424e79",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_domain_invariance.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 4802,
+   "sha256": "a26e35791b79128c534748072fe6266f0b4629d8ef97e92b08f99f97b5c6e413",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_guards.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 2820,
+   "sha256": "5648a19d1e9184a370440c2334f20c0d24b8a8b6bd9934dbf1e46a28b8cc6919",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_live_controls.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 12858,
+   "sha256": "2e0fafee11eb8452a2ce1361cf3d585e069e9a32e031b1af6186652aa8145065",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_mandatory_boundary.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 13736,
+   "sha256": "831732ec2abb7b5e3cd923f7c34d942db14839d19e3cfd06f9e7e8a72e807030",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_mutation.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 13188,
+   "sha256": "7aeb0ec24ae7a2e7f50904a0bb2bf6ce496d5680e5ef927a02b95ab724ffe7bb",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_r4_corrections.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 22107,
+   "sha256": "ded270e565d07da5c2637c44f80236dbfd63763483f57129bfcce7486008320b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_reason.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 6084,
+   "sha256": "efea0d5dc9b6a64c31a105bb8c779db4afa811f8362464f4d82a7c304ec1cfbf",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_regression.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 7117,
+   "sha256": "d8f3a7936d8445705bea3f3db3001b65314f9685cc34cbb2b216f602e12965a0",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/test_transport.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 6604,
+   "sha256": "294ba92220777ccd491c6071e8c1cf5e283a68051012b1c0ca4f99fca4c5eb7b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_DIRECTION_REASON_R4_FINAL_CANDIDATE/tests/_harness.js",
+   "role": "TC_V2_FROZEN_DIRECTORY",
+   "bytes": 4901,
+   "sha256": "734467b67460632851c46b39953c8371727e0d0800685e0ad650d0bdd58385c2",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/STEP2_SUCCESSOR_V2_CONTRACT.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 6961,
+   "sha256": "5331cc2fb3beffe4bde878854a64511b419479b52e99556063bc177c0305a4e1",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/SUPERSESSION_REGISTRY_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 8273,
+   "sha256": "64468c92aeef00ad585df74f5845ec5df487ad2c715fd58c1f2853aa29aef4dd",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V2_CANDIDATE/src/supersession_registry_v1.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 6103,
+   "sha256": "e9943d6fed3b7a5dbc5c055db195daee4cb2a8c16cfe5545542357556106b5a4",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V3_CANDIDATE/STEP2_SUCCESSOR_V3_CONTRACT.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 6401,
+   "sha256": "e849a3a2f46c314efb65793323c4eb61e16ace19ab046a22eb5c7996c6773dc9",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/BOUND_INPUTS_STEP2_SUCCESSOR_V4.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 7228,
+   "sha256": "1165bdaaab8f6ef74de23f9bd696741516a46cb1dd1003925c6455ef89af17fe",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/STEP2_SUCCESSOR_V4_CONTRACT.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 2718,
+   "sha256": "bad306ec6fed0f883d65fa7399bbc8279f88c6cb89a608a8a6873261b48ee615",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/shadow/step2_successor_shadow_binding_v3.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 10536,
+   "sha256": "594fa5479630bcd12cd6e59171d33c1c026e27d87ebd3c42b593a91a24465fa4",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP2_SEMANTIC_SUCCESSOR_V4_CANDIDATE/src/step2_semantic_successor_v4.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 20880,
+   "sha256": "868850fdc40221c48437e24011c716d412f902d1a4fe79d590ba7cc960e2b9e1",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP3_ARCHITECTURE_SUCCESSOR_V2_CANDIDATE/STEP3_SUCCESSOR_V2_CONTRACT.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 6932,
+   "sha256": "2ef19e15d5b23a5bb20921bd6342e7c1b17a8750ed6951d620aa5d9209ec372a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP3_ARCHITECTURE_SUCCESSOR_V2_CANDIDATE/src/step3_grammar_state_successor_v2.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 6892,
+   "sha256": "28ecc3285b7e876a3b74647224610e19f40439674400a453c6bc61ab6d166442",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/BOUND_INPUTS.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 10111,
+   "sha256": "37646e0e7433e7c91b2f374ea43570e772410a68a0276936895cc9926dad8c1d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/BOUND_INPUTS_V3_4.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 2662,
+   "sha256": "e7b037b169e4c5b6d0ba3432dba47dbf192b2caa397332265649108c1995d596",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_classic_evaluator_v3.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 6801,
+   "sha256": "d949219b73272437a406589d5070695b5f6f75481908543de2f185abfa6a2b5b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_output_assembler_v3_3.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 14094,
+   "sha256": "ec75afe6bcef48dcfae3d7792dd749aa1cfae191a870a2bdbb2245551e84de0c",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_prominence_derivation_v3.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 14128,
+   "sha256": "32a47210d42df23463f3d2e1710adf7a7f92689d9b1bbf455fb6d9544332c32a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_salience_admission_v3.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 3045,
+   "sha256": "07bd216eeb40832321189f8dcb72039e5b63f2e4b2e4a34c9efe71b8d2c2a939",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_binding_adapter_v3_3.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 16929,
+   "sha256": "35757d950320f94b743871031c1805e9db4e7e6453e2d8da12695d777cbb9217",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_runtime_v3_3.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 2576,
+   "sha256": "f4afbeb101e1b2067215674e37872f0c1a5fe6f1a1a4e3e426051e9da40e6888",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_runtime_v3_4.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 3843,
+   "sha256": "d5c95184819608fe8a9580d1daa0795b600c027ec9371155581aaad86bb3b1b7",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_semantic_vocabulary_v3.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 3035,
+   "sha256": "e65b4beb057ecfb4fcd9457b2d30a5ea568fd37261974c47fcb77dfcc0ffb546",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_transformative_evaluator_v3_3.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 26277,
+   "sha256": "0ab5037f817563061b67b5806f695de5bb8bfd65a6d98eac984b3933783a316a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_STEP4_SEMANTIC_CARRIER_RUNTIME_V3_4_CANDIDATE/src/tc_whole_unit_organizational_relation_v3_4.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 10908,
+   "sha256": "231b32e020efccbd8b5c567b8f0fb7231b3c5444aabf28686b0baef38bbd9d37",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA1_CONSTRUCTION_OBSERVATION_CORPUS_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 155218,
+   "sha256": "f0d16099c2b60ba080e38228f9c9031c3c5c6337aa4a36ba5fc74dd7c060f03c",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA1_CONSTRUCTION_REFERENT_CONTRACT_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 2791,
+   "sha256": "6db8df9b2efe549aabf42c1b58e3cd1722a2616947a7a491247f9b0220dc44e3",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA2_DESIGNED_DETAIL_OBSERVATION_CORPUS_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 214154,
+   "sha256": "83b92f9370d3dae5e3d7378bbcd4d505d2860f3fe96564e908aeb8a00a5bae7b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_ATOMIC_EVIDENCE_V1_CANDIDATE/SA2_TC_CONSUMPTION_RECORD_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 2530,
+   "sha256": "1a433f2d1f51596b4c2367c8a416ad88018c1785868ae9bf5990880165eba016",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_GOVERNED_REPRESENTATION_CORRECTION_V1_CANDIDATE/REF000671_CONSTRUCTION_REPRESENTATION_CORRECTION_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 12459,
+   "sha256": "5b47e4410253c57a5f8e18f8f7ecd86c7069cf6521ce0855c6a70edf3f10df4f",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_GOVERNED_REPRESENTATION_CORRECTION_V1_CANDIDATE/SEAL_GOVERNED_REPRESENTATION_CORRECTION_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 515,
+   "sha256": "f87bd9e14cad383a38870bd5a35b4cec28354fbac819f06d697fd9dc34bd7e51",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_REALIZATION_BACKFILL_V2_CANDIDATE/CONSTITUTIVE_REALIZATION_EVIDENCE_V3.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 68851,
+   "sha256": "338bb2d120bae31f5c9082a3c7f3f1a967e794fd0bead431e3792ed3bf04b1ff",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/SCORING_OBJECT_CORRECTION_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 5073,
+   "sha256": "10f53c472064472f67dcc9b70434309428b773122eed2801fe679292ca3f9a09",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_SCORING_OBJECT_CORRECTION_V1_CANDIDATE/SEAL_SCORING_OBJECT_CORRECTION_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 450,
+   "sha256": "03d814078b43aca8e229305ca6114e2b1e93a56ab0385079276b5d2d6a8d0b91",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/SEAL_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 392,
+   "sha256": "5fdef8038455b7341031a42a8f7974acefc407a0d278e92be3354bbe054c5dec",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_STEP2_LENGTH_TOKEN_COMPATIBILITY_V1_CANDIDATE/STEP2_LENGTH_TOKEN_COMPATIBILITY_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 7744,
+   "sha256": "c79af905e0e70861dcd24594433d25b14ef8cbab19e983b4742797373871f419",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_TROUSER_FIT_REOBSERVATION_V1_CANDIDATE/SEAL_TROUSER_FIT_REOBSERVATION_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 935,
+   "sha256": "b9ea82aa24ac53f0718998998d16705bebfc17db8e6b1cf09112457f7bd67d67",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_TROUSER_FIT_REOBSERVATION_V1_CANDIDATE/TROUSER_FIT_OBSERVATION_SUCCESSOR_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 11514,
+   "sha256": "e5a6ebc5a83bbfb4f1abfbb82ac019727063275a7407a7909a38e1acaded3e26",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_TROUSER_FIT_REOBSERVATION_V1_CANDIDATE/TROUSER_REOBSERVATION_PROTOCOL_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 8502,
+   "sha256": "a86170554550e7d9b43e6b5be1783d82bf4d73e01f0f5bb594bcad9f5a1c3450",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_OBSERVATION_V1_CANDIDATE/TC_CRITERIA_SUCCESSORS_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 7683,
+   "sha256": "1df84886af9d20dea7bc79557674c8690679404c2630b0b960fec43db9ace781",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V1_CANDIDATE/PROJECTION_ALLOWLIST_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 2816,
+   "sha256": "7795ea22b96585ec8e3c5c40580c2d3f048e10122840043ff22bbdb635b83ae3",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V4_CANDIDATE/SEAL_TC_UPSTREAM_TOKEN_PROJECTION_V4.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 1124,
+   "sha256": "ba03922bf144a600f76bce957a733c565a2d7e64092c69dc31c106ec51b048ff",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V4_CANDIDATE/TC_UPSTREAM_TOKEN_PROJECTION_V4.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 195720,
+   "sha256": "81d9040fad309b3cdd816b47969d3fe5110a1e8085ed48e307e0499405dfb52d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/PROJECTION_ALLOWLIST_V5_AMENDMENT.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 1384,
+   "sha256": "baf06276706457394280bc9aee54497fbdee5b0a9d5ca2b5ca0db4e9129e2313",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/SEAL_TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 1448,
+   "sha256": "4f82c9185f2493f11fb52da26f92a5c79d9560cd975587d7a8a6130e2508c433",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "02_DATABASE_AND_CORPUS/CANONICAL_CORPUS/STMX_TC_UPSTREAM_TOKEN_PROJECTION_V5_CANDIDATE/TC_UPSTREAM_TOKEN_PROJECTION_V5.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 198158,
+   "sha256": "8becb1b405e06d430514b64c432ea7965b53cd5e892173765c3fb1b895a093d8",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_DIRECTION_FREEZE_V1_MANIFEST.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 27441,
+   "sha256": "1f6d6552847c3ec8ef0db954e39d7b83ddc92695609a53360f574214dbe3ecca",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_STRONG_SHOULDER_CLARIFICATION_FREEZE_V1.md",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 2865,
+   "sha256": "3b111acf6f31d44101e08bb9381b46e056b142d7ee7b4f42a22a455933ec4885",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_TC_WHOLE_GARMENT_DIRECTION_CONTRACT_FREEZE_V1.md",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 4896,
+   "sha256": "294d903fd081af7142b643bb4dc9b31ee0b76d5199c0e44d2827f728d78d7c26",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_VISION_EXTRACTION_SCHEMA_FROZEN_V1.md",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 189246,
+   "sha256": "379c89a19b8098d3709d1db95233a9606561c2d13b0ef3fe497976dce4fcd31a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_27_STEP3_FINAL_FREEZE/06_STEP3_FINAL_114_UNIT_REPLAY_LEDGER.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 135123,
+   "sha256": "724c5695c810d317f2ab7cf6ddd9420a0b8cd1bdd0ea97037c33cac4366d5ed9",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_42_BOUNDED_POPULATION_CRITERIA_FINAL_CLOSURE/08_TRANSFORMATIVE_FIVE_CLASS_CRITERIA.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 27122,
+   "sha256": "9fc2bdd202423351a67022b6a1022eac2d9a240c96280e63d597b1736add5953",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_42_BOUNDED_POPULATION_CRITERIA_FINAL_CLOSURE/15_CLASSIC_D7_PARTIAL_BASELINE_V1_1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 27209,
+   "sha256": "f2df37c46c272667f71f941952c59fc1f8ff9b751463953e5defe61fbe9ea141",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_53_ATOMIC_EVIDENCE_SUFFICIENCY_AND_POPULATION_GAP_RESOLUTION/prototypes/lane_derivation_specifications.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 4933,
+   "sha256": "333edd1ea3e949a1a956f8f1f96f1e067f2a9a6af62d22a8d79c55ed78b5476e",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_54_ATOMIC_REFERENT_SCOPE_AMENDMENT_AND_EVIDENCE_POPULATION/SEAL_ATOMIC_CORPUS_V1.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 4222,
+   "sha256": "ffe021a5b97295eb1614972625e75704d4bf251387d43462eff45b520ab2baea",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_61_CONSTITUTIVE_GRAMMAR_COVERAGE_V1_IMPLEMENTATION/07_REFERENCE_SUCCESSOR.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 42000,
+   "sha256": "625f0193837a92feb573f9010dab2f4bddf618b3fea3d05cd754326216abb370",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_61_CONSTITUTIVE_GRAMMAR_COVERAGE_V1_IMPLEMENTATION/prototypes/REFERENCE_SUCCESSOR_SEAL.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 471,
+   "sha256": "74b31222d3f868c25be76d91403df1c4d7cd6c5f4f99b561b90e6c5fe353e830",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_64_REFERENCE_WHOLE_GRAMMAR_ORGANIZATION_AUTHORING/19_REFERENCE_V2_CANDIDATE.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 65035,
+   "sha256": "e5ff105324d799e916573d02539cde95cc727dc51f9c4156b142437c2b075820",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_MAINLINE_V2_3_64_REFERENCE_WHOLE_GRAMMAR_ORGANIZATION_AUTHORING/21_REFERENCE_V2_SEAL.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 656,
+   "sha256": "643f2c3bb90271a8e307115955ad5165ba1fab92840bfa54c532ff1e51186b7b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/04_STMX_TC_STEP2_V2_3_2_RELATIONAL_RULESET.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 12864,
+   "sha256": "350b5e7aba6eac4d72dd4503949251b5e365a980cbb9f3af3415784c924200a3",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_2_1.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 4468,
+   "sha256": "1c0697161975066d5a8aed302959478147671a35f8b7132661278bd1d2da3a1c",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_2_base.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 11571,
+   "sha256": "662f5cbf8fdbe481dd644c09cdb26a4c3c34fca48c2bd6fe1d0861d7c5d80c9e",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/05_STMX_TC_STEP2_EVALUATOR_V2_3_2/evaluator_v2_3_2.js",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 25168,
+   "sha256": "5832ae6dc14bfd93ffdf96f57a9f75e04b69667e69a7b142bb442bd7826219bd",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_TC_STEP2_EXPECTED_ARCHETYPE_REFERENCE_V2_3_2_CEO_VISUAL_ADJUDICATION_INTEGRATION/08_STMX_TC_STEP2_V2_3_2_CLEAN_VALIDATION_LEDGER.json",
+   "role": "TC_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 545562,
+   "sha256": "cc51a5c1cf8df0f4f240ee83af1d1a5aa37b9938465a863f2ee38a7a796caeb5",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_ITEM_SR_V2_FINAL_FREEZE_AUTHORITY_V1.json",
+   "role": "SR_V2_FREEZE_RECORD",
+   "bytes": 14268,
+   "sha256": "71006214ffaab09a3693d5857df2bcea08dab6d5e91c662d5c7b370a583c6b2b",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/BOUND_INPUTS.json",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 2566,
+   "sha256": "959a11f2b8bf403634188b0543e3c1acd975d0a4bef13be643217f8b42de1af0",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/CODE_IDENTITY_SEAL_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE.json",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 4824,
+   "sha256": "cae2750262802f0b0dbfa6296a4e065c8bd789f58f2fd7c053be0144ce9c03e2",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/README.md",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 3975,
+   "sha256": "18182766fac11b356196d2deea862c6c4f214cc23e9c3773b41115e8b598b40f",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/src/sr_v2_binding.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 4168,
+   "sha256": "854c2faa5d23904c2ff2b4f79bf5c63200482d82d1433542284d514430e1d67e",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/src/sr_v2_direction_resolver.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 10955,
+   "sha256": "21f65c8c2e13d60330dc549bc8ade4513aaefcfb0ecc179ecd55845774d6bd2a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/src/sr_v2_engine.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 5242,
+   "sha256": "e92841636831385ec84fae80d8c8c8bebffe5d97a8d049842c89c6081bd81c6e",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/src/sr_v2_evidence.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 5829,
+   "sha256": "b8ada4f953c2a0264a0aeefe63bada95c328b488bd1451cb38dcaadd5c66df73",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/src/sr_v2_reason_composer.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 6027,
+   "sha256": "4a69745298b12b67bf61dcfbcfd883c35c5c5ed939b66ea3fc59ed78fa689f2e",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/src/sr_v2_reason_lexicon.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 8344,
+   "sha256": "ffab42040475850c88fbdad65ae6f81e26971cc7f02a95aef790ab90fa604fb2",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/src/sr_v2_reason_verifier.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 7903,
+   "sha256": "8f4968f92aa206ae581db0afb015663f6bcb5dae12bd56ed1dc65f7d1c3ba400",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/replay_123.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 11734,
+   "sha256": "dafd205aef101a078fd559485c5767796ecd04083b478de487766b1cbda6cb96",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/run_all.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 1307,
+   "sha256": "3088caf3901d7428b8997dbca70842789f91b120380f6d8afe8e9acd09cf0aa2",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/test_guards.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 22681,
+   "sha256": "54f20b4dd05d586d4b2c8397fac02641e3c07363f87d228201ad582dfd1fb201",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/test_holdout.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 6111,
+   "sha256": "21052a6c75d6631b73fbc0642e4e4bd09338b903e64be60e6bc784304f1927f2",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/test_r3.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 13668,
+   "sha256": "1db45fd378fdee6c53eaf3c8acfa4e148aabc46547a38c55150788ceccaef263",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/_guards_result.json",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 12127,
+   "sha256": "f1b9096d13b67f3c6c1053b2cfeeef41ef7730fdbe482edd31bccd0de734a59d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/_harness.js",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 8893,
+   "sha256": "1ef34c3eaffa21d02da2c2fb6227cc8172cc803cbfa3fbc7c65d6e80f70b3dac",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/_holdout_result.json",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 222279,
+   "sha256": "bb518ee48ab7c4a1d53f210bcf325d83e3d2c0ef840f6982964f9ea3a2fad6d1",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/_r3_result.json",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 22659,
+   "sha256": "807c810de81b22c31cafe285aadb12133f9a51932d3f0f4ef8b1c7d492764ea7",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/_replay_123_raw.json",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 284336,
+   "sha256": "f23d7c39a80c75346ebe1ac6e1e87e68d76233256dcf17961223d3a60566ca48",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V2_DIRECTION_REASON_R3_CANDIDATE/tests/_run_all_result.json",
+   "role": "SR_V2_FROZEN_DIRECTORY",
+   "bytes": 3151,
+   "sha256": "96604dec6af476f03252b557b77773731a0d29389581e97b19a59bb667eab6fd",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_producer_binding_v1.js",
+   "role": "SR_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 5262,
+   "sha256": "487cad4ec11fe66c1a61be74659cfdd59262d0275f8e50af4f8767d1b81cef3c",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_input_adapter_v1.js",
+   "role": "SR_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 8714,
+   "sha256": "a46dd16800804d04bae154132dd6da4ed92410be682fef5b065a77b2de4cb961",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_DIRECTION_FIRST_ENGINE_V1_2/src/sr_evidence_admission_v1.js",
+   "role": "SR_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 7707,
+   "sha256": "4bd774a883dd7de1760196b34badc1599b87b001c2b2e5b939b51171a77138b4",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_V1_FINAL_FREEZE/CODE_FREEZE_SEAL_SR_ENGINE_V1_FINAL.json",
+   "role": "SR_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 12217,
+   "sha256": "9a8f6db4b50aa75fbfd6a3455bb97e4c2d81d2e79834aaa9a95a14c12f572a26",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_SR_ENGINE_PRODUCTION_AUTHORITY_V1.json",
+   "role": "SR_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 5966,
+   "sha256": "6a670aa417c9692364352303aa760a4a6ec7441f60dcac73c2316f7689c36db7",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_ITEM_DM_V2_FINAL_FREEZE_AUTHORITY_V1.json",
+   "role": "DM_V2_FREEZE_RECORD",
+   "bytes": 31554,
+   "sha256": "308059d62e2b3bf8e460cef14bf275781a384fc92c589e2bf0d76ca005ecebab",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/BOUND_INPUTS.json",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 908,
+   "sha256": "5aa0bc362147618b613a90916e3057f9c8bc82fc670848f92c25d45494b77b9d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/CODE_IDENTITY_SEAL_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE.json",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 4342,
+   "sha256": "9e8239e0a5f2cfca756c525c4c13a88c44b6ac69fd02ce91bff19b71daa70fa0",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/README.md",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 2576,
+   "sha256": "605c6d83c9b2dbb4bd502cbff0addb6788b54a5556cef92fd2a63a2fb653d189",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_binding.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 3601,
+   "sha256": "b3be4e7bb2ae3e6fee35996ab98924c6244b5f5fe408626e976900829096ecdb",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_direction_resolver.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 5013,
+   "sha256": "6ef98fb714043f6758c6cdab0e8db25ccc2d31d7873ac00a5438728c6f9e1081",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_engine.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 3233,
+   "sha256": "ccdb5460d5eccd94120cbac135f3a662d754526142a23035240af6ad62437f93",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_reason_composer.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 8843,
+   "sha256": "0b3dc44e3b29bc2aecd268cacb51bff26c03ddf0c9f1b55891e99abbb0e92d85",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_reason_lexicon.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 3180,
+   "sha256": "d77c13da8441dc1b5847838160784c2191dfa905070f2935dbb0c304f6e44bf9",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_reason_verifier.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 4063,
+   "sha256": "c9b800835dd7e51fadf4933fcbfeafb37f729962d429e07043e43ffb0371b457",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/src/dm_v2_serializer.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 1320,
+   "sha256": "8c2c345df93a0cdd371d1b78c1040fef846a0e2139cb6e5844388abf4c44b104",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/tests/run_all.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 1731,
+   "sha256": "97e0b007f4f2fe24ccf6a640347d01f02b3416f53b093a7a8e5208b6b2ac887d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/tests/test_guards.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 5857,
+   "sha256": "d8a60008ef942716d7f51532bbc78ff2ac2faeac9498190b088bed31a72cd87d",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/tests/test_lattice.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 2232,
+   "sha256": "c0400610582483d8531cc0a6265e7129294877800abd5f1105604af28781a965",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/tests/test_mandatory.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 6446,
+   "sha256": "36dcf901a44b8cb63beee8ac6217e46eda7ecf2aabcae58e1db07512f6981b93",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/tests/test_reason.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 5169,
+   "sha256": "b314978090b90fe369a0adb498fb59745c836b75b253d0afb2171fca5275351c",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/tests/test_regression.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 5838,
+   "sha256": "1252ecfe03e3a70997a83cb068c4adc7d87537a39fd180f1e2b4b4b021c3dcbf",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_ENGINE_V2_DIRECTION_REASON_CANDIDATE/tests/_harness.js",
+   "role": "DM_V2_FROZEN_DIRECTORY",
+   "bytes": 7586,
+   "sha256": "21d4d8b36d23dddb43fd9eb1faf5e0da7041592e122085817a71a7222c4e3788",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_DM_DIRECTION_FIRST_ENGINE_V1/engine/dm_admission_v1.js",
+   "role": "DM_V2_PINNED_RUNTIME_DEPENDENCY",
+   "bytes": 7903,
+   "sha256": "2fb03acb211dcff99fa0ab757cbfed01ba3b9a1b306e3a44dee5ca86a8b62058",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_validator_v1.js",
+   "role": "VISION_V1_3_VALIDATOR_PINNED",
+   "bytes": 69678,
+   "sha256": "26ad25a8a2b3477e83f4858ec5fe6450040025a26a2efab9bb4599d8416e2d81",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/CODE_IDENTITY_SEAL_COLOUR_TARGET_AWARE_V1_CANDIDATE.json",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 3366,
+   "sha256": "9c152602cfc94f9373c6a378d987e3b400ea8931fd306046ac17e2ad3b045717",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/index.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 1763,
+   "sha256": "982ab134e0ea30f0da2476398fea97a328d49c210801b7d3d39f072b4201d4d3",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/README_KO.md",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 1900,
+   "sha256": "37cc6b16a14582770197608ccc177e20ea355f045758864543cd9b446b26f758",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/src/tac_acquisition.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 4270,
+   "sha256": "484e90d0502e81cbb895f38ed3915550cffd721d5aeaf66cec3ca7d11b8987cf",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/src/tac_contracts.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 4385,
+   "sha256": "b7891d5ef7727e178e74974bae54c4d44355f074e0c04b91592e6d292ab8b7df",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/src/tac_frozen_colour_pin.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 2542,
+   "sha256": "84d7cbc76a083ba667bfa6214327057a2a44d31bb3974e2c6894c2d16dfcc768",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/src/tac_governance.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 4532,
+   "sha256": "4778dd14c7635625ed0a70255ad2a2ec6a0bf88ead74e7ccc89ccec3b7162d52",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/src/tac_manifest.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 5784,
+   "sha256": "a85831fceec99de95ef0d49b2e072aa43b70112d3641a8972cc0b778f64fd6d2",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/src/tac_packet.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 4767,
+   "sha256": "b9d2ce4a6a9fd0e1e4275c3ad46a040b8d40ea9f599ec3b4c97b2906d92f0fb9",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/src/tac_request.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 6041,
+   "sha256": "a5790a07e5b1837364b41b7c072d37f995b8d4b189f498f4d5c22d91e2973c03",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/src/tac_stored_association.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 6837,
+   "sha256": "e5874f7a90d5a42d36530484813b36b7c0ab4c2ef56d2d4ac6cef5df3290b8d5",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/TARGET_AWARE_COLOUR_CONTRACT_V1.md",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 5790,
+   "sha256": "d3469e1125303ed2d985833287fe88a7a120ea30bb449220b2a6271e0e41e3f5",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/tests/fixtures/tac_stored_colour_fixtures_v1.json",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 125752,
+   "sha256": "3ffcbba8cc7a3dce8554fadf1df29ec33ea11535eded2f1680eab50fbc241e69",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/tests/run_all.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 22193,
+   "sha256": "7e1363b50bd55c0300cea88b03b3f36b5fe924f4865a428e399a43cc0067757a",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_COLOUR_TARGET_AWARE_V1_CANDIDATE/verify_identity.js",
+   "role": "COLOUR_TARGET_AWARE_SUCCESSOR",
+   "bytes": 1265,
+   "sha256": "2b29012c6e52ec47b7d4d41a7101d7f2b78a3c00caa1697c2cb9cc2287943416",
+   "recorded_in": "TAC capsule manifest"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/STMX_VISION_PRODUCER_CONTRACT_V1_3.json",
+   "role": "ITEM_VISION_V1_3_PRODUCER",
+   "bytes": 10417,
+   "sha256": "0476954043a8c684d9a0545e907eaa791a8454e5e70ce1726bbbcf0c206389fd",
+   "recorded_in": "Order O/P plan"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_controller_v1.js",
+   "role": "ITEM_VISION_V1_3_PRODUCER",
+   "bytes": 45575,
+   "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b",
+   "recorded_in": "Order O/P plan"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_model_adapter_v1.js",
+   "role": "ITEM_VISION_V1_3_PRODUCER",
+   "bytes": 3881,
+   "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb",
+   "recorded_in": "Order O/P plan"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/STMX_VISION_PRODUCER_V1_3/producer_prompt_v1.js",
+   "role": "ITEM_VISION_V1_3_PRODUCER",
+   "bytes": 161641,
+   "sha256": "9779cc44716a241d23127bedf8ab9fb79ff7a3e73f2e2e642b6083779996f23f",
+   "recorded_in": "Order O/P plan"
+  },
+  {
+   "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/anthropic_vision_fn.js",
+   "role": "VISION_TRANSPORT",
+   "bytes": 5565,
+   "sha256": "620c8f9e2d81d9de74a4a26ed1c1ca23df694081a2855057aa18f37ce07cc4d8",
+   "recorded_in": "Order O/P plan"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_FINAL_CLOSURE_V1/_raw/live_q/STMX_ITEM_VISION_V1_3_INVOCATION_CONFIG_FQ_V2.json",
+   "role": "VISION_INVOCATION_CONFIGURATION",
+   "bytes": 2714,
+   "sha256": "1e5f01c377af9bdcd413a568116ffb78c2061bea2f7ba72be1cb7b61e4d160e7",
+   "recorded_in": "Order Q package manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_FINAL_CLOSURE_V1/_raw/live_q/fq_live_runner_GATED_V2.js",
+   "role": "VISION_INVOCATION_CONFIGURATION",
+   "bytes": 21372,
+   "sha256": "59887d3d3f58af3dd3b5a7e25950684f6dcf4ae28def5cced2c4d31810824f86",
+   "recorded_in": "Order Q package manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_FINAL_CLOSURE_V1/AUTHORIZATION/PREREGISTERED_PLAN_FQ.json",
+   "role": "VISION_INVOCATION_CONFIGURATION",
+   "bytes": 4752,
+   "sha256": "e271e8757c60967b2154c8875420b2f12af7636ae3ce71815fcafc8a995eac48",
+   "recorded_in": "Order Q package manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_FINAL_CLOSURE_V1/AUTHORIZATION/G53_APPROVAL_REQUEST_FQ.md",
+   "role": "VISION_INVOCATION_CONFIGURATION",
+   "bytes": 1979,
+   "sha256": "3c66968d30f2f409c6750c7220bbeb6ec901cf657429705455b24172daeb6992",
+   "recorded_in": "Order Q package manifest"
+  },
+  {
+   "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_FINAL_REAL_IMAGE_E2E_VALIDATION_V1/_raw/fe_protocol.js",
+   "role": "VISION_INVOCATION_CONFIGURATION",
+   "bytes": 8605,
+   "sha256": "23fc2c6508a3977506c441de76affdebd810cc34dbc50b0ff07d4461c4637e4d",
+   "recorded_in": "Order O/P package manifest"
+  }
+ ]
+}

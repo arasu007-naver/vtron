@@ -1,8 +1,0 @@
-{
- "image_ref": "M320",
- "image_hash": "a60ca889fded78619b3e508c2e0e6a7dd2b243c99110152bc935fa688cf8977a",
- "prompt_version": "STMX_FULL_LOOK_INTEGRATED_EXTRACTION_PROMPT_CANDIDATE_V2",
- "prompt_hash": "535bc1836a574e9c8142184ddee7b41f5447bf28d633c857e4163efc95726aba",
- "model_id": "claude-opus-5-5",
- "run_id": "RUN-EX04-0011"
-}

@@ -1,0 +1,398 @@
+[
+ {
+  "ref": "REF_000520",
+  "unit": "U1",
+  "axis": "EI",
+  "expected": "NEUTRAL",
+  "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+  "live_actual": "E",
+  "reason": "그레이 바탕에 가공된 표면이 더해져 시각적 표현이 드러나는 Expressive 방향으로 판단됩니다.",
+  "diagnostics": {
+   "outcome": "DIRECTION",
+   "code": null,
+   "diagnostics": {
+    "underlying_direction": "E",
+    "commercial_neutral_eligible": false,
+    "neutral_ineligible_reason": "DISQUALIFYING_EXPRESSIVE_EVIDENCE (ONE_MEANINGFUL)",
+    "neutral_off_direction": "E",
+    "scoring_unit": {
+     "unit": "GARMENT"
+    },
+    "verify_failures": 0
+   }
+  },
+  "same_as_live_run": true,
+  "members": [
+   {
+    "target_id": "target_1",
+    "category": "Trouser",
+    "colour": {
+     "primary": "gray",
+     "lightness": "normal",
+     "usage": "subtle",
+     "additional": [
+      "silver@closure",
+      "silver@closure",
+      "red@graphic"
+     ]
+    },
+    "observations": {
+     "material": null,
+     "surface": null,
+     "pattern": null,
+     "graphic": "ABSENT",
+     "pocket": "Present",
+     "decorative_detail": "ABSENT",
+     "attachment": null,
+     "asymmetry": "None",
+     "exposure_opening": "ABSENT",
+     "trouser_distinction": "Jeans",
+     "silhouette": "Flared",
+     "fit": "Slim",
+     "length": "Full Length",
+     "fabric_behavior": "Semi-Structured"
+    },
+    "dm_block_entries": 2
+   }
+  ]
+ },
+ {
+  "ref": "REF_000840",
+  "unit": "U1",
+  "axis": "EI",
+  "expected": "NEUTRAL",
+  "basis": "CEO GT EI5 (EI5 = NEUTRAL)",
+  "live_actual": "I",
+  "reason": "베이지 바탕에 시각적 표현이 절제된 Introvert 방향으로 판단됩니다.",
+  "diagnostics": {
+   "outcome": "DIRECTION",
+   "code": null,
+   "diagnostics": {
+    "underlying_direction": "I",
+    "commercial_neutral_eligible": false,
+    "neutral_ineligible_reason": "NO_REGISTRY_OR_DENIM_HIT",
+    "neutral_off_direction": "I",
+    "scoring_unit": {
+     "unit": "SUIT",
+     "suit_components": [
+      "target_1",
+      "target_3"
+     ],
+     "excluded_targets": []
+    },
+    "verify_failures": 0
+   }
+  },
+  "same_as_live_run": true,
+  "members": [
+   {
+    "target_id": "target_1",
+    "category": "Jacket",
+    "colour": {
+     "primary": "beige",
+     "lightness": "light",
+     "usage": "subtle",
+     "additional": [
+      "black@closure"
+     ]
+    },
+    "observations": {
+     "material": null,
+     "surface": "ABSENT",
+     "pattern": "ABSENT",
+     "graphic": "ABSENT",
+     "pocket": "Present",
+     "decorative_detail": "ABSENT",
+     "attachment": "ABSENT",
+     "asymmetry": "None",
+     "exposure_opening": "ABSENT",
+     "fit": "Oversized",
+     "length": "Hip Length",
+     "fabric_behavior": "Semi-Structured",
+     "sleeve": "Long",
+     "shoulder_drop": "Dropped",
+     "shoulder_structure": "None",
+     "collar": "Notched",
+     "rib_hem": "None",
+     "hood": "ABSENT",
+     "front_opening_extent": "Full",
+     "closure_type": "Single Breasted Button",
+     "grammar": "Tailored",
+     "sleeve_volume": "Regular",
+     "collar_scale": "Enlarged"
+    },
+    "dm_block_entries": 0
+   },
+   {
+    "target_id": "target_3",
+    "category": "Trouser",
+    "colour": {
+     "primary": "beige",
+     "lightness": "light",
+     "usage": "single",
+     "additional": []
+    },
+    "observations": {
+     "material": null,
+     "surface": "ABSENT",
+     "pattern": "ABSENT",
+     "graphic": "ABSENT",
+     "pocket": "NOT_VISIBLE",
+     "decorative_detail": "ABSENT",
+     "attachment": "ABSENT",
+     "asymmetry": "None",
+     "exposure_opening": "ABSENT",
+     "trouser_distinction": "UNKNOWN",
+     "silhouette": "Straight",
+     "fit": "Regular",
+     "length": "Ankle Length",
+     "fabric_behavior": "Semi-Structured"
+    },
+    "dm_block_entries": 0
+   }
+  ]
+ },
+ {
+  "ref": "REF_000840",
+  "unit": "U1",
+  "axis": "SR",
+  "expected": "S",
+  "basis": "CEO GT SR6",
+  "live_actual": "R",
+  "reason": "재킷은 넉넉하게 재단된 오버사이즈 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다. 수트 전체의 방향은 재킷 실루엣이 결정합니다. 바지는 Structured 쪽이지만 수트 방향을 바꾸지 않습니다.",
+  "diagnostics": {
+   "outcome": "DIRECTION",
+   "code": null,
+   "diagnostics": {
+    "suit_trace": {
+     "rule": "CEO 2026-10-29 §0.1 / §5.1 — the realized Jacket silhouette (frozen SR V2 Direction of the Jacket) determines the whole-Suit Direction; the bottom cannot overturn it",
+     "parent": {
+      "freeze_id": "ITEM-SR-V2-FINAL-FREEZE-V1-2026-10-27",
+      "src_aggregate_sha256": "3bcc45bc4170e11b87c9da0d059f92c9311f2ede3ea925ed52b056da9239c466",
+      "frozen_files_verified": 21,
+      "runtime_dependencies_verified": 6
+     },
+     "governing_member": {
+      "target_id": "target_1",
+      "category": "Jacket",
+      "direction": "R",
+      "decisive_rule_id": "SR-V2-P2b",
+      "actual_observed_values": [
+       {
+        "path": "observations.fit",
+        "value": "Oversized"
+       }
+      ],
+      "evidence_limitations": [],
+      "reason": "넉넉하게 재단된 오버사이즈 핏이라 전체적으로 형태가 자연스럽게 풀리는 Relaxed 방향으로 판단됩니다.",
+      "reason_validation": "PASS",
+      "provisional_policy": false
+     },
+     "retained_bottom_evidence": {
+      "target_id": "target_3",
+      "category": "Trouser",
+      "direction": "S",
+      "decisive_rule_id": "SR-V2-P4",
+      "actual_observed_values": [
+       {
+        "path": "observations.fit",
+        "value": "Regular"
+       },
+       {
+        "path": "observations.fabric_behavior",
+        "value": "Semi-Structured"
+       },
+       {
+        "path": "observations.silhouette",
+        "value": "Straight"
+       }
+      ],
+      "evidence_limitations": [],
+      "reason": "기본 폭으로 재단된 레귤러 핏이고 어느 정도 형태를 유지하는 소재이고 곧게 떨어지는 실루엣이라 전체적으로 형태가 유지되는 Structured 방향으로 판단됩니다.",
+      "reason_validation": "PASS",
+      "provisional_policy": false
+     },
+     "bottom_differs": true,
+     "limitations": [],
+     "reason_status": "COMPOSED",
+     "reason_findings": []
+    }
+   }
+  },
+  "same_as_live_run": true,
+  "members": [
+   {
+    "target_id": "target_1",
+    "category": "Jacket",
+    "colour": {
+     "primary": "beige",
+     "lightness": "light",
+     "usage": "subtle",
+     "additional": [
+      "black@closure"
+     ]
+    },
+    "observations": {
+     "material": null,
+     "surface": "ABSENT",
+     "pattern": "ABSENT",
+     "graphic": "ABSENT",
+     "pocket": "Present",
+     "decorative_detail": "ABSENT",
+     "attachment": "ABSENT",
+     "asymmetry": "None",
+     "exposure_opening": "ABSENT",
+     "fit": "Oversized",
+     "length": "Hip Length",
+     "fabric_behavior": "Semi-Structured",
+     "sleeve": "Long",
+     "shoulder_drop": "Dropped",
+     "shoulder_structure": "None",
+     "collar": "Notched",
+     "rib_hem": "None",
+     "hood": "ABSENT",
+     "front_opening_extent": "Full",
+     "closure_type": "Single Breasted Button",
+     "grammar": "Tailored",
+     "sleeve_volume": "Regular",
+     "collar_scale": "Enlarged"
+    },
+    "dm_block_entries": 0
+   },
+   {
+    "target_id": "target_3",
+    "category": "Trouser",
+    "colour": {
+     "primary": "beige",
+     "lightness": "light",
+     "usage": "single",
+     "additional": []
+    },
+    "observations": {
+     "material": null,
+     "surface": "ABSENT",
+     "pattern": "ABSENT",
+     "graphic": "ABSENT",
+     "pocket": "NOT_VISIBLE",
+     "decorative_detail": "ABSENT",
+     "attachment": "ABSENT",
+     "asymmetry": "None",
+     "exposure_opening": "ABSENT",
+     "trouser_distinction": "UNKNOWN",
+     "silhouette": "Straight",
+     "fit": "Regular",
+     "length": "Ankle Length",
+     "fabric_behavior": "Semi-Structured"
+    },
+    "dm_block_entries": 0
+   }
+  ]
+ },
+ {
+  "ref": "REF_000849",
+  "unit": "U1",
+  "axis": "TC",
+  "expected": "TRANSFORMATIVE",
+  "basis": "CEO GT TC6",
+  "live_actual": "CLASSIC",
+  "reason": "릴랙스드 핏, 노치드 칼라와 싱글 브레스트 단추 여밈 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다.",
+  "diagnostics": {
+   "outcome": "DIRECTION",
+   "code": null,
+   "diagnostics": {
+    "path": "FROZEN_V1",
+    "reason_status": "VERIFIED",
+    "excluded_fields": []
+   }
+  },
+  "same_as_live_run": true,
+  "members": [
+   {
+    "target_id": "target_1",
+    "category": "Jacket",
+    "colour": {
+     "primary": "black",
+     "lightness": "dark",
+     "usage": "single",
+     "additional": []
+    },
+    "observations": {
+     "material": null,
+     "surface": "ABSENT",
+     "pattern": "ABSENT",
+     "graphic": "ABSENT",
+     "pocket": "Present",
+     "decorative_detail": "ABSENT",
+     "attachment": "ABSENT",
+     "asymmetry": "None",
+     "exposure_opening": "ABSENT",
+     "fit": "Relaxed",
+     "length": "Hip Length",
+     "fabric_behavior": "Semi-Structured",
+     "sleeve": "Long",
+     "shoulder_drop": "None",
+     "shoulder_structure": "Mild",
+     "collar": "Notched",
+     "rib_hem": "None",
+     "hood": "ABSENT",
+     "front_opening_extent": "Full",
+     "closure_type": "Single Breasted Button",
+     "grammar": "Tailored",
+     "waist_definition": "Undefined",
+     "sleeve_volume": "Regular",
+     "cuff_type": "None",
+     "collar_scale": "Regular"
+    },
+    "dm_block_entries": 0
+   }
+  ]
+ },
+ {
+  "ref": "REF_000849",
+  "unit": "U2",
+  "axis": "TC",
+  "expected": "TRANSFORMATIVE",
+  "basis": "CEO GT TC6",
+  "live_actual": "CLASSIC",
+  "reason": "릴랙스드 핏과 풀 길이 등 확인되는 구성이 이 아이템 유형의 기본 형태를 그대로 따르고 있어 Classic 방향으로 판단됩니다.",
+  "diagnostics": {
+   "outcome": "DIRECTION",
+   "code": null,
+   "diagnostics": {
+    "path": "FROZEN_V1",
+    "reason_status": "VERIFIED",
+    "excluded_fields": []
+   }
+  },
+  "same_as_live_run": true,
+  "members": [
+   {
+    "target_id": "target_3",
+    "category": "Trouser",
+    "colour": {
+     "primary": "gray",
+     "lightness": "normal",
+     "usage": "single",
+     "additional": []
+    },
+    "observations": {
+     "material": null,
+     "surface": "ABSENT",
+     "pattern": "ABSENT",
+     "graphic": "ABSENT",
+     "pocket": "Present",
+     "decorative_detail": "ABSENT",
+     "attachment": "ABSENT",
+     "asymmetry": "None",
+     "exposure_opening": "ABSENT",
+     "trouser_distinction": "Casual",
+     "silhouette": "Straight",
+     "fit": "Relaxed",
+     "length": "Full Length",
+     "fabric_behavior": "Semi-Structured"
+    },
+    "dm_block_entries": 1
+   }
+  ]
+ }
+]

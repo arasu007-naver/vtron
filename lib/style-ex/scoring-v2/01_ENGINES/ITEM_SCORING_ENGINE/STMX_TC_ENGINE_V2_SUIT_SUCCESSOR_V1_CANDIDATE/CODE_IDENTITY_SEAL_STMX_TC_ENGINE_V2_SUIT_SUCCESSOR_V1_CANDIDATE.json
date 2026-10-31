@@ -1,0 +1,48 @@
+{
+ "document": "CODE_IDENTITY_SEAL_STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE",
+ "engine_id": "STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1",
+ "parent": {
+  "freeze_id": "ITEM-TC-V2-FINAL-FREEZE-V1-2026-10-28",
+  "freeze_record": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_ITEM_TC_V2_FINAL_FREEZE_AUTHORITY_V1.json",
+  "relation": "frozen parent reused unchanged after pin verification"
+ },
+ "status": "CANDIDATE — identity record only · NOT a freeze · NOT production (CEO order 2026-10-29)",
+ "sealed_at": "2026-10-29T04:42:47.935Z",
+ "order": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_SUIT_CAPABLE_SUCCESSOR_IMPLEMENTATION_V1/AUTHORIZATION/CEO_ORDER_VERBATIM.md",
+ "location": "01_ENGINES/ITEM_SCORING_ENGINE/STMX_TC_ENGINE_V2_SUIT_SUCCESSOR_V1_CANDIDATE/",
+ "aggregate_rule": "sha256 over \"file:sha256\\n\" (sorted) — all files except this seal; src aggregate = runtime *.js outside tests/ (verify_identity.js excluded)",
+ "files": [
+  {
+   "file": "README.md",
+   "bytes": 5741,
+   "sha256": "26584d7be2c4341899a2a4ec0157af773cb4ada3f449e12f53fbd6cc1cb647eb"
+  },
+  {
+   "file": "src/tc_v2_suit_engine.js",
+   "bytes": 12944,
+   "sha256": "a76596b25f4105099cb6de457f10e245c55329edcc8f00d0a61e32d706ccc0ce"
+  },
+  {
+   "file": "src/tc_v2_suit_parent_pin.js",
+   "bytes": 4085,
+   "sha256": "be2e54b4ea081222a6fc738e481663de9af168a452715418b438292ef36bcd32"
+  },
+  {
+   "file": "tests/fixtures/suit_fixtures_v1.json",
+   "bytes": 262800,
+   "sha256": "54a2791caac3220dce0627f53d92ba11524bde25853f0057cb7c9f352600b5f7"
+  },
+  {
+   "file": "tests/run_tests.js",
+   "bytes": 15637,
+   "sha256": "8a0f615e005d4a40bf8440a2e2caa69688762159789705d9145d30dcb9e41972"
+  },
+  {
+   "file": "verify_identity.js",
+   "bytes": 1396,
+   "sha256": "b9daa95fc18036c91347950fc55650e04b30a35c9f91bd708ff3c9594b5a1cc1"
+  }
+ ],
+ "DIRECTORY_AGGREGATE_SHA256": "7bea12b478e3231d7954b5ed73f58b2ec25a8036092ca781e5a198f2606481c7",
+ "RUNTIME_SRC_AGGREGATE_SHA256": "57926b0c8c9ae2588cfdb4863e8232ed2d870a2a39a8f99574855da03c9d7983"
+}

@@ -1,0 +1,40 @@
+{
+ "document": "SA2_TC_CONSUMPTION_RECORD_V1",
+ "date": "2026-09-25",
+ "status": "GOVERNED CONSUMPTION RECORD — CEO approved 2026-09-25 (V2.3.54 §15 – §17) · NOT a DM architecture amendment",
+ "authority": {
+  "guard": "G44 — Shared Vision Evidence · One Observation → Multiple Axis Consumers · Access ≠ Score (CEO 2026-08-16 · D-CONST-R2)",
+  "guard_text_sha256": "a66248c19cd11a69cc6e85be6737f548ad6b7267d46ac9bee3f0ee48ea8a6958",
+  "clauses_relied_on": [
+   "\"One objective Vision observation may be consumed by multiple axes when each asks a distinct architectural question … Observation is made once.\"",
+   "\"Four layers separate: Observation (once) · Routing (multi-consumer) · Interpretation (per-axis question) · Scoring/Interaction (downstream). Evidence access ≠ departure ≠ score.\"",
+   "\"Shared ≠ all-to-all: each consumer still needs a legitimate axis-specific reason … Shared raw evidence does NOT merge axis semantics.\""
+  ],
+  "supporting": "DM 37-parameter ownership matrix (2026-09-09) class SHARED_OBSERVATION_DIFFERENT_SEMANTICS"
+ },
+ "producer_owner": "DM / shared Vision observation authority (dm_designed_detail_evidence · Producer V1_2 → V1_3 production)",
+ "consumer": "TC semantic architecture (future TC semantic runtime V3 — not implemented)",
+ "consumed_object": [
+  "evidence[].evidence_family (as referent-class label only)",
+  "evidence[].relative_size · contrast · spatial_position {state, value}",
+  "evidence[].source_observation_refs (referent link)",
+  "evidence: [] (observation performed, nothing admitted)",
+  "excluded[] (read-only; never re-admitted)"
+ ],
+ "not_consumed": [
+  "DM score",
+  "DM tier (DM1 – DM9)",
+  "DM density / detail-mass judgment",
+  "DM final result",
+  "M1 / M2 triggers",
+  "DM Direction / Strength",
+  "m1_supporting_realization (DM-engine input, not needed by TC)"
+ ],
+ "distinct_question": {
+  "dm": "how much designed detail mass does the garment carry",
+  "tc": "is a given garment system (surface / decoration / hardware) physically prominent on this item, for the D-7 organising-role and D-FWD-2 organising-reading relations"
+ },
+ "non_readmission": "TC never re-runs DM admission (\"final visible designed effect\") and never reinterprets an excluded or unadmitted detail; DM admission decision = preserved",
+ "same_observation_different_question": "same physical observation + different downstream semantic question ≠ cross-axis ownership conflict (G44)",
+ "result": "G44 SUPPORTS SA-2 — no new exception"
+}

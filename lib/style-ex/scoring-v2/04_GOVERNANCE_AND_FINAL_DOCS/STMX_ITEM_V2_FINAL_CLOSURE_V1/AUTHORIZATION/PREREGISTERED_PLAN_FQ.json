@@ -1,0 +1,117 @@
+{
+ "document": "STMX_ITEM_V2_FINAL_CLOSURE_V1 — PREREGISTERED_PLAN_FQ (minimum resumption scope, order §7)",
+ "created": "2026-10-29T08:36:18.469Z",
+ "order_sha256": "65a848d4dc360a181dd68a6623bda3af2f929d4031840fa49d6c512b8a4fb69d",
+ "status": "PREPARED — NOT AUTHORISED (no anchor; G53 FULLY ACTIVE; this order does not authorise paid calls)",
+ "model": "claude-opus-4-8",
+ "max_tokens": {
+  "VISION": 16384,
+  "COLOUR": 8192
+ },
+ "url": "https://api.anthropic.com/v1/messages",
+ "invocation_config": {
+  "path": "_raw/live_q/STMX_ITEM_VISION_V1_3_INVOCATION_CONFIG_FQ_V2.json",
+  "sha256": "1e5f01c377af9bdcd413a568116ffb78c2061bea2f7ba72be1cb7b61e4d160e7"
+ },
+ "transport": {
+  "path": "01_ENGINES/ITEM_VISION_EXTRACTOR/run/anthropic_vision_fn.js",
+  "sha256": "620c8f9e2d81d9de74a4a26ed1c1ca23df694081a2855057aa18f37ce07cc4d8",
+  "equal_vlv": true,
+  "default_model": "claude-opus-4-8",
+  "max_tokens_default": 8192,
+  "media_types": "sniffed from bytes (jpeg · png · webp · gif; no silent fallback)",
+  "max_tokens_passed_explicitly": true
+ },
+ "vision_modules": [
+  {
+   "file": "producer_rules_v1.js",
+   "sha256": "c22e59140deecb7ecc8a0adeec3f95694567b3e8965457283a931df91b2f7bad"
+  },
+  {
+   "file": "producer_prompt_v1.js",
+   "sha256": "9779cc44716a241d23127bedf8ab9fb79ff7a3e73f2e2e642b6083779996f23f"
+  },
+  {
+   "file": "producer_validator_v1.js",
+   "sha256": "26ad25a8a2b3477e83f4858ec5fe6450040025a26a2efab9bb4599d8416e2d81"
+  },
+  {
+   "file": "producer_controller_v1.js",
+   "sha256": "83fddade707bd3b699a1d5d7eb25b519de07714159c0176a22a7586373648f8b"
+  },
+  {
+   "file": "producer_model_adapter_v1.js",
+   "sha256": "90fcc68e612f843d3bbba4c898b72fa7ba4f663ca6bb0307ab2a3582ad788bfb"
+  }
+ ],
+ "vision_built_prompt_sha256": "aa6119bb338000cf7344112f7596cd1656946ea7068f44db5f42cb16cfe1dbd8",
+ "colour_successor": {
+  "seal": "8040f1bc277c1b163577ad3fec9f68c31b19f4591cc41eca20dac9d84e64129b",
+  "frozen_colour_module_sha256": "ccda8495fcf202daa2e3673709d73f6cc71bdfc221b6f2a1f1ea460fbc60ab52",
+  "frozen_body_sha256": "53c96a901aa4ab30fbf93773195033d8fe3b93bd9fb1e0754a2f67c54f4a41e3",
+  "mode": "ONE_CALL",
+  "prompt_rule": "built by the sealed successor from the manifest of the live envelope; the guard requires prompt == successor build (sha256), the frozen body verbatim inside, no REF id / GT token"
+ },
+ "r4_seal": "be96c77d987815f15443ab1e635da07ff95a408d19d3373e4cb648ef7a7111a6",
+ "protocol": {
+  "path": "04_GOVERNANCE_AND_FINAL_DOCS/STMX_ITEM_V2_FINAL_REAL_IMAGE_E2E_VALIDATION_V1/_raw/fe_protocol.js"
+ },
+ "protocol_sha256": "23fc2c6508a3977506c441de76affdebd810cc34dbc50b0ff07d4461c4637e4d",
+ "tests": [
+  "02"
+ ],
+ "images": [
+  {
+   "test": "02",
+   "ref": "REF_000010",
+   "path": "02_DATABASE_AND_CORPUS/REFERENCE_IMAGES/STMX_ACTIVE_REFERENCE_CORPUS_POST_CEO_V1/01_Jacket/REF_000010__스크린샷 2026-04-27 141834.png",
+   "sha256": "b5a89565efbdfb6682fd124b2ef634d4f4f52b239f19fb0e52369b1dbf998c95",
+   "media_type": "image/png"
+  }
+ ],
+ "slots": [
+  {
+   "slot": 1,
+   "kind": "VISION",
+   "test": "02",
+   "ref": "REF_000010"
+  },
+  {
+   "slot": 2,
+   "kind": "COLOUR",
+   "test": "02",
+   "ref": "REF_000010"
+  }
+ ],
+ "calls_max_accepted": 2,
+ "attempts_max": 3,
+ "retry_rule": "maxTechnicalRetries 0 · ONE reserve attempt in total, only after a NON-BILLED transport failure (no HTTP response) of the same slot · never for an unfavourable or incorrect result",
+ "cost_rule": {
+  "price_in_per_mtok": 5,
+  "price_out_per_mtok": 25,
+  "ceiling_usd": 2,
+  "initial_input_bound_tokens": 66752,
+  "input_bound_basis": "Order P REF_000010 input_tokens 61968 + 4784",
+  "worst_case_usd": {
+   "VISION": 0.7434,
+   "COLOUR_after_vision": 0.5386
+  },
+  "check": "spent + worst case of the next attempt ≤ ceiling, else STOP"
+ },
+ "stop_rules": [
+  "ceiling (pre-call)",
+  "model returned ≠ claude-opus-4-8",
+  "Vision failure of any kind (HTTP error · unparseable · contract-invalid) → STOP, no colour call",
+  "image or prompt ≠ plan / successor build",
+  "max_tokens ≠ the invocation config for the kind",
+  "GT / REF token in a request",
+  "cost not establishable",
+  "3 attempts · 2 accepted"
+ ],
+ "reused_without_calls": {
+  "REF_000520 · REF_000840 · REF_000816 · REF_000849": "scored in Order P — stored Vision + colour reused, no call",
+  "REF_000841 · REF_000810": "stored Vision reused; NO colour call — the Suit unit is refused by the governed Suit input contract (Correction B finding), so a colour call would buy nothing"
+ },
+ "colour_call_skipped_when": "UNIT_MAPPING_FAILED on the Vision envelope (no colour call, reported)",
+ "scoring": "offline R4 scoreItemV2R4 on the live envelope + live packet + declared unit; additional ITEM scores for extra_items (no extra call)"
+}
