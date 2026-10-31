@@ -1,0 +1,2903 @@
+{
+ "document": "STMX Full-Look SR Direction Resolver V3_R4 — tests",
+ "at": "2026-10-25T00:39:28.217Z",
+ "counts": {
+  "PASS": 41
+ },
+ "tests": [
+  {
+   "id": "T01",
+   "name": "partition over every COMPLETE frozen-domain combination → only S / R (no GAP, no throw)",
+   "result": "PASS",
+   "evidence": "1344 combinations"
+  },
+  {
+   "id": "T02",
+   "name": "MS-1 over every PARTIAL combination (each field unobserved or any value) → S / R; a non-direction only for INPUT_CONTRACT out-of-domain (none here)",
+   "result": "PASS",
+   "evidence": "13500 partial inputs · non-S/R 0"
+  },
+  {
+   "id": "T03",
+   "name": "43 packets: 42 scorable → S / R in MODE A and MODE B; the only non-direction is REF_000622 (input failure); no EVIDENCE_REPAIR / CONTRACT_GAP / UNKNOWN / UNRESOLVED anywhere",
+   "result": "PASS",
+   "evidence": "non-direction REF_000622 · codes NO_UPPER_SR_EVIDENCE/INPUT_FAILURE"
+  },
+  {
+   "id": "T04",
+   "name": "Lane A reproduces SR V2 exactly on the 43 packets (comparison column only)",
+   "result": "PASS",
+   "evidence": "43 / 43"
+  },
+  {
+   "id": "T05",
+   "name": "binary invariant: RESOLVED ⇒ STRUCTURED | RELAXED; non-resolved outputs carry no direction",
+   "result": "PASS",
+   "evidence": "129 outputs"
+  },
+  {
+   "id": "T06",
+   "name": "Neutral non-emission: guard throws on NEUTRAL; no output and no rule is NEUTRAL",
+   "result": "PASS",
+   "evidence": ""
+  },
+  {
+   "id": "T07",
+   "name": "strict Upper Priority: lower fit Oversized / Slim changes no MODE A / MODE B result",
+   "result": "PASS",
+   "evidence": "unchanged"
+  },
+  {
+   "id": "T08",
+   "name": "Relaxed upper + Structured lower → R; Structured upper + Relaxed lower → S (SYNTHETIC on looks with a lower garment)",
+   "result": "PASS",
+   "evidence": "35 looks"
+  },
+  {
+   "id": "T09",
+   "name": "strong shoulder ≠ automatic S: Relaxed + Strong + Semi-Fluid → R; Oversized + Extreme + Semi-Structured → R; Oversized + Strong + Fluid → R",
+   "result": "PASS",
+   "evidence": "SRB-2r · SRB-2r · SRB-2r"
+  },
+  {
+   "id": "T10",
+   "name": "[R4] Oversized ≠ automatic R: Oversized + built shoulder + Structured + waist Defined + seated shoulder → S (SRB-2os); the same frame without body governance → R (SRB-2or); Oversized + Mild → R (SRB-2r)",
+   "result": "PASS",
+   "evidence": "SRB-2os · SRB-2or · SRB-2r"
+  },
+  {
+   "id": "T11",
+   "name": "belt ≠ automatic S: released + observed constriction → R; Regular + Semi-Structured + Dropped + belt with constriction NOT observed → R (3d); observed → S (3k)",
+   "result": "PASS",
+   "evidence": "SRB-2r · SRB-3d · SRB-3k"
+  },
+  {
+   "id": "T12",
+   "name": "body closeness ≠ automatic S: Regular + Semi-Fluid → R (3r); a Slim inner garment under a released governing outer changes nothing",
+   "result": "PASS",
+   "evidence": "SRB-3r"
+  },
+  {
+   "id": "T13",
+   "name": "material does not dictate on its own: Oversized + Leather → R; Regular + Semi-Fluid + Leather → R; Relaxed + Leather → S only through SRB-2f; Relaxed + Cotton → R",
+   "result": "PASS",
+   "evidence": "SRB-2r · SRB-3r · SRB-2f · SRB-2r"
+  },
+  {
+   "id": "T14",
+   "name": "governing outer garment is not replaced: facts on a non-governing component (waist Cinched · drop Dropped · material Leather · fit Slim) change nothing",
+   "result": "PASS",
+   "evidence": "unchanged"
+  },
+  {
+   "id": "T15",
+   "name": "shape retention and release stay distinct: Structured shape without built shoulder under Relaxed → R; form-retaining material never under Oversized; shape is not read as material",
+   "result": "PASS",
+   "evidence": "SRB-2r · SRB-2r"
+  },
+  {
+   "id": "T16",
+   "name": "missingness variants (9 omission sets × 42 scorable packets): every variant returns S / R, except variants that leave no upper silhouette fact at all → INPUT FAILURE NO_UPPER_SR_EVIDENCE (listed); direction changes allowed and recorded",
+   "result": "PASS",
+   "evidence": "378 variants · S/R 377 · no-fact input failures 1 (F293:fit+shape+material) · direction changed 50"
+  },
+  {
+   "id": "T17",
+   "name": "fit AND shape AND shoulder AND drop all unobserved → INPUT FAILURE NO_UPPER_SR_EVIDENCE (never a direction); any one observed → S / R",
+   "result": "PASS",
+   "evidence": "EXC:NO_UPPER_SR_EVIDENCE · RELAXED"
+  },
+  {
+   "id": "T18",
+   "name": "contradictory but valid observations (Extreme + Dropped; Slim + Fluid) → S / R",
+   "result": "PASS",
+   "evidence": "SRB-3k · SRB-1"
+  },
+  {
+   "id": "T19",
+   "name": "weak evidence: a look with only Fit observed still scores (Regular + nothing else → R 3r · Relaxed → R 2r · Slim → S 1)",
+   "result": "PASS",
+   "evidence": "SRB-3r POSSIBLE · SRB-2r POSSIBLE · SRB-1 NONE"
+  },
+  {
+   "id": "T20",
+   "name": "governing outer present + incomplete inner fields: deleting every fact of non-governing components changes nothing",
+   "result": "PASS",
+   "evidence": "unchanged"
+  },
+  {
+   "id": "T21",
+   "name": "material missing (M269 · M178 · M270 · F109): R (SRB-2r) with sensitivity POSSIBLE on form_retention — no fabricated material; an OBSERVED Leather would legitimately give S",
+   "result": "PASS",
+   "evidence": "observed Leather → STRUCTURED/STRUCTURED/STRUCTURED/STRUCTURED"
+  },
+  {
+   "id": "T22",
+   "name": "no fabricated values: the evidence record of every look equals its frozen facts (MODE A) — MS-1 writes nothing; missing_observations lists exactly the unobserved fields",
+   "result": "PASS",
+   "evidence": "42 looks"
+  },
+  {
+   "id": "T23",
+   "name": "CG-1 retired: no SRB-2xs / 2xr / 2x rule, no torso input, no sidecar reader in the source; M317 and M320 (same admissible inputs) → the same output; Extreme ↔ Strong swap changes nothing",
+   "result": "PASS",
+   "evidence": "M317 RELAXED · M320 RELAXED"
+  },
+  {
+   "id": "T24",
+   "name": "a supplied CG-1 sidecar (valid, foreign or malformed) is ignored: output identical, trace says IGNORED",
+   "result": "PASS",
+   "evidence": "RELAXED · RELAXED"
+  },
+  {
+   "id": "T25",
+   "name": "repeat-run determinism (43 × 2 modes; forward vs reversed order)",
+   "result": "PASS",
+   "evidence": ""
+  },
+  {
+   "id": "T26",
+   "name": "no look-ID or GT leakage in executable source; anonymised ids leave results unchanged; ECC rows matched by packet sha256 only",
+   "result": "PASS",
+   "evidence": ""
+  },
+  {
+   "id": "T27",
+   "name": "[R4] every lane B output carries the constitution identity (release status lives in the production pointer / freeze seal); Lane A refuses corrected evidence",
+   "result": "PASS",
+   "evidence": "STMX_FULL_LOOK_SR_DIRECTION_CONSTITUTION_V3_R4"
+  },
+  {
+   "id": "T28",
+   "name": "sealed inputs never mutated; frozen Item SR keeps its own NEUTRAL; TC V2 manifest verifies",
+   "result": "PASS",
+   "evidence": ""
+  },
+  {
+   "id": "T29",
+   "name": "no default fallback: binaryRule ends in a throw (no default branch); MS-1 readings are declared per field in the authority (no \"if uncertain\" rule)",
+   "result": "PASS",
+   "evidence": ""
+  },
+  {
+   "id": "T30",
+   "name": "SRB-2f (SYNTHETIC): Relaxed + Leather → S; + Quilted → S; Oversized + Leather → R; Relaxed + Cotton → R",
+   "result": "PASS",
+   "evidence": "SRB-2f · SRB-2f · SRB-2r · SRB-2r"
+  },
+  {
+   "id": "T31",
+   "name": "[R4] SRB-2f classes read from the pinned Item admission; SRB-2g retired; SRB-2os / 2or cite FL-SR-C1 and the Item preservation / strong-release sources (load-time checks passed)",
+   "result": "PASS",
+   "evidence": ""
+  },
+  {
+   "id": "T32",
+   "name": "predecessors intact: V3 · V3_R1 · V3_R2 · V3_R3 candidates match their own manifests",
+   "result": "PASS",
+   "evidence": ""
+  },
+  {
+   "id": "T33",
+   "name": "[R4] R3 → R4 change set = exactly the former SRB-2g looks (MODE A: F298 · M317 · M320 S → R; MODE B: M317 · M320); every other look identical in both modes",
+   "result": "PASS",
+   "evidence": "MODE A F298,M317,M320 · MODE B M317,M320"
+  },
+  {
+   "id": "T34",
+   "name": "ECC_V3 policy unchanged (validation-only MODE B): derived from the pinned ECC_V2; added cells are material / surface OMISSION_FILL; no VALUE_DISAGREEMENT",
+   "result": "PASS",
+   "evidence": "applied 27"
+  },
+  {
+   "id": "T35",
+   "name": "prohibited proxies are not inputs: length / identity / closure / front state / pattern / attachment change no MODE A result",
+   "result": "PASS",
+   "evidence": "unchanged"
+  },
+  {
+   "id": "T36",
+   "name": "[R4] CEO anchors joined after prediction match the ledger (reported, not asserted correct): MODE A 3 / 4 · MODE B 3 / 4 — the one miss is M320 (identical admissible inputs to M317)",
+   "result": "PASS",
+   "evidence": "{\"cases\":4,\"resolved\":4,\"correct\":3,\"incorrect\":1,\"not_resolved\":0} · miss M320"
+  },
+  {
+   "id": "T37",
+   "name": "[R4] FL-SR-C1 inside the cell: Cinched (+ observed constriction) → R; Defined + Dropped → R; Defined + seated → S; Strong ↔ Extreme never changes the result",
+   "result": "PASS",
+   "evidence": "cinch SRB-2or · dropped SRB-2or · seated SRB-2os · ext SRB-2os · extU SRB-2or · strU SRB-2or"
+  },
+  {
+   "id": "T38",
+   "name": "[R4] missingness inside the cell: waist not observed → R (SRB-2or) with sensitivity POSSIBLE on waist; drop not observed + Defined → S (no drop observed); never an exception",
+   "result": "PASS",
+   "evidence": "SRB-2or waist · SRB-2os"
+  },
+  {
+   "id": "T39",
+   "name": "[R4] §6.5 guards: soft draped upper + functional cinching → Regular S (3g) · released R (FL-SR-C1); built shoulder with retained upper structure → S (2m · 2os); strong shoulder with dominant release → R (2or · 2r); Oversized can be S and R; Relaxed / Regular / Oversized each reach both directions through non-fit evidence",
+   "result": "PASS",
+   "evidence": "SRB-3g · SRB-2r · SRB-2m · both-directions true"
+  },
+  {
+   "id": "T40",
+   "name": "[R4] Slim is the documented exception to \"fit alone\": SRB-1 (Slim → S) is the frozen Fit definition (Upper Physics §4.1: the torso outline is followed continuously) — every Slim completion → S; disclosed in D2",
+   "result": "PASS",
+   "evidence": "Slim → SRB-1"
+  },
+  {
+   "id": "T41",
+   "name": "[R4] production path isolation: loading the resolver and resolving lane B in a fresh process loads NO lane-A / V2 code, no research script, no GT register, no ECC, no CG-1 artefact",
+   "result": "PASS",
+   "evidence": "34 loads · forbidden 0"
+  }
+ ],
+ "missingness_variants": [
+  {
+   "id": "F012",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F012",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F012",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F012",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F012",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F012",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F012",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F012",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F012",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F033",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F033",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F033",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F033",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F033",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F033",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F033",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F033",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F033",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F054",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F054",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F054",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F054",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F054",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F054",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F054",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F054",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F054",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F065",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F065",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F065",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F065",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F065",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F065",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F065",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F065",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F065",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F074",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F074",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F074",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F074",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F074",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F074",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F074",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F074",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F074",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F109",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F109",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F109",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F109",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F109",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F109",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F109",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F109",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F109",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F134",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F134",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F134",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F134",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F134",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F134",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F134",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F134",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F134",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F146",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F146",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F146",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F146",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F146",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F146",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F146",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F146",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F146",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F147",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F147",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F147",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F147",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F147",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F147",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F147",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F147",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F147",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F187",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F187",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F187",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F187",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F187",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F187",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F187",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F187",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F187",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F225",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F225",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F225",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F225",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F225",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F225",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F225",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F225",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F225",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F228",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F228",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F228",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F228",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F228",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F228",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F228",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F228",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F228",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F254",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F254",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F254",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F254",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F254",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F254",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F254",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F254",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F254",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F258",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F258",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F258",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F258",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F258",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F258",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F258",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F258",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F258",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F260",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F260",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F260",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F260",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F260",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F260",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F260",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F260",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F260",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F267",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F267",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F267",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F267",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F267",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F267",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F267",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F267",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F267",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F288",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F288",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F288",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F288",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F288",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F288",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F288",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F288",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F288",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F293",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F293",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F293",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F293",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F293",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F293",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F293",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F293",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F293",
+   "omitted": "fit+shape+material",
+   "out": "EXC:NO_UPPER_SR_EVIDENCE",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F298",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F298",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F298",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F298",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F298",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F298",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F298",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F298",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F298",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F372",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F372",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F372",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F372",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F372",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F372",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F372",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F372",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "F372",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "F390",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F390",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F390",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F390",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F390",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F390",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F390",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F390",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F390",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F391",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F391",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F391",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F391",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F391",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F391",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F391",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F391",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F391",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F392",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F392",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F392",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F392",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F392",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F392",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F392",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F392",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F392",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F418",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F418",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F418",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F418",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F418",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F418",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F418",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F418",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F418",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F444",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F444",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F444",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F444",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F444",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F444",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F444",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F444",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F444",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F472",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F472",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F472",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F472",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F472",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F472",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F472",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F472",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F472",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F563",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F563",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F563",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F563",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "F563",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F563",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F563",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F563",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "F563",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M011",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M011",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M011",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M011",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M011",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M011",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M011",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M011",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M011",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M120",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M120",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M120",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M120",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M120",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M120",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M120",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M120",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M120",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M134",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M134",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M134",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M134",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M134",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M134",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M134",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M134",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M134",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M165",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M165",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M165",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M165",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M165",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M165",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M165",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M165",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M165",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M178",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M178",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M178",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M178",
+   "omitted": "fit",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M178",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M178",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M178",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M178",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M178",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M210",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M210",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M210",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M210",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M210",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M210",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M210",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M210",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M210",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M214",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M214",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M214",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M214",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M214",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M214",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M214",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M214",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M214",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M269",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M269",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M269",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M269",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "M269",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M269",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M269",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M269",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M269",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M270",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M270",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M270",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M270",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "M270",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M270",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M270",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M270",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M270",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M303",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M303",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M303",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M303",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M303",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M303",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M303",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M303",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M303",
+   "omitted": "fit+shape+material",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M308",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M308",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M308",
+   "omitted": "shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M308",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M308",
+   "omitted": "shape",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M308",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M308",
+   "omitted": "material+surface+shoulder",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M308",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M308",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M309",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M309",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M309",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M309",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "M309",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M309",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M309",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M309",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M309",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "M317",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M317",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M317",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M317",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "M317",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M317",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M317",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M317",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M317",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "M320",
+   "omitted": "material",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M320",
+   "omitted": "surface",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M320",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M320",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "M320",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M320",
+   "omitted": "cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M320",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M320",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "RELAXED",
+   "changed": false
+  },
+  {
+   "id": "M320",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "RELAXED",
+   "changed": true
+  },
+  {
+   "id": "M323",
+   "omitted": "material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M323",
+   "omitted": "surface",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M323",
+   "omitted": "shoulder",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M323",
+   "omitted": "fit",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M323",
+   "omitted": "shape",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M323",
+   "omitted": "cinch",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  },
+  {
+   "id": "M323",
+   "omitted": "material+surface+shoulder",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M323",
+   "omitted": "material+shoulder+shape+cinch",
+   "out": "RELAXED",
+   "base": "STRUCTURED",
+   "changed": true
+  },
+  {
+   "id": "M323",
+   "omitted": "fit+shape+material",
+   "out": "STRUCTURED",
+   "base": "STRUCTURED",
+   "changed": false
+  }
+ ]
+}

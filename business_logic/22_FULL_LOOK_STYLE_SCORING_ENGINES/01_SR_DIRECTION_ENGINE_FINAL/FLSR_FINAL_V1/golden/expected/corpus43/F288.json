@@ -1,0 +1,104 @@
+{
+ "axis": "SR",
+ "resolver": "STMX_FULL_LOOK_SR_DIRECTION_RESOLVER_V3_R4_FINAL_CANDIDATE",
+ "lane": "B",
+ "evidence_mode": "MODE_A_FROZEN",
+ "authority": "STMX_FULL_LOOK_SR_DIRECTION_CONSTITUTION_V3_R4",
+ "direction": "STRUCTURED",
+ "status": "RESOLVED",
+ "rule": "SRB-1",
+ "rules": [
+  "SRB-1"
+ ],
+ "resolved_by": "DIRECT",
+ "basis": {
+  "governing_region": "UPPER",
+  "governing_upper": "c1 T-Shirt",
+  "rule": "SRB-1",
+  "rule_meaning": "Slim governing upper (Item R2 FIT_SLIM)",
+  "evidence_used": [
+   "relation=\"Slim\"",
+   "shoulder=\"None\"",
+   "shape=\"Fluid\"",
+   "drop=\"None\"",
+   "waist=\"Undefined\"",
+   "constriction=false",
+   "form_retention=false"
+  ],
+  "missing_observations": [],
+  "sensitivity": "NONE",
+  "sensitive_to": [],
+  "possible_outcomes_if_observed": [
+   "STRUCTURED"
+  ]
+ },
+ "evidence": {
+  "governing_upper": "c1 T-Shirt",
+  "frozen": {
+   "governing_upper": "c1 T-Shirt",
+   "gov": "c1",
+   "identity": "T-Shirt",
+   "frame": "OBSERVED",
+   "relation": "Slim",
+   "shoulder": "None",
+   "shape": "Fluid",
+   "drop": "None",
+   "waist": "ABSENT",
+   "constriction": "NONE_LISTED",
+   "material": [
+    "Knit"
+   ],
+   "surface": [
+    "Semi Transparent"
+   ]
+  },
+  "used": {
+   "governing_upper": "c1 T-Shirt",
+   "gov": "c1",
+   "identity": "T-Shirt",
+   "frame": "OBSERVED",
+   "relation": "Slim",
+   "shoulder": "None",
+   "shape": "Fluid",
+   "drop": "None",
+   "waist": "ABSENT",
+   "constriction": "NONE_LISTED",
+   "material": [
+    "Knit"
+   ],
+   "surface": [
+    "Semi Transparent"
+   ]
+  },
+  "sources": {
+   "governing_upper": "FROZEN",
+   "gov": "FROZEN",
+   "identity": "FROZEN",
+   "frame": "FROZEN",
+   "relation": "FROZEN",
+   "shoulder": "FROZEN",
+   "shape": "FROZEN",
+   "drop": "FROZEN",
+   "waist": "FROZEN",
+   "constriction": "FROZEN",
+   "material": "FROZEN",
+   "surface": "FROZEN"
+  },
+  "correction_diff": [],
+  "form_retention": {
+   "value": false,
+   "support": [],
+   "reading": "NO_SUPPORT_OBSERVED"
+  },
+  "cg1_sidecar": "none supplied",
+  "not_used": "lower-body garments · length · garment type · closure method · colour · pattern · attachment · belts as objects · accessories · CG-1 sidecar"
+ },
+ "trace": [
+  "GOVERNING UPPER: c1 T-Shirt · frame OBSERVED",
+  "FACTS: relation Slim · shoulder None · shape Fluid · drop None · waist ABSENT · constriction NONE_LISTED",
+  "FORM RETENTION (SVP-124 / SVP-123): material [\"Knit\"] · surface [\"Semi Transparent\"] → NO_SUPPORT_OBSERVED",
+  "CG-1 sidecar: none supplied",
+  "INPUTS (observed; null = not observed): {\"relation\":\"Slim\",\"shoulder\":\"None\",\"shape\":\"Fluid\",\"drop\":\"None\",\"waist\":\"Undefined\",\"constriction\":false,\"form_retention\":false}",
+  "RESOLVED STRUCTURED via SRB-1 · sensitivity NONE"
+ ]
+}

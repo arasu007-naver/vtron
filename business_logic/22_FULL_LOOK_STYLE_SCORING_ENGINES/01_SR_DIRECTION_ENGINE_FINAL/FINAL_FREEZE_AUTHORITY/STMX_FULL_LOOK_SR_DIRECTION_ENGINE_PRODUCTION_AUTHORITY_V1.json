@@ -1,0 +1,16 @@
+{
+ "authority": "STMX_FULL_LOOK_SR_DIRECTION_ENGINE_PRODUCTION_AUTHORITY_V1",
+ "status": "PRODUCTION",
+ "axis": "SR (Full-Look) — Direction only",
+ "release_id": "STMX_FULL_LOOK_SR_DIRECTION_ENGINE_V1",
+ "release_dir": "01_ENGINES/STYLE_SCORING_ENGINE/FLSR_FINAL_V1/",
+ "seal_id": "FLSR-FINAL-FREEZE-V1-2026-10-25",
+ "seal_sha256": "83c1e65a7cb4bc2f564bc3d437371d9bc17f51cc05a3674768530e61b879d452",
+ "release_manifest_sha256": "f6b480d8233664b01988c31bc058f947c8f796635575549fd7c208b7bda8f431",
+ "runtime_fingerprint": "fd9590864a2a0e02d732539e769c7d781c9d0ee43f9284ae77a9057ef985b0a7",
+ "constitution_id": "STMX_FULL_LOOK_SR_DIRECTION_CONSTITUTION_V3_R4",
+ "entry": "FLSR_FINAL_V1/lib/release_paths.js → score(packet, run_record)",
+ "freeze_declaration": "04_GOVERNANCE_AND_FINAL_DOCS/CURRENT_CONSTITUTION/STMX_FULL_LOOK_SR_DIRECTION_ENGINE_FINAL_FREEZE_V1.md",
+ "set_at": "2026-10-25T00:46:43.928Z",
+ "reopen": "governed SR reopen decision only"
+}
