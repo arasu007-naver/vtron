@@ -19,12 +19,31 @@ const RULE = "══════════════════════
 /** 상품 정보의 시작 — 이 글로 프롬프트에서 상품 정보를 찾는다 */
 const MARKER = `\n${RULE}\nPRODUCT CONTEXT (`;
 
-export const productAddendum = ({ name, category }: ProductContext) => `
+const productLines = ({ name, category }: ProductContext) => `
 ${RULE}
 PRODUCT CONTEXT (catalog metadata for THIS image — NOT an observation).
 This photo is the listing image of one catalog product:
   product name : ${name.slice(0, 200)}
-  category     : ${category?.slice(0, 200) || "(unknown)"}
+  category     : ${category?.slice(0, 200) || "(unknown)"}`;
+
+/**
+ * 상품 정보. primeTarget(prime-target.ts 가 JEV 로 확정한 카테고리)이 있으면 대표 의복 고르기를 건너뛰고
+ * 그 의복 하나만 관찰하게 한다 — 다른 의복은 내지 않아 출력 · 색상 호출이 그 의복 하나로 준다.
+ * 그 카테고리의 의복이 사진에 없으면 지금처럼 모든 의복을 관찰하고 이미지로 대표 의복을 고른다.
+ */
+export const productAddendum = (product: ProductContext, primeTarget: string | null = null) =>
+  primeTarget
+    ? `${productLines(product)}
+PRIME TARGET (FIXED from the catalog — target selection is already done): ${primeTarget}
+The product being sold is the visible ${primeTarget}. SKIP garment target selection and report EXACTLY ONE garment target — that ${primeTarget}:
+  - "targets" holds ONLY this garment. Do NOT emit any other garment (no secondary or minor targets, no styling garments); omit "cross_target_visual_relations".
+  - category = { "state": "OBSERVED", "value": "${primeTarget}" } — the category is given; do not re-decide it (still give its construction evidence).
+  - "prominence": "dominant", and add "product_match": true as a sibling of "observations".
+  - Still answer identity and readability honestly for THIS garment (a substantially occluded or fragmentary product is NOT_RECONSTRUCTABLE).
+  - Then extract this garment's full vision features — observations, color_observation, presentation_type — exactly by the rules above.
+If NO visible garment can be this ${primeTarget}, ignore this PRIME TARGET block: observe every garment as usual, set prominence from the image and add "product_match" to no garment.
+⛔ This context only fixes which garment is observed. It must not change any observation, eligibility, colour or presentation type — observe the garment exactly as you see it.`
+    : `${productLines(product)}
 If the product name and category let you tell WHICH visible garment is the product being sold, that garment is FIXED as the primary target:
   - give it "prominence": "dominant" and give every other garment "secondary" or "minor", even when another garment is larger or more eye-catching;
   - ALSO add "product_match": true as a sibling of "observations" on that one garment, and on no other garment.
@@ -43,6 +62,10 @@ export function splitProductContext(text: string): { base: string; addendum: str
   const addendum = prompt.slice(at);
   return { base: prompt.slice(0, at), addendum: addendum.trim() ? addendum : null };
 }
+
+/** 상품 정보에 확정된 대표 의복 (productAddendum 의 PRIME TARGET 줄) — 없으면 null */
+export const primeTargetOfAddendum = (addendum: string | null) =>
+  addendum ? (/^PRIME TARGET \(FIXED[^)]*\):\s*([\w-]+)/m.exec(addendum)?.[1] ?? null) : null;
 
 /** 관찰 프롬프트에 상품 정보를 붙인다 (이미 붙은 상품 정보는 갈아 끼운다). addendum 이 null 이면 떼어 낸다. */
 export const withProductContext = (prompt: string, addendum: string | null) =>

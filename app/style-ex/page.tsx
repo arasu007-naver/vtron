@@ -28,7 +28,8 @@ import { authFetch } from "@/lib/auth-client";
 import ProductPickModal from "@/components/style-ex/ProductPickModal";
 import type { CatalogProduct } from "@/lib/tryon/product-catalog";
 import { downloadReportPdf, type ReportBlock } from "@/lib/style-ex/report-pdf";
-import { splitProductContext, withProductContext } from "@/lib/style-ex/product-context";
+import { primeTargetOfAddendum, splitProductContext, withProductContext } from "@/lib/style-ex/product-context";
+import type { PrimeTarget } from "@/lib/style-ex/prime-target";
 import {
   AXIS_ORDER,
   SOURCE_LABEL,
@@ -141,6 +142,8 @@ export default function StyleExPage() {
   const [productLoading, setProductLoading] = useState<string | null>(null);
   const [productError, setProductError] = useState<string | null>(null);
   const [product, setProduct] = useState<CatalogProduct | null>(null);
+  /** 상품을 고를 때 JEV 로 확정한 대표 의복 (GET /api/style-ex?modelId=) — 파일로 고른 사진이면 null */
+  const [primeTarget, setPrimeTarget] = useState<PrimeTarget | null>(null);
   /** 상품 사진으로 추출했을 때 product_style 저장 결과 */
   const [saved, setSaved] = useState<SavedResult | null>(null);
   const [pdfBusy, setPdfBusy] = useState(false);
@@ -200,6 +203,7 @@ export default function StyleExPage() {
     setPreviewUrl(previewUrlRef.current);
     setFile(picked);
     setProduct(from);
+    setPrimeTarget(null);
     setSaved(null);
     setResult("");
     setResultParts(null);
@@ -252,6 +256,7 @@ export default function StyleExPage() {
         applyImage(new File([blob], `${picked.id}.${EXTENSION[type]}`, { type }), picked);
         // 카탈로그에서 상품을 못 찾으면(null) 상품 정보 없이 이미지만으로 대표 의복을 고른다
         const addendum = typeof context.productContext === "string" ? context.productContext : null;
+        setPrimeTarget(context.primeTarget ?? null);
         setPrompts((p) => ({ ...p, prompt: withProductContext(p.prompt, addendum) }));
         setTab("prompt");
         setProductModal(false);
@@ -389,6 +394,8 @@ export default function StyleExPage() {
   const prompt = prompts[tab];
   // 버전 · 고침 여부는 상품 정보를 뺀 앞부분(base)으로 본다 — 상품 정보는 버전에 들어가지 않는다
   const { base: promptBase, addendum: productContext } = splitProductContext(prompt);
+  // 관찰 프롬프트 칸의 상품 정보에 대표 의복이 고정돼 있는가 — 칸에서 지우면 고정도 풀린다
+  const fixedPrime = primeTargetOfAddendum(productContext);
   const baseOf = (key: PromptKey) => splitProductContext(prompts[key]).base;
   const isEdited = (key: PromptKey) => defaults[key] !== "" && baseOf(key) !== defaults[key];
   const versionOf = (key: PromptKey) => versions[key].find((v) => v.content === baseOf(key)) ?? null;
@@ -484,6 +491,19 @@ export default function StyleExPage() {
             <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
               <span className="max-w-full truncate rounded-full bg-white/95 shadow px-3 py-1 text-xs text-black/70">
                 {[product.brandName, product.name].filter(Boolean).join(" · ")}
+              </span>
+            </div>
+          )}
+          {product && file && primeTarget && (
+            <div className="absolute bottom-12 left-4 right-4 flex justify-center pointer-events-none">
+              <span
+                title={primeTarget.reason ?? undefined}
+                className="max-w-full truncate rounded-full bg-white/95 shadow px-3 py-1 text-xs text-black/70"
+              >
+                {fixedPrime
+                  ? `Prime target · ${fixedPrime}` +
+                    (primeTarget.confidence !== null ? ` (JEV ${primeTarget.confidence.toFixed(2)})` : "")
+                  : `Prime target 미확정 — 이미지로 대표 의복을 고릅니다${primeTarget.choice ? ` (JEV: ${primeTarget.choice})` : ""}`}
               </span>
             </div>
           )}
@@ -636,7 +656,9 @@ export default function StyleExPage() {
               {tab === "prompt"
                 ? `이미지와 함께 Vision 모델(${provider === "gemini" ? "gemini 3.8 flash" : "클로드 Opus"})에 보냅니다.` +
                   (productContext
-                    ? " 끝의 PRODUCT CONTEXT 는 고른 상품의 정보로, 그 상품인 의복을 대표 의복으로 고정합니다 — 버전에는 저장되지 않습니다."
+                    ? fixedPrime
+                      ? ` 끝의 PRODUCT CONTEXT 는 고른 상품의 정보로, 대표 의복을 ${fixedPrime} 로 고정해 그 의복만 관찰합니다 — 버전에는 저장되지 않습니다.`
+                      : " 끝의 PRODUCT CONTEXT 는 고른 상품의 정보로, 그 상품인 의복을 대표 의복으로 고정합니다 — 버전에는 저장되지 않습니다."
                     : "")
                 : "관찰값 JSON 이 이 프롬프트 뒤에 자동으로 붙어 판정 모델에 보내집니다."}
             </p>

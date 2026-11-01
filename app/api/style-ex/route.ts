@@ -14,7 +14,8 @@ import {
 } from "@/lib/style-ex/extract";
 import { productContextOf, saveProductStyle, type SavedProductStyle } from "@/lib/style-ex/product-style";
 import { resolvePrompt, versionLabel } from "@/lib/style-ex/prompt-versions";
-import { productAddendum, splitProductContext } from "@/lib/style-ex/product-context";
+import { primeTargetOfAddendum, productAddendum, splitProductContext } from "@/lib/style-ex/product-context";
+import { resolvePrimeTarget } from "@/lib/style-ex/prime-target";
 
 // Vision 호출 + 스코어링(자식 프로세스) + LLM 판정까지 수 분이 걸릴 수 있으므로 Node 런타임에서 실행한다.
 export const runtime = "nodejs";
@@ -31,7 +32,8 @@ const MODEL_ID = /^[\w-]{1,40}$/;
  *   응답: { prompt, judgePrompt, versions: { prompt, judgePrompt } } — version 이 null 이면
  *         버전 표를 읽지 못해 코드 기본값을 준 것이다.
  * GET /api/style-ex?modelId=… — 그 상품의 상품 정보(관찰 프롬프트 끝에 붙일 글, product-context.ts)
- *   응답: { productContext } — 카탈로그에서 상품을 못 찾으면 null
+ *   응답: { productContext, primeTarget } — 카탈로그에서 상품을 못 찾으면 둘 다 null.
+ *         primeTarget = JEV 로 확정한 대표 의복(prime-target.ts). category 가 있으면 productContext 가 그 의복만 관찰하게 한다
  */
 export async function GET(request: Request) {
   const auth = await authenticate(request);
@@ -40,7 +42,10 @@ export async function GET(request: Request) {
   if (modelId) {
     if (!MODEL_ID.test(modelId)) return NextResponse.json({ error: "modelId 가 올바르지 않습니다." }, { status: 400 });
     const product = await productContextOf(modelId);
-    return NextResponse.json({ productContext: product ? productAddendum(product) : null });
+    if (!product) return NextResponse.json({ productContext: null, primeTarget: null });
+    // 대표 의복을 JEV 로 확정한다 — 확정하면 관찰 프롬프트가 대표 의복 고르기를 건너뛰고 그 의복만 관찰한다
+    const primeTarget = await resolvePrimeTarget(product);
+    return NextResponse.json({ productContext: productAddendum(product, primeTarget.category), primeTarget });
   }
   // 판정은 코드(판정 함수 V2 — judge-v2.ts)가 하므로 판정 프롬프트는 내려보내지 않는다.
   const observe = await resolvePrompt("observe", null, "item");
@@ -129,6 +134,8 @@ export async function POST(request: Request) {
       visionModel: activeVisionModel,
       customPrompt: Boolean(base.trim()),
       productContext: Boolean(addendum),
+      // 상품 정보에 확정된 대표 의복 — 있으면 관찰은 그 의복 하나만 했다
+      primeTarget: primeTargetOfAddendum(addendum),
       // 판정 프롬프트는 쓰지 않는다 (판정은 코드) — product_style.judge_prompt_version_id 는 비운다
       promptVersions: { prompt: observePrompt.version, judgePrompt: null },
     };
