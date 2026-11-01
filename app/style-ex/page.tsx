@@ -112,6 +112,21 @@ const EXTENSION: Record<string, string> = { "image/jpeg": "jpg", "image/png": "p
 export default function StyleExPage() {
   const fileRef = useRef<HTMLInputElement>(null);
   const promptRef = useRef<HTMLTextAreaElement>(null);
+  /** 미리보기 이미지 — 대표 의복 칩을 이미지 안 오른쪽 아래(캡션 자리)에 두려고 화면에 그려진 상자를 잰다 */
+  const [imgBox, setImgBox] = useState<{ left: number; top: number; width: number; height: number } | null>(null);
+  // 이미지는 max-w/max-h 로 비율을 지켜 줄어든다 — 요소 상자가 곧 보이는 이미지라 그 상자를 따라간다
+  const trackImage = useCallback((img: HTMLImageElement) => {
+    const measure = () => setImgBox({ left: img.offsetLeft, top: img.offsetTop, width: img.offsetWidth, height: img.offsetHeight });
+    const observer = new ResizeObserver(measure);
+    observer.observe(img);
+    if (img.parentElement) observer.observe(img.parentElement); // 칸만 바뀌어도 가운데 정렬된 이미지 위치가 바뀐다
+    img.addEventListener("load", measure);
+    return () => {
+      observer.disconnect();
+      img.removeEventListener("load", measure);
+      setImgBox(null);
+    };
+  }, []);
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [defaults, setDefaults] = useState(EMPTY_PROMPTS);
@@ -474,7 +489,7 @@ export default function StyleExPage() {
           {previewUrl && file ? (
             // blob: URL 이라 next/image 최적화를 쓸 수 없다
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={previewUrl} alt={file.name} className="max-w-full max-h-full object-contain shadow" />
+            <img ref={trackImage} src={previewUrl} alt={file.name} className="max-w-full max-h-full object-contain shadow" />
           ) : (
             <button
               type="button"
@@ -486,25 +501,27 @@ export default function StyleExPage() {
             </button>
           )}
 
-          {/* 하단 — 고른 상품 (입력 이미지가 상품 사진일 때) + 오른쪽 아래 JEV 대표 의복 FAB */}
+          {/* 고른 상품 — 입력 이미지가 상품 사진일 때 */}
           {product && file && (
-            <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 pointer-events-none">
-              <div className="flex-1 min-w-0 flex justify-center">
-                <span className="max-w-full truncate rounded-full bg-white/95 shadow px-3 py-1 text-xs text-black/70">
-                  {[product.brandName, product.name].filter(Boolean).join(" · ")}
-                </span>
-              </div>
-              {primeTarget && (
-                <span
-                  title={primeTarget.reason ?? undefined}
-                  className="pointer-events-auto shrink-0 max-w-[60%] truncate rounded-full bg-white/95 shadow-lg px-4 py-3 text-sm font-bold text-black"
-                >
-                  {fixedPrime
-                    ? `Prime target · ${fixedPrime}` +
-                      (primeTarget.confidence !== null ? ` (JEV ${primeTarget.confidence.toFixed(2)})` : "")
-                    : `Prime target 미확정${primeTarget.choice ? ` (JEV: ${primeTarget.choice})` : ""}`}
-                </span>
-              )}
+            <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
+              <span className="max-w-full truncate rounded-full bg-white/95 shadow px-3 py-1 text-xs text-black/70">
+                {[product.brandName, product.name].filter(Boolean).join(" · ")}
+              </span>
+            </div>
+          )}
+
+          {/* JEV 대표 의복 — 이미지 안 오른쪽 아래, 캡션처럼 */}
+          {product && file && primeTarget && imgBox && (
+            <div className="absolute pointer-events-none" style={imgBox}>
+              <span
+                title={primeTarget.reason ?? undefined}
+                className="pointer-events-auto absolute bottom-2 right-2 max-w-[calc(100%-1rem)] truncate rounded-full bg-white/95 shadow-lg px-4 py-3 text-sm font-bold text-black"
+              >
+                {fixedPrime
+                  ? `Prime target · ${fixedPrime}` +
+                    (primeTarget.confidence !== null ? ` (JEV ${primeTarget.confidence.toFixed(2)})` : "")
+                  : `Prime target 미확정${primeTarget.choice ? ` (JEV: ${primeTarget.choice})` : ""}`}
+              </span>
             </div>
           )}
 
