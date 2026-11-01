@@ -5,7 +5,7 @@ import type { ProductContext } from "./product-context";
  * 대표 의복(PRIME TARGET) 확정 — 상품 정보(상품명 · 카테고리)를 JEV(TypeSafe AI 의 결정 모델)에 넘겨
  * 관찰 프롬프트의 의복 카테고리 10개 중 하나로 정한다. 관찰 프롬프트는 대표 의복을 고르지 않고 그 의복만 관찰한다.
  *
- *   POST https://api.typesafe.ai/v1/systemone   (Authorization: Bearer TYPESAFE_API_KEY)
+ *   POST https://api.typesafe.ai/v1/systemone   (Authorization: Bearer TYPESAFE_API_KEY 또는 TYPESAFE_AI_API_KEY)
  *   질문 하나(choice) — 선택지 = 10 카테고리 + SUIT_SET · NOT_DETERMINABLE. 이 둘이나 confidence 가 낮으면 확정하지 않는다(null)
  *   → 관찰 프롬프트가 지금처럼 이미지에서 대표 의복을 고른다.
  *
@@ -61,7 +61,9 @@ const TIMEOUT_MS = 15_000;
 /** 이보다 낮은 confidence 는 확정하지 않는다 — 관찰 프롬프트가 이미지로 고른다 */
 const DEFAULT_MIN_CONFIDENCE = 0.6;
 
-export const jevApiKey = () => process.env.TYPESAFE_API_KEY?.trim() || null;
+/** 키 — TYPESAFE_API_KEY, 없으면 TYPESAFE_AI_API_KEY (typesafe.ai 공식 SDK 가 쓰는 이름) */
+export const jevApiKey = () =>
+  process.env.TYPESAFE_API_KEY?.trim() || process.env.TYPESAFE_AI_API_KEY?.trim() || null;
 const jevModel = () => process.env.JEV_MODEL?.trim() || "jev-latest";
 const minConfidence = () => {
   const n = Number(process.env.PRIME_TARGET_MIN_CONFIDENCE);
@@ -102,7 +104,7 @@ export async function resolvePrimeTarget({ name, category }: ProductContext): Pr
   });
 
   const key = jevApiKey();
-  if (!key) return none("TYPESAFE_API_KEY 가 없어 JEV 를 부르지 않았습니다.");
+  if (!key) return none("TYPESAFE_API_KEY(또는 TYPESAFE_AI_API_KEY)가 없어 JEV 를 부르지 않았습니다.");
 
   let data: JevResponse;
   try {
