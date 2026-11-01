@@ -486,25 +486,25 @@ export default function StyleExPage() {
             </button>
           )}
 
-          {/* 고른 상품 — 입력 이미지가 상품 사진일 때 */}
+          {/* 하단 — 고른 상품 (입력 이미지가 상품 사진일 때) + 오른쪽 아래 JEV 대표 의복 FAB */}
           {product && file && (
-            <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
-              <span className="max-w-full truncate rounded-full bg-white/95 shadow px-3 py-1 text-xs text-black/70">
-                {[product.brandName, product.name].filter(Boolean).join(" · ")}
-              </span>
-            </div>
-          )}
-          {product && file && primeTarget && (
-            <div className="absolute bottom-12 left-4 right-4 flex justify-center pointer-events-none">
-              <span
-                title={primeTarget.reason ?? undefined}
-                className="max-w-full truncate rounded-full bg-white/95 shadow px-3 py-1 text-xs text-black/70"
-              >
-                {fixedPrime
-                  ? `Prime target · ${fixedPrime}` +
-                    (primeTarget.confidence !== null ? ` (JEV ${primeTarget.confidence.toFixed(2)})` : "")
-                  : `Prime target 미확정 — 이미지로 대표 의복을 고릅니다${primeTarget.choice ? ` (JEV: ${primeTarget.choice})` : ""}`}
-              </span>
+            <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 pointer-events-none">
+              <div className="flex-1 min-w-0 flex justify-center">
+                <span className="max-w-full truncate rounded-full bg-white/95 shadow px-3 py-1 text-xs text-black/70">
+                  {[product.brandName, product.name].filter(Boolean).join(" · ")}
+                </span>
+              </div>
+              {primeTarget && (
+                <span
+                  title={primeTarget.reason ?? undefined}
+                  className="pointer-events-auto shrink-0 max-w-[60%] truncate rounded-full bg-white/95 shadow-lg px-4 py-3 text-sm font-bold text-black"
+                >
+                  {fixedPrime
+                    ? `Prime target · ${fixedPrime}` +
+                      (primeTarget.confidence !== null ? ` (JEV ${primeTarget.confidence.toFixed(2)})` : "")
+                    : `Prime target 미확정${primeTarget.choice ? ` (JEV: ${primeTarget.choice})` : ""}`}
+                </span>
+              )}
             </div>
           )}
 
