@@ -12,7 +12,8 @@
     "crop:dev": "cd services/product-crop && .venv/bin/uvicorn server:app --host 127.0.0.1 --port 8930",
     "backfill:model-codes": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/backfill-model-codes.mjs",
     "register:catalog-products": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/register-catalog-products.mjs",
-    "thumbs:products": "node scripts/backfill-product-thumbnails.mjs"
+    "thumbs:products": "node scripts/backfill-product-thumbnails.mjs",
+    "worker:style-id": "node scripts/style-id-worker.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.131.0",

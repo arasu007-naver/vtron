@@ -9,6 +9,8 @@
  *
  * 모든 응답에 `X-Request-Id` 를 붙인다 — api_call_log.id 와 같아 업체 문의 때 이 값으로 찾는다.
  * 인증 실패(401 · 403)도 남긴다. 기록이 실패해도 응답은 그대로 돌려준다.
+ * 기록은 같은 id 로 upsert 한다 — 대량 작업(lib/style-id-api/jobs.ts)은 핸들러가 이 행을 먼저 만들어
+ * 작업 열(job_status · item_total …)을 채우고, 여기서는 응답 쪽 열만 덮는다.
  */
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
@@ -69,7 +71,7 @@ export function withBusinessApi<A extends unknown[]>(
 
     const { error } = await getAdminSupabase()
       .from(API_CALL_LOG_TABLE)
-      .insert({
+      .upsert({
         id: requestId,
         business_user_id: businessUserId,
         token_prefix: tokenPrefix,
@@ -82,7 +84,7 @@ export function withBusinessApi<A extends unknown[]>(
         response_meta: log.response ?? null,
         ip: clientIp(req),
         user_agent: clip(req.headers.get("user-agent"), 300),
-      })
+      }, { onConflict: "id" })
       .then(
         (r) => r,
         (e: unknown) => ({ error: { message: e instanceof Error ? e.message : String(e) } })

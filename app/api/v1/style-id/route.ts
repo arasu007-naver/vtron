@@ -1,32 +1,14 @@
 import { NextResponse } from "next/server";
 import { anthropicApiKey } from "@/lib/style-ex/api-key";
-import { extractStyle, visionModel } from "@/lib/style-ex/extract";
-import { resolvePrompt } from "@/lib/style-ex/prompt-versions";
-import { productAddendum } from "@/lib/style-ex/product-context";
 import { withBusinessApi } from "@/lib/business-user/api-call";
+import { MAX_IMAGE_BYTES, runApiStyleId, sniffImage } from "@/lib/style-id-api/extract";
 
 // Vision 호출 + 스코어링(자식 프로세스)까지 수십 초 ~ 수 분 걸린다 — /api/style-ex 와 같다.
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 600;
 
-/** Anthropic 이미지 입력 한도 */
-const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const MAX_TEXT = 200;
-
-type Obj = Record<string, unknown>;
-
-/** 바이트로 형식을 본다(확장자 · Content-Type 은 믿지 않는다) — 엔진이 받는 네 가지 */
-function sniffImage(b: Buffer): string | null {
-  if (b.length >= 3 && b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff) return "image/jpeg";
-  if (b.length >= 8 && b.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))) return "image/png";
-  if (b.length >= 12 && b.subarray(0, 4).toString("latin1") === "RIFF" && b.subarray(8, 12).toString("latin1") === "WEBP") return "image/webp";
-  if (b.length >= 6 && /^GIF8[79]a$/.test(b.subarray(0, 6).toString("latin1"))) return "image/gif";
-  return null;
-}
-
-const styleOf = (s: Obj | null | undefined) =>
-  s ? { name: s.name ?? null, sub_title: s.subTitle ?? null, definition: s.definition ?? null } : null;
 
 /**
  * POST /api/v1/style-id — 상품 사진 → STMX 스타일 아이디 (외부 업체용)
@@ -37,7 +19,8 @@ const styleOf = (s: Obj | null | undefined) =>
  *     product_name      상품명 (선택) — 사진에 옷이 여럿일 때 이 상품인 의복을 대표로 고른다
  *     product_category  상품 분류 (선택, 예: "패션의류>여성의류>코트")
  *
- * 추출은 /style-ex 와 같다 — 활성 관찰 프롬프트로 Vision 관찰 → 엔진 · TC 규칙 판정(대표 의복 1벌).
+ * 추출은 /style-ex 의 [상품 Style ID 추출]과 같다 — 상품명이 있으면 JEV 로 대표 의복을 확정하고, 활성 관찰 프롬프트로
+ * Vision 관찰 → 엔진 · TC 규칙 판정(대표 의복 1벌). 여러 상품은 POST /api/v1/style-id/jobs (큐).
  *
  * 200 { request_id, ok: true, style_id, style: { name, sub_title, definition },
  *       candidates: [{ style_id, style }],   // 중립 축의 양쪽 글자를 조합한 후보 전부(첫 번째 = style_id)
@@ -80,64 +63,35 @@ export const POST = withBusinessApi(async (req, ctx) => {
 
   if (!anthropicApiKey()) return fail(503, "스타일 추출을 잠시 사용할 수 없습니다.", "CLAUDE_API_KEY 없음");
 
-  const started = performance.now();
-  const observe = await resolvePrompt("observe");
-  const addendum = productName ? productAddendum({ name: productName, category: productCategory || null }) : "";
-
-  let extracted: Awaited<ReturnType<typeof extractStyle>>;
+  let run: Awaited<ReturnType<typeof runApiStyleId>>;
   try {
-    extracted = await extractStyle({
+    run = await runApiStyleId({
       image: bytes,
       fileName: image.name || `image.${mime.split("/")[1]}`,
-      prompt: observe.content + addendum,
-      provider: "claude",
+      product: productName ? { name: productName, category: productCategory || null } : null,
     });
   } catch (e) {
     return fail(422, "이미지를 처리하지 못했습니다.", e instanceof Error ? e.message : String(e));
   }
-  const elapsedMs = Math.round(performance.now() - started);
 
-  const styleId = extracted.styleId as Obj | null;
+  const { result } = run;
   ctx.log.response = {
-    vision_model: extracted.visionModel || visionModel(),
-    observe_prompt_version: observe.version?.version ?? null,
-    elapsed_ms: elapsedMs,
+    vision_model: run.visionModel,
+    observe_prompt_version: run.observePromptVersion,
+    prime_target: run.primeTarget?.category ?? null,
+    elapsed_ms: run.elapsedMs,
+    ok: result.ok,
+    ...(result.ok && { style_id: result.style_id, candidates: result.candidates.map((c) => c.style_id) }),
   };
-
-  if (!styleId || styleId.ok !== true) {
-    const observation = extracted.observation as Obj | undefined;
-    const why =
-      (styleId?.error as string | undefined) ??
-      (observation?.ok === false ? JSON.stringify(observation.error ?? "observation failed") : "스타일 아이디를 정하지 못했습니다.");
-    ctx.log.response.ok = false;
-    return fail(422, "사진에서 스타일 아이디를 판정할 의복을 찾지 못했습니다.", why);
-  }
-
-  const axes = Object.fromEntries(
-    Object.entries((styleId.axes as Record<string, Obj>) ?? {}).map(([k, a]) => [
-      k,
-      { letter: a.letter ?? null, letters: a.letters ?? [], source: a.source ?? null },
-    ])
-  );
-  const candidates = ((styleId.candidates as { style_id: string; style: Obj | null }[]) ?? []).map((c) => ({
-    style_id: c.style_id,
-    style: styleOf(c.style),
-  }));
-
-  ctx.log.response = {
-    ...ctx.log.response,
-    ok: true,
-    style_id: styleId.style_id,
-    candidates: candidates.map((c) => c.style_id),
-  };
+  if (!result.ok) return fail(422, result.error, result.detail);
 
   return NextResponse.json({
     request_id: ctx.request_id,
     ok: true,
-    style_id: styleId.style_id,
-    style: styleOf(styleId.style as Obj | null),
-    candidates,
-    axes,
-    elapsed_ms: elapsedMs,
+    style_id: result.style_id,
+    style: result.style,
+    candidates: result.candidates,
+    axes: result.axes,
+    elapsed_ms: run.elapsedMs,
   });
 });
