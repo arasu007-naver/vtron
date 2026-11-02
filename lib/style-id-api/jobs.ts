@@ -9,7 +9,8 @@ import type { JobItemInput } from "./job-input";
  *   작업 = api_call_log 한 행 (id = request_id, job_status · item_total …)
  *   큐   = api_call_items — 상품 하나 = 한 행
  *
- * createJob 은 요청 정보를 api_call_log 에 먼저 저장하고 상품을 큐에 넣는다. withBusinessApi 가 응답 뒤에
+ * createJob 은 요청 정보를 api_call_log 에 먼저 저장하고 상품을 큐에 넣는다. 상품명이 있는 상품은 대표 의복 단계(prime)로,
+ * 없는 상품은 바로 관찰 대기(queued · no_product)로 들어간다 — 관찰은 작업 전체가 대표 의복 단계를 마친 뒤 그룹마다 돈다(0025). withBusinessApi 가 응답 뒤에
  * 같은 id 의 행을 upsert 하므로(상태 코드 · 걸린 시간 · ip …) 작업 열은 그대로 남는다.
  */
 
@@ -21,8 +22,10 @@ const EXT: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "
 const INSERT_CHUNK = 500;
 const UPLOAD_CONCURRENCY = 8;
 
-export type JobStatus = "queued" | "running" | "done" | "partial" | "failed";
-export type ItemStatus = "queued" | "running" | "done" | "failed";
+export type JobStatus = "queued" | "priming" | "running" | "done" | "partial" | "failed";
+export type ItemStatus = "prime" | "queued" | "running" | "done" | "failed";
+/** 대표 의복 단계 결과 — found(JEV 로 확정) · not_found(못 정함, 이미지로 고른다) · no_product(상품명 없음) */
+export type PrimeGroup = "found" | "not_found" | "no_product";
 
 async function mapLimit<T, R>(list: T[], limit: number, fn: (t: T, i: number) => Promise<R>): Promise<R[]> {
   const out = new Array<R>(list.length);
@@ -114,6 +117,8 @@ export async function createJob(
     product: it.product,
     image_url: it.image_url,
     image_path: paths[seq],
+    status: it.name ? "prime" : "queued",
+    prime_group: it.name ? null : "no_product",
   }));
   for (let i = 0; i < rows.length; i += INSERT_CHUNK) {
     const { error } = await db.from(ITEMS_TABLE).insert(rows.slice(i, i + INSERT_CHUNK));
@@ -147,6 +152,7 @@ export interface ItemRow {
   product: Obj;
   image_url: string | null;
   status: ItemStatus;
+  prime_group: PrimeGroup | null;
   attempts: number;
   style_id: string | null;
   result: Obj | null;
@@ -174,6 +180,7 @@ export const itemView = (it: ItemRow) => ({
   seq: it.seq,
   ref: it.ref,
   status: it.status,
+  prime_group: it.prime_group,
   ...(it.result ?? {}),
   style_id: it.style_id,
   error: it.error,
@@ -211,7 +218,7 @@ export async function listItems(
 ): Promise<ItemRow[]> {
   let q = getAdminSupabase()
     .from(ITEMS_TABLE)
-    .select("seq, ref, product, image_url, status, attempts, style_id, result, error, elapsed_ms, finished_at")
+    .select("seq, ref, product, image_url, status, prime_group, attempts, style_id, result, error, elapsed_ms, finished_at")
     .eq("call_id", callId)
     .order("seq")
     .range(offset, offset + limit - 1);
@@ -219,4 +226,30 @@ export async function listItems(
   const { data, error } = await q;
   if (error) throw new Error(`작업 상품 조회 실패: ${error.message}`);
   return (data as ItemRow[]) ?? [];
+}
+
+/**
+ * 대표 의복 단계 요약 — 그룹별 상품 수 · 확정한 카테고리별 수. 대표 의복 단계 중이면 primed < total.
+ *   { primed, groups: { found, not_found, no_product }, categories: { Jacket: 12, … } }
+ */
+export async function primeSummary(callId: string, total: number) {
+  const groups: Record<PrimeGroup, number> = { found: 0, not_found: 0, no_product: 0 };
+  const categories: Record<string, number> = {};
+  const PAGE = 1000;
+  for (let offset = 0; offset < total; offset += PAGE) {
+    const { data, error } = await getAdminSupabase()
+      .from(ITEMS_TABLE)
+      .select("prime_group, prime_target->>category")
+      .eq("call_id", callId)
+      .order("seq")
+      .range(offset, offset + PAGE - 1);
+    if (error) throw new Error(`대표 의복 요약 조회 실패: ${error.message}`);
+    for (const r of (data ?? []) as { prime_group: PrimeGroup | null; category: string | null }[]) {
+      if (!r.prime_group) continue;
+      groups[r.prime_group]++;
+      if (r.prime_group === "found" && r.category) categories[r.category] = (categories[r.category] ?? 0) + 1;
+    }
+    if ((data ?? []).length < PAGE) break;
+  }
+  return { primed: groups.found + groups.not_found + groups.no_product, groups, categories };
 }

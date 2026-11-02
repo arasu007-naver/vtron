@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { withBusinessApi } from "@/lib/business-user/api-call";
-import { getJob, itemView, jobView, listItems, type ItemStatus } from "@/lib/style-id-api/jobs";
+import { getJob, itemView, jobView, listItems, primeSummary, type ItemStatus } from "@/lib/style-id-api/jobs";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const STATUSES: ItemStatus[] = ["queued", "running", "done", "failed"];
+const STATUSES: ItemStatus[] = ["prime", "queued", "running", "done", "failed"];
 const CSV_PAGE = 1000;
 
 const csvCell = (v: unknown) => {
@@ -17,11 +17,14 @@ const csvCell = (v: unknown) => {
 /**
  * GET /api/v1/style-id/jobs/:id — 작업 진행 · 결과
  *   ?offset=0&limit=100   상품 결과를 요청 순서(seq)로 나눠 받는다 (limit 최대 500)
- *   ?status=done|failed|queued|running   그 상태의 상품만
- *   ?format=csv           상품 결과 전부를 CSV 로 (seq, ref, status, style_id, candidates, prime_target, error)
+ *   ?status=done|failed|queued|running|prime   그 상태의 상품만
+ *   ?format=csv           상품 결과 전부를 CSV 로 (seq, ref, status, prime_group, prime_target, style_id, candidates, error)
+ *
+ * 작업은 대표 의복 단계(priming — 모든 상품의 대표 의복을 JEV 로 먼저 정한다) → 관찰 단계(running — 그룹마다 모아서) 로 돈다.
  *
  * 200 { request_id, job: { job_id, status, total, done, failed, pending, created_at, finished_at },
- *       items: [{ seq, ref, status, style_id, style, candidates, axes, prime_target, error, elapsed_ms, finished_at }],
+ *       prime: { primed, groups: { found, not_found, no_product }, categories: { Jacket: 12, … } },
+ *       items: [{ seq, ref, status, prime_group, style_id, style, candidates, axes, prime_target, error, elapsed_ms, finished_at }],
  *       offset, limit }
  * 404 다른 업체의 작업이거나 없는 작업
  */
@@ -42,13 +45,13 @@ export const GET = withBusinessApi(async (req, ctx, { params }: { params: Promis
   ctx.log.response = { job_status: job.job_status };
 
   if (url.searchParams.get("format") === "csv") {
-    const lines = [["seq", "ref", "status", "style_id", "candidates", "prime_target", "error"].join(",")];
+    const lines = [["seq", "ref", "status", "prime_group", "prime_target", "style_id", "candidates", "error"].join(",")];
     for (let offset = 0; offset < job.item_total; offset += CSV_PAGE) {
       const rows = await listItems(id, { offset, limit: CSV_PAGE, status });
       for (const it of rows) {
         const r = (it.result ?? {}) as { candidates?: { style_id: string }[]; prime_target?: string | null };
         lines.push(
-          [it.seq, it.ref, it.status, it.style_id, (r.candidates ?? []).map((c) => c.style_id).join(" "), r.prime_target, it.error]
+          [it.seq, it.ref, it.status, it.prime_group, r.prime_target, it.style_id, (r.candidates ?? []).map((c) => c.style_id).join(" "), it.error]
             .map(csvCell)
             .join(",")
         );
@@ -65,6 +68,6 @@ export const GET = withBusinessApi(async (req, ctx, { params }: { params: Promis
 
   const offset = Math.max(0, Math.trunc(Number(url.searchParams.get("offset") ?? "0")) || 0);
   const limit = Math.min(Math.max(1, Math.trunc(Number(url.searchParams.get("limit") ?? "100")) || 100), 500);
-  const items = await listItems(id, { offset, limit, status });
-  return NextResponse.json({ request_id: ctx.request_id, job: jobView(job), items: items.map(itemView), offset, limit });
+  const [items, prime] = await Promise.all([listItems(id, { offset, limit, status }), primeSummary(id, job.item_total)]);
+  return NextResponse.json({ request_id: ctx.request_id, job: jobView(job), prime, items: items.map(itemView), offset, limit });
 });

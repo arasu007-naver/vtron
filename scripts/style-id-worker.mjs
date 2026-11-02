@@ -34,9 +34,9 @@ while (!stop) {
       await sleep(pollMs);
       continue;
     }
-    console.log(`[worker] ${new Date().toISOString()} 처리 ${body.processed}${body.joined ? " (서버의 drain 에 합류)" : ""}${body.outOfBudget ? " · 예산 소진 — 바로 이어서" : ""}`);
+    console.log(`[worker] ${new Date().toISOString()} 대표 의복 ${body.primed ?? 0} · 관찰 ${body.processed}${body.joined ? " (서버의 drain 에 합류)" : ""}${body.outOfBudget ? " · 예산 소진 — 바로 이어서" : ""}`);
     // 예산이 다 돼 멈췄으면 큐에 남은 것이 있다 — 쉬지 않고 다시 부른다
-    if (!body.outOfBudget) await sleep(body.processed ? 1000 : pollMs);
+    if (!body.outOfBudget) await sleep(body.processed || body.primed ? 1000 : pollMs);
   } catch (e) {
     console.error("[worker]", e instanceof Error ? e.message : e);
     await sleep(pollMs);

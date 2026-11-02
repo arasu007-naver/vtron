@@ -66,16 +66,19 @@ export async function runApiStyleId({
   image,
   fileName,
   product,
+  primeTarget,
 }: {
   image: Buffer;
   fileName: string;
   /** 상품명이 있을 때만 — 사진에 옷이 여럿일 때 이 상품인 의복을 대표로 고른다 */
   product: ProductContext | null;
+  /** 이미 정한 대표 의복 (대량 작업의 대표 의복 단계). 주지 않으면(undefined) 여기서 JEV 를 부른다 */
+  primeTarget?: PrimeTarget | null;
 }): Promise<ApiStyleIdRun> {
   const started = performance.now();
   const [observe, prime] = await Promise.all([
     resolvePrompt("observe", null, "item"),
-    product ? resolvePrimeTarget(product) : Promise.resolve(null),
+    !product ? Promise.resolve(null) : primeTarget !== undefined ? Promise.resolve(primeTarget) : resolvePrimeTarget(product),
   ]);
   const addendum = product ? productAddendum(product, prime?.category ?? null) : "";
 

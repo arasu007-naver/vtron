@@ -23,7 +23,9 @@ const AFTER_BUDGET_MS = 740_000;
  *   자세한 형식은 lib/style-id-api/job-input.ts
  *
  * 요청을 작업 목록(api_call_log, job_status = queued)에 먼저 남기고 상품마다 큐(api_call_items)에 넣은 뒤 바로 답한다.
- * 추출은 /api/v1/style-id 와 같다 — 상품명이 있으면 JEV 로 대표 의복을 확정하고 관찰한다.
+ * 처리는 두 단계다 (lib/style-id-api/worker.ts):
+ *   ① 모든 상품의 대표 의복을 JEV 로 먼저 정해 found(확정) · not_found(못 정함) · no_product(상품명 없음)로 나눈다
+ *   ② 그다음 그룹마다 모아서 관찰 · 판정한다 — found 는 그 의복만 관찰, not_found · no_product 는 이미지로 대표 의복을 고른다
  *
  * 202 { request_id, job_id, status: "queued", total, status_url }   // job_id = request_id
  * 400 · 413 · 415 입력 오류 (하나라도 틀리면 작업 전체를 받지 않는다 — error 에 위치가 있다)
