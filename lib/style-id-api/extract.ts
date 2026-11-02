@@ -10,6 +10,7 @@ import { resolvePrimeTarget, type PrimeTarget } from "@/lib/style-ex/prime-targe
  * /style-ex 의 [상품 Style ID 추출]과 같다: 상품 정보가 있으면 JEV 로 대표 의복을 확정하고(prime-target.ts)
  * 그 상품 정보를 활성 관찰 프롬프트(item) 끝에 붙여 Vision 관찰 → 엔진 · TC 규칙 판정.
  * 관찰 원문 · 엔진 점수는 내보내지 않는다 — 업체에게는 스타일 아이디 · 후보 · 축 글자만.
+ * 근거(관찰 envelope · 판정 기록 · JEV 결정 전체)는 evidence 로 돌려준다 — 서버에 남기는 용도(api_call_items).
  */
 
 /** Anthropic 이미지 입력 한도 */
@@ -53,6 +54,12 @@ export interface ApiStyleIdRun {
   visionModel: string;
   observePromptVersion: number | null;
   elapsedMs: number;
+  /** 서버에 남길 근거 — 업체 응답에는 넣지 않는다 */
+  evidence: {
+    observation: unknown;
+    scoring: unknown;
+    primeTarget: PrimeTarget | null;
+  };
 }
 
 export async function runApiStyleId({
@@ -78,6 +85,7 @@ export async function runApiStyleId({
     visionModel: extracted.visionModel || visionModel(),
     observePromptVersion: observe.version?.version ?? null,
     elapsedMs: Math.round(performance.now() - started),
+    evidence: { observation: extracted.observation ?? null, scoring: extracted.scoring ?? null, primeTarget: prime },
   };
 
   const styleId = extracted.styleId as Obj | null;

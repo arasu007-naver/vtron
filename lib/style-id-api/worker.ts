@@ -1,8 +1,8 @@
 import "server-only";
 import { getAdminSupabase } from "@/lib/supabase/server";
 import { anthropicApiKey } from "@/lib/style-ex/api-key";
-import { MAX_IMAGE_BYTES, runApiStyleId, sniffImage } from "./extract";
-import { IMAGE_BUCKET, removeImages } from "./jobs";
+import { MAX_IMAGE_BYTES, runApiStyleId, sniffImage, type ApiStyleIdRun } from "./extract";
+import { IMAGE_BUCKET, ITEMS_TABLE, removeImages } from "./jobs";
 
 /**
  * 대량 Style ID 큐 워커 — api_call_items 에서 꺼내(claim_api_call_items) 추출하고 결과를 남긴다(finish_api_call_item).
@@ -16,6 +16,7 @@ import { IMAGE_BUCKET, removeImages } from "./jobs";
  * 한 프로세스에는 drain 이 하나만 돈다 — 돌고 있으면 새로 넣은 상품도 그 drain 이 꺼낸다.
  * 일시적 오류(사진 주소 응답 없음 · 5xx, Anthropic 429 · 5xx · 529)는 큐로 되돌려 다시 시도하고,
  * STYLE_ID_JOB_MAX_ATTEMPTS 번째도 실패하면 failed 로 닫는다.
+ * 상품마다 근거(관찰 envelope · 판정 기록 · JEV 결정)도 그 행(observation · scoring · prime_target, 0024)에 남긴다.
  */
 
 const num = (v: string | undefined, d: number) => {
@@ -84,6 +85,19 @@ const isTransient = (e: unknown) => {
   return typeof status === "number" ? status === 408 || status === 429 || status >= 500 : /ECONNRESET|ETIMEDOUT|fetch failed|overloaded/i.test(String(e));
 };
 
+/**
+ * 근거(관찰 · 판정 기록 · JEV 결정)를 그 행에 남긴다 (0024). 결과(finish)보다 먼저 — 그 행을 아직 이 워커가 들고 있을 때.
+ * 0024 전이면 열이 없어 남기지 못한다 — 경고만 하고 결과는 그대로 남긴다.
+ */
+async function saveEvidence(it: ClaimedItem, evidence: ApiStyleIdRun["evidence"]) {
+  const { error } = await getAdminSupabase()
+    .from(ITEMS_TABLE)
+    .update({ observation: evidence.observation, scoring: evidence.scoring, prime_target: evidence.primeTarget })
+    .eq("id", it.id)
+    .eq("status", "running");
+  if (error) console.warn(`[style-id-jobs] ${it.call_id}#${it.seq} 근거 저장 실패 (0024 를 실행했는지 확인):`, error.message);
+}
+
 async function finish(it: ClaimedItem, fields: { status: "done" | "failed" | "queued"; style_id?: string | null; result?: Obj | null; error?: string | null; detail?: string | null; ms?: number }) {
   const { error } = await getAdminSupabase().rpc("finish_api_call_item", {
     p_id: it.id,
@@ -117,6 +131,7 @@ async function processItem(it: ClaimedItem) {
       observe_prompt_version: run.observePromptVersion,
       vision_model: run.visionModel,
     };
+    await saveEvidence(it, run.evidence);
     if (run.result.ok) {
       const { ok: _ok, ...result } = run.result;
       void _ok;
