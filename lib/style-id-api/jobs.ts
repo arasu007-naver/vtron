@@ -253,3 +253,75 @@ export async function primeSummary(callId: string, total: number) {
   }
   return { primed: groups.found + groups.not_found + groups.no_product, groups, categories };
 }
+
+/** 다시 진행할 때 비우는 열 — 처음 큐에 넣었을 때와 같게 */
+const RESET_COLUMNS = {
+  attempts: 0,
+  locked_until: null,
+  style_id: null,
+  result: null,
+  error: null,
+  error_detail: null,
+  elapsed_ms: null,
+  started_at: null,
+  finished_at: null,
+  observation: null,
+  scoring: null,
+};
+const RESUME_CHUNK = 200;
+
+const textOf = (v: unknown) => (typeof v === "string" || typeof v === "number" ? String(v).trim() : "");
+
+/**
+ * 작업 다시 진행 — 실패(failed)한 상품을 큐로 되돌린다. 그 뒤 drainStyleIdQueue 를 부르면 이어서 돈다.
+ *   상품명이 있고 대표 의복을 확정하지 못한(found 가 아닌) 상품 → prime (대표 의복 단계부터)
+ *   그 밖의 상품                                            → queued (정해 둔 대표 의복으로 관찰부터)
+ *   업로드 받은 사진(image_path)은 처리가 끝나면 지웠으므로 되돌리지 않는다 → skipped
+ * 대기 · 처리 중인 상품은 건드리지 않는다 (lease 가 지난 것은 큐가 다시 꺼낸다).
+ */
+export async function resumeJob(callId: string): Promise<{ reprimed: number; requeued: number; skipped: number }> {
+  const db = getAdminSupabase();
+  const failed: { id: string; product: Obj | null; image_url: string | null; prime_group: PrimeGroup | null }[] = [];
+  const PAGE = 1000;
+  for (let offset = 0; ; offset += PAGE) {
+    const { data, error } = await db
+      .from(ITEMS_TABLE)
+      .select("id, product, image_url, prime_group")
+      .eq("call_id", callId)
+      .eq("status", "failed")
+      .order("seq")
+      .range(offset, offset + PAGE - 1);
+    if (error) throw new Error(`실패한 상품 조회 실패: ${error.message}`);
+    failed.push(...((data ?? []) as typeof failed));
+    if ((data ?? []).length < PAGE) break;
+  }
+
+  const reprime: string[] = [];
+  const requeue: string[] = [];
+  let skipped = 0;
+  for (const it of failed) {
+    if (!it.image_url) {
+      skipped++;
+      continue;
+    }
+    const named = textOf(it.product?.name) || textOf(it.product?.product_name);
+    (named && it.prime_group !== "found" ? reprime : requeue).push(it.id);
+  }
+
+  const update = async (ids: string[], fields: Obj) => {
+    for (let i = 0; i < ids.length; i += RESUME_CHUNK) {
+      const { error } = await db
+        .from(ITEMS_TABLE)
+        .update({ ...RESET_COLUMNS, ...fields })
+        .in("id", ids.slice(i, i + RESUME_CHUNK))
+        .eq("status", "failed");
+      if (error) throw new Error(`상품을 큐로 되돌리지 못했습니다: ${error.message}`);
+    }
+  };
+  await update(reprime, { status: "prime", prime_group: null, prime_target: null });
+  await update(requeue, { status: "queued" });
+
+  const { error } = await db.rpc("api_call_job_refresh", { p_call_id: callId });
+  if (error) throw new Error(`작업 상태 갱신 실패: ${error.message}`);
+  return { reprimed: reprime.length, requeued: requeue.length, skipped };
+}

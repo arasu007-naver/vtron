@@ -45,7 +45,11 @@ export interface ApiStyleIdFailure {
   error: string;
   /** 서버 쪽 사유 */
   detail: string;
+  /** Vision 모델 호출 자체가 실패했다 (사진 탓이 아님) */
+  unavailable: boolean;
 }
+
+export const VISION_UNAVAILABLE = "스타일 추출을 잠시 사용할 수 없습니다.";
 
 export interface ApiStyleIdRun {
   result: ApiStyleIdSuccess | ApiStyleIdFailure;
@@ -97,7 +101,10 @@ export async function runApiStyleId({
     const detail =
       (styleId?.error as string | undefined) ??
       (observation?.ok === false ? JSON.stringify(observation.error ?? "observation failed") : "스타일 아이디를 정하지 못했습니다.");
-    return { ...base, result: { ok: false, error: "사진에서 스타일 아이디를 판정할 의복을 찾지 못했습니다.", detail } };
+    // Vision 모델 호출 자체가 실패(키 · 한도 · 서버 오류)한 것은 사진 탓이 아니다 — 서버 오류로 돌려준다
+    const callFailed = observation?.ok === false && (observation.error as Obj | undefined)?.code === "VISION_CALL_FAILED";
+    const error = callFailed ? VISION_UNAVAILABLE : "사진에서 스타일 아이디를 판정할 의복을 찾지 못했습니다.";
+    return { ...base, result: { ok: false, error, detail, unavailable: callFailed } };
   }
 
   const axes = Object.fromEntries(

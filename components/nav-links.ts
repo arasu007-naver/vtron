@@ -24,6 +24,7 @@ import {
   KeySquare,
   Bug,
   PlayCircle,
+  ScrollText,
 } from "lucide-react";
 
 export const NAV_LINKS = [
@@ -124,6 +125,12 @@ export const NAV_LINKS = [
     title: "사업자등록증으로 외부 업체를 확인하고 STMX API 키를 발급 · 재발급 · 폐기한다",
   },
   {
+    href: "/admin/api-log",
+    label: "API 로그",
+    icon: ScrollText,
+    title: "API 키를 발급한 업체별 대량 Style ID 호출(CSV)과 상품마다 Style ID · 추출 요소를 본다. CSV 를 올려 그 업체로 호출할 수도 있다",
+  },
+  {
     href: "/api-demo",
     label: "API 데모",
     icon: PlayCircle,
@@ -142,18 +149,7 @@ export type NavHref = (typeof NAV_LINKS)[number]["href"];
 type NavLink = (typeof NAV_LINKS)[number];
 
 /** 상단 NavBar 에 둘 링크 — 순서대로. label 을 주면 NavBar 에서만 그 이름을 쓰고, match 의 경로에서도 켜진다. */
-const NAVBAR: { href: NavHref; label?: string; match?: string[] }[] = [
-  // 인덱스(/)도 같은 Full-Look 페이지라 거기서도 켜진다
-  { href: "/full-style-ex", label: "Full Style ID", match: ["/"] },
-  { href: "/style-ex", label: "Item Style ID" },
-  { href: "/product-style" },
-  { href: "/contracts" },
-  // 크리에이터 계약 관리(/admin/creators)는 Creator 요청에 합쳤다 — 두 페이지 위의 CreatorTabs 로 오간다
-  { href: "/creator-req", match: ["/admin/creators"] },
-  { href: "/admin/brands" },
-  { href: "/admin/api-mng" },
-  { href: "/prompt-dbg" },
-];
+const NAVBAR: { href: NavHref; label?: string; match?: string[] }[] = [{ href: "/admin/api-log" }];
 
 export interface NavBarLink {
   href: NavHref;

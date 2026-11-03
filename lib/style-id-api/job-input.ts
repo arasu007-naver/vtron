@@ -14,13 +14,14 @@ import { MAX_IMAGE_BYTES, sniffImage } from "./extract";
  *                           product · image 를 같은 수만큼 반복 — n 번째 product(JSON 문자열)와 n 번째 image(파일 또는 URL)가 한 쌍
  *
  *   상품 정보(product) — 내부 상품 정보(brand_catalog_models)와 같은 이름을 쓴다
- *     id                        업체 쪽 상품 id (선택 — 결과에 ref 로 돌려준다)
- *     name                      상품명 (선택이지만 권장 — 사진에 옷이 여럿일 때 대표 의복을 고른다)
- *     whole_category_name       분류 (예: 패션의류>여성의류>아우터>재킷). category 도 받는다
+ *     id                        업체 쪽 상품 id (선택 — 결과에 ref 로 돌려준다). model_id 도 받는다
+ *     name                      상품명 (선택이지만 권장 — JEV 로 대표 의복을 정한다). product_name 도 받는다
+ *     whole_category_name       분류 (예: 패션의류>여성의류>아우터>재킷). category · product_category 도 받는다
  *     image_url · original_image_url   상품 사진 주소 (item.image_url 이 없을 때)
  *     그 밖의 키는 그대로 보관한다 (8KB 까지)
  *
- *   CSV 열 — product(상품 정보 JSON 문자열) 또는 id · name · whole_category_name(category) 열, 그리고 image_url 열
+ *   CSV 열 — product(상품 정보 JSON 문자열) 또는 id · name · whole_category_name(category) 열(위의 다른 이름도 받는다), 그리고 image_url 열.
+ *            그 밖의 열(brand 등)도 상품 정보에 그대로 보관한다
  */
 
 export const MAX_ITEMS = Math.max(1, Number(process.env.STYLE_ID_JOB_MAX_ITEMS) || 1000);
@@ -118,9 +119,15 @@ function toItem(
     image_url = checkImageUrl(urlText);
     if (!image_url) throw new JobInputError(`${where}: image_url 은 외부 http(s) 주소여야 합니다.`);
   }
-  const name = text(product.name).slice(0, MAX_TEXT) || null;
-  const category = (text(product.whole_category_name) || text(product.category)).slice(0, MAX_TEXT) || null;
-  return { ref: text(product.id).slice(0, MAX_TEXT) || null, product, name, category, image, image_url };
+  const name = (text(product.name) || text(product.product_name)).slice(0, MAX_TEXT) || null;
+  const category =
+    (text(product.whole_category_name) || text(product.category) || text(product.product_category)).slice(0, MAX_TEXT) || null;
+  const ref = (text(product.id) || text(product.model_id)).slice(0, MAX_TEXT) || null;
+  // 워커(대표 의복 · 관찰 단계)는 저장한 product 의 name · whole_category_name · id 를 읽는다 — 다른 이름으로 왔으면 그 이름으로도 남긴다
+  if (name && !text(product.name)) product.name = name;
+  if (category && !text(product.whole_category_name) && !text(product.category)) product.whole_category_name = category;
+  if (ref && !text(product.id)) product.id = ref;
+  return { ref, product, name, category, image, image_url };
 }
 
 function fromJsonItems(list: unknown): JobItemInput[] {
@@ -189,9 +196,11 @@ function fromCsv(src: string): JobItemInput[] {
     const where = `CSV ${i + 2}행`;
     const cell = Object.fromEntries(cols.map((c, j) => [c, r[j]?.trim() ?? ""]));
     const product: Obj = cell.product ? parseProduct(cell.product, where) : {};
-    for (const k of ["id", "name", "whole_category_name", "category"]) {
-      if (cell[k] && product[k] == null) product[k] = cell[k];
+    // product 열 밖의 열도 상품 정보로 보관한다 (product_name · model_id 같은 다른 이름은 toItem 이 읽는다)
+    for (const [k, v] of Object.entries(cell)) {
+      if (k && k !== "product" && v && product[k] == null) product[k] = v;
     }
+    if (JSON.stringify(product).length > MAX_PRODUCT_JSON) throw new JobInputError(`${where}: 상품 정보는 8KB 이하만 받습니다.`);
     return toItem(product, where, null, cell.image_url);
   });
 }
@@ -231,8 +240,10 @@ function parseJson(src: string) {
   }
 }
 
-/** 요청 → 상품 목록. 하나라도 틀리면 전체를 받지 않는다(JobInputError) */
-export async function readJobInput(req: Request): Promise<{ items: JobItemInput[]; format: "json" | "csv" | "multipart" }> {
+/** 요청 → 상품 목록. 하나라도 틀리면 전체를 받지 않는다(JobInputError). file_name = multipart 로 올린 CSV 파일 이름 */
+export async function readJobInput(
+  req: Request
+): Promise<{ items: JobItemInput[]; format: "json" | "csv" | "multipart"; file_name?: string | null }> {
   const type = (req.headers.get("content-type") ?? "").toLowerCase();
   if (type.startsWith("application/json")) return { items: fromJsonItems(parseJson(await req.text())), format: "json" };
   if (type.startsWith("text/csv")) return { items: fromCsv(await req.text()), format: "csv" };
@@ -240,7 +251,9 @@ export async function readJobInput(req: Request): Promise<{ items: JobItemInput[
     const form = await req.formData().catch(() => null);
     if (!form) throw new JobInputError("multipart 본문을 읽지 못했습니다.");
     const csv = form.get("csv") ?? form.get("file");
-    return { items: await fromMultipart(form), format: csv instanceof File ? "csv" : "multipart" };
+    return csv instanceof File
+      ? { items: await fromMultipart(form), format: "csv", file_name: csv.name.slice(0, MAX_TEXT) || null }
+      : { items: await fromMultipart(form), format: "multipart" };
   }
   throw new JobInputError("application/json · text/csv · multipart/form-data 로 보내 주세요.", 415);
 }

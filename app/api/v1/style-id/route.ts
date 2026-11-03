@@ -26,7 +26,7 @@ const MAX_TEXT = 200;
  *       candidates: [{ style_id, style }],   // 중립 축의 양쪽 글자를 조합한 후보 전부(첫 번째 = style_id)
  *       axes: { EI|TC|SR|DM: { letter, letters, source } }, elapsed_ms }
  * 422 { request_id, ok: false, error }        // 사진에서 판정할 의복을 찾지 못함 등
- * 400 · 413 · 415 입력 오류, 401 키 없음 · 틀림, 403 정지, 503 추출 엔진 설정 없음
+ * 400 · 413 · 415 입력 오류, 401 키 없음 · 틀림, 403 정지, 503 추출 엔진 설정 없음 · Vision 모델 호출 실패
  *
  * 관찰 원문 · 엔진 점수는 내보내지 않는다. 호출마다 api_call_log 에 남는다(이미지는 남기지 않는다).
  */
@@ -83,7 +83,7 @@ export const POST = withBusinessApi(async (req, ctx) => {
     ok: result.ok,
     ...(result.ok && { style_id: result.style_id, candidates: result.candidates.map((c) => c.style_id) }),
   };
-  if (!result.ok) return fail(422, result.error, result.detail);
+  if (!result.ok) return fail(result.unavailable ? 503 : 422, result.error, result.detail);
 
   return NextResponse.json({
     request_id: ctx.request_id,

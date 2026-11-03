@@ -45,9 +45,10 @@ export const POST = withBusinessApi(async (req, ctx) => {
     if (e instanceof JobInputError) return fail(e.status, e.message);
     throw e;
   }
-  const { items, format } = input;
+  const { items, format, file_name } = input;
   ctx.log.request = {
     format,
+    ...(file_name && { file_name }),
     items: items.length,
     uploaded_images: items.filter((it) => it.image).length,
     with_product_name: items.filter((it) => it.name).length,

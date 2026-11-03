@@ -21,8 +21,8 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 /**
- * GET /api/admin/business-users?q=&status=&page=&pageSize=
- * 지우지 않은 업체 목록. q 는 상호(부분 일치) 또는 사업자번호(숫자 부분 일치).
+ * GET /api/admin/business-users?q=&status=&page=&pageSize=&hasToken=1
+ * 지우지 않은 업체 목록. q 는 상호(부분 일치) 또는 사업자번호(숫자 부분 일치). hasToken=1 이면 API 키가 발급된 업체만.
  */
 export async function GET(req: NextRequest) {
   const auth = await authenticate(req);
@@ -45,6 +45,9 @@ export async function GET(req: NextRequest) {
 
     if (BUSINESS_USER_STATUSES.includes(status as BusinessUserStatus)) {
       query = query.eq("status", status);
+    }
+    if (url.searchParams.get("hasToken") === "1") {
+      query = query.not("token_hash", "is", null);
     }
     if (q) {
       const digits = normalizeBizNo(q);
