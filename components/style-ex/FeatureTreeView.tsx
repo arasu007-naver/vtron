@@ -1,6 +1,6 @@
 "use client";
 
-/* 37 Features — 관찰 결과(관찰 envelope)의 vision feature 를 계층으로 보는 트리 (/style-ex).
+/* Features — 관찰 결과(관찰 envelope)의 vision feature 를 계층으로 보는 트리 (/style-ex).
    계층 · 값은 lib/style-ex/feature-tree.ts 가 정한다. 위의 상태 칩을 누르면 그 상태인 feature 만 남긴다. */
 
 import { useMemo, useState } from "react";

@@ -49,7 +49,7 @@ const isThreeCallPrompt = (text: string) =>
 const RESULT_TABS: { key: ResultKey; label: string }[] = [
   { key: "observe", label: "관찰 결과" },
   // 관찰 결과의 Evidence Packet 을 vision feature 계층(흐름도의 구성도)으로 펼친 트리
-  { key: "features", label: "37 Features" },
+  { key: "features", label: "Features" },
   { key: "judge", label: "판정 결과" },
 ];
 
@@ -123,7 +123,7 @@ export default function FullStyleIdExtractionPage() {
   const [status, setStatus] = useState<Status>("idle");
   const [resultTab, setResultTab] = useState<ResultKey>("judge");
   const [parts, setParts] = useState<{ observe: string; judge: string } | null>(null);
-  /** 관찰 결과의 Evidence Packet — 37 Features 트리가 읽는다 */
+  /** 관찰 결과의 Evidence Packet — Features 트리가 읽는다 */
   const [packet, setPacket] = useState<Record<string, unknown> | null>(null);
   const [message, setMessage] = useState("");
   const [packetStatus, setPacketStatus] = useState<string | null>(null);

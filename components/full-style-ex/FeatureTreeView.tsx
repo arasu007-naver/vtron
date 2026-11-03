@@ -1,6 +1,6 @@
 "use client";
 
-/* 37 Features — 관찰 결과(Evidence Packet)를 vision feature 계층으로 보는 트리 (/full-style-ex).
+/* Features — 관찰 결과(Evidence Packet)를 vision feature 계층으로 보는 트리 (/full-style-ex).
    계층 · 값은 lib/full-style-ex/feature-tree.ts 가 정한다. 위의 상태 칩을 누르면 그 상태인 feature 만 남긴다. */
 
 import { useMemo, useState } from "react";

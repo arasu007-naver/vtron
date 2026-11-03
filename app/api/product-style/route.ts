@@ -8,6 +8,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const DEFAULT_PAGE_SIZE = 12;
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 /** product_style 에서 읽는 열 — target 은 0021 전이면 없다 */
 interface ProductStyleDbRow {
@@ -138,4 +139,23 @@ export async function GET(req: NextRequest) {
       product: productOf.get(String(r.model_id)) ?? null,
     })),
   });
+}
+
+/**
+ * DELETE /api/product-style?id=<uuid> — 저장된 상품 Style ID 추출 결과(product_style) 한 행을 DB 에서 삭제한다.
+ */
+export async function DELETE(req: NextRequest) {
+  const auth = await authenticate(req);
+  if (!auth) return unauthorized();
+
+  const id = req.nextUrl.searchParams.get("id")?.trim() ?? "";
+  if (!UUID.test(id)) {
+    return NextResponse.json({ error: "유효한 id(uuid)가 필요합니다." }, { status: 400 });
+  }
+
+  const supabase = getAdminSupabase();
+  const { error } = await supabase.from("product_style").delete().eq("id", id);
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  return NextResponse.json({ ok: true });
 }

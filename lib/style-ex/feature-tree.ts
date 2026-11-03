@@ -1,5 +1,5 @@
 /**
- * 관찰 envelope(Item Vision V1.3) → 37개 vision feature 트리 (/style-ex 의 "37 Features" 탭).
+ * 관찰 envelope(Item Vision V1.3) → 37개 vision feature 트리 (/style-ex 의 "Features" 탭).
  *
  * 흐름도(docs/style-vision-element-extraction.html · 37개 요소의 계층 구조)와 같은 계층으로 펼친다:
  *   의복(타깃) → #1 category → 카테고리가 켜는 기본 파라미터(범용 9 · 형태 · 상체 · 하체/허리 · 카테고리 전용)

@@ -15,7 +15,7 @@
    v1.1 · v1.2 · v1 · v2 · custom. 사진 오른쪽 아래에 "target:version" 으로 열 값 그대로 보인다(버전을 모르면 target 만). */
 
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ExternalLink, FileJson, Loader2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ExternalLink, Eye, FileJson, Loader2, Trash2 } from "lucide-react";
 import { FeatureTreeView } from "@/components/style-ex/FeatureTreeView";
 import FullLookFeatureTreeView from "@/components/full-style-ex/FeatureTreeView";
 import { ObservationModal } from "@/components/style-ex/ObservationModal";
@@ -72,6 +72,7 @@ const NAV_BUTTON =
 
 export default function ProductStylePage() {
   const [page, setPage] = useState(1);
+  const [reloadSeq, setReloadSeq] = useState(0);
   const [rows, setRows] = useState<ProductStyleRow[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -99,7 +100,7 @@ export default function ProductStylePage() {
     return () => {
       stale = true;
     };
-  }, [page]);
+  }, [page, reloadSeq]);
 
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const go = (p: number) => {
@@ -107,6 +108,25 @@ export default function ProductStylePage() {
     if (next === page) return;
     setLoading(true);
     setPage(next);
+  };
+
+  const handleDelete = async (id: string) => {
+    setError(null);
+    const res = await authFetch(`/api/product-style?id=${encodeURIComponent(id)}`, { method: "DELETE" });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      setError(data.error || `삭제 실패 (HTTP ${res.status})`);
+      return;
+    }
+    const remaining = rows.filter((r) => r.id !== id);
+    setRows(remaining);
+    setTotal((prev) => Math.max(0, prev - 1));
+    if (remaining.length === 0 && page > 1) {
+      setLoading(true);
+      setPage(page - 1);
+    } else {
+      setReloadSeq((s) => s + 1);
+    }
   };
 
   return (
@@ -178,7 +198,7 @@ export default function ProductStylePage() {
         )}
         <div className="grid grid-cols-3 gap-4 p-4 items-start">
           {rows.map((row) => (
-            <ProductStyleItem key={row.id} row={row} />
+            <ProductStyleItem key={row.id} row={row} onDelete={() => handleDelete(row.id)} />
           ))}
         </div>
       </div>
@@ -186,13 +206,15 @@ export default function ProductStylePage() {
   );
 }
 
-/** 항목 하나 — 위에서 아래로 상품 사진 · 상품 정보 · 판정 결과 · 37 Features(관찰 결과의 vision feature 트리) */
-function ProductStyleItem({ row }: { row: ProductStyleRow }) {
+/** 항목 하나 — 위에서 아래로 상품 사진 · 상품 정보 · 판정 결과 · Features(관찰 결과의 vision feature 트리) */
+function ProductStyleItem({ row, onDelete }: { row: ProductStyleRow; onDelete: () => Promise<void> }) {
   const { observation, styleId, judgement, scoring, vision_model, judge_model, elapsed_ms } = row;
   const [observationOpen, setObservationOpen] = useState(false);
+  const [judgementOpen, setJudgementOpen] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   // 아이템 관찰은 { ok, envelope, … } — 트리는 envelope 를 읽는다.
   const envelope = (observation as { envelope?: unknown } | null)?.envelope ?? null;
-  // Full-Look 관찰은 envelope 대신 Evidence Packet — /full-style-ex 의 37 Features 탭과 같은 트리로 본다.
+  // Full-Look 관찰은 envelope 대신 Evidence Packet — /full-style-ex 의 Features 탭과 같은 트리로 본다.
   const packet = (observation as { packet?: Record<string, unknown> | null } | null)?.packet ?? null;
   const judged = { styleId, judgement, scoring, vision_model, judge_model, elapsed_ms };
   const productInfo: [string, string][] = row.product
@@ -269,20 +291,28 @@ function ProductStyleItem({ row }: { row: ProductStyleRow }) {
         </dl>
       </div>
 
-      {/* 판정 결과 — 스타일 아이디 카드 + 판정 JSON (관찰 결과를 뺀 나머지) */}
+      {/* 판정 결과 — 스타일 아이디 카드 (판정 JSON 은 Eye 아이콘 클릭 시 JSON 트리 모달로 표시) */}
       <section className="border-b border-[var(--color-divider)]">
-        <h2 className="m-0 px-3 pt-2 text-sm font-semibold">판정 결과</h2>
+        <div className="flex items-center gap-1.5 px-3 pt-2">
+          <h2 className="m-0 text-sm font-semibold">판정 결과</h2>
+          <button
+            type="button"
+            onClick={() => setJudgementOpen(true)}
+            title="판정 결과 JSON 트리 보기"
+            aria-label="판정 결과 JSON 트리 보기"
+            className="w-7 h-7 flex items-center justify-center rounded-full text-black/60 hover:text-black hover:bg-black/5 cursor-pointer"
+          >
+            <Eye className="w-4 h-4" />
+          </button>
+        </div>
         <StyleIdCard summary={{ styleId, judgement }} />
-        <pre className="m-0 max-h-64 overflow-auto vt-scroll p-3 font-[family-name:var(--font-mono)] text-xs leading-relaxed whitespace-pre-wrap break-all select-text">
-          {JSON.stringify(judged, null, 2)}
-        </pre>
       </section>
 
-      {/* 37 Features — 관찰 결과의 vision feature 를 계층 트리로. item = 관찰 envelope 트리 · full = Evidence Packet 트리
-          (/full-style-ex 의 37 Features 탭과 같은 FullLookFeatureTreeView). 오른쪽 위 FAB = 관찰 결과 원본(JSON) 모달 */}
+      {/* Features — 관찰 결과의 vision feature 를 계층 트리로. item = 관찰 envelope 트리 · full = Evidence Packet 트리
+          (/full-style-ex 의 Features 탭과 같은 FullLookFeatureTreeView). 오른쪽 위 FAB = 관찰 결과 원본(JSON) 모달 */}
       <section>
         <div className="flex items-center gap-2 px-3 pt-2">
-          <h2 className="m-0 text-sm font-semibold">37 Features</h2>
+          <h2 className="m-0 text-sm font-semibold">Features</h2>
           <button
             type="button"
             onClick={() => setObservationOpen(true)}
@@ -291,6 +321,23 @@ function ProductStyleItem({ row }: { row: ProductStyleRow }) {
           >
             <FileJson className="w-3.5 h-3.5" />
             관찰 결과
+          </button>
+          <button
+            type="button"
+            disabled={deleting}
+            onClick={async () => {
+              setDeleting(true);
+              try {
+                await onDelete();
+              } finally {
+                setDeleting(false);
+              }
+            }}
+            title="관찰 결과 삭제"
+            aria-label="관찰 결과 삭제"
+            className="w-7 h-7 flex items-center justify-center rounded-full text-[var(--color-danger)] hover:bg-red-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+          >
+            {deleting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
           </button>
         </div>
         <div className="max-h-96 overflow-auto vt-scroll">
@@ -304,6 +351,13 @@ function ProductStyleItem({ row }: { row: ProductStyleRow }) {
           )}
         </div>
       </section>
+      <ObservationModal
+        open={judgementOpen}
+        onClose={() => setJudgementOpen(false)}
+        title={`판정 결과 — ${row.product?.name ?? row.model_id}`}
+        observation={judged}
+        defaultView="tree"
+      />
       <ObservationModal
         open={observationOpen}
         onClose={() => setObservationOpen(false)}

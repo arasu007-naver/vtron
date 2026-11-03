@@ -56,7 +56,7 @@ const PROMPT_TABS: { key: PromptKey; label: string }[] = [{ key: "prompt", label
 type ResultKey = "observe" | "features" | "judge";
 const RESULT_TABS: { key: ResultKey; label: string }[] = [
   { key: "observe", label: "관찰 결과" },
-  { key: "features", label: "37 Features" },
+  { key: "features", label: "Features" },
   { key: "judge", label: "판정 결과" },
 ];
 
@@ -825,7 +825,7 @@ export default function StyleExPage() {
               {/* 관찰 결과 = 관찰 envelope (+ 그 관찰값으로 만든 부위 크롭) · 판정 결과 = 스타일 아이디 · 판정 · 스코어링 */}
               {resultTab === "judge" && summary?.styleId && <StyleIdCard summary={summary} />}
               {resultTab === "observe" && crops && <CropGrid result={crops} />}
-              {/* 37 Features = 관찰 envelope 의 vision feature 를 계층 트리로 */}
+              {/* Features = 관찰 envelope 의 vision feature 를 계층 트리로 */}
               {resultTab === "features" && status !== "running" && <FeatureTreeView envelope={envelope} />}
               {(resultTab !== "features" || status === "running") && (
               <pre className="p-3 font-[family-name:var(--font-mono)] text-xs leading-relaxed whitespace-pre-wrap break-all">

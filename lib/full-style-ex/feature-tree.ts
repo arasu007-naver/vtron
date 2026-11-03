@@ -1,5 +1,5 @@
 /**
- * Evidence Packet → vision feature 트리 (/full-style-ex 의 "37 Features" 탭).
+ * Evidence Packet → vision feature 트리 (/full-style-ex 의 "Features" 탭).
  *
  * 흐름도의 feature 구성도(docs/full-vision-feature-extraction.html#feature-map)와 같은 계층으로 펼친다:
  *   LOOK → ① 컴포넌트 → ② 외관 → ③ 의복 구조 → ④ 착용 관계 → ⑤ 디테일 시스템
