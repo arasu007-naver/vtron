@@ -15,6 +15,8 @@ const fashnImageHosts = [
 
 const nextConfig = {
   reactStrictMode: true,
+  // 개발 서버(next dev)에 이 도메인으로 접속할 때 HMR · dev 리소스 요청을 허용한다
+  allowedDevOrigins: ['stmx-m.qoolla.com'],
   // Full-Look Style ID 페이지 경로를 /full-style-id-extraction → /full-style-ex 로 바꿨다 — 예전 링크는 새 경로로
   async redirects() {
     return [{ source: "/full-style-id-extraction", destination: "/full-style-ex", permanent: true }];
