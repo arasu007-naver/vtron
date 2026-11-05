@@ -28,6 +28,16 @@ const PUBLIC_PATHS = ["/login"];
 const isPublicPath = (pathname: string) =>
   PUBLIC_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 
+/**
+ * 세션 · 관리자 검사를 하지 않는 공개 페이지 — 로그인 여부와 상관없이 그대로 보인다
+ * (/login 처럼 로그인한 사용자를 돌려보내지도, 비관리자 세션을 끊지도 않는다).
+ *   /test-demo  대량 Style ID 작업 결과 공개 링크 — requestId 를 아는 사람만 본다 (데이터는 /api/public/test-demo)
+ */
+const OPEN_PATHS = ["/test-demo"];
+
+const isOpenPath = (pathname: string) =>
+  OPEN_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+
 const redirectTo = (
   request: NextRequest,
   pathname: string,
@@ -42,6 +52,7 @@ const redirectTo = (
 
 export async function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
+  if (isOpenPath(pathname)) return NextResponse.next();
   const isPublic = isPublicPath(pathname);
 
   // 환경 변수가 없으면 세션을 검증할 수 없다. 통과시키지 않고(fail closed)

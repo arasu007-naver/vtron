@@ -26,7 +26,8 @@ export default function NavBar() {
   const router = useRouter();
   const [isSigningOut, setIsSigningOut] = useState(false);
 
-  if (pathname === "/login" || pathname.startsWith("/login/")) return null;
+  // /test-demo 는 로그인 없이 보는 공개 페이지라 띄우지 않는다
+  if (pathname === "/login" || pathname.startsWith("/login/") || pathname === "/test-demo") return null;
 
   // 세션을 끊으면 프록시 가드가 /login 으로 돌려보낸다.
   const handleSignOut = async () => {

@@ -49,7 +49,8 @@ export default function ChatAgent() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
   }, [messages, sending, open]);
 
-  if (pathname === "/login" || pathname.startsWith("/login/")) return null;
+  // /test-demo 는 로그인 없이 보는 공개 페이지라 띄우지 않는다
+  if (pathname === "/login" || pathname.startsWith("/login/") || pathname === "/test-demo") return null;
 
   const close = () => setOpen(false);
 

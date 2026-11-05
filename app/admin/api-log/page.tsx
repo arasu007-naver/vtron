@@ -1,10 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Eye, FileUp, ImageOff, RefreshCw, RotateCcw, ScrollText, Search, XCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, FileUp, Link2, RefreshCw, RotateCcw, ScrollText, Search, XCircle } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
-import { FeatureTreeView } from "@/components/style-ex/FeatureTreeView";
-import { ObservationModal } from "@/components/style-ex/ObservationModal";
+import { ItemCard, type JobItem } from "@/components/api-log/ItemCard";
 import { PRIMARY_BTN, SECONDARY_BTN, StatusBadge, formatDateTime } from "@/components/api-mng/ui";
 import type { BusinessUser } from "@/types/business-user";
 
@@ -27,35 +26,6 @@ interface Job {
   finished_at: string | null;
 }
 
-interface Axis {
-  letter: string | null;
-  letters: string[];
-  source: string | null;
-}
-
-interface JobItem {
-  seq: number;
-  ref: string | null;
-  product: { name?: string; whole_category_name?: string; category?: string } & Record<string, unknown>;
-  image_src: string | null;
-  status: "prime" | "queued" | "running" | "done" | "failed";
-  prime_group: "found" | "not_found" | "no_product" | null;
-  style_id: string | null;
-  result: {
-    style?: { name: string | null; sub_title: string | null } | null;
-    candidates?: unknown[];
-    axes?: Record<string, Axis>;
-    vision_model?: string | null;
-    observe_prompt_version?: number | null;
-  } | null;
-  error: string | null;
-  error_detail: string | null;
-  elapsed_ms: number | null;
-  observation: unknown;
-  /** 판정 함수 V2 기록 (product_style.scoring 과 같은 모양) */
-  scoring: unknown;
-  prime_target: { category: string | null; confidence: number | null } | null;
-}
 
 const JOB_STATUS: Record<JobStatus, { label: string; tone: string }> = {
   queued: { label: "대기", tone: "bg-[#F4F5F7] text-[#555A64]" },
@@ -67,13 +37,6 @@ const JOB_STATUS: Record<JobStatus, { label: string; tone: string }> = {
 };
 const ACTIVE_JOB: JobStatus[] = ["queued", "priming", "running"];
 
-const ITEM_STATUS: Record<JobItem["status"], string> = {
-  prime: "대표 의복 대기",
-  queued: "관찰 대기",
-  running: "관찰 중",
-  done: "완료",
-  failed: "실패",
-};
 
 const jobLabel = (j: Job) =>
   j.request_meta?.file_name || (j.request_meta?.format === "csv" ? "CSV (파일 이름 없음)" : `${j.request_meta?.format ?? "작업"} 요청`);
@@ -384,7 +347,7 @@ export default function ApiLogPage() {
                           j.id === jobId ? "bg-[#F5F0FF] border-l-2 border-l-[#9747FF]" : "hover:bg-[#FAFAFB]"
                         }`}
                       >
-                        <div className={`text-[13px] font-semibold text-[#101317] truncate ${j.job_status !== "done" ? "pr-7" : ""}`} title={jobLabel(j)}>
+                        <div className={`text-[13px] font-semibold text-[#101317] truncate ${j.job_status !== "done" ? "pr-14" : "pr-7"}`} title={jobLabel(j)}>
                           {jobLabel(j)}
                         </div>
                         <div className="mt-0.5 flex items-center gap-1.5 text-[11.5px] text-[#717680]">
@@ -395,19 +358,31 @@ export default function ApiLogPage() {
                           </span>
                         </div>
                       </button>
-                      {/* 끝나지 않은 작업 — 실패한 상품을 큐로 되돌려 다시 진행한다 (버튼 안에 버튼을 둘 수 없어 겹쳐 놓는다) */}
-                      {j.job_status !== "done" && (
+                      {/* 버튼 안에 버튼을 둘 수 없어 겹쳐 놓는다 —
+                          공개 결과 링크(/test-demo, 로그인 없이 본다) · 끝나지 않은 작업이면 재개(실패한 상품을 큐로 되돌려 다시 진행) */}
+                      <div className="absolute right-3 top-2 flex items-center gap-0.5">
                         <button
                           type="button"
-                          onClick={() => resumeJob(j)}
-                          disabled={resuming === j.id}
-                          className="absolute right-3 top-2 w-6 h-6 rounded-md flex items-center justify-center text-[#7A2CEE] hover:bg-[#EDE8FF] disabled:opacity-50 cursor-pointer"
-                          title="재개 — 실패한 상품을 다시 진행합니다"
-                          aria-label={`${jobLabel(j)} 재개`}
+                          onClick={() => window.open(`/test-demo?requestId=${encodeURIComponent(j.id)}`)}
+                          className="w-6 h-6 rounded-md flex items-center justify-center text-[#555A64] hover:text-[#7A2CEE] hover:bg-[#EDE8FF] cursor-pointer"
+                          title="공개 결과 페이지 열기 — 로그인 없이 이 호출의 결과를 봅니다"
+                          aria-label={`${jobLabel(j)} 공개 결과 페이지 열기`}
                         >
-                          <RotateCcw className={`w-3.5 h-3.5 ${resuming === j.id ? "animate-spin [animation-direction:reverse]" : ""}`} />
+                          <Link2 className="w-3.5 h-3.5" />
                         </button>
-                      )}
+                        {j.job_status !== "done" && (
+                          <button
+                            type="button"
+                            onClick={() => resumeJob(j)}
+                            disabled={resuming === j.id}
+                            className="w-6 h-6 rounded-md flex items-center justify-center text-[#7A2CEE] hover:bg-[#EDE8FF] disabled:opacity-50 cursor-pointer"
+                            title="재개 — 실패한 상품을 다시 진행합니다"
+                            aria-label={`${jobLabel(j)} 재개`}
+                          >
+                            <RotateCcw className={`w-3.5 h-3.5 ${resuming === j.id ? "animate-spin [animation-direction:reverse]" : ""}`} />
+                          </button>
+                        )}
+                      </div>
                     </li>
                   );
                 })
@@ -563,124 +538,5 @@ function ItemList({ bizId, job, filter, polling }: { bizId: string; job: Job; fi
         </div>
       )}
     </>
-  );
-}
-
-/** 상품 하나 — 왼쪽 사진 | 오른쪽 Style ID · 축 글자 1줄 + 관찰 요소 트리 */
-function ItemCard({ it }: { it: JobItem }) {
-  const [broken, setBroken] = useState(false);
-  const [judgementOpen, setJudgementOpen] = useState(false);
-  const axes = it.result?.axes ?? {};
-  // /product-style 의 판정 결과 모달과 같다 — 판정 결과 · 판정 기록(scoring)을 JSON 트리로
-  const judged = {
-    style_id: it.style_id,
-    style: it.result?.style ?? null,
-    candidates: it.result?.candidates ?? [],
-    axes: it.result?.axes ?? null,
-    scoring: it.scoring ?? null,
-    prime_target: it.prime_target,
-    vision_model: it.result?.vision_model ?? null,
-    observe_prompt_version: it.result?.observe_prompt_version ?? null,
-    elapsed_ms: it.elapsed_ms,
-    ...(it.error && { error: it.error, error_detail: it.error_detail }),
-  };
-  const category = it.product.whole_category_name ?? it.product.category;
-  return (
-    <li className="bg-white rounded-2xl border border-[#E5E7EB] shadow-xs grid grid-cols-2 overflow-hidden">
-      <div className="bg-[#F4F5F7] flex flex-col">
-        <div className="aspect-square flex items-center justify-center">
-          {it.image_src && !broken ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={it.image_src} alt={it.product.name ?? `상품 ${it.seq + 1}`} className="w-full h-full object-contain" onError={() => setBroken(true)} />
-          ) : (
-            <div className="flex flex-col items-center gap-1 text-[#8E96A2] text-[12px]">
-              <ImageOff className="w-6 h-6" />
-              사진 없음
-            </div>
-          )}
-        </div>
-        <div className="px-3 py-2 bg-white border-t border-[#F0F1F3] text-[12px]">
-          <div className="font-semibold text-[#101317] truncate" title={it.product.name}>
-            <span className="text-[#8E96A2] font-normal mr-1">#{it.seq + 1}</span>
-            {it.product.name ?? "(상품명 없음)"}
-          </div>
-          <div className="text-[#8E96A2] truncate">
-            {[it.ref && `ref ${it.ref}`, category].filter(Boolean).join(" · ") || "—"}
-          </div>
-        </div>
-      </div>
-
-      <div className="min-w-0 flex flex-col border-l border-[#F0F1F3]">
-        <div className="flex-none flex flex-wrap items-center gap-x-2 gap-y-1 px-3 py-2.5 border-b border-[#F0F1F3]">
-          {it.style_id ? (
-            <>
-              <span className="font-mono text-[16px] font-bold tracking-wider text-[#101317]">{it.style_id}</span>
-              <JudgementButton onClick={() => setJudgementOpen(true)} />
-              {it.result?.style?.name && <span className="text-[13px] text-[#555A64]">{it.result.style.name}</span>}
-              <span className="flex items-center gap-1">
-                {Object.entries(axes).map(([k, a]) => (
-                  <span
-                    key={k}
-                    title={a.source ? `${k} · ${a.source}` : k}
-                    className={`px-1.5 rounded border text-[11px] font-mono ${
-                      a.letters.length > 1 ? "bg-[#FFF6E6] text-[#D97706] border-[#FFE6B3]" : "bg-[#F5F0FF] text-[#7A2CEE] border-[#E4D8FF]"
-                    }`}
-                  >
-                    {k} {a.letters.length > 1 ? a.letters.join("/") : a.letter ?? "?"}
-                  </span>
-                ))}
-              </span>
-            </>
-          ) : (
-            <>
-              <span className={`text-[13px] font-semibold ${it.status === "failed" ? "text-[#E52E2E]" : "text-[#7A2CEE]"}`}>
-                {ITEM_STATUS[it.status]}
-              </span>
-              {it.status === "failed" && <JudgementButton onClick={() => setJudgementOpen(true)} />}
-            </>
-          )}
-          <span className="ml-auto text-[11px] text-[#8E96A2] tabular-nums">
-            {it.prime_target?.category && `${it.prime_target.category} · `}
-            {it.elapsed_ms != null && `${(it.elapsed_ms / 1000).toFixed(1)}s`}
-          </span>
-          {it.error && (
-            <p className="basis-full text-[12px] text-[#E52E2E] break-words" title={it.error_detail ?? undefined}>
-              {it.error}
-            </p>
-          )}
-        </div>
-        {/* /product-style 의 Features 와 같다 — 관찰 결과(observation)의 envelope 를 vision feature 트리로.
-            카드 높이는 왼쪽(사진 · 상품 정보)이 정하고, 트리는 판정 결과 줄 아래를 남김없이 채운 채 그 안에서 스크롤한다 */}
-        <div className="flex-1 min-h-0 relative">
-          <div className="absolute inset-0 overflow-y-auto vt-scroll">
-            <FeatureTreeView
-              envelope={(it.observation as { envelope?: unknown } | null)?.envelope ?? null}
-              emptyText={it.observation ? "이 결과에는 관찰 envelope 가 없습니다 (관찰 실패 등)." : "관찰 결과가 아직 없습니다."}
-            />
-          </div>
-        </div>
-      </div>
-      <ObservationModal
-        open={judgementOpen}
-        onClose={() => setJudgementOpen(false)}
-        title={`판정 결과 — ${it.product.name ?? `#${it.seq + 1}`}`}
-        observation={judged}
-        defaultView="tree"
-      />
-    </li>
-  );
-}
-
-function JudgementButton({ onClick }: { onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      title="판정 결과 JSON 트리 보기"
-      aria-label="판정 결과 JSON 트리 보기"
-      className="w-7 h-7 -ml-1 flex items-center justify-center rounded-full text-[#717680] hover:text-[#101317] hover:bg-[#F4F5F7] cursor-pointer"
-    >
-      <Eye className="w-4 h-4" />
-    </button>
   );
 }
