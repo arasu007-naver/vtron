@@ -287,11 +287,28 @@ async function observe(
     return text;
   };
 
-  const visionFnFor = (shared: string, blocks: string[], label: string) =>
-    isGemini ? geminiVisionFnFor(shared, blocks, label) : claudeVisionFnFor(shared, blocks, label);
+  // 엔진 runOneCall 은 던져진 오류를 문자열(detail)로만 남긴다 — 재시도 판단(429 · 5xx · retry-after)에 쓰도록 마지막 오류를 따로 잡아 둔다.
+  let lastCallError: unknown = null;
+  const visionFnFor = (shared: string, blocks: string[], label: string) => {
+    const fn = isGemini ? geminiVisionFnFor(shared, blocks, label) : claudeVisionFnFor(shared, blocks, label);
+    return async (...args: Parameters<typeof fn>) => {
+      try {
+        return await fn(...args);
+      } catch (e) {
+        lastCallError = e;
+        throw e;
+      }
+    };
+  };
   const fail = (c: { code: string; detail?: string; attempts: number; raw?: unknown }, where?: string) => ({
     ok: false as const,
-    error: { stage: "model_call", code: c.code, detail: where ? `${where}: ${c.detail ?? ""}` : c.detail, attempts: c.attempts },
+    error: {
+      stage: "model_call",
+      code: c.code,
+      detail: where ? `${where}: ${c.detail ?? ""}` : c.detail,
+      attempts: c.attempts,
+      upstream: upstreamOf(lastCallError),
+    },
     raw: c.raw,
     visionModel: activeModel,
   });
@@ -363,6 +380,19 @@ async function observe(
     console.info(`[style-ex] 상품 정보 적용 — product_match: ${matched.length ? matched.join(", ") : "없음 (이미지로 대표 의복 선택)"}`);
   }
   return { ok: true as const, envelope, contract_valid: governed.contract_valid, visionModel: activeModel, visionCalls };
+}
+
+/** Vision 호출 오류의 HTTP 상태 · retry-after (Anthropic APIError 는 status · headers 를 갖는다). 직렬화할 수 있는 값만. */
+function upstreamOf(e: unknown) {
+  if (!e || typeof e !== "object") return null;
+  const err = e as { status?: unknown; headers?: { get?: (k: string) => string | null }; constructor?: { name?: string } };
+  const header = (k: string) => (typeof err.headers?.get === "function" ? err.headers.get(k) : null);
+  return {
+    status: typeof err.status === "number" ? err.status : null,
+    error_type: err.constructor?.name ?? null,
+    retry_after: header("retry-after"),
+    retry_after_ms: header("retry-after-ms"),
+  };
 }
 
 /**
