@@ -38,7 +38,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
 
   let query = supabase
     .from(ITEMS_TABLE)
-    .select("seq, ref, product, image_url, image_path, status, prime_group, style_id, result, error, error_detail, elapsed_ms, finished_at, observation, scoring, prime_target")
+    .select("seq, ref, product, image_url, image_path, status, prime_group, style_id, result, error, error_detail, elapsed_ms, finished_at, observation, scoring, prime_target, prime_region")
     .eq("call_id", jobId)
     .order("seq")
     .range(offset, offset + limit - 1);

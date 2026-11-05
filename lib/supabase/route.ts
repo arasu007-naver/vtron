@@ -90,7 +90,6 @@ export async function authenticate(
 
   const validPublicKeys = [
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     process.env.STMX_WEB_SUPABASE_KEY,
   ].filter((k): k is string => Boolean(k?.trim()));
 

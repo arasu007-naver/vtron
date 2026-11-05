@@ -21,7 +21,9 @@ function LoginForm() {
   const searchParams = useSearchParams();
 
   const nextPath = safeNextPath(searchParams.get("next"));
-  const isConfigError = searchParams.get("error") === "config" || !hasSupabaseEnv;
+  // proxy 의 `?error=config` 는 따르지 않고 지금 환경 변수로만 판단한다 — 설정을 고친 뒤에도
+  // 남은 쿼리 때문에 오류 안내가 계속 보이지 않도록.
+  const isConfigError = !hasSupabaseEnv;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -84,7 +86,7 @@ function LoginForm() {
             </code>
             {" 과 "}
             <code className="font-[family-name:var(--font-mono)] text-[19.8px]">
-              NEXT_PUBLIC_SUPABASE_ANON_KEY
+              NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
             </code>
             {" 를 .env.local 에 지정한 뒤 서버를 다시 시작하세요."}
           </span>
