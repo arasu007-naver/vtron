@@ -6,6 +6,7 @@
  */
 
 import {
+  BookOpen,
   Database,
   FileText,
   Film,
@@ -141,6 +142,12 @@ export const NAV_LINKS = [
     label: "프롬프트 디버그",
     icon: Bug,
     title: "관찰 프롬프트 버전을 골라 흐름도와 원문을 나란히 보고, 흐름도의 단계를 누르면 그 절로 커서가 간다",
+  },
+  {
+    href: "/md-viewer",
+    label: "MD 뷰어",
+    icon: BookOpen,
+    title: "로컬 마크다운(.md) 파일을 선택해 문서 뷰어로 본다",
   },
 ] as const;
 
