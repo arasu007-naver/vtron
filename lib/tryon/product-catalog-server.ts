@@ -135,7 +135,7 @@ const escapeLike = (value: string) => value.replace(/[\\%_]/g, (char) => `\\${ch
  * (= 카탈로그 모델 id, UNIQUE)로 찾아 붙인다. 아직 마스터에 없는 모델은 지도에서 빠지고
  * 화면은 빈 자리로 두며 고를 수 없게 막는다(사진 없이는 피팅할 수 없다).
  */
-async function imageUrlByModelId(
+export async function imageUrlByModelId(
   modelIds: string[]
 ): Promise<Map<string, { thumb: string | null; original: string | null }>> {
   if (modelIds.length === 0) return new Map();

@@ -26,6 +26,7 @@ import {
   Bug,
   PlayCircle,
   ScrollText,
+  Search,
 } from "lucide-react";
 
 export const NAV_LINKS = [
@@ -88,6 +89,12 @@ export const NAV_LINKS = [
     label: "상품",
     icon: ShoppingBag,
     title: "stmx-web 상품 마스터를 브랜드 · 카테고리 · 제품명 · 품번으로 찾아보고 고친다",
+  },
+  {
+    href: "/product-search",
+    label: "상품 검색 v2",
+    icon: Search,
+    title: "검색 칸 하나로 브랜드 · 상품명(초성 포함) · 품번을 찾는 /api/product-search-v2 시험 화면",
   },
   {
     href: "/brand-integration",
