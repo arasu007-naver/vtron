@@ -18,6 +18,17 @@
         "crop:dev"
       ],
       "port": 8930
+    },
+    {
+      "name": "stmx-web-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "../stmx-web",
+        "run",
+        "dev"
+      ],
+      "port": 8910
     }
   ]
 }
