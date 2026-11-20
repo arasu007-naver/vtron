@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminSupabase } from "@/lib/supabase/server";
 import { authenticate, unauthorized } from "@/lib/supabase/route";
+import { cleanAliases } from "@/lib/brand-site/alias-suggest";
 import type { AdminBrandUpdate, BrandCommerceStatus } from "@/types/admin";
 
 export const runtime = "nodejs";
@@ -174,12 +175,31 @@ export async function PATCH(req: NextRequest) {
     if (typeof body.is_active === "boolean") {
       patch.is_active = body.is_active;
     }
+    let aliases: string[] | null = null;
+    if (Array.isArray(body.aliases)) {
+      aliases = body.aliases.map((a) => String(a));
+      if (aliases.length > 30) {
+        return NextResponse.json({ error: "별칭은 30개까지입니다." }, { status: 400 });
+      }
+    }
 
-    if (Object.keys(patch).length === 0) {
+    if (Object.keys(patch).length === 0 && aliases === null) {
       return NextResponse.json({ error: "변경할 필드가 없습니다." }, { status: 400 });
     }
 
     const supabase = getAdminSupabase();
+    if (aliases !== null) {
+      // 표시명과 같거나 서로 겹치는(대소문자 · 공백 · 구두점만 다른) 별칭은 뺀다.
+      const { data: current, error: readError } = await supabase
+        .from("brands")
+        .select("display_name")
+        .eq("id", id)
+        .maybeSingle();
+      if (readError) return NextResponse.json({ error: readError.message }, { status: 500 });
+      if (!current) return NextResponse.json({ error: "브랜드를 찾을 수 없습니다." }, { status: 404 });
+      patch.aliases = cleanAliases(aliases, current.display_name);
+    }
+
     const { data, error } = await supabase
       .from("brands")
       .update(patch)

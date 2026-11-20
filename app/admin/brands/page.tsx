@@ -4,9 +4,12 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Building2,
+  Globe,
+  Plus,
   RefreshCw,
   Save,
   Search,
+  X,
   XCircle,
 } from "lucide-react";
 import { authFetch } from "@/lib/auth-client";
@@ -30,6 +33,35 @@ function bpsToPercent(bps: number | null | undefined) {
   return `${(bps / 100).toFixed(2)}%`;
 }
 
+interface AliasSuggestState {
+  loading: boolean;
+  /** 한 번 찾아 결과가 왔다(빈 결과 포함). */
+  done: boolean;
+  error: string | null;
+  suggestions: {
+    alias: string;
+    reason: string;
+    source: { title: string; url: string };
+    evidence: string;
+  }[];
+  sources: { title: string; url: string }[];
+  /** 검색 결과에 근거가 없어 서버가 버린 제안 수. */
+  droppedCount: number;
+}
+
+const EMPTY_SUGGEST: AliasSuggestState = {
+  loading: false,
+  done: false,
+  error: null,
+  suggestions: [],
+  sources: [],
+  droppedCount: 0,
+};
+
+/** 검색이 맞추는 방식과 같게 — 대소문자 · 공백 · 구두점만 다르면 같은 별칭. */
+const aliasKey = (value: string) =>
+  value.normalize("NFC").toLowerCase().replace(/[\s.,'’`\-_/·()&+]/g, "");
+
 function statusStyle(status: string) {
   if (status === "active") return "bg-[#E6F8ED] text-[#0E8A42] border-[#C3EED3]";
   if (status === "paused") return "bg-[#FFF6E6] text-[#D97706] border-[#FFE6B3]";
@@ -50,6 +82,8 @@ export default function AdminBrandsPage() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [draft, setDraft] = useState<Partial<AdminBrand>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
+  const [aliasInput, setAliasInput] = useState("");
+  const [suggest, setSuggest] = useState<AliasSuggestState>(EMPTY_SUGGEST);
 
   const fetchList = useCallback(async () => {
     setIsLoading(true);
@@ -94,12 +128,61 @@ export default function AdminBrandsPage() {
       contact_name: brand.contact_name,
       commerce_notes: brand.commerce_notes,
       is_active: brand.is_active,
+      aliases: [...(brand.aliases || [])],
     });
+    setAliasInput("");
+    setSuggest(EMPTY_SUGGEST);
   };
 
   const cancelEdit = () => {
     setEditingId(null);
     setDraft({});
+    setAliasInput("");
+    setSuggest(EMPTY_SUGGEST);
+  };
+
+  const addAliases = (values: string[], displayName: string) => {
+    setDraft((d) => {
+      const cur = [...(d.aliases || [])];
+      const seen = new Set([aliasKey(displayName), ...cur.map(aliasKey)]);
+      for (const raw of values) {
+        const alias = raw.replace(/\s+/g, " ").trim();
+        const key = aliasKey(alias);
+        if (!key || seen.has(key)) continue;
+        seen.add(key);
+        cur.push(alias);
+      }
+      return { ...d, aliases: cur };
+    });
+  };
+
+  const removeAlias = (alias: string) =>
+    setDraft((d) => ({ ...d, aliases: (d.aliases || []).filter((a) => a !== alias) }));
+
+  const findAliases = async (id: string) => {
+    setSuggest({ ...EMPTY_SUGGEST, loading: true });
+    try {
+      const res = await authFetch("/api/admin/brands/aliases", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error || `HTTP ${res.status}`);
+      setSuggest({
+        loading: false,
+        done: true,
+        error: null,
+        suggestions: data.suggestions || [],
+        sources: data.sources || [],
+        droppedCount: data.droppedCount || 0,
+      });
+    } catch (err) {
+      setSuggest({
+        ...EMPTY_SUGGEST,
+        error: err instanceof Error ? err.message : "별칭을 찾지 못했습니다.",
+      });
+    }
   };
 
   const toggleStyle = (code: string) => {
@@ -300,6 +383,9 @@ export default function AdminBrandsPage() {
                         </span>
                         <span>카탈로그 모델: {brand.catalog_model_count ?? 0}</span>
                       </div>
+                      <div className="text-[12px] text-[#8E96A2]">
+                        별칭: {(brand.aliases || []).length ? brand.aliases.join(", ") : "—"}
+                      </div>
                     </div>
 
                     {!editing && (
@@ -409,6 +495,148 @@ export default function AdminBrandsPage() {
                           className="px-3 py-2 rounded-lg border border-[#E0E3E8] text-[13px] font-normal text-[#101317]"
                         />
                       </label>
+
+                      <div className="md:col-span-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                          <div className="text-[12px] font-semibold text-[#555A64]">
+                            별칭 <span className="font-normal text-[#8E96A2]">— 착장 상품 검색이 브랜드를 알아보는 다른 이름</span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => findAliases(brand.id)}
+                            disabled={suggest.loading}
+                            className="px-2.5 py-1 rounded-md border border-[#D9CFFF] bg-[#F6F3FF] text-[#7A2CEE] text-[12px] font-semibold flex items-center gap-1 cursor-pointer disabled:opacity-60"
+                          >
+                            {suggest.loading ? (
+                              <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                            ) : (
+                              <Globe className="w-3.5 h-3.5" />
+                            )}
+                            {suggest.loading ? "웹에서 찾는 중… (30초~1분)" : "웹 검색으로 별칭 찾기"}
+                          </button>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          {(draft.aliases || []).map((alias) => (
+                            <span
+                              key={alias}
+                              className="inline-flex items-center gap-1 pl-2 pr-1 py-0.5 rounded-md bg-[#F4F5F7] border border-[#E0E3E8] text-[12px] text-[#101317]"
+                            >
+                              {alias}
+                              <button
+                                type="button"
+                                onClick={() => removeAlias(alias)}
+                                aria-label={`${alias} 빼기`}
+                                className="p-0.5 rounded text-[#8E96A2] hover:text-[#E52E2E] cursor-pointer"
+                              >
+                                <X className="w-3 h-3" />
+                              </button>
+                            </span>
+                          ))}
+                          <input
+                            value={aliasInput}
+                            onChange={(e) => setAliasInput(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+                                e.preventDefault();
+                                addAliases([aliasInput], brand.display_name);
+                                setAliasInput("");
+                              }
+                            }}
+                            placeholder="직접 입력 후 Enter"
+                            className="px-2 py-1 rounded-md border border-[#E0E3E8] text-[12px] w-40"
+                          />
+                        </div>
+
+                        {suggest.error && (
+                          <p className="mt-2 text-[12px] text-[#E52E2E]">{suggest.error}</p>
+                        )}
+                        {!suggest.loading && !suggest.error && suggest.suggestions.length > 0 && (
+                          <div className="mt-2 p-3 rounded-lg border border-[#EDE8FF] bg-[#FBFAFF]">
+                            <div className="flex items-center justify-between gap-2 mb-2">
+                              <span className="text-[12px] font-semibold text-[#555A64]">
+                                웹 검색 결과에서 찾은 별칭 — 눌러서 더하고, 저장해야 반영됩니다
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  addAliases(
+                                    suggest.suggestions.map((s) => s.alias),
+                                    brand.display_name
+                                  )
+                                }
+                                className="text-[12px] font-semibold text-[#7A2CEE] cursor-pointer"
+                              >
+                                모두 더하기
+                              </button>
+                            </div>
+                            <ul className="flex flex-col gap-1">
+                              {suggest.suggestions.map((s) => {
+                                const added = [brand.display_name, ...(draft.aliases || [])]
+                                  .map(aliasKey)
+                                  .includes(aliasKey(s.alias));
+                                return (
+                                  <li key={s.alias} className="flex items-start gap-2 text-[12px]">
+                                    <button
+                                      type="button"
+                                      disabled={added}
+                                      onClick={() => addAliases([s.alias], brand.display_name)}
+                                      className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-md border border-[#D9CFFF] bg-white text-[#7A2CEE] font-semibold cursor-pointer disabled:opacity-40 disabled:cursor-default"
+                                    >
+                                      <Plus className="w-3 h-3" />
+                                      {s.alias}
+                                    </button>
+                                    <span className="text-[#717680] pt-0.5 min-w-0">
+                                      {s.reason}
+                                      <span className="block text-[11px] text-[#8E96A2] truncate">
+                                        “{s.evidence}” —{" "}
+                                        <a
+                                          href={s.source.url}
+                                          target="_blank"
+                                          rel="noreferrer"
+                                          className="underline hover:text-[#7A2CEE]"
+                                        >
+                                          {s.source.title || s.source.url}
+                                        </a>
+                                      </span>
+                                    </span>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                            {suggest.droppedCount > 0 && (
+                              <p className="mt-2 text-[11px] text-[#8E96A2]">
+                                검색 결과에서 근거를 대지 못한 제안 {suggest.droppedCount}개는 뺐습니다.
+                              </p>
+                            )}
+                            {suggest.sources.length > 0 && (
+                              <details className="mt-2 text-[11px] text-[#8E96A2]">
+                                <summary className="cursor-pointer">참고한 페이지 {suggest.sources.length}곳</summary>
+                                <ul className="mt-1 flex flex-col gap-0.5">
+                                  {suggest.sources.map((src) => (
+                                    <li key={src.url} className="truncate">
+                                      <a
+                                        href={src.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="underline hover:text-[#7A2CEE]"
+                                      >
+                                        {src.title || src.url}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </details>
+                            )}
+                          </div>
+                        )}
+                        {suggest.done && suggest.suggestions.length === 0 && (
+                          <p className="mt-2 text-[12px] text-[#717680]">
+                            웹 검색 결과에서 별칭을 찾지 못했습니다.
+                            {suggest.droppedCount > 0 &&
+                              ` (근거를 대지 못한 제안 ${suggest.droppedCount}개는 뺐습니다.)`}
+                          </p>
+                        )}
+                      </div>
 
                       <div className="md:col-span-2">
                         <div className="text-[12px] font-semibold text-[#555A64] mb-1.5">

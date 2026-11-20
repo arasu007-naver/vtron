@@ -479,9 +479,25 @@ async function writeToSupabase(snapshot) {
     await must(db.from("brands").update({ naver_brand_id: null }).in("id", stale), "brands naver_brand_id 비우기");
   }
 
+  // 관리자 화면(/admin/brands)에서 더한 별칭은 이 파일에 없다. 덮어쓰지 않고 합친다.
+  const existingAliases = new Map(
+    (
+      await must(db.from("brands").select("display_name, aliases").in("display_name", names), "brands 별칭 조회")
+    ).map((row) => [row.display_name, row.aliases ?? []])
+  );
+  const mergeAliases = (b) => {
+    const seen = new Set([norm(b.displayName)]);
+    return [...b.aliases, ...(existingAliases.get(b.displayName) ?? [])].filter((alias) => {
+      const k = norm(alias);
+      if (!k || seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+  };
+
   const brandRows = brands.map((b) => ({
     display_name: b.displayName,
-    aliases: b.aliases,
+    aliases: mergeAliases(b),
     naver_brand_id: b.naverBrandId,
     naver_brand_name: b.naverBrandName,
     match_status: b.matchStatus,
