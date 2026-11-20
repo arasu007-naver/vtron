@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopMy 링크 발행 플로우</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --text: #16181d; --muted: #5b6270; --line: #dde1e7;
+    --ok: #237a3b; --ok-bg: #e9f6ec; --prior: #8a5a00; --prior-bg: #fff4dc;
+    --unk: #6b6f78; --unk-bg: #f0f1f3; --est: #5b34b5; --est-bg: #f1ebff; --risk: #b42318; --risk-bg: #fdecea;
+    --accent: #1b4dff; --code-bg: #f1f3f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111317; --surface: #1a1d23; --text: #e8eaee; --muted: #a1a8b5; --line: #2d323b;
+      --ok: #6fd08c; --ok-bg: #16301f; --prior: #f0c060; --prior-bg: #352a10;
+      --unk: #b3b8c2; --unk-bg: #262a31; --est: #b9a2ff; --est-bg: #2a2140; --risk: #ff8a80; --risk-bg: #3a1a18;
+      --accent: #7c9bff; --code-bg: #232730;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111317; --surface: #1a1d23; --text: #e8eaee; --muted: #a1a8b5; --line: #2d323b;
+    --ok: #6fd08c; --ok-bg: #16301f; --prior: #f0c060; --prior-bg: #352a10;
+    --unk: #b3b8c2; --unk-bg: #262a31; --est: #b9a2ff; --est-bg: #2a2140; --risk: #ff8a80; --risk-bg: #3a1a18;
+    --accent: #7c9bff; --code-bg: #232730;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 32px 16px 80px; }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 20px; margin: 48px 0 10px; padding-top: 12px; border-top: 1px solid var(--line); }
+  h3 { font-size: 16px; margin: 24px 0 8px; }
+  p { margin: 8px 0; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+  a { color: var(--accent); }
+  code { font: 12.5px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+  nav.toc { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13.5px; margin: 12px 0 0; }
+  .callout { background: var(--prior-bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; margin: 16px 0; font-size: 14px; }
+  .callout.risk { background: var(--risk-bg); }
+  .callout.ok { background: var(--ok-bg); }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 13px; color: var(--muted); margin: 10px 0; }
+  .tag { display: inline-block; font-size: 11.5px; font-weight: 600; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+  .t-ok { color: var(--ok); background: var(--ok-bg); }
+  .t-prior { color: var(--prior); background: var(--prior-bg); }
+  .t-unk { color: var(--unk); background: var(--unk-bg); }
+  .t-est { color: var(--est); background: var(--est-bg); }
+  .t-title { color: var(--accent); background: var(--code-bg); }
+  .t-risk { color: var(--risk); background: var(--risk-bg); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin: 12px 0; }
+  .diagram { background: #ffffff; border: 1px solid var(--line); border-radius: 10px; padding: 12px; overflow-x: auto; margin: 12px 0; }
+  .diagram svg { max-width: none; height: auto; }
+  .diagram .loading { color: #5b6270; font-size: 13px; }
+  .tablewrap { overflow-x: auto; margin: 10px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; background: var(--surface); }
+  th, td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: var(--code-bg); font-weight: 600; white-space: nowrap; }
+  td code { font-size: 11.5px; }
+  details { margin: 8px 0; }
+  summary { cursor: pointer; font-size: 13.5px; color: var(--muted); }
+  pre { background: var(--code-bg); border-radius: 8px; padding: 10px 12px; overflow-x: auto; font: 12px/1.45 ui-monospace, SFMono-Regular, Consolas, monospace; }
+  ul.check { list-style: none; padding-left: 0; }
+  ul.check li { margin: 4px 0; padding-left: 26px; position: relative; }
+  ul.check li::before { position: absolute; left: 0; font-weight: 700; }
+  ul.check li.y::before { content: "✓"; color: var(--ok); }
+  ul.check li.n::before { content: "✗"; color: var(--risk); }
+  ul.check li.p::before { content: "△"; color: var(--prior); }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  footer { color: var(--muted); font-size: 12.5px; margin-top: 48px; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>ShopMy 크리에이터–브랜드 연결 · 판매 링크 발행 플로우</h1>
+<p class="sub">스펙 v0.1(2026-11-17) 구현 문서 · 작성일 2026-11-17 (Asia/Seoul) · 공개 자료만 사용 · STMX와 ShopMy의 제휴를 뜻하지 않음</p>
+
+<nav class="toc">
+  <a href="#scope">0. 조사 범위·한계</a>
+  <a href="#legend">범례</a>
+  <a href="#d1">D1 온보딩·브랜드 연결</a>
+  <a href="#d2">D2 링크 발행</a>
+  <a href="#d3">D3 게시·클릭·정산</a>
+  <a href="#d4">D4 Direct vs Network</a>
+  <a href="#onboarding">D5–D9 브랜드 온보딩·연동</a>
+  <a href="#swim">스윔레인 표</a>
+  <a href="#hyp">§7 가설 재검증</a>
+  <a href="#sources">출처 맵</a>
+  <a href="#stmx">STMX 시사점</a>
+  <a href="#check">§14 체크리스트</a>
+</nav>
+
+<!-- ================================================================== -->
+<h2 id="scope">0. 조사 범위와 한계</h2>
+
+<div class="callout risk">
+  <b>먼저 읽을 것.</b> 이 문서는 스펙이 요구한 <b>Craft Anything Clean room 캡처를 새로 실행하지 않았다.</b>
+  이 머신에는 <code>/workspace/shopmy-craft/</code> 선행 조사 폴더와 <code>craft-anything-cli</code>가 없다.
+  그래서 다이어그램은 두 종류의 근거로만 그렸다.
+  <ol style="margin:6px 0 0 18px; padding:0;">
+    <li><b>이번 재확인(2026-11-17)</b>: 공개 가이드 2건을 WebFetch로 열람했다. <b>Craft Anything 결과가 아니다.</b> 쿠키·로그인을 쓰지 않았다.</li>
+    <li><b>선행 가설(2026-11-11)</b>: 스펙 §7 표와 로컬 요약 <code>docs/shopmy-market-status.html</code>. 이번에 다시 확인하지 못한 값은 모두 <span class="tag t-prior">선행·미재확인</span>으로 표시했고 다이어그램에서 점선으로 그렸다.</li>
+  </ol>
+  로그인 상태의 ShopMy 화면은 스펙 §2.2·§4에 따라 열지 않았다. 사용자가 2026-11-17 확인했다.
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <h3 style="margin-top:0">robots.txt 재확인 (2026-11-17)</h3>
+    <div class="tablewrap"><table>
+      <tr><th>호스트</th><th>결과</th><th>조치</th></tr>
+      <tr><td><code>shopmy.us</code></td><td><code>Allow: /</code></td><td>이번에는 페이지를 열지 않음</td></tr>
+      <tr><td><code>guide.shopmy.us</code></td><td><code>User-agent: *</code>. Disallow는 <code>/not-authorized</code>, <code>/not-found</code>, <code>/[helpCenterIdentifier]/</code>뿐. Crawl-delay 1</td><td>아티클 1건 열람</td></tr>
+      <tr><td><code>brands.shopmy.us</code></td><td>guide와 같은 규칙</td><td>아티클 1건 열람</td></tr>
+      <tr><td><code>static.shopmy.us</code></td><td>robots.txt 요청이 <b>HTTP 403</b></td><td>정책을 확인할 수 없어 <code>Pricing_2026.pdf</code>를 <b>열지 않음</b></td></tr>
+    </table></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">이번에 열람한 URL (WebFetch, Craft Anything 아님)</h3>
+    <ul style="margin:0; padding-left:18px; font-size:14px;">
+      <li><b>S1</b> <a href="https://guide.shopmy.us/en/articles/17358048-how-does-shopmy-make-money-from-transactions" target="_blank" rel="noopener">How does ShopMy make money from transactions</a> (Creator Guide, 페이지 날짜 2026-10-06)</li>
+      <li><b>S2</b> <a href="https://brands.shopmy.us/en/articles/16783821-launch-package-payments-fees" target="_blank" rel="noopener">Launch Package: Payments &amp; Fees</a> (Brand Guide, 페이지 날짜 2026-09-11)</li>
+      <li><b>S7–S11</b> Brand Guide <a href="https://brands.shopmy.us/en/collections/19727994-onboarding" target="_blank" rel="noopener">Onboarding 컬렉션</a> 아티클 5건 (D5–D9)</li>
+    </ul>
+    <p style="font-size:13px;color:var(--muted)">S1의 Related Articles에서 URL을 확인한 4건(S4a–S4d)은 <b>제목만</b> 확인했고 본문은 읽지 않았다.</p>
+  </div>
+</div>
+
+<h3 id="legend">범례</h3>
+<div class="legend">
+  <span><span class="tag t-ok">확인</span> 이번 재확인(2026-11-17) 원문 일치 · 실선</span>
+  <span><span class="tag t-prior">선행·미재확인</span> 2026-11-11 선행 가설, 이번에 못 봄 · 점선 = [미검증]</span>
+  <span><span class="tag t-unk">[미검증]</span> 공개 자료로 관찰 불가 · 점선</span>
+  <span><span class="tag t-est">추정</span> 관찰에서 해석한 연결 · 점선 엣지</span>
+  <span><span class="tag t-title">제목만</span> 아티클 제목·URL만 확인</span>
+  <span><span class="tag t-risk">리스크</span> 주 경로가 아닌 주석</span>
+</div>
+<p style="font-size:13px;color:var(--muted)">모양 규칙: 사각형 = 확인된 단계, 마름모 = 결정(<code>D{n}_DEC_*</code>), 둥근 점선 = 관찰 불가(<code>D{n}_UNK_*</code>) 또는 선행 가설. 색과 모양을 함께 써서 색만으로 구분하지 않는다. 레인 = <code>CREATOR · SHOPMY · BRAND · SHOPPER · RETAIL_NET</code>.</p>
+
+<!-- ================================================================== -->
+<h2 id="d1">D1. 크리에이터 온보딩 · 브랜드 연결 (범위 A)</h2>
+<p>신청부터 브랜드와 연결되기까지. 로그인 전 공개 화면과 가이드에서 확인된 것은 <b>브랜드 유형이 Direct와 제3자 네트워크로 나뉘고, 플랫폼에 보이는 요율에 분배가 이미 반영된다</b>는 점뿐이다. 신청 폼·Waitlist·등급·채팅·Opportunities는 선행 가설이다.</p>
+<div class="diagram" data-flow="D1"><span class="loading">다이어그램 렌더 중…</span></div>
+<div class="diagram" data-seq="D1"><span class="loading">시퀀스 렌더 중…</span></div>
+<details><summary>D1 노드·엣지 출처 표</summary><div class="tablewrap" data-table="D1"></div></details>
+<details><summary>Mermaid 원문: <code>D1-onboarding-brand-connect.mmd</code> / <code>.seq.mmd</code></summary><pre data-src="D1"></pre></details>
+
+<!-- ================================================================== -->
+<h2 id="d2">D2. 판매 링크 발행 (범위 B 전반)</h2>
+<p>상품을 골라 커미션 링크를 만들고 묶는 단계. <b>이번에 공개 문서로 다시 확인한 생성 경로는 없다.</b> 웹 URL 붙여넣기, 카탈로그 검색, Safari 확장(선행 표기 Snapshop), iOS 앱은 모두 선행 가설이다. 단축 링크 형식은 공개 문서에서 찾지 못했다.</p>
+<div class="diagram" data-flow="D2"><span class="loading">다이어그램 렌더 중…</span></div>
+<div class="diagram" data-seq="D2"><span class="loading">시퀀스 렌더 중…</span></div>
+<details><summary>D2 노드·엣지 출처 표</summary><div class="tablewrap" data-table="D2"></div></details>
+<details><summary>Mermaid 원문: <code>D2-link-issue.mmd</code> / <code>.seq.mmd</code></summary><pre data-src="D2"></pre></details>
+
+<!-- ================================================================== -->
+<h2 id="d3">D3. 게시 · 클릭 · 구매 · 커미션 정산 (범위 B 후반)</h2>
+<p>게시부터 지급까지. S2(브랜드용 Launch Package 문서)에서 <b>구매는 30일 동안 pending 상태로 머문 뒤 locked가 되고, locked 커미션은 매주 금요일 지급된다</b>는 문장을 확인했다. 커미션은 세금·배송비를 뺀 주문액에만 붙는다. 쿠키 윈도, last-click, 최소 지급액, 지급 수단은 선행 가설이다.</p>
+<div class="callout">
+  <b>충돌 기록.</b> 선행 가설은 Pending 기간을 “30–120일”로 적었고, S2(Launch Package, 브랜드용)는 “30일”이라고 적는다.
+  S2가 모든 브랜드 유형에 적용되는지, 크리에이터용 “How Payment Works”(S4c, 미열람)가 다르게 말하는지는 확인하지 못했다. 두 값을 모두 남긴다.
+</div>
+<div class="diagram" data-flow="D3"><span class="loading">다이어그램 렌더 중…</span></div>
+<div class="diagram" data-seq="D3"><span class="loading">시퀀스 렌더 중…</span></div>
+<details><summary>D3 노드·엣지 출처 표</summary><div class="tablewrap" data-table="D3"></div></details>
+<details><summary>Mermaid 원문: <code>D3-publish-click-purchase-payout.mmd</code> / <code>.seq.mmd</code></summary><pre data-src="D3"></pre></details>
+
+<!-- ================================================================== -->
+<h2 id="d4">D4. Direct vs Network 분기 · 수수료와 지급 주체</h2>
+<p>같은 구매가 어느 경로로 귀속되는지에 따라 누가 ShopMy에 돈을 내는지가 달라진다. 이번에 원문으로 확인한 것은 세 가지다.</p>
+<ul>
+  <li><b>Network(제3자) 경로</b>: 크리에이터가 커미션의 82%, ShopMy가 18%를 가진다. 분모는 <b>커미션</b>이다. 플랫폼에 보이는 요율은 이 분배를 이미 반영한다. <span class="tag t-ok">S1</span></li>
+  <li><b>브랜드 부담 경로</b>: ShopMy가 크리에이터가 만든 매출을 기준으로 브랜드에 직접 청구하고, 크리에이터는 표시 요율의 100%를 받는다. 요율 숫자는 S1에 없다. <span class="tag t-ok">S1</span></li>
+  <li><b>Launch Package</b>: GMV의 3.9%를 거래 수수료로 ShopMy에 낸다. 예: GMV $100, 커미션 15% → 크리에이터 $15, ShopMy $3.90. 커미션이 0%면 네트워크 수수료도 없다. <span class="tag t-ok">S2</span></li>
+</ul>
+<p>Direct 2.9%, 구독 $1,999–$7,999/월, 캠페인 배치 15%는 <code>Pricing_2026.pdf</code>에서 나온 선행 값이다. 이번에는 PDF 호스트의 robots 정책을 확인하지 못해 열지 않았으므로 점선으로 둔다.</p>
+<div class="diagram" data-flow="D4"><span class="loading">다이어그램 렌더 중…</span></div>
+<div class="diagram" data-seq="D4"><span class="loading">시퀀스 렌더 중…</span></div>
+<div class="callout risk">
+  <b>리스크 주석: 다중 네트워크 귀속 (Edelman 논란, 2026-08)</b><br>
+  2026-08-20 Ben Edelman은 같은 주문이 여러 제휴 네트워크에 잡힐 때 ShopMy가 브랜드에 다른 네트워크의 커미션을 취소하라고 안내했다고 주장했다(<a href="https://www.benedelman.org/topics/marketplaces/" target="_blank" rel="noopener">Edelman</a>). 2026-08-21 BoF가 보도했다(<a href="https://www.businessoffashion.com/articles/retail/shopmy-influencer-affiliate-marketing-investigation/" target="_blank" rel="noopener">BoF</a>). Edelman은 영향받을 수 있는 브랜드를 527곳으로 집계했다. ShopMy는 해당 가이드 페이지를 내렸고 BoF에 논평을 거부했다.
+  이 내용은 선행 정리(<code>docs/shopmy-market-status.html</code>)에서 가져왔고 이번에 1차 출처를 다시 열지 않았다. 소송·규제 조치는 선행 조사에서 확인되지 않았으며, 이 문서도 그런 사실을 주장하지 않는다. 공식 중복 주문 귀속 규칙은 공개 자료에서 찾지 못했다 <span class="tag t-unk">[미검증]</span>.
+</div>
+<details><summary>D4 노드·엣지 출처 표</summary><div class="tablewrap" data-table="D4"></div></details>
+<details><summary>Mermaid 원문: <code>D4-direct-vs-network.mmd</code> / <code>.seq.mmd</code></summary><pre data-src="D4"></pre></details>
+
+<!-- ================================================================== -->
+<h2 id="onboarding">브랜드 온보딩 · 연동 (Brand Guide “Onboarding” 컬렉션, D5–D9)</h2>
+<p>범위 (A)의 <b>브랜드 쪽 절반</b>이다. 크리에이터가 브랜드와 연결되려면 먼저 브랜드가 자기 상점이나 제휴 네트워크를 ShopMy에 연결해야 한다. <a href="https://brands.shopmy.us/en/collections/19727994-onboarding" target="_blank" rel="noopener">Onboarding 컬렉션</a>(“How to get set up on ShopMy.”, 아티클 5개)의 각 아티클을 한 장씩 그렸다.</p>
+<div class="callout">
+  <b>읽는 법.</b> 2026-11-17에 공개 페이지 5건을 WebFetch로 열람했다(Craft Anything 아님, 로그인 없음). 본문은 요약된 형태로 받았고 페이지 안의 스크린샷은 읽지 못했다. 그래서 따옴표 안의 UI 라벨은 외부에 인용하기 전에 원문과 한 번 더 대조해야 한다. 스크린샷에만 있는 단계는 반영되지 않았다.
+</div>
+<div class="tablewrap"><table>
+  <tr><th>장</th><th>아티클</th><th>한 줄 요지</th></tr>
+  <tr><td>D5</td><td>How do I connect my store to ShopMy? (Shopify)</td><td>도메인 → POS 'Shopify' → Setup Wizard 또는 수동 입력 → 'Connect Shopify' → 추적 픽셀 → 'Check Integration'. 약 15분</td></tr>
+  <tr><td>D6</td><td>How do I connect my store to ShopMy? (Non-Shopify)</td><td>상품 피드 → 도메인 → POS 'Other' → A. ShopMy 직접 추적(클릭·주문·변경·취소 스크립트) 또는 B. 기존 제휴 네트워크</td></tr>
+  <tr><td>D7</td><td>Common Onboarding Questions</td><td>OAuth 오류, 네트워크 경유, 'not tracked', 결제 수단, 가입 오류, 테스트 주문 1–2건, 라이브</td></tr>
+  <tr><td>D8</td><td>Should I notify the ShopMy team if I make changes to my site after launching?</td><td>중대한 변경 전에 알리면 ShopMy가 재테스트</td></tr>
+  <tr><td>D9</td><td>How to Invite ShopMy to Your Affiliate Program</td><td>브랜드가 자기 네트워크 계정에서 ShopMy를 초대 → ShopMy 수락 → 트래킹 활성</td></tr>
+</table></div>
+
+<h3 id="d5">D5. Shopify 상점 연결</h3>
+<p>브랜드가 ShopMy 온보딩 화면과 Shopify Dev Dashboard를 오가며 진행한다. 문서는 Setup Wizard가 “code-free”라고 하면서도 일부 단계에는 개발자 접근이 필요할 수 있다고 적는다. 픽셀은 “주문을 추적하는 데 필수”라고 한다. 앱 권한·동기화 데이터는 이 문서에 없고, D7의 OAuth 해결 절차에 스코프 목록(할인·가격 규칙·주문 쓰기/읽기, 상품·재고·위치·배송·마켓·퍼블리케이션 읽기)이 나온다.</p>
+<div class="diagram" data-flow="D5"><span class="loading">다이어그램 렌더 중…</span></div>
+<div class="diagram" data-seq="D5"><span class="loading">시퀀스 렌더 중…</span></div>
+<details><summary>D5 노드·엣지 출처 표</summary><div class="tablewrap" data-table="D5"></div></details>
+<details><summary>Mermaid 원문: <code>D5-brand-connect-shopify.mmd</code> / <code>.seq.mmd</code></summary><pre data-src="D5"></pre></details>
+
+<h3 id="d6">D6. Shopify 외 상점 연결</h3>
+<p>이 문서는 추적 연동만 다루고, 상품 카탈로그는 ShopMy Onboarding 팀과 따로 맞춘다고 적는다. 경로 A는 ShopMy가 주문을 직접 추적하고, 경로 B는 기존 제휴 네트워크가 추적과 지급을 맡아 ShopMy 스크립트가 필요 없다. 경로 A의 커미션 요율은 셋업과 첫 인보이스 처리가 끝나야 활성화된다. 주문 취소 알림을 보내면 커미션이 환원되므로, D3의 “커미션 사라짐·취소”가 여기서 생긴다고 읽을 수 있다 <span class="tag t-est">추정</span>.</p>
+<div class="diagram" data-flow="D6"><span class="loading">다이어그램 렌더 중…</span></div>
+<div class="diagram" data-seq="D6"><span class="loading">시퀀스 렌더 중…</span></div>
+<details><summary>D6 노드·엣지 출처 표</summary><div class="tablewrap" data-table="D6"></div></details>
+<details><summary>Mermaid 원문: <code>D6-brand-connect-non-shopify.mmd</code> / <code>.seq.mmd</code></summary><pre data-src="D6"></pre></details>
+
+<h3 id="d7">D7. 자주 묻는 온보딩 질문</h3>
+<p>FAQ라서 한 줄 흐름이 아니라 상황별 분기로 그렸다. 분기 끝을 테스트 주문·라이브로 잇는 엣지는 문서 순서에서 해석한 것이라 <span class="tag t-est">추정</span>이다. “at least 15-20%”가 커미션 요율의 하한인지는 문서에 적혀 있지 않다.</p>
+<div class="diagram" data-flow="D7"><span class="loading">다이어그램 렌더 중…</span></div>
+<div class="diagram" data-seq="D7"><span class="loading">시퀀스 렌더 중…</span></div>
+<details><summary>D7 노드·엣지 출처 표</summary><div class="tablewrap" data-table="D7"></div></details>
+<details><summary>Mermaid 원문: <code>D7-brand-onboarding-faq.mmd</code> / <code>.seq.mmd</code></summary><pre data-src="D7"></pre></details>
+
+<h3 id="d8">D8. 런칭 후 사이트 변경</h3>
+<p>사이트나 체크아웃을 크게 바꾸면 추적과 커미션 귀속이 끊길 수 있으므로, 변경 전에 brand support(<code>brandsupport@shopmy.us</code>, 문서에 적힌 공개 지원 주소)에 알리라고 한다. “중대한 변경”의 기준과 알리지 않았을 때의 처리는 적혀 있지 않다.</p>
+<div class="diagram" data-flow="D8"><span class="loading">다이어그램 렌더 중…</span></div>
+<div class="diagram" data-seq="D8"><span class="loading">시퀀스 렌더 중…</span></div>
+<details><summary>D8 노드·엣지 출처 표</summary><div class="tablewrap" data-table="D8"></div></details>
+<details><summary>Mermaid 원문: <code>D8-brand-site-change.mmd</code> / <code>.seq.mmd</code></summary><pre data-src="D8"></pre></details>
+
+<h3 id="d9">D9. 제휴 프로그램에 ShopMy 초대</h3>
+<p>D4 “제3자 네트워크” 경로가 시작되는 지점이다. ShopMy는 아래 네트워크에 이미 승인된 publisher로 등록되어 있고, 초대는 브랜드가 자기 네트워크 계정에서 보낸다. ShopMy가 수락하기 전에는 아무것도 활성화되지 않는다.</p>
+<div class="tablewrap"><table>
+  <tr><th>네트워크</th><th>ShopMy 식별자 (S11)</th><th>문서상 주의점</th></tr>
+  <tr><td>Impact</td><td>2340682</td><td>'Media Partners' 검색창이 아니라 'Partner Id'에 입력. 'Replace'가 아니라 'Propose'. 기간은 'Ongoing'이 표준</td></tr>
+  <tr><td>Rakuten</td><td>3704027</td><td>지역 프로그램별(US 오퍼는 UK·CA를 포함하지 않음). 오퍼 없는 초대는 불가</td></tr>
+  <tr><td>CJ</td><td>CID 5447901</td><td>recruitment 권한 필요. ID 검색이 안 맞을 수 있어 이름으로 검색</td></tr>
+  <tr><td>Awin</td><td>740219</td><td>'id:740219'로 검색. ShareASale은 2025-10 종료, 기존 ShareASale ID는 무효</td></tr>
+  <tr><td>AvantLink</td><td>296597</td><td>기본 요율보다 높게 설정 가능</td></tr>
+  <tr><td>Partnerize</td><td>shopmyshelf</td><td>캠페인(예: US·UK)마다 따로 초대. 승인 후 커미션 규칙을 직접 정하지 않으면 캠페인 기본값</td></tr>
+  <tr><td>Ascend by Partnerize (구 Pepperjam)</td><td>213694</td><td>'Pay → Commission Terms'를 먼저 만들 것. core Partnerize와 별개 플랫폼</td></tr>
+</table></div>
+<div class="diagram" data-flow="D9"><span class="loading">다이어그램 렌더 중…</span></div>
+<div class="diagram" data-seq="D9"><span class="loading">시퀀스 렌더 중…</span></div>
+<details><summary>D9 노드·엣지 출처 표</summary><div class="tablewrap" data-table="D9"></div></details>
+<details><summary>Mermaid 원문: <code>D9-brand-invite-network.mmd</code> / <code>.seq.mmd</code></summary><pre data-src="D9"></pre></details>
+
+<!-- ================================================================== -->
+<h2 id="swim">스윔레인 표 (A)(B)</h2>
+<p style="font-size:13px;color:var(--muted)">열: 단계 ID · 단계명 · CREATOR · SHOPMY · BRAND · SHOPPER · RETAIL_NET · 출처 · 상태. 빈 칸은 해당 레인이 개입하지 않음.</p>
+<div class="tablewrap" id="swimtable"></div>
+
+<!-- ================================================================== -->
+<h2 id="hyp">§7 선행 가설 재검증</h2>
+<div class="tablewrap"><table>
+  <tr><th>가설</th><th>선행 요지 (2026-11-11)</th><th>이번 결과 (2026-11-17)</th><th>판정</th></tr>
+  <tr><td>Direct 수수료 2.9%</td><td>구독 브랜드의 Direct 수수료, 브랜드 부담 (Pricing PDF)</td><td>S1은 브랜드가 수수료를 낸다고만 하고 요율이 없다. PDF는 robots 403으로 열지 않음</td><td><span class="tag t-prior">관찰 불가</span></td></tr>
+  <tr><td>Launch Package 3.9%</td><td>GMV 수수료</td><td>S2: “3.9% transaction fee on gross merchandise value (GMV)”. 월 구독료 금액은 적혀 있지 않음</td><td><span class="tag t-ok">일치</span></td></tr>
+  <tr><td>제3자 네트워크 82:18</td><td>크리에이터 82 / ShopMy 18, 표시 요율에 반영</td><td>S1: 분모는 커미션. 표시 요율이 이미 분배를 반영함</td><td><span class="tag t-ok">일치</span></td></tr>
+  <tr><td>구독 $1,999–$7,999/월</td><td>Track ~ Expert (PDF, 2026-07-24 수정)</td><td>PDF 미열람. S1·S2에 금액 없음</td><td><span class="tag t-prior">관찰 불가</span></td></tr>
+  <tr><td>캠페인 배치 15%</td><td>Opportunities·Spotlights 변동 지출의 15%</td><td>S1·S2에 없음</td><td><span class="tag t-prior">관찰 불가</span></td></tr>
+  <tr><td>온보딩 3단계 폼·Waitlist</td><td><code>/apply/creator</code>, 가이드에 Waitlist 항목</td><td>이번에 열지 않음</td><td><span class="tag t-prior">관찰 불가</span></td></tr>
+  <tr><td>링크 생성 경로</td><td>URL 붙여넣기, 카탈로그, Safari 확장(Snapshop), 앱</td><td>이번에 열지 않음. 공식 명칭·Chrome 지원 미확인</td><td><span class="tag t-prior">관찰 불가</span></td></tr>
+  <tr><td>게시</td><td>컬렉션, 쇼핑 가능한 Instagram 포스트, 기프트 가이드, <code>/shop/{handle}</code></td><td>이번에 열지 않음</td><td><span class="tag t-prior">관찰 불가</span></td></tr>
+  <tr><td>귀속</td><td>브랜드별 쿠키, 흔히 7일·최대 30일, last-click</td><td>S1·S2에 없음</td><td><span class="tag t-prior">관찰 불가</span></td></tr>
+  <tr><td>정산</td><td>Pending 30–120일 → Locked → 매주 금요일, 최소 $11, Stripe/PayPal</td><td>S2: pending 30일 → locked → 매주 금요일. 최소액·PayPal 없음. S2의 Stripe는 <b>브랜드 카드 등록용</b></td><td><span class="tag t-prior">부분 일치·충돌</span></td></tr>
+  <tr><td>등급</td><td>Enthusiast → Ambassador → Trendsetter → Icon</td><td>S1·S2에 없음</td><td><span class="tag t-prior">관찰 불가</span></td></tr>
+  <tr><td>Edelman 논란</td><td>2026-08-20 게시, 08-21 BoF, 527개 브랜드</td><td>1차 출처를 다시 열지 않음. 선행 정리 그대로 리스크 주석에만 사용</td><td><span class="tag t-risk">주석</span></td></tr>
+</table></div>
+
+<!-- ================================================================== -->
+<h2 id="sources">출처 맵 (sources-map)</h2>
+<div class="tablewrap"><table>
+  <tr><th>ID</th><th>출처</th><th>열람일 (KST)</th><th>수단</th><th>상태</th></tr>
+  <tr><td>S1</td><td><a href="https://guide.shopmy.us/en/articles/17358048-how-does-shopmy-make-money-from-transactions" target="_blank" rel="noopener">Creator Guide · How does ShopMy make money from transactions</a></td><td>2026-11-17</td><td>WebFetch (Craft Anything 아님)</td><td><span class="tag t-ok">확인</span></td></tr>
+  <tr><td>S2</td><td><a href="https://brands.shopmy.us/en/articles/16783821-launch-package-payments-fees" target="_blank" rel="noopener">Brand Guide · Launch Package: Payments &amp; Fees</a></td><td>2026-11-17</td><td>WebFetch (Craft Anything 아님)</td><td><span class="tag t-ok">확인</span></td></tr>
+  <tr><td>S3</td><td><a href="https://static.shopmy.us/Decks/Pricing/Pricing_2026.pdf" target="_blank" rel="noopener">Pricing_2026.pdf</a></td><td>2026-11-11 (선행)</td><td>선행 조사. 이번에는 robots 403으로 미열람</td><td><span class="tag t-prior">선행·미재확인</span></td></tr>
+  <tr><td>S4a</td><td><a href="https://guide.shopmy.us/en/articles/17420767-types-of-brands-on-shopmy" target="_blank" rel="noopener">Types of brands on ShopMy</a></td><td>2026-11-17</td><td>S1 Related Articles에서 URL 확인</td><td><span class="tag t-title">제목만</span></td></tr>
+  <tr><td>S4b</td><td><a href="https://guide.shopmy.us/en/articles/17420772-what-are-the-ways-i-can-work-with-shopmy-brand-partners" target="_blank" rel="noopener">What are the ways I can work with ShopMy brand partners?</a></td><td>2026-11-17</td><td>같음</td><td><span class="tag t-title">제목만</span></td></tr>
+  <tr><td>S4c</td><td><a href="https://guide.shopmy.us/en/articles/17420722-how-payment-works" target="_blank" rel="noopener">How Payment Works</a></td><td>2026-11-17</td><td>같음</td><td><span class="tag t-title">제목만</span></td></tr>
+  <tr><td>S4d</td><td><a href="https://guide.shopmy.us/en/articles/17358157-my-commission-earnings-disappeared-what-happened" target="_blank" rel="noopener">My commission earnings disappeared. What happened?</a></td><td>2026-11-17</td><td>같음</td><td><span class="tag t-title">제목만</span></td></tr>
+  <tr><td>S5</td><td><a href="https://www.benedelman.org/topics/marketplaces/" target="_blank" rel="noopener">Ben Edelman (2026-08-20)</a></td><td>2026-11-11 (선행)</td><td>선행 정리 재인용</td><td><span class="tag t-risk">리스크 주석</span></td></tr>
+  <tr><td>S6</td><td><a href="https://www.businessoffashion.com/articles/retail/shopmy-influencer-affiliate-marketing-investigation/" target="_blank" rel="noopener">BoF (2026-08-21)</a></td><td>2026-11-11 (선행)</td><td>선행 정리 재인용</td><td><span class="tag t-risk">리스크 주석</span></td></tr>
+  <tr><td>H</td><td>스펙 §7 선행 가설 표 · <code>docs/shopmy-market-status.html</code></td><td>2026-11-11 (선행)</td><td>선행 원본 <code>/workspace/shopmy-craft/</code>은 이 머신에 없음</td><td><span class="tag t-prior">선행·미재확인</span></td></tr>
+  <tr><td>S7</td><td><a href="https://brands.shopmy.us/en/articles/16577670-how-do-i-connect-my-store-to-shopmy-shopify" target="_blank" rel="noopener">How do I connect my store to ShopMy? (Shopify)</a> · 페이지 날짜 2026-08-31</td><td>2026-11-17</td><td>WebFetch (Craft Anything 아님)</td><td><span class="tag t-ok">확인</span></td></tr>
+  <tr><td>S8</td><td><a href="https://brands.shopmy.us/en/articles/16577701-how-do-i-connect-my-store-to-shopmy-non-shopify" target="_blank" rel="noopener">How do I connect my store to ShopMy? (Non-Shopify)</a> · 2026-08-31</td><td>2026-11-17</td><td>WebFetch</td><td><span class="tag t-ok">확인</span></td></tr>
+  <tr><td>S9</td><td><a href="https://brands.shopmy.us/en/articles/16577706-common-onboarding-questions" target="_blank" rel="noopener">Common Onboarding Questions</a> · 날짜 없음(“Updated over a week ago”)</td><td>2026-11-17</td><td>WebFetch</td><td><span class="tag t-ok">확인</span></td></tr>
+  <tr><td>S10</td><td><a href="https://brands.shopmy.us/en/articles/16577730-should-i-notify-the-shopmy-team-if-i-make-changes-to-my-site-after-launching" target="_blank" rel="noopener">Should I notify the ShopMy team if I make changes to my site after launching?</a> · 2026-08-31</td><td>2026-11-17</td><td>WebFetch</td><td><span class="tag t-ok">확인</span></td></tr>
+  <tr><td>S11</td><td><a href="https://brands.shopmy.us/en/articles/16577732-how-to-invite-shopmy-to-your-affiliate-program" target="_blank" rel="noopener">How to Invite ShopMy to Your Affiliate Program</a> · 2026-08-31</td><td>2026-11-17</td><td>WebFetch</td><td><span class="tag t-ok">확인</span></td></tr>
+  <tr><td>X</td><td>관찰 불가: 로그인 후 화면, 앱 내부</td><td>—</td><td>열지 않음 (스펙 §2.2)</td><td><span class="tag t-unk">[미검증]</span></td></tr>
+</table></div>
+<p style="font-size:13px;color:var(--muted)">노드·엣지별 출처는 D1–D4 아래의 “출처 표”에 있다. 표는 다이어그램과 같은 데이터에서 생성하므로 ID가 어긋나지 않는다.</p>
+
+<!-- ================================================================== -->
+<h2 id="stmx">STMX 시사점 (짧게)</h2>
+<div class="card">
+  <p style="margin-top:0"><b>이 절의 제안은 모두 <span class="tag t-est">검토 제안</span>이다.</b> STMX 제품 결정을 확정하지 않는다. STMX를 언급할 때 창업자는 김호현이다.</p>
+  <ol>
+    <li><b>(A) 브랜드 연결.</b> ShopMy는 크리에이터에게 “브랜드 유형”을 나눠 보여 주면서도, 화면의 요율은 분배를 반영한 <b>실수령 기준</b>으로 통일한다(S1). STMX 크리에이터–브랜드 온보딩에서도 계약 형태와 관계없이 “크리에이터가 실제로 받는 요율” 한 가지만 보여 주는 방식을 검토할 만하다.</li>
+    <li><b>(B) 수수료 부담 주체 분리.</b> 같은 판매라도 브랜드가 플랫폼 수수료를 따로 내면 크리에이터는 100%를 받고(S1), 제3자 네트워크 경유면 커미션에서 18%를 뗀다(S1). STMX 트래킹 링크·정산 설계에서 수수료를 “커미션에서 차감”과 “브랜드에 별도 청구” 중 어느 쪽으로 할지 먼저 정해야 정산 화면과 약관이 단순해진다.</li>
+    <li><b>(B) 정산 상태의 명시.</b> pending 30일 → locked → 주 1회 지급이라는 상태 전이가 문서에 고정되어 있다(S2). 선행 정리에서는 지급 지연·커미션 취소에 대한 크리에이터 불만이 확인되었다(H). STMX·LOOX 게시 후 정산 화면에서 상태와 취소 사유를 처음부터 보여 주는 것을 검토 제안한다.</li>
+    <li><b>귀속 규칙의 명문화.</b> Edelman 논란(S5·S6)은 다중 네트워크 중복 주문에서 생겼다. 외부 제휴와 함께 쓸 경우 last-click 원칙과 예외를 약관에 적어 두는 것을 검토 제안한다.</li>
+    <li><b>약관 주의.</b> 선행 조사는 ShopMy 약관상 ShopMy 커미션을 다른 플랫폼의 보상·캐시백 재원으로 쓰면 안 된다는 점을 주의 사항으로 적었다. 이번에는 <code>https://shopmy.us/legal/terms-of-service</code>를 다시 열지 않았으므로 원문 인용은 하지 않는다 <span class="tag t-prior">선행·미재확인</span>.</li>
+  </ol>
+</div>
+
+<!-- ================================================================== -->
+<h2 id="check">§14 검수 체크리스트</h2>
+<ul class="check">
+  <li class="p">Craft Anything 실행 기록: <b>이번에는 Craft Anything을 실행하지 않았다.</b> 그래서 <code>--deep</code>·rebuild·Build/Check 기록도 없다. 대신 캡처 산출물(<code>captures/</code>, <code>craft-report.md</code>, 증거 번들)도 없다.</li>
+  <li class="y">로그인·계정 생성·폼 제출·데모 요청 없음. 사용자의 로그인 세션 화면도 열지 않음.</li>
+  <li class="y">디컴파일·JS 분석·네트워크 감시·차단 우회·유료 API 없음.</li>
+  <li class="y">열람한 호스트의 robots.txt를 재확인함. <code>static.shopmy.us</code>는 403이라 PDF를 건너뛰고 사유를 적음.</li>
+  <li class="y">D1–D4 flowchart와 sequence, 스윔레인 표, 출처 맵이 모두 있음. 브랜드 온보딩 아티클 5건을 D5–D9로 추가함.</li>
+  <li class="y">모든 노드·엣지에 출처 ID와 열람일이 있음. 확인 안 된 것은 [미검증]·선행, 해석은 추정.</li>
+  <li class="y">§7 가설 재검증 표가 있음. 선행 숫자는 출처와 상태를 붙여서만 사용.</li>
+  <li class="y">화면 라벨을 지어내지 않음. 로그인 전용 UI는 실선 확정 경로로 그리지 않음.</li>
+  <li class="y">2.9% / 3.9% / 82:18 / 구독 가격: 3.9%·82:18은 원문 확인, 2.9%·구독가는 [미검증] 표시.</li>
+  <li class="y">Edelman 서술에 1차 출처 링크를 달고, 소송·규제를 단정하지 않음.</li>
+  <li class="y">STMX 시사점 있음. 창업자는 김호현만 적음.</li>
+  <li class="y">API 키·시크릿·개인정보 없음.</li>
+  <li class="y">렌더: 이 HTML이 Mermaid 10.9.1(CDN)로 브라우저에서 렌더한다. 별도 PNG/SVG는 만들지 않음.</li>
+</ul>
+<div class="callout">
+  <b>남은 [미검증]·[확인 필요]</b>: Craft Anything Clean room 캡처 재실행, Pricing PDF 재열람(호스트 robots 확인 경로 필요), S4a–S4d 본문, <code>/apply/creator</code>·<code>/home/creators/*</code>·블로그 링크 도구 글, 단축 링크 형식, 확장 프로그램 공식 명칭과 Chrome 지원, 소셜 게시가 인앱 연동인지 복사·붙여넣기인지, 쿠키 윈도·last-click, 최소 지급액·지급 수단, 등급별 권한, 다중 네트워크 중복 주문 공식 규칙, 신규 <code>.cany</code> purpose 값, <code>report</code>에 <code>--allow-run</code> 필요 여부.
+</div>
+
+<footer>
+  스펙: shopmy-creator-sale-link-generation-flow-diagram-spec.md (Draft v0.1, 2026-11-17). 이 문서는 ShopMy UI를 복제하거나 서비스를 재구축하려는 것이 아니다. 인용은 짧게 줄였고 출처를 달았다.
+</footer>
+</main>
+
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs";
+
+const LANES = [
+  ["CREATOR", "크리에이터"], ["SHOPMY", "ShopMy 플랫폼"], ["BRAND", "브랜드"],
+  ["SHOPPER", "쇼퍼(구매자)"], ["RETAIL_NET", "리테일러 / 제휴 네트워크"],
+];
+const CLASS = { CREATOR: "creator", SHOPMY: "shopmy", BRAND: "brand", SHOPPER: "shopper", RETAIL_NET: "retail" };
+const STATUS = {
+  ok: ["확인", "t-ok"], prior: ["선행·미재확인 [미검증]", "t-prior"], unk: ["[미검증]", "t-unk"],
+  est: ["추정", "t-est"], title: ["제목만", "t-title"], risk: ["리스크 주석", "t-risk"],
+};
+const DATE = { S1: "2026-11-17", S2: "2026-11-17", S3: "2026-11-11", S4a: "2026-11-17", S4b: "2026-11-17",
+  S4c: "2026-11-17", S4d: "2026-11-17", S5: "2026-11-11", S6: "2026-11-11", H: "2026-11-11", X: "—",
+  S7: "2026-11-17", S8: "2026-11-17", S9: "2026-11-17", S10: "2026-11-17", S11: "2026-11-17" };
+
+// node: [id, lane, label, status, src, kind]  kind: n=normal d=decision
+// edge: [from, to, label, status, src]
+const D = {
+  D1: {
+    dir: "TD",
+    nodes: [
+      ["D1_CREATOR_START", "CREATOR", "크리에이터 참여 시작", "ok", "H", "n"],
+      ["D1_CREATOR_APPLY", "CREATOR", "신청 폼 /apply/creator<br/>(공개 3단계, 미제출 관찰)", "prior", "H", "n"],
+      ["D1_SHOPMY_REVIEW", "SHOPMY", "신청 검토", "unk", "X", "n"],
+      ["D1_DEC_APPROVE", "SHOPMY", "승인 여부", "unk", "X", "d"],
+      ["D1_UNK_WAITLIST", "SHOPMY", "Waitlist(대기 명단)", "prior", "H", "n"],
+      ["D1_SHOPMY_ACCOUNT", "SHOPMY", "크리에이터 계정·샵 활성", "est", "H", "n"],
+      ["D1_DEC_BRAND_TYPE", "SHOPMY", "브랜드 유형<br/>Types of brands on ShopMy", "title", "S4a", "d"],
+      ["D1_BRAND_DIRECT", "BRAND", "Direct 계약 브랜드<br/>ShopMy 수수료를 브랜드가 부담", "ok", "S1", "n"],
+      ["D1_RETAIL_NET_NETWORK", "RETAIL_NET", "제3자 네트워크 경유 브랜드<br/>커미션 82:18 분배", "ok", "S1", "n"],
+      ["D1_SHOPMY_RATE", "SHOPMY", "플랫폼 표시 커미션 요율<br/>분배가 이미 반영됨", "ok", "S1", "n"],
+      ["D1_DEC_TIER", "SHOPMY", "등급<br/>Enthusiast→Ambassador→Trendsetter→Icon", "prior", "H", "d"],
+      ["D1_BRAND_WAYS", "BRAND", "브랜드 파트너와 일하는 방법<br/>(아티클 제목만 확인)", "title", "S4b", "n"],
+      ["D1_BRAND_CHAT", "BRAND", "브랜드 채팅·기프팅·코드 요청<br/>(선행: Trendsetter부터)", "prior", "H", "n"],
+      ["D1_BRAND_OPP", "BRAND", "Opportunities 캠페인", "prior", "H", "n"],
+    ],
+    edges: [
+      ["D1_CREATOR_START", "D1_CREATOR_APPLY", "공개 신청 화면", "prior", "H"],
+      ["D1_CREATOR_APPLY", "D1_SHOPMY_REVIEW", "제출 이후(관찰 안 함)", "unk", "X"],
+      ["D1_SHOPMY_REVIEW", "D1_DEC_APPROVE", "", "unk", "X"],
+      ["D1_DEC_APPROVE", "D1_UNK_WAITLIST", "보류", "prior", "H"],
+      ["D1_DEC_APPROVE", "D1_SHOPMY_ACCOUNT", "승인", "est", "H"],
+      ["D1_UNK_WAITLIST", "D1_SHOPMY_ACCOUNT", "이후 승인", "unk", "X"],
+      ["D1_SHOPMY_ACCOUNT", "D1_DEC_BRAND_TYPE", "브랜드 탐색", "est", "S4a"],
+      ["D1_DEC_BRAND_TYPE", "D1_BRAND_DIRECT", "브랜드가 수수료 부담", "ok", "S1"],
+      ["D1_DEC_BRAND_TYPE", "D1_RETAIL_NET_NETWORK", "제3자 네트워크", "ok", "S1"],
+      ["D1_BRAND_DIRECT", "D1_SHOPMY_RATE", "표시 요율 100% 수령", "ok", "S1"],
+      ["D1_RETAIL_NET_NETWORK", "D1_SHOPMY_RATE", "82% 반영 후 표시", "ok", "S1"],
+      ["D1_SHOPMY_ACCOUNT", "D1_DEC_TIER", "", "prior", "H"],
+      ["D1_DEC_TIER", "D1_BRAND_CHAT", "상위 등급", "prior", "H"],
+      ["D1_BRAND_DIRECT", "D1_BRAND_WAYS", "", "title", "S4b"],
+      ["D1_BRAND_WAYS", "D1_BRAND_CHAT", "", "prior", "H"],
+      ["D1_BRAND_WAYS", "D1_BRAND_OPP", "", "prior", "H"],
+    ],
+    seq: `sequenceDiagram
+  autonumber
+  participant C as 크리에이터
+  participant S as ShopMy
+  participant B as 브랜드
+  participant P as 쇼퍼
+  participant R as 리테일러/네트워크
+  C->>S: 공개 신청 화면 열람 (/apply/creator, 미제출)
+  Note over C,S: [미검증] 선행 가설 H: 3단계 폼, Waitlist
+  S-->>C: 승인 또는 Waitlist
+  Note over S: [미검증] 제출 이후 흐름은 관찰하지 않음
+  C->>S: 브랜드 탐색 (Types of brands on ShopMy, 제목만 S4a)
+  alt Direct 계약 브랜드 (S1)
+    B->>S: 플랫폼 수수료 별도 부담
+    S-->>C: 표시 요율 100% 수령 안내
+  else 제3자 네트워크 브랜드 (S1)
+    R->>S: 커미션 전달 (추정)
+    S-->>C: 82% 반영된 요율 표시
+  end
+  opt 상위 등급 (선행 H, [미검증])
+    C->>B: 채팅·기프팅·코드 요청
+    B-->>C: Opportunities 제안
+  end`,
+  },
+  D2: {
+    dir: "TD",
+    nodes: [
+      ["D2_CREATOR_FIND", "CREATOR", "판매할 상품 선택", "est", "H", "n"],
+      ["D2_DEC_PATH", "CREATOR", "링크 생성 경로", "prior", "H", "d"],
+      ["D2_UNK_WEB_URL", "CREATOR", "웹: 상품 URL 붙여넣기", "prior", "H", "n"],
+      ["D2_UNK_CATALOG", "CREATOR", "카탈로그 검색", "prior", "H", "n"],
+      ["D2_UNK_EXT", "CREATOR", "Safari 확장<br/>(선행 표기 Snapshop)", "prior", "H", "n"],
+      ["D2_UNK_APP", "CREATOR", "iOS 앱 내부 링크 생성", "unk", "X", "n"],
+      ["D2_DEC_ELIGIBLE", "SHOPMY", "커미션 가능한 브랜드 상품인가", "unk", "X", "d"],
+      ["D2_SHOPMY_MAKE_LINK", "SHOPMY", "어필리에이트 링크 생성", "est", "H", "n"],
+      ["D2_UNK_NO_COMM", "SHOPMY", "커미션 없는 상품 처리", "unk", "X", "n"],
+      ["D2_UNK_SHORT", "SHOPMY", "단축·트래킹 링크 형식", "unk", "X", "n"],
+      ["D2_CREATOR_GROUP", "CREATOR", "묶음: 컬렉션 / 샵 /shop/{handle} / My Links", "prior", "H", "n"],
+    ],
+    edges: [
+      ["D2_CREATOR_FIND", "D2_DEC_PATH", "", "prior", "H"],
+      ["D2_DEC_PATH", "D2_UNK_WEB_URL", "웹", "prior", "H"],
+      ["D2_DEC_PATH", "D2_UNK_CATALOG", "웹·앱", "prior", "H"],
+      ["D2_DEC_PATH", "D2_UNK_EXT", "브라우저", "prior", "H"],
+      ["D2_DEC_PATH", "D2_UNK_APP", "모바일", "unk", "X"],
+      ["D2_UNK_WEB_URL", "D2_DEC_ELIGIBLE", "", "unk", "X"],
+      ["D2_UNK_CATALOG", "D2_DEC_ELIGIBLE", "", "unk", "X"],
+      ["D2_UNK_EXT", "D2_DEC_ELIGIBLE", "", "unk", "X"],
+      ["D2_UNK_APP", "D2_DEC_ELIGIBLE", "", "unk", "X"],
+      ["D2_DEC_ELIGIBLE", "D2_SHOPMY_MAKE_LINK", "예", "est", "H"],
+      ["D2_DEC_ELIGIBLE", "D2_UNK_NO_COMM", "아니오", "unk", "X"],
+      ["D2_SHOPMY_MAKE_LINK", "D2_UNK_SHORT", "형식 공개 문서 없음", "unk", "X"],
+      ["D2_SHOPMY_MAKE_LINK", "D2_CREATOR_GROUP", "묶어서 공유", "prior", "H"],
+    ],
+    seq: `sequenceDiagram
+  autonumber
+  participant C as 크리에이터
+  participant S as ShopMy
+  participant B as 브랜드
+  participant P as 쇼퍼
+  participant R as 리테일러/네트워크
+  Note over C,S: 생성 경로 전체가 선행 가설 H, [미검증]
+  alt 웹 URL 붙여넣기 / 카탈로그 검색
+    C->>S: 상품 URL 또는 검색어
+  else Safari 확장 (선행: Snapshop)
+    C->>S: 보고 있는 상품 페이지에서 링크 요청
+  else iOS 앱
+    C->>S: 앱 내부 링크 생성
+    Note over C,S: [미검증] 로그인 후 화면, 관찰 안 함
+  end
+  S->>S: 커미션 가능 여부 판단 ([미검증])
+  S-->>C: 어필리에이트 링크 (추정, 형식 [미검증])
+  C->>S: 컬렉션·샵·My Links에 담기 (선행 H)`,
+  },
+  D3: {
+    dir: "TD",
+    nodes: [
+      ["D3_CREATOR_POST", "CREATOR", "게시 경로", "prior", "H", "d"],
+      ["D3_UNK_SHOP", "CREATOR", "공개 샵 /shop/{handle}·컬렉션", "prior", "H", "n"],
+      ["D3_UNK_SOCIAL", "CREATOR", "Instagram · TikTok · YouTube", "prior", "H", "n"],
+      ["D3_UNK_LINKINBIO", "CREATOR", "링크인바이오형 게시", "unk", "X", "n"],
+      ["D3_SHOPPER_CLICK", "SHOPPER", "쇼퍼가 링크 클릭", "est", "H", "n"],
+      ["D3_SHOPMY_TRACK", "SHOPMY", "클릭 기록 후 리테일러로 이동", "est", "H", "n"],
+      ["D3_SHOPPER_BUY", "SHOPPER", "리테일러 사이트에서 구매", "est", "H", "n"],
+      ["D3_DEC_ATTR", "RETAIL_NET", "쿠키 윈도 안 · last-click인가<br/>(선행: 흔히 7일, 최대 30일)", "prior", "H", "d"],
+      ["D3_UNK_LOST", "SHOPPER", "추적 끊김<br/>쿠키 거부 · 기기 변경", "prior", "H", "n"],
+      ["D3_SHOPMY_COMM", "SHOPMY", "커미션 산정<br/>세금·배송 전 주문액 기준", "ok", "S2", "n"],
+      ["D3_SHOPMY_PENDING", "SHOPMY", "Pending(대기) 30일<br/>(선행 30–120일과 충돌)", "ok", "S2", "n"],
+      ["D3_UNK_CANCEL", "SHOPMY", "커미션 사라짐·취소 사유", "title", "S4d", "n"],
+      ["D3_SHOPMY_LOCKED", "SHOPMY", "Locked(확정)", "ok", "S2", "n"],
+      ["D3_SHOPMY_PAYOUT", "SHOPMY", "매주 금요일 지급 처리", "ok", "S2", "n"],
+      ["D3_UNK_PAYMETHOD", "SHOPMY", "최소 $11 · Stripe 또는 PayPal", "prior", "H", "n"],
+      ["D3_CREATOR_RECEIVE", "CREATOR", "크리에이터 수령", "est", "S4c", "n"],
+    ],
+    edges: [
+      ["D3_CREATOR_POST", "D3_UNK_SHOP", "", "prior", "H"],
+      ["D3_CREATOR_POST", "D3_UNK_SOCIAL", "", "prior", "H"],
+      ["D3_CREATOR_POST", "D3_UNK_LINKINBIO", "인앱 연동인지 복사인지 미확인", "unk", "X"],
+      ["D3_UNK_SHOP", "D3_SHOPPER_CLICK", "", "est", "H"],
+      ["D3_UNK_SOCIAL", "D3_SHOPPER_CLICK", "", "est", "H"],
+      ["D3_UNK_LINKINBIO", "D3_SHOPPER_CLICK", "", "unk", "X"],
+      ["D3_SHOPPER_CLICK", "D3_SHOPMY_TRACK", "", "est", "H"],
+      ["D3_SHOPMY_TRACK", "D3_SHOPPER_BUY", "", "est", "H"],
+      ["D3_SHOPPER_BUY", "D3_DEC_ATTR", "", "prior", "H"],
+      ["D3_DEC_ATTR", "D3_UNK_LOST", "아니오", "prior", "H"],
+      ["D3_DEC_ATTR", "D3_SHOPMY_COMM", "예", "est", "H"],
+      ["D3_SHOPMY_COMM", "D3_SHOPMY_PENDING", "구매 직후", "ok", "S2"],
+      ["D3_SHOPMY_PENDING", "D3_UNK_CANCEL", "반품 등", "title", "S4d"],
+      ["D3_SHOPMY_PENDING", "D3_SHOPMY_LOCKED", "30일 경과", "ok", "S2"],
+      ["D3_SHOPMY_LOCKED", "D3_SHOPMY_PAYOUT", "", "ok", "S2"],
+      ["D3_SHOPMY_PAYOUT", "D3_UNK_PAYMETHOD", "", "prior", "H"],
+      ["D3_SHOPMY_PAYOUT", "D3_CREATOR_RECEIVE", "", "est", "S4c"],
+    ],
+    seq: `sequenceDiagram
+  autonumber
+  participant C as 크리에이터
+  participant S as ShopMy
+  participant B as 브랜드
+  participant P as 쇼퍼
+  participant R as 리테일러/네트워크
+  C->>P: 샵·컬렉션·소셜에 링크 게시 (선행 H)
+  P->>S: 링크 클릭
+  Note over P,S: 추정: 클릭 기록 후 리테일러로 이동
+  S->>R: 쇼퍼를 상품 페이지로 보냄 (추정)
+  P->>R: 구매
+  Note over P,R: [미검증] 선행 H: 쿠키 흔히 7일·최대 30일, last-click
+  R-->>S: 주문 귀속 (추정)
+  S->>S: 커미션 산정, 세금·배송 전 주문액 (S2)
+  S->>S: Pending 30일 (S2)
+  Note over S: 선행 H는 30–120일. 충돌 기록
+  S->>S: Locked (S2)
+  S->>C: 매주 금요일 지급 (S2)
+  Note over S,C: [미검증] 최소 $11, Stripe·PayPal (선행 H)
+  B->>S: 매월 첫 영업일 청구 (Launch Package, S2)`,
+  },
+  D4: {
+    dir: "LR",
+    nodes: [
+      ["D4_SHOPPER_ORDER", "SHOPPER", "귀속된 구매", "est", "H", "n"],
+      ["D4_DEC_ROUTE", "SHOPMY", "수수료 경로", "ok", "S1", "d"],
+      ["D4_BRAND_PAY_FEE", "BRAND", "브랜드가 ShopMy에 별도 수수료<br/>(크리에이터가 만든 매출 기준)", "ok", "S1", "n"],
+      ["D4_UNK_DIRECT_RATE", "BRAND", "Direct 2.9% · 구독 $1,999–$7,999/월", "prior", "S3", "n"],
+      ["D4_BRAND_LAUNCH", "BRAND", "Launch Package<br/>GMV의 3.9% (월 구독료 금액 미기재)", "ok", "S2", "n"],
+      ["D4_UNK_CAMPAIGN", "BRAND", "캠페인 배치 수수료 15%", "prior", "S3", "n"],
+      ["D4_CREATOR_FULL", "CREATOR", "표시 요율 100% 수령", "ok", "S1", "n"],
+      ["D4_RETAIL_NET_PAY_COMM", "RETAIL_NET", "네트워크가 커미션 지급", "est", "S1", "n"],
+      ["D4_SHOPMY_SPLIT", "SHOPMY", "커미션 분배<br/>크리에이터 82% : ShopMy 18%", "ok", "S1", "n"],
+      ["D4_CREATOR_82", "CREATOR", "82% 반영 요율 수령<br/>(표시 요율에 이미 반영)", "ok", "S1", "n"],
+      ["D4_UNK_DUP", "RETAIL_NET", "다중 네트워크 중복 주문 귀속<br/>Edelman 논란", "risk", "S5", "n"],
+    ],
+    edges: [
+      ["D4_SHOPPER_ORDER", "D4_DEC_ROUTE", "", "est", "H"],
+      ["D4_DEC_ROUTE", "D4_BRAND_PAY_FEE", "브랜드 부담", "ok", "S1"],
+      ["D4_BRAND_PAY_FEE", "D4_UNK_DIRECT_RATE", "구독 브랜드 요율", "prior", "S3"],
+      ["D4_BRAND_PAY_FEE", "D4_BRAND_LAUNCH", "Launch Package", "ok", "S2"],
+      ["D4_BRAND_PAY_FEE", "D4_UNK_CAMPAIGN", "캠페인 지출", "prior", "S3"],
+      ["D4_BRAND_PAY_FEE", "D4_CREATOR_FULL", "", "ok", "S1"],
+      ["D4_DEC_ROUTE", "D4_RETAIL_NET_PAY_COMM", "제3자 네트워크", "ok", "S1"],
+      ["D4_RETAIL_NET_PAY_COMM", "D4_SHOPMY_SPLIT", "", "est", "S1"],
+      ["D4_SHOPMY_SPLIT", "D4_CREATOR_82", "", "ok", "S1"],
+      ["D4_RETAIL_NET_PAY_COMM", "D4_UNK_DUP", "리스크 주석", "risk", "S6"],
+    ],
+    seq: `sequenceDiagram
+  autonumber
+  participant C as 크리에이터
+  participant S as ShopMy
+  participant B as 브랜드
+  participant P as 쇼퍼
+  participant R as 리테일러/네트워크
+  P->>S: 귀속된 구매 (추정)
+  alt 브랜드가 수수료 부담 (S1)
+    S->>B: 크리에이터가 만든 매출 기준 청구
+    Note over S,B: Launch Package는 GMV 3.9% (S2). 예: GMV $100, 커미션 15%이면 크리에이터 $15, ShopMy $3.90
+    Note over S,B: [미검증] Direct 2.9%, 구독가, 캠페인 15% (S3 선행, PDF 미열람)
+    S->>C: 표시 요율 100% 지급 (S1)
+  else 제3자 네트워크 (S1)
+    R->>S: 커미션 지급 (추정)
+    S->>S: 커미션을 82:18로 분배 (S1)
+    S->>C: 82% 지급, 표시 요율에 이미 반영 (S1)
+  end
+  Note over R,S: 리스크: 다중 네트워크 중복 주문 귀속 (Edelman 2026-08-20, BoF 2026-08-21). 공식 규칙 [미검증]`,
+  },
+  D5: {
+    dir: "TD",
+    nodes: [
+      ["D5_BRAND_DOMAIN", "BRAND", "Domain Setup<br/>커미션 대상 도메인을 모두 입력", "ok", "S7", "n"],
+      ["D5_BRAND_POS", "BRAND", "POS 선택: 'Shopify' → 'Next'", "ok", "S7", "n"],
+      ["D5_DEC_METHOD", "BRAND", "연결 방식", "ok", "S7", "d"],
+      ["D5_BRAND_WIZARD", "BRAND", "'Setup Wizard' (Recommended)<br/>'ShopMy Setup Guide'를 북마크바로 드래그", "ok", "S7", "n"],
+      ["D5_BRAND_DEVDASH", "BRAND", "북마크 클릭 → Shopify Dev Dashboard<br/>단계마다 북마크를 다시 클릭", "ok", "S7", "n"],
+      ["D5_SHOPMY_AUTO", "SHOPMY", "ShopMy가 앱 생성 · 첫 버전 릴리스<br/>· 자격 증명 회수", "ok", "S7", "n"],
+      ["D5_BRAND_MANUAL", "BRAND", "'Or set up manually'<br/>Client ID · Client Secret 입력", "ok", "S7", "n"],
+      ["D5_UNK_DASHNAME", "BRAND", "자격 증명 위치 명칭 불일치<br/>Dev Dashboard vs Partners dashboard", "unk", "S7", "n"],
+      ["D5_SHOPMY_FILL", "SHOPMY", "'You're all set'<br/>자격 증명 자동 입력", "ok", "S7", "n"],
+      ["D5_BRAND_CONNECT", "BRAND", "'Connect Shopify' 클릭<br/>'Successfully connected'", "ok", "S7", "n"],
+      ["D5_BRAND_PIXEL", "BRAND", "Click Tracking Pixel<br/>main template의 body 닫는 태그 직전에 스크립트", "ok", "S7", "n"],
+      ["D5_SHOPMY_CHECK", "SHOPMY", "'Go to Test URL' → 'Check Integration'", "ok", "S7", "n"],
+      ["D5_DEC_PASS", "SHOPMY", "연동 확인 결과", "unk", "S7", "d"],
+      ["D5_SHOPMY_TRACK", "SHOPMY", "주문 추적 가능<br/>D3 귀속·커미션으로 이어짐", "est", "S7", "n"],
+      ["D5_SHOPMY_HELP", "SHOPMY", "ShopMy Onboarding 담당자 문의", "ok", "S7", "n"],
+      ["D5_BRAND_OAUTH", "BRAND", "OAuth 오류 시 스코프·redirect URL 수정 후<br/>'release' → 'install' (D7)", "ok", "S9", "n"],
+    ],
+    edges: [
+      ["D5_BRAND_DOMAIN", "D5_BRAND_POS", "", "ok", "S7"],
+      ["D5_BRAND_POS", "D5_DEC_METHOD", "", "ok", "S7"],
+      ["D5_DEC_METHOD", "D5_BRAND_WIZARD", "권장", "ok", "S7"],
+      ["D5_DEC_METHOD", "D5_BRAND_MANUAL", "수동", "ok", "S7"],
+      ["D5_BRAND_WIZARD", "D5_BRAND_DEVDASH", "드래그한 북마크 클릭", "ok", "S7"],
+      ["D5_BRAND_DEVDASH", "D5_SHOPMY_AUTO", "", "ok", "S7"],
+      ["D5_BRAND_DEVDASH", "D5_BRAND_OAUTH", "OAuth 오류", "ok", "S9"],
+      ["D5_SHOPMY_AUTO", "D5_SHOPMY_FILL", "", "ok", "S7"],
+      ["D5_BRAND_MANUAL", "D5_UNK_DASHNAME", "자격 증명 찾기", "unk", "S7"],
+      ["D5_BRAND_MANUAL", "D5_BRAND_CONNECT", "", "ok", "S7"],
+      ["D5_SHOPMY_FILL", "D5_BRAND_CONNECT", "", "ok", "S7"],
+      ["D5_BRAND_CONNECT", "D5_BRAND_PIXEL", "연결 성공 후", "ok", "S7"],
+      ["D5_BRAND_PIXEL", "D5_SHOPMY_CHECK", "", "ok", "S7"],
+      ["D5_SHOPMY_CHECK", "D5_DEC_PASS", "", "unk", "S7"],
+      ["D5_DEC_PASS", "D5_SHOPMY_TRACK", "통과", "est", "S7"],
+      ["D5_DEC_PASS", "D5_SHOPMY_HELP", "막힘", "est", "S7"],
+    ],
+    seq: `sequenceDiagram
+  autonumber
+  participant C as 크리에이터
+  participant S as ShopMy
+  participant B as 브랜드
+  participant P as 쇼퍼
+  participant R as 리테일러/네트워크
+  B->>S: Domain Setup, 커미션 대상 도메인 입력 (S7)
+  B->>S: POS 선택 'Shopify' → 'Next'
+  alt Setup Wizard (Recommended)
+    S-->>B: 'ShopMy Setup Guide' 북마크 제공
+    B->>B: 북마크 클릭, Shopify Dev Dashboard로 이동 (단계마다 반복)
+    S->>S: 앱 생성, 첫 버전 릴리스, 자격 증명 회수
+    S-->>B: 'You're all set', 자격 증명 자동 입력
+  else 'Or set up manually'
+    B->>S: Client ID · Client Secret 입력
+    Note over B: [미검증] 자격 증명 위치를 Dev Dashboard / Partners dashboard 두 이름으로 부름
+  end
+  B->>S: 'Connect Shopify'
+  S-->>B: 'Successfully connected', 추적 스크립트 표시
+  B->>B: main template에 Click Tracking Pixel 삽입
+  B->>S: 'Go to Test URL' → 'Check Integration'
+  Note over S,P: 추정: 이후 쇼퍼 클릭·주문이 D3 귀속 흐름으로 이어짐
+  Note over B,S: 문서 기준 예상 소요 약 15분`,
+  },
+  D6: {
+    dir: "TD",
+    nodes: [
+      ["D6_BRAND_FEED", "BRAND", "1. 상품 피드 전송<br/>SFTP·FTP·라이브 파일·Google Sheet<br/>json·csv·xml, 한 행에 SKU 하나", "ok", "S8", "n"],
+      ["D6_RETAIL_NET_FEED", "RETAIL_NET", "기존 네트워크 피드에서 가져오기 가능<br/>CJ·Rakuten·Impact·AWIN 등", "ok", "S8", "n"],
+      ["D6_SHOPMY_CATALOG", "SHOPMY", "기프팅 lookbook과<br/>크리에이터용 앱에 상품 반영", "ok", "S8", "n"],
+      ["D6_BRAND_DOMAIN", "BRAND", "2. 커미션 대상 도메인 입력", "ok", "S8", "n"],
+      ["D6_BRAND_POS", "BRAND", "3. POS 선택: 'Other' → 'Next'", "ok", "S8", "n"],
+      ["D6_DEC_TRACKER", "SHOPMY", "주문을 누가 추적하나", "ok", "S8", "d"],
+      ["D6_SHOPMY_RATE_A", "SHOPMY", "4A. Commission information<br/>네트워크 = ShopMy, 계약 요율", "ok", "S8", "n"],
+      ["D6_BRAND_CLICK", "BRAND", "5A. 클릭 추적 스크립트<br/>모든 페이지, 1st-party 쿠키", "ok", "S8", "n"],
+      ["D6_BRAND_ORDER", "BRAND", "6A. 주문 확인 페이지 스크립트<br/>실제 주문으로 테스트", "ok", "S8", "n"],
+      ["D6_BRAND_UPDATE", "BRAND", "7A. 주문 변경 알림<br/>order_id 형식 일치 필수", "ok", "S8", "n"],
+      ["D6_BRAND_CANCEL", "BRAND", "8A. 주문 취소 알림<br/>취소 시 커미션 환원", "ok", "S8", "n"],
+      ["D6_SHOPMY_LIVE_A", "SHOPMY", "셋업과 첫 인보이스 처리 후<br/>커미션 요율 활성", "ok", "S8", "n"],
+      ["D6_SHOPMY_RATE_B", "SHOPMY", "4B. Commission information<br/>해당 네트워크명 · 계약 요율", "ok", "S8", "n"],
+      ["D6_RETAIL_NET_APPROVE", "RETAIL_NET", "5B. 네트워크 계정에서<br/>ShopMy를 publisher로 승인 (D9)", "ok", "S8", "n"],
+      ["D6_RETAIL_NET_RATE", "RETAIL_NET", "6B. ShopMy용 커미션 요율 설정", "ok", "S8", "n"],
+      ["D6_SHOPMY_CONFIRM", "SHOPMY", "7B. Onboarding 담당자가<br/>연결 활성 확인", "ok", "S8", "n"],
+      ["D6_UNK_DETAIL", "SHOPMY", "테스트 링크 이름 · 스크립트 내용<br/>· 단계별 소요 시간", "unk", "S8", "n"],
+    ],
+    edges: [
+      ["D6_BRAND_FEED", "D6_SHOPMY_CATALOG", "", "ok", "S8"],
+      ["D6_RETAIL_NET_FEED", "D6_SHOPMY_CATALOG", "대체 경로", "ok", "S8"],
+      ["D6_BRAND_FEED", "D6_BRAND_DOMAIN", "", "ok", "S8"],
+      ["D6_BRAND_DOMAIN", "D6_BRAND_POS", "", "ok", "S8"],
+      ["D6_BRAND_POS", "D6_DEC_TRACKER", "", "ok", "S8"],
+      ["D6_DEC_TRACKER", "D6_SHOPMY_RATE_A", "A. ShopMy가 직접 추적", "ok", "S8"],
+      ["D6_SHOPMY_RATE_A", "D6_BRAND_CLICK", "", "ok", "S8"],
+      ["D6_BRAND_CLICK", "D6_BRAND_ORDER", "", "ok", "S8"],
+      ["D6_BRAND_ORDER", "D6_BRAND_UPDATE", "", "ok", "S8"],
+      ["D6_BRAND_UPDATE", "D6_BRAND_CANCEL", "", "ok", "S8"],
+      ["D6_BRAND_CANCEL", "D6_SHOPMY_LIVE_A", "", "ok", "S8"],
+      ["D6_BRAND_CLICK", "D6_UNK_DETAIL", "테스트 링크", "unk", "S8"],
+      ["D6_DEC_TRACKER", "D6_SHOPMY_RATE_B", "B. 기존 제휴 네트워크", "ok", "S8"],
+      ["D6_SHOPMY_RATE_B", "D6_RETAIL_NET_APPROVE", "", "ok", "S8"],
+      ["D6_RETAIL_NET_APPROVE", "D6_RETAIL_NET_RATE", "", "ok", "S8"],
+      ["D6_RETAIL_NET_RATE", "D6_SHOPMY_CONFIRM", "", "ok", "S8"],
+    ],
+    seq: `sequenceDiagram
+  autonumber
+  participant C as 크리에이터
+  participant S as ShopMy
+  participant B as 브랜드
+  participant P as 쇼퍼
+  participant R as 리테일러/네트워크
+  B->>S: 상품 피드 전송 (json·csv·xml) (S8)
+  opt 기존 네트워크 피드가 있는 경우
+    R-->>S: 네트워크 피드에서 상품 가져오기
+  end
+  S->>C: 기프팅 lookbook, 크리에이터용 앱에 상품 노출
+  B->>S: 커미션 대상 도메인 입력, POS 'Other'
+  alt A. ShopMy가 주문을 직접 추적
+    S-->>B: Commission information (ShopMy, 계약 요율)
+    B->>B: 클릭 추적 스크립트, 주문 확인 스크립트 설치
+    B->>S: 주문 변경·취소 알림 (order_id 일치)
+    Note over S,C: 취소된 주문은 커미션 환원 (S8)
+    S->>S: 셋업과 첫 인보이스 처리 후 요율 활성
+  else B. 기존 제휴 네트워크가 추적·지급
+    S-->>B: Commission information (네트워크명, 계약 요율)
+    B->>R: ShopMy를 publisher로 승인, ShopMy용 요율 설정
+    S-->>B: Onboarding 담당자가 연결 활성 확인
+  end`,
+  },
+  D7: {
+    dir: "LR",
+    nodes: [
+      ["D7_BRAND_ISSUE", "BRAND", "온보딩 중 질문·문제", "ok", "S9", "n"],
+      ["D7_DEC_TYPE", "BRAND", "어떤 상황인가", "ok", "S9", "d"],
+      ["D7_BRAND_OAUTH", "BRAND", "Shopify OAuth 오류<br/>Dev Dashboard에서 새 버전: 스코프·redirect URL<br/>→ 'release' → 'install'", "ok", "S9", "n"],
+      ["D7_RETAIL_NET_RATE", "RETAIL_NET", "Shopify 외 + 다른 네트워크<br/>그 네트워크로 'at least 15-20%' 요율 제시", "ok", "S9", "n"],
+      ["D7_SHOPMY_NETWORK", "SHOPMY", "Onboarding Team이<br/>파트너 네트워크 연동 안내", "ok", "S9", "n"],
+      ["D7_BRAND_TAG", "BRAND", "Google Tag·다른 픽셀 병행 가능<br/>ShopMy 스크립트는 독립 동작", "ok", "S9", "n"],
+      ["D7_BRAND_NOTTRACKED", "BRAND", "'not tracked' 표시<br/>스크립트가 다른 script 밖·아래인지, 쿠키 배너 차단 확인", "ok", "S9", "n"],
+      ["D7_SHOPMY_RETEST", "SHOPMY", "온보딩 포털에서 재테스트", "ok", "S9", "n"],
+      ["D7_BRAND_PAY", "BRAND", "결제 수단<br/>ACH 계약은 카드 불필요, 카드 결제는 셋업 중 등록", "ok", "S9", "n"],
+      ["D7_BRAND_EMAIL", "BRAND", "'email already in use'<br/>기존 쇼퍼 계정 → 로그아웃 후 재로그인", "ok", "S9", "n"],
+      ["D7_SHOPMY_SPECIALIST", "SHOPMY", "Onboarding specialist 확인<br/>(스크린샷·계정 확인)", "ok", "S9", "n"],
+      ["D7_SHOPMY_TEST", "SHOPMY", "Onboarding Team이<br/>테스트 주문 1–2건", "ok", "S9", "n"],
+      ["D7_BRAND_CANCEL_TEST", "BRAND", "확인 후 테스트 주문 취소", "ok", "S9", "n"],
+      ["D7_SHOPMY_LIVE", "SHOPMY", "온보딩 완료 → 라이브<br/>바로 크리에이터에게 노출", "ok", "S9", "n"],
+    ],
+    edges: [
+      ["D7_BRAND_ISSUE", "D7_DEC_TYPE", "", "ok", "S9"],
+      ["D7_DEC_TYPE", "D7_BRAND_OAUTH", "Shopify 연동 오류", "ok", "S9"],
+      ["D7_DEC_TYPE", "D7_RETAIL_NET_RATE", "Shopify 외 · 네트워크 경유", "ok", "S9"],
+      ["D7_RETAIL_NET_RATE", "D7_SHOPMY_NETWORK", "", "ok", "S9"],
+      ["D7_DEC_TYPE", "D7_BRAND_TAG", "다른 태그 병행", "ok", "S9"],
+      ["D7_DEC_TYPE", "D7_BRAND_NOTTRACKED", "추적 안 됨", "ok", "S9"],
+      ["D7_BRAND_NOTTRACKED", "D7_SHOPMY_RETEST", "", "ok", "S9"],
+      ["D7_SHOPMY_RETEST", "D7_SHOPMY_SPECIALIST", "여전히 실패", "ok", "S9"],
+      ["D7_DEC_TYPE", "D7_BRAND_PAY", "결제", "ok", "S9"],
+      ["D7_DEC_TYPE", "D7_BRAND_EMAIL", "가입 오류", "ok", "S9"],
+      ["D7_BRAND_EMAIL", "D7_SHOPMY_SPECIALIST", "여전히 실패", "ok", "S9"],
+      ["D7_BRAND_OAUTH", "D7_SHOPMY_TEST", "연동 복구 후", "est", "S9"],
+      ["D7_SHOPMY_RETEST", "D7_SHOPMY_TEST", "추적 확인 후", "est", "S9"],
+      ["D7_SHOPMY_NETWORK", "D7_SHOPMY_TEST", "", "est", "S9"],
+      ["D7_SHOPMY_TEST", "D7_BRAND_CANCEL_TEST", "", "ok", "S9"],
+      ["D7_BRAND_CANCEL_TEST", "D7_SHOPMY_LIVE", "", "est", "S9"],
+    ],
+    seq: `sequenceDiagram
+  autonumber
+  participant C as 크리에이터
+  participant S as ShopMy
+  participant B as 브랜드
+  participant P as 쇼퍼
+  participant R as 리테일러/네트워크
+  Note over B,S: FAQ 문서라 순서가 아닌 상황별 분기. 분기 사이 순서는 추정
+  opt Shopify OAuth 오류
+    B->>B: Dev Dashboard에서 새 버전, 스코프·redirect URL 입력, 'release' → 'install'
+  end
+  opt Shopify 외 + 다른 네트워크
+    B->>R: 'at least 15-20%' 요율 제시
+    Note over B,R: 무엇의 요율인지(커미션 요율 여부)는 문서에 없음
+    S-->>B: 파트너 네트워크 연동 안내
+  end
+  opt 'not tracked'
+    B->>B: 스크립트 위치·쿠키 배너 확인
+    B->>S: 온보딩 포털에서 재테스트
+  end
+  S->>B: 테스트 주문 1–2건 (S9)
+  B->>B: 확인 후 테스트 주문 취소
+  S->>C: 라이브 직후 크리에이터에게 노출`,
+  },
+  D8: {
+    dir: "TD",
+    nodes: [
+      ["D8_BRAND_PLAN", "BRAND", "런칭 후 사이트·체크아웃 변경 계획", "ok", "S10", "n"],
+      ["D8_DEC_SIG", "BRAND", "중대한 변경인가<br/>(기준 미기재)", "unk", "S10", "d"],
+      ["D8_BRAND_NOTIFY", "BRAND", "변경 전에 ShopMy brand support에 알림", "ok", "S10", "n"],
+      ["D8_SHOPMY_RETEST", "SHOPMY", "ShopMy가 연동 재테스트", "ok", "S10", "n"],
+      ["D8_SHOPMY_CREDIT", "SHOPMY", "크리에이터 커미션 귀속 유지", "ok", "S10", "n"],
+      ["D8_UNK_NONOTICE", "SHOPMY", "알리지 않은 경우 · 사소한 변경의 처리", "unk", "S10", "n"],
+      ["D8_SHOPMY_RISK", "SHOPMY", "추적·커미션 귀속이 끊길 수 있음", "ok", "S10", "n"],
+    ],
+    edges: [
+      ["D8_BRAND_PLAN", "D8_DEC_SIG", "", "unk", "S10"],
+      ["D8_DEC_SIG", "D8_BRAND_NOTIFY", "예", "ok", "S10"],
+      ["D8_BRAND_NOTIFY", "D8_SHOPMY_RETEST", "", "ok", "S10"],
+      ["D8_SHOPMY_RETEST", "D8_SHOPMY_CREDIT", "", "ok", "S10"],
+      ["D8_DEC_SIG", "D8_UNK_NONOTICE", "알리지 않음", "unk", "S10"],
+      ["D8_UNK_NONOTICE", "D8_SHOPMY_RISK", "", "est", "S10"],
+    ],
+    seq: `sequenceDiagram
+  autonumber
+  participant C as 크리에이터
+  participant S as ShopMy
+  participant B as 브랜드
+  participant P as 쇼퍼
+  participant R as 리테일러/네트워크
+  B->>S: 사이트·체크아웃 변경 전에 brand support에 알림 (S10)
+  S->>S: 연동 재테스트
+  S-->>C: 커미션 귀속 유지
+  Note over B,S: [미검증] '중대한 변경'의 기준, 사전 통지 기간, 미통지 시 처리는 문서에 없음`,
+  },
+  D9: {
+    dir: "LR",
+    nodes: [
+      ["D9_BRAND_START", "BRAND", "브랜드가 자기 네트워크 계정에 로그인<br/>ShopMy는 이미 승인된 publisher", "ok", "S11", "n"],
+      ["D9_DEC_SEARCH", "BRAND", "ID로 ShopMy가 검색되나", "ok", "S11", "d"],
+      ["D9_BRAND_SEARCHNAME", "BRAND", "'ShopMy' 또는 shopmy.us로 검색 후<br/>ID 대조", "ok", "S11", "n"],
+      ["D9_DEC_NET", "BRAND", "어느 네트워크인가", "ok", "S11", "d"],
+      ["D9_RETAIL_NET_IMPACT", "RETAIL_NET", "Impact<br/>Template Terms → 'Add Partners'<br/>→ Partner Id → 'Propose'", "ok", "S11", "n"],
+      ["D9_RETAIL_NET_RAKUTEN", "RETAIL_NET", "Rakuten<br/>지역 프로그램 확인, 오퍼를 붙여 초대", "ok", "S11", "n"],
+      ["D9_RETAIL_NET_CJ", "RETAIL_NET", "CJ<br/>Program Terms 확인 → 'Recruit Partners'", "ok", "S11", "n"],
+      ["D9_RETAIL_NET_AWIN", "RETAIL_NET", "Awin<br/>'Find partners' → 'Invite the partner to your program'", "ok", "S11", "n"],
+      ["D9_RETAIL_NET_AVANT", "RETAIL_NET", "AvantLink<br/>'Affiliate Recruitment' → 'Recruiting'", "ok", "S11", "n"],
+      ["D9_RETAIL_NET_PZ", "RETAIL_NET", "Partnerize<br/>캠페인마다 초대, 승인 후 커미션 규칙 직접 설정", "ok", "S11", "n"],
+      ["D9_RETAIL_NET_ASCEND", "RETAIL_NET", "Ascend by Partnerize (구 Pepperjam)<br/>Commission Terms 먼저 → 'invite'", "ok", "S11", "n"],
+      ["D9_SHOPMY_ACCEPT", "SHOPMY", "ShopMy가 초대 수락", "ok", "S11", "n"],
+      ["D9_RETAIL_NET_LIVE", "RETAIL_NET", "트래킹 활성<br/>수락 전에는 비활성", "ok", "S11", "n"],
+      ["D9_SHOPMY_LINKS", "SHOPMY", "ShopMy가 트래킹 링크 가져옴<br/>(Partnerize: 브랜드가 ShopMy에 알림)", "ok", "S11", "n"],
+      ["D9_UNK_TIME", "SHOPMY", "수락 소요 시간 · 거절 시 처리", "unk", "S11", "n"],
+    ],
+    edges: [
+      ["D9_BRAND_START", "D9_DEC_SEARCH", "ShopMy 찾기", "ok", "S11"],
+      ["D9_DEC_SEARCH", "D9_DEC_NET", "예", "ok", "S11"],
+      ["D9_DEC_SEARCH", "D9_BRAND_SEARCHNAME", "아니오", "ok", "S11"],
+      ["D9_BRAND_SEARCHNAME", "D9_DEC_NET", "", "ok", "S11"],
+      ["D9_DEC_NET", "D9_RETAIL_NET_IMPACT", "", "ok", "S11"],
+      ["D9_DEC_NET", "D9_RETAIL_NET_RAKUTEN", "", "ok", "S11"],
+      ["D9_DEC_NET", "D9_RETAIL_NET_CJ", "", "ok", "S11"],
+      ["D9_DEC_NET", "D9_RETAIL_NET_AWIN", "", "ok", "S11"],
+      ["D9_DEC_NET", "D9_RETAIL_NET_AVANT", "", "ok", "S11"],
+      ["D9_DEC_NET", "D9_RETAIL_NET_PZ", "", "ok", "S11"],
+      ["D9_DEC_NET", "D9_RETAIL_NET_ASCEND", "", "ok", "S11"],
+      ["D9_RETAIL_NET_IMPACT", "D9_SHOPMY_ACCEPT", "", "ok", "S11"],
+      ["D9_RETAIL_NET_RAKUTEN", "D9_SHOPMY_ACCEPT", "", "ok", "S11"],
+      ["D9_RETAIL_NET_CJ", "D9_SHOPMY_ACCEPT", "", "ok", "S11"],
+      ["D9_RETAIL_NET_AWIN", "D9_SHOPMY_ACCEPT", "", "ok", "S11"],
+      ["D9_RETAIL_NET_AVANT", "D9_SHOPMY_ACCEPT", "", "ok", "S11"],
+      ["D9_RETAIL_NET_PZ", "D9_SHOPMY_ACCEPT", "", "ok", "S11"],
+      ["D9_RETAIL_NET_ASCEND", "D9_SHOPMY_ACCEPT", "", "ok", "S11"],
+      ["D9_SHOPMY_ACCEPT", "D9_RETAIL_NET_LIVE", "", "ok", "S11"],
+      ["D9_RETAIL_NET_LIVE", "D9_SHOPMY_LINKS", "", "ok", "S11"],
+      ["D9_SHOPMY_ACCEPT", "D9_UNK_TIME", "", "unk", "S11"],
+    ],
+    seq: `sequenceDiagram
+  autonumber
+  participant C as 크리에이터
+  participant S as ShopMy
+  participant B as 브랜드
+  participant P as 쇼퍼
+  participant R as 리테일러/네트워크
+  B->>R: 자기 네트워크 계정에 로그인 (S11)
+  B->>R: ShopMy 검색 (ID가 안 되면 이름·도메인으로 찾고 ID 대조)
+  B->>R: 커미션 조건(템플릿·오퍼·terms)을 붙여 초대
+  Note over B,R: Impact 'Propose'(Replace 아님), Rakuten 오퍼 필수, Partnerize 캠페인별, Ascend는 Terms 먼저
+  R->>S: 초대 전달
+  S->>R: 수락
+  Note over R: 수락 전에는 트래킹 비활성
+  S->>R: 트래킹 링크 가져오기
+  Note over S,C: 이후 이 브랜드의 판매는 D4 '제3자 네트워크' 경로(82:18)로 이어짐 (추정)
+  Note over B,R: 주의: core Partnerize와 Ascend는 별개 플랫폼. ShareASale은 2025-10 종료, 기존 ID는 Awin에서 무효`,
+  },
+};
+
+const isSolid = s => s === "ok";
+const q = s => `"${s.replace(/"/g, "'")}"`;
+const statusTag = s => `<span class="tag ${STATUS[s][1]}">${STATUS[s][0]}</span>`;
+const plain = s => s.replace(/<br\/>/g, " ");
+
+function flowSource(key) {
+  const d = D[key];
+  const L = [`flowchart ${d.dir}`,
+    "  classDef creator fill:#E8F1FF,stroke:#1B4DFF,stroke-width:2px,color:#111;",
+    "  classDef shopmy fill:#F5F5F5,stroke:#434343,stroke-width:2px,color:#111;",
+    "  classDef brand fill:#FFF7E6,stroke:#D46B08,stroke-width:2px,color:#111;",
+    "  classDef shopper fill:#F6FFED,stroke:#389E0D,stroke-width:2px,color:#111;",
+    "  classDef retail fill:#F9F0FF,stroke:#531DAB,stroke-width:2px,color:#111;",
+    "  classDef decision fill:#FFF1F0,stroke:#CF1322,stroke-width:2px,color:#111;",
+    "  classDef unverified fill:#FAFAFA,stroke:#8C8C8C,stroke-width:1px,stroke-dasharray: 5 3,color:#111;",
+    "  classDef risk fill:#FFF1F0,stroke:#CF1322,stroke-width:1px,stroke-dasharray: 2 2,color:#111;"];
+  for (const [lane, name] of LANES) {
+    const ns = d.nodes.filter(n => n[1] === lane);
+    if (!ns.length) continue;
+    L.push(`  subgraph ${lane}["${name}"]`);
+    for (const [id, , label, st, , kind] of ns) {
+      const suffix = st === "ok" ? "" : st === "est" ? "<br/>(추정)" : st === "title" ? "<br/>(제목만 확인)" : st === "risk" ? "<br/>(리스크 주석)" : "<br/>[미검증]";
+      const text = q(label + suffix);
+      if (kind === "d") L.push(`    ${id}{${text}}`);
+      else if (st === "ok" || st === "est") L.push(`    ${id}[${text}]`);
+      else L.push(`    ${id}([${text}])`);
+    }
+    L.push("  end");
+  }
+  for (const [from, to, label, st] of d.edges) {
+    const arrow = isSolid(st) ? "-->" : "-.->";
+    L.push(label ? `  ${from} ${arrow}|${q(label)}| ${to}` : `  ${from} ${arrow} ${to}`);
+  }
+  for (const [id, lane, , st, , kind] of d.nodes) {
+    const cls = kind === "d" ? "decision" : st === "risk" ? "risk" : (st === "ok" || st === "est") ? CLASS[lane] : "unverified";
+    L.push(`  class ${id} ${cls};`);
+  }
+  return L.join("\n");
+}
+
+function edgeId(key, from, to, k) {
+  const short = id => id.replace(new RegExp(`^${key}_`), "");
+  return `E${key.slice(1)}_${short(from)}_${short(to)}_${k}`;
+}
+
+function sourceTable(key) {
+  const d = D[key];
+  let h = `<table><tr><th>구분</th><th>ID</th><th>라벨</th><th>레인</th><th>출처</th><th>열람일</th><th>상태</th></tr>`;
+  for (const [id, lane, label, st, src] of d.nodes)
+    h += `<tr><td>노드</td><td><code>${id}</code></td><td>${plain(label)}</td><td>${lane}</td><td>${src}</td><td>${DATE[src]}</td><td>${statusTag(st)}</td></tr>`;
+  const count = {};
+  for (const [from, to, label, st, src] of d.edges) {
+    const pair = from + to; count[pair] = (count[pair] || 0) + 1;
+    h += `<tr><td>엣지</td><td><code>${edgeId(key, from, to, count[pair])}</code></td><td>${label || "—"}<br/><small><code>${from}</code> → <code>${to}</code></small></td><td>${isSolid(st) ? "실선" : "점선"}</td><td>${src}</td><td>${DATE[src]}</td><td>${statusTag(st)}</td></tr>`;
+  }
+  return h + "</table>";
+}
+
+function swimTable() {
+  let h = `<table><tr><th>단계 ID</th><th>단계명</th>${LANES.map(l => `<th>${l[0]}</th>`).join("")}<th>출처</th><th>상태</th></tr>`;
+  for (const key of Object.keys(D)) {
+    h += `<tr><td colspan="9" style="background:var(--code-bg);font-weight:600">${key} ${{ D1: "온보딩·브랜드 연결 (A)", D2: "링크 발행 (B)", D3: "게시·클릭·정산 (B)", D4: "Direct vs Network",
+      D5: "브랜드 Shopify 연결 (A)", D6: "브랜드 Shopify 외 연결 (A)", D7: "브랜드 온보딩 FAQ (A)",
+      D8: "런칭 후 사이트 변경 (A)", D9: "제휴 프로그램에 ShopMy 초대 (A)" }[key]}</td></tr>`;
+    for (const [id, lane, label, st, src] of D[key].nodes) {
+      const cells = LANES.map(([l]) => `<td>${l === lane ? "●" : ""}</td>`).join("");
+      h += `<tr><td><code>${id}</code></td><td>${plain(label)}</td>${cells}<td>${src} · ${DATE[src]}</td><td>${statusTag(st)}</td></tr>`;
+    }
+  }
+  return h + "</table>";
+}
+
+mermaid.initialize({ startOnLoad: false, theme: "base", securityLevel: "strict",
+  flowchart: { htmlLabels: true, curve: "basis", useMaxWidth: false },
+  sequence: { useMaxWidth: false, wrap: true },
+  themeVariables: { fontFamily: '-apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif', fontSize: "14px" } });
+
+let n = 0;
+for (const key of Object.keys(D)) {
+  const flow = flowSource(key);
+  document.querySelector(`[data-src="${key}"]`).textContent = `%% ${key} flowchart\n${flow}\n\n%% ${key} sequenceDiagram\n${D[key].seq}`;
+  document.querySelector(`[data-table="${key}"]`).innerHTML = sourceTable(key);
+  for (const [sel, src] of [[`[data-flow="${key}"]`, flow], [`[data-seq="${key}"]`, D[key].seq]]) {
+    const el = document.querySelector(sel);
+    try {
+      const { svg } = await mermaid.render(`m${n++}`, src);
+      el.innerHTML = svg;
+    } catch (e) {
+      el.innerHTML = `<span class="loading">렌더 실패: ${String(e.message || e).slice(0, 200)}</span>`;
+    }
+  }
+}
+document.getElementById("swimtable").innerHTML = swimTable();
+</script>
+</body>
+</html>
