@@ -36,7 +36,8 @@ export interface JobItem {
   image_src: string | null;
   status: "prime" | "queued" | "running" | "done" | "failed";
   prime_group: "found" | "not_found" | "no_product" | null;
-  style_id: string | null;
+  /** 스타일 아이디 후보 전부 (api_call_items.style_id · 0028) — 중립 축의 양쪽 글자 조합, 첫 번째 = 대표 */
+  style_id: string[] | null;
   result: {
     style?: { name: string | null; sub_title: string | null } | null;
     candidates?: unknown[];
@@ -160,6 +161,7 @@ function ProductFields({ product }: { product: JobItem["product"] }) {
 export function ItemCard({ it, details = false }: { it: JobItem; details?: boolean }) {
   const [judgementOpen, setJudgementOpen] = useState(false);
   const axes = it.result?.axes ?? {};
+  const styleIds = it.style_id ?? [];
   // /product-style 의 판정 결과 모달과 같다 — 판정 결과 · 판정 기록(scoring)을 JSON 트리로
   const judged = {
     style_id: it.style_id,
@@ -193,11 +195,16 @@ export function ItemCard({ it, details = false }: { it: JobItem; details?: boole
 
       <div className="min-w-0 flex flex-col border-l border-[#F0F1F3]">
         <div className="flex-none flex flex-wrap items-center gap-x-2 gap-y-1 px-3 py-2.5 border-b border-[#F0F1F3]">
-          {it.style_id ? (
+          {styleIds.length ? (
             <>
-              <span className="font-mono text-[16px] font-bold tracking-wider text-[#101317]">{it.style_id}</span>
+              <span
+                className="font-mono text-[16px] font-bold tracking-wider text-[#101317]"
+                title={styleIds.length > 1 ? `중립 축이 있어 ${styleIds.length}개 스타일 아이디 모두에 해당합니다 (OR)` : undefined}
+              >
+                {styleIds.join(" · ")}
+              </span>
               <JudgementButton onClick={() => setJudgementOpen(true)} />
-              {it.result?.style?.name && <span className="text-[13px] text-[#555A64]">{it.result.style.name}</span>}
+              {styleIds.length === 1 && it.result?.style?.name && <span className="text-[13px] text-[#555A64]">{it.result.style.name}</span>}
               <span className="flex items-center gap-1">
                 {Object.entries(axes).map(([k, a]) => (
                   <span

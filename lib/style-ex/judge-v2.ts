@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import { anthropicClientOptions, geminiApiKey, MISSING_GEMINI_KEY_MESSAGE } from "./api-key";
-import { styleIdCandidates, STYLE_IDS } from "./style-ids";
+import { bothLetters, styleIdCandidates, STYLE_IDS } from "./style-ids";
 
 /**
  * 판정 함수 V2 — STMX Item Scoring V2 · Integrated Runtime R4 (ITEM-V2-INTEGRATED-FINAL-FREEZE-V1-2026-10-29).
@@ -19,7 +19,7 @@ import { styleIdCandidates, STYLE_IDS } from "./style-ids";
  *   ③ R4 — 패킷이 사진 · envelope 와 맞는지 검사하고, 그 단위 의복의 색만 붙여 R3 → 동결 EI · TC · SR · DM V2 로 보낸다.
  *   ④ 결과 — 축마다 방향 토큰 하나와 한국어 근거(reason). 점수 · 강도 · 스타일 아이디는 엔진이 내지 않는다.
  *   ⑤ 글자 — E · I / CLASSIC → C · TRANSFORMATIVE → T / S · R / D · M. EI NEUTRAL 은 양쪽 글자(E/I, OR).
- *      방향이 없는 축은 기본 글자(RULE_DEFAULT)로 채우고 그 이유를 남긴다.
+ *      방향이 없는 축은 양쪽 글자(OR, 기본 글자가 대표 · RULE_DEFAULT)로 채우고 그 이유를 남긴다.
  *
  * 엔진은 lib/style-ex/scoring-v2/ 에 백업 폴더(05_INTEGRATED_ITEM_SCORING_RUNTIME_V2)와 같은 상대 경로로 둔다 —
  * 로드할 때 봉인된 파일의 SHA-256 을 모두 다시 검사하므로(어긋나면 예외) 그 폴더의 파일은 고치지 않는다.
@@ -174,12 +174,14 @@ function axisOf(axis: Axis, out: { direction?: string | null; reason?: string | 
     };
   }
   const why = missing ? [missing.outcome, missing.code].filter(Boolean).join(" · ") : direction ? `알 수 없는 방향 ${direction}` : "방향 없음";
+  // 방향이 없으면 어느 쪽인지 모른다 — 중립과 같이 양쪽 글자(OR)를 모두 갖는다 (2026-11-20 결정). letter = 대표(기본) 글자
+  const both = bothLetters(axis, DEFAULT_LETTER[axis]);
   return {
     letter: DEFAULT_LETTER[axis],
-    letters: [DEFAULT_LETTER[axis]],
+    letters: both,
     source: "RULE_DEFAULT",
     label: null,
-    detail: `엔진 방향 없음 (${why}) → 기본값 ${DEFAULT_LETTER[axis]}`,
+    detail: `엔진 방향 없음 (${why}) → ${both.join(" 또는 ")} (양쪽 모두)`,
   };
 }
 

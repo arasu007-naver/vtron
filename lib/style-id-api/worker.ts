@@ -2,8 +2,10 @@ import "server-only";
 import { getAdminSupabase } from "@/lib/supabase/server";
 import { anthropicApiKey } from "@/lib/style-ex/api-key";
 import { resolvePrimeTarget, type PrimeTarget } from "@/lib/style-ex/prime-target";
+import { saveApiJobProductStyle } from "@/lib/style-ex/product-style";
 import { MAX_IMAGE_BYTES, runApiStyleId, sniffImage, type ApiStyleIdRun } from "./extract";
 import { IMAGE_BUCKET, ITEMS_TABLE, removeImages, type PrimeGroup } from "./jobs";
+import { locatePrimeRegion, primeGarmentOf, primeRegionEnabled } from "./prime-region";
 
 /**
  * 대량 Style ID 큐 워커 — 작업마다 두 단계로 돈다 (0025).
@@ -25,6 +27,8 @@ import { IMAGE_BUCKET, ITEMS_TABLE, removeImages, type PrimeGroup } from "./jobs
  * 일시적 오류(사진 주소 응답 없음 · 5xx, Anthropic 429 · 5xx · 529)는 큐로 되돌려 다시 시도하고,
  * STYLE_ID_JOB_MAX_ATTEMPTS 번째도 실패하면 failed 로 닫는다.
  * 상품마다 근거(관찰 envelope · 판정 기록 · JEV 결정)도 그 행(observation · scoring · prime_target, 0024)에 남긴다.
+ * 추출 결과(성공 · 판정 실패)는 product_style 에도 남긴다 (0029 — 작업 상품 하나에 한 행, target item).
+ * 판정에 쓴 대표 의복의 사진 속 영역(prime_region, 0031)도 Vision 모델로 찾아 남긴다 — 화면이 사진 위에 박스로 그린다.
  */
 
 const num = (v: string | undefined, d: number) => {
@@ -48,6 +52,7 @@ type Obj = Record<string, unknown>;
 interface ClaimedItem {
   id: string;
   call_id: string;
+  business_user_id: string | null;
   seq: number;
   ref: string | null;
   product: Obj;
@@ -112,7 +117,64 @@ async function saveEvidence(it: ClaimedItem, evidence: ApiStyleIdRun["evidence"]
   if (error) console.warn(`[style-id-jobs] ${it.call_id}#${it.seq} 근거 저장 실패 (0024 를 실행했는지 확인):`, error.message);
 }
 
-async function finish(it: ClaimedItem, fields: { status: "done" | "failed" | "queued"; style_id?: string | null; result?: Obj | null; error?: string | null; detail?: string | null; ms?: number }) {
+/**
+ * 대표 의복 영역을 찾아 그 행(prime_region)에 남긴다 (0031). 실패해도 결과는 그대로 남긴다 — 경고만 한다.
+ * 관찰한 의복이 없으면(관찰 실패) 찾지 않는다.
+ */
+async function savePrimeRegion(it: ClaimedItem, run: ApiStyleIdRun, image: Buffer) {
+  if (!primeRegionEnabled()) return;
+  const garment = primeGarmentOf(run.evidence.observation, run.evidence.styleId?.target_id);
+  if (!garment) return;
+  try {
+    const region = await locatePrimeRegion({
+      image,
+      category: garment.category ?? it.prime_target?.category ?? null,
+      descriptor: garment.descriptor,
+      productName: text(it.product.name) || null,
+    });
+    const { error } = await getAdminSupabase()
+      .from(ITEMS_TABLE)
+      .update({ prime_region: region })
+      .eq("id", it.id)
+      .eq("status", "running");
+    if (error) throw new Error(`${error.message} (0031 을 실행했는지 확인)`);
+  } catch (e) {
+    console.warn(`[style-id-jobs] ${it.call_id}#${it.seq} 대표 의복 영역 실패:`, e instanceof Error ? e.message : String(e));
+  }
+}
+
+/**
+ * 추출 결과를 product_style 에도 남긴다 (0029). 실패해도 작업 결과(api_call_items)는 그대로 남긴다 — 경고만 한다.
+ * 사진 · 관찰 단계까지 가지 못한 실패(이미지 받기 실패 등)는 추출 결과가 없으므로 남기지 않는다.
+ */
+async function saveProductStyle(it: ClaimedItem, run: ApiStyleIdRun) {
+  const observation = run.evidence.observation as Record<string, unknown> | null;
+  if (!observation) return;
+  try {
+    await saveApiJobProductStyle({
+      apiCallItemId: it.id,
+      businessUserId: it.business_user_id,
+      ref: it.ref,
+      product: it.product,
+      imageUrl: it.image_url,
+      version: run.observePrompt.label,
+      result: {
+        customPrompt: false,
+        promptVersions: { prompt: run.observePrompt.id ? { id: run.observePrompt.id } : null, judgePrompt: null },
+        styleId: run.evidence.styleId,
+        scoring: run.evidence.scoring,
+        judgement: null,
+        observation,
+      },
+      visionModel: run.visionModel,
+      elapsedMs: run.elapsedMs,
+    });
+  } catch (e) {
+    console.warn(`[style-id-jobs] ${it.call_id}#${it.seq} product_style 저장 실패:`, e instanceof Error ? e.message : String(e));
+  }
+}
+
+async function finish(it: ClaimedItem, fields: { status: "done" | "failed" | "queued"; style_id?: string[] | null; result?: Obj | null; error?: string | null; detail?: string | null; ms?: number }) {
   const { error } = await getAdminSupabase().rpc("finish_api_call_item", {
     p_id: it.id,
     p_status: fields.status,
@@ -148,10 +210,13 @@ async function processItem(it: ClaimedItem) {
       vision_model: run.visionModel,
     };
     await saveEvidence(it, run.evidence);
+    await Promise.all([saveProductStyle(it, run), savePrimeRegion(it, run, image)]);
     if (run.result.ok) {
       const { ok: _ok, ...result } = run.result;
       void _ok;
-      await finish(it, { status: "done", style_id: run.result.style_id, result: { ...result, ...meta }, ms: ms() });
+      // 중립 축의 양쪽 글자를 조합한 후보 전부(첫 번째 = 대표 style_id) — api_call_items.style_id 는 배열이다 (0028)
+      const ids = run.result.candidates.map((c) => c.style_id);
+      await finish(it, { status: "done", style_id: ids.length ? ids : [run.result.style_id], result: { ...result, ...meta }, ms: ms() });
     } else {
       await finish(it, { status: "failed", result: meta, error: run.result.error, detail: run.result.detail, ms: ms() });
     }

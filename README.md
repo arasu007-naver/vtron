@@ -717,3 +717,12 @@ help · seed <n> · fit <0-100> · scale <n> · mode <performance|balanced|quali
 cd services/product-crop && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/playwright install chromium
 
 한 가지 안 한 것: .vercelignore입니다. .vercel 디렉터리가 없어 Vercel 연결이 아직 없는 것 같아 건너뛰었습니다. 나중에 배포를 붙이면 services/를 제외해두는 게 좋습니다 (Next 빌드가 .py를 건드리진 않지만 업로드 용량만 늘어납니다).
+
+드롭릿 crontab(crontab -e)에 같은 값을 넣어 등록합니다.
+
+
+*/10 * * * * curl -fsS -X POST -H "x-sweep-secret: 7fbc9a1c0e24e0a00d9063cc90ac3deb7431766727fcb1ae3e67adf0ebbbb1d8" https://stmx.ai/api/manager/videos/sweep >/dev/null
+
+
+curl -fsS -X POST -H "x-sweep-secret: ..." https://stmx.ai/api/manager/videos/sweep
+{"orphans":0,"stale":0,"stalled":0,"published":0,"deletions":{"done":0,"failed":0}}

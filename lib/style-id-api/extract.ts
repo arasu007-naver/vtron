@@ -1,6 +1,6 @@
 import "server-only";
 import { extractStyle, visionModel } from "@/lib/style-ex/extract";
-import { resolvePrompt } from "@/lib/style-ex/prompt-versions";
+import { resolvePrompt, versionLabel } from "@/lib/style-ex/prompt-versions";
 import { productAddendum, type ProductContext } from "@/lib/style-ex/product-context";
 import { resolvePrimeTarget, type PrimeTarget } from "@/lib/style-ex/prime-target";
 
@@ -57,12 +57,16 @@ export interface ApiStyleIdRun {
   primeTarget: Pick<PrimeTarget, "category" | "choice" | "confidence" | "reason"> | null;
   visionModel: string;
   observePromptVersion: number | null;
+  /** product_style 저장용 — 관찰 프롬프트 버전 행 id · 레이블(v1 · v2 · custom) */
+  observePrompt: { id: string | null; label: string };
   elapsedMs: number;
   /** 서버에 남길 근거 — 업체 응답에는 넣지 않는다 */
   evidence: {
     observation: unknown;
     scoring: unknown;
     primeTarget: PrimeTarget | null;
+    /** 판정 결과 원본 (축별 detail · target_id 포함) — product_style.axes · target_id 로 남긴다 */
+    styleId: Record<string, unknown> | null;
   };
 }
 
@@ -91,8 +95,14 @@ export async function runApiStyleId({
     primeTarget: prime && { category: prime.category, choice: prime.choice, confidence: prime.confidence, reason: prime.reason },
     visionModel: extracted.visionModel || visionModel(),
     observePromptVersion: observe.version?.version ?? null,
+    observePrompt: { id: observe.version?.id ?? null, label: versionLabel(observe.content, observe.version) },
     elapsedMs: Math.round(performance.now() - started),
-    evidence: { observation: extracted.observation ?? null, scoring: extracted.scoring ?? null, primeTarget: prime },
+    evidence: {
+      observation: extracted.observation ?? null,
+      scoring: extracted.scoring ?? null,
+      primeTarget: prime,
+      styleId: (extracted.styleId as Obj | null) ?? null,
+    },
   };
 
   const styleId = extracted.styleId as Obj | null;

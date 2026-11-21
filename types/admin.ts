@@ -31,6 +31,8 @@ export interface AdminBrand {
 
 export interface AdminBrandUpdate {
   id: string;
+  /** 검색이 브랜드를 알아보는 다른 이름들. 통째로 갈아끼운다. */
+  aliases?: string[];
   slug?: string | null;
   commerce_status?: BrandCommerceStatus;
   affiliate_ready?: boolean;
