@@ -62,7 +62,8 @@ export interface SavedProductStyle {
   recorded: boolean;
 }
 
-export async function saveProductStyle(input: ProductStyleInput): Promise<SavedProductStyle> {
+/** 추출 결과 → product_style 한 행의 결과 · 근거 열 (/style-ex · /full-style-ex · API 작업이 같이 쓴다) */
+function rowOf(input: Omit<ProductStyleInput, "target" | "version" | "modelId" | "imageUrl">) {
   const { styleId, observation, judgement } = input.result;
   const ok = styleId?.ok === true;
   const observationError = observation?.ok === false ? observation.error : null;
@@ -73,9 +74,7 @@ export async function saveProductStyle(input: ProductStyleInput): Promise<SavedP
           (observationError ? JSON.stringify(observationError) : "스타일 아이디를 정하지 못했습니다.")
       );
 
-  const row = {
-    model_id: input.modelId,
-    image_url: input.imageUrl,
+  return {
     ok,
     style_id: ok ? styleId?.style_id : null,
     target_id: styleId?.target_id ?? null,
@@ -94,6 +93,10 @@ export async function saveProductStyle(input: ProductStyleInput): Promise<SavedP
     elapsed_ms: Math.round(input.elapsedMs),
     created_by: UUID.test(input.userId) ? input.userId : null,
   };
+}
+
+export async function saveProductStyle(input: ProductStyleInput): Promise<SavedProductStyle> {
+  const row = { model_id: input.modelId, image_url: input.imageUrl, ...rowOf(input) };
 
   // 어느 페이지(target) · 어느 관찰 프롬프트 버전(version)으로 추출했는지 — 두 페이지 모두 늘 기록한다
   const version = input.version ?? null;
@@ -113,4 +116,50 @@ export async function saveProductStyle(input: ProductStyleInput): Promise<SavedP
   }
   if (dbError || !data) throw new Error(`product_style 저장 실패: ${dbError?.message ?? "응답 없음"}`);
   return { id: String(data.id), target: input.target, version, recorded };
+}
+
+/** API 작업 상품 하나 (api_call_items) — 그 결과를 product_style 에 남길 때 */
+export interface ApiJobProductStyleInput extends Omit<ProductStyleInput, "target" | "modelId" | "imageUrl" | "userId"> {
+  apiCallItemId: string;
+  businessUserId: string | null;
+  /** 업체 상품 id (api_call_items.ref) — 카탈로그 모델 id 와 같으면 model_id 로 남긴다 */
+  ref: string | null;
+  /** 업체가 준 상품 정보 그대로 (api_call_items.product) */
+  product: Obj;
+  /** 사진 주소 — 파일로 받은 사진이면 null */
+  imageUrl: string | null;
+}
+
+/**
+ * API 작업(POST /api/v1/style-id/jobs · /admin/api-log 의 CSV 입력)의 상품 결과를 product_style 에 남긴다 (0029).
+ * 작업 상품 하나에 한 행 — 다시 진행해 다시 추출하면 그 행을 고친다(upsert on api_call_item_id).
+ * target 은 item (같은 의복별 관찰 프롬프트 · 판정 함수). model_id 는 ref 가 카탈로그에 있을 때만 채운다.
+ */
+export async function saveApiJobProductStyle(input: ApiJobProductStyleInput): Promise<{ id: string; modelId: string | null }> {
+  const db = getAdminSupabase();
+  let modelId: string | null = null;
+  if (input.ref) {
+    const { data } = await db.from("brand_catalog_models").select("id").eq("id", input.ref).maybeSingle();
+    modelId = data?.id ? String(data.id) : null;
+  }
+  const row = {
+    ...rowOf({ ...input, userId: "" }),
+    // API 작업 행은 처음 만든 시각이 아니라 마지막으로 추출한 시각 — 다시 진행하면 최신 결과가 된다
+    created_at: new Date().toISOString(),
+    target: "item",
+    version: input.version ?? null,
+    model_id: modelId,
+    image_url: input.imageUrl,
+    api_call_item_id: input.apiCallItemId,
+    business_user_id: input.businessUserId,
+    product: input.product,
+  };
+  const { data, error } = await db.from("product_style").upsert(row, { onConflict: "api_call_item_id" }).select("id").single();
+  if (error || !data) {
+    const hint = error && /api_call_item_id|business_user_id|product\b|null value/.test(error.message)
+      ? " — supabase/migrations/0029_product_style_api_jobs.sql 을 실행했는지 확인하세요"
+      : "";
+    throw new Error(`product_style 저장 실패: ${error?.message ?? "응답 없음"}${hint}`);
+  }
+  return { id: String(data.id), modelId };
 }

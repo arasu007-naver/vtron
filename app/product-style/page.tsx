@@ -29,8 +29,10 @@ const PAGE_SIZE = 12;
 interface ProductStyleRow {
   id: string;
   created_at: string;
-  model_id: string;
-  image_url: string;
+  /** API 작업 결과는 업체 상품이 카탈로그에 없으면 null */
+  model_id: string | null;
+  /** API 작업에서 사진을 파일로 받은 상품은 null */
+  image_url: string | null;
   /** 어느 페이지가 추출했는지 — full = 인덱스(Full-Look) · item = /style-ex */
   target: "full" | "item";
   /** 추출에 쓴 관찰 프롬프트 버전 레이블 — 모르면(버전 표 전 행) null */
@@ -43,6 +45,8 @@ interface ProductStyleRow {
   judge_model: string | null;
   elapsed_ms: number | null;
   product: CatalogProduct | null;
+  /** API 작업(/admin/api-log · /api/v1/style-id/jobs) 결과일 때 업체가 준 상품 정보 */
+  api_product: { api_call_item_id: string; ref: string | null; name: string | null; brand: string | null; category: string | null } | null;
 }
 
 const fullDate = (iso: string) =>
@@ -217,32 +221,44 @@ function ProductStyleItem({ row, onDelete }: { row: ProductStyleRow; onDelete: (
   // Full-Look 관찰은 envelope 대신 Evidence Packet — /full-style-ex 의 Features 탭과 같은 트리로 본다.
   const packet = (observation as { packet?: Record<string, unknown> | null } | null)?.packet ?? null;
   const judged = { styleId, judgement, scoring, vision_model, judge_model, elapsed_ms };
+  const api = row.api_product;
   const productInfo: [string, string][] = row.product
     ? productRows(row.product)
-    : [
-        ["상품 ID", row.model_id],
-        ["상품 정보", "카탈로그에서 찾지 못했습니다"],
-      ];
+    : api
+      ? ([
+          ["출처", "API 작업 (업체 상품)"],
+          ["상품 ID", api.ref ?? "—"],
+          ["브랜드", api.brand ?? "—"],
+          ["상품명", api.name ?? "—"],
+          ["분류", api.category ?? "—"],
+        ] as [string, string][])
+      : [
+          ["상품 ID", row.model_id ?? "—"],
+          ["상품 정보", "카탈로그에서 찾지 못했습니다"],
+        ];
+  const productName = row.product?.name ?? api?.name ?? row.model_id ?? "상품";
 
   return (
     <article className="min-w-0 flex flex-col rounded-xl border border-[var(--color-divider)] bg-white overflow-hidden">
       {/* 상품 사진 — 추출에 쓴 원본. 오른쪽 아래 FAB = target 값 그대로 (full | item) */}
       <div className="relative">
-        <a
-          href={row.image_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block bg-[var(--color-surface)]"
-          title="원본 사진 열기"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element -- 외부 상품 사진, 도메인이 정해져 있지 않다 */}
-          <img
-            src={row.image_url}
-            alt={row.product?.name ?? row.model_id}
-            loading="lazy"
-            className="w-full aspect-square object-contain"
-          />
-        </a>
+        {row.image_url ? (
+          <a
+            href={row.image_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block bg-[var(--color-surface)]"
+            title="원본 사진 열기"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element -- 외부 상품 사진, 도메인이 정해져 있지 않다 */}
+            <img src={row.image_url} alt={productName} loading="lazy" className="w-full aspect-square object-contain" />
+          </a>
+        ) : (
+          // API 작업에서 파일로 받은 사진은 처리 뒤 지워져 주소가 없다
+          <div className="w-full aspect-square bg-[var(--color-surface)] flex items-center justify-center text-sm text-black/50">
+            사진 없음 (업로드 파일은 처리 뒤 지웁니다)
+          </div>
+        )}
         <span
           title={
             (row.target === "full"
@@ -354,14 +370,14 @@ function ProductStyleItem({ row, onDelete }: { row: ProductStyleRow; onDelete: (
       <ObservationModal
         open={judgementOpen}
         onClose={() => setJudgementOpen(false)}
-        title={`판정 결과 — ${row.product?.name ?? row.model_id}`}
+        title={`판정 결과 — ${productName}`}
         observation={judged}
         defaultView="tree"
       />
       <ObservationModal
         open={observationOpen}
         onClose={() => setObservationOpen(false)}
-        title={`관찰 결과 — ${row.product?.name ?? row.model_id}`}
+        title={`관찰 결과 — ${productName}`}
         observation={observation}
       />
     </article>

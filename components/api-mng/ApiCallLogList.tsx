@@ -12,7 +12,7 @@ interface ApiCall {
   status_code: number;
   duration_ms: number;
   error: string | null;
-  response_meta: { style_id?: string } | null;
+  response_meta: { style_id?: string; candidates?: string[] } | null;
   ip: string | null;
   token_prefix: string | null;
   created_at: string;
@@ -107,7 +107,10 @@ export function ApiCallLogList({ businessUserId }: { businessUserId: string }) {
                   <td className="px-3 py-2 whitespace-nowrap text-[#555A64]">{(c.duration_ms / 1000).toFixed(1)}s</td>
                   <td className="px-3 py-2 text-[#323843] max-w-[260px]">
                     {c.response_meta?.style_id ? (
-                      <span className="font-mono font-bold text-[#7A2CEE]">{c.response_meta.style_id}</span>
+                      <span className="font-mono font-bold text-[#7A2CEE]">
+                        {/* 중립 축이 있으면 후보 전부 (첫 번째 = style_id) */}
+                        {(c.response_meta.candidates?.length ? c.response_meta.candidates : [c.response_meta.style_id]).join(" · ")}
+                      </span>
                     ) : c.error ? (
                       <span className="text-[#8E96A2] line-clamp-2" title={c.error}>
                         {c.error}

@@ -1,6 +1,7 @@
 import "server-only";
 import { getAdminSupabase } from "@/lib/supabase/server";
 import { API_CALL_LOG_TABLE, type BusinessApiContext } from "@/lib/business-user/api-call";
+import { STYLE_IDS } from "@/lib/style-ex/style-ids";
 import type { JobItemInput } from "./job-input";
 
 /**
@@ -154,7 +155,8 @@ export interface ItemRow {
   status: ItemStatus;
   prime_group: PrimeGroup | null;
   attempts: number;
-  style_id: string | null;
+  /** 스타일 아이디 후보 전부 (0028 — 중립 축의 양쪽 글자 조합, 첫 번째 = 대표) */
+  style_id: string[] | null;
   result: Obj | null;
   error: string | null;
   elapsed_ms: number | null;
@@ -182,7 +184,16 @@ export const itemView = (it: ItemRow) => ({
   status: it.status,
   prime_group: it.prime_group,
   ...(it.result ?? {}),
-  style_id: it.style_id,
+  // style_id 는 예전처럼 대표 조합 하나, style_ids 는 중립 · 미결 축의 양쪽 글자를 조합한 후보 전부.
+  // candidates 도 열(api_call_items.style_id)에서 만든다 — 규칙이 바뀌어 열을 다시 계산했을 때(0030) result 의 예전 후보가 보이지 않게
+  style_id: it.style_id?.[0] ?? null,
+  style_ids: it.style_id ?? [],
+  ...(it.style_id?.length && {
+    candidates: it.style_id.map((id) => {
+      const s = STYLE_IDS[id];
+      return { style_id: id, style: s ? { name: s.name, sub_title: s.subTitle, definition: s.definition } : null };
+    }),
+  }),
   error: it.error,
   elapsed_ms: it.elapsed_ms,
   finished_at: it.finished_at,
@@ -267,6 +278,7 @@ const RESET_COLUMNS = {
   finished_at: null,
   observation: null,
   scoring: null,
+  prime_region: null,
 };
 const RESUME_CHUNK = 200;
 

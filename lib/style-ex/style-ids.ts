@@ -66,17 +66,24 @@ export const STYLE_IDS: Record<string, StyleIdInfo> = {
 /** 축별 판정 중 조합에 쓰는 부분 */
 type AxisLetters = { letter: string | null; letters?: string[] | null; source?: string | null };
 
+/** 그 축의 양쪽 글자 — first(대표 글자)를 먼저 */
+export function bothLetters(key: AxisKey, first: string): string[] {
+  const poles = Object.keys(AXES.find((x) => x.key === key)!.poles);
+  return [first, ...poles.filter((p) => p !== first)];
+}
+
 /**
- * 축이 가질 수 있는 글자들. letters 가 없는 예전 결과(2026-10-19 전 저장분)는 letter 하나로 보되,
- * 중립을 한쪽으로 고정했던 결과(ENGINE_NEUTRAL_FIXED)는 지금 규칙대로 양쪽 글자로 되살린다.
+ * 축이 가질 수 있는 글자들. letters 가 있으면 그것.
+ * 예전 결과도 지금 규칙대로 양쪽 글자로 되살린다:
+ *   ENGINE_NEUTRAL_FIXED — 중립을 한쪽으로 고정했던 결과 (2026-10-19 전 저장분, letters 없음)
+ *   RULE_DEFAULT         — 엔진이 방향을 내지 못해 기본 글자 하나로 채웠던 결과 (2026-11-20 전 저장분, letters 가 한 글자)
+ * SQL 의 style_axis_letters(0016 · 0030)와 같다 — 한쪽을 고치면 다른 쪽도 고친다.
  */
 function lettersOf(key: AxisKey, a: AxisLetters | undefined): string[] {
+  if (a?.source === "RULE_DEFAULT" && a.letter) return bothLetters(key, a.letter);
   if (a?.letters?.length) return a.letters;
   if (!a?.letter) return [];
-  if (a.source === "ENGINE_NEUTRAL_FIXED") {
-    const poles = Object.keys(AXES.find((x) => x.key === key)!.poles);
-    return [a.letter, ...poles.filter((p) => p !== a.letter)];
-  }
+  if (a.source === "ENGINE_NEUTRAL_FIXED") return bothLetters(key, a.letter);
   return [a.letter];
 }
 

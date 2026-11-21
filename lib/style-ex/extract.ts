@@ -28,7 +28,7 @@ import {
   scoringRequestOf,
   type EngineAxis,
 } from "./scoring";
-import { STYLE_IDS, styleIdCandidates } from "./style-ids";
+import { bothLetters, STYLE_IDS, styleIdCandidates } from "./style-ids";
 import { splitProductContext } from "./product-context";
 import { fillFocus, focusOf, isEligible, isMultiCallPrompt, merge, multiCallPrompts, numberTargets } from "./multi-call";
 import { judgeTcRules, tcSummaryOf, type TcRuleResult } from "./tc-rules";
@@ -96,6 +96,7 @@ type Source = "ENGINE" | "ENGINE_NEUTRAL" | "ENGINE_NEUTRAL_FIXED" | "ENGINE_DIR
  * 엔진 · 규칙이 미결로 남긴 축의 기본 글자. 판정 프롬프트는 미결이면 "가장 그럴듯한 쪽"을 고르게 했는데(LLM),
  * 코드에서는 중립 고정 글자(E · S · D)와 같은 쪽으로 둔다. TC 는 중립이 없고, 미결은 T 근거(TRUE)를 찾지 못한
  * 경우라 C 로 둔다. 출처는 RULE_DEFAULT("규칙 기본값")로 남겨 엔진이 정한 글자와 구분한다.
+ * 미결 축은 어느 쪽인지 모르므로 중립과 같이 양쪽 글자(OR)를 모두 갖는다 — 기본 글자는 대표 글자(letter)일 뿐이다 (2026-11-20 결정).
  */
 const DEFAULT_LETTER = { EI: "E", TC: "C", SR: "S", DM: "D" } as const;
 
@@ -473,10 +474,10 @@ export function judgeStyleIdByRules(targets: Obj[], fileName: string) {
           }
         : {
             letter: DEFAULT_LETTER.TC,
-            letters: [DEFAULT_LETTER.TC],
+            letters: bothLetters("TC", DEFAULT_LETTER.TC),
             source: "RULE_DEFAULT",
             label: null,
-            detail: `규칙 미결 (${tcSummaryOf(tcRules)}) → 기본값 ${DEFAULT_LETTER.TC}`,
+            detail: `규칙 미결 (${tcSummaryOf(tcRules)}) → ${bothLetters("TC", DEFAULT_LETTER.TC).join(" 또는 ")} (양쪽 모두)`,
             rules: tcRules,
           };
       continue;
@@ -504,10 +505,10 @@ export function judgeStyleIdByRules(targets: Obj[], fileName: string) {
           }
         : {
             letter: DEFAULT_LETTER[axis],
-            letters: [DEFAULT_LETTER[axis]],
+            letters: bothLetters(axis, DEFAULT_LETTER[axis]),
             source: "RULE_DEFAULT",
             label: null,
-            detail: `${why} → 기본값 ${DEFAULT_LETTER[axis]}`,
+            detail: `${why} → ${bothLetters(axis, DEFAULT_LETTER[axis]).join(" 또는 ")} (양쪽 모두)`,
           };
     }
   }

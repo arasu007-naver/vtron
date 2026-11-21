@@ -14,8 +14,10 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 interface ProductStyleDbRow {
   id: string;
   created_at: string;
-  model_id: string;
-  image_url: string;
+  /** API 작업 결과(0029)는 업체 상품이 카탈로그에 없으면 null */
+  model_id: string | null;
+  /** API 작업에서 사진을 파일로 받은 상품은 null */
+  image_url: string | null;
   ok: boolean;
   style_id: string;
   target_id: string | null;
@@ -29,7 +31,12 @@ interface ProductStyleDbRow {
   elapsed_ms: number | null;
   target?: string;
   version?: string | null;
+  /** API 작업 결과(0029) — 업체가 준 상품 정보 · 작업 상품 id */
+  product?: Record<string, unknown> | null;
+  api_call_item_id?: string | null;
 }
+
+const str = (v: unknown) => (typeof v === "string" || typeof v === "number" ? String(v) : null);
 
 /**
  * GET /api/product-style?page=1&pageSize=12 — 저장된 상품 Style ID 추출 결과(product_style), 최신 먼저.
@@ -39,6 +46,7 @@ interface ProductStyleDbRow {
  *          target 은 어느 페이지가 추출했는지 — item = /style-ex · full = 인덱스(/full-style-ex). 0021 전이면 item.
  *          version 은 추출에 쓴 관찰 프롬프트 버전 레이블(v1.1 · v2 · custom), 모르면 null. — styleId 는 /api/style-ex 응답의 styleId 와 같은 모양으로 되살린다.
  *          product 는 카탈로그(brand_catalog_models)에서 찾은 상품 정보, 못 찾으면 null.
+ *          api_product 는 API 작업 결과(0029)일 때 업체가 준 상품 정보 { api_call_item_id, ref, name, brand, category }, 아니면 null.
  */
 export async function GET(req: NextRequest) {
   const auth = await authenticate(req);
@@ -59,8 +67,9 @@ export async function GET(req: NextRequest) {
       .select(columns, { count: "exact" })
       .order("created_at", { ascending: false })
       .range(from, from + pageSize - 1);
-  // target · version 열(0021)이 없으면 그 둘 없이 다시 읽는다 — 그때는 모든 행이 item, 버전은 모름
-  let res = await query(`${COLUMNS}, target, version`);
+  // API 작업 열(0029)이 없으면 그것 없이, target · version 열(0021)이 없으면 그 둘 없이 다시 읽는다 — 그때는 모든 행이 item, 버전은 모름
+  let res = await query(`${COLUMNS}, target, version, product, api_call_item_id`);
+  if (res.error && /\b(product|api_call_item_id)\b/.test(res.error.message)) res = await query(`${COLUMNS}, target, version`);
   if (res.error && /\b(target|version)\b/.test(res.error.message)) res = await query(COLUMNS);
   const { data, error, count } = res as unknown as {
     data: ProductStyleDbRow[] | null;
@@ -70,7 +79,7 @@ export async function GET(req: NextRequest) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   const rows = data ?? [];
-  const modelIds = [...new Set(rows.map((r) => String(r.model_id)))];
+  const modelIds = [...new Set(rows.map((r) => r.model_id).filter((id): id is string => Boolean(id)))];
   const productOf = new Map<string, CatalogProduct>();
   if (modelIds.length) {
     const [models, images] = await Promise.all([
@@ -136,7 +145,17 @@ export async function GET(req: NextRequest) {
       vision_model: r.vision_model,
       judge_model: r.judge_model,
       elapsed_ms: r.elapsed_ms,
-      product: productOf.get(String(r.model_id)) ?? null,
+      product: r.model_id ? (productOf.get(r.model_id) ?? null) : null,
+      // API 작업 결과 — 업체가 준 상품 정보 (카탈로그 상품이 아니어도 보이게)
+      api_product: r.api_call_item_id
+        ? {
+            api_call_item_id: r.api_call_item_id,
+            ref: str(r.product?.id),
+            name: str(r.product?.name),
+            brand: str(r.product?.brand) ?? str(r.product?.brand_name),
+            category: str(r.product?.whole_category_name) ?? str(r.product?.category),
+          }
+        : null,
     })),
   });
 }

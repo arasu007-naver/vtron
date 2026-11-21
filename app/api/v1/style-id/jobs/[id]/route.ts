@@ -19,12 +19,14 @@ const csvCell = (v: unknown) => {
  *   ?offset=0&limit=100   상품 결과를 요청 순서(seq)로 나눠 받는다 (limit 최대 500)
  *   ?status=done|failed|queued|running|prime   그 상태의 상품만
  *   ?format=csv           상품 결과 전부를 CSV 로 (seq, ref, status, prime_group, prime_target, style_id, candidates, error)
+ *                         style_id = 대표 조합 하나, candidates = 중립 축의 양쪽 글자를 조합한 후보 전부(공백으로 구분)
  *
  * 작업은 대표 의복 단계(priming — 모든 상품의 대표 의복을 JEV 로 먼저 정한다) → 관찰 단계(running — 그룹마다 모아서) 로 돈다.
  *
  * 200 { request_id, job: { job_id, status, total, done, failed, pending, created_at, finished_at },
  *       prime: { primed, groups: { found, not_found, no_product }, categories: { Jacket: 12, … } },
- *       items: [{ seq, ref, status, prime_group, style_id, style, candidates, axes, prime_target, error, elapsed_ms, finished_at }],
+ *       items: [{ seq, ref, status, prime_group, style_id, style_ids, style, candidates, axes, prime_target, error, elapsed_ms, finished_at }],
+ *       style_id = 대표 조합 하나 · style_ids = 중립 축의 양쪽 글자를 조합한 후보 전부(첫 번째 = style_id)
  *       offset, limit }
  * 404 다른 업체의 작업이거나 없는 작업
  */
@@ -49,9 +51,10 @@ export const GET = withBusinessApi(async (req, ctx, { params }: { params: Promis
     for (let offset = 0; offset < job.item_total; offset += CSV_PAGE) {
       const rows = await listItems(id, { offset, limit: CSV_PAGE, status });
       for (const it of rows) {
-        const r = (it.result ?? {}) as { candidates?: { style_id: string }[]; prime_target?: string | null };
+        const r = (it.result ?? {}) as { prime_target?: string | null };
+        const ids = it.style_id ?? [];
         lines.push(
-          [it.seq, it.ref, it.status, it.prime_group, r.prime_target, it.style_id, (r.candidates ?? []).map((c) => c.style_id).join(" "), it.error]
+          [it.seq, it.ref, it.status, it.prime_group, r.prime_target, ids[0] ?? null, ids.join(" "), it.error]
             .map(csvCell)
             .join(",")
         );
