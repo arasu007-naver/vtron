@@ -48,8 +48,8 @@ export interface AuthContext {
 
 export interface AuthenticateOptions {
   /**
-   * 관리자가 아닌 사용자 토큰도 받는다. stmx-web 이 앱 사용자의 토큰을 그대로 실어 부르는
-   * 라우트(`/api/brand-search`, `/api/search-brand-count`)만 켠다.
+   * 관리자가 아닌 사용자 토큰과 공개 키도 받는다. 누구나 부를 수 있게 되므로 stmx-web 이 부르는
+   * 읽기 전용 라우트(`/api/brand-search`, `/api/search-brand-count`)만 켠다.
    */
   allowNonAdmin?: boolean;
 }
@@ -58,6 +58,7 @@ export interface AuthenticateOptions {
  * Bearer 토큰을 Auth 서버에 검증시킨다.
  * 토큰이 없거나 유효하지 않으면 null.
  * 서비스 롤 키(서버 간 통신) 또는 사용자 Access Token(Bearer JWT) 모두 검증한다.
+ * 공개 키는 `allowNonAdmin` 라우트에서만 통과한다.
  *
  * 사용자 토큰은 관리자(`profiles.is_admin`)여야 통과한다([[isAdmin]]). 아니면 null —
  * 라우트는 그대로 401 을 주고, 클라이언트는 로그인 화면으로 가서 proxy 가 세션을 정리한다.
@@ -94,6 +95,9 @@ export async function authenticate(
   ].filter((k): k is string => Boolean(k?.trim()));
 
   if (validPublicKeys.includes(token)) {
+    // 공개 키는 브라우저 번들에 그대로 실리므로 신원 증명이 아니다. 관리자 라우트에서는 거부하고,
+    // stmx-web 이 비로그인 방문자 몫으로 부르는 읽기 전용 라우트(allowNonAdmin)에서만 받는다.
+    if (!allowNonAdmin) return null;
     return {
       user: {
         id: "public-client",
