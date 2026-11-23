@@ -14,6 +14,7 @@ const fashnImageHosts = [
 ];
 
 const nextConfig = {
+  output: 'standalone',
   reactStrictMode: true,
   // 개발 서버(next dev)에 이 도메인으로 접속할 때 HMR · dev 리소스 요청을 허용한다
   allowedDevOrigins: ['stmx-m.qoolla.com'],
