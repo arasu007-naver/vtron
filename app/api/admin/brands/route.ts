@@ -15,11 +15,11 @@ const COMMERCE_STATUSES: BrandCommerceStatus[] = [
 ];
 
 const BRAND_COLUMNS =
-  "id, display_name, aliases, slug, naver_brand_id, naver_brand_name, match_status, is_active, commerce_status, affiliate_ready, default_commission_rate_bps, default_platform_cut_bps, preferred_style_codes, website_url, contact_email, contact_name, commerce_notes, catalog_model_count, clothing_model_count, synced_at, created_at, updated_at";
+  "id, display_name, aliases, slug, naver_brand_id, naver_brand_name, match_status, is_active, source, commerce_status, affiliate_ready, default_commission_rate_bps, default_platform_cut_bps, preferred_style_codes, website_url, contact_email, contact_name, commerce_notes, catalog_model_count, clothing_model_count, synced_at, created_at, updated_at";
 
 /**
  * GET /api/admin/brands
- * 브랜드 목록 (ShopMy 제휴 필드 포함). q · commerceStatus · affiliateReady 필터.
+ * 브랜드 목록 (ShopMy 제휴 필드 포함). q · commerceStatus · affiliateReady · source 필터.
  */
 export async function GET(req: NextRequest) {
   const auth = await authenticate(req);
@@ -35,6 +35,8 @@ export async function GET(req: NextRequest) {
     const commerceStatus = url.searchParams.get("commerceStatus")?.trim() || "all";
     const affiliateReady = url.searchParams.get("affiliateReady")?.trim() || "all";
 
+    const source = url.searchParams.get("source")?.trim() || "";
+
     let query = supabase
       .from("brands")
       .select(BRAND_COLUMNS, { count: "exact" })
@@ -44,6 +46,9 @@ export async function GET(req: NextRequest) {
       query = query.or(
         `display_name.ilike.%${q}%,naver_brand_name.ilike.%${q}%,slug.ilike.%${q}%`
       );
+    }
+    if (source && source !== "all") {
+      query = query.eq("source", source);
     }
     if (
       commerceStatus !== "all" &&

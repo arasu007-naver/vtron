@@ -77,6 +77,7 @@ export default function AdminBrandsPage() {
   const [qInput, setQInput] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | BrandCommerceStatus>("all");
   const [affiliateOnly, setAffiliateOnly] = useState(false);
+  const [tagOnly, setTagOnly] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -96,6 +97,7 @@ export default function AdminBrandsPage() {
         affiliateReady: affiliateOnly ? "1" : "all",
       });
       if (q) params.set("q", q);
+      if (tagOnly) params.set("source", "creator_tag");
       const res = await authFetch(`/api/admin/brands?${params}`);
       const data = await res.json();
       if (!res.ok || data.error) throw new Error(data.error || `HTTP ${res.status}`);
@@ -108,7 +110,7 @@ export default function AdminBrandsPage() {
     } finally {
       setIsLoading(false);
     }
-  }, [page, statusFilter, affiliateOnly, q]);
+  }, [page, statusFilter, affiliateOnly, tagOnly, q]);
 
   useEffect(() => {
     fetchList();
@@ -299,6 +301,21 @@ export default function AdminBrandsPage() {
 
             <button
               type="button"
+              onClick={() => {
+                setTagOnly((v) => !v);
+                setPage(1);
+              }}
+              className={`px-3 py-1.5 h-9 rounded-lg border text-[13px] font-medium cursor-pointer ${
+                tagOnly
+                  ? "bg-[#EDE8FF] border-[#D9CFFF] text-[#7A2CEE]"
+                  : "bg-white border-[#E0E3E8] text-[#555A64]"
+              }`}
+            >
+              태그 등록(creator_tag)
+            </button>
+
+            <button
+              type="button"
               onClick={fetchList}
               disabled={isLoading}
               className="px-3 py-1.5 h-9 rounded-lg bg-white border border-[#E0E3E8] hover:bg-[#F4F5F7] text-[13px] font-medium flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
@@ -365,6 +382,11 @@ export default function AdminBrandsPage() {
                         >
                           {COMMERCE_STATUS_LABELS[brand.commerce_status] || brand.commerce_status}
                         </span>
+                        {brand.source === "creator_tag" && (
+                          <span className="px-2.5 py-0.5 rounded-full text-[12px] font-bold border bg-[#EDE8FF] text-[#7A2CEE] border-[#D9CFFF]">
+                            태그 등록
+                          </span>
+                        )}
                         {brand.affiliate_ready && (
                           <span className="px-2 py-0.5 rounded-full bg-[#E6F8ED] text-[#0E8A42] text-[12px] font-bold border border-[#C3EED3]">
                             제휴 준비

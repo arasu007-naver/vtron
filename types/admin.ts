@@ -13,6 +13,8 @@ export interface AdminBrand {
   naver_brand_name: string | null;
   match_status: string;
   is_active: boolean;
+  /** 등록 경로 (예: creator_tag = 크리에이터 태그로 자동 등록) */
+  source: string | null;
   commerce_status: BrandCommerceStatus;
   affiliate_ready: boolean;
   default_commission_rate_bps: number | null;

@@ -39,6 +39,9 @@ export interface ShopItem {
   productId: string;
   /** 1 = 일반상품 · 가격비교 상품(카탈로그) */
   productType: string;
+  /** 네이버 응답의 brand · maker (없으면 빈 문자열) */
+  brand: string;
+  maker: string;
 }
 
 const stripTags = (value: string) =>
@@ -89,5 +92,7 @@ export async function searchShopping(
     mallName: item.mallName ?? "",
     productId: String(item.productId ?? ""),
     productType: String(item.productType ?? ""),
+    brand: stripTags(String(item.brand ?? "")),
+    maker: stripTags(String(item.maker ?? "")),
   }));
 }
