@@ -1,6 +1,7 @@
 import "server-only";
 import { getAdminSupabase } from "@/lib/supabase/server";
 import { brandKey } from "./rank";
+import { matchBrand, type BrandRow } from "./core";
 
 export interface FoundBrand {
   id: string;
@@ -23,12 +24,8 @@ export async function findBrand(name: string): Promise<FoundBrand | null> {
       .order("id", { ascending: true })
       .range(from, from + PAGE - 1);
     if (error) throw new Error(error.message);
-    for (const b of data ?? []) {
-      const names = [b.display_name, b.naver_brand_name, ...((b.aliases as string[] | null) ?? [])].filter(
-        (n): n is string => typeof n === "string" && n.trim() !== ""
-      );
-      if (names.some((n) => brandKey(n) === key)) return { id: b.id, displayName: b.display_name, names };
-    }
+    const found = matchBrand((data ?? []) as BrandRow[], name);
+    if (found) return found;
     if (!data || data.length < PAGE) return null;
   }
 }
