@@ -9,6 +9,7 @@ import { checkInvariants } from "./invariants.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const MINI_APP_ROOT = path.join(__dirname, "fixtures", "mini-app");
+const EDGE_CASES_ROOT = path.join(__dirname, "fixtures", "edge-cases");
 
 function miniConfig() {
   return { ...config, navLinksFile: "components/nav-links.ts" };
@@ -200,4 +201,48 @@ test("deterministic: repeated analyze calls produce identical JSON", () => {
   const m1 = JSON.stringify(analyze({ root: MINI_APP_ROOT, config: miniConfig() }));
   const m2 = JSON.stringify(analyze({ root: MINI_APP_ROOT, config: miniConfig() }));
   assert.equal(m1, m2);
+});
+
+test("jsx children via same-file non-component helper (transitive and recursive helper)", () => {
+  const model = analyze({ root: MINI_APP_ROOT, config: miniConfig() });
+
+  const dPage = model.blocks["app/d/page.tsx#APage"];
+  assert.ok(dPage);
+  assert.deepEqual(dPage.children, [
+    { ref: "app/d/page.tsx#HelperChild", via: "jsx" },
+  ]);
+
+  const helperChild = model.blocks["app/d/page.tsx#HelperChild"];
+  assert.ok(helperChild);
+  assert.deepEqual(helperChild.usedBy, ["app/d/page.tsx#APage"]);
+});
+
+test("edge cases: memo/forwardRef, route groups, ?/# stripping, namespace imports, and depth limit", () => {
+  const model = analyze({
+    root: EDGE_CASES_ROOT,
+    config: { ...config, navLinksFile: null },
+  });
+
+  // Route group "(marketing)" is stripped from route path
+  const promo = model.blocks["app/(marketing)/promo/page.tsx#PromoPage"];
+  assert.ok(promo);
+  assert.deepEqual(promo.routes, ["/promo"]);
+
+  // memo, forwardRef, and memo(forwardRef(...)) components are detected as JSX children
+  assert.deepEqual(promo.children, [
+    { ref: "components/Wrapped.tsx#MemoCard", via: "jsx" },
+    { ref: "components/Wrapped.tsx#FwdInput", via: "jsx" },
+    { ref: "components/Wrapped.tsx#MemoFwdBox", via: "jsx" },
+  ]);
+
+  // ?/# stripping, namespace import, and cross-file depth limit (4 included, 5 excluded)
+  assert.deepEqual(promo.apis, [
+    "/api/depth4",
+    "/api/items",
+    "/api/items/[id]",
+    "/api/ns",
+  ]);
+  assert.deepEqual(model.apis["/api/depth5"].usedBy, []);
+  assert.deepEqual(model.unresolved, []);
+  assert.deepEqual(checkInvariants(model), []);
 });

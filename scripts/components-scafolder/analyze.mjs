@@ -606,9 +606,20 @@ function resolveExportTarget(relFile, exportName, config, files, visited = new S
 function collectJsxChildren(compInfo, fileInfo, config, files) {
   const selfId = `${compInfo.relFile}#${compInfo.name}`;
   const seen = new Set();
+  const visitedHelpers = new Set();
   const children = [];
 
   function visit(node) {
+    if (!node) return;
+    if (
+      ts.isTypeNode(node) ||
+      ts.isTypeAliasDeclaration(node) ||
+      ts.isInterfaceDeclaration(node) ||
+      ts.isImportDeclaration(node)
+    ) {
+      return;
+    }
+
     if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
       const tag = node.tagName;
       if (ts.isIdentifier(tag) && isUpperCaseName(tag.text)) {
@@ -648,7 +659,14 @@ function collectJsxChildren(compInfo, fileInfo, config, files) {
           children.push({ ref: targetId, via: "jsx" });
         }
       }
+    } else if (ts.isIdentifier(node) && !isNonValueIdentifierPosition(node)) {
+      const ident = node.text;
+      if (fileInfo.helpers.has(ident) && !visitedHelpers.has(ident)) {
+        visitedHelpers.add(ident);
+        visit(fileInfo.helpers.get(ident).node);
+      }
     }
+
     ts.forEachChild(node, visit);
   }
 
@@ -767,7 +785,6 @@ function isNonValueStringPosition(node) {
   if (ts.isPropertyAssignment(parent) && parent.name === node) return true;
   if (ts.isPropertySignature(parent) && parent.name === node) return true;
   if (ts.isLiteralTypeNode(parent)) return true;
-  if (ts.isCaseClause(parent) && parent.expression === node) return false;
   return false;
 }
 
@@ -1090,8 +1107,8 @@ export function analyze({ root, config }) {
     if (!pageRoutes.has(blockId)) pageRoutes.set(blockId, new Set());
     pageRoutes.get(blockId).add(route);
 
-    // Attach to nearest active layout of the target page's directory (or pageFile's directory)
-    const dir = path.posix.dirname(target.file);
+    // Attach to nearest active layout of the page file's directory
+    const dir = path.posix.dirname(pageFile);
     const layoutId = findNearestLayout(dir, activeLayoutsByDir, rootLayoutDir);
     if (layoutId && !pageParentLayout.has(blockId)) {
       pageParentLayout.set(blockId, layoutId);
