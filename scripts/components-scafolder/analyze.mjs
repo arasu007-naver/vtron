@@ -712,6 +712,278 @@ function findNearestLayout(fileDir, activeLayoutsByDir, rootLayoutDir) {
   return activeLayoutsByDir.get(rootLayoutDir) ?? null;
 }
 
+function isApiPrefixNode(expr) {
+  const u = unwrapExpression(expr);
+  if (!u) return false;
+  if (ts.isStringLiteral(u) || ts.isNoSubstitutionTemplateLiteral(u)) {
+    return u.text.startsWith("/api/");
+  }
+  if (ts.isTemplateExpression(u)) {
+    return u.head.text.startsWith("/api/");
+  }
+  return false;
+}
+
+function flattenPlusChain(expr, out = []) {
+  const u = unwrapExpression(expr);
+  if (
+    u &&
+    ts.isBinaryExpression(u) &&
+    u.operatorToken.kind === ts.SyntaxKind.PlusToken
+  ) {
+    flattenPlusChain(u.left, out);
+    flattenPlusChain(u.right, out);
+  } else if (u) {
+    out.push(u);
+  }
+  return out;
+}
+
+function isNonValueIdentifierPosition(node) {
+  const parent = node.parent;
+  if (!parent) return false;
+  if (ts.isPropertyAccessExpression(parent) && parent.name === node) return true;
+  if (ts.isPropertyAssignment(parent) && parent.name === node) return true;
+  if (ts.isMethodDeclaration(parent) && parent.name === node) return true;
+  if (ts.isParameter(parent) && parent.name === node) return true;
+  if (ts.isVariableDeclaration(parent) && parent.name === node) return true;
+  if (ts.isFunctionDeclaration(parent) && parent.name === node) return true;
+  if (ts.isFunctionExpression(parent) && parent.name === node) return true;
+  if (ts.isBindingElement(parent) && parent.name === node) return true;
+  if (ts.isPropertySignature(parent) && parent.name === node) return true;
+  if (ts.isJsxAttribute(parent) && parent.name === node) return true;
+  if (ts.isJsxOpeningElement(parent) && parent.tagName === node) return true;
+  if (ts.isJsxSelfClosingElement(parent) && parent.tagName === node) return true;
+  if (ts.isJsxClosingElement(parent) && parent.tagName === node) return true;
+  if (ts.isLabeledStatement(parent) && parent.label === node) return true;
+  if (ts.isBreakOrContinueStatement(parent) && parent.label === node) return true;
+  return false;
+}
+
+function isNonValueStringPosition(node) {
+  const parent = node.parent;
+  if (!parent) return false;
+  if (ts.isImportDeclaration(parent) || ts.isExportDeclaration(parent)) return true;
+  if (ts.isPropertyAssignment(parent) && parent.name === node) return true;
+  if (ts.isPropertySignature(parent) && parent.name === node) return true;
+  if (ts.isLiteralTypeNode(parent)) return true;
+  if (ts.isCaseClause(parent) && parent.expression === node) return false;
+  return false;
+}
+
+function extractLiteralsAndRefs(rootNode, sourceFile) {
+  const literals = [];
+  const identifiers = new Set();
+  const namespaceAccesses = []; // { ns: string, prop: string }
+
+  function visit(node) {
+    if (!node) return;
+    if (
+      ts.isTypeNode(node) ||
+      ts.isTypeAliasDeclaration(node) ||
+      ts.isInterfaceDeclaration(node) ||
+      ts.isImportDeclaration(node)
+    ) {
+      return;
+    }
+
+    // Binary '+' chain starting with "/api/"
+    if (
+      ts.isBinaryExpression(node) &&
+      node.operatorToken.kind === ts.SyntaxKind.PlusToken
+    ) {
+      const operands = flattenPlusChain(node);
+      if (operands.length > 0 && isApiPrefixNode(operands[0])) {
+        const pieces = [];
+        for (const op of operands) {
+          if (ts.isStringLiteral(op) || ts.isNoSubstitutionTemplateLiteral(op)) {
+            pieces.push({ type: "text", value: op.text });
+          } else if (ts.isTemplateExpression(op)) {
+            pieces.push({ type: "text", value: op.head.text });
+            for (const span of op.templateSpans) {
+              pieces.push({ type: "expr" });
+              pieces.push({ type: "text", value: span.literal.text });
+              visit(span.expression);
+            }
+          } else {
+            pieces.push({ type: "expr" });
+            visit(op);
+          }
+        }
+        literals.push({
+          raw: node.getText(sourceFile),
+          normalized: normalizeApiPieces(pieces),
+        });
+        return;
+      }
+    }
+
+    // Template expression starting with "/api/"
+    if (ts.isTemplateExpression(node) && node.head.text.startsWith("/api/")) {
+      const pieces = [{ type: "text", value: node.head.text }];
+      for (const span of node.templateSpans) {
+        pieces.push({ type: "expr" });
+        pieces.push({ type: "text", value: span.literal.text });
+        visit(span.expression);
+      }
+      const rawText = node.getText(sourceFile);
+      literals.push({
+        raw: rawText.slice(1, -1),
+        normalized: normalizeApiPieces(pieces),
+      });
+      return;
+    }
+
+    // Plain string / no-substitution template literal starting with "/api/"
+    if (
+      (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) &&
+      node.text.startsWith("/api/") &&
+      !isNonValueStringPosition(node)
+    ) {
+      literals.push({
+        raw: node.text,
+        normalized: normalizeApiPieces([{ type: "text", value: node.text }]),
+      });
+      return;
+    }
+
+    // Track namespace property accesses (e.g. `client.fetchThings`)
+    if (
+      ts.isPropertyAccessExpression(node) &&
+      ts.isIdentifier(node.expression) &&
+      ts.isIdentifier(node.name)
+    ) {
+      namespaceAccesses.push({
+        ns: node.expression.text,
+        prop: node.name.text,
+      });
+    }
+
+    // Track value identifiers
+    if (ts.isIdentifier(node) && !isNonValueIdentifierPosition(node)) {
+      identifiers.add(node.text);
+    }
+
+    // For JSX elements, skip tagName itself (handled by JSX child graph) but visit attributes and children
+    if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
+      visit(node.attributes);
+      return;
+    }
+    if (ts.isJsxClosingElement(node)) {
+      return;
+    }
+
+    ts.forEachChild(node, visit);
+  }
+
+  visit(rootNode);
+  return { literals, identifiers, namespaceAccesses };
+}
+
+function isTransportSymbol(relFile, symbolName, config) {
+  const list = config.transport?.[relFile];
+  return Array.isArray(list) && list.includes(symbolName);
+}
+
+function collectBlockApis(compInfo, fileInfo, config, files, routeList) {
+  const MAX_CROSS_FILE_DEPTH = 4;
+  const matchedRoutes = new Set();
+  const unresolvedMap = new Map(); // `${file}\0${raw}` -> { raw, file }
+  const visited = new Set();
+
+  function recordLiterals(literals, sourceRelFile) {
+    for (const lit of literals) {
+      const matched = matchRoute(lit.normalized, routeList);
+      if (matched.length > 0) {
+        for (const r of matched) matchedRoutes.add(r);
+      } else {
+        const key = `${sourceRelFile}\0${lit.raw}`;
+        if (!unresolvedMap.has(key)) {
+          unresolvedMap.set(key, { raw: lit.raw, file: sourceRelFile });
+        }
+      }
+    }
+  }
+
+  function followSymbol(curRelFile, astNode, depth) {
+    const curInfo = files.get(curRelFile);
+    if (!curInfo) return;
+
+    const { literals, identifiers, namespaceAccesses } = extractLiteralsAndRefs(
+      astNode,
+      curInfo.sourceFile
+    );
+    recordLiterals(literals, curRelFile);
+
+    // 1. Same-file non-component helpers (transitive, cycle-guarded)
+    for (const ident of identifiers) {
+      if (curInfo.helpers.has(ident)) {
+        if (isTransportSymbol(curRelFile, ident, config)) continue;
+        const visitKey = `${curRelFile}#${ident}`;
+        if (visited.has(visitKey)) continue;
+        visited.add(visitKey);
+        followSymbol(curRelFile, curInfo.helpers.get(ident).node, depth);
+      }
+    }
+
+    // 2. Imported project value identifiers (up to MAX_CROSS_FILE_DEPTH)
+    if (depth >= MAX_CROSS_FILE_DEPTH) return;
+
+    const followImportTarget = (fromSpecifier, importedName) => {
+      const targetFile = resolveModulePath(
+        curRelFile,
+        fromSpecifier,
+        config,
+        files
+      );
+      if (!targetFile) return;
+      if (isTransportSymbol(targetFile, importedName, config)) return;
+
+      const resolved = resolveExportTarget(
+        targetFile,
+        importedName,
+        config,
+        files
+      );
+      if (!resolved) return;
+      if (isTransportSymbol(resolved.file, resolved.localName, config)) return;
+
+      const targetInfo = files.get(resolved.file);
+      if (!targetInfo || !targetInfo.helpers.has(resolved.localName)) return;
+
+      const visitKey = `${resolved.file}#${resolved.localName}`;
+      if (visited.has(visitKey)) return;
+      visited.add(visitKey);
+      followSymbol(
+        resolved.file,
+        targetInfo.helpers.get(resolved.localName).node,
+        depth + 1
+      );
+    };
+
+    for (const ident of identifiers) {
+      if (curInfo.helpers.has(ident) || curInfo.components.has(ident)) continue;
+      const imp = curInfo.imports.get(ident);
+      if (!imp || imp.importedName === "*") continue;
+      followImportTarget(imp.fromSpecifier, imp.importedName);
+    }
+
+    for (const { ns, prop } of namespaceAccesses) {
+      const imp = curInfo.imports.get(ns);
+      if (!imp || imp.importedName !== "*") continue;
+      followImportTarget(imp.fromSpecifier, prop);
+    }
+  }
+
+  visited.add(`${fileInfo.relFile}#${compInfo.name}`);
+  followSymbol(fileInfo.relFile, compInfo.node, 0);
+
+  return {
+    apis: [...matchedRoutes].sort(compareStr),
+    unresolved: [...unresolvedMap.values()],
+  };
+}
+
 export function analyze({ root, config }) {
   const apis = collectApiRoutes(root, config);
   const files = scanProjectFiles(root, config);
@@ -900,6 +1172,63 @@ export function analyze({ root, config }) {
     blocks[id].usedBy = [...usedBySets.get(id)].sort(compareStr);
   }
 
+  // Common detection (SPEC §2)
+  const isUiDir = typeof config.isUiDir === "function" ? config.isUiDir : () => false;
+  for (const id of reachableIds) {
+    const block = blocks[id];
+    if (block.kind === "page" || block.kind === "layout") {
+      block.common = false;
+      block.commonReason = null;
+    } else if (block.usedBy.length >= 2) {
+      block.common = true;
+      block.commonReason = "multi-parent";
+    } else if (isUiDir(block.file)) {
+      block.common = true;
+      block.commonReason = "ui-dir";
+    } else {
+      block.common = false;
+      block.commonReason = null;
+    }
+  }
+
+  // API attribution (SPEC §3.2 & §3.3)
+  const routeList = Object.keys(apis);
+  const apiUsedBySets = new Map(routeList.map((r) => [r, new Set()]));
+  const unresolved = [];
+
+  for (const id of reachableIds) {
+    const block = blocks[id];
+    const fileInfo = files.get(block.file);
+    const compInfo = fileInfo?.components.get(block.name);
+    if (!fileInfo || !compInfo) continue;
+
+    const { apis: blockApis, unresolved: blockUnresolved } = collectBlockApis(
+      compInfo,
+      fileInfo,
+      config,
+      files,
+      routeList
+    );
+    block.apis = blockApis;
+    for (const r of blockApis) {
+      apiUsedBySets.get(r)?.add(id);
+    }
+    for (const item of blockUnresolved) {
+      unresolved.push({ raw: item.raw, file: item.file, block: id });
+    }
+  }
+
+  for (const route of routeList) {
+    apis[route].usedBy = [...apiUsedBySets.get(route)].sort(compareStr);
+  }
+
+  unresolved.sort(
+    (a, b) =>
+      compareStr(a.block, b.block) ||
+      compareStr(a.file, b.file) ||
+      compareStr(a.raw, b.raw)
+  );
+
   const surfaces =
     rootId && blocks[rootId]
       ? [
@@ -917,6 +1246,6 @@ export function analyze({ root, config }) {
     surfaces,
     blocks,
     apis,
-    unresolved: [],
+    unresolved,
   };
 }

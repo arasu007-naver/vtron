@@ -1,5 +1,6 @@
-// @ts-nocheck
+// @ts-expect-error -- fixture-relative alias
 import { Shared } from "@/components/Shared";
+// @ts-expect-error -- fixture-relative alias
 import { CONST } from "@/components/Solo";
 import { authFetch } from "@/lib/auth-client";
 

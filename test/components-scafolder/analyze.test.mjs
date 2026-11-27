@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 import config from "../../scripts/components-scafolder/config.mjs";
 import { analyze, matchRoute } from "../../scripts/components-scafolder/analyze.mjs";
+import { checkInvariants } from "./invariants.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const MINI_APP_ROOT = path.join(__dirname, "fixtures", "mini-app");
@@ -145,4 +146,58 @@ test("jsx children: source order, filters non-project elements, self-recursion, 
     "app/a/page.tsx#APage",
     "app/b/page.tsx#BPage",
   ]);
+});
+
+test("common detection: multi-parent, ui-dir, and non-common local component", () => {
+  const model = analyze({ root: MINI_APP_ROOT, config: miniConfig() });
+
+  const shared = model.blocks["components/Shared.tsx#Shared"];
+  assert.equal(shared.common, true);
+  assert.equal(shared.commonReason, "multi-parent");
+
+  const button = model.blocks["components/x/ui/button.tsx#Button"];
+  assert.equal(button.common, true);
+  assert.equal(button.commonReason, "ui-dir");
+
+  const row = model.blocks["app/a/page.tsx#Row"];
+  assert.equal(row.common, false);
+  assert.equal(row.commonReason, null);
+});
+
+test("api attribution: literals, module helper, transitive lib import, transport exclusion, and unresolved", () => {
+  const model = analyze({ root: MINI_APP_ROOT, config: miniConfig() });
+
+  const aPage = model.blocks["app/a/page.tsx#APage"];
+  assert.deepEqual(aPage.apis, [
+    "/api/items",
+    "/api/items/[id]",
+    "/api/things",
+  ]);
+
+  const bPage = model.blocks["app/b/page.tsx#BPage"];
+  assert.deepEqual(bPage.apis, ["/api/cat/brands", "/api/cat/products"]);
+  assert.deepEqual(model.unresolved, [
+    {
+      raw: "/api/nowhere",
+      file: "app/b/page.tsx",
+      block: "app/b/page.tsx#BPage",
+    },
+  ]);
+
+  const loginPage = model.blocks["app/login/page.tsx#LoginPage"];
+  assert.deepEqual(loginPage.apis, ["/api/auth/login"]);
+
+  assert.deepEqual(model.apis["/api/unused"].usedBy, []);
+  assert.deepEqual(model.apis["/api/auth/session"].usedBy, []);
+});
+
+test("invariants: SPEC §6.1 invariants hold on mini-app model", () => {
+  const model = analyze({ root: MINI_APP_ROOT, config: miniConfig() });
+  assert.deepEqual(checkInvariants(model), []);
+});
+
+test("deterministic: repeated analyze calls produce identical JSON", () => {
+  const m1 = JSON.stringify(analyze({ root: MINI_APP_ROOT, config: miniConfig() }));
+  const m2 = JSON.stringify(analyze({ root: MINI_APP_ROOT, config: miniConfig() }));
+  assert.equal(m1, m2);
 });

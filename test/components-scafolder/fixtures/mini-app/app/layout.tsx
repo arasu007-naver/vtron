@@ -1,7 +1,7 @@
-// @ts-nocheck
+import type { ReactNode } from "react";
 import NavBar from "@/components/NavBar";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <div>
       <NavBar />

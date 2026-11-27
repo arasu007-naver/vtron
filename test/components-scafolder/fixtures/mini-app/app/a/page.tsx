@@ -1,10 +1,13 @@
-// @ts-nocheck
 import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
+// @ts-expect-error -- fixture-relative alias
 import { Shared } from "@/components/Shared";
+// @ts-expect-error -- fixture-relative alias
 import Button from "@/components/x/ui/button";
+// @ts-expect-error -- fixture-relative alias
 import { Tree } from "@/components/Tree";
 import { authFetch } from "@/lib/auth-client";
+// @ts-expect-error -- fixture-relative alias
 import { fetchThings } from "@/lib/things-client";
 
 function loadAll() {
