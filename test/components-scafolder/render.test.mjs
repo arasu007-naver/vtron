@@ -206,7 +206,7 @@ describe("render(model)", () => {
     assert.equal(render(model), render(model));
   });
 
-  it("inlines valid JS scripts and keeps copy, toggle, and jump buttons distinct", async () => {
+  it("inlines valid JS scripts without </script and keeps copy, toggle, and jump buttons distinct", async () => {
     const render = await getRender();
     const html = render(model);
 
@@ -214,6 +214,7 @@ describe("render(model)", () => {
     assert.equal(scriptMatches.length, 2, "Expected logic.js and app.js inline script tags");
     for (const m of scriptMatches) {
       assert.equal(m[1].trim().length > 0, true, "Inline script should not be empty");
+      assert.equal(/<\/script/i.test(m[1]), false, "Inline script must not contain </script");
       assert.doesNotThrow(() => new vm.Script(m[1]), "Inline script must be valid JS");
     }
 
@@ -228,5 +229,40 @@ describe("render(model)", () => {
         assert.equal(classes.includes("jump"), false);
       }
     }
+  });
+
+  it("places .arrow-layer above .tree-col and .common-col in stacking order", async () => {
+    const render = await getRender();
+    const html = render(model);
+    const styleMatch = html.match(/<style>([\s\S]*?)<\/style>/);
+    assert.ok(styleMatch, "Expected inline <style> block");
+    const css = styleMatch[1];
+
+    const arrowRule = css.match(/\.arrow-layer\s*\{([^}]*)\}/);
+    assert.ok(arrowRule, "Expected .arrow-layer CSS rule");
+    const arrowZ = Number((arrowRule[1].match(/z-index\s*:\s*(-?\d+)/) || [])[1]);
+    assert.equal(Number.isFinite(arrowZ), true, "Expected numeric z-index on .arrow-layer");
+    assert.equal(/pointer-events\s*:\s*none/.test(arrowRule[1]), true, ".arrow-layer must keep pointer-events: none");
+
+    const colRule = css.match(/\.tree-col\s*,\s*\.common-col\s*\{([^}]*)\}/);
+    const colZMatch = colRule ? colRule[1].match(/z-index\s*:\s*(-?\d+)/) : null;
+    const colZ = colZMatch ? Number(colZMatch[1]) : 0;
+    assert.equal(
+      arrowZ > colZ,
+      true,
+      `Expected .arrow-layer z-index (${arrowZ}) > column z-index (${colZ})`,
+    );
+  });
+
+  it("renders (없음) in surface tree when surfaces is empty", async () => {
+    const render = await getRender();
+    const emptySurfacesModel = {
+      ...structuredClone(model),
+      surfaces: [],
+    };
+    const html = render(emptySurfacesModel);
+    const treeMatch = html.match(/<section class="tree-col" id="surface-tree">([\s\S]*?)<\/section>/);
+    assert.ok(treeMatch, "Expected #surface-tree section");
+    assert.equal(treeMatch[1].includes("(없음)"), true);
   });
 });

@@ -84,16 +84,17 @@
   }
 
   function copyText(text) {
-    const onDone = () => showToast(`복사됨: ${text}`);
+    const onSuccess = () => showToast(`복사됨: ${text}`);
+    const onFail = () => showToast(`복사 실패: ${text}`);
     if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-      navigator.clipboard.writeText(text).then(onDone, () => {
-        fallbackCopy(text);
-        onDone();
+      navigator.clipboard.writeText(text).then(onSuccess, () => {
+        if (fallbackCopy(text)) onSuccess();
+        else onFail();
       });
       return;
     }
-    fallbackCopy(text);
-    onDone();
+    if (fallbackCopy(text)) onSuccess();
+    else onFail();
   }
 
   // --- Collapse / Expand ---
@@ -133,7 +134,16 @@
 
   // --- SVG Arrows ---
   let arrowRaf = 0;
-  let activeHoverTarget = null;
+  let activeHover = null; // { target: string, from: string | null }
+
+  function isPathHighlighted(path) {
+    if (!activeHover) return false;
+    if (path.dataset.arrowTarget !== activeHover.target) return false;
+    if (activeHover.from !== null && path.dataset.arrowFrom !== activeHover.from) {
+      return false;
+    }
+    return true;
+  }
 
   function scheduleDrawArrows() {
     if (arrowRaf) return;
@@ -147,8 +157,7 @@
     if (!arrowSvg) return;
     const paths = arrowSvg.querySelectorAll("path.arrow-path");
     for (const path of paths) {
-      const isMatch = activeHoverTarget && path.dataset.arrowTarget === activeHoverTarget;
-      path.classList.toggle("arrow-active", Boolean(isMatch));
+      path.classList.toggle("arrow-active", isPathHighlighted(path));
     }
   }
 
@@ -217,7 +226,7 @@
       path.style.color = "var(--arrow)";
       path.dataset.arrowTarget = refId;
       path.dataset.arrowFrom = chip.dataset.from || "";
-      if (activeHoverTarget && activeHoverTarget === refId) {
+      if (isPathHighlighted(path)) {
         path.classList.add("arrow-active");
       }
       arrowSvg.appendChild(path);
@@ -443,7 +452,7 @@
     clearSearchIfHidden(chip);
     expandAncestorsOfElement(chip, false);
     updateUrlHash(fromId);
-    activeHoverTarget = refId;
+    activeHover = { target: refId, from: fromId };
     scheduleDrawArrows();
     flashAndScroll(chip);
   }
@@ -485,39 +494,37 @@
   });
 
   // --- Hover Highlight for Arrows ---
+  function setHover(next) {
+    const same =
+      (activeHover === null && next === null) ||
+      (activeHover !== null &&
+        next !== null &&
+        activeHover.target === next.target &&
+        activeHover.from === next.from);
+    if (same) return;
+    activeHover = next;
+    applyArrowHighlight();
+  }
+
   document.addEventListener("mouseover", (e) => {
     const target = e.target;
     if (!(target instanceof Element)) return;
     const chip = target.closest(".ref-chip[data-ref]");
     if (chip) {
-      const refId = chip.dataset.ref;
-      if (activeHoverTarget !== refId) {
-        activeHoverTarget = refId;
-        applyArrowHighlight();
-      }
+      setHover({ target: chip.dataset.ref, from: chip.dataset.from || "" });
       return;
     }
     const commonCard = target.closest('.card[data-common="true"]');
     if (commonCard) {
-      const id = commonCard.dataset.blockId;
-      if (activeHoverTarget !== id) {
-        activeHoverTarget = id;
-        applyArrowHighlight();
-      }
+      setHover({ target: commonCard.dataset.blockId, from: null });
       return;
     }
-    if (activeHoverTarget !== null) {
-      activeHoverTarget = null;
-      applyArrowHighlight();
-    }
+    setHover(null);
   });
 
   if (stage) {
     stage.addEventListener("mouseleave", () => {
-      if (activeHoverTarget !== null) {
-        activeHoverTarget = null;
-        applyArrowHighlight();
-      }
+      setHover(null);
     });
   }
 

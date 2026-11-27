@@ -359,20 +359,23 @@ export function render(model) {
 
   const renderedCards = new Set();
 
-  const surfaceHtml = surfaces
-    .map((surface) => {
-      const rootBlock = blocks[surface.root];
-      const treeHtml = rootBlock
-        ? renderCard(rootBlock, blocks, renderedCards, new Set())
-        : `<p class="empty-val">(없음)</p>`;
-      return (
-        `<div class="surface-block" data-surface-id="${escapeHtml(surface.id)}">` +
-        `<h2 class="col-title">${escapeHtml(surface.label)}</h2>` +
-        `<div class="tree-root">${treeHtml}</div>` +
-        `</div>`
-      );
-    })
-    .join("");
+  const surfaceHtml =
+    surfaces.length === 0
+      ? `<p class="empty-val">(없음)</p>`
+      : surfaces
+          .map((surface) => {
+            const rootBlock = blocks[surface.root];
+            const treeHtml = rootBlock
+              ? renderCard(rootBlock, blocks, renderedCards, new Set())
+              : `<p class="empty-val">(없음)</p>`;
+            return (
+              `<div class="surface-block" data-surface-id="${escapeHtml(surface.id)}">` +
+              `<h2 class="col-title">${escapeHtml(surface.label)}</h2>` +
+              `<div class="tree-root">${treeHtml}</div>` +
+              `</div>`
+            );
+          })
+          .join("");
 
   const commonHtml = renderCommonColumn(blocks, renderedCards);
   const routeIndexHtml = renderRouteIndex(blocks);
