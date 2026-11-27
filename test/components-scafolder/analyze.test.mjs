@@ -59,3 +59,90 @@ test("apis: collects all fixture route.ts files in ascending order with sorted H
   );
   assert.deepEqual(model.apis["/api/items/[id]"].methods, ["DELETE", "GET"]);
 });
+
+test("tree: surface root, RootLayout children order, and skipping non-component sub-layouts", () => {
+  const model = analyze({ root: MINI_APP_ROOT, config: miniConfig() });
+
+  assert.equal(model.surfaces.length, 1);
+  assert.deepEqual(model.surfaces[0], {
+    id: "app",
+    label: "vtron 웹 (Next App Router)",
+    root: "app/layout.tsx#RootLayout",
+  });
+
+  const rootBlock = model.blocks["app/layout.tsx#RootLayout"];
+  assert.ok(rootBlock);
+  assert.equal(rootBlock.kind, "layout");
+  assert.deepEqual(rootBlock.children, [
+    { ref: "components/NavBar.tsx#NavBar", via: "jsx" },
+    { ref: "app/a/page.tsx#APage", via: "route" },
+    { ref: "app/b/page.tsx#BPage", via: "route" },
+    { ref: "app/c/page.tsx#app/c/page.tsx", via: "route" },
+    { ref: "app/d/page.tsx#APage", via: "route" },
+    { ref: "app/login/page.tsx#LoginPage", via: "route" },
+  ]);
+
+  // Sub-layout rendering only <div>{children}</div> is not lifted into a block
+  assert.equal(
+    Object.values(model.blocks).some((b) => b.file === "app/a/layout.tsx"),
+    false
+  );
+});
+
+test("pages: re-export merges routes, NAV_LINKS label, anonymous default name, and duplicate-names", () => {
+  const model = analyze({ root: MINI_APP_ROOT, config: miniConfig() });
+
+  // Re-export page app/page.tsx merges "/" into app/a/page.tsx#APage
+  const aPage = model.blocks["app/a/page.tsx#APage"];
+  assert.ok(aPage);
+  assert.equal(aPage.kind, "page");
+  assert.deepEqual(aPage.routes, ["/", "/a"]);
+  assert.equal(aPage.label, "에이");
+  assert.equal(
+    Object.values(model.blocks).some((b) => b.file === "app/page.tsx"),
+    false
+  );
+
+  // Anonymous default export uses file path as name
+  const cPage = model.blocks["app/c/page.tsx#app/c/page.tsx"];
+  assert.ok(cPage);
+  assert.equal(cPage.name, "app/c/page.tsx");
+  assert.deepEqual(cPage.routes, ["/c"]);
+
+  // duplicate-names: both app/a/page.tsx#APage and app/d/page.tsx#APage exist
+  const dPage = model.blocks["app/d/page.tsx#APage"];
+  assert.ok(dPage);
+  assert.equal(dPage.name, "APage");
+  assert.equal(dPage.file, "app/d/page.tsx");
+  assert.deepEqual(dPage.routes, ["/d"]);
+});
+
+test("jsx children: source order, filters non-project elements, self-recursion, and unreachable Solo", () => {
+  const model = analyze({ root: MINI_APP_ROOT, config: miniConfig() });
+
+  const aPage = model.blocks["app/a/page.tsx#APage"];
+  assert.deepEqual(aPage.children, [
+    { ref: "app/a/page.tsx#Row", via: "jsx" },
+    { ref: "components/Shared.tsx#Shared", via: "jsx" },
+    { ref: "components/x/ui/button.tsx#Button", via: "jsx" },
+    { ref: "components/Tree.tsx#Tree", via: "jsx" },
+  ]);
+
+  // self-recursion: Tree does not include itself as a child
+  const tree = model.blocks["components/Tree.tsx#Tree"];
+  assert.ok(tree);
+  assert.deepEqual(tree.children, []);
+
+  // Solo is imported only for CONST and never rendered -> excluded
+  assert.equal(model.blocks["components/Solo.tsx#Solo"], undefined);
+  assert.equal(
+    Object.values(model.blocks).some((b) => b.file === "components/Solo.tsx"),
+    false
+  );
+
+  // usedBy reverse index
+  assert.deepEqual(model.blocks["components/Shared.tsx#Shared"].usedBy, [
+    "app/a/page.tsx#APage",
+    "app/b/page.tsx#BPage",
+  ]);
+});
