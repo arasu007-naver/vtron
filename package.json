@@ -13,7 +13,9 @@
     "backfill:model-codes": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/backfill-model-codes.mjs",
     "register:catalog-products": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/register-catalog-products.mjs",
     "thumbs:products": "node scripts/backfill-product-thumbnails.mjs",
-    "worker:style-id": "node scripts/style-id-worker.mjs"
+    "worker:style-id": "node scripts/style-id-worker.mjs",
+    "docs:scafolder": "node scripts/components-scafolder/generate.mjs",
+    "docs:scafolder:check": "node scripts/components-scafolder/generate.mjs --check"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.131.0",
