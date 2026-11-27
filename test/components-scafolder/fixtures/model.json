@@ -1,0 +1,218 @@
+{
+  "version": 1,
+  "project": "vtron",
+  "surfaces": [
+    {
+      "id": "app",
+      "label": "vtron 웹 (Next App Router)",
+      "root": "app/layout.tsx#RootLayout"
+    }
+  ],
+  "blocks": {
+    "app/layout.tsx#RootLayout": {
+      "id": "app/layout.tsx#RootLayout",
+      "name": "RootLayout",
+      "file": "app/layout.tsx",
+      "kind": "layout",
+      "routes": [],
+      "label": null,
+      "common": false,
+      "commonReason": null,
+      "children": [
+        { "ref": "components/NavBar.tsx#NavBar", "via": "jsx" },
+        { "ref": "app/a/page.tsx#APage", "via": "route" },
+        { "ref": "app/b/page.tsx#BPage", "via": "route" }
+      ],
+      "apis": [],
+      "usedBy": []
+    },
+    "components/NavBar.tsx#NavBar": {
+      "id": "components/NavBar.tsx#NavBar",
+      "name": "NavBar",
+      "file": "components/NavBar.tsx",
+      "kind": "component",
+      "routes": [],
+      "label": null,
+      "common": false,
+      "commonReason": null,
+      "children": [],
+      "apis": [],
+      "usedBy": ["app/layout.tsx#RootLayout"]
+    },
+    "app/a/page.tsx#APage": {
+      "id": "app/a/page.tsx#APage",
+      "name": "APage",
+      "file": "app/a/page.tsx",
+      "kind": "page",
+      "routes": ["/", "/a"],
+      "label": "에이",
+      "common": false,
+      "commonReason": null,
+      "children": [
+        { "ref": "components/ParentBox.tsx#ParentBox", "via": "jsx" },
+        { "ref": "components/SharedModal.tsx#SharedModal", "via": "jsx" },
+        { "ref": "components/CycleCommon.tsx#CycleCommon", "via": "jsx" }
+      ],
+      "apis": ["/api/items", "/api/items/[id]"],
+      "usedBy": ["app/layout.tsx#RootLayout"]
+    },
+    "components/ParentBox.tsx#ParentBox": {
+      "id": "components/ParentBox.tsx#ParentBox",
+      "name": "ParentBox",
+      "file": "components/ParentBox.tsx",
+      "kind": "component",
+      "routes": [],
+      "label": null,
+      "common": false,
+      "commonReason": null,
+      "children": [
+        { "ref": "components/GrandChild.tsx#GrandChild", "via": "jsx" }
+      ],
+      "apis": ["/api/items"],
+      "usedBy": ["app/a/page.tsx#APage"]
+    },
+    "components/GrandChild.tsx#GrandChild": {
+      "id": "components/GrandChild.tsx#GrandChild",
+      "name": "GrandChild",
+      "file": "components/GrandChild.tsx",
+      "kind": "component",
+      "routes": [],
+      "label": null,
+      "common": false,
+      "commonReason": null,
+      "children": [],
+      "apis": ["/api/items/[id]"],
+      "usedBy": ["components/ParentBox.tsx#ParentBox"]
+    },
+    "app/b/page.tsx#BPage": {
+      "id": "app/b/page.tsx#BPage",
+      "name": "BPage",
+      "file": "app/b/page.tsx",
+      "kind": "page",
+      "routes": ["/b"],
+      "label": "비",
+      "common": false,
+      "commonReason": null,
+      "children": [
+        { "ref": "components/SharedModal.tsx#SharedModal", "via": "jsx" },
+        { "ref": "components/Evil.tsx#</script><b>Evil</b>", "via": "jsx" }
+      ],
+      "apis": ["/api/things"],
+      "usedBy": ["app/layout.tsx#RootLayout"]
+    },
+    "components/Evil.tsx#</script><b>Evil</b>": {
+      "id": "components/Evil.tsx#</script><b>Evil</b>",
+      "name": "</script><b>Evil</b>",
+      "file": "components/Evil.tsx",
+      "kind": "component",
+      "routes": [],
+      "label": null,
+      "common": false,
+      "commonReason": null,
+      "children": [],
+      "apis": [],
+      "usedBy": ["app/b/page.tsx#BPage"]
+    },
+    "components/SharedModal.tsx#SharedModal": {
+      "id": "components/SharedModal.tsx#SharedModal",
+      "name": "SharedModal",
+      "file": "components/SharedModal.tsx",
+      "kind": "component",
+      "routes": [],
+      "label": null,
+      "common": true,
+      "commonReason": "multi-parent",
+      "children": [
+        { "ref": "components/ui/Button.tsx#UiButton", "via": "jsx" }
+      ],
+      "apis": ["/api/items"],
+      "usedBy": ["app/a/page.tsx#APage", "app/b/page.tsx#BPage"]
+    },
+    "components/ui/Button.tsx#UiButton": {
+      "id": "components/ui/Button.tsx#UiButton",
+      "name": "UiButton",
+      "file": "components/ui/Button.tsx",
+      "kind": "component",
+      "routes": [],
+      "label": null,
+      "common": true,
+      "commonReason": "ui-dir",
+      "children": [],
+      "apis": [],
+      "usedBy": ["components/SharedModal.tsx#SharedModal"]
+    },
+    "components/CycleCommon.tsx#CycleCommon": {
+      "id": "components/CycleCommon.tsx#CycleCommon",
+      "name": "CycleCommon",
+      "file": "components/CycleCommon.tsx",
+      "kind": "component",
+      "routes": [],
+      "label": null,
+      "common": true,
+      "commonReason": "multi-parent",
+      "children": [
+        { "ref": "components/CycleLocal.tsx#CycleLocal", "via": "jsx" }
+      ],
+      "apis": [],
+      "usedBy": [
+        "app/a/page.tsx#APage",
+        "components/CycleLocal.tsx#CycleLocal"
+      ]
+    },
+    "components/CycleLocal.tsx#CycleLocal": {
+      "id": "components/CycleLocal.tsx#CycleLocal",
+      "name": "CycleLocal",
+      "file": "components/CycleLocal.tsx",
+      "kind": "component",
+      "routes": [],
+      "label": null,
+      "common": false,
+      "commonReason": null,
+      "children": [
+        { "ref": "components/CycleCommon.tsx#CycleCommon", "via": "jsx" }
+      ],
+      "apis": [],
+      "usedBy": ["components/CycleCommon.tsx#CycleCommon"]
+    }
+  },
+  "apis": {
+    "/api/items": {
+      "name": "/api/items",
+      "file": "app/api/items/route.ts",
+      "methods": ["GET", "POST"],
+      "usedBy": [
+        "app/a/page.tsx#APage",
+        "components/ParentBox.tsx#ParentBox",
+        "components/SharedModal.tsx#SharedModal"
+      ]
+    },
+    "/api/items/[id]": {
+      "name": "/api/items/[id]",
+      "file": "app/api/items/[id]/route.ts",
+      "methods": ["DELETE", "GET"],
+      "usedBy": [
+        "app/a/page.tsx#APage",
+        "components/GrandChild.tsx#GrandChild"
+      ]
+    },
+    "/api/things": {
+      "name": "/api/things",
+      "file": "app/api/things/route.ts",
+      "methods": ["GET"],
+      "usedBy": ["app/b/page.tsx#BPage"]
+    },
+    "/api/unused": {
+      "name": "/api/unused",
+      "file": "app/api/unused/route.ts",
+      "methods": ["POST"],
+      "usedBy": []
+    }
+  },
+  "unresolved": [
+    {
+      "raw": "/api/nowhere/${id}",
+      "file": "app/b/page.tsx",
+      "block": "app/b/page.tsx#BPage"
+    }
+  ]
+}
