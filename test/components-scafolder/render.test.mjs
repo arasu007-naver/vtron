@@ -2,6 +2,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -203,5 +204,29 @@ describe("render(model)", () => {
   it("is deterministic: render(model) === render(model)", async () => {
     const render = await getRender();
     assert.equal(render(model), render(model));
+  });
+
+  it("inlines valid JS scripts and keeps copy, toggle, and jump buttons distinct", async () => {
+    const render = await getRender();
+    const html = render(model);
+
+    const scriptMatches = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+    assert.equal(scriptMatches.length, 2, "Expected logic.js and app.js inline script tags");
+    for (const m of scriptMatches) {
+      assert.equal(m[1].trim().length > 0, true, "Inline script should not be empty");
+      assert.doesNotThrow(() => new vm.Script(m[1]), "Inline script must be valid JS");
+    }
+
+    // Ensure no button element combines copy with toggle-btn or jump
+    const buttonTags = [...html.matchAll(/<button\b[^>]*>/g)].map((m) => m[0]);
+    for (const tag of buttonTags) {
+      const clsMatch = tag.match(/class="([^"]*)"/);
+      if (!clsMatch) continue;
+      const classes = clsMatch[1].split(/\s+/);
+      if (classes.includes("copy")) {
+        assert.equal(classes.includes("toggle-btn"), false);
+        assert.equal(classes.includes("jump"), false);
+      }
+    }
   });
 });
