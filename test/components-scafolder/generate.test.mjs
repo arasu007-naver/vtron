@@ -1,7 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { cpSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  cpSync,
+  existsSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -9,6 +17,7 @@ import { fileURLToPath } from "node:url";
 import config from "../../scripts/components-scafolder/config.mjs";
 import { render } from "../../scripts/components-scafolder/render.mjs";
 import { generate } from "../../scripts/components-scafolder/generate.mjs";
+import { checkInvariants } from "./invariants.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, "../..");
@@ -100,4 +109,135 @@ test("CLI --json: outputs valid JSON with version === 1", () => {
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }
+});
+
+function walkFiles(dir, filename) {
+  const out = [];
+  if (!existsSync(dir)) return out;
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      out.push(...walkFiles(full, filename));
+    } else if (entry.isFile() && entry.name === filename) {
+      out.push(full);
+    }
+  }
+  return out;
+}
+
+function pageFileToRoute(relPageFile) {
+  const dir = path.posix.dirname(relPageFile.replaceAll("\\", "/"));
+  if (dir === "app") return "/";
+  const segments = dir
+    .slice("app/".length)
+    .split("/")
+    .filter((seg) => seg.length > 0 && !(seg.startsWith("(") && seg.endsWith(")")));
+  return segments.length === 0 ? "/" : `/${segments.join("/")}`;
+}
+
+test("real repo: invariants, routes, APIs, blocks, and vtron-specific expectations", () => {
+  const { model, html } = generate({ root: REPO_ROOT, config });
+
+  // 1. SPEC §6.1 invariants
+  assert.deepEqual(checkInvariants(model), []);
+
+  // 2. API count matches actual route.ts files under app/api
+  const routeFiles = walkFiles(path.join(REPO_ROOT, "app/api"), "route.ts");
+  assert.equal(Object.keys(model.apis).length, routeFiles.length);
+
+  // 3. Every app/**/page.tsx route appears in some page block's routes (including "/")
+  const pageFiles = walkFiles(path.join(REPO_ROOT, "app"), "page.tsx");
+  const expectedRoutes = new Set(
+    pageFiles.map((f) => pageFileToRoute(path.relative(REPO_ROOT, f)))
+  );
+  assert.equal(expectedRoutes.has("/"), true);
+
+  const coveredRoutes = new Set();
+  for (const block of Object.values(model.blocks)) {
+    if (block.kind === "page") {
+      for (const r of block.routes) coveredRoutes.add(r);
+    }
+  }
+  for (const route of expectedRoutes) {
+    assert.equal(
+      coveredRoutes.has(route),
+      true,
+      `expected route "${route}" to be covered by a page block`
+    );
+  }
+
+  // 4. Every non-anonymous block's file contains its name; every API's file exists
+  for (const block of Object.values(model.blocks)) {
+    const absFile = path.join(REPO_ROOT, block.file);
+    assert.equal(existsSync(absFile), true, `block file missing: ${block.file}`);
+    if (block.name !== block.file) {
+      const src = readFileSync(absFile, "utf8");
+      assert.equal(
+        src.includes(block.name),
+        true,
+        `expected ${block.file} to contain "${block.name}"`
+      );
+    }
+  }
+  for (const api of Object.values(model.apis)) {
+    assert.equal(
+      existsSync(path.join(REPO_ROOT, api.file)),
+      true,
+      `API route file missing: ${api.file}`
+    );
+  }
+
+  // 5. Duplicate page component names in two files exist as distinct blocks
+  const fullStyleEx = Object.values(model.blocks).find(
+    (b) => b.kind === "page" && b.file === "app/full-style-ex/page.tsx"
+  );
+  const fullStyleIdEx = Object.values(model.blocks).find(
+    (b) => b.kind === "page" && b.file === "app/full-style-id-extraction/page.tsx"
+  );
+  assert.ok(fullStyleEx, "missing page block for app/full-style-ex/page.tsx");
+  assert.ok(fullStyleIdEx, "missing page block for app/full-style-id-extraction/page.tsx");
+  assert.notEqual(fullStyleEx.id, fullStyleIdEx.id);
+
+  // 6. RootLayout JSX children include NavBar and ChatAgent
+  const rootLayout = model.blocks["app/layout.tsx#RootLayout"];
+  assert.ok(rootLayout, "missing app/layout.tsx#RootLayout");
+  const rootJsxChildNames = rootLayout.children
+    .filter((c) => c.via === "jsx")
+    .map((c) => model.blocks[c.ref]?.name);
+  assert.equal(rootJsxChildNames.includes("NavBar"), true);
+  assert.equal(rootJsxChildNames.includes("ChatAgent"), true);
+
+  // 7. VtonStudioPage APIs superset check (app/studio/page.tsx exports VtonStudioPage)
+  const studioPage = model.blocks["app/studio/page.tsx#VtonStudioPage"];
+  assert.ok(studioPage, "missing app/studio/page.tsx#VtonStudioPage");
+  for (const expectedApi of [
+    "/api/vton/projects",
+    "/api/vton/projects/[id]",
+    "/api/vton/render",
+    "/api/vton/upload",
+  ]) {
+    assert.equal(
+      studioPage.apis.includes(expectedApi),
+      true,
+      `expected VtonStudioPage.apis to include ${expectedApi}, got [${studioPage.apis.join(", ")}]`
+    );
+  }
+
+  // 8. components/api-mng/ui.tsx#Modal is common
+  const modal = model.blocks["components/api-mng/ui.tsx#Modal"];
+  assert.ok(modal, "missing components/api-mng/ui.tsx#Modal");
+  assert.equal(modal.common, true);
+
+  // 9. Transport exclusion: no block has /api/auth/session
+  for (const block of Object.values(model.blocks)) {
+    assert.equal(
+      block.apis.includes("/api/auth/session"),
+      false,
+      `block ${block.id} unexpectedly includes /api/auth/session`
+    );
+  }
+
+  // Sanity: generated HTML matches render(model) and has no external resource URLs
+  assert.equal(html, render(model));
+  assert.doesNotMatch(html, /(src|href)=["']https?:|url\(\s*["']?https?:/i);
 });
